@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap — Base de Conhecimento CEFOR/IFes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #fafaf9;
+    --surface: #ffffff;
+    --surface-alt: #f5f5f4;
+    --border: #e7e5e4;
+    --border-light: #f0eeec;
+    --text: #1c1917;
+    --text-secondary: #57534e;
+    --text-tertiary: #a8a29e;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --accent-border: #bfdbfe;
+    --phase0: #8b5cf6;
+    --phase1: #2563eb;
+    --phase2: #0891b2;
+    --phase3: #059669;
+    --phase4: #d97706;
+    --phase5: #dc2626;
+    --phase0-bg: #f5f3ff;
+    --phase1-bg: #eff6ff;
+    --phase2-bg: #ecfeff;
+    --phase3-bg: #ecfdf5;
+    --phase4-bg: #fffbeb;
+    --phase5-bg: #fef2f2;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.03);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.06), 0 4px 10px rgba(0,0,0,0.04);
+    --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #1e3a5f 0%, #1e293b 100%);
+    color: white;
+    padding: 64px 0 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(37,99,235,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 80%, rgba(139,92,246,0.1) 0%, transparent 50%);
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; padding: 0 32px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px; padding: 6px 14px; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px;
+    color: rgba(255,255,255,0.8);
+  }
+  .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: #34d399; }
+  .hero h1 { font-size: 36px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 12px; line-height: 1.2; }
+  .hero p { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 600px; line-height: 1.6; }
+  .hero-meta {
+    display: flex; gap: 32px; margin-top: 28px; padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .hero-meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: rgba(255,255,255,0.4); font-weight: 500; }
+  .hero-meta-value { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.9); }
+
+  /* NAV */
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+  }
+  .nav-inner {
+    max-width: 960px; margin: 0 auto;
+    display: flex; gap: 4px; overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    background: none; border: none; padding: 14px 16px;
+    font-family: inherit; font-size: 13px; font-weight: 500;
+    color: var(--text-secondary); cursor: pointer;
+    white-space: nowrap; position: relative;
+    transition: color var(--transition);
+  }
+  .nav-btn:hover { color: var(--text); }
+  .nav-btn.active { color: var(--accent); font-weight: 600; }
+  .nav-btn.active::after {
+    content: ''; position: absolute; bottom: 0; left: 16px; right: 16px;
+    height: 2px; background: var(--accent); border-radius: 2px 2px 0 0;
+  }
+
+  /* MAIN */
+  .main { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+
+  /* SECTIONS */
+  .section { padding: 48px 0; display: none; }
+  .section.active { display: block; }
+  .section-title {
+    font-size: 13px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 1px; color: var(--text-tertiary); margin-bottom: 8px;
+  }
+  .section-heading { font-size: 28px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 8px; }
+  .section-desc { font-size: 15px; color: var(--text-secondary); max-width: 560px; margin-bottom: 36px; }
+
+  /* OVERVIEW — TIMELINE */
+  .timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .timeline::before {
+    content: ''; position: absolute; left: 23px; top: 24px; bottom: 24px;
+    width: 2px; background: var(--border);
+  }
+  .tl-item {
+    display: flex; gap: 20px; align-items: flex-start;
+    padding: 16px 0; position: relative; cursor: pointer;
+  }
+  .tl-dot {
+    width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700; color: white;
+    position: relative; z-index: 2;
+    box-shadow: 0 0 0 4px var(--bg);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .tl-item:hover .tl-dot { transform: scale(1.1); box-shadow: 0 0 0 4px var(--bg), 0 4px 12px rgba(0,0,0,0.1); }
+  .tl-body { flex: 1; padding-top: 4px; }
+  .tl-phase { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; }
+  .tl-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.2px; }
+  .tl-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+  .tl-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .tl-tag {
+    font-size: 11px; font-weight: 500; padding: 3px 10px;
+    border-radius: 100px; background: var(--surface-alt); color: var(--text-secondary);
+    border: 1px solid var(--border-light);
+  }
+  .tl-arrow {
+    font-size: 13px; color: var(--text-tertiary); margin-top: 12px;
+    display: flex; align-items: center; gap: 6px; font-weight: 500;
+    transition: color var(--transition);
+  }
+  .tl-item:hover .tl-arrow { color: var(--accent); }
+
+  /* ARCHITECTURE */
+  .arch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .arch-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition), transform var(--transition);
+  }
+  .arch-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .arch-card-icon { font-size: 28px; margin-bottom: 12px; }
+  .arch-card-title { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+  .arch-card-sub { font-size: 13px; color: var(--text-tertiary); margin-bottom: 12px; }
+  .arch-card-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .arch-card-list li { font-size: 13px; color: var(--text-secondary); padding-left: 16px; position: relative; }
+  .arch-card-list li::before { content: ''; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; border-radius: 50%; background: var(--border); }
+  .arch-full {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm);
+  }
+  .arch-full-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .arch-full-sub { font-size: 13px; color: var(--text-tertiary); }
+  .arch-connector {
+    text-align: center; padding: 8px 0; color: var(--text-tertiary);
+    font-size: 20px; letter-spacing: 4px;
+  }
+
+  /* TEAM */
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .team-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 24px 20px; text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition), transform var(--transition);
+  }
+  .team-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .team-avatar {
+    width: 48px; height: 48px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700; color: white; margin: 0 auto 12px;
+  }
+  .team-name { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+  .team-role { font-size: 12px; color: var(--text-secondary); margin-bottom: 10px; }
+  .team-tags { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
+  .team-tags span {
+    font-size: 10px; font-weight: 500; padding: 2px 8px;
+    border-radius: 100px; background: var(--surface-alt); color: var(--text-secondary);
+    border: 1px solid var(--border-light);
+  }
+
+  /* DETAIL PHASE */
+  .phase-header {
+    padding: 28px 32px; border-radius: var(--radius);
+    margin-bottom: 28px; border: 1px solid;
+  }
+  .phase-number { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .phase-title { font-size: 24px; font-weight: 700; margin-bottom: 6px; }
+  .phase-obj { font-size: 14px; opacity: 0.8; max-width: 600px; }
+
+  .deliverable-group { margin-bottom: 28px; }
+  .deliverable-group-title {
+    font-size: 13px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.8px; color: var(--text-tertiary); margin-bottom: 12px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border-light);
+  }
+  .deliverable {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 16px 20px;
+    margin-bottom: 8px; box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: box-shadow var(--transition);
+  }
+  .deliverable:hover { box-shadow: var(--shadow); }
+  .deliverable-top { display: flex; justify-content: space-between; align-items: center; }
+  .deliverable-name { font-size: 14px; font-weight: 600; }
+  .deliverable-owner {
+    font-size: 11px; font-weight: 500; padding: 3px 10px;
+    border-radius: 100px; background: var(--surface-alt); color: var(--text-secondary);
+    border: 1px solid var(--border-light); white-space: nowrap;
+  }
+  .deliverable-desc {
+    font-size: 13px; color: var(--text-secondary); margin-top: 8px;
+    line-height: 1.6; display: none;
+  }
+  .deliverable.open .deliverable-desc { display: block; }
+  .deliverable-chevron {
+    width: 16px; height: 16px; transition: transform var(--transition);
+    color: var(--text-tertiary); flex-shrink: 0; margin-left: 12px;
+  }
+  .deliverable.open .deliverable-chevron { transform: rotate(180deg); }
+
+  /* DEPENDENCY */
+  .dep-flow { display: flex; flex-direction: column; gap: 0; align-items: center; }
+  .dep-node {
+    padding: 14px 28px; border-radius: var(--radius-sm);
+    font-size: 14px; font-weight: 600; text-align: center;
+    border: 2px solid; min-width: 280px;
+  }
+  .dep-arrow { color: var(--text-tertiary); font-size: 20px; padding: 4px 0; }
+  .dep-branch { display: flex; gap: 16px; align-items: flex-start; margin: 4px 0; }
+  .dep-note {
+    font-size: 12px; color: var(--text-secondary); background: var(--surface-alt);
+    padding: 10px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-light);
+    max-width: 320px; text-align: center; margin-top: 4px;
+  }
+
+  /* FUTURE */
+  .future-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .future-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 16px 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .future-card-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .future-card-meta { font-size: 12px; color: var(--text-tertiary); }
+  .future-card-version {
+    display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 8px;
+    border-radius: 100px; margin-top: 8px;
+  }
+
+  /* PILLAR MAP */
+  .pillar-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .pillar-table th {
+    padding: 10px 8px; text-align: center; font-weight: 600;
+    border-bottom: 2px solid var(--border); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary);
+  }
+  .pillar-table th:first-child { text-align: left; }
+  .pillar-table td { padding: 8px; text-align: center; border-bottom: 1px solid var(--border-light); }
+  .pillar-table td:first-child { text-align: left; font-weight: 500; font-size: 13px; }
+  .pillar-table tr:hover { background: var(--surface-alt); }
+  .pill {
+    display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 8px;
+    border-radius: 100px;
+  }
+  .pill-define { background: #dbeafe; color: #1d4ed8; }
+  .pill-implement { background: #d1fae5; color: #047857; }
+  .pill-use { background: #fef3c7; color: #92400e; }
+  .pill-operate { background: #fce7f3; color: #9d174d; }
+  .pill-research { background: #f3e8ff; color: #6b21a8; }
+  .pill-info { background: #f0f9ff; color: #0369a1; }
+  .pill-audit { background: #fff1f2; color: #be123c; }
+  .pill-na { background: var(--surface-alt); color: var(--text-tertiary); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 26px; }
+    .hero-meta { flex-wrap: wrap; gap: 16px; }
+    .arch-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    .future-grid { grid-template-columns: 1fr; }
+    .nav-btn { padding: 12px 12px; font-size: 12px; }
+  }
+
+  /* PILLAR CARDS */
+  .pillar-intro {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px 32px; margin-bottom: 32px;
+    box-shadow: var(--shadow-sm);
+  }
+  .pillar-intro p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px; }
+  .pillar-intro p:last-child { margin-bottom: 0; }
+  .pillar-intro strong { color: var(--text); }
+
+  .pillar-groups { display: flex; flex-direction: column; gap: 32px; margin-bottom: 40px; }
+
+  .pillar-group-header {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 16px;
+  }
+  .pillar-group-icon {
+    width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+  }
+  .pillar-group-title { font-size: 16px; font-weight: 700; }
+  .pillar-group-sub { font-size: 13px; color: var(--text-secondary); }
+
+  .pillar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 768px) { .pillar-grid { grid-template-columns: 1fr; } }
+
+  .pillar-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 18px 20px;
+    box-shadow: var(--shadow-sm); cursor: pointer;
+    transition: box-shadow var(--transition), border-color var(--transition);
+    border-left: 3px solid;
+  }
+  .pillar-card:hover { box-shadow: var(--shadow); }
+  .pillar-card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .pillar-card-num { font-size: 11px; font-weight: 700; color: var(--text-tertiary); margin-bottom: 2px; }
+  .pillar-card-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .pillar-card-question { font-size: 13px; color: var(--text-secondary); font-style: italic; }
+  .pillar-card-detail {
+    display: none; margin-top: 12px; padding-top: 12px;
+    border-top: 1px solid var(--border-light);
+  }
+  .pillar-card.open .pillar-card-detail { display: block; }
+  .pillar-card-risk {
+    font-size: 12px; color: #b91c1c; background: #fef2f2;
+    padding: 8px 12px; border-radius: 6px; border: 1px solid #fecaca;
+    line-height: 1.5;
+  }
+  .pillar-card-risk strong { color: #991b1b; }
+  .pillar-card-chevron {
+    width: 14px; height: 14px; color: var(--text-tertiary); flex-shrink: 0;
+    transition: transform var(--transition); margin-top: 2px;
+  }
+  .pillar-card.open .pillar-card-chevron { transform: rotate(180deg); }
+
+  .pillar-divider { height: 1px; background: var(--border-light); margin: 8px 0 0; }
+
+  .pillar-map-title {
+    font-size: 20px; font-weight: 700; margin-bottom: 6px; margin-top: 40px;
+  }
+  .pillar-map-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; }
+
+  /* ANIMATIONS */
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .section.active { animation: fadeInUp 0.35s ease-out; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span> Projeto em andamento</div>
+    <h1>Base de Conhecimento<br>CEFOR/IFes</h1>
+    <p>Roadmap completo para a reformulação da base de conhecimento. Uma base bem estruturada, bonita, com experiência de leitura excelente, extremamente util e funcional.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Versao</span>
+        <span class="hero-meta-value">0.2</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Plataforma</span>
+        <span class="hero-meta-value">WordPress</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Equipe</span>
+        <span class="hero-meta-value">4 pessoas</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Pilares</span>
+        <span class="hero-meta-value">11 pilares</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Fases</span>
+        <span class="hero-meta-value">6 fases</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" data-section="overview">Visao Geral</button>
+    <button class="nav-btn" data-section="architecture">Arquitetura</button>
+    <button class="nav-btn" data-section="team">Equipe</button>
+    <button class="nav-btn" data-section="phase0">Fase 0</button>
+    <button class="nav-btn" data-section="phase1">Fase 1</button>
+    <button class="nav-btn" data-section="phase2">Fase 2</button>
+    <button class="nav-btn" data-section="phase3">Fase 3</button>
+    <button class="nav-btn" data-section="phase4">Fase 4</button>
+    <button class="nav-btn" data-section="phase5">Fase 5</button>
+    <button class="nav-btn" data-section="pillars">Pilares</button>
+    <button class="nav-btn" data-section="future">Futuro</button>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- OVERVIEW -->
+<div class="section active" id="overview">
+  <p class="section-title">Roadmap</p>
+  <h2 class="section-heading">Visao Geral das Fases</h2>
+  <p class="section-desc">6 fases sequenciais com oportunidades de paralelismo. Cada fase produz insumos para a seguinte.</p>
+
+  <div class="timeline">
+    <div class="tl-item" onclick="navigateTo('phase0')">
+      <div class="tl-dot" style="background:var(--phase0)">0</div>
+      <div class="tl-body">
+        <div class="tl-phase" style="color:var(--phase0)">Fase 0 &middot; Em andamento</div>
+        <div class="tl-title">Pesquisa e Benchmarking</div>
+        <div class="tl-desc">Colecionar referencias e ideias de sites e plataformas que alimentem as decisoes de todas as fases seguintes.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">6+ sites analisados</span>
+          <span class="tl-tag">5 oculos de analise</span>
+          <span class="tl-tag">Juliana</span>
+        </div>
+        <div class="tl-arrow">Ver detalhes &rarr;</div>
+      </div>
+    </div>
+
+    <div class="tl-item" onclick="navigateTo('phase1')">
+      <div class="tl-dot" style="background:var(--phase1)">1</div>
+      <div class="tl-body">
+        <div class="tl-phase" style="color:var(--phase1)">Fase 1 &middot; Fase mais critica</div>
+        <div class="tl-title">Fundacoes</div>
+        <div class="tl-desc">Definir as regras do jogo: Content System (10 camadas), Taxonomia e Estrategia de Descoberta. Sem isso, o design fica bonito mas sem alma.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Content System</span>
+          <span class="tl-tag">10 camadas</span>
+          <span class="tl-tag">Taxonomia</span>
+          <span class="tl-tag">SEO/GEO</span>
+        </div>
+        <div class="tl-arrow">Ver detalhes &rarr;</div>
+      </div>
+    </div>
+
+    <div class="tl-item" onclick="navigateTo('phase2')">
+      <div class="tl-dot" style="background:var(--phase2)">2</div>
+      <div class="tl-body">
+        <div class="tl-phase" style="color:var(--phase2)">Fase 2</div>
+        <div class="tl-title">Design System</div>
+        <div class="tl-desc">Linguagem visual completa: tokens, componentes atomicos, comportamento responsivo, acessibilidade, experiencia de leitura.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Design Tokens</span>
+          <span class="tl-tag">Atomic Design</span>
+          <span class="tl-tag">Acessibilidade</span>
+          <span class="tl-tag">Leitura</span>
+        </div>
+        <div class="tl-arrow">Ver detalhes &rarr;</div>
+      </div>
+    </div>
+
+    <div class="tl-item" onclick="navigateTo('phase3')">
+      <div class="tl-dot" style="background:var(--phase3)">3</div>
+      <div class="tl-body">
+        <div class="tl-phase" style="color:var(--phase3)">Fase 3</div>
+        <div class="tl-title">Implementacao WordPress</div>
+        <div class="tl-desc">Transformar o Design System e o Content System em um tema WordPress funcional com blocos Gutenberg customizados.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Tema custom</span>
+          <span class="tl-tag">Gutenberg</span>
+          <span class="tl-tag">Workflow</span>
+          <span class="tl-tag">SEO tecnico</span>
+        </div>
+        <div class="tl-arrow">Ver detalhes &rarr;</div>
+      </div>
+    </div>
+
+    <div class="tl-item" onclick="navigateTo('phase4')">
+      <div class="tl-dot" style="background:var(--phase4)">4</div>
+      <div class="tl-body">
+        <div class="tl-phase" style="color:var(--phase4)">Fase 4 &middot; Paralelizavel</div>
+        <div class="tl-title">Producao de Conteudo</div>
+        <div class="tl-desc">Triagem dos ~60 artigos por rubrica de qualidade, reescrita com IA + revisao humana, organizacao em percursos.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">~60 artigos</span>
+          <span class="tl-tag">Rubrica 7 dimensoes</span>
+          <span class="tl-tag">IA + revisao humana</span>
+          <span class="tl-tag">~4-6/mes</span>
+        </div>
+        <div class="tl-arrow">Ver detalhes &rarr;</div>
+      </div>
+    </div>
+
+    <div class="tl-item" onclick="navigateTo('phase5')">
+      <div class="tl-dot" style="background:var(--phase5)">5</div>
+      <div class="tl-body">
+        <div class="tl-phase" style="color:var(--phase5)">Fase 5</div>
+        <div class="tl-title">Lancamento e Operacao Continua</div>
+        <div class="tl-desc">Beta interno, ajustes, lancamento publico. Ativacao da operacao continua: producao, revisao periodica, dashboard de saude.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Beta &rarr; Publico</span>
+          <span class="tl-tag">ContentOps</span>
+          <span class="tl-tag">Dashboard mensal</span>
+        </div>
+        <div class="tl-arrow">Ver detalhes &rarr;</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARCHITECTURE -->
+<div class="section" id="architecture">
+  <p class="section-title">Arquitetura</p>
+  <h2 class="section-heading">3 Sistemas Interdependentes</h2>
+  <p class="section-desc">O projeto e sustentado por 3 sistemas. Nenhum funciona bem sem os outros dois.</p>
+
+  <div class="arch-grid">
+    <div class="arch-card" style="border-left: 3px solid var(--phase1);">
+      <div class="arch-card-icon">&#128221;</div>
+      <div class="arch-card-title">Content System</div>
+      <div class="arch-card-sub">10 camadas &middot; Como se escreve, organiza, avalia e mantem</div>
+      <ul class="arch-card-list">
+        <li>Principios Editoriais</li>
+        <li>Matriz de Voz e Tom</li>
+        <li>Vocabulario Controlado</li>
+        <li>Biblioteca de Padroes</li>
+        <li>Rubrica de Qualidade</li>
+        <li>Padroes de Legibilidade</li>
+        <li>Modelos Mentais do Publico</li>
+        <li>Politica de Depreciacao</li>
+        <li>Operacao de Conteudo</li>
+        <li>Metricas de Sucesso</li>
+      </ul>
+    </div>
+    <div class="arch-card" style="border-left: 3px solid var(--phase2);">
+      <div class="arch-card-icon">&#127912;</div>
+      <div class="arch-card-title">Design System</div>
+      <div class="arch-card-sub">6 camadas &middot; Como se ve, comporta, navega e acessa</div>
+      <ul class="arch-card-list">
+        <li>Principios de Design</li>
+        <li>Design Tokens</li>
+        <li>Componentes (Atomic Design)</li>
+        <li>Padroes de Uso</li>
+        <li>Documentacao</li>
+        <li>Ferramentas e Processos</li>
+      </ul>
+    </div>
+  </div>
+  <div class="arch-connector">&harr;</div>
+  <div class="arch-full">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span style="font-size:24px;">&#128269;</span>
+      <div>
+        <div class="arch-full-title">Taxonomia + Descoberta</div>
+        <div class="arch-full-sub">Arquitetura de informacao + SEO/GEO &middot; Categorias, tags, percursos, busca interna, Schema.org</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<div class="section" id="team">
+  <p class="section-title">Equipe</p>
+  <h2 class="section-heading">Quem faz o que</h2>
+  <p class="section-desc">4 pessoas com papeis complementares.</p>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar" style="background:linear-gradient(135deg, #2563eb, #1d4ed8);">E</div>
+      <div class="team-name">Elton</div>
+      <div class="team-role">Responsavel pelo projeto</div>
+      <div class="team-tags">
+        <span>Tech Lead</span>
+        <span>Dev</span>
+        <span>Designer</span>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar" style="background:linear-gradient(135deg, #059669, #047857);">M</div>
+      <div class="team-name">Marcos</div>
+      <div class="team-role">Aprovacao final</div>
+      <div class="team-tags">
+        <span>Dev</span>
+        <span>Chefe do Elton</span>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar" style="background:linear-gradient(135deg, #d97706, #b45309);">J</div>
+      <div class="team-name">Juliana</div>
+      <div class="team-role">Design e conteudo</div>
+      <div class="team-tags">
+        <span>Designer</span>
+        <span>Conteudista</span>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar" style="background:linear-gradient(135deg, #8b5cf6, #7c3aed);">R</div>
+      <div class="team-name">Rute</div>
+      <div class="team-role">Consultora pedagogica</div>
+      <div class="team-tags">
+        <span>Pedagogia</span>
+        <span>Editorial</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 0 -->
+<div class="section" id="phase0">
+  <div class="phase-header" style="background:var(--phase0-bg);border-color:#c4b5fd;color:#5b21b6;">
+    <div class="phase-number">Fase 0 &middot; Em andamento</div>
+    <div class="phase-title">Pesquisa e Benchmarking</div>
+    <div class="phase-obj">Colecionar referencias e ideias que alimentem as decisoes de todas as fases seguintes.</div>
+  </div>
+
+  <div class="deliverable-group">
+    <div class="deliverable-group-title">Entregas</div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top">
+        <span class="deliverable-name">Fichas de benchmarking (min. 6 sites)</span>
+        <span class="deliverable-owner">Juliana</span>
+        <svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="deliverable-desc">Pesquisa com os 5 oculos: Visual, Leitura, Interacao, Estrutura do Texto, Acessibilidade. Cada site registrado em ficha padronizada com dados do F12 (fontes, cores, espacamentos) quando relevante.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top">
+        <span class="deliverable-name">Analise consolidada do benchmarking</span>
+        <span class="deliverable-owner">Elton + Juliana</span>
+        <svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="deliverable-desc">Revisao conjunta das fichas, identificacao de padroes recorrentes entre os sites pesquisados e tomada de decisoes sobre o que aproveitar.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top">
+        <span class="deliverable-name">Analise da base atual</span>
+        <span class="deliverable-owner">Juliana</span>
+        <svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="deliverable-desc">Inventario finalizado dos ~60 artigos existentes: o que deletar, atualizar ou reescrever. Baseado na planilha de controle ja iniciada.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 1 -->
+<div class="section" id="phase1">
+  <div class="phase-header" style="background:var(--phase1-bg);border-color:#93c5fd;color:#1e40af;">
+    <div class="phase-number">Fase 1 &middot; Fase mais critica</div>
+    <div class="phase-title">Fundacoes</div>
+    <div class="phase-obj">Definir as regras do jogo antes de tocar em visual ou codigo. E aqui que se define o que torna a base excelente.</div>
+  </div>
+
+  <div class="deliverable-group">
+    <div class="deliverable-group-title">Bloco 1 &mdash; Content System (10 camadas)</div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">1. Principios Editoriais</span><span class="deliverable-owner">Elton + Rute</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Principios editoriais inegociaveis. Escopo positivo e negativo da base ("o que somos / o que nao somos"). Define a identidade editorial.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">2. Matriz de Voz e Tom</span><span class="deliverable-owner">Rute + Juliana</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Voz constante da base + variacoes de tom por contexto do leitor (perdido, com pressa, enfrentando erro) e por tipo de artigo (tutorial, conceitual, referencia).</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">3. Vocabulario Controlado</span><span class="deliverable-owner">Rute + Elton + Juliana</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Vocabulario padronizado: termos preferidos, sinonimos rejeitados, mapeamento CEFOR, Moodle, MEC e popular. Ex: "Questionario" (Moodle) vs "prova" (popular).</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">4. Biblioteca de Padroes de Conteudo</span><span class="deliverable-owner">Elton + Rute</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Padroes reutilizaveis: passo a passo com checkpoint, problema-solucao, quando usar/nao usar, analogia, antes/depois, FAQ invertido, resumo progressivo.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">5. Rubrica de Qualidade</span><span class="deliverable-owner">Rute + Juliana + Elton</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">7 dimensoes ponderadas: acionabilidade (20%), escaneabilidade (15%), precisao (20%), completude (15%), clareza (15%), conformidade (10%), frescor (5%). Score minimo 3.5 para publicacao.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">6. Padroes de Legibilidade</span><span class="deliverable-owner">Rute + Elton</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Metricas objetivas: palavras por frase, frases por paragrafo, indice Flesch PT-BR, voz passiva, jargao nao explicado. Limites por tipo de artigo.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">7. Mapa de Modelos Mentais</span><span class="deliverable-owner">Rute + Juliana</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Perfis mentais do publico: professor migrante, mediador experiente, coordenador, novato, tecnico TI. Momentos de busca e vocabulario natural.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">8. Politica de Depreciacao</span><span class="deliverable-owner">Elton + Juliana</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Gatilhos de obsolescencia (temporal, evento, uso, feedback). Fluxo: publicado, revisao pendente, desatualizado, depreciado, arquivado. Regras de redirect.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">9. Operacao de Conteudo</span><span class="deliverable-owner">Elton + Marcos</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Capacidade: ~4-6 artigos/mes. Cadencia de revisao por tipo. Fluxo IA: prompt, geracao, revisao Juliana, revisao Rute, revisao Elton, scorecard, publicacao.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">10. Metricas de Sucesso</span><span class="deliverable-owner">Elton</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Taxa de resolucao, bounce rate, retorno, buscas sem resultado, "artigo util?", horas/artigo. Dashboard mensal de saude. Definido aqui, operacionalizado na Fase 5.</div>
+    </div>
+  </div>
+
+  <div class="deliverable-group">
+    <div class="deliverable-group-title">Bloco 2 &mdash; Taxonomia</div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Categorias, Tags e URLs</span><span class="deliverable-owner">Elton + Marcos</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Estrutura de categorias, sistema de tags, nomenclatura alinhada com Vocabulario Controlado. URLs semanticas.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Percursos e Trilhas</span><span class="deliverable-owner">Elton + Rute</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Como artigos se conectam em sequencia. Artigos relacionados (manual, automatico ou hibrido).</div>
+    </div>
+  </div>
+
+  <div class="deliverable-group">
+    <div class="deliverable-group-title">Bloco 3 &mdash; Estrategia de Descoberta</div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">SEO + GEO + Busca Interna</span><span class="deliverable-owner">Elton + Marcos</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Schema.org (EducationalArticle), meta tags, Open Graph, sitemap. Estrutura citavel por IAs: definicoes explicitas, formato Q&A, FAQ, sinais de autoria. Busca interna com filtros.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 2 -->
+<div class="section" id="phase2">
+  <div class="phase-header" style="background:var(--phase2-bg);border-color:#67e8f9;color:#155e75;">
+    <div class="phase-number">Fase 2</div>
+    <div class="phase-title">Design System</div>
+    <div class="phase-obj">Linguagem visual completa. Os 6 pilares do DS sao interdependentes e devem ser trabalhados juntos.</div>
+  </div>
+
+  <div class="deliverable-group">
+    <div class="deliverable-group-title">Entregas</div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Design Tokens</span><span class="deliverable-owner">Elton + Juliana</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Paleta de cores (claro + escuro), escala tipografica, espacamento, sombras, bordas, breakpoints. Fonte unica de verdade para todos os valores visuais.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Sistema de Leitura</span><span class="deliverable-owner">Elton + Juliana</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Largura de coluna, altura de linha, espacamento entre paragrafos, indicador de progresso, tempo de leitura, indice de secoes. Foco em conforto para leitura longa.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Componentes (Atomic Design)</span><span class="deliverable-owner">Elton + Juliana</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Atomos, moleculas e organismos. Cada componente com variantes, estados (hover, focus, loading, error), comportamento responsivo e acessibilidade embutida.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Acessibilidade</span><span class="deliverable-owner">Elton + Juliana</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">e-MAG + WCAG 2.2 AA. Contraste, teclado, semantica HTML, ARIA, Libras (widget). Embutido em cada componente.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Comportamento Responsivo</span><span class="deliverable-owner">Elton + Juliana</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Breakpoints, comportamento por dispositivo. Atencao: indice de secoes, action bar, blocos de codigo, tabelas em mobile.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Interacoes</span><span class="deliverable-owner">Elton + Marcos</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Curtir, compartilhar, copiar ABNT, salvar. Feedback visual, estados, microinteracoes.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Layouts de Pagina</span><span class="deliverable-owner">Elton + Juliana</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Templates: Home, Artigo, Percurso/Trilha, Busca, Categoria. Prototipos de alta fidelidade antes de codificar.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 3 -->
+<div class="section" id="phase3">
+  <div class="phase-header" style="background:var(--phase3-bg);border-color:#6ee7b7;color:#065f46;">
+    <div class="phase-number">Fase 3</div>
+    <div class="phase-title">Implementacao WordPress</div>
+    <div class="phase-obj">Transformar o Design System e o Content System em um tema WordPress funcional.</div>
+  </div>
+
+  <div class="deliverable-group">
+    <div class="deliverable-group-title">Entregas</div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Tema WordPress Customizado</span><span class="deliverable-owner">Elton + Marcos</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Implementa tokens, componentes e templates do DS. Responsivo, acessivel, performatico.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Custom Post Types e Campos</span><span class="deliverable-owner">Elton + Marcos</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Tipos de artigo, campos de metadados (autor, data, tempo de leitura, tipo, status), taxonomias.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Blocos Gutenberg Customizados</span><span class="deliverable-owner">Elton + Marcos</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">AlertBox, TLDRBox, CodeBlock, Quote, FAQItem. Para montar artigos no padrao sem saber codigo.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Workflow de Publicacao</span><span class="deliverable-owner">Elton + Marcos</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Estados, transicoes, permissoes, revisao periodica. Implementacao do fluxo definido na Fase 1.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">SEO/GEO Tecnico + Busca</span><span class="deliverable-owner">Elton + Marcos</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Schema.org, meta tags automaticas, sitemap, Open Graph, canonical tags. Busca com filtros e relevancia.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Widget de Acessibilidade + Testes</span><span class="deliverable-owner">Todos</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Alto contraste, ajuste de fonte, Libras. Testes de responsividade, acessibilidade (e-MAG), performance (Core Web Vitals).</div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 4 -->
+<div class="section" id="phase4">
+  <div class="phase-header" style="background:var(--phase4-bg);border-color:#fcd34d;color:#92400e;">
+    <div class="phase-number">Fase 4 &middot; Paralelizavel</div>
+    <div class="phase-title">Producao de Conteudo</div>
+    <div class="phase-obj">Triagem dos ~60 artigos por rubrica + reescrita com IA e revisao humana. Pode comecar em paralelo a Fase 3.</div>
+  </div>
+
+  <div class="deliverable-group">
+    <div class="deliverable-group-title">Etapa 4.1 &mdash; Triagem por Rubrica</div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Avaliacao dos ~60 artigos existentes</span><span class="deliverable-owner">Juliana + Rute + Elton</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Score < 2.0: descartar ou reescrever do zero. Score 2.0-3.0: reescrever substancialmente. Score 3.0-3.5: atualizar e reformatar. Score > 3.5: migrar com ajustes menores.</div>
+    </div>
+  </div>
+
+  <div class="deliverable-group">
+    <div class="deliverable-group-title">Etapa 4.2 &mdash; Producao e Reescrita</div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Reescrita com IA + Revisao Humana</span><span class="deliverable-owner">Juliana + Rute + IA</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Fluxo: prompt template, geracao IA, revisao Juliana, revisao Rute, revisao Elton, rubrica >= 3.5, publicacao. Capacidade: ~4-6 artigos/mes.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Padroes, Vocabulario e Legibilidade</span><span class="deliverable-owner">Juliana + Rute</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Cada artigo usa padroes da Biblioteca de Padroes, termos do Vocabulario Controlado e passa nas metricas de legibilidade.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Organizacao em Percursos + Artigos-piloto</span><span class="deliverable-owner">Juliana + Elton</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Artigos organizados em trilhas. 3-5 artigos-piloto publicados como teste real. Metadados completos incluindo marcacao "produzido com assistencia de IA".</div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 5 -->
+<div class="section" id="phase5">
+  <div class="phase-header" style="background:var(--phase5-bg);border-color:#fca5a5;color:#991b1b;">
+    <div class="phase-number">Fase 5</div>
+    <div class="phase-title">Lancamento e Operacao Continua</div>
+    <div class="phase-obj">Beta interno, ajustes, lancamento publico. Ativacao da operacao continua de conteudo.</div>
+  </div>
+
+  <div class="deliverable-group">
+    <div class="deliverable-group-title">Etapa 5.1 &mdash; Lancamento</div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Beta &rarr; Feedback &rarr; Publico</span><span class="deliverable-owner">Elton + Marcos</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Lancamento interno para equipe CGTE e grupo seleto. Ajustes pos-feedback. Redirecionamento 301 da base antiga. Lancamento publico.</div>
+    </div>
+  </div>
+
+  <div class="deliverable-group">
+    <div class="deliverable-group-title">Etapa 5.2 &mdash; Operacao Continua</div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Producao continua (~4-6 artigos/mes)</span><span class="deliverable-owner">Juliana + Rute + IA</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Conforme fluxo da Operacao de Conteudo. Cadencia de revisao: tutoriais 6 meses, troubleshooting 3 meses, conceituais 12 meses.</div>
+    </div>
+    <div class="deliverable" onclick="this.classList.toggle('open')">
+      <div class="deliverable-top"><span class="deliverable-name">Dashboard mensal de saude</span><span class="deliverable-owner">Elton</span><svg class="deliverable-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="deliverable-desc">Score medio, artigos desatualizados, buscas sem resultado, taxa "artigo util", top acessos, gaps de conteudo. Deprecation Policy ativa com gatilhos automaticos.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PILLARS -->
+<div class="section" id="pillars">
+  <p class="section-title">11 Pilares</p>
+  <h2 class="section-heading">Os pilares do projeto</h2>
+  <p class="section-desc">Cada pilar e uma dimensao do sistema que precisa ser pensada de forma deliberada. Se nao for, vai acontecer de qualquer jeito &mdash; so que mal feita.</p>
+
+  <div class="pillar-intro">
+    <p>Os pilares sao as <strong>11 perguntas que o projeto precisa responder antes de construir qualquer coisa</strong>. Cada um impede um tipo especifico de falha e garante que uma dimensao do sistema funcione com consistencia.</p>
+    <p>Eles se organizam em <strong>3 grupos</strong> que servem propositos diferentes. Se voce tira um pilar de qualquer grupo, o grupo fica manco. E se um grupo fica manco, os outros dois sofrem.</p>
+  </div>
+
+  <!-- GROUP 1: DESIGN SYSTEM -->
+  <div class="pillar-groups">
+    <div>
+      <div class="pillar-group-header">
+        <div class="pillar-group-icon" style="background:#ecfeff;color:#0891b2;">&#127912;</div>
+        <div>
+          <div class="pillar-group-title">O que o leitor ve e sente</div>
+          <div class="pillar-group-sub">Design System &mdash; Garantem que a experiencia e bonita, acessivel, confortavel e funcional em qualquer dispositivo</div>
+        </div>
+      </div>
+      <div class="pillar-grid">
+
+        <div class="pillar-card" style="border-left-color:var(--phase2);" onclick="this.classList.toggle('open')">
+          <div class="pillar-card-top">
+            <div>
+              <div class="pillar-card-num">Pilar 1</div>
+              <div class="pillar-card-name">Sistema Visual</div>
+              <div class="pillar-card-question">Como a base se parece?</div>
+            </div>
+            <svg class="pillar-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="pillar-card-detail">
+            <div class="pillar-card-risk"><strong>Se ignorar:</strong> Visual inconsistente &mdash; cada pagina parece um site diferente. Cores, fontes e espacamentos mudam de tela em tela.</div>
+          </div>
+        </div>
+
+        <div class="pillar-card" style="border-left-color:var(--phase2);" onclick="this.classList.toggle('open')">
+          <div class="pillar-card-top">
+            <div>
+              <div class="pillar-card-num">Pilar 2</div>
+              <div class="pillar-card-name">Sistema de Interacao</div>
+              <div class="pillar-card-question">O que o leitor pode fazer alem de ler?</div>
+            </div>
+            <svg class="pillar-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="pillar-card-detail">
+            <div class="pillar-card-risk"><strong>Se ignorar:</strong> Funcionalidades jogadas na tela sem logica nem feedback. Botoes que nao respondem, acoes sem confirmacao.</div>
+          </div>
+        </div>
+
+        <div class="pillar-card" style="border-left-color:var(--phase2);" onclick="this.classList.toggle('open')">
+          <div class="pillar-card-top">
+            <div>
+              <div class="pillar-card-num">Pilar 5</div>
+              <div class="pillar-card-name">Acessibilidade</div>
+              <div class="pillar-card-question">Qualquer pessoa consegue usar?</div>
+            </div>
+            <svg class="pillar-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="pillar-card-detail">
+            <div class="pillar-card-risk"><strong>Se ignorar:</strong> Nao-conformidade legal (e-MAG, Lei Brasileira de Inclusao). Exclusao de pessoas com deficiencia. Obrigacao legal para instituicao publica federal.</div>
+          </div>
+        </div>
+
+        <div class="pillar-card" style="border-left-color:var(--phase2);" onclick="this.classList.toggle('open')">
+          <div class="pillar-card-top">
+            <div>
+              <div class="pillar-card-num">Pilar 6</div>
+              <div class="pillar-card-name">Sistema de Leitura</div>
+              <div class="pillar-card-question">Ler um artigo longo e confortavel?</div>
+            </div>
+            <svg class="pillar-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="pillar-card-detail">
+            <div class="pillar-card-risk"><strong>Se ignorar:</strong> Texto cansa, leitor abandona no meio, ninguem termina os tutoriais. A base fica bonita mas ninguem le.</div>
+          </div>
+        </div>
+
+        <div class="pillar-card" style="border-left-color:var(--phase2);" onclick="this.classList.toggle('open')">
+          <div class="pillar-card-top">
+            <div>
+              <div class="pillar-card-num">Pilar 8</div>
+              <div class="pillar-card-name">Sistema de Estados</div>
+              <div class="pillar-card-question">Quais estados existem para conteudo e usuario?</div>
+            </div>
+            <svg class="pillar-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="pillar-card-detail">
+            <div class="pillar-card-risk"><strong>Se ignorar:</strong> Componentes sem comportamento previsivel, estados improvisados no codigo. "Desatualizado" sem sinalizacao visual.</div>
+          </div>
+        </div>
+
+        <div class="pillar-card" style="border-left-color:var(--phase2);" onclick="this.classList.toggle('open')">
+          <div class="pillar-card-top">
+            <div>
+              <div class="pillar-card-num">Pilar 9</div>
+              <div class="pillar-card-name">Sistema Responsivo</div>
+              <div class="pillar-card-question">Como funciona no celular?</div>
+            </div>
+            <svg class="pillar-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="pillar-card-detail">
+            <div class="pillar-card-risk"><strong>Se ignorar:</strong> Layout quebra, indice some, tabelas ilegiveis em mobile. Professores no celular nao conseguem usar a base.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GROUP 2: CONTENT SYSTEM -->
+    <div>
+      <div class="pillar-group-header">
+        <div class="pillar-group-icon" style="background:#eff6ff;color:#2563eb;">&#128221;</div>
+        <div>
+          <div class="pillar-group-title">O que esta por tras do conteudo</div>
+          <div class="pillar-group-sub">Content System &mdash; Garantem que o conteudo e bem escrito, bem mantido e produzido com qualidade consistente</div>
+        </div>
+      </div>
+      <div class="pillar-grid">
+
+        <div class="pillar-card" style="border-left-color:var(--phase1);" onclick="this.classList.toggle('open')">
+          <div class="pillar-card-top">
+            <div>
+              <div class="pillar-card-num">Pilar 3</div>
+              <div class="pillar-card-name">Modelo de Conteudo</div>
+              <div class="pillar-card-question">Como um artigo e estruturado por dentro?</div>
+            </div>
+            <svg class="pillar-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="pillar-card-detail">
+            <div class="pillar-card-risk"><strong>Se ignorar:</strong> Cada artigo tem um formato diferente. IA nao consegue padronizar. Leitor nao sabe o que esperar.</div>
+          </div>
+        </div>
+
+        <div class="pillar-card" style="border-left-color:var(--phase1);" onclick="this.classList.toggle('open')">
+          <div class="pillar-card-top">
+            <div>
+              <div class="pillar-card-num">Pilar 7</div>
+              <div class="pillar-card-name">Ciclo de Vida</div>
+              <div class="pillar-card-question">O que acontece quando um artigo envelhece?</div>
+            </div>
+            <svg class="pillar-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="pillar-card-detail">
+            <div class="pillar-card-risk"><strong>Se ignorar:</strong> Base vira cemiterio de informacao desatualizada em 2 anos. Artigos com prints de interfaces que nao existem mais. Perda de confianca.</div>
+          </div>
+        </div>
+
+        <div class="pillar-card" style="border-left-color:var(--phase1);" onclick="this.classList.toggle('open')">
+          <div class="pillar-card-top">
+            <div>
+              <div class="pillar-card-num">Pilar 10</div>
+              <div class="pillar-card-name">Sistema de Autoria</div>
+              <div class="pillar-card-question">Como conteudo e criado e publicado?</div>
+            </div>
+            <svg class="pillar-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="pillar-card-detail">
+            <div class="pillar-card-risk"><strong>Se ignorar:</strong> Cada autor escreve de um jeito, IA gera conteudo inconsistente, sem fluxo de revisao. Sem transparencia sobre uso de IA (risco legal).</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GROUP 3: TAXONOMIA + DESCOBERTA -->
+    <div>
+      <div class="pillar-group-header">
+        <div class="pillar-group-icon" style="background:#f0fdf4;color:#059669;">&#128269;</div>
+        <div>
+          <div class="pillar-group-title">O que conecta tudo</div>
+          <div class="pillar-group-sub">Taxonomia + Descoberta &mdash; Garantem que o conteudo e encontravel pelo leitor, pelo Google e por IAs generativas</div>
+        </div>
+      </div>
+      <div class="pillar-grid">
+
+        <div class="pillar-card" style="border-left-color:var(--phase3);" onclick="this.classList.toggle('open')">
+          <div class="pillar-card-top">
+            <div>
+              <div class="pillar-card-num">Pilar 4</div>
+              <div class="pillar-card-name">Taxonomia</div>
+              <div class="pillar-card-question">Como o leitor encontra o que precisa?</div>
+            </div>
+            <svg class="pillar-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="pillar-card-detail">
+            <div class="pillar-card-risk"><strong>Se ignorar:</strong> Categorias confusas, percursos sem logica, busca inutil. O leitor sabe que o conteudo existe mas nao consegue chegar nele.</div>
+          </div>
+        </div>
+
+        <div class="pillar-card" style="border-left-color:var(--phase3);" onclick="this.classList.toggle('open')">
+          <div class="pillar-card-top">
+            <div>
+              <div class="pillar-card-num">Pilar 11</div>
+              <div class="pillar-card-name">Descoberta (SEO + GEO)</div>
+              <div class="pillar-card-question">O artigo e encontrado pelo Google e por IAs?</div>
+            </div>
+            <svg class="pillar-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="pillar-card-detail">
+            <div class="pillar-card-risk"><strong>Se ignorar:</strong> Conteudo invisivel &mdash; existe mas ninguem chega ate ele. Nem Google, nem ChatGPT, nem Perplexity citam a base.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLAR MAP TABLE -->
+  <h3 class="pillar-map-title">Mapa de Pilares por Fase</h3>
+  <p class="pillar-map-desc">Cada pilar e definido, implementado e operado em fases diferentes do roadmap.</p>
+
+  <div style="overflow-x:auto;">
+    <table class="pillar-table">
+      <thead>
+        <tr>
+          <th style="min-width:180px;">Pilar</th>
+          <th>Fase 0</th><th>Fase 1</th><th>Fase 2</th><th>Fase 3</th><th>Fase 4</th><th>Fase 5</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1. Sistema Visual</td><td><span class="pill pill-research">Pesquisa</span></td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-define">Define</span></td><td><span class="pill pill-implement">Implementa</span></td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-info">Itera</span></td></tr>
+        <tr><td>2. Sistema de Interacao</td><td><span class="pill pill-research">Pesquisa</span></td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-define">Define</span></td><td><span class="pill pill-implement">Implementa</span></td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-info">Itera</span></td></tr>
+        <tr><td>3. Modelo de Conteudo</td><td><span class="pill pill-research">Pesquisa</span></td><td><span class="pill pill-define">Define</span></td><td><span class="pill pill-info">Informa DS</span></td><td><span class="pill pill-implement">Implementa</span></td><td><span class="pill pill-use">Usa</span></td><td><span class="pill pill-info">Itera</span></td></tr>
+        <tr><td>4. Taxonomia</td><td><span class="pill pill-research">Pesquisa</span></td><td><span class="pill pill-define">Define</span></td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-implement">Implementa</span></td><td><span class="pill pill-use">Usa</span></td><td><span class="pill pill-info">Itera</span></td></tr>
+        <tr><td>5. Acessibilidade</td><td><span class="pill pill-research">Pesquisa</span></td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-define">Define</span></td><td><span class="pill pill-implement">Implementa</span></td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-audit">Audita</span></td></tr>
+        <tr><td>6. Leitura</td><td><span class="pill pill-research">Pesquisa</span></td><td><span class="pill pill-info">Inputs</span></td><td><span class="pill pill-define">Define</span></td><td><span class="pill pill-implement">Implementa</span></td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-info">Itera</span></td></tr>
+        <tr><td>7. Ciclo de Vida</td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-define">Define</span></td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-implement">Implementa</span></td><td><span class="pill pill-use">Usa</span></td><td><span class="pill pill-operate">Opera</span></td></tr>
+        <tr><td>8. Estados</td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-define">Define</span></td><td><span class="pill pill-info">Detalha DS</span></td><td><span class="pill pill-implement">Implementa</span></td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-info">Itera</span></td></tr>
+        <tr><td>9. Responsivo</td><td><span class="pill pill-research">Pesquisa</span></td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-define">Define</span></td><td><span class="pill pill-implement">Implementa</span></td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-info">Itera</span></td></tr>
+        <tr><td>10. Autoria</td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-define">Define</span></td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-implement">Implementa</span></td><td><span class="pill pill-use">Usa</span></td><td><span class="pill pill-operate">Opera</span></td></tr>
+        <tr><td>11. Descoberta</td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-define">Define</span></td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-implement">Implementa</span></td><td><span class="pill pill-na">&mdash;</span></td><td><span class="pill pill-operate">Opera</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- FUTURE -->
+<div class="section" id="future">
+  <p class="section-title">Pos V1</p>
+  <h2 class="section-heading">O que fica para o futuro</h2>
+  <p class="section-desc">Ideias do brainstorm que nao entram neste roadmap, mas ficam registradas.</p>
+
+  <div class="future-grid">
+    <div class="future-card">
+      <div class="future-card-title">Chatbot/Tutor IA (Sofia)</div>
+      <div class="future-card-meta">Rute + Marcos</div>
+      <span class="future-card-version" style="background:#dbeafe;color:#1d4ed8;">V2</span>
+    </div>
+    <div class="future-card">
+      <div class="future-card-title">Percurso por perfil</div>
+      <div class="future-card-meta">Rute</div>
+      <span class="future-card-version" style="background:#d1fae5;color:#047857;">V1.5</span>
+    </div>
+    <div class="future-card">
+      <div class="future-card-title">Contribuicao wiki de professores</div>
+      <div class="future-card-meta">Marcos</div>
+      <span class="future-card-version" style="background:#dbeafe;color:#1d4ed8;">V2</span>
+    </div>
+    <div class="future-card">
+      <div class="future-card-title">Flashcards + audio mobile</div>
+      <div class="future-card-meta">Marcos</div>
+      <span class="future-card-version" style="background:#dbeafe;color:#1d4ed8;">V2</span>
+    </div>
+    <div class="future-card">
+      <div class="future-card-title">Ferramentas interativas</div>
+      <div class="future-card-meta">Marcos</div>
+      <span class="future-card-version" style="background:#dbeafe;color:#1d4ed8;">V2</span>
+    </div>
+    <div class="future-card">
+      <div class="future-card-title">Trilhas com certificacao</div>
+      <div class="future-card-meta">Rute</div>
+      <span class="future-card-version" style="background:#fef3c7;color:#92400e;">V2/V3</span>
+    </div>
+    <div class="future-card">
+      <div class="future-card-title">Integracao Moodle (LTI/embed)</div>
+      <div class="future-card-meta">Juliana + Marcos</div>
+      <span class="future-card-version" style="background:#dbeafe;color:#1d4ed8;">V2</span>
+    </div>
+    <div class="future-card">
+      <div class="future-card-title">Gamificacao</div>
+      <div class="future-card-meta">Marcos + Juliana + Rute</div>
+      <span class="future-card-version" style="background:#fce7f3;color:#9d174d;">V3</span>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div style="text-align:center;padding:40px 0 60px;color:var(--text-tertiary);font-size:12px;">
+  Base de Conhecimento CEFOR/IFes &middot; Roadmap v0.2 &middot; Abril 2026
+</div>
+
+<script>
+  // Navigation
+  const navBtns = document.querySelectorAll('.nav-btn');
+  const sections = document.querySelectorAll('.section');
+
+  function navigateTo(id) {
+    sections.forEach(s => s.classList.remove('active'));
+    navBtns.forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelector(`[data-section="${id}"]`).classList.add('active');
+    window.scrollTo({ top: document.querySelector('.nav').offsetTop, behavior: 'smooth' });
+  }
+
+  navBtns.forEach(btn => {
+    btn.addEventListener('click', () => navigateTo(btn.dataset.section));
+  });
+</script>
+</body>
+</html>

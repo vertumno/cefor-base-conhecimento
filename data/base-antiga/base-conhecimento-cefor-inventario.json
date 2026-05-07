@@ -1,0 +1,2810 @@
+{
+  "meta": {
+    "url": "https://conhecimento.cefor.ifes.edu.br",
+    "plataforma": "WordPress 4.6.30",
+    "total_artigos": 131,
+    "total_percursos": 12,
+    "categorias_unicas": 19,
+    "temas_unicos": 82,
+    "data_analise": "2026-04-04"
+  },
+  "percursos": [
+    {
+      "nome": "Acessibilidade no Ambiente Virtual",
+      "slug": "acessibilidade-ava",
+      "url": "https://conhecimento.cefor.ifes.edu.br/percursos/acessibilidade-ava/",
+      "qtd_declarada": 6,
+      "qtd_encontrada": 7,
+      "status": "OK",
+      "artigos": [
+        {
+          "titulo": "Dúvidas & Sugestões",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes/",
+          "slug": "ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes"
+        },
+        {
+          "titulo": "Videobook em Libras de Termos da Educação a Distância.",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/videobook-em-libras-de-termos-da-educacao-a-distancia/",
+          "slug": "videobook-em-libras-de-termos-da-educacao-a-distancia"
+        },
+        {
+          "titulo": "Acessibilidade Digital: Cuidados ao Inserir Recursos no Moodle",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/acessibilidade_digital_cuidados_ao_inserir_recursos_no_moodle/",
+          "slug": "acessibilidade_digital_cuidados_ao_inserir_recursos_no_moodle"
+        },
+        {
+          "titulo": "Código para inserção de Audiodescrição em imagens no AVA #MoodleCodes",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/2141/",
+          "slug": "2141"
+        },
+        {
+          "titulo": "Código para inserção de vídeo em Libras no AVA #MoodleCodes",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/codigo-para-insercao-de-video-em-libras-no-ava/",
+          "slug": "codigo-para-insercao-de-video-em-libras-no-ava"
+        },
+        {
+          "titulo": "Como configurar corretamente a visualização de mídias no Moodle MOOC",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/como-configurar-corretamente-a-visualizacao-de-midias-no-mooc/",
+          "slug": "como-configurar-corretamente-a-visualizacao-de-midias-no-mooc"
+        },
+        {
+          "titulo": "Visualização Vlibras – Moodle",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/visualizacao-vlibras-moodle/",
+          "slug": "visualizacao-vlibras-moodle"
+        }
+      ]
+    },
+    {
+      "nome": "Direitos Autorais e Seguranca",
+      "slug": "direitosautorais-seguranca",
+      "url": "https://conhecimento.cefor.ifes.edu.br/percursos/direitosautorais-seguranca/",
+      "qtd_declarada": 4,
+      "qtd_encontrada": 5,
+      "status": "OK",
+      "artigos": [
+        {
+          "titulo": "Dúvidas & Sugestões",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes/",
+          "slug": "ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes"
+        },
+        {
+          "titulo": "Netiqueta – Regras de Etiqueta na Internet",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/netiqueta-regras-de-etiqueta-na-internet/",
+          "slug": "netiqueta-regras-de-etiqueta-na-internet"
+        },
+        {
+          "titulo": "Direitos Autorais",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/direitos-autorais/",
+          "slug": "direitos-autorais"
+        },
+        {
+          "titulo": "Segurança do navegador",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/seguranca-do-navegador/",
+          "slug": "seguranca-do-navegador"
+        },
+        {
+          "titulo": "Definição de endereço de rede (IP) para acesso a prova",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/definicao-de-endereco-de-rede-ip-para-acesso-a-prova/",
+          "slug": "definicao-de-endereco-de-rede-ip-para-acesso-a-prova"
+        }
+      ]
+    },
+    {
+      "nome": "Ferramentas educacionais",
+      "slug": "ferramentas-educacionais",
+      "url": "https://conhecimento.cefor.ifes.edu.br/percursos/ferramentas-educacionais/",
+      "qtd_declarada": 8,
+      "qtd_encontrada": 9,
+      "status": "OK",
+      "artigos": [
+        {
+          "titulo": "Dúvidas & Sugestões",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes/",
+          "slug": "ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes"
+        },
+        {
+          "titulo": "+45 Ferramentas educacionais para você arrasar!",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/mais45-ferramentas-educacionais-para-voce-arrasar/",
+          "slug": "mais45-ferramentas-educacionais-para-voce-arrasar"
+        },
+        {
+          "titulo": "Gravar a tela do seu computador em vídeo agora está mais fácil (e é de graça)",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/gravar-a-tela-do-seu-computador-em-video-agora-esta-mais-facil-e-e-de-graca/",
+          "slug": "gravar-a-tela-do-seu-computador-em-video-agora-esta-mais-facil-e-e-de-graca"
+        },
+        {
+          "titulo": "Padlet – Crie quadro e documentos fáceis de ler e de contribuir",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/padlet-crie-quadro-e-documentos-faceis-de-ler-e-de-contribuir/",
+          "slug": "padlet-crie-quadro-e-documentos-faceis-de-ler-e-de-contribuir"
+        },
+        {
+          "titulo": "Mídias para EaD",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/midias-para-ead/",
+          "slug": "midias-para-ead"
+        },
+        {
+          "titulo": "Canva – Crie suas próprias ilustrações e infográficos",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/canva-crie-ilustracoes-e-infograficos/",
+          "slug": "canva-crie-ilustracoes-e-infograficos"
+        },
+        {
+          "titulo": "Medium: uma rede de textos colaborativa",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/medium/",
+          "slug": "medium"
+        },
+        {
+          "titulo": "Youtube: Edite facilmente seus vídeos",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/youtube-edite-facilmente-seus-videos/",
+          "slug": "youtube-edite-facilmente-seus-videos"
+        },
+        {
+          "titulo": "PowToon – Crie uma animação de forma fácil",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/26/",
+          "slug": "26"
+        }
+      ]
+    },
+    {
+      "nome": "Gamificacao e Engajamento no Moodle",
+      "slug": "gamificacao",
+      "url": "https://conhecimento.cefor.ifes.edu.br/percursos/gamificacao/",
+      "qtd_declarada": 4,
+      "qtd_encontrada": 5,
+      "status": "OK",
+      "artigos": [
+        {
+          "titulo": "Dúvidas & Sugestões",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes/",
+          "slug": "ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes"
+        },
+        {
+          "titulo": "Uso de Emblemas nos cursos MOOC",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/uso-de-emblemas-nos-cursos-mooc/",
+          "slug": "uso-de-emblemas-nos-cursos-mooc"
+        },
+        {
+          "titulo": "Como configurar o LevelUp no Moodle para engajar seus alunos",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/como-configurar-o-modulo-levelup-no-moodle-para-engajar-seus-alunos/",
+          "slug": "como-configurar-o-modulo-levelup-no-moodle-para-engajar-seus-alunos"
+        },
+        {
+          "titulo": "Atividade Escolha no Moodle",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/atividade-de-escolha/",
+          "slug": "atividade-de-escolha"
+        },
+        {
+          "titulo": "Criação do recurso de certificados no Moodle 1.9",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/criacao-do-recurso-de-certificados-no-moodle-1-9/",
+          "slug": "criacao-do-recurso-de-certificados-no-moodle-1-9"
+        }
+      ]
+    },
+    {
+      "nome": "Gestao e Configuracao do Moodle",
+      "slug": "gestao-moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/percursos/gestao-moodle/",
+      "qtd_declarada": 9,
+      "qtd_encontrada": 10,
+      "status": "OK",
+      "artigos": [
+        {
+          "titulo": "Dúvidas & Sugestões",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes/",
+          "slug": "ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes"
+        },
+        {
+          "titulo": "Diploma digital – Orientações Gerais",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/diploma-digital-orientacoes-gerais/",
+          "slug": "diploma-digital-orientacoes-gerais"
+        },
+        {
+          "titulo": "Habilitar acesso de “visitante” na sala virtual do Moodle",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/habilitar-acesso-de-visitantes-na-sala-virtual-do-moodle/",
+          "slug": "habilitar-acesso-de-visitantes-na-sala-virtual-do-moodle"
+        },
+        {
+          "titulo": "Conceder acesso a usuários em salas do moodle",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/acesso-a-usuario-em-salas-do-moodle/",
+          "slug": "acesso-a-usuario-em-salas-do-moodle"
+        },
+        {
+          "titulo": "Backup e Restauração de Usuários no Moodle",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/backup-e-restauracao-de-usuarios-no-moodle/",
+          "slug": "backup-e-restauracao-de-usuarios-no-moodle"
+        },
+        {
+          "titulo": "Como configurar um Fórum com acesso apenas para Coordenadores e Alunos no Moodle 1.9",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/como-configurar-um-forum-com-acesso-apenas-para-coordenadores-e-alunos-no-moodle-1-9/",
+          "slug": "como-configurar-um-forum-com-acesso-apenas-para-coordenadores-e-alunos-no-moodle-1-9"
+        },
+        {
+          "titulo": "Como fazer uma restauração de sala virtual no Moodle?",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/como-fazer-uma-restauracao-de-sala-virtual-no-moodle/",
+          "slug": "como-fazer-uma-restauracao-de-sala-virtual-no-moodle"
+        },
+        {
+          "titulo": "Como criar uma atividade com acesso restrito a alguns usuários no Moodle",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/como-criar-uma-atividade-com-acesso-restrito-a-alguns-usuarios-aluno-e-tutores-no-moodle/",
+          "slug": "como-criar-uma-atividade-com-acesso-restrito-a-alguns-usuarios-aluno-e-tutores-no-moodle"
+        },
+        {
+          "titulo": "Como Definir ou Alterar a data de início da sala Virtual no Moodle?",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/como-definir-ou-alterar-a-data-de-inicio-da-sala-virtual-no-moodle/",
+          "slug": "como-definir-ou-alterar-a-data-de-inicio-da-sala-virtual-no-moodle"
+        },
+        {
+          "titulo": "Como mover um recurso dentro da sala virtual do Moodle?",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/como-mover-um-recurso-dentro-da-sala-virtual-do-moodle/",
+          "slug": "como-mover-um-recurso-dentro-da-sala-virtual-do-moodle"
+        }
+      ]
+    },
+    {
+      "nome": "Iniciando no Moodle",
+      "slug": "iniciando-moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/percursos/iniciando-moodle/",
+      "qtd_declarada": 15,
+      "qtd_encontrada": 11,
+      "status": "Parcial (11/15 visiveis)",
+      "artigos": [
+        {
+          "titulo": "Dúvidas & Sugestões",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes/",
+          "slug": "ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes"
+        },
+        {
+          "titulo": "Atividade de Base de Dados no Moodle",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/atividade-de-base-de-dados-no-moodle/",
+          "slug": "atividade-de-base-de-dados-no-moodle"
+        },
+        {
+          "titulo": "Moodle e suas principais ferramentas de aprendizagem – visão aluno",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/moodle-e-suas-principais-ferramentas-de-aprendizagem-visao-aluno/",
+          "slug": "moodle-e-suas-principais-ferramentas-de-aprendizagem-visao-aluno"
+        },
+        {
+          "titulo": "Aplicativo Moodle Mobile não funciona? Aprenda como resolver",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/aplicativo-moodle-mobile-nao-funciona-aprenda-como-resolver/",
+          "slug": "aplicativo-moodle-mobile-nao-funciona-aprenda-como-resolver"
+        },
+        {
+          "titulo": "Checklist básico para inicio de curso no Moodle",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/checklist-basico-para-inicio-de-curso-no-moodle/",
+          "slug": "checklist-basico-para-inicio-de-curso-no-moodle"
+        },
+        {
+          "titulo": "O que é Moodle?",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/o-que-e-moodle/",
+          "slug": "o-que-e-moodle"
+        },
+        {
+          "titulo": "Atividade de Glossário no Moodle",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/atividade-de-glossario-no-moodle/",
+          "slug": "atividade-de-glossario-no-moodle"
+        },
+        {
+          "titulo": "Como fazer uma restauração de sala virtual no Moodle?",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/como-fazer-uma-restauracao-de-sala-virtual-no-moodle/",
+          "slug": "como-fazer-uma-restauracao-de-sala-virtual-no-moodle"
+        },
+        {
+          "titulo": "Entenda porque as Salas Virtuais são divididas em grupo/polos",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/entenda-porque-as-salas-virtuais-sao-divididas-em-grupopolos/",
+          "slug": "entenda-porque-as-salas-virtuais-sao-divididas-em-grupopolos"
+        },
+        {
+          "titulo": "Como Definir ou Alterar a data de início da sala Virtual no Moodle?",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/como-definir-ou-alterar-a-data-de-inicio-da-sala-virtual-no-moodle/",
+          "slug": "como-definir-ou-alterar-a-data-de-inicio-da-sala-virtual-no-moodle"
+        },
+        {
+          "titulo": "Como editar um recurso ou atividade no Moodle?",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/como-editar-o-recurso-de-boas-vindas-no-moodle/",
+          "slug": "como-editar-o-recurso-de-boas-vindas-no-moodle"
+        }
+      ]
+    },
+    {
+      "nome": "Inteligencia Artificial",
+      "slug": "inteligencia-artificial",
+      "url": "https://conhecimento.cefor.ifes.edu.br/percursos/inteligencia-artificial/",
+      "qtd_declarada": 7,
+      "qtd_encontrada": 8,
+      "status": "OK",
+      "artigos": [
+        {
+          "titulo": "Dúvidas & Sugestões",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes/",
+          "slug": "ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes"
+        },
+        {
+          "titulo": "GPT Gerador de Rubricas",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/gpt-gerador-de-rubricas/",
+          "slug": "gpt-gerador-de-rubricas"
+        },
+        {
+          "titulo": "GPT H5P Summary: transforme vídeos em conteúdos interativos com a IA",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/gpt-h5p-summary-transforme-videos-em-conteudos-interativos-com-a-ia/",
+          "slug": "gpt-h5p-summary-transforme-videos-em-conteudos-interativos-com-a-ia"
+        },
+        {
+          "titulo": "GPT Gerador de Questionários para o Moodle: sua ajudante para criar avaliações com IA",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/gpt-gerador-de-questionarios-para-o-moodle-sua-ajudante-para-criar-avaliacoes-com-ia/",
+          "slug": "gpt-gerador-de-questionarios-para-o-moodle-sua-ajudante-para-criar-avaliacoes-com-ia"
+        },
+        {
+          "titulo": "GPT Vídeo Summarizer: resumos automáticos de vídeos para uso educacional com IA",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/gpt-video-summarizer-resumos-automaticos-de-videos-para-uso-educacional-com-ia/",
+          "slug": "gpt-video-summarizer-resumos-automaticos-de-videos-para-uso-educacional-com-ia"
+        },
+        {
+          "titulo": "Oficinas de IA: aprendendo na prática com o Cefor",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/oficinas-de-ia-aprendendo-na-pratica-com-o-cefor/",
+          "slug": "oficinas-de-ia-aprendendo-na-pratica-com-o-cefor"
+        },
+        {
+          "titulo": "Grupo de WhatsApp: informação rápida e prática sobre IA na educação",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/grupo-de-whatsapp-informacao-rapida-e-pratica-sobre-ia-na-educacao/",
+          "slug": "grupo-de-whatsapp-informacao-rapida-e-pratica-sobre-ia-na-educacao"
+        },
+        {
+          "titulo": "Papo com IA.IÁ: um bate-papo leve e potente sobre Inteligência Artificial",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/papo-com-ia-ia-um-bate-papo-leve-e-potente-sobre-inteligencia-artificial/",
+          "slug": "papo-com-ia-ia-um-bate-papo-leve-e-potente-sobre-inteligencia-artificial"
+        }
+      ]
+    },
+    {
+      "nome": "Livro de Notas",
+      "slug": "livro-de-notas",
+      "url": "https://conhecimento.cefor.ifes.edu.br/percursos/livro-de-notas/",
+      "qtd_declarada": 6,
+      "qtd_encontrada": 7,
+      "status": "OK",
+      "artigos": [
+        {
+          "titulo": "Dúvidas & Sugestões",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes/",
+          "slug": "ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes"
+        },
+        {
+          "titulo": "Configurando Livro de Notas que calcule a Média entre Atividades e a Recuperação",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/configurando-livro-de-notas-para-calculo-de-media-com-recuperacao/",
+          "slug": "configurando-livro-de-notas-para-calculo-de-media-com-recuperacao"
+        },
+        {
+          "titulo": "Como importar notas do Moodle para o Sistema Acadêmico?",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/como-importar-notas-do-moodle-para-o-academico/",
+          "slug": "como-importar-notas-do-moodle-para-o-academico"
+        },
+        {
+          "titulo": "Configurando o Livro de Notas passo a passo",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/configurando-o-livro-de-notas-em-uma-disciplina-com-duas-recuperacoes/",
+          "slug": "configurando-o-livro-de-notas-em-uma-disciplina-com-duas-recuperacoes"
+        },
+        {
+          "titulo": "Configurando o Livro de Notas",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/configurando-o-livro-de-notasquadro-de-notas/",
+          "slug": "configurando-o-livro-de-notasquadro-de-notas"
+        },
+        {
+          "titulo": "Livro de Notas",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/livro-de-notasquadro-de-notas/",
+          "slug": "livro-de-notasquadro-de-notas"
+        },
+        {
+          "titulo": "Como acompanhar as notas no quadro de notas do Moodle",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/como-acompanhar-as-notas-no-quadro-de-notas-do-moodle/",
+          "slug": "como-acompanhar-as-notas-no-quadro-de-notas-do-moodle"
+        }
+      ]
+    },
+    {
+      "nome": "Moodle Codes",
+      "slug": "moodlecodes",
+      "url": "https://conhecimento.cefor.ifes.edu.br/percursos/moodlecodes/",
+      "qtd_declarada": 7,
+      "qtd_encontrada": 8,
+      "status": "OK",
+      "artigos": [
+        {
+          "titulo": "Dúvidas & Sugestões",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes/",
+          "slug": "ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes"
+        },
+        {
+          "titulo": "Código para inserção de Audiodescrição em imagens no AVA #MoodleCodes",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/2141/",
+          "slug": "2141"
+        },
+        {
+          "titulo": "Modelo de informações sobre Aula presencial #MoodleCodes",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/modelo-de-informacoes-sobre-aula-presencial-moodlecodes/",
+          "slug": "modelo-de-informacoes-sobre-aula-presencial-moodlecodes"
+        },
+        {
+          "titulo": "Como inserir códigos no Moodle #MoodleCodes",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/como-inserir-codigos-no-moodle-moodlecodes/",
+          "slug": "como-inserir-codigos-no-moodle-moodlecodes"
+        },
+        {
+          "titulo": "Modelo de Plano de Ensino #MoodleCodes",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/codigo-de-um-modelo-de-plano-de-ensino-moodlecodes/",
+          "slug": "codigo-de-um-modelo-de-plano-de-ensino-moodlecodes"
+        },
+        {
+          "titulo": "Modelo de Agenda da Semana com cor de fundo #MoodleCodes",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/modelo-de-agenda-da-semana-com-cor-de-fundo-moodlecodes/",
+          "slug": "modelo-de-agenda-da-semana-com-cor-de-fundo-moodlecodes"
+        },
+        {
+          "titulo": "Aparecer o nome do aluno em qualquer parte da Sala Virtual #MoodleCodes",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/aparecer-o-nome-do-aluno-em-qualquer-parte-da-sala-virtual-moodlecodes/",
+          "slug": "aparecer-o-nome-do-aluno-em-qualquer-parte-da-sala-virtual-moodlecodes"
+        },
+        {
+          "titulo": "Código para inserção de vídeo em Libras no AVA #MoodleCodes",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/codigo-para-insercao-de-video-em-libras-no-ava/",
+          "slug": "codigo-para-insercao-de-video-em-libras-no-ava"
+        }
+      ]
+    },
+    {
+      "nome": "Planejamento e Design Educacional",
+      "slug": null,
+      "url": "INACESSIVEL (404)",
+      "qtd_declarada": 21,
+      "qtd_encontrada": null,
+      "status": "404 - Pagina inacessivel",
+      "artigos": []
+    },
+    {
+      "nome": "Professor Moodle",
+      "slug": "professor-moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/percursos/professor-moodle/",
+      "qtd_declarada": 44,
+      "qtd_encontrada": 11,
+      "status": "Parcial (11/44 visiveis)",
+      "artigos": [
+        {
+          "titulo": "Dúvidas & Sugestões",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes/",
+          "slug": "ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes"
+        },
+        {
+          "titulo": "Configurando Livro de Notas que calcule a Média entre Atividades e a Recuperação",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/configurando-livro-de-notas-para-calculo-de-media-com-recuperacao/",
+          "slug": "configurando-livro-de-notas-para-calculo-de-media-com-recuperacao"
+        },
+        {
+          "titulo": "Conteúdo Interativo: aproveite o potencial do H5P no Moodle 3.9",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/potencialidades-h5p/",
+          "slug": "potencialidades-h5p"
+        },
+        {
+          "titulo": "Como inserir conteúdo H5P em sua sala virtual",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/como-inserir-conteudo-h5p-em-sua-sala-virtual/",
+          "slug": "como-inserir-conteudo-h5p-em-sua-sala-virtual"
+        },
+        {
+          "titulo": "Conteúdo interativo no AVA Moodle com H5P",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/conteudo-interativo-no-ava-moodle-com-h5p/",
+          "slug": "conteudo-interativo-no-ava-moodle-com-h5p"
+        },
+        {
+          "titulo": "Como disponibilizar mídias no recurso Livro do Moodle?",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/como-disponibilizar-midias-no-recurso-livro-do-moodle/",
+          "slug": "como-disponibilizar-midias-no-recurso-livro-do-moodle"
+        },
+        {
+          "titulo": "Como criar Jogo no Moodle Utilizando recurso Resposta Curta como Banco de Questões (sem usar Glossário)",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/como-criar-jogo-no-moodle-utilizando-recurso-resposta-curta-como-banco-de-questoes-sem-usar-glossario/",
+          "slug": "como-criar-jogo-no-moodle-utilizando-recurso-resposta-curta-como-banco-de-questoes-sem-usar-glossario"
+        },
+        {
+          "titulo": "Como utilizar a ferramenta Conferência Web da RNP Integrada ao Moodle 3.9",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/como-utilizar-a-ferramenta-conferencia-web-da-rnp-integrada-ao-moodle-3-9/",
+          "slug": "como-utilizar-a-ferramenta-conferencia-web-da-rnp-integrada-ao-moodle-3-9"
+        },
+        {
+          "titulo": "Configuração do Safe Exam Browser",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/configuracao-do-safe-exam-browser/",
+          "slug": "configuracao-do-safe-exam-browser"
+        },
+        {
+          "titulo": "Como posso realizar uma Aula Síncrona?",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/como-posso-realizar-uma-aula-sincrona/",
+          "slug": "como-posso-realizar-uma-aula-sincrona"
+        },
+        {
+          "titulo": "Configuração da Barra de Progresso no Moodle",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/configuracao-da-barra-de-progresso/",
+          "slug": "configuracao-da-barra-de-progresso"
+        }
+      ]
+    },
+    {
+      "nome": "Tudo sobre prova online",
+      "slug": "prova-online",
+      "url": "https://conhecimento.cefor.ifes.edu.br/percursos/prova-online/",
+      "qtd_declarada": 18,
+      "qtd_encontrada": 11,
+      "status": "Parcial (11/18 visiveis)",
+      "artigos": [
+        {
+          "titulo": "Dúvidas & Sugestões",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes/",
+          "slug": "ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes"
+        },
+        {
+          "titulo": "Definição de endereço de rede (IP) para acesso a prova",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/definicao-de-endereco-de-rede-ip-para-acesso-a-prova/",
+          "slug": "definicao-de-endereco-de-rede-ip-para-acesso-a-prova"
+        },
+        {
+          "titulo": "Senha de acesso a prova on-line",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/senha-de-acesso-a-prova-on-line/",
+          "slug": "senha-de-acesso-a-prova-on-line"
+        },
+        {
+          "titulo": "Cronograma de prova: Divisões em vários grupos e horários de prova",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/divisoes-em-varios-grupos-e-horarios-de-prova/",
+          "slug": "divisoes-em-varios-grupos-e-horarios-de-prova"
+        },
+        {
+          "titulo": "Embaralhamento de questões e de respostas",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/embaralhamento-de-questoes-e-de-respostas/",
+          "slug": "embaralhamento-de-questoes-e-de-respostas"
+        },
+        {
+          "titulo": "Montagem de um banco de questões e sorteios automáticos",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/montagem-de-um-banco-de-questoes-e-sorteios-automaticos/",
+          "slug": "montagem-de-um-banco-de-questoes-e-sorteios-automaticos"
+        },
+        {
+          "titulo": "Prova on-line no AVA – Moodle",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/prova-on-line-no-ava-moodle/",
+          "slug": "prova-on-line-no-ava-moodle"
+        },
+        {
+          "titulo": "Tipos de questões do recurso de questionário",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/tipos-de-questoes-do-recurso-de-questionario/",
+          "slug": "tipos-de-questoes-do-recurso-de-questionario"
+        },
+        {
+          "titulo": "Criando questionários/provas de acordo com o cronograma de aplicação.",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/criando-questionariosprovas-de-acordo-com-o-cronograma-de-aplicacao/",
+          "slug": "criando-questionariosprovas-de-acordo-com-o-cronograma-de-aplicacao"
+        },
+        {
+          "titulo": "Atribuindo Notas e/ou pesos nas questões do questionário",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/atribuindo-notas/",
+          "slug": "atribuindo-notas"
+        },
+        {
+          "titulo": "Inserindo as questões na prova e configurando os sorteios automáticos",
+          "url": "https://conhecimento.cefor.ifes.edu.br/base/inserindo-as-questoes-criadas-no-recurso-questionario/",
+          "slug": "inserindo-as-questoes-criadas-no-recurso-questionario"
+        }
+      ]
+    }
+  ],
+  "artigos": [
+    {
+      "id": 1,
+      "titulo": "Dúvidas & Sugestões",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes/",
+      "slug": "ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes",
+      "categoria": "Contribua com a base de conhecimento",
+      "temas": [],
+      "tipo": "Outros",
+      "percursos": [
+        "Acessibilidade no Ambiente Virtual",
+        "Direitos Autorais e Seguranca",
+        "Ferramentas educacionais",
+        "Gamificacao e Engajamento no Moodle",
+        "Gestao e Configuracao do Moodle",
+        "Iniciando no Moodle",
+        "Inteligencia Artificial",
+        "Livro de Notas",
+        "Moodle Codes",
+        "Professor Moodle",
+        "Tudo sobre prova online"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 2,
+      "titulo": "Como configurar Tempo Ampliado no questionário do Moodle sem expor o estudante com Necessidades Específicas",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-configurar-tempo-ampliado-no-questionario-do-moodle-sem-expor-o-estudante-com-necessidades-especificas/",
+      "slug": "como-configurar-tempo-ampliado-no-questionario-do-moodle-sem-expor-o-estudante-com-necessidades-especificas",
+      "categoria": "Tutoriais",
+      "temas": [
+        "Acessibilidade",
+        "Questionário"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 3,
+      "titulo": "Atividade de Base de Dados no Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/atividade-de-base-de-dados-no-moodle/",
+      "slug": "atividade-de-base-de-dados-no-moodle",
+      "categoria": "Moodle",
+      "temas": [
+        "base de dados",
+        "Ferramentas",
+        "Moodle"
+      ],
+      "tipo": "Referencia Moodle",
+      "percursos": [
+        "Iniciando no Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 4,
+      "titulo": "Moodle e suas principais ferramentas de aprendizagem – visão aluno",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/moodle-e-suas-principais-ferramentas-de-aprendizagem-visao-aluno/",
+      "slug": "moodle-e-suas-principais-ferramentas-de-aprendizagem-visao-aluno",
+      "categoria": "Moodle",
+      "temas": [
+        "atividades",
+        "Ferramentas",
+        "Moodle"
+      ],
+      "tipo": "Ferramenta Externa",
+      "percursos": [
+        "Iniciando no Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 5,
+      "titulo": "Taxonomia de Bloom Revisitada (2.0): Integrando Habilidades Humanas e Inteligência Artificial",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/taxonomia-de-bloom-revisitada-2-0-integrando-habilidades-humanas-e-inteligencia-artificial/",
+      "slug": "taxonomia-de-bloom-revisitada-2-0-integrando-habilidades-humanas-e-inteligencia-artificial",
+      "categoria": "Aspectos Pedagógicos",
+      "temas": [
+        "Educação",
+        "Inteligência Artificial",
+        "Planejamento"
+      ],
+      "tipo": "Conceitual",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 6,
+      "titulo": "GPT Gerador de Rubricas",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/gpt-gerador-de-rubricas/",
+      "slug": "gpt-gerador-de-rubricas",
+      "categoria": "Inteligência Artificial",
+      "temas": [
+        "GPT",
+        "Moodle",
+        "rúbrica"
+      ],
+      "tipo": "Ferramenta/GPT",
+      "percursos": [
+        "Inteligencia Artificial"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 7,
+      "titulo": "GPT H5P Summary: transforme vídeos em conteúdos interativos com a IA",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/gpt-h5p-summary-transforme-videos-em-conteudos-interativos-com-a-ia/",
+      "slug": "gpt-h5p-summary-transforme-videos-em-conteudos-interativos-com-a-ia",
+      "categoria": "Inteligência Artificial",
+      "temas": [
+        "GPT",
+        "h5p",
+        "Inteligência Artificial"
+      ],
+      "tipo": "Ferramenta/GPT",
+      "percursos": [
+        "Inteligencia Artificial"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 8,
+      "titulo": "GPT Gerador de Questionários para o Moodle: sua ajudante para criar avaliações com IA",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/gpt-gerador-de-questionarios-para-o-moodle-sua-ajudante-para-criar-avaliacoes-com-ia/",
+      "slug": "gpt-gerador-de-questionarios-para-o-moodle-sua-ajudante-para-criar-avaliacoes-com-ia",
+      "categoria": "Inteligência Artificial",
+      "temas": [
+        "GPT",
+        "Inteligência Artificial",
+        "Questionário"
+      ],
+      "tipo": "Ferramenta/GPT",
+      "percursos": [
+        "Inteligencia Artificial"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 9,
+      "titulo": "GPT Vídeo Summarizer: resumos automáticos de vídeos para uso educacional com IA",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/gpt-video-summarizer-resumos-automaticos-de-videos-para-uso-educacional-com-ia/",
+      "slug": "gpt-video-summarizer-resumos-automaticos-de-videos-para-uso-educacional-com-ia",
+      "categoria": "Inteligência Artificial",
+      "temas": [
+        "GPT",
+        "Inteligência Artificial",
+        "Vídeo Summarizer"
+      ],
+      "tipo": "Ferramenta/GPT",
+      "percursos": [
+        "Inteligencia Artificial"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 10,
+      "titulo": "Oficinas de IA: aprendendo na prática com o Cefor",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/oficinas-de-ia-aprendendo-na-pratica-com-o-cefor/",
+      "slug": "oficinas-de-ia-aprendendo-na-pratica-com-o-cefor",
+      "categoria": "Inteligência Artificial",
+      "temas": [
+        "Educação",
+        "Inteligência Artificial",
+        "Oficinas"
+      ],
+      "tipo": "Evento/Divulgacao",
+      "percursos": [
+        "Inteligencia Artificial"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 11,
+      "titulo": "Grupo de WhatsApp: informação rápida e prática sobre IA na educação",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/grupo-de-whatsapp-informacao-rapida-e-pratica-sobre-ia-na-educacao/",
+      "slug": "grupo-de-whatsapp-informacao-rapida-e-pratica-sobre-ia-na-educacao",
+      "categoria": "Inteligência Artificial",
+      "temas": [
+        "Educação",
+        "Inteligência Artificial"
+      ],
+      "tipo": "Evento/Divulgacao",
+      "percursos": [
+        "Inteligencia Artificial"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 12,
+      "titulo": "Papo com IA.IÁ: um bate-papo leve e potente sobre Inteligência Artificial",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/papo-com-ia-ia-um-bate-papo-leve-e-potente-sobre-inteligencia-artificial/",
+      "slug": "papo-com-ia-ia-um-bate-papo-leve-e-potente-sobre-inteligencia-artificial",
+      "categoria": "Inteligência Artificial",
+      "temas": [
+        "Educação",
+        "Inteligência Artificial",
+        "Tecnologia"
+      ],
+      "tipo": "Evento/Divulgacao",
+      "percursos": [
+        "Inteligencia Artificial"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 13,
+      "titulo": "Sala Modelo do Moodle: Um Guia para Professores",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/sala-modelo-do-moodle-um-guia-para-professores/",
+      "slug": "sala-modelo-do-moodle-um-guia-para-professores",
+      "categoria": "Ambiente virtual",
+      "temas": [
+        "Guia para professores",
+        "padronização da sala virtual",
+        "sala modelo"
+      ],
+      "tipo": "Outros",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 14,
+      "titulo": "Videobook em Libras de Termos da Educação a Distância.",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/videobook-em-libras-de-termos-da-educacao-a-distancia/",
+      "slug": "videobook-em-libras-de-termos-da-educacao-a-distancia",
+      "categoria": "Tecnologias Educacionais",
+      "temas": [],
+      "tipo": "Outros",
+      "percursos": [
+        "Acessibilidade no Ambiente Virtual"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 15,
+      "titulo": "Acessibilidade Digital: Cuidados ao Inserir Recursos no Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/acessibilidade_digital_cuidados_ao_inserir_recursos_no_moodle/",
+      "slug": "acessibilidade_digital_cuidados_ao_inserir_recursos_no_moodle",
+      "categoria": "Moodle",
+      "temas": [
+        "Acessibilidade",
+        "Planejamento",
+        "Procedimento"
+      ],
+      "tipo": "Outros",
+      "percursos": [
+        "Acessibilidade no Ambiente Virtual"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 16,
+      "titulo": "Configurando Livro de Notas que calcule a Média entre Atividades e a Recuperação",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/configurando-livro-de-notas-para-calculo-de-media-com-recuperacao/",
+      "slug": "configurando-livro-de-notas-para-calculo-de-media-com-recuperacao",
+      "categoria": "",
+      "temas": [],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Livro de Notas",
+        "Professor Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 17,
+      "titulo": "Conteúdo Interativo: aproveite o potencial do H5P no Moodle 3.9",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/potencialidades-h5p/",
+      "slug": "potencialidades-h5p",
+      "categoria": "Ferramentas de autoria",
+      "temas": [
+        "Atividade",
+        "Ferramenta",
+        "h5p"
+      ],
+      "tipo": "Outros",
+      "percursos": [
+        "Professor Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 18,
+      "titulo": "Como inserir conteúdo H5P em sua sala virtual",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-inserir-conteudo-h5p-em-sua-sala-virtual/",
+      "slug": "como-inserir-conteudo-h5p-em-sua-sala-virtual",
+      "categoria": "Ferramentas de autoria",
+      "temas": [
+        "Ferramenta",
+        "h5p",
+        "Moodle"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Professor Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 19,
+      "titulo": "Conteúdo interativo no AVA Moodle com H5P",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/conteudo-interativo-no-ava-moodle-com-h5p/",
+      "slug": "conteudo-interativo-no-ava-moodle-com-h5p",
+      "categoria": "Ferramentas de autoria",
+      "temas": [
+        "Ferramenta",
+        "Interatividade",
+        "Moodle"
+      ],
+      "tipo": "Outros",
+      "percursos": [
+        "Professor Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 20,
+      "titulo": "START 2023: Inovação e Inclusão na Formação de Professores do Cefor",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/start-2023/",
+      "slug": "start-2023",
+      "categoria": "Tecnologias Educacionais",
+      "temas": [
+        "Capacitação",
+        "Ferramenta",
+        "Oficina"
+      ],
+      "tipo": "Evento/Divulgacao",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 21,
+      "titulo": "Diploma digital – Orientações Gerais",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/diploma-digital-orientacoes-gerais/",
+      "slug": "diploma-digital-orientacoes-gerais",
+      "categoria": "Procedimento Administrativo",
+      "temas": [
+        "administrativo",
+        "diploma",
+        "DocenteEPT"
+      ],
+      "tipo": "Outros",
+      "percursos": [
+        "Gestao e Configuracao do Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 22,
+      "titulo": "Como disponibilizar mídias no recurso Livro do Moodle?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-disponibilizar-midias-no-recurso-livro-do-moodle/",
+      "slug": "como-disponibilizar-midias-no-recurso-livro-do-moodle",
+      "categoria": "Livros Digitais (e-book)",
+      "temas": [
+        "Configuração",
+        "Faça você mesmo",
+        "Livro digital"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Professor Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 23,
+      "titulo": "Descubra o ReLiCefor: compartilhando conhecimento no ambiente virtual",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/descubra-o-relicefor-compartilhando-conhecimento-no-ambiente-virtual/",
+      "slug": "descubra-o-relicefor-compartilhando-conhecimento-no-ambiente-virtual",
+      "categoria": "Livros Digitais (e-book)",
+      "temas": [
+        "Importar",
+        "Livro digital",
+        "Repositório"
+      ],
+      "tipo": "Outros",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 24,
+      "titulo": "Como criar Jogo no Moodle Utilizando recurso Resposta Curta como Banco de Questões (sem usar Glossário)",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-criar-jogo-no-moodle-utilizando-recurso-resposta-curta-como-banco-de-questoes-sem-usar-glossario/",
+      "slug": "como-criar-jogo-no-moodle-utilizando-recurso-resposta-curta-como-banco-de-questoes-sem-usar-glossario",
+      "categoria": "Moodle",
+      "temas": [
+        "Ferramenta",
+        "Jogo",
+        "Moodle"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Professor Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 25,
+      "titulo": "Uso de Emblemas nos cursos MOOC",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/uso-de-emblemas-nos-cursos-mooc/",
+      "slug": "uso-de-emblemas-nos-cursos-mooc",
+      "categoria": "MOOC",
+      "temas": [
+        "emblemas",
+        "gamificação",
+        "mooc"
+      ],
+      "tipo": "Outros",
+      "percursos": [
+        "Gamificacao e Engajamento no Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 26,
+      "titulo": "Código para inserção de Audiodescrição em imagens no AVA #MoodleCodes",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/2141/",
+      "slug": "2141",
+      "categoria": "Tutoriais",
+      "temas": [
+        "Acessibilidade",
+        "Audiodescrição",
+        "AVA",
+        "código"
+      ],
+      "tipo": "Template/Code",
+      "percursos": [
+        "Acessibilidade no Ambiente Virtual",
+        "Moodle Codes"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 27,
+      "titulo": "Como utilizar a ferramenta Conferência Web da RNP Integrada ao Moodle 3.9",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-utilizar-a-ferramenta-conferencia-web-da-rnp-integrada-ao-moodle-3-9/",
+      "slug": "como-utilizar-a-ferramenta-conferencia-web-da-rnp-integrada-ao-moodle-3-9",
+      "categoria": "Ambiente virtual",
+      "temas": [
+        "Tutorial",
+        "Webconferência"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Professor Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 28,
+      "titulo": "Modelo de informações sobre Aula presencial #MoodleCodes",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/modelo-de-informacoes-sobre-aula-presencial-moodlecodes/",
+      "slug": "modelo-de-informacoes-sobre-aula-presencial-moodlecodes",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [],
+      "tipo": "Template/Code",
+      "percursos": [
+        "Moodle Codes"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 29,
+      "titulo": "Como inserir códigos no Moodle #MoodleCodes",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-inserir-codigos-no-moodle-moodlecodes/",
+      "slug": "como-inserir-codigos-no-moodle-moodlecodes",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "código",
+        "Configuração",
+        "Moodle"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Moodle Codes"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 30,
+      "titulo": "Modelo de Plano de Ensino #MoodleCodes",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/codigo-de-um-modelo-de-plano-de-ensino-moodlecodes/",
+      "slug": "codigo-de-um-modelo-de-plano-de-ensino-moodlecodes",
+      "categoria": "Ambiente virtual",
+      "temas": [
+        "código",
+        "Moodle",
+        "sala virtual"
+      ],
+      "tipo": "Template/Code",
+      "percursos": [
+        "Moodle Codes"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 31,
+      "titulo": "Modelo de Agenda da Semana com cor de fundo #MoodleCodes",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/modelo-de-agenda-da-semana-com-cor-de-fundo-moodlecodes/",
+      "slug": "modelo-de-agenda-da-semana-com-cor-de-fundo-moodlecodes",
+      "categoria": "Ambiente virtual",
+      "temas": [
+        "códigos",
+        "Configuração",
+        "Rótulo",
+        "sala virtual"
+      ],
+      "tipo": "Template/Code",
+      "percursos": [
+        "Moodle Codes"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 32,
+      "titulo": "Padrões visuais do Cefor – Orientações para utilização",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/padrao-visual-cefor/",
+      "slug": "padrao-visual-cefor",
+      "categoria": "Procedimentos de Comunicação",
+      "temas": [
+        "comunicação",
+        "design",
+        "padrão visual"
+      ],
+      "tipo": "Institucional/Padrao Visual",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 33,
+      "titulo": "Aparecer o nome do aluno em qualquer parte da Sala Virtual #MoodleCodes",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/aparecer-o-nome-do-aluno-em-qualquer-parte-da-sala-virtual-moodlecodes/",
+      "slug": "aparecer-o-nome-do-aluno-em-qualquer-parte-da-sala-virtual-moodlecodes",
+      "categoria": "Ambiente virtual",
+      "temas": [],
+      "tipo": "Template/Code",
+      "percursos": [
+        "Moodle Codes"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 34,
+      "titulo": "Configuração do Safe Exam Browser",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/configuracao-do-safe-exam-browser/",
+      "slug": "configuracao-do-safe-exam-browser",
+      "categoria": "",
+      "temas": [],
+      "tipo": "Outros",
+      "percursos": [
+        "Professor Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 35,
+      "titulo": "Código para inserção de vídeo em Libras no AVA #MoodleCodes",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/codigo-para-insercao-de-video-em-libras-no-ava/",
+      "slug": "codigo-para-insercao-de-video-em-libras-no-ava",
+      "categoria": "Ambiente virtual",
+      "temas": [
+        "AVA",
+        "código",
+        "Libras"
+      ],
+      "tipo": "Template/Code",
+      "percursos": [
+        "Acessibilidade no Ambiente Virtual",
+        "Moodle Codes"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 36,
+      "titulo": "Designer Educacional: teoria, prática e muito mais!",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/designer-educacional-teoria-pratica-e-muito-mais/",
+      "slug": "designer-educacional-teoria-pratica-e-muito-mais",
+      "categoria": "Tecnologias Educacionais",
+      "temas": [
+        "Capacitação",
+        "padrão visual",
+        "sala virtual"
+      ],
+      "tipo": "Outros",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 37,
+      "titulo": "+45 Ferramentas educacionais para você arrasar!",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/mais45-ferramentas-educacionais-para-voce-arrasar/",
+      "slug": "mais45-ferramentas-educacionais-para-voce-arrasar",
+      "categoria": "Tecnologias Educacionais",
+      "temas": [
+        "Ferramenta"
+      ],
+      "tipo": "Ferramenta Externa",
+      "percursos": [
+        "Ferramentas educacionais"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 38,
+      "titulo": "Aplicativo Moodle Mobile não funciona? Aprenda como resolver",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/aplicativo-moodle-mobile-nao-funciona-aprenda-como-resolver/",
+      "slug": "aplicativo-moodle-mobile-nao-funciona-aprenda-como-resolver",
+      "categoria": "Procedimento de Tecnologia da Informação",
+      "temas": [
+        "Download",
+        "mobi",
+        "Moodle",
+        "Procedimentos"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Iniciando no Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 39,
+      "titulo": "Como posso realizar uma Aula Síncrona?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-posso-realizar-uma-aula-sincrona/",
+      "slug": "como-posso-realizar-uma-aula-sincrona",
+      "categoria": "Tutoriais",
+      "temas": [],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Professor Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 40,
+      "titulo": "Como ativar contas nas Plataformas de Serviço em nuvem G Suite e Office 365?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-ativar-contas-nas-plataformas-de-servico-em-nuvem-g-suite-e-office-365/",
+      "slug": "como-ativar-contas-nas-plataformas-de-servico-em-nuvem-g-suite-e-office-365",
+      "categoria": "",
+      "temas": [],
+      "tipo": "Tutorial",
+      "percursos": [],
+      "alerta_obsoleto": "G Suite agora e Google Workspace"
+    },
+    {
+      "id": 41,
+      "titulo": "Como mudar a cor de fundo em um Rótulo no AVA Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/1871/",
+      "slug": "1871",
+      "categoria": "Ambiente virtual",
+      "temas": [
+        "Recurso",
+        "Rótulo",
+        "Tutorial"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 42,
+      "titulo": "Como “embedar” vídeo do YouTube em tamanho menor",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-embedar-video-do-youtube-em-tamanho-menor/",
+      "slug": "como-embedar-video-do-youtube-em-tamanho-menor",
+      "categoria": "Ambiente virtual",
+      "temas": [],
+      "tipo": "Tutorial",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 43,
+      "titulo": "Configuração da Barra de Progresso no Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/configuracao-da-barra-de-progresso/",
+      "slug": "configuracao-da-barra-de-progresso",
+      "categoria": "",
+      "temas": [],
+      "tipo": "Outros",
+      "percursos": [
+        "Professor Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 44,
+      "titulo": "Configuração da Conclusão de atividades no curso no Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/configuracao-da-conclusao-de-atividades-no-curso/",
+      "slug": "configuracao-da-conclusao-de-atividades-no-curso",
+      "categoria": "Moodle",
+      "temas": [],
+      "tipo": "Outros",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 45,
+      "titulo": "Como configurar o LevelUp no Moodle para engajar seus alunos",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-configurar-o-modulo-levelup-no-moodle-para-engajar-seus-alunos/",
+      "slug": "como-configurar-o-modulo-levelup-no-moodle-para-engajar-seus-alunos",
+      "categoria": "",
+      "temas": [
+        "Configuração",
+        "Moodle",
+        "Tutorial"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Gamificacao e Engajamento no Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 46,
+      "titulo": "Padrão Visual Campi Ifes para sala virtual na plataforma de Cursos Abertos MOOC",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/padrao-visual-campi-ifes-para-sala-virtual-na-plataforma-de-cursos-abertos-mooc/",
+      "slug": "padrao-visual-campi-ifes-para-sala-virtual-na-plataforma-de-cursos-abertos-mooc",
+      "categoria": "MOOC",
+      "temas": [
+        "Configuração",
+        "mooc",
+        "padrão visual"
+      ],
+      "tipo": "Institucional/Padrao Visual",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 47,
+      "titulo": "Como importar notas do Moodle para o Sistema Acadêmico?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-importar-notas-do-moodle-para-o-academico/",
+      "slug": "como-importar-notas-do-moodle-para-o-academico",
+      "categoria": "Moodle x Sistema Acadêmico",
+      "temas": [
+        "Moodle",
+        "Notas",
+        "Sistema Acadêmico"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Livro de Notas"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 48,
+      "titulo": "Habilitar acesso de “visitante” na sala virtual do Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/habilitar-acesso-de-visitantes-na-sala-virtual-do-moodle/",
+      "slug": "habilitar-acesso-de-visitantes-na-sala-virtual-do-moodle",
+      "categoria": "Moodle",
+      "temas": [
+        "Configuração",
+        "sala virtual"
+      ],
+      "tipo": "Outros",
+      "percursos": [
+        "Gestao e Configuracao do Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 49,
+      "titulo": "Padrão Visual Campi Ifes para Capa de Vídeo",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/padrao-visual-campi-ifes-para-capa-de-video/",
+      "slug": "padrao-visual-campi-ifes-para-capa-de-video",
+      "categoria": "Ferramentas de comunicação",
+      "temas": [
+        "capa de vídeo",
+        "padrão visual",
+        "Vídeo"
+      ],
+      "tipo": "Institucional/Padrao Visual",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 50,
+      "titulo": "Padrão Visual Campi Ifes para Apresentações",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/padrao-visual-campi-ifes-para-apresentacoes/",
+      "slug": "padrao-visual-campi-ifes-para-apresentacoes",
+      "categoria": "Ferramentas de comunicação",
+      "temas": [
+        "Apresentação",
+        "padrão visual",
+        "sala virtual"
+      ],
+      "tipo": "Institucional/Padrao Visual",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 51,
+      "titulo": "Como configurar corretamente a visualização de mídias no Moodle MOOC",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-configurar-corretamente-a-visualizacao-de-midias-no-mooc/",
+      "slug": "como-configurar-corretamente-a-visualizacao-de-midias-no-mooc",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Ferramenta"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Acessibilidade no Ambiente Virtual"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 52,
+      "titulo": "Gravar a tela do seu computador em vídeo agora está mais fácil (e é de graça)",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/gravar-a-tela-do-seu-computador-em-video-agora-esta-mais-facil-e-e-de-graca/",
+      "slug": "gravar-a-tela-do-seu-computador-em-video-agora-esta-mais-facil-e-e-de-graca",
+      "categoria": "Tutoriais",
+      "temas": [
+        "captura",
+        "gravação de tela",
+        "software"
+      ],
+      "tipo": "Outros",
+      "percursos": [
+        "Ferramentas educacionais"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 53,
+      "titulo": "O que você precisa saber para participar de uma Webconferência",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/o-que-voce-precisa-saber-para-participar-de-uma-webconferencia/",
+      "slug": "o-que-voce-precisa-saber-para-participar-de-uma-webconferencia",
+      "categoria": "Ferramentas de comunicação",
+      "temas": [
+        "Apresentação",
+        "Webconferência"
+      ],
+      "tipo": "Outros",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 54,
+      "titulo": "Como realizar uma aula ou uma reunião por Webconferência?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-realizar-uma-aula-ou-uma-reuniao-por-webconferencia/",
+      "slug": "como-realizar-uma-aula-ou-uma-reuniao-por-webconferencia",
+      "categoria": "Ferramentas de comunicação",
+      "temas": [
+        "Apresentação",
+        "Webconferência"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 55,
+      "titulo": "Padrão Visual para Salas Virtuais no Moodle – Campi Ifes",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/padrao-visual-campi-ifes-para-salas-virtuais-no-moodle/",
+      "slug": "padrao-visual-campi-ifes-para-salas-virtuais-no-moodle",
+      "categoria": "Ambiente virtual",
+      "temas": [
+        "padrão visual",
+        "sala virtual"
+      ],
+      "tipo": "Institucional/Padrao Visual",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 56,
+      "titulo": "Como importar uma sala virtual no Moodle?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-importar-uma-sala-virtual-no-moodle/",
+      "slug": "como-importar-uma-sala-virtual-no-moodle",
+      "categoria": "Ambiente virtual",
+      "temas": [
+        "backup",
+        "Configuração",
+        "Procedimento"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 57,
+      "titulo": "Configurando o Livro de Notas passo a passo",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/configurando-o-livro-de-notas-em-uma-disciplina-com-duas-recuperacoes/",
+      "slug": "configurando-o-livro-de-notas-em-uma-disciplina-com-duas-recuperacoes",
+      "categoria": "Ambiente virtual",
+      "temas": [
+        "Configuração",
+        "Moodle",
+        "Notas"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Livro de Notas"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 58,
+      "titulo": "Como transmitir reuniões em Webconferência da RNP (MConf) para o Youtube sem usar softwares de terceiros",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-transmitir-reunioes-em-webconferencia-da-rnp-mconf-para-o-youtube-sem-usar-softwares-de-terceiros/",
+      "slug": "como-transmitir-reunioes-em-webconferencia-da-rnp-mconf-para-o-youtube-sem-usar-softwares-de-terceiros",
+      "categoria": "Tutoriais",
+      "temas": [
+        "Webconferência"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [],
+      "alerta_obsoleto": "Verificar se MConf ainda e usado"
+    },
+    {
+      "id": 59,
+      "titulo": "Conceder acesso a usuários em salas do moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/acesso-a-usuario-em-salas-do-moodle/",
+      "slug": "acesso-a-usuario-em-salas-do-moodle",
+      "categoria": "Ambiente virtual",
+      "temas": [
+        "Atividade",
+        "Moodle",
+        "sala virtual"
+      ],
+      "tipo": "Outros",
+      "percursos": [
+        "Gestao e Configuracao do Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 60,
+      "titulo": "Processo e modelos de documentos para Cursos Abertos (MOOC)",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/modelos-de-documento-para-criacao-de-cursos-abertos-mooc/",
+      "slug": "modelos-de-documento-para-criacao-de-cursos-abertos-mooc",
+      "categoria": "Processos",
+      "temas": [
+        "Formulário",
+        "mooc"
+      ],
+      "tipo": "Outros",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 61,
+      "titulo": "Padlet – Crie quadro e documentos fáceis de ler e de contribuir",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/padlet-crie-quadro-e-documentos-faceis-de-ler-e-de-contribuir/",
+      "slug": "padlet-crie-quadro-e-documentos-faceis-de-ler-e-de-contribuir",
+      "categoria": "Recurso Educacional",
+      "temas": [
+        "Externo",
+        "Faça você mesmo",
+        "Ferramenta"
+      ],
+      "tipo": "Ferramenta Externa",
+      "percursos": [
+        "Ferramentas educacionais"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 62,
+      "titulo": "Visualização Vlibras – Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/visualizacao-vlibras-moodle/",
+      "slug": "visualizacao-vlibras-moodle",
+      "categoria": "Moodle",
+      "temas": [],
+      "tipo": "Outros",
+      "percursos": [
+        "Acessibilidade no Ambiente Virtual"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 63,
+      "titulo": "Backup e Restauração de Usuários no Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/backup-e-restauracao-de-usuarios-no-moodle/",
+      "slug": "backup-e-restauracao-de-usuarios-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [],
+      "tipo": "Outros",
+      "percursos": [
+        "Gestao e Configuracao do Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 64,
+      "titulo": "Manual do sistema suporte Cefor – Glpi",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/manual-rapido-glpi/",
+      "slug": "manual-rapido-glpi",
+      "categoria": "Procedimento de Tecnologia da Informação",
+      "temas": [],
+      "tipo": "Outros",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 65,
+      "titulo": "Sala do Moodle para disciplina presencial e/ou a distância vinculada ao Sistema Acadêmico",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/sala-do-moodle-para-disciplina-presencial-eou-a-distancia-vinculada-ao-sistema-academico/",
+      "slug": "sala-do-moodle-para-disciplina-presencial-eou-a-distancia-vinculada-ao-sistema-academico",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Procedimento",
+        "Sistema Acadêmico"
+      ],
+      "tipo": "Outros",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 66,
+      "titulo": "Checklist básico para inicio de curso no Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/checklist-basico-para-inicio-de-curso-no-moodle/",
+      "slug": "checklist-basico-para-inicio-de-curso-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Checklist",
+        "Moodle"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Iniciando no Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 67,
+      "titulo": "Atividade Escolha no Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/atividade-de-escolha/",
+      "slug": "atividade-de-escolha",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Ferramenta",
+        "Moodle"
+      ],
+      "tipo": "Referencia Moodle",
+      "percursos": [
+        "Gamificacao e Engajamento no Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 68,
+      "titulo": "Recurso Área de Texto e Mídia (antigo Rótulo) no Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/recurso-de-rotulo-no-moodle/",
+      "slug": "recurso-de-rotulo-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Ferramenta",
+        "Moodle"
+      ],
+      "tipo": "Referencia Moodle",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 69,
+      "titulo": "Recurso de URL no Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/recurso-de-url-no-moodle/",
+      "slug": "recurso-de-url-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Ferramenta",
+        "Moodle"
+      ],
+      "tipo": "Referencia Moodle",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 70,
+      "titulo": "Recurso de Arquivo no Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/recurso-de-arquivo/",
+      "slug": "recurso-de-arquivo",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Ferramenta",
+        "Moodle"
+      ],
+      "tipo": "Referencia Moodle",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 71,
+      "titulo": "Recurso Página no Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/recurso-pagina-no-moodle/",
+      "slug": "recurso-pagina-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Ferramenta",
+        "Moodle"
+      ],
+      "tipo": "Referencia Moodle",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 72,
+      "titulo": "Recurso Livro no Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/recurso-livro-no-moodle/",
+      "slug": "recurso-livro-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Ferramenta",
+        "Moodle"
+      ],
+      "tipo": "Referencia Moodle",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 73,
+      "titulo": "O que é Moodle?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/o-que-e-moodle/",
+      "slug": "o-que-e-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Ferramenta",
+        "Moodle"
+      ],
+      "tipo": "Conceitual",
+      "percursos": [
+        "Iniciando no Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 74,
+      "titulo": "Como configurar um Fórum com acesso apenas para Coordenadores e Alunos no Moodle 1.9",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-configurar-um-forum-com-acesso-apenas-para-coordenadores-e-alunos-no-moodle-1-9/",
+      "slug": "como-configurar-um-forum-com-acesso-apenas-para-coordenadores-e-alunos-no-moodle-1-9",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Ferramenta",
+        "Moodle"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Gestao e Configuracao do Moodle"
+      ],
+      "alerta_obsoleto": "Moodle 1.9 (obsoleto)"
+    },
+    {
+      "id": 75,
+      "titulo": "Netiqueta – Regras de Etiqueta na Internet",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/netiqueta-regras-de-etiqueta-na-internet/",
+      "slug": "netiqueta-regras-de-etiqueta-na-internet",
+      "categoria": "Procedimentos de Comunicação",
+      "temas": [
+        "Conduta",
+        "Internet"
+      ],
+      "tipo": "Outros",
+      "percursos": [
+        "Direitos Autorais e Seguranca"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 76,
+      "titulo": "Direitos Autorais",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/direitos-autorais/",
+      "slug": "direitos-autorais",
+      "categoria": "Recurso Educacional",
+      "temas": [
+        "Normas"
+      ],
+      "tipo": "Outros",
+      "percursos": [
+        "Direitos Autorais e Seguranca"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 77,
+      "titulo": "Mídias para EaD",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/midias-para-ead/",
+      "slug": "midias-para-ead",
+      "categoria": "Recurso Educacional",
+      "temas": [
+        "Boas práticas",
+        "Planejamento"
+      ],
+      "tipo": "Outros",
+      "percursos": [
+        "Ferramentas educacionais"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 78,
+      "titulo": "Atividade de Glossário no Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/atividade-de-glossario-no-moodle/",
+      "slug": "atividade-de-glossario-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Ferramenta",
+        "Glossário",
+        "Moodle"
+      ],
+      "tipo": "Referencia Moodle",
+      "percursos": [
+        "Iniciando no Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 79,
+      "titulo": "Atividade de Questionário no Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/atividade-de-questionario-no-moodle/",
+      "slug": "atividade-de-questionario-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Atividade",
+        "Moodle",
+        "Questionário"
+      ],
+      "tipo": "Referencia Moodle",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 80,
+      "titulo": "Atividade Fórum no Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/atividade-de-forum-no-moodle/",
+      "slug": "atividade-de-forum-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Ferramenta",
+        "Moodle"
+      ],
+      "tipo": "Referencia Moodle",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 81,
+      "titulo": "Atividade de Tarefa no Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/atividade-de-tarefa-no-moodle/",
+      "slug": "atividade-de-tarefa-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Atividade",
+        "Ferramenta",
+        "Moodle"
+      ],
+      "tipo": "Referencia Moodle",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 82,
+      "titulo": "Processo de Criação de Sala Virtual",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/processo-de-criacao-de-sala-virtual/",
+      "slug": "processo-de-criacao-de-sala-virtual",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Processo"
+      ],
+      "tipo": "Outros",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 83,
+      "titulo": "Guia de ferramentas do Moodle para Professores",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/guia-de-ferramentas-do-moodle-para-professores-em-ingles/",
+      "slug": "guia-de-ferramentas-do-moodle-para-professores-em-ingles",
+      "categoria": "Conhecimentos Pedagógicos",
+      "temas": [
+        "Moodle",
+        "Planejamento"
+      ],
+      "tipo": "Ferramenta Externa",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 84,
+      "titulo": "Configurando o Livro de Notas",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/configurando-o-livro-de-notasquadro-de-notas/",
+      "slug": "configurando-o-livro-de-notasquadro-de-notas",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Notas"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Livro de Notas"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 85,
+      "titulo": "Livro de Notas",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/livro-de-notasquadro-de-notas/",
+      "slug": "livro-de-notasquadro-de-notas",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Notas"
+      ],
+      "tipo": "Referencia Moodle",
+      "percursos": [
+        "Livro de Notas"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 86,
+      "titulo": "Como fazer uma restauração de sala virtual no Moodle?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-fazer-uma-restauracao-de-sala-virtual-no-moodle/",
+      "slug": "como-fazer-uma-restauracao-de-sala-virtual-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Configuração",
+        "Moodle"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Gestao e Configuracao do Moodle",
+        "Iniciando no Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 87,
+      "titulo": "Como criar uma atividade com acesso restrito a alguns usuários no Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-criar-uma-atividade-com-acesso-restrito-a-alguns-usuarios-aluno-e-tutores-no-moodle/",
+      "slug": "como-criar-uma-atividade-com-acesso-restrito-a-alguns-usuarios-aluno-e-tutores-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Planejamento"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Gestao e Configuracao do Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 88,
+      "titulo": "Entenda porque as Salas Virtuais são divididas em grupo/polos",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/entenda-porque-as-salas-virtuais-sao-divididas-em-grupopolos/",
+      "slug": "entenda-porque-as-salas-virtuais-sao-divididas-em-grupopolos",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Configuração",
+        "Moodle"
+      ],
+      "tipo": "Conceitual",
+      "percursos": [
+        "Iniciando no Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 89,
+      "titulo": "Como Definir ou Alterar a data de início da sala Virtual no Moodle?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-definir-ou-alterar-a-data-de-inicio-da-sala-virtual-no-moodle/",
+      "slug": "como-definir-ou-alterar-a-data-de-inicio-da-sala-virtual-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Configuração",
+        "Data",
+        "Moodle"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Gestao e Configuracao do Moodle",
+        "Iniciando no Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 90,
+      "titulo": "Como editar um recurso ou atividade no Moodle?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-editar-o-recurso-de-boas-vindas-no-moodle/",
+      "slug": "como-editar-o-recurso-de-boas-vindas-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Ferramenta",
+        "Moodle",
+        "Rótulo"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Iniciando no Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 91,
+      "titulo": "Como enviar uma mensagem no Moodle?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-enviar-uma-mensagem-no-moodle/",
+      "slug": "como-enviar-uma-mensagem-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Mensagem",
+        "Moodle"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 92,
+      "titulo": "Como fazer backup de sala virtual no Moodle?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-fazer-backup-e-restauracao-de-sala-virtual-no-moodle/",
+      "slug": "como-fazer-backup-e-restauracao-de-sala-virtual-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Ferramenta",
+        "Moodle"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 93,
+      "titulo": "Criação do recurso de certificados no Moodle 1.9",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/criacao-do-recurso-de-certificados-no-moodle-1-9/",
+      "slug": "criacao-do-recurso-de-certificados-no-moodle-1-9",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle"
+      ],
+      "tipo": "Referencia Moodle",
+      "percursos": [
+        "Gamificacao e Engajamento no Moodle"
+      ],
+      "alerta_obsoleto": "Moodle 1.9 (obsoleto)"
+    },
+    {
+      "id": 94,
+      "titulo": "Canva – Crie suas próprias ilustrações e infográficos",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/canva-crie-ilustracoes-e-infograficos/",
+      "slug": "canva-crie-ilustracoes-e-infograficos",
+      "categoria": "Recurso Educacional",
+      "temas": [
+        "Externo",
+        "Ferramenta"
+      ],
+      "tipo": "Ferramenta Externa",
+      "percursos": [
+        "Ferramentas educacionais"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 95,
+      "titulo": "Wiki: conheça suas potencialidades",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/wiki-conheca-suas-potencialidades/",
+      "slug": "wiki-conheca-suas-potencialidades",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Atividade",
+        "Ferramenta",
+        "Moodle"
+      ],
+      "tipo": "Conceitual",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 96,
+      "titulo": "Questionário: conheça suas pontecialidades",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/questionario-conheca-suas-pontecialidades/",
+      "slug": "questionario-conheca-suas-pontecialidades",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Atividade",
+        "Moodle",
+        "Questionário"
+      ],
+      "tipo": "Conceitual",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 97,
+      "titulo": "Fórum: conheça suas pontencialidades",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/forum-conheca-suas-pontencialidades/",
+      "slug": "forum-conheca-suas-pontencialidades",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Ferramenta",
+        "Moodle"
+      ],
+      "tipo": "Conceitual",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 98,
+      "titulo": "Moodle: Ferramentas como facilitadores do processo de aprendizagem",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/moodle-recursos-como-facilitadores-do-processo-de-aprendizagem/",
+      "slug": "moodle-recursos-como-facilitadores-do-processo-de-aprendizagem",
+      "categoria": "Recurso Educacional",
+      "temas": [
+        "Ferramenta",
+        "Moodle"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 99,
+      "titulo": "Medium: uma rede de textos colaborativa",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/medium/",
+      "slug": "medium",
+      "categoria": "Recurso Educacional",
+      "temas": [
+        "Externo",
+        "Ferramenta"
+      ],
+      "tipo": "Ferramenta Externa",
+      "percursos": [
+        "Ferramentas educacionais"
+      ],
+      "alerta_obsoleto": "Relevancia questionavel"
+    },
+    {
+      "id": 100,
+      "titulo": "Youtube: Edite facilmente seus vídeos",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/youtube-edite-facilmente-seus-videos/",
+      "slug": "youtube-edite-facilmente-seus-videos",
+      "categoria": "Recurso Educacional",
+      "temas": [
+        "Ferramente",
+        "Vídeo"
+      ],
+      "tipo": "Ferramenta Externa",
+      "percursos": [
+        "Ferramentas educacionais"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 101,
+      "titulo": "Aprenda a criar seus próprios objetos educacionais",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-criar-seus-proprios-objetivos-educacionais/",
+      "slug": "como-criar-seus-proprios-objetivos-educacionais",
+      "categoria": "Recurso Educacional",
+      "temas": [
+        "Planejamento"
+      ],
+      "tipo": "Outros",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 102,
+      "titulo": "Segurança do navegador",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/seguranca-do-navegador/",
+      "slug": "seguranca-do-navegador",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Prova",
+        "Segurança"
+      ],
+      "tipo": "Outros",
+      "percursos": [
+        "Direitos Autorais e Seguranca"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 103,
+      "titulo": "Definição de endereço de rede (IP) para acesso a prova",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/definicao-de-endereco-de-rede-ip-para-acesso-a-prova/",
+      "slug": "definicao-de-endereco-de-rede-ip-para-acesso-a-prova",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Procedimento"
+      ],
+      "tipo": "Outros",
+      "percursos": [
+        "Direitos Autorais e Seguranca",
+        "Tudo sobre prova online"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 104,
+      "titulo": "Senha de acesso a prova on-line",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/senha-de-acesso-a-prova-on-line/",
+      "slug": "senha-de-acesso-a-prova-on-line",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Procedimento"
+      ],
+      "tipo": "Tutorial/Avaliacao",
+      "percursos": [
+        "Tudo sobre prova online"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 105,
+      "titulo": "Cronograma de prova: Divisões em vários grupos e horários de prova",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/divisoes-em-varios-grupos-e-horarios-de-prova/",
+      "slug": "divisoes-em-varios-grupos-e-horarios-de-prova",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Prova"
+      ],
+      "tipo": "Outros",
+      "percursos": [
+        "Tudo sobre prova online"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 106,
+      "titulo": "Embaralhamento de questões e de respostas",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/embaralhamento-de-questoes-e-de-respostas/",
+      "slug": "embaralhamento-de-questoes-e-de-respostas",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Procedimento"
+      ],
+      "tipo": "Tutorial/Avaliacao",
+      "percursos": [
+        "Tudo sobre prova online"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 107,
+      "titulo": "Montagem de um banco de questões e sorteios automáticos",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/montagem-de-um-banco-de-questoes-e-sorteios-automaticos/",
+      "slug": "montagem-de-um-banco-de-questoes-e-sorteios-automaticos",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Procedimento"
+      ],
+      "tipo": "Tutorial/Avaliacao",
+      "percursos": [
+        "Tudo sobre prova online"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 108,
+      "titulo": "Prova on-line no AVA – Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/prova-on-line-no-ava-moodle/",
+      "slug": "prova-on-line-no-ava-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Prova"
+      ],
+      "tipo": "Tutorial/Avaliacao",
+      "percursos": [
+        "Tudo sobre prova online"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 109,
+      "titulo": "Recurso de Pasta no Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/recurso-pasta-moodle/",
+      "slug": "recurso-pasta-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Pasta"
+      ],
+      "tipo": "Referencia Moodle",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 110,
+      "titulo": "Como colocar vídeos do Youtube no Moodle?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-colocar-videos-do-youtube-no-moodle/",
+      "slug": "como-colocar-videos-do-youtube-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Rótulo",
+        "Vídeo"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 111,
+      "titulo": "Como revelar e ocultar seções/semanas no Moodle?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-revelar-e-ocultar-semanasblocos-no-moodle/",
+      "slug": "como-revelar-e-ocultar-semanasblocos-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "seção",
+        "semana"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 112,
+      "titulo": "Como criar links dentro do Moodle?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-criar-links-dentro-de-atividades-no-moodle/",
+      "slug": "como-criar-links-dentro-de-atividades-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Atividade",
+        "Hipertexto",
+        "Moodle"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 113,
+      "titulo": "Como acompanhar as notas no quadro de notas do Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-acompanhar-as-notas-no-quadro-de-notas-do-moodle/",
+      "slug": "como-acompanhar-as-notas-no-quadro-de-notas-do-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Livro de notas",
+        "Moodle"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Livro de Notas"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 114,
+      "titulo": "Como mover um recurso dentro da sala virtual do Moodle?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-mover-um-recurso-dentro-da-sala-virtual-do-moodle/",
+      "slug": "como-mover-um-recurso-dentro-da-sala-virtual-do-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Ferramenta",
+        "Moodle"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Gestao e Configuracao do Moodle"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 115,
+      "titulo": "Como alterar a data de uma atividade no Moodle?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-alterar-a-data-de-uma-atividade-no-moodle/",
+      "slug": "como-alterar-a-data-de-uma-atividade-no-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Atividade",
+        "Data",
+        "Moodle"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 116,
+      "titulo": "Tipos de questões do recurso de questionário",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/tipos-de-questoes-do-recurso-de-questionario/",
+      "slug": "tipos-de-questoes-do-recurso-de-questionario",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Atividade",
+        "Moodle",
+        "Questionário"
+      ],
+      "tipo": "Referencia Moodle",
+      "percursos": [
+        "Tudo sobre prova online"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 117,
+      "titulo": "Criando questionários/provas de acordo com o cronograma de aplicação.",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/criando-questionariosprovas-de-acordo-com-o-cronograma-de-aplicacao/",
+      "slug": "criando-questionariosprovas-de-acordo-com-o-cronograma-de-aplicacao",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Atividade",
+        "Moodle",
+        "Questionário"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Tudo sobre prova online"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 118,
+      "titulo": "Atribuindo Notas e/ou pesos nas questões do questionário",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/atribuindo-notas/",
+      "slug": "atribuindo-notas",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Atividade",
+        "Moodle",
+        "Questionário"
+      ],
+      "tipo": "Tutorial/Avaliacao",
+      "percursos": [
+        "Tudo sobre prova online"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 119,
+      "titulo": "Inserindo as questões na prova e configurando os sorteios automáticos",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/inserindo-as-questoes-criadas-no-recurso-questionario/",
+      "slug": "inserindo-as-questoes-criadas-no-recurso-questionario",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Atividade",
+        "Moodle",
+        "Questionário"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [
+        "Tudo sobre prova online"
+      ],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 120,
+      "titulo": "Criando e configurando o recurso de questionário",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/criando-e-configurando-o-recurso-de-questionario/",
+      "slug": "criando-e-configurando-o-recurso-de-questionario",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Atividade",
+        "Moodle",
+        "Questionário"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 121,
+      "titulo": "Criando as questões do recurso de questionário no AVA – Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/criando-as-questoes-no-ava-moodle/",
+      "slug": "criando-as-questoes-no-ava-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Atividade",
+        "Moodle",
+        "Questionário"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 122,
+      "titulo": "Organizando o local da prova: banco de questões e categorias",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/organizando-o-local-da-prova-banco-de-questoes-e-categorias/",
+      "slug": "organizando-o-local-da-prova-banco-de-questoes-e-categorias",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Atividade",
+        "Moodle",
+        "Questionário"
+      ],
+      "tipo": "Tutorial/Avaliacao",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 123,
+      "titulo": "2º Passo – Montando a prova on-line no AVA – Moodle",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/2o-passo-montando-a-prova-on-line-no-ava-moodle/",
+      "slug": "2o-passo-montando-a-prova-on-line-no-ava-moodle",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Prova"
+      ],
+      "tipo": "Tutorial/Avaliacao",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 124,
+      "titulo": "Prova on-line: montando a prova",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/prova-on-line-montando-a-prova/",
+      "slug": "prova-on-line-montando-a-prova",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Prova"
+      ],
+      "tipo": "Tutorial/Avaliacao",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 125,
+      "titulo": "1º Passo – Planejando a prova on-line",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/montando-a-prova-on-line/",
+      "slug": "montando-a-prova-on-line",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Prova"
+      ],
+      "tipo": "Tutorial/Avaliacao",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 126,
+      "titulo": "Prova on-line: Segurança",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/prova-on-line-seguranca/",
+      "slug": "prova-on-line-seguranca",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Prova"
+      ],
+      "tipo": "Tutorial/Avaliacao",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 127,
+      "titulo": "Prova on-line: Entenda o que é",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/prova-oniline-entenda-o-que-e/",
+      "slug": "prova-oniline-entenda-o-que-e",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Moodle",
+        "Prova"
+      ],
+      "tipo": "Conceitual",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 128,
+      "titulo": "PowToon – Crie uma animação de forma fácil",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/26/",
+      "slug": "26",
+      "categoria": "Recurso Educacional",
+      "temas": [
+        "Externo",
+        "Ferramenta"
+      ],
+      "tipo": "Ferramenta Externa",
+      "percursos": [
+        "Ferramentas educacionais"
+      ],
+      "alerta_obsoleto": "Verificar modelo de negocio atual"
+    },
+    {
+      "id": 129,
+      "titulo": "Conheça o Moodle do Ifes",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/coneca-o-novo-moodle-do-ifes/",
+      "slug": "coneca-o-novo-moodle-do-ifes",
+      "categoria": "Ambiente Virtual de Aprendizagem",
+      "temas": [
+        "Ferramenta",
+        "Moodle"
+      ],
+      "tipo": "Conceitual",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 130,
+      "titulo": "O que é mapa de atividades? Como preencher?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/o-que-e-mapa-de-atividades-como-preencher/",
+      "slug": "o-que-e-mapa-de-atividades-como-preencher",
+      "categoria": "Conhecimentos Pedagógicos",
+      "temas": [
+        "Metodologia",
+        "Planejamento"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [],
+      "alerta_obsoleto": null
+    },
+    {
+      "id": 131,
+      "titulo": "Como gravar um tutorial utilizando o Apowersoft?",
+      "url": "https://conhecimento.cefor.ifes.edu.br/base/como-gravar-um-tutorial-utilizando-o-apowersoft/",
+      "slug": "como-gravar-um-tutorial-utilizando-o-apowersoft",
+      "categoria": "Recurso Educacional",
+      "temas": [
+        "Faça você mesmo",
+        "Videotutorial"
+      ],
+      "tipo": "Tutorial",
+      "percursos": [],
+      "alerta_obsoleto": "Ferramenta antiga"
+    }
+  ],
+  "taxonomias": {
+    "categorias": {
+      "Ambiente Virtual de Aprendizagem": 59,
+      "Ambiente virtual": 12,
+      "Recurso Educacional": 10,
+      "Moodle": 7,
+      "Inteligência Artificial": 7,
+      "Tutoriais": 5,
+      "(sem categoria)": 5,
+      "Tecnologias Educacionais": 4,
+      "Ferramentas de comunicação": 4,
+      "Ferramentas de autoria": 3,
+      "Livros Digitais (e-book)": 2,
+      "MOOC": 2,
+      "Procedimentos de Comunicação": 2,
+      "Procedimento de Tecnologia da Informação": 2,
+      "Conhecimentos Pedagógicos": 2,
+      "Contribua com a base de conhecimento": 1,
+      "Aspectos Pedagógicos": 1,
+      "Procedimento Administrativo": 1,
+      "Moodle x Sistema Acadêmico": 1,
+      "Processos": 1
+    },
+    "temas": {
+      "Moodle": 70,
+      "Ferramenta": 29,
+      "Atividade": 15,
+      "Questionário": 11,
+      "Configuração": 11,
+      "Prova": 8,
+      "Inteligência Artificial": 7,
+      "Planejamento": 7,
+      "Procedimento": 7,
+      "sala virtual": 7,
+      "padrão visual": 6,
+      "Educação": 4,
+      "GPT": 4,
+      "código": 4,
+      "Webconferência": 4,
+      "Rótulo": 4,
+      "Notas": 4,
+      "Externo": 4,
+      "Acessibilidade": 3,
+      "h5p": 3,
+      "Faça você mesmo": 3,
+      "mooc": 3,
+      "Tutorial": 3,
+      "Vídeo": 3,
+      "Apresentação": 3,
+      "Ferramentas": 2,
+      "Capacitação": 2,
+      "Livro digital": 2,
+      "AVA": 2,
+      "Sistema Acadêmico": 2,
+      "Data": 2,
+      "base de dados": 1,
+      "atividades": 1,
+      "rúbrica": 1,
+      "Vídeo Summarizer": 1,
+      "Oficinas": 1,
+      "Tecnologia": 1,
+      "Guia para professores": 1,
+      "padronização da sala virtual": 1,
+      "sala modelo": 1,
+      "Interatividade": 1,
+      "Oficina": 1,
+      "administrativo": 1,
+      "diploma": 1,
+      "DocenteEPT": 1,
+      "Importar": 1,
+      "Repositório": 1,
+      "Jogo": 1,
+      "emblemas": 1,
+      "gamificação": 1,
+      "Audiodescrição": 1,
+      "códigos": 1,
+      "comunicação": 1,
+      "design": 1,
+      "Libras": 1,
+      "Download": 1,
+      "mobi": 1,
+      "Procedimentos": 1,
+      "Recurso": 1,
+      "capa de vídeo": 1,
+      "captura": 1,
+      "gravação de tela": 1,
+      "software": 1,
+      "backup": 1,
+      "Formulário": 1,
+      "Checklist": 1,
+      "Conduta": 1,
+      "Internet": 1,
+      "Normas": 1,
+      "Boas práticas": 1,
+      "Glossário": 1,
+      "Processo": 1,
+      "Mensagem": 1,
+      "Ferramente": 1,
+      "Segurança": 1,
+      "Pasta": 1,
+      "seção": 1,
+      "semana": 1,
+      "Hipertexto": 1,
+      "Livro de notas": 1,
+      "Metodologia": 1,
+      "Videotutorial": 1
+    }
+  },
+  "problemas": [
+    {
+      "severidade": "CRITICA",
+      "problema": "WordPress 4.6.30 (EOL desde 2016)",
+      "impacto": "Vulnerabilidades de seguranca criticas",
+      "afetados": "Todo o site"
+    },
+    {
+      "severidade": "CRITICA",
+      "problema": "REST API quebrada (Fatal Error em plugin)",
+      "impacto": "Impossibilita exportacao automatizada",
+      "afetados": "Todo o site"
+    },
+    {
+      "severidade": "CRITICA",
+      "problema": "PHP code leaking no frontend",
+      "impacto": "Campos Setor, Tema, Autor, Data mostram codigo PHP",
+      "afetados": "Todos os 130 artigos"
+    },
+    {
+      "severidade": "ALTA",
+      "problema": "Percurso 'Planejamento e Design Educacional' 404",
+      "impacto": "21 artigos inacessiveis por percurso",
+      "afetados": "Planejamento e Design Educacional"
+    },
+    {
+      "severidade": "ALTA",
+      "problema": "3 percursos com slugs inconsistentes",
+      "impacto": "Links internos apontam para URLs erradas",
+      "afetados": "Iniciando no Moodle, Moodle Codes, Prova Online"
+    },
+    {
+      "severidade": "ALTA",
+      "problema": "Nenhum artigo mostra autor",
+      "impacto": "Campo vazio em 100% dos artigos",
+      "afetados": "Todos os 130 artigos"
+    },
+    {
+      "severidade": "ALTA",
+      "problema": "Nenhum artigo mostra data",
+      "impacto": "Impossivel saber se conteudo e atual",
+      "afetados": "Todos os 130 artigos"
+    },
+    {
+      "severidade": "ALTA",
+      "problema": "Home mostra 6 de 12 percursos",
+      "impacto": "Usuario nao descobre metade dos percursos",
+      "afetados": "6 percursos ocultos"
+    },
+    {
+      "severidade": "ALTA",
+      "problema": "Lista de artigos sem filtros/paginacao",
+      "impacto": "130 artigos em lista unica",
+      "afetados": "Pagina Todos os Artigos"
+    },
+    {
+      "severidade": "MEDIA",
+      "problema": "Titulos inconsistentes (44% sem padrao)",
+      "impacto": "Confusao na busca e navegacao",
+      "afetados": "~57 artigos"
+    },
+    {
+      "severidade": "MEDIA",
+      "problema": "Artigos referenciando Moodle 1.9",
+      "impacto": "Conteudo desatualizado",
+      "afetados": "2 artigos"
+    },
+    {
+      "severidade": "MEDIA",
+      "problema": "Erros de digitacao em slugs",
+      "impacto": "URLs com erros (pontecialidades, oniline)",
+      "afetados": "3+ artigos"
+    },
+    {
+      "severidade": "MEDIA",
+      "problema": "Artigos duplicados tematicamente",
+      "impacto": "3 sobre H5P, 3 sobre Livro de Notas",
+      "afetados": "~6 artigos"
+    },
+    {
+      "severidade": "MEDIA",
+      "problema": "Thumbnails genericas/inexistentes",
+      "impacto": "Baixa atratividade visual",
+      "afetados": "Todos os percursos"
+    },
+    {
+      "severidade": "BAIXA",
+      "problema": "Chatbot sem integracao com conteudo da base",
+      "impacto": "Respostas genericas",
+      "afetados": "Chatbase externo"
+    }
+  ]
+}

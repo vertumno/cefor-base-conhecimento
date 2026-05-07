@@ -1,0 +1,38 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+__MACOSX/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Arquivos temporários
+*.tmp
+*.bak
+*.log
+
+# Arquivos grandes / binários (preferir Git LFS ou armazenamento externo)
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# Arquivos sensíveis
+.env
+.env.local
+*.key
+*.pem
+credentials.json
+
+# Saídas locais não versionadas
+node_modules/
+dist/
+build/
+
+# Exceções (arquivos pequenos que queremos manter mesmo se baterem nos padrões acima)
+!.gitkeep

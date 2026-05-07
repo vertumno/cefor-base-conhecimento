@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CEFOR — Pesquisa de Referências</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<style>
+:root{
+  --bg:#F4F3EE;--surface:#FFFFFF;--surface2:#EDECE6;--border:#DDD9CE;
+  --text:#18170F;--text2:#5C5A50;--text3:#9C9A8E;
+  --accent:#1D6B4A;--accent-l:#E2F0EA;
+  --amber:#7A5010;--amber-l:#FBF0DA;
+  --blue:#1A4878;--blue-l:#E4EDF8;
+  --purple:#42288A;--purple-l:#EEEAF8;
+  --red:#B83020;--red-l:#FAEAE6;
+  --oc1:#1A4878;--oc1l:#E4EDF8;
+  --oc2:#1D6B4A;--oc2l:#E2F0EA;
+  --oc3:#7A5010;--oc3l:#FBF0DA;
+  --oc4:#42288A;--oc4l:#EEEAF8;
+  --oc5:#B83020;--oc5l:#FAEAE6;
+  --r:8px;--rl:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15px}
+h1,h2,h3,h4{font-family:'Syne',sans-serif}
+
+/* LAYOUT */
+.app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
+.sidebar{background:#111;color:#fff;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
+.main{padding:2rem;overflow-y:auto}
+
+/* SIDEBAR */
+.sb-logo{padding:1.4rem 1.2rem .9rem;border-bottom:1px solid rgba(255,255,255,.07)}
+.sb-tag{font-size:9px;letter-spacing:.14em;color:rgba(255,255,255,.3);text-transform:uppercase;font-family:'Syne',sans-serif;margin-bottom:4px}
+.sb-logo h1{font-size:14.5px;font-weight:600;line-height:1.35}
+.sb-logo .sub{font-size:11px;color:rgba(255,255,255,.3);margin-top:2px}
+.sb-nav{padding:.6rem 0;flex:1}
+.sb-sec{padding:.45rem 1.2rem .15rem;font-size:9.5px;letter-spacing:.1em;color:rgba(255,255,255,.22);text-transform:uppercase;font-family:'Syne',sans-serif}
+.sb-item{display:flex;align-items:center;gap:9px;padding:7.5px 1.2rem;cursor:pointer;font-size:12.5px;color:rgba(255,255,255,.5);transition:all .15s;border-left:2px solid transparent;user-select:none}
+.sb-item:hover{background:rgba(255,255,255,.06);color:#fff}
+.sb-item.active{background:rgba(255,255,255,.09);color:#fff;border-left-color:#5DC9A0}
+.dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.16);flex-shrink:0}
+.dot.done{background:#5DC9A0}.dot.partial{background:#F0A96E}
+.sb-footer{padding:.9rem 1.2rem;border-top:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;gap:5px}
+.sb-btn{width:100%;padding:7.5px;border-radius:6px;border:1px solid rgba(255,255,255,.14);background:transparent;color:rgba(255,255,255,.55);font-size:11.5px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s;text-align:center}
+.sb-btn:hover{background:rgba(255,255,255,.08);color:#fff}
+.sb-btn.g{background:#1D6B4A;border-color:#1D6B4A;color:#fff}.sb-btn.g:hover{background:#155438}
+
+/* VIEWS */
+.view{display:none}.view.active{display:block}
+
+/* PAGE HEADER */
+.ph{margin-bottom:1.6rem}
+.ph .bc{font-size:11px;color:var(--text3);margin-bottom:5px}
+.ph h2{font-size:23px;font-weight:700;margin-bottom:3px}
+.ph p{font-size:13px;color:var(--text2)}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:1.1rem}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.9rem 1rem;position:relative;overflow:hidden}
+.stat-lbl{font-size:9.5px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;font-family:'Syne',sans-serif}
+.stat-val{font-size:25px;font-weight:700;font-family:'Syne',sans-serif}
+.stat-sub{font-size:11px;color:var(--text3);margin-top:1px}
+.stat-bar{position:absolute;bottom:0;left:0;height:3px;border-radius:0 99px 0 0;transition:width .5s}
+
+/* PROGRESS */
+.pw{margin-bottom:1.1rem}
+.pi{display:flex;justify-content:space-between;font-size:11px;color:var(--text3);margin-bottom:4px}
+.pb{height:5px;background:var(--border);border-radius:99px;overflow:hidden}
+.pf{height:100%;background:var(--accent);border-radius:99px;transition:width .4s}
+
+/* MAPA DE COBERTURA */
+.cov-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:1.1rem;margin-bottom:1.1rem}
+.cov-title{font-size:12.5px;font-weight:600;font-family:'Syne',sans-serif;margin-bottom:2px}
+.cov-sub{font-size:11px;color:var(--text3);margin-bottom:.9rem}
+.cov-table{width:100%;border-collapse:collapse;font-size:11px}
+.cov-table th{text-align:left;padding:6px 8px;font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);font-family:'Syne',sans-serif;font-weight:600;border-bottom:1px solid var(--border)}
+.cov-table td{padding:5px 8px;border-bottom:1px solid var(--border)}
+.cov-table tr:last-child td{border-bottom:none}
+.cov-table .site-cell{font-weight:600;font-family:'Syne',sans-serif;display:flex;align-items:center;gap:6px}
+.cov-dot{width:22px;height:22px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:10px;cursor:pointer;transition:all .15s}
+.cov-dot:hover{transform:scale(1.15)}
+.cov-dot.done{background:var(--accent-l);color:var(--accent)}
+.cov-dot.partial{background:var(--amber-l);color:var(--amber)}
+.cov-dot.empty{background:var(--surface2);color:var(--border)}
+.cov-pct{font-size:10px;color:var(--text3);font-family:'Syne',sans-serif;font-weight:600}
+
+/* ACHADOS-CHAVE */
+.findings{background:linear-gradient(135deg,#111 0%,#1a2030 100%);border-radius:var(--rl);padding:1.3rem;margin-bottom:1.1rem;color:#fff}
+.findings h3{font-size:14px;font-weight:700;font-family:'Syne',sans-serif;margin-bottom:.9rem;display:flex;align-items:center;gap:8px}
+.findings h3 .badge{background:rgba(255,255,255,.12);font-size:9px;padding:2px 7px;border-radius:99px;font-weight:500;letter-spacing:.05em}
+.find-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:7px}
+.find-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:8px 10px}
+.find-card .fc-top{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.find-card .fc-icon{font-size:15px}
+.find-card .fc-label{font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;font-family:'Syne',sans-serif;font-weight:600;color:rgba(255,255,255,.5)}
+.find-card .fc-val{font-size:19px;font-weight:700;font-family:'Syne',sans-serif;margin-bottom:2px}
+.find-card .fc-desc{font-size:11px;color:rgba(255,255,255,.55);line-height:1.5}
+.find-card .fc-bar{height:3px;border-radius:99px;background:rgba(255,255,255,.1);margin-top:6px;overflow:hidden}
+.find-card .fc-fill{height:100%;border-radius:99px;transition:width .5s}
+
+/* PRÓXIMOS PASSOS */
+.next-steps{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:1.1rem;margin-bottom:1.1rem}
+.next-steps h3{font-size:12.5px;font-weight:600;font-family:'Syne',sans-serif;margin-bottom:.7rem;display:flex;align-items:center;gap:6px}
+.ns-list{list-style:none;padding:0;margin:0}
+.ns-list li{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);font-size:12px;color:var(--text2);line-height:1.5}
+.ns-list li:last-child{border-bottom:none}
+.ns-icon{flex-shrink:0;width:22px;height:22px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px}
+.ns-icon.todo{background:var(--amber-l);color:var(--amber)}
+.ns-icon.tip{background:var(--blue-l);color:var(--blue)}
+.ns-icon.ok{background:var(--accent-l);color:var(--accent)}
+
+/* CHARTS */
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px;margin-bottom:1.4rem}
+.cc{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:1.1rem}
+.ct{font-size:12.5px;font-weight:600;font-family:'Syne',sans-serif;margin-bottom:2px}
+.cs{font-size:11px;color:var(--text3);margin-bottom:.9rem}
+.cw{position:relative;height:190px}
+
+/* INSIGHTS */
+.ig{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:9px;margin-bottom:1.4rem}
+.ic{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.9rem 1rem;display:flex;gap:11px;align-items:flex-start}
+.ic .ii{font-size:19px;flex-shrink:0;margin-top:1px}
+.ic .ib .il{font-size:9.5px;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:2px;font-family:'Syne',sans-serif}
+.ic .ib .it{font-size:12.5px;line-height:1.55}
+.ic.hi{border-color:#A8DFC5;background:var(--accent-l)}
+.ic.wa{border-color:#E8C580;background:var(--amber-l)}
+.ic.in{border-color:#A8C5E8;background:var(--blue-l)}
+
+/* SITES */
+.add-form{display:flex;gap:8px;margin-bottom:1.1rem;flex-wrap:wrap}
+.inp{padding:8px 11px;border:1px solid var(--border);border-radius:var(--r);font-size:13px;background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;transition:border-color .15s;flex:1;min-width:140px}
+.inp:focus{outline:none;border-color:var(--accent)}
+.btn{padding:8px 15px;border-radius:var(--r);font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s;border:1px solid var(--border);background:var(--surface);color:var(--text);white-space:nowrap}
+.btn:hover{background:var(--surface2)}
+.btn.pr{background:var(--accent);border-color:var(--accent);color:#fff}.btn.pr:hover{background:#155438}
+.btn.dk{background:#111;border-color:#111;color:#fff}.btn.dk:hover{background:#222}
+.btn.sm{padding:5px 10px;font-size:11.5px}
+.btn.da{background:var(--red-l);border-color:#E8A898;color:var(--red)}
+
+.sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:9px}
+.sc{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:1rem;cursor:pointer;transition:all .15s;position:relative;overflow:hidden}
+.sc:hover{border-color:var(--accent);transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.sc.done{border-color:#A8DFC5}
+.sc-s{position:absolute;top:0;left:0;width:3px;height:100%;background:var(--border)}
+.sc.done .sc-s{background:#5DC9A0}
+.sc-h{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.av{width:34px;height:34px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;font-family:'Syne',sans-serif}
+.sc-n{font-size:13px;font-weight:600;font-family:'Syne',sans-serif}
+.sc-u{font-size:11px;color:var(--text3)}
+.pills{display:flex;gap:3px;flex-wrap:wrap}
+.pill{font-size:9.5px;padding:2px 7px;border-radius:99px;border:1px solid var(--border);color:var(--text3);background:var(--surface2)}
+.pill.done{background:var(--accent-l);color:var(--accent);border-color:#A8DFC5}
+.pill.partial{background:var(--amber-l);color:var(--amber);border-color:#E8C580}
+.del{position:absolute;top:7px;right:7px;width:21px;height:21px;border-radius:5px;border:1px solid var(--border);background:var(--surface);color:var(--text3);font-size:13px;cursor:pointer;display:none;align-items:center;justify-content:center}
+.sc:hover .del{display:flex}
+
+/* DETAIL */
+.dh{display:flex;align-items:center;gap:9px;margin-bottom:1.4rem;padding-bottom:.9rem;border-bottom:1px solid var(--border)}
+.back{width:29px;height:29px;border-radius:6px;border:1px solid var(--border);background:var(--surface);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text2);flex-shrink:0}
+.back:hover{background:var(--surface2)}
+.oc-tabs{display:flex;border-bottom:1px solid var(--border);overflow-x:auto}
+.oc-tab{padding:8px 13px;font-size:11px;font-family:'Syne',sans-serif;font-weight:500;cursor:pointer;color:var(--text3);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:all .15s}
+.oc-tab:hover{color:var(--text)}
+.oc-tab.active{border-bottom-color:var(--accent);color:var(--accent)}
+.oc-tab.done{color:#5DC9A0}
+
+/* FORM FIELDS */
+.fs-lbl{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:9px;padding-bottom:6px;border-bottom:1px solid var(--border);font-family:'Syne',sans-serif;display:flex;align-items:center;gap:7px}
+.fi{margin-bottom:1rem;background:var(--surface2);border-radius:var(--r);padding:.9rem;border:1px solid var(--border);transition:border-color .15s}
+.fi:focus-within{border-color:var(--accent)}
+.fi-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:7px}
+.fi-lbl{font-size:12px;font-weight:500;color:var(--text);display:flex;align-items:center;gap:6px;flex:1;line-height:1.4}
+.fi-num{width:18px;height:18px;border-radius:50%;background:var(--border);color:var(--text3);font-size:9.5px;display:inline-flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:700;flex-shrink:0}
+.fi-ta{width:100%;min-height:60px;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;resize:vertical;line-height:1.6;transition:border-color .15s}
+.fi-ta:focus{outline:none;border-color:var(--accent)}
+
+/* GALERIA DE PRINTS DO SITE */
+.site-gallery{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:1rem;margin-bottom:1.2rem}
+.site-gallery-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem;flex-wrap:wrap;gap:8px}
+.site-gallery-title{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);font-family:'Syne',sans-serif;display:flex;align-items:center;gap:7px}
+.site-gallery-title .gcount{background:var(--border);color:var(--text3);font-size:10px;padding:1px 7px;border-radius:99px;font-family:'DM Sans',sans-serif;font-weight:600}
+.site-gallery-title .gcount.has{background:var(--accent-l);color:var(--accent)}
+.prints-row{display:flex;flex-wrap:wrap;gap:8px;min-height:68px;align-items:flex-start}
+.thumb-wrap{position:relative;width:90px;height:68px;border-radius:7px;overflow:hidden;border:1px solid var(--border);cursor:pointer;flex-shrink:0;background:var(--border)}
+.thumb-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb-del{position:absolute;top:3px;right:3px;width:18px;height:18px;border-radius:50%;background:rgba(0,0,0,.65);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity .15s}
+.thumb-wrap:hover .thumb-del{opacity:1}
+.add-print-btn{width:90px;height:68px;border-radius:7px;border:1.5px dashed var(--border);background:var(--surface);color:var(--text3);font-size:11px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;transition:all .15s;flex-shrink:0;font-family:'DM Sans',sans-serif}
+.add-print-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-l)}
+.add-print-btn .icon{font-size:20px}
+
+/* F12 */
+.f12-wrap{background:var(--amber-l);border:1px dashed #DDB870;border-radius:var(--r);padding:.9rem;margin-top:1rem}
+.f12-lbl{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;color:var(--amber);margin-bottom:4px;font-family:'Syne',sans-serif}
+.f12-badge{background:#111;color:#fff;font-size:9.5px;padding:2px 6px;border-radius:4px}
+.f12-hint{font-size:11.5px;color:var(--amber);margin-bottom:7px;line-height:1.6}
+.f12-ta{width:100%;min-height:75px;padding:8px 10px;border:1px solid #DDB870;border-radius:6px;font-size:13px;background:#fff;color:var(--text);font-family:'DM Sans',sans-serif;resize:vertical;line-height:1.6}
+.f12-ta:focus{outline:none;border-color:var(--amber)}
+
+/* FORM ACTIONS */
+.fa{display:flex;gap:7px;align-items:center;padding-top:.9rem;border-top:1px solid var(--border);margin-top:1rem}
+.done-lbl{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text2);cursor:pointer;padding:5px 10px;border-radius:var(--r);border:1px solid var(--border);background:var(--surface)}
+.done-lbl input{accent-color:var(--accent);width:13px;height:13px}
+.done-lbl.ok{background:var(--accent-l);border-color:#A8DFC5;color:var(--accent);font-weight:500}
+.saved-tag{font-size:11px;color:var(--accent);display:none;align-items:center;gap:4px}
+
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:300;display:none;align-items:center;justify-content:center;padding:1rem}
+.lb.open{display:flex}
+.lb img{max-width:90vw;max-height:88vh;border-radius:var(--r);object-fit:contain}
+.lb-close{position:fixed;top:18px;right:22px;color:#fff;font-size:28px;cursor:pointer;line-height:1;opacity:.7}
+.lb-close:hover{opacity:1}
+.lb-caption{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.6);font-size:12px;background:rgba(0,0,0,.5);padding:5px 12px;border-radius:99px}
+
+/* IA */
+.ia-block{background:linear-gradient(135deg,#111 0%,#1a2818 100%);border-radius:var(--rl);padding:1.4rem;margin-bottom:1.4rem;color:#fff}
+.ia-hd{display:flex;align-items:center;gap:9px;margin-bottom:.9rem}
+.ia-badge{background:rgba(255,255,255,.13);color:#fff;font-size:9.5px;padding:2px 8px;border-radius:99px;font-family:'Syne',sans-serif;letter-spacing:.06em}
+.ia-title{font-size:14.5px;font-weight:600;font-family:'Syne',sans-serif}
+.ia-key-row{display:flex;gap:7px;margin-bottom:.9rem;flex-wrap:wrap}
+.api-inp{flex:1;min-width:190px;padding:7px 11px;border:1px solid rgba(255,255,255,.18);border-radius:var(--r);font-size:13px;background:rgba(255,255,255,.07);color:#fff;font-family:'DM Sans',sans-serif}
+.api-inp::placeholder{color:rgba(255,255,255,.28)}
+.api-inp:focus{outline:none;border-color:rgba(255,255,255,.45)}
+.ia-res{background:rgba(255,255,255,.07);border-radius:var(--r);padding:1rem;font-size:13px;color:rgba(255,255,255,.82);line-height:1.75;white-space:pre-wrap;min-height:75px;border:1px solid rgba(255,255,255,.1)}
+.ia-res.loading{color:rgba(255,255,255,.35);font-style:italic}
+.ia-btn{padding:7px 13px;border-radius:6px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);color:#fff;transition:all .15s}
+.ia-btn:hover{background:rgba(255,255,255,.18)}
+.ia-btn.gr{background:#1D6B4A;border-color:#1D6B4A}
+
+/* RELATÓRIO */
+.rs{margin-bottom:1.8rem}
+.rs h3{font-size:17px;font-weight:700;margin-bottom:.9rem}
+.oc-cmp{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);margin-bottom:.9rem;overflow:hidden}
+.oc-cmp-h{padding:.9rem 1.1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px;background:var(--surface2)}
+.oc-cmp-h h4{font-size:13.5px;font-weight:600;font-family:'Syne',sans-serif}
+.oc-cmp-b{padding:1.1rem}
+.campo-blk{margin-bottom:1.1rem}
+.campo-blk:last-child{margin-bottom:0}
+.campo-title{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px;padding-bottom:5px;border-bottom:1px solid var(--border);font-family:'Syne',sans-serif}
+.campo-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:7px;margin-bottom:6px}
+.campo-item{background:var(--surface2);border-radius:7px;padding:8px 10px}
+.campo-item.f12i{background:var(--amber-l);border-left:3px solid var(--amber)}
+.cs-lbl{font-size:9.5px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px;font-family:'Syne',sans-serif}
+.cs-txt{font-size:12.5px;color:var(--text2);line-height:1.5}
+/* prints no comparativo */
+.campo-prints{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.rep-thumb{width:70px;height:52px;border-radius:5px;overflow:hidden;border:1px solid var(--border);cursor:pointer}
+.rep-thumb img{width:100%;height:100%;object-fit:cover}
+.auto-ins{background:var(--accent-l);border:1px solid #A8DFC5;border-radius:6px;padding:7px 10px;font-size:12px;color:var(--accent);margin-top:5px;display:flex;gap:6px;line-height:1.5}
+.auto-ins.diverge{background:var(--amber-l);border-color:#E8C580;color:var(--amber)}
+.auto-ins.alert{background:var(--red-l);border-color:#E8A898;color:var(--red)}
+.auto-ins.info{background:var(--blue-l);border-color:#A8C5E8;color:var(--blue)}
+
+/* SÍNTESE POR ÓCULOS */
+.oc-synth{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:9px;margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px dashed var(--border)}
+.synth-card{background:var(--surface);border-radius:var(--r);padding:.9rem 1rem;border:1px solid var(--border);position:relative;overflow:hidden}
+.synth-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%}
+.synth-site{font-size:11px;font-weight:700;font-family:'Syne',sans-serif;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.synth-site .mini-av{width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:8.5px;font-weight:700;flex-shrink:0;font-family:'Syne',sans-serif}
+.synth-bullets{list-style:none;padding:0;margin:0}
+.synth-bullets li{font-size:11.5px;color:var(--text2);line-height:1.5;padding:2px 0;display:flex;gap:5px;align-items:flex-start}
+.synth-bullets li::before{content:'›';color:var(--text3);font-weight:700;flex-shrink:0;margin-top:-1px}
+.synth-tag{display:inline-block;font-size:9px;padding:1px 6px;border-radius:99px;font-weight:600;font-family:'Syne',sans-serif;letter-spacing:.04em}
+.synth-tag.has{background:var(--accent-l);color:var(--accent)}
+.synth-tag.no{background:var(--red-l);color:var(--red)}
+.synth-tag.partial{background:var(--amber-l);color:var(--amber)}
+
+/* SÍNTESE GERAL DO SITE */
+.site-synth{background:linear-gradient(135deg,#111 0%,#1a2030 100%);border-radius:var(--rl);padding:1.4rem;margin-bottom:1.4rem;color:#fff}
+.site-synth h3{font-size:15px;font-weight:700;font-family:'Syne',sans-serif;margin-bottom:.9rem;display:flex;align-items:center;gap:8px}
+.site-synth h3 .badge{background:rgba(255,255,255,.12);font-size:9.5px;padding:2px 8px;border-radius:99px;font-weight:500;letter-spacing:.05em}
+.synth-site-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:9px}
+.synth-site-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:.9rem}
+.synth-site-card .ssc-name{font-size:13px;font-weight:600;font-family:'Syne',sans-serif;margin-bottom:7px;display:flex;align-items:center;gap:7px}
+.synth-site-card .ssc-name .mini-av{width:22px;height:22px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;font-family:'Syne',sans-serif}
+.ssc-row{display:flex;gap:5px;align-items:flex-start;margin-bottom:4px}
+.ssc-oc-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.ssc-oc-text{font-size:11.5px;color:rgba(255,255,255,.7);line-height:1.5}
+.ssc-oc-text strong{color:rgba(255,255,255,.9);font-weight:600}
+.ssc-highlights{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px;padding-top:7px;border-top:1px solid rgba(255,255,255,.08)}
+.ssc-hl{font-size:9.5px;padding:2px 7px;border-radius:99px;font-weight:500}
+
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:9px}
+.rc{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden}
+.rc-h{padding:.9rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.rc-b{padding:1rem}
+.rc-oc{margin-bottom:.8rem}
+.rc-oc:last-child{margin-bottom:0}
+.rc-oc-t{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:5px;font-family:'Syne',sans-serif}
+.rc-note{font-size:12.5px;color:var(--text2);line-height:1.6;background:var(--surface2);border-radius:5px;padding:6px 8px;margin-bottom:3px}
+.rc-nlbl{font-size:9.5px;color:var(--text3);margin-bottom:2px;font-family:'Syne',sans-serif;font-weight:600;letter-spacing:.05em}
+.rc-note.f12n{background:var(--amber-l);border-left:3px solid var(--amber)}
+/* prints no relatório por site */
+.rc-prints{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.en{font-size:11px;color:var(--text3);font-style:italic}
+
+/* MODELO */
+.mod-sec{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:1.4rem;margin-bottom:1.1rem}
+.mod-sec h3{font-size:14.5px;font-weight:600;font-family:'Syne',sans-serif;margin-bottom:.7rem}
+.mod-desc{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:.9rem}
+.step{display:flex;gap:9px;align-items:flex-start;margin-bottom:9px;font-size:13px;color:var(--text2);line-height:1.55}
+.sn{width:21px;height:21px;border-radius:50%;background:#111;color:#fff;font-size:10.5px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:700;flex-shrink:0;margin-top:1px}
+.mod-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:.9rem}
+
+/* MODAL */
+.mo{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:center;justify-content:center;padding:1rem}
+.mo.open{display:flex}
+.modal{background:var(--surface);border-radius:var(--rl);padding:1.6rem;width:100%;max-width:460px;max-height:90vh;overflow-y:auto;border:1px solid var(--border)}
+.modal h3{font-size:17px;font-weight:700;margin-bottom:5px;font-family:'Syne',sans-serif}
+.modal p{font-size:13px;color:var(--text2);margin-bottom:1.1rem;line-height:1.6}
+.ma{display:flex;gap:7px;justify-content:flex-end;margin-top:1.1rem}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;right:20px;background:#111;color:#fff;padding:8px 15px;border-radius:var(--r);font-size:13px;z-index:400;opacity:0;transform:translateY(5px);transition:all .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px}
+.empty{text-align:center;padding:2.5rem 1rem;color:var(--text3)}
+.empty h3{font-size:15px;font-weight:600;color:var(--text2);margin-bottom:5px;font-family:'Syne',sans-serif}
+.empty p{font-size:13px;line-height:1.6}
+
+@media(max-width:660px){
+  .app{grid-template-columns:1fr}.sidebar{position:relative;height:auto}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}.cg{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-tag">IFes · EaD · CEFOR</div>
+    <h1>Base de Conhecimento</h1>
+    <div class="sub">Pesquisa de referências</div>
+  </div>
+  <nav class="sb-nav">
+    <div class="sb-sec">Menu</div>
+    <div class="sb-item active" onclick="go('dashboard')" id="nav-dashboard">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1.5" fill="currentColor" opacity=".8"/><rect x="9" y="1" width="6" height="6" rx="1.5" fill="currentColor" opacity=".8"/><rect x="1" y="9" width="6" height="6" rx="1.5" fill="currentColor" opacity=".8"/><rect x="9" y="9" width="6" height="6" rx="1.5" fill="currentColor" opacity=".8"/></svg>Painel
+    </div>
+    <div class="sb-item" onclick="go('sites')" id="nav-sites">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 1c0 0-3 3-3 7s3 7 3 7" stroke="currentColor" stroke-width="1.5"/><path d="M1 8h14" stroke="currentColor" stroke-width="1.5"/></svg>Sites
+    </div>
+    <div class="sb-item" onclick="go('relatorio')" id="nav-relatorio">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M5 6h6M5 9h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Relatório + IA
+    </div>
+    <div class="sb-item" onclick="go('modelo')" id="nav-modelo">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Modelo para IA
+    </div>
+    <div class="sb-sec" style="margin-top:7px">Sites cadastrados</div>
+    <div id="sb-sites"></div>
+  </nav>
+  <div class="sb-footer">
+    <button class="sb-btn" onclick="exportJSON()">⬇ Exportar dados (ZIP)</button>
+    <label style="display:block"><input type="file" id="imp-json" accept=".zip,.json" style="display:none" onchange="importJSON(event)"/><span class="sb-btn" style="cursor:pointer;display:block">⬆ Importar dados (ZIP/JSON)</span></label>
+    <button class="sb-btn g" onclick="exportRelHTML()">📄 Exportar relatório HTML</button>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- DASHBOARD -->
+  <div class="view active" id="view-dashboard">
+    <div class="ph"><div class="bc">CEFOR · Painel</div><h2>Painel geral</h2><p>Visão completa do andamento da pesquisa, achados-chave e próximos passos</p></div>
+    <div class="stats-grid" id="dash-stats"></div>
+    <div class="pw"><div class="pi"><span>Progresso geral da pesquisa</span><span id="dpct">0%</span></div><div class="pb"><div class="pf" id="dpf" style="width:0%"></div></div></div>
+    <div id="dash-coverage"></div>
+    <div id="dash-findings"></div>
+    <div id="dash-next"></div>
+    <div class="cg">
+      <div class="cc"><div class="ct">Óculos concluídos por site</div><div class="cs">Quantos dos 5 óculos cada site tem completos</div><div class="cw"><canvas id="c1"></canvas></div></div>
+      <div class="cc"><div class="ct">Cobertura por óculos</div><div class="cs">% de sites com cada óculos preenchido</div><div class="cw"><canvas id="c2"></canvas></div></div>
+      <div class="cc"><div class="ct">Radar de funcionalidades</div><div class="cs">Presença de recursos-chave por site</div><div class="cw"><canvas id="c5"></canvas></div></div>
+      <div class="cc"><div class="ct">Volume de observações</div><div class="cs">Campos preenchidos por site</div><div class="cw"><canvas id="c3"></canvas></div></div>
+    </div>
+    <div style="margin-bottom:.6rem;font-size:13px;font-weight:600;font-family:'Syne',sans-serif">Insights automáticos</div>
+    <div class="ig" id="auto-ins"></div>
+  </div>
+
+  <!-- SITES -->
+  <div class="view" id="view-sites">
+    <div class="ph"><div class="bc">CEFOR · Sites</div><h2>Sites pesquisados</h2><p>Adicione e preencha as observações nos 5 óculos</p></div>
+    <div class="add-form">
+      <input class="inp" id="inp-nome" placeholder="Nome do site (ex: MDN Web Docs)"/>
+      <input class="inp" id="inp-url" placeholder="URL (ex: developer.mozilla.org)"/>
+      <button class="btn pr" onclick="addSite()">+ Adicionar site</button>
+    </div>
+    <div id="sites-ct"></div>
+  </div>
+
+  <!-- DETALHE -->
+  <div class="view" id="view-detail">
+    <div class="dh">
+      <button class="back" onclick="go('sites')">←</button>
+      <div>
+        <div style="font-size:11px;color:var(--text3);margin-bottom:1px" id="det-bc"></div>
+        <h2 style="font-size:20px;font-weight:700" id="det-nm"></h2>
+        <div style="margin-top:3px;min-height:16px" id="det-url"></div>
+      </div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden">
+      <div class="site-gallery" style="border-radius:0;border:none;border-bottom:1px solid var(--border);margin-bottom:0">
+        <div class="site-gallery-header">
+          <div class="site-gallery-title">
+            📷 Prints do site
+            <span class="gcount" id="gallery-count">0</span>
+          </div>
+          <span style="font-size:11px;color:var(--text3)">Clique em uma imagem para ampliar · Passe o mouse para remover</span>
+        </div>
+        <div class="prints-row" id="site-gallery-row"></div>
+      </div>
+      <div class="oc-tabs" id="oc-tabs"></div>
+      <div style="padding:1.4rem" id="oc-form"></div>
+    </div>
+  </div>
+
+  <!-- RELATÓRIO -->
+  <div class="view" id="view-relatorio">
+    <div class="ph"><div class="bc">CEFOR · Relatório</div><h2>Relatório + Análise IA</h2><p>Comparativo por campo, prints registrados e análise gerada por inteligência artificial</p></div>
+    <div class="ia-block">
+      <div class="ia-hd"><span class="ia-badge">IA</span><span class="ia-title">Análise comparativa — Claude</span></div>
+      <div class="ia-key-row">
+        <input class="api-inp" id="rel-key" placeholder="Chave de API (sk-ant-...) — opcional" type="password"/>
+        <button class="ia-btn gr" onclick="runIA()">▶ Gerar análise</button>
+        <button class="ia-btn" onclick="copyPrompt()">Copiar prompt para Claude.ai</button>
+      </div>
+      <div style="font-size:11px;color:rgba(255,255,255,.3);margin-bottom:.9rem;line-height:1.6"><strong style="color:rgba(255,255,255,.45)">Com chave:</strong> análise automática. &nbsp;|&nbsp; <strong style="color:rgba(255,255,255,.45)">Sem chave:</strong> copie o prompt, use no Claude.ai e cole a resposta abaixo.</div>
+      <div class="ia-res loading" id="ia-res">A análise aparecerá aqui.</div>
+      <div style="margin-top:7px;display:flex;gap:7px;flex-wrap:wrap">
+        <textarea class="api-inp" id="ia-manual" style="min-height:55px;resize:vertical;flex:1;min-width:180px" placeholder="Resposta manual do Claude.ai — cole aqui e clique em Salvar"></textarea>
+        <button class="ia-btn" onclick="saveManualIA()" style="align-self:flex-end">Salvar</button>
+      </div>
+    </div>
+    <div id="rep-synth"></div>
+    <div class="rs"><h3>Comparativo por óculos e campo</h3><div id="rep-cmp"></div></div>
+    <div class="rs"><h3>Observações completas por site</h3><div class="rg" id="rep-site"></div></div>
+  </div>
+
+  <!-- MODELO -->
+  <div class="view" id="view-modelo">
+    <div class="ph"><div class="bc">CEFOR · Modelo</div><h2>Modelo para análise por IA</h2><p>Baixe o modelo, entregue para uma IA analisar o site, e importe o resultado</p></div>
+    <div class="mod-sec">
+      <h3>Como funciona</h3>
+      <div class="step"><span class="sn">1</span><span>Baixe o modelo JSON ou Markdown abaixo</span></div>
+      <div class="step"><span class="sn">2</span><span>Abra o Claude.ai. Cole o conteúdo do arquivo e diga: <em>"Analise o site [URL] e preencha todos os campos com observações detalhadas"</em></span></div>
+      <div class="step"><span class="sn">3</span><span>A IA devolve o arquivo preenchido. Salve como <strong>.json</strong></span></div>
+      <div class="step"><span class="sn">4</span><span>Selecione o site de destino abaixo e importe o arquivo. Os dados preenchem automaticamente</span></div>
+      <div class="mod-actions">
+        <button class="btn dk" onclick="dlModeloJSON()">⬇ Baixar modelo JSON</button>
+        <button class="btn" onclick="dlModeloMD()">⬇ Baixar modelo Markdown</button>
+      </div>
+    </div>
+    <div class="mod-sec">
+      <h3>Importar resposta da IA</h3>
+      <div class="mod-desc">Selecione o site de destino e importe o JSON preenchido.</div>
+      <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:.9rem">
+        <select class="inp" id="ia-site-sel" style="flex:1;min-width:170px"><option value="">Selecione o site de destino...</option></select>
+        <label class="btn" style="cursor:pointer">⬆ Importar resposta IA<input type="file" id="ia-imp" accept=".json" style="display:none" onchange="importIAResp(event)"/></label>
+      </div>
+      <label style="font-size:12px;color:var(--text3);display:flex;align-items:center;gap:6px;cursor:pointer"><input type="checkbox" id="ow-chk"/> Substituir campos já preenchidos</label>
+    </div>
+    <div class="mod-sec">
+      <h3>Prompt recomendado</h3>
+      <div class="mod-desc">Copie e cole no Claude.ai junto com o arquivo modelo:</div>
+      <div style="background:var(--surface2);border-radius:var(--r);padding:.9rem;font-size:12.5px;color:var(--text2);line-height:1.7;border:1px solid var(--border);white-space:pre-wrap" id="prompt-box"></div>
+      <button class="btn" style="margin-top:9px" onclick="copyPromptModelo()">Copiar prompt</button>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="closeLB()">
+  <span class="lb-close" onclick="closeLB()">×</span>
+  <img id="lb-img" src="" alt=""/>
+  <div class="lb-caption" id="lb-cap"></div>
+</div>
+
+<!-- MODAL CONFIRM -->
+<div class="mo" id="mo">
+  <div class="modal">
+    <h3 id="mo-t">Confirmar</h3><p id="mo-b"></p>
+    <div class="ma"><button class="btn" onclick="closeMo()">Cancelar</button><button class="btn da" id="mo-ok">Confirmar</button></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// =====================================================================
+// ÓCULOS CONFIG
+// =====================================================================
+const OC = [
+  {id:'visual',label:'Visual',n:'1',color:'var(--oc1)',colorL:'var(--oc1l)',desc:'Como o site se parece',
+   itens:['Cores usadas (fundo, texto, destaques, links)','Tipos de letra (fontes): são grandes? pequenas? serifadas? modernas?','Espaço entre os elementos: o site é "arejado" ou "cheio"?','Como ficam os títulos, subtítulos e o corpo do texto visualmente','Tem modo escuro? Como fica?','Algo visual que chamou muito a atenção (positiva ou negativamente)'],
+   f12:'Nome exato da fonte do título e do corpo · Tamanho da fonte do título e do corpo (ex: 32px / 16px) · Cor exata do texto e do fundo (ex: #1a1a1a / #ffffff) · Cor dos links no estado normal e hover · Espaçamento entre parágrafos'},
+  {id:'leitura',label:'Leitura',n:'2',color:'var(--oc2)',colorL:'var(--oc2l)',desc:'Como é ler um artigo longo',
+   itens:['Dá vontade de continuar lendo ou cansa depois de 2 parágrafos?','O texto é largo (ocupa toda a tela) ou tem coluna central mais estreita?','Tem indicador de progresso de leitura (barrinha no topo)?','Mostra estimativa de tempo de leitura ("leitura de 5 min")?','Tem índice de seções para navegar pelo artigo?','Dá para aumentar a fonte ou mudar o tema de leitura?','Como ficam imagens, tabelas e blocos de código dentro do texto?'],
+   f12:'Largura da coluna de texto (ex: 680px) · line-height do corpo (ex: 1.6 ou 28px) · margin-bottom do &lt;p&gt; (ex: 16px) · Tamanho da fonte do corpo (ex: 18px)'},
+  {id:'interacao',label:'Interação',n:'3',color:'var(--oc3)',colorL:'var(--oc3l)',desc:'O que dá para fazer no artigo',
+   itens:['Tem botão de curtir, favoritar ou marcar como útil?','Dá para compartilhar? Como?','Dá para comentar? No artigo todo ou em trechos específicos?','Tem botão de copiar (código, link, referência)?','Dá para salvar artigos para ler depois?','Se faz parte de trilha/curso, como funciona a navegação entre artigos?','Alguma interação que pareceu muito inteligente ou muito desnecessária'],
+   f12:null},
+  {id:'estrutura',label:'Estrutura',n:'4',color:'var(--oc4)',colorL:'var(--oc4l)',desc:'Como o artigo é escrito e organizado',
+   itens:['O artigo começa com um resumo do que vai ser abordado?','Tem algum bloco de "TL;DR" (resumão para quem está com pressa)?','Os títulos das seções são claros e descritivos?','Tem destaques, caixas de alerta, dicas ou avisos visuais dentro do texto?','Tem exemplos práticos ou só teoria?','Tem glossário ou definições de termos?','Tem referências ou indicação de fontes?','O artigo faz perguntas e responde, ou só afirma?'],
+   f12:null},
+  {id:'acessib',label:'Acessibilidade',n:'5',color:'var(--oc5)',colorL:'var(--oc5l)',desc:'Recursos de acessibilidade',
+   itens:['Tem ícone/widget de acessibilidade na tela? Como é? O que ele oferece?','Tem tradução em Libras (ícone, avatar de intérprete virtual)?','Tem botão para aumentar/diminuir a fonte?','Tem opção de alto contraste ou modo escuro?','Tem opção de fonte para dislexia?','Tem leitura em voz alta (text-to-speech)?','Tem atalhos de teclado explicados em algum lugar?','Alguma outra solução de acessibilidade que chamou atenção?'],
+   f12:null}
+];
+
+const AVBG=['#E4EDF8','#E2F0EA','#FBF0DA','#EEEAF8','#FAEAE6','#F0E8FF','#E8F4E8','#FFF3E0'];
+const AVTC=['#1A4878','#1D6B4A','#7A5010','#42288A','#B83020','#5B21B6','#15803D','#B45309'];
+const PAL=['#1A4878','#1D6B4A','#7A5010','#42288A','#B83020','#5B21B6','#15803D','#B45309'];
+
+// =====================================================================
+// STATE — dados textuais no localStorage, imagens no IndexedDB
+// =====================================================================
+let D = {sites:[], notes:{}, iaAnalysis:''};
+let curSi = null, curOc = OC[0].id;
+let charts = {};
+let DB = null; // IndexedDB
+
+const LS_KEY = 'cefor_v3';
+function saveLS(){ localStorage.setItem(LS_KEY, JSON.stringify(D)); }
+function loadLS(){ try{ const d=localStorage.getItem(LS_KEY); if(d) D=JSON.parse(d); }catch(e){} }
+
+// IndexedDB para imagens
+function initDB(){
+  return new Promise((res,rej)=>{
+    const req = indexedDB.open('cefor_imgs', 1);
+    req.onupgradeneeded = e => e.target.result.createObjectStore('imgs', {keyPath:'key'});
+    req.onsuccess = e => { DB=e.target.result; res(DB); };
+    req.onerror = e => { console.warn('IndexedDB indisponível'); res(null); };
+  });
+}
+
+function imgKey(si,oc,campo,idx){ return `${si}_${oc}_${campo}_${idx}`; }
+
+async function saveImg(si,oc,campo,idx,b64){
+  if(!DB) return;
+  return new Promise((res,rej)=>{
+    const tx=DB.transaction('imgs','readwrite');
+    tx.objectStore('imgs').put({key:imgKey(si,oc,campo,idx),data:b64});
+    tx.oncomplete=()=>res(); tx.onerror=()=>rej();
+  });
+}
+
+async function getImg(si,oc,campo,idx){
+  if(!DB) return null;
+  return new Promise((res)=>{
+    const tx=DB.transaction('imgs','readonly');
+    const req=tx.objectStore('imgs').get(imgKey(si,oc,campo,idx));
+    req.onsuccess=()=>res(req.result?req.result.data:null);
+    req.onerror=()=>res(null);
+  });
+}
+
+async function delImg(si,oc,campo,idx){
+  if(!DB) return;
+  return new Promise((res)=>{
+    const tx=DB.transaction('imgs','readwrite');
+    tx.objectStore('imgs').delete(imgKey(si,oc,campo,idx));
+    tx.oncomplete=()=>res();
+  });
+}
+
+function imgExtFromB64(b64){
+  if(!b64) return 'jpg';
+  if(b64.startsWith('data:image/png')) return 'png';
+  if(b64.startsWith('data:image/gif')) return 'gif';
+  if(b64.startsWith('data:image/webp')) return 'webp';
+  return 'jpg';
+}
+
+async function getAllImgsForExport(){
+  if(!DB) return {};
+  return new Promise((res)=>{
+    const tx=DB.transaction('imgs','readonly');
+    const req=tx.objectStore('imgs').getAll();
+    req.onsuccess=()=>{
+      const out={};
+      (req.result||[]).forEach(r=>out[r.key]=r.data);
+      res(out);
+    };
+    req.onerror=()=>res({});
+  });
+}
+
+async function importAllImgs(imgMap){
+  if(!DB) return;
+  return new Promise((res)=>{
+    const tx=DB.transaction('imgs','readwrite');
+    const store=tx.objectStore('imgs');
+    Object.keys(imgMap).forEach(k=>store.put({key:k,data:imgMap[k]}));
+    tx.oncomplete=()=>res();
+  });
+}
+
+// helpers para lista de prints por campo (armazena só os índices/contagem no notes)
+function getPrintsInfo(si,oc,campo){
+  const raw = D.notes[`${si}_${oc}_${campo}_prints`];
+  return raw ? JSON.parse(raw) : [];
+}
+function setPrintsInfo(si,oc,campo,arr){
+  D.notes[`${si}_${oc}_${campo}_prints`] = JSON.stringify(arr);
+  saveLS();
+}
+
+// nota texto
+function nk(si,oc,c){ return `${si}_${oc}_${c}`; }
+function gn(si,oc,c){ return D.notes[nk(si,oc,c)]||''; }
+function sn(si,oc,c,v){ D.notes[nk(si,oc,c)]=v; saveLS(); }
+function isDone(si,oc){ return !!D.notes[nk(si,oc,'__done')]; }
+function setDone(si,oc,v){ D.notes[nk(si,oc,'__done')]=v?'1':''; saveLS(); }
+
+function countCampos(si){
+  let n=0;
+  OC.forEach(o=>{
+    o.itens.forEach((_,j)=>{ if(gn(si,o.id,j).trim()) n++; });
+    if(o.f12 && gn(si,o.id,'f12').trim()) n++;
+  });
+  return n;
+}
+
+function countPrints(si){
+  return getGalleryInfo(si).length;
+}
+
+function totalPrints(){
+  return D.sites.reduce((a,_,i)=>a+countPrints(i),0);
+}
+
+// =====================================================================
+// NAVIGATION
+// =====================================================================
+function go(v, si){
+  document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.sb-item').forEach(el=>el.classList.remove('active'));
+  document.getElementById('view-'+v).classList.add('active');
+  const nav=document.getElementById('nav-'+v);
+  if(nav) nav.classList.add('active');
+  if(v==='detail' && si!==undefined){ curSi=si; renderDetail(); }
+  if(v==='dashboard') renderDashboard();
+  if(v==='sites') renderSites();
+  if(v==='relatorio') renderRelatorio();
+  if(v==='modelo') renderModelo();
+}
+
+// =====================================================================
+// SIDEBAR
+// =====================================================================
+function renderSidebar(){
+  const el=document.getElementById('sb-sites');
+  const sel=document.getElementById('ia-site-sel');
+  if(!D.sites.length){
+    el.innerHTML='<div style="padding:6px 1.2rem;font-size:11px;color:rgba(255,255,255,.2);font-style:italic">Nenhum site ainda</div>';
+    if(sel) sel.innerHTML='<option value="">Selecione o site de destino...</option>';
+    return;
+  }
+  el.innerHTML=D.sites.map((s,i)=>{
+    const d=OC.filter(o=>isDone(i,o.id)).length;
+    const cls=d===OC.length?'done':d>0?'partial':'';
+    return `<div class="sb-item" onclick="go('detail',${i})"><span class="dot ${cls}"></span><span style="font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${s.nome}</span></div>`;
+  }).join('');
+  if(sel) sel.innerHTML='<option value="">Selecione o site de destino...</option>'+D.sites.map((s,i)=>`<option value="${i}">${s.nome}</option>`).join('');
+}
+
+// =====================================================================
+// SITES
+// =====================================================================
+function siteHref(url){
+  if(!url) return null;
+  return /^https?:\/\//i.test(url) ? url : 'https://'+url;
+}
+
+function addSite(){
+  const nome=document.getElementById('inp-nome').value.trim();
+  const url=document.getElementById('inp-url').value.trim();
+  if(!nome){toast('Digite o nome do site');return;}
+  const ci=D.sites.length%AVBG.length;
+  D.sites.push({nome,url,bg:AVBG[ci],tc:AVTC[ci]});
+  saveLS();
+  document.getElementById('inp-nome').value='';
+  document.getElementById('inp-url').value='';
+  renderSites(); renderSidebar(); toast('Site adicionado!');
+}
+
+function deleteSite(i){
+  confirmMo(`Remover "${D.sites[i].nome}"?`,'Todas as observações e prints serão apagados.',async ()=>{
+    Object.keys(D.notes).filter(k=>k.startsWith(i+'_')).forEach(k=>delete D.notes[k]);
+    D.sites.splice(i,1);
+    // reindexar
+    const nn={};
+    Object.keys(D.notes).forEach(k=>{
+      const m=k.match(/^(\d+)_(.*)/);
+      if(m){ const si=parseInt(m[1]); if(si>i) nn[`${si-1}_${m[2]}`]=D.notes[k]; else if(si<i) nn[k]=D.notes[k]; }
+      else nn[k]=D.notes[k];
+    });
+    D.notes=nn; saveLS();
+    renderSites(); renderSidebar(); toast('Site removido');
+  });
+}
+
+function renderSites(){
+  const el=document.getElementById('sites-ct');
+  if(!D.sites.length){el.innerHTML='<div class="empty"><h3>Nenhum site cadastrado</h3><p>Adicione o primeiro site acima para começar.</p></div>';return;}
+  el.innerHTML=`<div class="sg">${D.sites.map((s,i)=>{
+    const dc=OC.filter(o=>isDone(i,o.id)).length;
+    const np=countPrints(i);
+    const pills=OC.map(o=>{
+      const d=isDone(i,o.id);
+      const hn=o.itens.some((_,j)=>gn(i,o.id,j).trim())||(o.f12&&gn(i,o.id,'f12').trim());
+      return `<span class="pill${d?' done':hn?' partial':''}">${o.label}</span>`;
+    }).join('');
+    return `<div class="sc${dc===OC.length?' done':''}" onclick="go('detail',${i})">
+      <div class="sc-s"></div>
+      <button class="del" onclick="event.stopPropagation();deleteSite(${i})">×</button>
+      <div class="sc-h">
+        <div class="av" style="background:${s.bg};color:${s.tc}">${s.nome.slice(0,2).toUpperCase()}</div>
+        <div><div class="sc-n">${s.nome}${dc===OC.length?' ✓':''}</div><div class="sc-u">${s.url?`<a href="${siteHref(s.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:inherit;text-decoration:underline;text-underline-offset:2px">${s.url}</a>`:'sem url'}${np>0?' · '+np+' print'+(np>1?'s':''):''}</div></div>
+      </div>
+      <div class="pills">${pills}</div>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+// =====================================================================
+// DETALHE
+// =====================================================================
+function renderDetail(){
+  if(curSi===null) return;
+  const s=D.sites[curSi];
+  document.getElementById('det-nm').textContent=s.nome;
+  document.getElementById('det-bc').textContent=`CEFOR · Sites · ${s.nome}`;
+  const urlEl=document.getElementById('det-url');
+  if(s.url) urlEl.innerHTML=`<a href="${siteHref(s.url)}" target="_blank" rel="noopener" style="font-size:12px;color:var(--text3);text-decoration:underline;text-underline-offset:2px">🔗 ${s.url}</a>`;
+  else urlEl.innerHTML='';
+  renderOcTabs(); renderOcForm();
+  // galeria centralizada — renderiza após o form estar no DOM
+  renderSiteGallery(curSi);
+}
+
+function renderOcTabs(){
+  document.getElementById('oc-tabs').innerHTML=OC.map(o=>{
+    const d=isDone(curSi,o.id);
+    const isA=o.id===curOc;
+    return `<div class="oc-tab${isA?' active':''}${d?' done':''}" onclick="switchOc('${o.id}')" style="${isA?'border-bottom-color:'+o.color+';color:'+o.color:''}">Óculos ${o.n} — ${o.label}${d?' ✓':''}</div>`;
+  }).join('');
+}
+
+function switchOc(id){ curOc=id; renderOcTabs(); renderOcForm(); }
+
+async function renderOcForm(){
+  const si=curSi;
+  const oc=OC.find(o=>o.id===curOc);
+  const done=isDone(si,oc.id);
+
+  let h=`<div style="margin-bottom:1.1rem">
+    <div class="fs-lbl" style="color:${oc.color}">O que observar (a olho) <span style="background:${oc.colorL};color:${oc.color};padding:2px 8px;border-radius:99px;font-size:9.5px;margin-left:6px">${oc.desc}</span></div>`;
+
+  for(let j=0;j<oc.itens.length;j++){
+    const item=oc.itens[j];
+    const val=gn(si,oc.id,j);
+    h+=`<div class="fi" id="fi-${oc.id}-${j}">
+      <div class="fi-top">
+        <div class="fi-lbl"><span class="fi-num">${j+1}</span>${item}</div>
+      </div>
+      <textarea class="fi-ta" id="c_${j}" rows="2" placeholder="Sua observação...">${escH2(val)}</textarea>
+    </div>`;
+  }
+  h+=`</div>`;
+
+  if(oc.f12){
+    const vf=gn(si,oc.id,'f12');
+    h+=`<div class="f12-wrap">
+      <div class="f12-lbl"><span class="f12-badge">F12</span>Se achar que vale registrar, use o Inspecionar para pegar:</div>
+      <div class="f12-hint">${oc.f12}</div>
+      <textarea class="f12-ta" id="c_f12" rows="4" placeholder="Cole aqui os dados extraídos com o F12...">${escH2(vf)}</textarea>
+    </div>`;
+  }
+
+  h+=`<div class="fa">
+    <button class="btn pr" onclick="saveOc()">Salvar observações</button>
+    <label class="done-lbl${done?' ok':''}" id="done-lbl">
+      <input type="checkbox" id="done-chk" onchange="toggleDone()" ${done?'checked':''}/>
+      ${done?'Óculos concluído ✓':'Marcar como concluído'}
+    </label>
+    <span class="saved-tag" id="saved-tag">✓ Salvo</span>
+  </div>`;
+
+  document.getElementById('oc-form').innerHTML=h;
+}
+
+// ── Galeria centralizada por site ────────────────────────────────────
+// Chave no notes: si_gallery  →  array de ids únicos
+// Imagem no IndexedDB: imgKey(si, 'gallery', 'gallery', pid)
+
+function getGalleryInfo(si){
+  const raw=D.notes[`${si}_gallery`];
+  return raw ? JSON.parse(raw) : [];
+}
+function setGalleryInfo(si,arr){
+  D.notes[`${si}_gallery`]=JSON.stringify(arr);
+  saveLS();
+}
+
+async function renderSiteGallery(si){
+  const row=document.getElementById('site-gallery-row');
+  if(!row) return;
+  const prints=getGalleryInfo(si);
+  row.innerHTML='';
+
+  for(let idx=0;idx<prints.length;idx++){
+    const b64=await getImg(si,'gallery','gallery',prints[idx]);
+    if(!b64) continue;
+    const wrap=document.createElement('div');
+    wrap.className='thumb-wrap';
+    wrap.title='Clique para ampliar';
+    const img=document.createElement('img');
+    img.src=b64;
+    img.onclick=()=>openLB(b64,`${D.sites[si].nome} · Print ${idx+1}`);
+    const del=document.createElement('span');
+    del.className='thumb-del';
+    del.innerHTML='×';
+    del.onclick=(e)=>{e.stopPropagation();removeSitePrint(si,idx);};
+    wrap.appendChild(img); wrap.appendChild(del);
+    row.appendChild(wrap);
+  }
+
+  // botão de adicionar (aceita múltiplos)
+  const lbl=document.createElement('label');
+  lbl.className='add-print-btn';
+  lbl.title='Adicionar prints';
+  lbl.innerHTML='<span class="icon">📷</span><span>Adicionar</span>';
+  const inp=document.createElement('input');
+  inp.type='file'; inp.accept='image/*'; inp.multiple=true; inp.style.display='none';
+  inp.onchange=(e)=>addSitePrint(e,si);
+  lbl.appendChild(inp);
+  row.appendChild(lbl);
+
+  // atualiza contador
+  const cnt=document.getElementById('gallery-count');
+  if(cnt){ cnt.textContent=prints.length; cnt.className='gcount'+(prints.length>0?' has':''); }
+}
+
+async function addSitePrint(evt,si){
+  const files=Array.from(evt.target.files); if(!files.length) return;
+  const prints=getGalleryInfo(si);
+  for(const file of files){
+    await new Promise(res=>{
+      const reader=new FileReader();
+      reader.onload=async e=>{
+        const pid=Date.now()+Math.floor(Math.random()*10000);
+        prints.push(pid);
+        await saveImg(si,'gallery','gallery',pid,e.target.result);
+        res();
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+  setGalleryInfo(si,prints);
+  await renderSiteGallery(si);
+  renderSidebar(); renderSites();
+  toast(files.length>1?`${files.length} prints adicionados!`:'Print adicionado!');
+  evt.target.value='';
+}
+
+async function removeSitePrint(si,listIdx){
+  const prints=getGalleryInfo(si);
+  const pid=prints[listIdx];
+  await delImg(si,'gallery','gallery',pid);
+  prints.splice(listIdx,1);
+  setGalleryInfo(si,prints);
+  await renderSiteGallery(si);
+  renderSidebar(); renderSites();
+  toast('Print removido');
+}
+
+function saveOc(){
+  const si=curSi; const oc=OC.find(o=>o.id===curOc);
+  oc.itens.forEach((_,j)=>{ const el=document.getElementById(`c_${j}`); if(el) sn(si,oc.id,j,el.value); });
+  if(oc.f12){ const el=document.getElementById('c_f12'); if(el) sn(si,oc.id,'f12',el.value); }
+  const t=document.getElementById('saved-tag');
+  if(t){ t.style.display='flex'; setTimeout(()=>t.style.display='none',1800); }
+  renderSidebar(); toast('Salvo!');
+}
+
+function toggleDone(){
+  saveOc();
+  const si=curSi; const oc=OC.find(o=>o.id===curOc);
+  const chk=document.getElementById('done-chk');
+  setDone(si,oc.id,chk.checked);
+  const lbl=document.getElementById('done-lbl');
+  if(chk.checked){ lbl.classList.add('ok'); lbl.lastChild.textContent=' Óculos concluído ✓'; }
+  else{ lbl.classList.remove('ok'); lbl.lastChild.textContent=' Marcar como concluído'; }
+  renderOcTabs(); renderSidebar();
+}
+
+// =====================================================================
+// LIGHTBOX
+// =====================================================================
+function openLB(src, caption){
+  document.getElementById('lb-img').src=src;
+  document.getElementById('lb-cap').textContent=caption||'';
+  document.getElementById('lb').classList.add('open');
+}
+function closeLB(){ document.getElementById('lb').classList.remove('open'); }
+
+// =====================================================================
+// DASHBOARD
+// =====================================================================
+function renderDashboard(){
+  const n=D.sites.length;
+  const tot=n*OC.length;
+  let dOc=0,campos=0,complete=0,totalCamposPossible=0;
+  D.sites.forEach((_,i)=>{
+    let all=true;
+    OC.forEach(o=>{
+      if(isDone(i,o.id)) dOc++; else all=false;
+      o.itens.forEach((_,j)=>{ if(gn(i,o.id,j).trim()) campos++; });
+      totalCamposPossible += o.itens.length;
+      if(o.f12){ totalCamposPossible++; if(gn(i,o.id,'f12').trim()) campos++; }
+    });
+    if(all&&n>0) complete++;
+  });
+  const pct=tot>0?Math.round(dOc/tot*100):0;
+  const campoPct=totalCamposPossible>0?Math.round(campos/totalCamposPossible*100):0;
+  const tp=totalPrints();
+
+  // Stats dinâmicos
+  document.getElementById('dash-stats').innerHTML=`
+    <div class="stat">
+      <div class="stat-lbl">Sites analisados</div>
+      <div class="stat-val">${n}</div>
+      <div class="stat-sub">${complete} com todos os óculos</div>
+      <div class="stat-bar" style="width:${n>0?100:0}%;background:var(--accent)"></div>
+    </div>
+    <div class="stat">
+      <div class="stat-lbl">Campos preenchidos</div>
+      <div class="stat-val">${campos}<span style="font-size:13px;font-weight:400;color:var(--text3)">/${totalCamposPossible}</span></div>
+      <div class="stat-sub">${campoPct}% concluído</div>
+      <div class="stat-bar" style="width:${campoPct}%;background:var(--blue)"></div>
+    </div>
+    <div class="stat">
+      <div class="stat-lbl">Óculos concluídos</div>
+      <div class="stat-val">${dOc}<span style="font-size:13px;font-weight:400;color:var(--text3)">/${tot}</span></div>
+      <div class="stat-sub">${pct}% do total</div>
+      <div class="stat-bar" style="width:${pct}%;background:var(--accent)"></div>
+    </div>
+    <div class="stat">
+      <div class="stat-lbl">Prints salvos</div>
+      <div class="stat-val">${tp}</div>
+      <div class="stat-sub">evidências visuais</div>
+      <div class="stat-bar" style="width:${Math.min(tp*10,100)}%;background:var(--purple)"></div>
+    </div>`;
+
+  document.getElementById('dpct').textContent=pct+'%';
+  document.getElementById('dpf').style.width=pct+'%';
+
+  renderCoverageMap();
+  renderFindings();
+  renderNextSteps();
+  renderCharts();
+  renderInsights();
+}
+
+// =====================================================================
+// MAPA DE COBERTURA
+// =====================================================================
+function renderCoverageMap(){
+  const el=document.getElementById('dash-coverage');
+  if(!D.sites.length){ el.innerHTML=''; return; }
+
+  let rows='';
+  D.sites.forEach((s,i)=>{
+    const dc=OC.filter(o=>isDone(i,o.id)).length;
+    const sitePct=Math.round(dc/OC.length*100);
+    const dots=OC.map(o=>{
+      const d=isDone(i,o.id);
+      const hasSome=o.itens.some((_,j)=>gn(i,o.id,j).trim())||(o.f12&&gn(i,o.id,'f12').trim());
+      const cls=d?'done':hasSome?'partial':'empty';
+      const icon=d?'✓':hasSome?'◐':'·';
+      return `<td style="text-align:center"><div class="cov-dot ${cls}" onclick="go('detail',${i});switchOc('${o.id}')" title="${o.label}: ${d?'concluído':hasSome?'parcial':'vazio'}">${icon}</div></td>`;
+    }).join('');
+    rows+=`<tr>
+      <td><div class="site-cell"><div class="av" style="background:${s.bg};color:${s.tc};width:22px;height:22px;border-radius:5px;font-size:9px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-family:'Syne',sans-serif">${s.nome.slice(0,2).toUpperCase()}</div>${s.nome}</div></td>
+      ${dots}
+      <td style="text-align:center"><span class="cov-pct">${sitePct}%</span></td>
+    </tr>`;
+  });
+
+  el.innerHTML=`<div class="cov-wrap">
+    <div class="cov-title">Mapa de cobertura</div>
+    <div class="cov-sub">Clique em qualquer célula para ir direto ao óculos daquele site</div>
+    <table class="cov-table">
+      <thead><tr>
+        <th>Site</th>
+        ${OC.map(o=>`<th style="text-align:center;color:${o.color}">${o.label}</th>`).join('')}
+        <th style="text-align:center">Total</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+  </div>`;
+}
+
+// =====================================================================
+// ACHADOS-CHAVE
+// =====================================================================
+function renderFindings(){
+  const el=document.getElementById('dash-findings');
+  const n=D.sites.length;
+  if(!n || D.sites.every((_,i)=>countCampos(i)===0)){ el.innerHTML=''; return; }
+
+  const reSim=/sim|tem|há|possui|oferece|disponível/i;
+  const reNao=/não|nao|ausente|sem\b|não foi identificad/i;
+
+  const features=[
+    {icon:'🌙',label:'Modo escuro',oc:'visual',j:4},
+    {icon:'📊',label:'Barra de progresso',oc:'leitura',j:2},
+    {icon:'⏱',label:'Tempo de leitura',oc:'leitura',j:3},
+    {icon:'📑',label:'Índice de seções',oc:'leitura',j:4},
+    {icon:'🔍',label:'Busca interna',oc:'interacao',j:6},
+    {icon:'📋',label:'Botão copiar',oc:'interacao',j:3},
+    {icon:'💬',label:'Comentários',oc:'interacao',j:2},
+    {icon:'📝',label:'Resumo/TL;DR',oc:'estrutura',j:1},
+    {icon:'💡',label:'Caixas de alerta',oc:'estrutura',j:3},
+    {icon:'♿',label:'Widget acessibilidade',oc:'acessib',j:0},
+    {icon:'🤟',label:'Libras',oc:'acessib',j:1},
+    {icon:'🔤',label:'Ajuste de fonte',oc:'acessib',j:2},
+  ];
+
+  const cards=features.map(f=>{
+    const vals=D.sites.map((_,i)=>gn(i,f.oc,f.j).trim()).filter(v=>v);
+    if(!vals.length) return null;
+    const sim=vals.filter(v=>reSim.test(v)&&!reNao.test(v)).length;
+    const nao=vals.filter(v=>reNao.test(v)).length;
+    const pct=vals.length>0?Math.round(sim/n*100):0;
+    const fillColor=pct>=70?'#5DC9A0':pct>=30?'#F0A96E':'#E87A6E';
+    let desc='';
+    if(sim===n) desc='Presente em todos os sites';
+    else if(sim===0&&nao>0) desc='Ausente em todos — oportunidade CEFOR';
+    else if(sim>0) desc=`${sim} de ${n} site${n>1?'s':''} oferecem`;
+    else desc=`${vals.length} de ${n} com observação`;
+    return `<div class="find-card">
+      <div class="fc-top"><span class="fc-icon">${f.icon}</span><span class="fc-label">${f.label}</span></div>
+      <div class="fc-val">${pct}%</div>
+      <div class="fc-desc">${desc}</div>
+      <div class="fc-bar"><div class="fc-fill" style="width:${pct}%;background:${fillColor}"></div></div>
+    </div>`;
+  }).filter(Boolean);
+
+  if(!cards.length){ el.innerHTML=''; return; }
+  el.innerHTML=`<div class="findings">
+    <h3>🎯 Achados-chave da pesquisa <span class="badge">ANÁLISE AUTOMÁTICA</span></h3>
+    <div class="find-grid">${cards.join('')}</div>
+  </div>`;
+}
+
+// =====================================================================
+// PRÓXIMOS PASSOS
+// =====================================================================
+function renderNextSteps(){
+  const el=document.getElementById('dash-next');
+  const n=D.sites.length;
+  if(!n){ el.innerHTML=''; return; }
+
+  const steps=[];
+
+  // Sites sem nenhum dado
+  const semDados=D.sites.filter((_,i)=>countCampos(i)===0);
+  if(semDados.length>0){
+    steps.push({icon:'todo',text:`<strong>${semDados.map(s=>s.nome).join(', ')}</strong> — ${semDados.length===1?'ainda não tem':'ainda não têm'} nenhuma observação preenchida.`});
+  }
+
+  // Óculos vazios
+  OC.forEach(o=>{
+    const semOc=D.sites.filter((_,i)=>!o.itens.some((_,j)=>gn(i,o.id,j).trim())&&!(o.f12&&gn(i,o.id,'f12').trim()));
+    if(semOc.length>0&&semOc.length<n){
+      steps.push({icon:'todo',text:`<strong>Óculos ${o.label}</strong>: falta preencher em ${semOc.map(s=>s.nome).join(', ')}.`});
+    }
+  });
+
+  // Óculos não marcados como concluídos mas que têm dados
+  D.sites.forEach((s,i)=>{
+    const comDadosSemCheck=OC.filter(o=>{
+      const hasSome=o.itens.some((_,j)=>gn(i,o.id,j).trim());
+      return hasSome&&!isDone(i,o.id);
+    });
+    if(comDadosSemCheck.length>0){
+      steps.push({icon:'tip',text:`<strong>${s.nome}</strong>: ${comDadosSemCheck.map(o=>o.label).join(', ')} ${comDadosSemCheck.length===1?'tem dados mas não foi marcado':'têm dados mas não foram marcados'} como concluído.`});
+    }
+  });
+
+  // Sites 100% concluídos
+  const completos=D.sites.filter((_,i)=>OC.every(o=>isDone(i,o.id)));
+  if(completos.length>0){
+    steps.push({icon:'ok',text:`<strong>${completos.map(s=>s.nome).join(', ')}</strong> — análise completa! ✓`});
+  }
+
+  // Dica final
+  const camposPct=D.sites.reduce((a,_,i)=>a+countCampos(i),0);
+  if(camposPct>0&&completos.length<n){
+    steps.push({icon:'tip',text:`Quando finalizar todos os sites, vá em <strong>Relatório + IA</strong> para gerar a análise comparativa.`});
+  }
+
+  if(!steps.length){ el.innerHTML=''; return; }
+  el.innerHTML=`<div class="next-steps">
+    <h3>📋 Próximos passos</h3>
+    <ul class="ns-list">${steps.map(s=>`<li><span class="ns-icon ${s.icon}">${s.icon==='todo'?'!':s.icon==='tip'?'💡':'✓'}</span><span>${s.text}</span></li>`).join('')}</ul>
+  </div>`;
+}
+
+// =====================================================================
+// GRÁFICOS
+// =====================================================================
+function renderCharts(){
+  if(!D.sites.length) return;
+  const lbl=D.sites.map(s=>s.nome.length>12?s.nome.slice(0,12)+'…':s.nome);
+  const dPS=D.sites.map((_,i)=>OC.filter(o=>isDone(i,o.id)).length);
+  const cPS=D.sites.map((_,i)=>countCampos(i));
+  const covOc=OC.map(o=>D.sites.length?Math.round(D.sites.filter((_,i)=>isDone(i,o.id)).length/D.sites.length*100):0);
+  const defs={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}};
+  const bar={...defs,scales:{y:{beginAtZero:true,grid:{color:'rgba(0,0,0,0.04)'}},x:{grid:{display:false}}}};
+  function mk(id,cfg){ if(charts[id]) charts[id].destroy(); const c=document.getElementById(id); if(!c) return; charts[id]=new Chart(c,cfg); }
+  mk('c1',{type:'bar',data:{labels:lbl,datasets:[{data:dPS,backgroundColor:D.sites.map((_,i)=>PAL[i%PAL.length]+'CC'),borderRadius:5,borderSkipped:false}]},options:{...bar,scales:{y:{...bar.scales.y,max:5,ticks:{stepSize:1}},x:{grid:{display:false}}}}});
+  mk('c2',{type:'bar',data:{labels:OC.map(o=>o.label),datasets:[{data:covOc,backgroundColor:['#1A487899','#1D6B4A99','#7A501099','#42288A99','#B8302099'],borderRadius:5,borderSkipped:false}]},options:{...defs,scales:{y:{beginAtZero:true,max:100,ticks:{callback:v=>v+'%'},grid:{color:'rgba(0,0,0,0.04)'}},x:{grid:{display:false}}}}});
+  mk('c3',{type:'bar',data:{labels:lbl,datasets:[{data:cPS,backgroundColor:D.sites.map((_,i)=>PAL[i%PAL.length]+'99'),borderRadius:5,borderSkipped:false}]},options:bar});
+
+  // Radar de funcionalidades
+  renderRadar();
+}
+
+function renderRadar(){
+  const n=D.sites.length;
+  if(n<1) return;
+  const reSim=/sim|tem|há|possui|oferece|disponível/i;
+  const reNao=/não|nao|ausente|sem\b|não foi identificad/i;
+  const features=[
+    {label:'Modo escuro',oc:'visual',j:4},
+    {label:'Índice seções',oc:'leitura',j:4},
+    {label:'Tempo leitura',oc:'leitura',j:3},
+    {label:'Botão copiar',oc:'interacao',j:3},
+    {label:'Resumo/TL;DR',oc:'estrutura',j:1},
+    {label:'Exemplos práticos',oc:'estrutura',j:4},
+    {label:'Widget acessib.',oc:'acessib',j:0},
+    {label:'Alto contraste',oc:'acessib',j:3},
+  ];
+  const datasets=D.sites.map((s,i)=>{
+    const data=features.map(f=>{
+      const v=gn(i,f.oc,f.j).trim().toLowerCase();
+      if(!v) return 0;
+      if(reNao.test(v)) return 0;
+      if(reSim.test(v)) return 1;
+      return 0.5; // tem observação mas não é claramente sim/não
+    });
+    const color=PAL[i%PAL.length];
+    return {label:s.nome,data,fill:true,backgroundColor:color+'22',borderColor:color+'AA',pointBackgroundColor:color,pointRadius:3,borderWidth:2};
+  });
+  function mk(id,cfg){ if(charts[id]) charts[id].destroy(); const c=document.getElementById(id); if(!c) return; charts[id]=new Chart(c,cfg); }
+  mk('c5',{type:'radar',data:{labels:features.map(f=>f.label),datasets},options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:n>1,position:'bottom',labels:{font:{size:10},boxWidth:12,padding:8}}},
+    scales:{r:{beginAtZero:true,max:1,ticks:{display:false,stepSize:0.5},grid:{color:'rgba(0,0,0,0.06)'},pointLabels:{font:{size:9.5,family:"'Syne',sans-serif"},color:'#5C5A50'}}}
+  }});
+}
+
+// =====================================================================
+// INSIGHTS AUTOMÁTICOS
+// =====================================================================
+function renderInsights(){
+  const el=document.getElementById('auto-ins');
+  const n=D.sites.length;
+  if(!n){ el.innerHTML='<div class="ic"><div class="ib"><div class="il">Aguardando dados</div><div class="it">Adicione sites e preencha as observações para ver insights.</div></div></div>'; return; }
+  const ins=genInsights();
+  el.innerHTML=ins.map(i=>`<div class="ic ${i.t}"><div class="ii">${i.icon}</div><div class="ib"><div class="il">${i.label}</div><div class="it">${i.text}</div></div></div>`).join('');
+}
+
+function genInsights(){
+  const n=D.sites.length; if(!n) return[];
+  const ins=[];
+  const chk=(si,oc,j,re)=>gn(si,oc,j).toLowerCase().match(re);
+  const count=(oc,j,re)=>D.sites.filter((_,i)=>chk(i,oc,j,re)).length;
+
+  const mEsc=count('visual',4,/^(?!não|nao)(?:sim|.*modo escuro|.*dark mode|.*modo dark)/);
+  if(mEsc>0) ins.push({icon:'🌙',label:'Modo escuro',text:`${Math.round(mEsc/n*100)}% dos sites (${mEsc} de ${n}) oferecem modo escuro.`,t:mEsc/n>=.5?'hi':'in'});
+
+  const mProg=count('leitura',2,/^(?!não|nao)(?:sim|.*tem barra|.*há barra|.*possui barra)/);
+  if(mProg>0) ins.push({icon:'📊',label:'Barra de progresso',text:`${mProg} de ${n} site${n>1?'s':''} (${Math.round(mProg/n*100)}%) têm indicador de progresso de leitura.`,t:'in'});
+
+  const mTempo=count('leitura',3,/^(?!não|nao)(?:sim|.*leitura de \d|.*estimativa de.*tempo|.*tempo de leitura)/);
+  if(mTempo>0) ins.push({icon:'⏱',label:'Tempo de leitura',text:`${mTempo} de ${n} site${n>1?'s':''} mostram estimativa de tempo de leitura.`,t:'in'});
+
+  const mInd=count('leitura',4,/^(?!não|nao)(?:sim|.*tem índice|.*tem sumário|.*índice de seções|.*sumário lateral)/);
+  if(mInd>0) ins.push({icon:'📑',label:'Índice de seções',text:`${mInd} de ${n} site${n>1?'s':''} (${Math.round(mInd/n*100)}%) têm índice navegável no artigo.`,t:'in'});
+
+  const mLib=count('acessib',1,/^(?!não|nao)(?:sim|.*vlibras|.*tem libras|.*possui libras|.*tradução em libras)/);
+  if(mLib>0) ins.push({icon:'🤟',label:'Tradução em Libras',text:`${mLib} de ${n} site${n>1?'s':''} oferecem tradução em Libras.`,t:'hi'});
+  else if(n>=2) ins.push({icon:'🤟',label:'Tradução em Libras',text:`Nenhum dos ${n} sites analisados registra Libras — oportunidade para o CEFOR.`,t:'wa'});
+
+  const mWid=count('acessib',0,/^(?!não|nao)(?:sim|.*tem widget|.*possui widget|.*widget de acessibilidade)/);
+  if(mWid>0) ins.push({icon:'♿',label:'Widget de acessibilidade',text:`${Math.round(mWid/n*100)}% dos sites (${mWid} de ${n}) têm widget de acessibilidade visível.`,t:'in'});
+
+  const mTLDR=count('estrutura',1,/^(?!não|nao)(?:sim|.*tl.?dr|.*resumão|.*resumo rápido)/);
+  if(mTLDR>0) ins.push({icon:'⚡',label:'TL;DR / Resumão',text:`${mTLDR} de ${n} site${n>1?'s':''} usam blocos de resumo rápido.`,t:'hi'});
+
+  const mCx=count('estrutura',3,/^(?!não|nao)(?:sim|.*tem caixas|.*tem alertas|.*callout|.*caixas de alerta|.*tem destaques)/);
+  if(mCx>0) ins.push({icon:'💡',label:'Destaques visuais',text:`${Math.round(mCx/n*100)}% dos sites usam caixas de alerta ou dicas no texto.`,t:'in'});
+
+  const ocCov=OC.map(o=>({o,c:D.sites.filter((_,i)=>gn(i,o.id,0).trim()||isDone(i,o.id)).length}));
+  const menor=ocCov.sort((a,b)=>a.c-b.c)[0];
+  if(menor.c<n) ins.push({icon:'⚠️',label:'Óculos menos preenchido',text:`"${menor.o.label}" tem observações em apenas ${menor.c} de ${n} site${n>1?'s':''}.`,t:'wa'});
+
+  const mais=D.sites.map((_,i)=>({i,c:countCampos(i)})).sort((a,b)=>b.c-a.c)[0];
+  if(mais&&mais.c>0) ins.push({icon:'🏆',label:'Site mais documentado',text:`"${D.sites[mais.i].nome}" tem ${mais.c} campo${mais.c>1?'s':''} preenchido${mais.c>1?'s':''}.`,t:'hi'});
+
+  const tp=totalPrints();
+  if(tp>0) ins.push({icon:'📷',label:'Screenshots registrados',text:`${tp} print${tp>1?'s':''} salvo${tp>1?'s':''} como evidência visual nos campos.`,t:'in'});
+
+  return ins;
+}
+
+// =====================================================================
+// RELATÓRIO
+// =====================================================================
+async function renderRelatorio(){
+  renderSynthesis();
+  await renderRepCmp();
+  renderRepSite();
+  if(D.iaAnalysis){ document.getElementById('ia-res').textContent=D.iaAnalysis; document.getElementById('ia-res').classList.remove('loading'); }
+}
+
+// =====================================================================
+// SÍNTESE GERAL — Resumo cross-site
+// =====================================================================
+function renderSynthesis(){
+  const el=document.getElementById('rep-synth');
+  if(!D.sites.length || D.sites.every((_,i)=>countCampos(i)===0)){ el.innerHTML=''; return; }
+
+  let h=`<div class="site-synth">
+    <h3>📊 Síntese geral dos sites <span class="badge">GERADO AUTOMATICAMENTE</span></h3>
+    <div class="synth-site-grid">`;
+
+  D.sites.forEach((s,i)=>{
+    if(countCampos(i)===0) return;
+    const dc=OC.filter(o=>isDone(i,o.id)).length;
+    h+=`<div class="synth-site-card">
+      <div class="ssc-name">
+        <span class="mini-av" style="background:${s.bg};color:${s.tc}">${s.nome.slice(0,2).toUpperCase()}</span>
+        ${s.nome} <span style="font-size:10px;color:rgba(255,255,255,.35);font-weight:400">${dc}/${OC.length} óculos</span>
+        ${s.url?`<a href="${siteHref(s.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="font-size:10px;color:rgba(255,255,255,.45);text-decoration:underline;text-underline-offset:2px;margin-left:4px">🔗 ${s.url}</a>`:''}
+      </div>`;
+
+    // Per-óculos one-liner summary
+    OC.forEach(o=>{
+      const highlights = extractOcHighlights(i, o);
+      if(!highlights.length) return;
+      const colorMap = {'var(--oc1)':'#6BA3D6','var(--oc2)':'#5DC9A0','var(--oc3)':'#F0A96E','var(--oc4)':'#9B7FD4','var(--oc5)':'#E87A6E'};
+      const dotColor = colorMap[o.color]||'#888';
+      h+=`<div class="ssc-row">
+        <span class="ssc-oc-dot" style="background:${dotColor}"></span>
+        <div class="ssc-oc-text"><strong>${o.label}:</strong> ${highlights.join(' · ')}</div>
+      </div>`;
+    });
+
+    // Feature tags
+    const tags = extractSiteFeatureTags(i);
+    if(tags.length){
+      h+=`<div class="ssc-highlights">${tags.map(t=>
+        `<span class="ssc-hl" style="background:${t.has?'rgba(93,201,160,.18);color:#5DC9A0':'rgba(232,122,110,.15);color:#E87A6E'}">${t.has?'✓':'✗'} ${t.label}</span>`
+      ).join('')}</div>`;
+    }
+
+    h+=`</div>`;
+  });
+
+  h+=`</div></div>`;
+  el.innerHTML=h;
+}
+
+function extractOcHighlights(si, oc){
+  const highlights = [];
+  const maxHL = 3;
+  oc.itens.forEach((_,j)=>{
+    if(highlights.length >= maxHL) return;
+    const val = gn(si, oc.id, j).trim();
+    if(!val) return;
+    const summary = summarizeSentence(val);
+    if(summary) highlights.push(summary);
+  });
+  return highlights;
+}
+
+function summarizeSentence(text){
+  if(!text || text.length < 5) return '';
+  // Try to extract the first meaningful sentence or phrase
+  const clean = text.replace(/\n/g,' ').replace(/\s+/g,' ').trim();
+  // If it starts with Sim/Não, keep that + context
+  const simNao = clean.match(/^(Sim|Não)[.,:]?\s*(.*)/i);
+  if(simNao){
+    const verdict = simNao[1].toLowerCase()==='sim' ? '✓' : '✗';
+    const rest = simNao[2];
+    if(rest.length > 0){
+      const shortRest = rest.split(/[.!]/)[0].trim();
+      return verdict + ' ' + (shortRest.length > 65 ? shortRest.slice(0,62)+'…' : shortRest);
+    }
+    return verdict;
+  }
+  // Otherwise get first sentence, truncated
+  const first = clean.split(/[.!]/)[0].trim();
+  return first.length > 70 ? first.slice(0,67)+'…' : first;
+}
+
+function extractSiteFeatureTags(si){
+  const tags = [];
+  const check = (oc,j,re,label) => {
+    const v = gn(si,oc,j).toLowerCase();
+    if(!v) return;
+    const has = !!v.match(re);
+    tags.push({label, has});
+  };
+  check('visual',4,/^(?!não|nao)(?:sim|.*modo escuro|.*dark mode|.*modo dark)/,'Modo escuro');
+  check('leitura',2,/^(?!não|nao)(?:sim|.*tem barra|.*há barra|.*possui barra)/,'Barra progresso');
+  check('leitura',3,/^(?!não|nao)(?:sim|.*leitura de \d|.*estimativa de.*tempo|.*tempo de leitura)/,'Tempo leitura');
+  check('leitura',4,/^(?!não|nao)(?:sim|.*tem índice|.*tem sumário|.*sumário lateral)/,'Índice seções');
+  check('interacao',0,/^(?!não|nao)(?:sim|.*tem.*curtir|.*tem.*favorit|.*botão de curtir)/,'Curtir/favoritar');
+  check('interacao',3,/^(?!não|nao)(?:sim|.*tem botão.*copiar|.*botão de copiar)/,'Botão copiar');
+  check('acessib',0,/^(?!não|nao)(?:sim|.*tem widget|.*possui widget|.*widget de acessibilidade)/,'Widget acessib.');
+  check('acessib',1,/^(?!não|nao)(?:sim|.*vlibras|.*tem libras|.*tradução em libras)/,'Libras');
+  check('acessib',3,/^(?!não|nao)(?:sim|.*alto contraste|.*dark mode|.*modo escuro)/,'Alto contraste');
+  return tags;
+}
+
+// =====================================================================
+// COMPARATIVO POR ÓCULOS — com síntese por óculos
+// =====================================================================
+async function renderRepCmp(){
+  const el=document.getElementById('rep-cmp');
+  if(!D.sites.length){ el.innerHTML='<div class="empty"><h3>Sem dados</h3><p>Adicione sites e registre observações.</p></div>'; return; }
+  let h='';
+  for(const oc of OC){
+    h+=`<div class="oc-cmp">
+      <div class="oc-cmp-h">
+        <div style="width:24px;height:24px;border-radius:5px;background:${oc.colorL};color:${oc.color};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:'Syne',sans-serif;flex-shrink:0">${oc.n}</div>
+        <h4>Óculos ${oc.n} — ${oc.label}</h4>
+        <span style="font-size:9.5px;padding:2px 7px;border-radius:99px;background:${oc.colorL};color:${oc.color};font-family:'Syne',sans-serif;font-weight:600">${oc.desc}</span>
+      </div>
+      <div class="oc-cmp-b">`;
+
+    // Síntese resumida por site para este óculos
+    const sitesWithData = D.sites.map((s,i)=>({s,i,hl:extractOcHighlights(i,oc)})).filter(x=>x.hl.length>0);
+    if(sitesWithData.length > 0){
+      h+=`<div class="oc-synth">`;
+      sitesWithData.forEach(({s,i,hl})=>{
+        h+=`<div class="synth-card" style="--card-color:${oc.color}">
+          <style>.synth-card[style*="${oc.color}"]::before{background:${oc.color}}</style>
+          <div class="synth-site">
+            <span class="mini-av" style="background:${s.bg};color:${s.tc}">${s.nome.slice(0,2).toUpperCase()}</span>
+            ${s.nome}
+          </div>
+          <ul class="synth-bullets">${hl.map(h2=>`<li>${h2}</li>`).join('')}</ul>
+        </div>`;
+      });
+      h+=`</div>`;
+    }
+
+    for(let j=0;j<oc.itens.length;j++){
+      const item=oc.itens[j];
+      const entries=D.sites.map((s,i)=>({nome:s.nome,val:gn(i,oc.id,j).trim(),idx:i})).filter(x=>x.val);
+      if(!entries.length) continue;
+      const autoIns=genCampoInsight(entries, item);
+      h+=`<div class="campo-blk">
+        <div class="campo-title">${j+1}. ${item}</div>
+        <div class="campo-items">${entries.map(e=>`<div class="campo-item"><div class="cs-lbl">${e.nome}</div><div class="cs-txt">${escH(e.val)}</div></div>`).join('')}</div>`;
+
+      if(autoIns) h+=autoIns;
+      h+=`</div>`;
+    }
+
+    if(oc.f12){
+      const f12e=D.sites.map((s,i)=>({nome:s.nome,val:gn(i,oc.id,'f12').trim(),idx:i})).filter(x=>x.val);
+      if(f12e.length){
+        h+=`<div class="campo-blk"><div class="campo-title" style="color:var(--amber)">Dados do F12 / Inspecionar</div>
+          <div class="campo-items">${f12e.map(e=>`<div class="campo-item f12i"><div class="cs-lbl">${e.nome}</div><div class="cs-txt">${escH(e.val)}</div></div>`).join('')}</div>`;
+
+        h+=`</div>`;
+      }
+    }
+
+    h+=`</div></div>`;
+  }
+  el.innerHTML=h;
+}
+
+// =====================================================================
+// INSIGHTS INTELIGENTES POR CAMPO
+// =====================================================================
+function genCampoInsight(entries, pergunta){
+  if(entries.length < 1) return '';
+  const n = D.sites.length;
+  const lc = entries.map(e=>({...e, low: e.val.toLowerCase()}));
+
+  // Detectar padrão sim/não
+  const reSim = /^sim[\b.,:\s!]|[\s]sim[\b.,:\s!]|\btem\b|\bpossui\b|\bhá\b|\bexiste\b|\boferece\b|\bdisponível\b/i;
+  const reNao = /^não[\b.,:\s!]|\bnão\b.*\b(há|tem|possui|existe|oferece|foi identificad)\b|\bausente\b|\bsem\s/i;
+  const simEntries = lc.filter(e=> reSim.test(e.low) && !reNao.test(e.low));
+  const naoEntries = lc.filter(e=> reNao.test(e.low));
+  const ambiguous = lc.filter(e=> !simEntries.includes(e) && !naoEntries.includes(e));
+
+  // Pergunta binária (tem/não tem)?
+  const isBinary = /^tem |^dá para|^mostra |^tem algum|^tem botão|^tem opção|^tem ícone|^tem tradução|^tem indicador|^tem glossário|^tem referências|^tem atalhos|^tem leitura|^alguma outra/i.test(pergunta);
+
+  let parts = [];
+
+  if(isBinary && (simEntries.length > 0 || naoEntries.length > 0)){
+    // Comparação direta
+    if(simEntries.length > 0 && naoEntries.length > 0){
+      // Divergência
+      const simNames = simEntries.map(e=>e.nome).join(', ');
+      const naoNames = naoEntries.map(e=>e.nome).join(', ');
+      parts.push({
+        icon:'⚡',
+        text:`<strong>Divergência:</strong> ${simNames} ${simEntries.length===1?'oferece':'oferecem'} este recurso · ${naoNames} não ${naoEntries.length===1?'oferece':'oferecem'}.`,
+        cls:'diverge'
+      });
+    } else if(simEntries.length === entries.length){
+      // Todos têm
+      parts.push({
+        icon:'✅',
+        text:`<strong>Consenso positivo:</strong> todos os ${entries.length} sites analisados oferecem este recurso.`,
+        cls:''
+      });
+    } else if(naoEntries.length === entries.length){
+      // Nenhum tem
+      parts.push({
+        icon:'🚫',
+        text:`<strong>Ausente em todos:</strong> nenhum dos ${entries.length} sites analisados oferece este recurso — <em>oportunidade para o CEFOR</em>.`,
+        cls:'alert'
+      });
+    } else if(naoEntries.length > 0){
+      const pct = Math.round(naoEntries.length/entries.length*100);
+      parts.push({
+        icon:'📉',
+        text:`<strong>${pct}% sem:</strong> ${naoEntries.map(e=>e.nome).join(', ')} não ${naoEntries.length===1?'oferece':'oferecem'} este recurso.`,
+        cls:'diverge'
+      });
+    }
+  }
+
+  // Extrair detalhe qualitativo para campos descritivos
+  if(!isBinary || parts.length === 0){
+    // Tentar encontrar termos-chave em comum ou divergentes
+    const kws = extractCommonKeywords(lc);
+    if(kws.common.length > 0){
+      parts.push({
+        icon:'🔗',
+        text:`<strong>Em comum:</strong> ${kws.common.slice(0,4).join(', ')}.`,
+        cls:'info'
+      });
+    }
+    if(kws.unique.length > 0 && entries.length >= 2){
+      const uniqParts = kws.unique.slice(0,3).map(u=>`<strong>${u.site}</strong>: ${u.terms.join(', ')}`);
+      parts.push({
+        icon:'💎',
+        text:`<strong>Diferencial:</strong> ${uniqParts.join(' · ')}.`,
+        cls:''
+      });
+    }
+  }
+
+  // Complemento: se apenas 1 site tem dado (e há mais sites)
+  if(entries.length === 1 && n > 1){
+    const missing = D.sites.filter((_,i)=> !entries.some(e=>e.idx===i)).map(s=>s.nome);
+    parts.push({
+      icon:'📝',
+      text:`Apenas <strong>${entries[0].nome}</strong> tem observação neste campo. Faltam: ${missing.join(', ')}.`,
+      cls:'diverge'
+    });
+  }
+
+  if(!parts.length) return '';
+  return parts.map(p=>
+    `<div class="auto-ins ${p.cls}"><span>${p.icon}</span><span>${p.text}</span></div>`
+  ).join('');
+}
+
+function extractCommonKeywords(entries){
+  const stopwords = new Set(['o','a','os','as','de','do','da','dos','das','em','no','na','nos','nas','um','uma','é','e','ou','que','com','para','por','se','como','mais','muito','bem','não','sim','tem','são','foi','ser','ter','sua','seu','ele','ela','ao','às','pelo','pela','entre','sobre','pode','sem','já','também','mas','site','sites','dos','das','isso','este','esta','usar','usa','usando','usado','forma','tipo','modo','texto','botão','há','possui','existe','oferece','disponível','funcionalidade','recurso','sistema','página','páginas','artigo','conteúdo','todo','toda','todos','todas']);
+  
+  const perSite = entries.map(e=>{
+    const words = e.low.replace(/[^a-záàâãéèêíóôõúç\s-]/gi,'').split(/\s+/).filter(w=>w.length>3 && !stopwords.has(w));
+    return {site:e.nome, words: [...new Set(words)]};
+  });
+  
+  if(perSite.length < 2) return {common:[],unique:[]};
+  
+  // Common: words in all entries
+  const allWords = perSite.flatMap(p=>p.words);
+  const freq = {};
+  allWords.forEach(w=>{ freq[w]=(freq[w]||0)+1; });
+  const common = Object.keys(freq).filter(w=>freq[w]>=perSite.length).sort((a,b)=>freq[b]-freq[a]);
+  
+  // Unique: words in only one entry (distinctive)
+  const unique = perSite.map(p=>({
+    site: p.site,
+    terms: p.words.filter(w=>freq[w]===1).slice(0,3)
+  })).filter(u=>u.terms.length>0);
+  
+  return {common, unique};
+}
+
+async function renderRepSite(){
+  const el=document.getElementById('rep-site');
+  if(!D.sites.length){ el.innerHTML=''; return; }
+  let h='';
+  for(const [i,s] of D.sites.entries()){
+    const dc=OC.filter(o=>isDone(i,o.id)).length;
+    // galeria centralizada do site
+    const gPrints=getGalleryInfo(i);
+    let galleryH='';
+    for(const pid of gPrints){
+      const b64=await getImg(i,'gallery','gallery',pid);
+      if(b64) galleryH+=`<div class="rep-thumb" onclick="openLB('${b64}','${s.nome}')" title="Ampliar"><img src="${b64}" alt=""/></div>`;
+    }
+    let ocsH='';
+    for(const o of OC){
+      const d=isDone(i,o.id);
+      const notas=o.itens.map((item,j)=>({item,val:gn(i,o.id,j).trim(),j})).filter(x=>x.val);
+      const f12v=o.f12?gn(i,o.id,'f12').trim():'';
+      if(!notas.length&&!f12v){ ocsH+=`<div class="rc-oc"><div class="rc-oc-t" style="color:${o.color}">Óculos ${o.n} — ${o.label}${d?' ✓':''}</div><div class="en">Sem observações</div></div>`; continue; }
+      ocsH+=`<div class="rc-oc"><div class="rc-oc-t" style="color:${o.color}">Óculos ${o.n} — ${o.label}${d?' ✓':''}</div>`;
+      for(const nobj of notas){
+        ocsH+=`<div class="rc-note"><div class="rc-nlbl">${nobj.item}</div>${escH(nobj.val)}</div>`;
+      }
+      if(f12v){ ocsH+=`<div class="rc-note f12n"><div class="rc-nlbl">F12 / Inspecionar</div>${escH(f12v)}</div>`; }
+      ocsH+=`</div>`;
+    }
+    h+=`<div class="rc"><div class="rc-h"><div class="av" style="background:${s.bg};color:${s.tc};width:30px;height:30px;font-size:10.5px;border-radius:6px;font-weight:700;font-family:'Syne',sans-serif;display:flex;align-items:center;justify-content:center;flex-shrink:0">${s.nome.slice(0,2).toUpperCase()}</div><div><div style="font-size:13px;font-weight:700;font-family:'Syne',sans-serif">${s.nome}</div><div style="font-size:11px;color:var(--text3)">${s.url||''} · ${dc}/${OC.length} óculos · ${gPrints.length} print(s)</div></div></div><div class="rc-b">${galleryH?`<div class="campo-prints" style="margin-bottom:.8rem">${galleryH}</div>`:''} ${ocsH}</div></div>`;
+  }
+  el.innerHTML=h;
+}
+
+// =====================================================================
+// ANÁLISE IA
+// =====================================================================
+function buildPrompt(){
+  if(!D.sites.length) return 'Nenhum dado disponível.';
+  let p=`Você é especialista em design de bases de conhecimento e UX para educação a distância. Analise as observações coletadas sobre ${D.sites.length} site(s) de referência e gere um relatório comparativo com insights acionáveis para o redesign da Base de Conhecimento do CEFOR (IFes).\n\nDADOS COLETADOS:\n`;
+  D.sites.forEach((s,i)=>{
+    p+=`\n=== ${s.nome}${s.url?' ('+s.url+')':''} ===\n`;
+    OC.forEach(o=>{
+      const notas=o.itens.map((item,j)=>({item,val:gn(i,o.id,j).trim()})).filter(x=>x.val);
+      const f12v=o.f12?gn(i,o.id,'f12').trim():'';
+      if(!notas.length&&!f12v) return;
+      p+=`\n[${o.label.toUpperCase()}]\n`;
+      notas.forEach(n=>p+=`- ${n.item}: ${n.val}\n`);
+      if(f12v) p+=`- Dados técnicos (F12): ${f12v}\n`;
+    });
+  });
+  p+=`\nGERE UM RELATÓRIO COM:\n1. PADRÕES IDENTIFICADOS — o que a maioria dos sites faz (cite percentuais)\n2. DESTAQUES POSITIVOS — melhores práticas encontradas e em qual site\n3. LACUNAS E OPORTUNIDADES — o que está ausente e diferenciaria o CEFOR\n4. RECOMENDAÇÕES POR ÓCULOS — 2-3 recomendações concretas para cada um dos 5 óculos (Visual, Leitura, Interação, Estrutura, Acessibilidade)\n5. TOP 5 PRIORIDADES — as melhorias mais impactantes em ordem\n\nUse linguagem clara e objetiva. Público: equipe de EaD do IFes.`;
+  return p;
+}
+
+async function runIA(){
+  const key=document.getElementById('rel-key').value.trim();
+  const el=document.getElementById('ia-res');
+  if(!D.sites.length){toast('Adicione sites primeiro');return;}
+  if(!key){toast('Cole sua chave de API ou use o botão "Copiar prompt"');return;}
+  el.className='ia-res loading'; el.textContent='Analisando... aguarde.';
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,messages:[{role:'user',content:buildPrompt()}]})
+    });
+    const d=await resp.json();
+    if(d.content&&d.content[0]){ const txt=d.content[0].text; el.className='ia-res'; el.textContent=txt; D.iaAnalysis=txt; saveLS(); toast('Análise gerada!'); }
+    else{ el.className='ia-res'; el.textContent='Erro: '+JSON.stringify(d); }
+  }catch(e){ el.className='ia-res'; el.textContent='Erro: '+e.message; }
+}
+
+function copyPrompt(){
+  const p=buildPrompt();
+  navigator.clipboard.writeText(p).then(()=>toast('Prompt copiado!')).catch(()=>{ const t=document.createElement('textarea');t.value=p;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);toast('Prompt copiado!'); });
+}
+
+function saveManualIA(){
+  const v=document.getElementById('ia-manual').value.trim();
+  if(!v){toast('Cole a resposta antes de salvar');return;}
+  D.iaAnalysis=v; saveLS();
+  document.getElementById('ia-res').className='ia-res';
+  document.getElementById('ia-res').textContent=v;
+  document.getElementById('ia-manual').value='';
+  toast('Análise salva!');
+}
+
+// =====================================================================
+// MODELO
+// =====================================================================
+const PROMPT_MODELO=`Você é especialista em UX, design de interfaces e acessibilidade digital. Vou te enviar um formulário JSON com 5 categorias de análise ("óculos") sobre um site. Sua tarefa é analisar o site indicado e preencher TODOS os campos "resposta" e "dados" com observações detalhadas e específicas.
+
+SITE PARA ANALISAR: [COLE A URL DO SITE AQUI]
+
+REGRAS OBRIGATÓRIAS:
+1. Responda APENAS com o JSON preenchido — sem texto antes, sem texto depois, sem marcação de código (\`\`\`).
+2. NÃO altere a estrutura do JSON. Mantenha TODAS as chaves exatamente como estão.
+3. A chave "oculos" deve conter as 5 seções: visual, leitura, interacao, estrutura, acessib.
+4. Dentro de cada seção, a chave "itens" deve ser um array com os mesmos objetos do modelo.
+5. Preencha o campo "resposta" de cada item com 2-4 frases descritivas.
+6. Para perguntas de sim/não, comece SEMPRE com "Sim" ou "Não" seguido de ponto, depois explique.
+7. Seja específico: cite cores exatas, tamanhos, nomes de fontes, comportamentos observados.
+8. Nos campos de F12, inclua valores técnicos reais se conseguir acessar (px, hex, nomes de fonte).
+9. Preencha "_site.nome" e "_site.url" com os dados do site analisado.
+
+DICAS POR ÓCULOS:
+• Visual: descreva cores, tipografia, espaçamentos, identidade visual.
+• Leitura: foque na experiência de ler um artigo longo — cansaço, largura, recursos de navegação.
+• Interação: botões, compartilhamento, comentários, funcionalidades interativas.
+• Estrutura: organização do conteúdo, hierarquia, resumos, exemplos práticos.
+• Acessibilidade: widgets, Libras, contraste, fontes acessíveis, leitor de tela.`;
+
+function renderModelo(){
+  document.getElementById('prompt-box').textContent=PROMPT_MODELO+'\n\n[Cole aqui o conteúdo do arquivo modelo JSON]';
+}
+
+function buildModeloJSON(){
+  const m={
+    _instrucao:"INSTRUÇÕES: Preencha TODOS os campos 'resposta' e 'dados' com observações detalhadas. NÃO altere as chaves, NÃO remova campos, NÃO mude a estrutura. Para perguntas de sim/não, comece com 'Sim.' ou 'Não.' seguido da explicação.",
+    _exemplo_resposta:"Sim. O site oferece modo escuro com toggle na navbar superior direita. O fundo muda para #1a1a2e e o texto para #e5e5e5, mantendo boa legibilidade.",
+    _site:{
+      nome:"[Substitua pelo nome do site analisado]",
+      url:"[Substitua pela URL do site analisado]"
+    },
+    oculos:{}
+  };
+  OC.forEach(o=>{
+    const secObj = {
+      _descricao:`Óculos ${o.n} — ${o.label}: ${o.desc}`,
+      itens:[]
+    };
+    o.itens.forEach((item)=>{
+      const isSimNao = /^tem |^dá para|^mostra |^algum/i.test(item);
+      secObj.itens.push({
+        pergunta: item,
+        _dica: isSimNao ? "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases." : "Descreva em 2-4 frases com detalhes específicos.",
+        resposta: ""
+      });
+    });
+    if(o.f12) secObj.f12 = {
+      instrucao: o.f12,
+      _dica: "Extraia valores técnicos reais: use o Inspecionar (F12) do navegador para obter dados exatos como px, cores hex, nomes de fontes.",
+      dados: ""
+    };
+    m.oculos[o.id] = secObj;
+  });
+  return m;
+}
+
+function dlModeloJSON(){
+  const blob=new Blob([JSON.stringify(buildModeloJSON(),null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='cefor-modelo-ia.json';a.click();
+  toast('Modelo JSON baixado!');
+}
+
+function dlModeloMD(){
+  let md=`# Formulário de análise — CEFOR\n\n> Preencha cada campo com observações detalhadas do site.\n> Para perguntas de sim/não, comece com "Sim." ou "Não." seguido da explicação.\n\n**Site:** [Nome do site]\n**URL:** [URL do site]\n\n---\n\n`;
+  OC.forEach(o=>{
+    md+=`## Óculos ${o.n} — ${o.label}\n*${o.desc}*\n\n### O que observar:\n\n`;
+    o.itens.forEach((item,j)=>{
+      const isSimNao = /^tem |^dá para|^mostra |^algum/i.test(item);
+      const dica = isSimNao ? '_(Comece com Sim/Não, depois explique)_' : '_(Descreva com detalhes específicos)_';
+      md+=`**${j+1}. ${item}**\n${dica}\n\n[Sua observação aqui]\n\n`;
+    });
+    if(o.f12) md+=`### F12 / Inspecionar\n*${o.f12}*\n_(Use o Inspecionar do navegador para dados técnicos reais)_\n\n[Cole os dados técnicos aqui]\n\n`;
+    md+=`---\n\n`;
+  });
+  const blob=new Blob([md],{type:'text/markdown'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='cefor-modelo-ia.md';a.click();
+  toast('Modelo Markdown baixado!');
+}
+
+function copyPromptModelo(){
+  navigator.clipboard.writeText(PROMPT_MODELO).then(()=>toast('Prompt copiado!')).catch(()=>{const t=document.createElement('textarea');t.value=PROMPT_MODELO;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);toast('Copiado!');});
+}
+
+function importIAResp(evt){
+  const file=evt.target.files[0]; if(!file) return;
+  const si=parseInt(document.getElementById('ia-site-sel').value);
+  if(isNaN(si)){toast('Selecione o site de destino');evt.target.value='';return;}
+  const ow=document.getElementById('ow-chk').checked;
+  const r=new FileReader();
+  r.onload=e=>{
+    try{
+      let jsonStr = e.target.result.trim();
+      if (jsonStr.startsWith('```')) {
+         jsonStr = jsonStr.replace(/^```[a-z]*\n/i, '').replace(/\n```$/i, '').trim();
+      }
+      const d=JSON.parse(jsonStr);
+      
+      const allItens = [];
+      const allF12 = [];
+      function extractData(obj) {
+        if (!obj) return;
+        if (Array.isArray(obj)) {
+          obj.forEach(extractData);
+        } else if (typeof obj === 'object') {
+          if (typeof obj.pergunta === 'string') allItens.push(obj);
+          if (typeof obj.instrucao === 'string') allF12.push(obj);
+          Object.values(obj).forEach(extractData);
+        }
+      }
+      extractData(d);
+
+      let ct=0;
+      OC.forEach(o=>{
+        let secRaw = (d.oculos && d.oculos[o.id]) || d[o.id];
+        if (!secRaw && d.oculos && Object.keys(d.oculos).some(k => k.includes(o.id))) secRaw = d.oculos;
+        
+        let itensArr = [];
+        if (secRaw) {
+          const itensRaw = secRaw.itens || secRaw.Itens || {};
+          itensArr = Array.isArray(itensRaw) ? itensRaw : Object.values(itensRaw);
+        }
+
+        o.itens.forEach((perguntaStr,j)=>{
+          let match = allItens.find(x => x.pergunta.trim() === perguntaStr.trim());
+          if (!match && itensArr.length > 0) {
+              match = itensArr.find(x => x && typeof x === 'object' && typeof x.pergunta === 'string' && x.pergunta.trim() === perguntaStr.trim());
+          }
+          if (!match && itensArr[j] && typeof itensArr[j] === 'object') match = itensArr[j];
+          
+          let v = match ? (match.resposta || match.Resposta || match.response || match.Answer || '') : '';
+          if (typeof v !== 'string' && v !== '') v = JSON.stringify(v);
+          if(v&&(ow||!gn(si,o.id,j).trim())){ sn(si,o.id,j,v); ct++; }
+        });
+
+        if(o.f12){ 
+          let matchF12 = allF12.find(x => x.instrucao.trim() === o.f12.trim() || o.f12.includes(x.instrucao.trim()) || x.instrucao.includes(o.f12.substring(0, 15)));
+          let f = '';
+          if (matchF12) f = matchF12.dados || matchF12.Dados || matchF12.data || '';
+          if (!f && secRaw) {
+            let f12Raw = secRaw.f12 || secRaw.F12 || {}; 
+            f = f12Raw.dados||f12Raw.Dados||f12Raw.data||'';
+          }
+          if(f&&(ow||!gn(si,o.id,'f12').trim())){ sn(si,o.id,'f12',f); ct++; } 
+        }
+      });
+      renderSidebar(); toast(`${ct} campo${ct>1?'s':''} importado${ct>1?'s':''}!`);
+    }catch(err){toast('Erro ao ler o arquivo');}
+  };
+  r.readAsText(file); evt.target.value='';
+}
+
+// =====================================================================
+// EXPORT / IMPORT (ZIP com imagens separadas + compatibilidade JSON legado)
+// =====================================================================
+async function exportJSON(){
+  const imgs=await getAllImgsForExport();
+  const zip=new JSZip();
+  const imgRefs={};
+  Object.keys(imgs).forEach(key=>{
+    const b64=imgs[key];
+    const ext=imgExtFromB64(b64);
+    const safeName=key.replace(/[^a-z0-9_]/gi,'_')+'.'+ext;
+    const path='images/'+safeName;
+    const data=b64.includes(',')?b64.split(',')[1]:b64;
+    zip.file(path,data,{base64:true});
+    imgRefs[key]=path;
+  });
+  const exportData={...D,_imgRefs:imgRefs,_version:4};
+  zip.file('data.json',JSON.stringify(exportData,null,2));
+  const dateStr=new Date().toISOString().slice(0,10);
+  const blob=await zip.generateAsync({type:'blob'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='cefor-pesquisa-'+dateStr+'.zip';
+  a.click();
+  const n=Object.keys(imgRefs).length;
+  toast('Exportado! '+(n?n+' imagem(ns) como arquivos separados':'Sem imagens'));
+}
+
+async function importJSON(evt){
+  const file=evt.target.files[0]; if(!file) return;
+  evt.target.value='';
+  try{
+    if(file.name.endsWith('.zip')){
+      const buf=await file.arrayBuffer();
+      const zip=await JSZip.loadAsync(buf);
+      const jsonFile=zip.file('data.json');
+      if(!jsonFile){toast('ZIP inválido: data.json não encontrado');return;}
+      const jsonStr=await jsonFile.async('string');
+      const d=JSON.parse(jsonStr);
+      if(!d.sites||!d.notes){toast('Arquivo inválido');return;}
+      const {_imgRefs,_imgs,_version,...rest}=d;
+      D=rest; saveLS();
+      const refs=_imgRefs||{};
+      if(Object.keys(refs).length>0){
+        const imgMap={};
+        for(const [key,path] of Object.entries(refs)){
+          const imgFile=zip.file(path);
+          if(imgFile){
+            const b64=await imgFile.async('base64');
+            const ext=(path.split('.').pop()||'jpg').toLowerCase();
+            const mime=ext==='png'?'image/png':ext==='gif'?'image/gif':ext==='webp'?'image/webp':'image/jpeg';
+            imgMap[key]=`data:${mime};base64,${b64}`;
+          }
+        }
+        if(Object.keys(imgMap).length>0) await importAllImgs(imgMap);
+        toast(`Dados e ${Object.keys(imgMap).length} imagem(ns) importados!`);
+      } else {
+        toast('Dados importados!');
+      }
+      renderSidebar(); renderSites();
+    } else {
+      // Compatibilidade com JSON legado (versão <=3)
+      const r=new FileReader();
+      r.onload=async e=>{
+        try{
+          const d=JSON.parse(e.target.result);
+          if(!d.sites||!d.notes){toast('Arquivo inválido');return;}
+          const {_imgs,_imgRefs,_version,...rest}=d;
+          D=rest; saveLS();
+          if(_imgs&&Object.keys(_imgs).length>0){
+            await importAllImgs(_imgs);
+            toast(`Dados e ${Object.keys(_imgs).length} imagem(ns) importados!`);
+          } else {
+            toast('Dados importados!');
+          }
+          renderSidebar(); renderSites();
+        }catch(err){toast('Erro ao importar: '+err.message);}
+      };
+      r.readAsText(file);
+    }
+  }catch(err){toast('Erro ao importar: '+err.message);}
+}
+
+async function exportRelHTML(){
+  const imgs=await getAllImgsForExport();
+  function imgSrc(si,oc,campo,pid){ return imgs[`${si}_${oc}_${campo}_${pid}`]||''; }
+  function gallerySrcs(si){ const info=D.notes[`${si}_gallery`]; const pids=info?JSON.parse(info):[]; return pids.map(pid=>imgSrc(si,'gallery','gallery',pid)).filter(Boolean); }
+
+  let h=`<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"/><title>Relatório CEFOR</title>
+  <style>body{font-family:system-ui,sans-serif;max-width:880px;margin:0 auto;padding:2rem;color:#18170F;background:#F4F3EE}
+  h1{font-size:25px;margin-bottom:3px}h2{font-size:18px;margin:2rem 0 .7rem;border-bottom:2px solid #DDD9CE;padding-bottom:6px}
+  h3{font-size:13.5px;font-weight:700;color:#5C5A50;margin:1rem 0 .5rem}
+  .site{background:#fff;border:1px solid #DDD9CE;border-radius:12px;padding:1.2rem;margin-bottom:.7rem}
+  .oc{margin-bottom:.8rem}.oct{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#9C9A8E;margin-bottom:5px}
+  .note{background:#EDECE6;border-radius:5px;padding:6px 8px;font-size:12.5px;color:#3A3936;line-height:1.6;margin-bottom:3px}
+  .nlbl{font-size:9.5px;font-weight:700;color:#9C9A8E;margin-bottom:2px}.f12n{background:#FBF0DA;border-left:3px solid #DDB870}
+  .ci{background:#EDECE6;border-radius:5px;padding:6px 8px;font-size:12.5px;margin-bottom:3px}
+  .slbl{font-size:9.5px;font-weight:700;color:#9C9A8E;margin-bottom:2px}
+  .prints{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+  .thumb{width:80px;height:60px;border-radius:5px;object-fit:cover;border:1px solid #DDD9CE;cursor:pointer}
+  .ins{background:#E2F0EA;border:1px solid #A8DFC5;border-radius:6px;padding:7px 10px;margin-bottom:5px;font-size:12px;display:flex;gap:8px}
+  .ia-blk{background:#111;color:#fff;border-radius:12px;padding:1.2rem;margin-bottom:1.4rem}
+  .ia-txt{background:rgba(255,255,255,.07);border-radius:7px;padding:.9rem;font-size:13px;color:rgba(255,255,255,.82);line-height:1.75;white-space:pre-wrap}
+  </style></head><body>`;
+
+  h+=`<h1>Relatório de Pesquisa — CEFOR</h1><p style="color:#9C9A8E;font-size:12.5px">Base de Conhecimento · IFes · Gerado em ${new Date().toLocaleDateString('pt-BR')}</p>
+  <hr style="border:none;border-top:1px solid #DDD9CE;margin:1.2rem 0"/>`;
+
+  // Insights
+  const ins=genInsights();
+  if(ins.length){ h+=`<h2>Insights automáticos</h2>`; h+=ins.map(i=>`<div class="ins"><span>${i.icon}</span><div><strong>${i.label}:</strong> ${i.text}</div></div>`).join(''); }
+
+  // IA
+  if(D.iaAnalysis){ h+=`<h2>Análise gerada por IA</h2><div class="ia-blk"><div class="ia-txt">${escH(D.iaAnalysis)}</div></div>`; }
+
+  // Comparativo
+  h+=`<h2>Comparativo por óculos</h2>`;
+  OC.forEach(oc=>{
+    h+=`<h3>Óculos ${oc.n} — ${oc.label}: ${oc.desc}</h3>`;
+    oc.itens.forEach((item,j)=>{
+      const entries=D.sites.map((s,i)=>({nome:s.nome,val:gn(i,oc.id,j).trim(),idx:i})).filter(x=>x.val);
+      if(!entries.length) return;
+      h+=`<div style="margin-bottom:10px"><div style="font-size:10px;font-weight:700;color:#9C9A8E;text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px">${item}</div>`;
+      entries.forEach(e=>{
+        h+=`<div class="ci"><div class="slbl">${e.nome}</div>${e.val}</div>`;
+      });
+      h+=`</div>`;
+    });
+  });
+
+  // Por site
+  h+=`<h2>Observações por site</h2>`;
+  D.sites.forEach((s,i)=>{
+    const gSrcs=gallerySrcs(i);
+    const galleryHTML=gSrcs.length?`<div class="prints" style="margin-bottom:8px">${gSrcs.map(src=>`<img class="thumb" src="${src}" alt="print"/>`).join('')}</div>`:'';
+    h+=`<div class="site"><strong style="font-size:14.5px">${s.nome}</strong>${s.url?` <span style="font-size:11px;color:#9C9A8E">· ${s.url}</span>`:''}<br><span style="font-size:11px;color:#9C9A8E">${OC.filter(o=>isDone(i,o.id)).length}/${OC.length} óculos · ${countPrints(i)} print(s)</span>${galleryHTML}`;
+    OC.forEach(o=>{
+      const d=isDone(i,o.id);
+      h+=`<div class="oc"><div class="oct">Óculos ${o.n} — ${o.label}${d?' ✓':''}</div>`;
+      let hc=false;
+      o.itens.forEach((item,j)=>{
+        const v=gn(i,o.id,j).trim(); if(!v) return; hc=true;
+        h+=`<div class="note"><div class="nlbl">${item}</div>${v}</div>`;
+      });
+      const f12v=o.f12?gn(i,o.id,'f12').trim():'';
+      if(f12v){ hc=true; h+=`<div class="note f12n"><div class="nlbl">F12</div>${f12v}</div>`; }
+      if(!hc) h+=`<span style="font-size:11px;color:#9C9A8E;font-style:italic">Sem observações</span>`;
+      h+=`</div>`;
+    });
+    h+=`</div>`;
+  });
+
+  h+=`</body></html>`;
+  const blob=new Blob([h],{type:'text/html'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='cefor-relatorio-'+new Date().toISOString().slice(0,10)+'.html';a.click();
+  toast('Relatório HTML exportado com prints!');
+}
+
+// =====================================================================
+// UTILS
+// =====================================================================
+function escH(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>'); }
+function escH2(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
+
+let _mcb=null;
+function confirmMo(title,body,cb){ document.getElementById('mo-t').textContent=title; document.getElementById('mo-b').textContent=body; _mcb=cb; document.getElementById('mo').classList.add('open'); document.getElementById('mo-ok').onclick=()=>{closeMo();if(_mcb)_mcb();}; }
+function closeMo(){ document.getElementById('mo').classList.remove('open'); }
+
+// =====================================================================
+// INIT
+// =====================================================================
+(async ()=>{
+  await initDB();
+  loadLS();
+  renderSidebar();
+  renderSites();
+  renderDashboard();
+  renderModelo();
+})();
+</script>
+</body>
+</html>

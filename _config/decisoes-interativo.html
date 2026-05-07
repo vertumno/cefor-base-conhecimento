@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Decisões de Consolidação · Base CEFOR/IFes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f1ea;
+    --bg-2: #ebe6db;
+    --paper: #ffffff;
+    --ink: #14110d;
+    --ink-2: #4a4439;
+    --ink-3: #8a8273;
+    --line: #e2dccd;
+    --line-2: #d4cdba;
+    --accent: #1f5142;
+    --accent-2: #2d6a4f;
+    --accent-soft: #e3ecdf;
+    --gold: #b08544;
+    --gold-soft: #f3e7d0;
+    --rose: #b3433a;
+    --rose-soft: #f4dcd7;
+    --sun: #c98a1e;
+    --sun-soft: #f7e6c4;
+    --sky: #2c5e8f;
+    --sky-soft: #d9e7f3;
+    --serif: 'Fraunces', 'Source Serif 4', Georgia, serif;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 16px;
+    --r-xl: 24px;
+    --shadow-sm: 0 1px 2px rgba(20,17,13,.04), 0 1px 1px rgba(20,17,13,.03);
+    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
+    --shadow-lg: 0 24px 48px -12px rgba(20,17,13,.16), 0 8px 16px -8px rgba(20,17,13,.08);
+  }
+  [data-theme="dark"] {
+    --bg: #14110d;
+    --bg-2: #1c1814;
+    --paper: #221d17;
+    --ink: #f4f1ea;
+    --ink-2: #c9c2b3;
+    --ink-3: #8a8273;
+    --line: #2e2820;
+    --line-2: #3a342a;
+    --accent: #6cb89a;
+    --accent-2: #87cdb0;
+    --accent-soft: #1e2e26;
+    --gold-soft: #2e2516;
+    --rose-soft: #2e1a17;
+    --sun-soft: #2e2310;
+    --sky-soft: #16222e;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background .3s, color .3s;
+  }
+
+  /* Top progress bar */
+  .progress-rail {
+    position: fixed; inset: 0 0 auto 0;
+    height: 3px; z-index: 200;
+    background: transparent;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    width: 0%;
+    transition: width .15s ease-out;
+  }
+
+  /* HEADER — editorial */
+  .masthead {
+    position: relative;
+    padding: 80px 24px 56px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .masthead::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(800px 400px at 15% 20%, rgba(31,81,66,.08), transparent 60%),
+      radial-gradient(600px 300px at 85% 80%, rgba(176,133,68,.08), transparent 60%);
+    pointer-events: none;
+  }
+  .masthead-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--sans);
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .kicker::before, .kicker::after {
+    content: ''; height: 1px; width: 28px;
+    background: var(--accent); opacity: .5;
+  }
+  .masthead h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 5.6vw, 4.4rem);
+    font-weight: 600;
+    line-height: 1.02;
+    letter-spacing: -.02em;
+    margin: 0 0 20px;
+    font-variation-settings: "opsz" 144;
+  }
+  .masthead h1 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+  }
+  .masthead-lead {
+    max-width: 640px;
+    font-size: 1.1rem;
+    color: var(--ink-2);
+    line-height: 1.55;
+    margin: 0 0 32px;
+  }
+  .masthead-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    font-size: .82rem;
+    color: var(--ink-3);
+  }
+  .masthead-meta div { display: flex; flex-direction: column; gap: 2px; }
+  .masthead-meta strong {
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  /* Layout */
+  .shell {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 48px;
+    align-items: flex-start;
+  }
+  @media (max-width: 960px) {
+    .shell { grid-template-columns: 1fr; gap: 24px; }
+    .sidebar { position: static !important; order: -1; }
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    position: sticky;
+    top: 24px;
+    padding: 24px 0;
+  }
+  .ring-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 16px;
+  }
+  .ring-wrap {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .ring {
+    width: 88px; height: 88px;
+    flex-shrink: 0;
+  }
+  .ring-text {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.5rem;
+    fill: var(--ink);
+  }
+  .ring-text-2 {
+    font-family: var(--sans);
+    font-size: .65rem;
+    fill: var(--ink-3);
+    letter-spacing: .1em;
+  }
+  .ring-bg { fill: none; stroke: var(--line); stroke-width: 8; }
+  .ring-fg { fill: none; stroke: var(--accent); stroke-width: 8; stroke-linecap: round; transition: stroke-dasharray .5s ease; transform: rotate(-90deg); transform-origin: center; }
+  .ring-label-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
+  .ring-label-sub {
+    font-size: .82rem;
+    color: var(--ink-3);
+  }
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .stat-pill {
+    text-align: center;
+    padding: 8px 4px;
+    border-radius: var(--r-sm);
+    font-size: .72rem;
+  }
+  .stat-pill strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  .stat-pill.app { background: var(--accent-soft); color: var(--accent); }
+  .stat-pill.adj { background: var(--sun-soft); color: var(--sun); }
+  .stat-pill.rej { background: var(--rose-soft); color: var(--rose); }
+
+  /* Mini-map nav */
+  .nav-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 18px 20px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 16px;
+  }
+  .nav-title {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 12px;
+  }
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+  .nav-dot {
+    aspect-ratio: 1;
+    border-radius: var(--r-sm);
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--ink-3);
+    cursor: pointer;
+    transition: transform .12s, box-shadow .12s;
+    text-decoration: none;
+  }
+  .nav-dot:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+  .nav-dot.s-approved { background: var(--accent); color: white; border-color: var(--accent); }
+  .nav-dot.s-adjusted { background: var(--sun); color: white; border-color: var(--sun); }
+  .nav-dot.s-rejected { background: var(--rose); color: white; border-color: var(--rose); }
+
+  /* Action stack */
+  .actions-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--ink);
+    padding: 11px 16px;
+    border-radius: var(--r-md);
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: .88rem;
+    font-weight: 500;
+    transition: all .15s;
+    text-decoration: none;
+  }
+  .btn:hover { border-color: var(--ink-3); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+  .btn-primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+  .btn-ghost { background: transparent; border-color: transparent; color: var(--ink-2); }
+  .btn-danger:hover { color: var(--rose); border-color: var(--rose); }
+  .btn-icon { width: 38px; height: 38px; padding: 0; flex-shrink: 0; }
+
+  .theme-toggle {
+    position: fixed;
+    top: 16px; right: 16px;
+    z-index: 150;
+  }
+
+  /* Meta inputs */
+  .meta-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 32px;
+    padding-top: 32px;
+  }
+  .meta-inputs label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .meta-inputs input {
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    border-radius: var(--r-md);
+    font-family: var(--sans);
+    font-size: 1rem;
+    color: var(--ink);
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .meta-inputs input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+
+  /* DECISION CARD */
+  .decision {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-xl);
+    margin-bottom: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+    scroll-margin-top: 24px;
+  }
+  .decision:hover {
+    border-color: var(--line-2);
+    box-shadow: var(--shadow-md);
+  }
+  .decision.s-approved { border-color: var(--accent); }
+  .decision.s-approved::before { background: var(--accent); }
+  .decision.s-adjusted { border-color: var(--sun); }
+  .decision.s-adjusted::before { background: var(--sun); }
+  .decision.s-rejected { border-color: var(--rose); }
+  .decision.s-rejected::before { background: var(--rose); }
+
+  .decision-head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 24px;
+    align-items: center;
+    padding: 28px 32px 20px;
+  }
+  .decision-num {
+    font-family: var(--serif);
+    font-size: 3.4rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--line-2);
+    letter-spacing: -.04em;
+    font-variation-settings: "opsz" 144;
+    transition: color .25s;
+  }
+  .decision.s-approved .decision-num { color: var(--accent); }
+  .decision.s-adjusted .decision-num { color: var(--sun); }
+  .decision.s-rejected .decision-num { color: var(--rose); }
+  .decision-titlebox h2 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0 0 6px;
+    letter-spacing: -.01em;
+  }
+  .decision-question {
+    color: var(--ink-2);
+    font-size: .95rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+  .status-badge {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border-radius: 99px;
+    background: var(--bg-2);
+    color: var(--ink-3);
+  }
+  .s-approved .status-badge { background: var(--accent-soft); color: var(--accent); }
+  .s-adjusted .status-badge { background: var(--sun-soft); color: var(--sun); }
+  .s-rejected .status-badge { background: var(--rose-soft); color: var(--rose); }
+
+  .decision-body {
+    padding: 8px 32px 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  @media (max-width: 720px) {
+    .decision-body { grid-template-columns: 1fr; gap: 20px; }
+    .decision-head { grid-template-columns: auto 1fr; padding: 20px; }
+    .decision-head .status-badge { display: none; }
+    .decision-num { font-size: 2.4rem; }
+  }
+  .panel-label {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .panel-label::before {
+    content: ''; width: 18px; height: 1px; background: var(--ink-3);
+  }
+  .recommendation {
+    font-size: 1.02rem;
+    line-height: 1.6;
+    color: var(--ink);
+    padding: 18px 22px;
+    background: linear-gradient(135deg, var(--accent-soft), transparent);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--r-md) var(--r-md) 0;
+  }
+  .recommendation strong { color: var(--accent); font-weight: 600; }
+  .example-frame {
+    background: var(--bg-2);
+    border-radius: var(--r-md);
+    padding: 20px;
+    border: 1px dashed var(--line-2);
+    position: relative;
+  }
+  .example-frame::after {
+    content: 'Pré-visualização';
+    position: absolute;
+    top: -8px; right: 14px;
+    background: var(--bg-2);
+    padding: 0 8px;
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  /* DECISION FOOTER — actions */
+  .decision-foot {
+    background: linear-gradient(180deg, transparent, var(--bg-2));
+    padding: 24px 32px 28px;
+    border-top: 1px solid var(--line);
+  }
+  .segment {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    background: var(--paper);
+    padding: 4px;
+    border: 1px solid var(--line);
+    border-radius: 99px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow-sm);
+  }
+  .segment input { position: absolute; opacity: 0; pointer-events: none; }
+  .segment label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 16px;
+    border-radius: 99px;
+    cursor: pointer;
+    font-size: .9rem;
+    font-weight: 500;
+    color: var(--ink-2);
+    transition: all .18s;
+    user-select: none;
+  }
+  .segment label:hover { background: var(--bg-2); }
+  .segment input:checked + label.opt-app { background: var(--accent); color: white; box-shadow: 0 2px 8px rgba(31,81,66,.3); }
+  .segment input:checked + label.opt-adj { background: var(--sun); color: white; box-shadow: 0 2px 8px rgba(201,138,30,.3); }
+  .segment input:checked + label.opt-rej { background: var(--rose); color: white; box-shadow: 0 2px 8px rgba(179,67,58,.3); }
+  textarea.comment {
+    width: 100%;
+    min-height: 72px;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    font-family: var(--sans);
+    font-size: .95rem;
+    line-height: 1.5;
+    resize: vertical;
+    background: var(--paper);
+    color: var(--ink);
+    transition: border-color .15s, box-shadow .15s;
+  }
+  textarea.comment::placeholder { color: var(--ink-3); }
+  textarea.comment:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+
+  /* ============= EXAMPLE-SPECIFIC STYLES ============= */
+  .ex-purpose {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .ex-purpose-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 18px;
+    transition: transform .15s;
+  }
+  .ex-purpose-card:hover { transform: translateY(-2px); }
+  .ex-purpose-icon { font-size: 1.6rem; margin-bottom: 8px; display: block; }
+  .ex-purpose-card strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+  .ex-purpose-card p {
+    margin: 0;
+    color: var(--ink-3);
+    font-size: .85rem;
+    line-height: 1.5;
+  }
+
+  .ex-perfis {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .ex-perfil {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 14px;
+    text-align: center;
+    transition: all .15s;
+    cursor: pointer;
+  }
+  .ex-perfil:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+  }
+  .ex-perfil-icon { font-size: 1.8rem; margin-bottom: 6px; }
+  .ex-perfil-title { font-weight: 600; font-size: .92rem; margin-bottom: 2px; }
+  .ex-perfil-sub { font-size: .72rem; color: var(--ink-3); }
+
+  .ex-tldr {
+    background: var(--paper);
+    border-radius: var(--r-md);
+    padding: 18px 20px;
+    border-left: 3px solid var(--sky);
+    box-shadow: var(--shadow-sm);
+  }
+  .ex-tldr-head {
+    display: flex; align-items: center; gap: 8px;
+    font-weight: 700; font-size: .85rem; margin-bottom: 8px;
+    color: var(--sky);
+    letter-spacing: .04em;
+  }
+  .ex-tldr ul { margin: 0; padding-left: 20px; font-size: .92rem; line-height: 1.55; }
+  .ex-tldr li { margin: 4px 0; }
+
+  .ex-article {
+    background: var(--paper);
+    border-radius: var(--r-md);
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+  }
+  .ex-article-progress {
+    position: absolute; top: 0; left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    width: 38%;
+  }
+  .ex-article-tag {
+    display: inline-block;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .ex-article h4 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0 0 10px;
+    line-height: 1.25;
+  }
+  .ex-article-meta {
+    display: flex; flex-wrap: wrap; gap: 14px;
+    font-size: .78rem; color: var(--ink-3);
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 12px;
+  }
+  .ex-article-toc {
+    background: var(--bg);
+    border-radius: var(--r-sm);
+    padding: 12px 16px;
+  }
+  .ex-article-toc strong {
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--ink-3);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .ex-article-toc ol { margin: 0; padding-left: 18px; font-size: .88rem; }
+  .ex-article-toc a { color: var(--ink); text-decoration: none; }
+  .ex-article-toc a:hover { color: var(--accent); }
+
+  .callouts { display: flex; flex-direction: column; gap: 8px; }
+  .callout {
+    padding: 12px 16px;
+    border-radius: var(--r-sm);
+    border-left: 3px solid;
+    font-size: .88rem;
+    line-height: 1.5;
+    background: var(--paper);
+  }
+  .callout strong { font-weight: 600; }
+  .callout-info { border-color: var(--sky); background: var(--sky-soft); }
+  .callout-tip { border-color: var(--accent); background: var(--accent-soft); }
+  .callout-warn { border-color: var(--sun); background: var(--sun-soft); }
+  .callout-danger { border-color: var(--rose); background: var(--rose-soft); }
+
+  .ex-typo {
+    background: var(--paper);
+    padding: 22px;
+    border-radius: var(--r-md);
+    box-shadow: var(--shadow-sm);
+  }
+  .ex-typo-tag {
+    font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ink-3); margin-bottom: 8px;
+  }
+  .ex-typo h3 {
+    font-family: var(--serif);
+    font-size: 1.65rem;
+    font-weight: 600;
+    margin: 0 0 6px;
+    letter-spacing: -.01em;
+    line-height: 1.15;
+    font-variation-settings: "opsz" 144;
+  }
+  .ex-typo-cap {
+    font-family: var(--mono);
+    font-size: .72rem;
+    color: var(--ink-3);
+    margin: 0 0 14px;
+  }
+  .ex-typo-body {
+    font-size: 17px; line-height: 1.7; color: var(--ink-2); margin: 0;
+  }
+
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+  .swatch { text-align: center; font-size: .7rem; }
+  .swatch-color {
+    aspect-ratio: 1;
+    border-radius: var(--r-sm);
+    border: 1px solid var(--line);
+    margin-bottom: 6px;
+    box-shadow: var(--shadow-sm);
+  }
+  .swatch-name { font-weight: 600; font-size: .72rem; margin-bottom: 2px; }
+  .swatch-hex { font-family: var(--mono); color: var(--ink-3); font-size: .68rem; }
+
+  .ex-themes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .ex-theme {
+    border-radius: var(--r-md);
+    padding: 16px;
+    overflow: hidden;
+  }
+  .ex-theme.light { background: #f7f7f5; color: #1a1a1a; }
+  .ex-theme.dark { background: #1a1612; color: #f4f1ea; }
+  .ex-theme-tag {
+    font-size: .65rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; opacity: .6; margin-bottom: 8px;
+  }
+  .ex-theme-card {
+    background: rgba(255,255,255,.7);
+    padding: 12px;
+    border-radius: var(--r-sm);
+  }
+  .ex-theme.dark .ex-theme-card { background: rgba(255,255,255,.05); }
+  .ex-theme-card h5 {
+    font-family: var(--serif);
+    margin: 0 0 4px;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .ex-theme-card p { margin: 0; font-size: .82rem; opacity: .7; }
+
+  .ex-trilha {
+    background: var(--paper);
+    border-radius: var(--r-md);
+    padding: 18px 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .ex-trilha-title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .ex-trilha-step {
+    display: flex; gap: 12px; align-items: center;
+    padding: 10px 0;
+    border-top: 1px dashed var(--line);
+    font-size: .9rem;
+  }
+  .ex-trilha-step:nth-child(2) { border-top: none; }
+  .ex-trilha-step-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-size: .85rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .ex-trilha-time {
+    color: var(--ink-3);
+    font-size: .78rem;
+    margin-left: auto;
+    font-family: var(--mono);
+  }
+  .ex-trilha-nav {
+    display: flex; justify-content: space-between;
+    margin-top: 14px; padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font-size: .85rem;
+  }
+  .ex-trilha-nav a { color: var(--accent); text-decoration: none; font-weight: 500; }
+
+  .ex-a11y {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .ex-a11y-btn {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 9px 14px;
+    font-size: .82rem;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: all .15s;
+    cursor: pointer;
+  }
+  .ex-a11y-btn:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
+  .ex-search-wrap {
+    background: linear-gradient(135deg, #2c2c2c, #0f0f0f);
+    padding: 24px;
+    border-radius: var(--r-md);
+  }
+  .ex-search-modal {
+    background: var(--paper);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    box-shadow: 0 24px 48px rgba(0,0,0,.4);
+  }
+  .ex-search-input {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line);
+    font-size: .95rem;
+    color: var(--ink);
+  }
+  .ex-search-input span:first-child { font-size: 1.1rem; }
+  .ex-search-input strong {
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .ex-search-results { padding: 6px 0; max-height: 220px; }
+  .ex-search-result {
+    padding: 10px 18px;
+    border-left: 3px solid transparent;
+    font-size: .88rem;
+    cursor: pointer;
+  }
+  .ex-search-result strong { font-weight: 600; }
+  .ex-search-result small {
+    display: block;
+    color: var(--ink-3);
+    font-size: .75rem;
+    margin-top: 2px;
+  }
+  .ex-search-result.active { background: var(--accent-soft); border-color: var(--accent); }
+  .ex-search-keys {
+    background: var(--bg-2);
+    padding: 10px 18px;
+    font-size: .72rem;
+    color: var(--ink-3);
+    display: flex; gap: 14px;
+    border-top: 1px solid var(--line);
+  }
+  kbd {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-family: var(--mono);
+    font-size: .72rem;
+    margin-right: 2px;
+  }
+
+  .ex-feedback {
+    background: var(--paper);
+    border-radius: var(--r-md);
+    padding: 22px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .ex-feedback-q {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+  .ex-feedback-emojis { display: flex; gap: 8px; justify-content: center; }
+  .ex-feedback-emoji {
+    font-size: 1.8rem;
+    cursor: pointer;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-2);
+    transition: transform .15s, background .15s;
+  }
+  .ex-feedback-emoji:hover {
+    transform: scale(1.15) rotate(-4deg);
+    background: var(--accent-soft);
+  }
+  .ex-feedback-actions {
+    display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
+    margin-top: 14px; padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+  .ex-feedback-btn {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 99px;
+    padding: 6px 12px;
+    font-size: .78rem;
+    color: var(--ink-2);
+    cursor: pointer;
+  }
+  .ex-feedback-btn:hover { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+
+  .ex-tabs {
+    background: var(--paper);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .ex-tabs-nav {
+    display: flex;
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .ex-tab {
+    padding: 12px 18px;
+    font-size: .88rem;
+    font-weight: 500;
+    color: var(--ink-3);
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+  }
+  .ex-tab.active {
+    background: var(--paper);
+    color: var(--accent);
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+  .ex-tabs-body { padding: 16px 20px; font-size: .9rem; line-height: 1.55; }
+  .ex-tabs-body p { margin: 0 0 6px; }
+  .ex-tabs-body p:last-child { margin: 0; }
+  .ex-tabs-body em { color: var(--accent); font-style: normal; font-weight: 600; }
+
+  .ex-meta {
+    background: var(--paper);
+    border-radius: var(--r-md);
+    padding: 16px 20px;
+    font-size: .85rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .ex-meta-row {
+    display: flex; gap: 12px;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .ex-meta-row:last-child { border-bottom: none; }
+  .ex-meta-key {
+    color: var(--ink-3);
+    min-width: 130px;
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-weight: 600;
+  }
+  .ex-meta-val { color: var(--ink); flex: 1; }
+  .ex-meta-tag {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-size: .72rem;
+    margin-right: 4px;
+    font-weight: 500;
+  }
+  .ex-meta-ai {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: var(--gold-soft);
+    color: var(--gold);
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-size: .72rem;
+    font-weight: 600;
+  }
+
+  .ex-out-list { list-style: none; padding: 0; margin: 0; }
+  .ex-out-list li {
+    padding: 10px 14px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .88rem;
+    transition: transform .12s;
+  }
+  .ex-out-list li:hover { transform: translateX(3px); }
+  .ex-out-tag {
+    background: var(--bg-2);
+    color: var(--ink-3);
+    padding: 3px 10px;
+    border-radius: 99px;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+  }
+  .ex-out-tag.v3 { background: var(--gold-soft); color: var(--gold); }
+
+  /* SUMMARY FINAL */
+  .summary-final {
+    background: linear-gradient(135deg, var(--paper), var(--bg-2));
+    border: 1px solid var(--line);
+    border-radius: var(--r-xl);
+    padding: 36px 40px;
+    margin-top: 48px;
+    box-shadow: var(--shadow-md);
+  }
+  .summary-final h2 {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0 0 6px;
+    letter-spacing: -.01em;
+  }
+  .summary-sub {
+    color: var(--ink-3);
+    font-size: .92rem;
+    margin: 0 0 24px;
+  }
+  .summary-list {
+    display: grid;
+    gap: 8px;
+  }
+  .summary-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 14px;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    transition: all .15s;
+  }
+  .summary-item:hover { transform: translateX(3px); box-shadow: var(--shadow-sm); }
+  .summary-item-ico {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-2);
+    color: var(--ink-3);
+    font-size: .9rem;
+    font-weight: 600;
+  }
+  .summary-item.s-approved { border-color: var(--accent); }
+  .summary-item.s-approved .summary-item-ico { background: var(--accent); color: white; }
+  .summary-item.s-adjusted { border-color: var(--sun); }
+  .summary-item.s-adjusted .summary-item-ico { background: var(--sun); color: white; }
+  .summary-item.s-rejected { border-color: var(--rose); }
+  .summary-item.s-rejected .summary-item-ico { background: var(--rose); color: white; }
+  .summary-item-title { font-size: .92rem; }
+  .summary-item-comment {
+    display: block;
+    color: var(--ink-3);
+    font-size: .8rem;
+    font-style: italic;
+    margin-top: 2px;
+  }
+  .summary-item-num {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--ink-3);
+  }
+
+  footer {
+    text-align: center;
+    color: var(--ink-3);
+    font-size: .82rem;
+    padding: 48px 16px;
+    line-height: 1.6;
+  }
+  footer strong { color: var(--ink-2); }
+
+  @media print {
+    .sidebar, .theme-toggle, .progress-rail { display: none !important; }
+    .shell { grid-template-columns: 1fr; }
+    .decision { box-shadow: none; break-inside: avoid; page-break-inside: avoid; }
+    body { background: white; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-rail"><div class="progress-fill" id="progressBar"></div></div>
+
+<button class="btn btn-icon theme-toggle" onclick="toggleTheme()" title="Alternar tema" id="themeBtn">🌙</button>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="kicker">Fase 0 → Fase 1 · Reunião de Consolidação</div>
+    <h1>Quinze decisões para fundar a <em>nova Base</em>.</h1>
+    <p class="masthead-lead">Cada decisão abaixo virá com a recomendação da equipe e um exemplo visual de como ficaria na prática. Aprove, ajuste ou rejeite — e exporte o resultado ao final.</p>
+    <div class="masthead-meta">
+      <div><strong>15</strong><span>decisões</span></div>
+      <div><strong>~45 min</strong><span>tempo estimado</span></div>
+      <div><strong>Elton + Marcos</strong><span>validadores principais</span></div>
+      <div><strong>2026-05-07</strong><span>data de criação</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+
+  <main>
+    <div class="meta-inputs">
+      <label>Data da reunião
+        <input type="date" id="metaDate" />
+      </label>
+      <label>Presentes
+        <input type="text" id="metaPresentes" placeholder="Elton, Marcos, Juliana, Rute" />
+      </label>
+    </div>
+
+    <div id="decisionsContainer"></div>
+
+    <section class="summary-final" id="summaryBlock">
+      <h2>Resumo final</h2>
+      <p class="summary-sub">Atualiza em tempo real. Use os botões da barra lateral para exportar.</p>
+      <div class="summary-list" id="summaryList"></div>
+    </section>
+
+    <footer>
+      Os dados são salvos automaticamente no navegador.<br/>
+      Use <strong>Exportar JSON</strong> para enviar ao Elton e atualizar o <code>decisoes.md</code>.
+    </footer>
+  </main>
+
+  <aside class="sidebar">
+    <div class="ring-card">
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 100 100">
+          <circle class="ring-bg" cx="50" cy="50" r="42" />
+          <circle class="ring-fg" id="ringFg" cx="50" cy="50" r="42" stroke-dasharray="0 264" />
+          <text class="ring-text" x="50" y="52" text-anchor="middle" id="ringNum">0</text>
+          <text class="ring-text-2" x="50" y="66" text-anchor="middle">DE 15</text>
+        </svg>
+        <div>
+          <p class="ring-label-title">Progresso</p>
+          <p class="ring-label-sub" id="ringSub">Comece marcando a 1ª decisão</p>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-pill app"><strong id="statApp">0</strong>aprov.</div>
+        <div class="stat-pill adj"><strong id="statAdj">0</strong>ajust.</div>
+        <div class="stat-pill rej"><strong id="statRej">0</strong>rejei.</div>
+      </div>
+    </div>
+
+    <div class="nav-card">
+      <p class="nav-title">Mapa rápido</p>
+      <div class="nav-grid" id="navGrid"></div>
+    </div>
+
+    <div class="actions-stack">
+      <button class="btn btn-primary" onclick="exportJSON()">💾 Exportar JSON</button>
+      <button class="btn" onclick="exportMD()">📄 Exportar Markdown</button>
+      <button class="btn" onclick="importJSON()">📥 Importar JSON</button>
+      <button class="btn" onclick="window.print()">🖨️ Imprimir / PDF</button>
+      <button class="btn btn-ghost btn-danger" onclick="clearAll()">🗑️ Limpar tudo</button>
+    </div>
+  </aside>
+
+</div>
+
+<input type="file" id="fileInput" accept=".json" style="display:none" />
+
+<script>
+const DECISIONS = [
+  {
+    id: 1,
+    title: "Propósito-farol da Base",
+    question: "Qual a declaração de propósito que guia todas as outras decisões?",
+    recommendation: '<strong>"A Base de Conhecimento do CEFOR é o lugar onde qualquer profissional de EaD do IFES resolve problemas com autonomia e se forma continuamente."</strong> Duas funções em uma só base: consulta pontual + formação estruturada.',
+    example: `
+      <div class="ex-purpose">
+        <div class="ex-purpose-card">
+          <span class="ex-purpose-icon">🔍</span>
+          <strong>Consulta</strong>
+          <p>"Estou com um problema agora, preciso da resposta."</p>
+        </div>
+        <div class="ex-purpose-card">
+          <span class="ex-purpose-icon">🎓</span>
+          <strong>Formação</strong>
+          <p>"Quero aprender e evoluir continuamente."</p>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: 2,
+    title: "Segmentação por perfil",
+    question: "Para quem é a base e como segmentar a experiência?",
+    recommendation: 'Segmentação por perfil na V1 com <strong>3-4 perfis iniciais</strong>. <strong>Sem login</strong>: apenas categorização de conteúdo + navegação por perfil na home.',
+    example: `
+      <div class="ex-perfis">
+        <div class="ex-perfil"><div class="ex-perfil-icon">👩‍🏫</div><div class="ex-perfil-title">Professor</div><div class="ex-perfil-sub">Quem dá aula no EaD</div></div>
+        <div class="ex-perfil"><div class="ex-perfil-icon">📋</div><div class="ex-perfil-title">Coordenador</div><div class="ex-perfil-sub">Gerencia cursos</div></div>
+        <div class="ex-perfil"><div class="ex-perfil-icon">🎓</div><div class="ex-perfil-title">Estudante</div><div class="ex-perfil-sub">Aluno do MOOC</div></div>
+        <div class="ex-perfil"><div class="ex-perfil-icon">🔧</div><div class="ex-perfil-title">Técnico/TI</div><div class="ex-perfil-sub">Suporte e config.</div></div>
+      </div>
+    `
+  },
+  {
+    id: 3,
+    title: "TL;DR obrigatório",
+    question: "Artigos com mais de 3 minutos devem ter um bloco \"Em resumo\" no topo?",
+    recommendation: '<strong>Sim, obrigatório para artigos com mais de 3 minutos de leitura.</strong> O TL;DR contém a <em>conclusão</em>, não a introdução.',
+    example: `
+      <div class="ex-tldr">
+        <div class="ex-tldr-head">📌 Em resumo</div>
+        <ul>
+          <li>Para criar um questionário no Moodle, use <em>Adicionar atividade → Questionário</em>.</li>
+          <li>Configure tempo limite e tentativas em <em>Comportamento da pergunta</em>.</li>
+          <li>Para correção automática, use múltipla escolha ou V/F.</li>
+        </ul>
+      </div>
+    `
+  },
+  {
+    id: 4,
+    title: "Tempo de leitura, índice e barra de progresso",
+    question: "Exibir tempo estimado, índice \"Neste artigo\" e barra de progresso?",
+    recommendation: '<strong>Sim aos três.</strong> Tempo de leitura abaixo do título (200 palavras/min), índice para artigos com 4+ seções, barra fina (2-3px) no topo da página.',
+    example: `
+      <div class="ex-article">
+        <div class="ex-article-progress"></div>
+        <div class="ex-article-tag">Tutorial</div>
+        <h4>Como criar um questionário no Moodle</h4>
+        <div class="ex-article-meta">
+          <span>📅 07/05/2026</span>
+          <span>⏱️ 5 min de leitura</span>
+          <span>👤 Juliana Cassaro</span>
+        </div>
+        <div class="ex-article-toc">
+          <strong>Neste artigo</strong>
+          <ol>
+            <li><a href="#">Pré-requisitos</a></li>
+            <li><a href="#">Criando a atividade</a></li>
+            <li><a href="#">Configurando perguntas</a></li>
+            <li><a href="#">Publicação e revisão</a></li>
+          </ol>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: 5,
+    title: "Quatro tipos de callout",
+    question: "Quantos tipos de caixa de destaque padronizar?",
+    recommendation: '<strong>4 tipos fixos</strong> com cores e ícones consistentes: Informação (azul), Dica (verde), Atenção (amarelo), Importante (vermelho).',
+    example: `
+      <div class="callouts">
+        <div class="callout callout-info"><strong>ℹ️ Informação.</strong> O Moodle 4.5 introduziu mudanças no editor de perguntas.</div>
+        <div class="callout callout-tip"><strong>💡 Dica.</strong> Use <kbd>Ctrl</kbd>+<kbd>S</kbd> para salvar rascunhos rapidamente.</div>
+        <div class="callout callout-warn"><strong>⚠️ Atenção.</strong> Alterar o tempo limite após estudantes iniciarem pode invalidar tentativas.</div>
+        <div class="callout callout-danger"><strong>🔴 Importante.</strong> Excluir um questionário <em>apaga todas as notas</em>. Esta ação é irreversível.</div>
+      </div>
+    `
+  },
+  {
+    id: 6,
+    title: "Tipografia editorial",
+    question: "Usar serifada nos títulos ou só sans-serif?",
+    recommendation: '<strong>Combinar serifada nos títulos</strong> (Fraunces, Source Serif 4 ou Lora) <strong>com sans-serif no corpo</strong> (Inter ou Source Sans 3). Corpo a 17-18px, line-height 1.65-1.7.',
+    example: `
+      <div class="ex-typo">
+        <div class="ex-typo-tag">Tutorial</div>
+        <h3>Como criar um questionário</h3>
+        <p class="ex-typo-cap">Fraunces (título) + Inter (corpo)</p>
+        <p class="ex-typo-body">A criação de avaliações no Moodle envolve três etapas principais: definição da atividade, configuração de perguntas e publicação.</p>
+      </div>
+    `
+  },
+  {
+    id: 7,
+    title: "Fundo e identidade visual",
+    question: "Branco puro ou fundo neutro com cards brancos?",
+    recommendation: '<strong>Fundo cinza-bege leve (#f4f1ea) com cards brancos.</strong> Reduz fadiga visual e dá identidade editorial. Verde IFES como cor de acento.',
+    example: `
+      <div class="swatches">
+        <div class="swatch"><div class="swatch-color" style="background: #f4f1ea;"></div><div class="swatch-name">Fundo</div><div class="swatch-hex">#f4f1ea</div></div>
+        <div class="swatch"><div class="swatch-color" style="background: #ffffff;"></div><div class="swatch-name">Cards</div><div class="swatch-hex">#ffffff</div></div>
+        <div class="swatch"><div class="swatch-color" style="background: #14110d;"></div><div class="swatch-name">Tinta</div><div class="swatch-hex">#14110d</div></div>
+        <div class="swatch"><div class="swatch-color" style="background: #1f5142;"></div><div class="swatch-name">Acento</div><div class="swatch-hex">#1f5142</div></div>
+        <div class="swatch"><div class="swatch-color" style="background: #b08544;"></div><div class="swatch-name">Detalhe</div><div class="swatch-hex">#b08544</div></div>
+      </div>
+    `
+  },
+  {
+    id: 8,
+    title: "Modo escuro",
+    question: "Implementar modo escuro desde o início?",
+    recommendation: '<strong>Sim, com variáveis CSS desde o dia 1.</strong> Toggle visível na navbar, respeita <code>prefers-color-scheme</code>. Custo zero se planejado, alto se adicionado depois.',
+    example: `
+      <div class="ex-themes">
+        <div class="ex-theme light">
+          <div class="ex-theme-tag">☀️ Modo claro</div>
+          <div class="ex-theme-card">
+            <h5>Título do artigo</h5>
+            <p>Conteúdo de exemplo do corpo do texto.</p>
+          </div>
+        </div>
+        <div class="ex-theme dark">
+          <div class="ex-theme-tag">🌙 Modo escuro</div>
+          <div class="ex-theme-card">
+            <h5>Título do artigo</h5>
+            <p>Conteúdo de exemplo do corpo do texto.</p>
+          </div>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: 9,
+    title: "Trilhas pedagógicas (V1 simplificada)",
+    question: "Implementar trilhas com previous/next e progresso na V1?",
+    recommendation: '<strong>Sim na V1, em versão simplificada</strong>: percursos temáticos + previous/next + sidebar de série. <strong>Sem tracking</strong> de progresso (V2, exige login).',
+    example: `
+      <div class="ex-trilha">
+        <div class="ex-trilha-title">🎯 Comece a ensinar a distância no IFES</div>
+        <div class="ex-trilha-step"><div class="ex-trilha-step-num">1</div><div>Introdução à EaD no IFES</div><span class="ex-trilha-time">4 min</span></div>
+        <div class="ex-trilha-step"><div class="ex-trilha-step-num">2</div><div>Configurando seu perfil no Moodle</div><span class="ex-trilha-time">6 min</span></div>
+        <div class="ex-trilha-step"><div class="ex-trilha-step-num">3</div><div>Estruturando seu primeiro curso</div><span class="ex-trilha-time">8 min</span></div>
+        <div class="ex-trilha-step"><div class="ex-trilha-step-num">4</div><div>Boas práticas de mediação</div><span class="ex-trilha-time">10 min</span></div>
+        <div class="ex-trilha-nav">
+          <a href="#">← Anterior</a>
+          <a href="#">Próximo →</a>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: 10,
+    title: "Pacote de acessibilidade",
+    question: "Que nível de acessibilidade implementar na V1?",
+    recommendation: '<strong>Pacote completo na V1:</strong> VLibras, A-/A+, alto contraste WCAG AAA, fonte para dislexia, atalhos de teclado, "pular para o conteúdo", semântica HTML rigorosa. <em>Diferencial vs. todos os 7 sites pesquisados.</em>',
+    example: `
+      <div class="ex-a11y">
+        <div class="ex-a11y-btn">🤟 VLibras</div>
+        <div class="ex-a11y-btn">A−</div>
+        <div class="ex-a11y-btn">A+</div>
+        <div class="ex-a11y-btn">🌗 Alto contraste</div>
+        <div class="ex-a11y-btn">🔤 Fonte dislexia</div>
+        <div class="ex-a11y-btn">🔊 Ler em voz alta</div>
+        <div class="ex-a11y-btn">⌨️ Atalhos</div>
+        <div class="ex-a11y-btn">↪️ Pular ao conteúdo</div>
+      </div>
+    `
+  },
+  {
+    id: 11,
+    title: "Busca",
+    question: "Que tipo de busca implementar na V1?",
+    recommendation: '<strong>V1: busca textual robusta com modal (Ctrl+K)</strong>, full-text indexada, filtros, atalhos visíveis. <strong>V2: resposta sintetizada por IA</strong> (evolução Sofia).',
+    example: `
+      <div class="ex-search-wrap">
+        <div class="ex-search-modal">
+          <div class="ex-search-input"><span>🔍</span><span><strong>moodle questionário</strong>|</span></div>
+          <div class="ex-search-results">
+            <div class="ex-search-result active">
+              <strong>Como criar um questionário no Moodle</strong>
+              <small>Tutorial · Moodle &gt; Avaliação · 5 min</small>
+            </div>
+            <div class="ex-search-result">
+              <strong>Configurando notas em questionários</strong>
+              <small>Tutorial · Moodle &gt; Avaliação · 4 min</small>
+            </div>
+            <div class="ex-search-result">
+              <strong>Banco de questões: importar do Word</strong>
+              <small>Tutorial · Moodle &gt; Avaliação · 6 min</small>
+            </div>
+          </div>
+          <div class="ex-search-keys">
+            <span><kbd>↑</kbd><kbd>↓</kbd> Navegar</span>
+            <span><kbd>↵</kbd> Abrir</span>
+            <span><kbd>Esc</kbd> Fechar</span>
+          </div>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: 12,
+    title: "Feedback do leitor",
+    question: "Quais interações o leitor terá com o artigo?",
+    recommendation: '<strong>V1:</strong> emoji 😊/😟 + campo "O que faltou?", copiar link, copiar link da seção, citação ABNT, compartilhar, reportar erro. Comentários em trechos e destaques ficam para V2.',
+    example: `
+      <div class="ex-feedback">
+        <div class="ex-feedback-q">Esse artigo foi útil?</div>
+        <div class="ex-feedback-emojis">
+          <span class="ex-feedback-emoji">😊</span>
+          <span class="ex-feedback-emoji">😐</span>
+          <span class="ex-feedback-emoji">😟</span>
+        </div>
+        <div class="ex-feedback-actions">
+          <button class="ex-feedback-btn">🔗 Copiar link</button>
+          <button class="ex-feedback-btn">📑 Citação ABNT</button>
+          <button class="ex-feedback-btn">📤 Compartilhar</button>
+          <button class="ex-feedback-btn">⚠️ Reportar erro</button>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: 13,
+    title: "Conteúdo multimodal",
+    question: "Artigos devem estar disponíveis em múltiplos formatos?",
+    recommendation: '<strong>V1:</strong> texto (principal) + abas Computador/Mobile (modelo Canva, sem duplicar artigos) + vídeo embutido onde existir. <strong>TTS via Web Speech API</strong> se viável. Flashcards na V2.',
+    example: `
+      <div class="ex-tabs">
+        <div class="ex-tabs-nav">
+          <div class="ex-tab active">💻 Computador</div>
+          <div class="ex-tab">📱 Dispositivo móvel</div>
+        </div>
+        <div class="ex-tabs-body">
+          <p><strong>1.</strong> Acesse o Moodle no navegador e clique em <em>Ativar edição</em>.</p>
+          <p><strong>2.</strong> Na seção desejada, clique em <em>Adicionar atividade ou recurso</em>.</p>
+          <p><strong>3.</strong> Selecione <em>Questionário</em> e configure os parâmetros.</p>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: 14,
+    title: "Metadados obrigatórios",
+    question: "Quais metadados devem aparecer em cada artigo?",
+    recommendation: '<strong>Obrigatório por artigo:</strong> autor(es), revisor pedagógico, data de publicação, data da última revisão, tempo de leitura, tipo, categoria, tags, versão Moodle (quando aplicável), <strong>marcação IA</strong>, licença (CC BY-SA 4.0).',
+    example: `
+      <div class="ex-meta">
+        <div class="ex-meta-row"><div class="ex-meta-key">Autor(es)</div><div class="ex-meta-val">Juliana Cassaro</div></div>
+        <div class="ex-meta-row"><div class="ex-meta-key">Revisor pedag.</div><div class="ex-meta-val">Rutinelli Fávero</div></div>
+        <div class="ex-meta-row"><div class="ex-meta-key">Publicado</div><div class="ex-meta-val">07/05/2026</div></div>
+        <div class="ex-meta-row"><div class="ex-meta-key">Última revisão</div><div class="ex-meta-val">07/05/2026</div></div>
+        <div class="ex-meta-row"><div class="ex-meta-key">Leitura</div><div class="ex-meta-val">5 min</div></div>
+        <div class="ex-meta-row"><div class="ex-meta-key">Tipo</div><div class="ex-meta-val">Tutorial</div></div>
+        <div class="ex-meta-row"><div class="ex-meta-key">Categoria</div><div class="ex-meta-val">Moodle &gt; Avaliação</div></div>
+        <div class="ex-meta-row"><div class="ex-meta-key">Tags</div><div class="ex-meta-val"><span class="ex-meta-tag">questionário</span><span class="ex-meta-tag">avaliação</span><span class="ex-meta-tag">nota</span></div></div>
+        <div class="ex-meta-row"><div class="ex-meta-key">Moodle</div><div class="ex-meta-val">4.5+</div></div>
+        <div class="ex-meta-row"><div class="ex-meta-key">IA</div><div class="ex-meta-val"><span class="ex-meta-ai">🤖 Produzido com assistência de IA</span></div></div>
+        <div class="ex-meta-row"><div class="ex-meta-key">Licença</div><div class="ex-meta-val">CC BY-SA 4.0</div></div>
+      </div>
+    `
+  },
+  {
+    id: 15,
+    title: "Escopo negativo da V1",
+    question: "Confirmar o que NÃO entra agora para proteger o escopo?",
+    recommendation: '<strong>Confirmar explicitamente o que fica fora da V1</strong> para evitar paralisia por ambição. Tudo abaixo é V2/V3.',
+    example: `
+      <ul class="ex-out-list">
+        <li>Chatbot/Tutor IA (evolução Sofia) <span class="ex-out-tag">V2</span></li>
+        <li>Gamificação (badges, ranking) <span class="ex-out-tag v3">V3</span></li>
+        <li>Contribuição wiki de professores <span class="ex-out-tag">V2</span></li>
+        <li>Flashcards + áudio mobile <span class="ex-out-tag">V2</span></li>
+        <li>Trilhas com certificação <span class="ex-out-tag">V2/V3</span></li>
+        <li>Integração profunda Moodle (LTI) <span class="ex-out-tag">V2</span></li>
+        <li>Login com perfil e tracking <span class="ex-out-tag">V2</span></li>
+        <li>Vitrine de experiências exitosas <span class="ex-out-tag">V2</span></li>
+        <li>Integração com Instagram <span class="ex-out-tag v3">V3</span></li>
+      </ul>
+    `
+  }
+];
+
+const STORAGE_KEY = 'cefor_decisoes_v2';
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : { meta: {}, decisions: {}, theme: 'light' };
+  } catch { return { meta: {}, decisions: {}, theme: 'light' }; }
+}
+function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+let state = loadState();
+
+const STATUS_LABEL = { approved: 'Aprovado', adjusted: 'Ajustado', rejected: 'Rejeitado' };
+const STATUS_ICON = { approved: '✓', adjusted: '⚙', rejected: '✗' };
+
+function render() {
+  const c = document.getElementById('decisionsContainer');
+  c.innerHTML = DECISIONS.map(d => {
+    const dec = state.decisions[d.id] || {};
+    const status = dec.status || '';
+    const cls = status ? 's-' + status : '';
+    const badge = status ? `<span class="status-badge">${STATUS_ICON[status]} ${STATUS_LABEL[status]}</span>` : `<span class="status-badge">○ Pendente</span>`;
+    const num = String(d.id).padStart(2, '0');
+    return `
+      <article class="decision ${cls}" id="d-${d.id}">
+        <header class="decision-head">
+          <div class="decision-num">${num}</div>
+          <div class="decision-titlebox">
+            <h2>${d.title}</h2>
+            <p class="decision-question">${d.question}</p>
+          </div>
+          ${badge}
+        </header>
+        <div class="decision-body">
+          <div>
+            <p class="panel-label">Recomendação</p>
+            <div class="recommendation">${d.recommendation}</div>
+          </div>
+          <div>
+            <p class="panel-label">Como ficaria</p>
+            <div class="example-frame">${d.example}</div>
+          </div>
+        </div>
+        <footer class="decision-foot">
+          <p class="panel-label">Sua decisão</p>
+          <div class="segment">
+            <input type="radio" id="d${d.id}-app" name="d${d.id}" ${status==='approved'?'checked':''} onchange="setStatus(${d.id}, 'approved')" />
+            <label for="d${d.id}-app" class="opt-app">✓ Aprovado</label>
+            <input type="radio" id="d${d.id}-adj" name="d${d.id}" ${status==='adjusted'?'checked':''} onchange="setStatus(${d.id}, 'adjusted')" />
+            <label for="d${d.id}-adj" class="opt-adj">⚙ Ajustado</label>
+            <input type="radio" id="d${d.id}-rej" name="d${d.id}" ${status==='rejected'?'checked':''} onchange="setStatus(${d.id}, 'rejected')" />
+            <label for="d${d.id}-rej" class="opt-rej">✗ Rejeitado</label>
+          </div>
+          <textarea class="comment" placeholder="Comentários, ajustes, ressalvas... (opcional, recomendado se 'Ajustado')" oninput="setComment(${d.id}, this.value)">${(dec.comment || '').replace(/</g,'&lt;')}</textarea>
+        </footer>
+      </article>
+    `;
+  }).join('');
+  renderNav();
+  updateStats();
+  renderSummary();
+}
+
+function renderNav() {
+  const grid = document.getElementById('navGrid');
+  grid.innerHTML = DECISIONS.map(d => {
+    const s = (state.decisions[d.id] || {}).status;
+    const cls = s ? 's-' + s : '';
+    return `<a href="#d-${d.id}" class="nav-dot ${cls}" title="${d.title}">${d.id}</a>`;
+  }).join('');
+}
+
+function setStatus(id, status) {
+  if (!state.decisions[id]) state.decisions[id] = {};
+  state.decisions[id].status = status;
+  state.decisions[id].timestamp = new Date().toISOString();
+  saveState();
+  const el = document.getElementById('d-'+id);
+  el.className = 'decision s-' + status;
+  el.querySelector('.status-badge').innerHTML = STATUS_ICON[status] + ' ' + STATUS_LABEL[status];
+  renderNav();
+  updateStats();
+  renderSummary();
+}
+function setComment(id, val) {
+  if (!state.decisions[id]) state.decisions[id] = {};
+  state.decisions[id].comment = val;
+  saveState();
+  renderSummary();
+}
+
+function updateStats() {
+  let a=0, j=0, r=0;
+  Object.values(state.decisions).forEach(d => {
+    if (d.status === 'approved') a++;
+    else if (d.status === 'adjusted') j++;
+    else if (d.status === 'rejected') r++;
+  });
+  const total = a+j+r;
+  document.getElementById('statApp').textContent = a;
+  document.getElementById('statAdj').textContent = j;
+  document.getElementById('statRej').textContent = r;
+  document.getElementById('ringNum').textContent = total;
+  const circ = 2 * Math.PI * 42;
+  const fill = (total / 15) * circ;
+  document.getElementById('ringFg').setAttribute('stroke-dasharray', `${fill} ${circ}`);
+  const sub = total === 0 ? 'Comece marcando a 1ª decisão'
+    : total === 15 ? 'Tudo pronto! Exporte o resultado.'
+    : `${15 - total} restante${15 - total !== 1 ? 's' : ''}`;
+  document.getElementById('ringSub').textContent = sub;
+}
+
+function renderSummary() {
+  const list = document.getElementById('summaryList');
+  list.innerHTML = DECISIONS.map(d => {
+    const dec = state.decisions[d.id] || {};
+    const s = dec.status || '';
+    const cls = s ? 's-' + s : '';
+    const ico = s ? STATUS_ICON[s] : '○';
+    const com = dec.comment ? `<span class="summary-item-comment">"${dec.comment.replace(/</g,'&lt;').slice(0,140)}${dec.comment.length>140?'…':''}"</span>` : '';
+    return `<a href="#d-${d.id}" style="text-decoration:none;color:inherit;"><div class="summary-item ${cls}">
+      <div class="summary-item-ico">${ico}</div>
+      <div><div class="summary-item-title"><strong>${d.id}.</strong> ${d.title}</div>${com}</div>
+      <div class="summary-item-num">${String(d.id).padStart(2,'0')}</div>
+    </div></a>`;
+  }).join('');
+}
+
+document.getElementById('metaDate').addEventListener('change', e => { state.meta.date = e.target.value; saveState(); });
+document.getElementById('metaPresentes').addEventListener('input', e => { state.meta.presentes = e.target.value; saveState(); });
+
+function exportJSON() {
+  const data = {
+    document: 'Decisões de Consolidação Fase 0 → Fase 1',
+    project: 'Base de Conhecimento CEFOR/IFes',
+    exported_at: new Date().toISOString(),
+    meta: state.meta,
+    decisions: DECISIONS.map(d => ({
+      id: d.id,
+      title: d.title,
+      status: (state.decisions[d.id] && state.decisions[d.id].status) || 'pending',
+      comment: (state.decisions[d.id] && state.decisions[d.id].comment) || '',
+      timestamp: (state.decisions[d.id] && state.decisions[d.id].timestamp) || null
+    }))
+  };
+  download(`decisoes-cefor-${new Date().toISOString().slice(0,10)}.json`, JSON.stringify(data, null, 2), 'application/json');
+}
+function exportMD() {
+  const date = state.meta.date || new Date().toISOString().slice(0,10);
+  const presentes = state.meta.presentes || '___________';
+  let md = `# Resultado das Decisões de Consolidação\n\n**Data:** ${date}\n**Presentes:** ${presentes}\n**Exportado em:** ${new Date().toLocaleString('pt-BR')}\n\n---\n\n`;
+  DECISIONS.forEach(d => {
+    const dec = state.decisions[d.id] || {};
+    const s = dec.status || 'pending';
+    const lab = s==='approved'?'[x] Aprovado':s==='adjusted'?'[~] Ajustado':s==='rejected'?'[ ] Rejeitado':'[ ] Pendente';
+    md += `## ${d.id}. ${d.title}\n\n**Status:** ${lab}\n\n`;
+    if (dec.comment) md += `**Comentário:** ${dec.comment}\n\n`;
+    md += `---\n\n`;
+  });
+  let a=0,j=0,r=0,p=0;
+  DECISIONS.forEach(d => {
+    const s = (state.decisions[d.id]||{}).status;
+    if (s==='approved') a++; else if (s==='adjusted') j++; else if (s==='rejected') r++; else p++;
+  });
+  md += `## Resumo\n\n- ✓ Aprovadas: ${a}\n- ⚙ Ajustadas: ${j}\n- ✗ Rejeitadas: ${r}\n- ○ Pendentes: ${p}\n`;
+  download(`decisoes-cefor-${new Date().toISOString().slice(0,10)}.md`, md, 'text/markdown');
+}
+function download(name, content, mime) {
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = name; a.click();
+  URL.revokeObjectURL(url);
+}
+function importJSON() { document.getElementById('fileInput').click(); }
+document.getElementById('fileInput').addEventListener('change', e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = ev => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (data.meta) state.meta = data.meta;
+      if (Array.isArray(data.decisions)) {
+        const nd = {};
+        data.decisions.forEach(d => {
+          nd[d.id] = { status: d.status === 'pending' ? '' : d.status, comment: d.comment || '', timestamp: d.timestamp };
+        });
+        state.decisions = nd;
+      }
+      saveState(); hydrate(); render();
+      alert('Importado com sucesso!');
+    } catch (err) { alert('Erro ao importar: ' + err.message); }
+  };
+  r.readAsText(f);
+});
+function clearAll() {
+  if (!confirm('Limpar todas as decisões e comentários?')) return;
+  state = { meta: {}, decisions: {}, theme: state.theme };
+  saveState(); hydrate(); render();
+}
+function hydrate() {
+  document.getElementById('metaDate').value = state.meta.date || '';
+  document.getElementById('metaPresentes').value = state.meta.presentes || '';
+}
+
+function toggleTheme() {
+  state.theme = state.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', state.theme);
+  document.getElementById('themeBtn').textContent = state.theme === 'dark' ? '☀️' : '🌙';
+  saveState();
+}
+if (state.theme === 'dark') {
+  document.documentElement.setAttribute('data-theme', 'dark');
+  document.getElementById('themeBtn').textContent = '☀️';
+}
+
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+});
+
+hydrate();
+render();
+</script>
+</body>
+</html>

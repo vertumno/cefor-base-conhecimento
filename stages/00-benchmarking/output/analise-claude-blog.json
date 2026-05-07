@@ -1,0 +1,225 @@
+{
+  "_instrucao": "INSTRUÇÕES: Preencha TODOS os campos 'resposta' e 'dados' com observações detalhadas. NÃO altere as chaves, NÃO remova campos, NÃO mude a estrutura. Para perguntas de sim/não, comece com 'Sim.' ou 'Não.' seguido da explicação.",
+  "_exemplo_resposta": "Sim. O site oferece modo escuro com toggle na navbar superior direita. O fundo muda para #1a1a2e e o texto para #e5e5e5, mantendo boa legibilidade.",
+  "_site": {
+    "nome": "Blog da Anthropic (Claude)",
+    "url": "https://claude.com/blog"
+  },
+  "oculos": {
+    "visual": {
+      "_descricao": "Óculos 1 — Visual: Como o site se parece",
+      "itens": [
+        {
+          "pergunta": "Cores usadas (fundo, texto, destaques, links)",
+          "_dica": "Descreva em 2-4 frases com detalhes específicos.",
+          "resposta": "O site usa fundo quase preto (aproximadamente #1a1a1a ou #171717), texto branco puro para títulos e branco acinzentado para corpo e textos secundários. Os destaques aparecem na cor terracota/coral do logo da Anthropic (aproximadamente #c4612b), usada nos botões principais e em alguns cards de categoria. Os cards do listing variam entre verde-musgo, azul-aço, lilás, salmão claro e terracota, cada cor associada a uma categoria editorial. Os links dentro dos artigos aparecem sublinhados em branco, sem cor diferenciada do restante do texto."
+        },
+        {
+          "pergunta": "Tipos de letra (fontes): são grandes? pequenas? serifadas? modernas?",
+          "_dica": "Descreva em 2-4 frases com detalhes específicos.",
+          "resposta": "Os títulos dos artigos e dos cards usam uma fonte serifada de alto impacto, estilo transicional, com serifa pronunciada e traços elegantes, semelhante a Tiempos Headline ou Canela, transmitindo identidade editorial sofisticada. O corpo do texto usa uma sans-serif moderna e de alta legibilidade, provavelmente Inter ou fonte customizada similar, com peso regular e kerning equilibrado. O contraste intencional entre serifada nos títulos e sem serifa no corpo cria hierarquia tipográfica clara e visualmente agradável. Os textos de metadados (data, categoria, tempo de leitura) usam a mesma sans-serif em tamanho menor e peso mais leve."
+        },
+        {
+          "pergunta": "Espaço entre os elementos: o site é \"arejado\" ou \"cheio\"?",
+          "_dica": "Descreva em 2-4 frases com detalhes específicos.",
+          "resposta": "O site é muito arejado. Há generoso espaço vertical entre o header e o conteúdo, entre os cards do listing, e entre as seções dentro dos artigos. A coluna de filtros no listing fica bem separada do grid de cards por um espaço horizontal amplo. Dentro dos artigos, os parágrafos têm entrelinhamento folgado e o espaço entre seções é marcado com largura suficiente para descanso visual antes do próximo título."
+        },
+        {
+          "pergunta": "Como ficam os títulos, subtítulos e o corpo do texto visualmente",
+          "_dica": "Descreva em 2-4 frases com detalhes específicos.",
+          "resposta": "O título do artigo é grande, serifado e em negrito, ocupando três linhas com tamanho de destaque (estimativa 48 a 56px), criando impacto imediato. Abaixo do título aparece um subtítulo/lead em cinza médio, funcionando como ponte entre o título e o corpo. Os títulos de seção (h2) dentro do artigo são serifados, em negrito, menores que o título principal mas com diferença visual clara em relação ao corpo. O corpo é sans-serif em tamanho confortável, sem negrito, com contraste adequado sobre o fundo escuro."
+        },
+        {
+          "pergunta": "Tem modo escuro? Como fica?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Sim. O site opera exclusivamente em modo escuro, sem toggle para alternância. O fundo quase preto (aprox. #1a1a1a) com texto branco e elementos terracota compõe a identidade visual do produto, sendo o modo escuro uma escolha de marca, não uma opção de acessibilidade."
+        },
+        {
+          "pergunta": "Algo visual que chamou muito a atenção (positiva ou negativamente)",
+          "_dica": "Descreva em 2-4 frases com detalhes específicos.",
+          "resposta": "Positivamente: as ilustrações dos cards do blog são minimalistas, com traço solto estilo hand-drawn sobre fundos coloridos sólidos, criando identidade visual forte, coesa e reconhecível. Cada categoria tem paleta própria e as ilustrações têm personalidade sem ser genéricas. O conjunto eleva muito o padrão visual em relação à média de blogs corporativos técnicos. Também chama atenção o chatbot flutuante no rodapé com o próprio Claude, que contextualiza o produto enquanto o usuário lê sobre ele."
+        }
+      ],
+      "f12": {
+        "instrucao": "Nome exato da fonte do título e do corpo · Tamanho da fonte do título e do corpo (ex: 32px / 16px) · Cor exata do texto e do fundo (ex: #1a1a1a / #ffffff) · Cor dos links no estado normal e hover · Espaçamento entre parágrafos",
+        "_dica": "Extraia valores técnicos reais: use o Inspecionar (F12) do navegador para obter dados exatos como px, cores hex, nomes de fontes.",
+        "dados": "Estimativa baseada nas capturas de tela (sem acesso ao inspetor real do navegador): Fonte do título: provavelmente 'Tiempos Headline' ou fonte serifada licenciada customizada. Fonte do corpo: provavelmente 'Inter' ou sans-serif customizada. Tamanho estimado do título: 48 a 56px. Tamanho estimado do corpo: 17 a 18px. Cor do fundo: aproximadamente #1a1a1a ou #171717. Cor do texto principal: #ffffff. Cor do texto secundário (lead, metadados): aproximadamente #a0a0a0 a #888888. Cor de destaque terracota: aproximadamente #c4612b. Espaçamento entre parágrafos: estimativa de 24 a 32px. ATENÇÃO: valores precisos requerem acesso ao F12 real no navegador."
+      }
+    },
+    "leitura": {
+      "_descricao": "Óculos 2 — Leitura: Como é ler um artigo longo",
+      "itens": [
+        {
+          "pergunta": "Dá vontade de continuar lendo ou cansa depois de 2 parágrafos?",
+          "_dica": "Descreva em 2-4 frases com detalhes específicos.",
+          "resposta": "Dá vontade de continuar lendo. O contraste branco sobre fundo escuro, combinado com fonte sans-serif bem escolhida e entrelinhamento generoso, torna a leitura confortável. Os parágrafos são curtos (2 a 4 linhas), quebram o ritmo e evitam a fadiga visual. O tom do conteúdo é direto e técnico, o que também contribui para a continuidade."
+        },
+        {
+          "pergunta": "O texto é largo (ocupa toda a tela) ou tem coluna central mais estreita?",
+          "_dica": "Descreva em 2-4 frases com detalhes específicos.",
+          "resposta": "Tem coluna central estreita e bem delimitada. O conteúdo do artigo fica centralizado e ocupa aproximadamente 55 a 60% da largura da tela em desktop, com margens laterais generosas. À direita da coluna de texto há uma coluna lateral com metadados fixos: categoria, produto, data, tempo de leitura e botão de compartilhamento. Essa composição de duas colunas é clara e funcionalmente bem organizada."
+        },
+        {
+          "pergunta": "Tem indicador de progresso de leitura (barrinha no topo)?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Não. Não há barra de progresso de leitura visível nas capturas de tela do artigo. O único indicador de localização é o breadcrumb no topo da página (Blog / título do artigo), que informa o contexto mas não o progresso de leitura."
+        },
+        {
+          "pergunta": "Mostra estimativa de tempo de leitura (\"leitura de 5 min\")?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Sim. A coluna lateral do artigo exibe explicitamente 'Reading time: 5 min' com ícone de relógio, em posição de destaque logo abaixo da data. A informação é imediata e visível sem necessidade de rolar a página."
+        },
+        {
+          "pergunta": "Tem índice de seções para navegar pelo artigo?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Não. Não há sumário ou índice com âncoras no início do artigo. A navegação é exclusivamente linear pelo scroll. Os títulos de seção são visualmente fortes mas não geram índice clicável lateral ou superior."
+        },
+        {
+          "pergunta": "Dá para aumentar a fonte ou mudar o tema de leitura?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Não. Não há nenhum controle de tipografia disponível para o leitor no site. A fonte e o tamanho são fixos, definidos pelo design. O usuário só pode recorrer ao zoom nativo do navegador (Ctrl + no Windows ou Cmd + no Mac) como alternativa."
+        },
+        {
+          "pergunta": "Como ficam imagens, tabelas e blocos de código dentro do texto?",
+          "_dica": "Descreva em 2-4 frases com detalhes específicos.",
+          "resposta": "As imagens aparecem em container com bordas arredondadas e fundo claro (quase branco ou bege claro), criando contraste intencional com o fundo escuro da página, o que funciona bem para diagramas técnicos. Os diagramas têm legendas em texto pequeno, centralizado, abaixo da imagem. Blocos de código aparecem com fundo diferenciado e fonte monospace, com o elemento inline de código (como cache_control) em destaque de fundo distinto dentro do parágrafo. Não foram observadas tabelas nas capturas disponíveis."
+        }
+      ],
+      "f12": {
+        "instrucao": "Largura da coluna de texto (ex: 680px) · line-height do corpo (ex: 1.6 ou 28px) · margin-bottom do &lt;p&gt; (ex: 16px) · Tamanho da fonte do corpo (ex: 18px)",
+        "_dica": "Extraia valores técnicos reais: use o Inspecionar (F12) do navegador para obter dados exatos como px, cores hex, nomes de fontes.",
+        "dados": "Estimativa baseada nas capturas de tela (sem acesso ao inspetor real do navegador): Largura da coluna de texto: aproximadamente 580 a 640px. Line-height do corpo: estimativa de 1.7 a 1.8 (equivalente a 28 a 30px com fonte de 17px). Margin-bottom do parágrafo: estimativa de 24px. Tamanho da fonte do corpo: aproximadamente 17 a 18px. ATENÇÃO: valores precisos requerem acesso ao F12 real no navegador."
+      }
+    },
+    "interacao": {
+      "_descricao": "Óculos 3 — Interação: O que dá para fazer no artigo",
+      "itens": [
+        {
+          "pergunta": "Tem botão de curtir, favoritar ou marcar como útil?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Não. Não há nenhum mecanismo de reação, curtida ou favorito visível no artigo ou no listing. A experiência é de leitura pura, sem engajamento social ou de avaliação de conteúdo."
+        },
+        {
+          "pergunta": "Dá para compartilhar? Como?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Sim. A coluna lateral do artigo exibe o item 'Share' com ação 'Copy link' e ícone de compartilhamento, que copia o URL do artigo para a área de transferência. Não há integração direta com redes sociais (sem botões de Twitter, LinkedIn ou WhatsApp) visíveis na página."
+        },
+        {
+          "pergunta": "Dá para comentar? No artigo todo ou em trechos específicos?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Não. Não há seção de comentários nem possibilidade de marcar trechos para comentar. O artigo é de leitura unidirecional, sem canal de participação do leitor dentro da plataforma."
+        },
+        {
+          "pergunta": "Tem botão de copiar (código, link, referência)?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Sim, parcialmente. O botão 'Copy link' na coluna lateral copia a URL do artigo. Não foi possível confirmar pelas capturas se os blocos de código têm botão de cópia individual, embora seja uma prática comum em blogs técnicos desse perfil."
+        },
+        {
+          "pergunta": "Dá para salvar artigos para ler depois?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Não. Não há funcionalidade nativa de lista de leitura, favoritos ou marcadores. O usuário precisa recorrer a ferramentas externas como Pocket, Instapaper ou os próprios favoritos do navegador."
+        },
+        {
+          "pergunta": "Se faz parte de trilha/curso, como funciona a navegação entre artigos?",
+          "_dica": "Descreva em 2-4 frases com detalhes específicos.",
+          "resposta": "O blog não é organizado como trilha ou curso sequencial. Ao final do artigo aparece uma seção 'Related posts' com 4 cards de artigos relacionados, cada um com ilustração colorida, data, título e categoria. A navegação entre artigos é por descoberta editorial, não por sequência didática definida. O listing principal tem filtros por Sort by, Category, Product e Use case, além de busca textual e toggle entre visualização Grid e List."
+        },
+        {
+          "pergunta": "Alguma interação que pareceu muito inteligente ou muito desnecessária",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Sim. O sistema de filtros no listing (Sort by, Category, Product, Use case) combinado com busca textual e toggle Grid/List é muito bem executado para um blog técnico corporativo, permitindo que desenvolvedores encontrem conteúdo sem sair da página. O chatbot flutuante no rodapé com o próprio Claude ('How can I help you today?') é uma adição contextualmente inteligente: o produto sendo usado para navegar no blog sobre o produto."
+        }
+      ]
+    },
+    "estrutura": {
+      "_descricao": "Óculos 4 — Estrutura: Como o artigo é escrito e organizado",
+      "itens": [
+        {
+          "pergunta": "O artigo começa com um resumo do que vai ser abordado?",
+          "_dica": "Descreva em 2-4 frases com detalhes específicos.",
+          "resposta": "Sim, implicitamente. Logo abaixo do título grande aparece um subtítulo/lead em cinza médio que resume o conteúdo em 2 a 3 linhas. No artigo analisado: 'We share best practices for optimizing prompt caching in Claude Code, including how to most effectively structure your prompt, use tools, and layer on compaction.' Não é um bloco de resumo explícito com rótulo como 'Resumo' ou 'Neste artigo', mas cumpre a função de orientar o leitor antes de começar."
+        },
+        {
+          "pergunta": "Tem algum bloco de \"TL;DR\" (resumão para quem está com pressa)?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Não. Não há bloco TL;DR ou resumo executivo explícito com esse rótulo. O artigo termina com uma seção 'Lessons learned' em lista numerada que consolida os pontos principais, funcionando como síntese ao final, não como atalho para quem não quer ler o artigo completo."
+        },
+        {
+          "pergunta": "Os títulos das seções são claros e descritivos?",
+          "_dica": "Descreva em 2-4 frases com detalhes específicos.",
+          "resposta": "Sim. Os títulos observados nas capturas são diretivos e informativos: 'Lay out your prompt for caching', 'Use messages for updates', 'Don't change models mid-session', 'Compacting without breaking the cache', 'Lessons learned'. Todos comunicam claramente o conteúdo da seção antes da leitura, sem títulos vagos ou criativos que sacrificam clareza."
+        },
+        {
+          "pergunta": "Tem destaques, caixas de alerta, dicas ou avisos visuais dentro do texto?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Não. Não há callouts, caixas coloridas de alerta, blocos de dica ou avisos visuais diferenciados dentro do corpo do artigo. O design prioriza limpeza e o único recurso de destaque dentro de parágrafos é o negrito, usado nos itens da lista 'Lessons learned' para enfatizar o conceito principal de cada lição."
+        },
+        {
+          "pergunta": "Tem exemplos práticos ou só teoria?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Sim. O artigo inclui diagramas técnicos ilustrativos como 'System Prompt Layout' e 'How Compaction Works with Prompt Caching', que representam visualmente fluxos e conceitos práticos. Há também referências a comportamentos concretos do Claude Code como exemplos aplicados, com elementos de código inline como cache_control."
+        },
+        {
+          "pergunta": "Tem glossário ou definições de termos?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Não. Termos técnicos como 'prompt caching', 'compaction' e 'cache_control' são usados sem definição formal estruturada. O artigo pressupõe familiaridade com o ecossistema Claude Code. O termo 'compaction' recebe uma definição informal inline ('Compaction is what happens when you run out of the context window'), mas isso não constitui glossário."
+        },
+        {
+          "pergunta": "Tem referências ou indicação de fontes?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Não. Não há seção de referências bibliográficas formais. Os links presentes no corpo do texto apontam para documentação interna (docs.anthropic.com), funcionando como fonte de aprofundamento, mas não são apresentados como referências no sentido acadêmico."
+        },
+        {
+          "pergunta": "O artigo faz perguntas e responde, ou só afirma?",
+          "_dica": "Descreva em 2-4 frases com detalhes específicos.",
+          "resposta": "O artigo predominantemente afirma. O tom é de equipe técnica compartilhando aprendizados internos ('we've found', 'we build', 'we alert on'), sem o recurso retórico de perguntas explícitas ao leitor. Há uma estrutura implícita de problema-solução em cada seção, mas sem interrogação direta. A seção 'Lessons learned' ao final consolida as afirmações em lista, reforçando o tom assertivo."
+        }
+      ]
+    },
+    "acessib": {
+      "_descricao": "Óculos 5 — Acessibilidade: Recursos de acessibilidade",
+      "itens": [
+        {
+          "pergunta": "Tem ícone/widget de acessibilidade na tela? Como é? O que ele oferece?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Não. Não há widget de acessibilidade visível (como UserWay, Accessibe ou similar) em nenhuma das capturas do blog ou do artigo. Não existe ícone flutuante de pessoa com deficiência ou menu de acessibilidade dedicado."
+        },
+        {
+          "pergunta": "Tem tradução em Libras (ícone, avatar de intérprete virtual)?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Não. Não há nenhum recurso de Libras ou língua de sinais em nenhuma das telas capturadas. O site é voltado para público internacional anglófono e não apresenta esse recurso, que também não seria esperado em plataformas internacionais não brasileiras."
+        },
+        {
+          "pergunta": "Tem botão para aumentar/diminuir a fonte?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Não. O tamanho da fonte é fixo e não há controle nativo de ajuste tipográfico para o usuário. A única alternativa disponível é o zoom do próprio navegador (Ctrl + no Windows, Cmd + no Mac), que escala toda a página, não apenas o texto."
+        },
+        {
+          "pergunta": "Tem opção de alto contraste ou modo escuro?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Não há toggle explícito de alternância. O site já opera em modo escuro por padrão como escolha de identidade visual, com fundo quase preto e texto branco, o que tecnicamente favorece usuários que preferem esse modo. Não existe opção de modo claro nem configuração de alto contraste formal (WCAG AAA)."
+        },
+        {
+          "pergunta": "Tem opção de fonte para dislexia?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Não. Não há suporte a fontes específicas para dislexia como OpenDyslexic nem qualquer configuração tipográfica acessível nesse sentido. O site não oferece personalização de fonte de nenhum tipo para o usuário."
+        },
+        {
+          "pergunta": "Tem leitura em voz alta (text-to-speech)?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Não. Não há recurso nativo de leitura em voz alta no site. O usuário pode recorrer a recursos do sistema operacional ou extensões de navegador como suporte externo, mas nada é oferecido pela plataforma."
+        },
+        {
+          "pergunta": "Tem atalhos de teclado explicados em algum lugar?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Não. Não há documentação de atalhos de teclado visível no blog. O site parece ser navegável por teclado via links e menus HTML padrão, mas não há atalhos customizados nem página de ajuda de acessibilidade documentada."
+        },
+        {
+          "pergunta": "Alguma outra solução de acessibilidade que chamou atenção?",
+          "_dica": "Comece com 'Sim.' ou 'Não.' e depois explique em 2-3 frases.",
+          "resposta": "Sim. O contraste branco sobre fundo escuro atende bem às diretrizes WCAG AA para texto de tamanho normal. As ilustrações dos cards são decorativas e não informativas, o que reduz a dependência de texto alternativo para compreensão do conteúdo. O breadcrumb no topo ('Blog / título do artigo') é um recurso de orientação que ajuda usuários de leitores de tela a entender a hierarquia de navegação sem depender do conteúdo visual."
+        }
+      ]
+    }
+  }
+}
