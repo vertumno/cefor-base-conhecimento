@@ -1,0 +1,113 @@
+{
+  "document": "Decisões de Consolidação Fase 0 → Fase 1",
+  "project": "Base de Conhecimento CEFOR/IFes",
+  "exported_at": "2026-05-08T13:34:41.763Z",
+  "meta": {},
+  "decisions": [
+    {
+      "id": 1,
+      "title": "Propósito-farol da Base",
+      "status": "adjusted",
+      "comment": "Não será um formação estruturada, mas seria um espaço de aprendizagem e atualização contínua.\n",
+      "timestamp": "2026-05-08T12:20:38.095Z"
+    },
+    {
+      "id": 2,
+      "title": "Segmentação por perfil",
+      "status": "adjusted",
+      "comment": "SIm, vamos fazer segmentação por perfil mas sem navegação por perfil na home. Usaremos apenas a categorização de conteúdo para fazer a segmentação do perfil.",
+      "timestamp": "2026-05-08T12:30:35.927Z"
+    },
+    {
+      "id": 3,
+      "title": "TL;DR obrigatório",
+      "status": "rejected",
+      "comment": "AVALIAR SE É UM RECURSO UTILIZADO ATUALMENTE",
+      "timestamp": "2026-05-08T12:43:12.945Z"
+    },
+    {
+      "id": 4,
+      "title": "Tempo de leitura, índice e barra de progresso",
+      "status": "approved",
+      "comment": "Indice deve acompanhar a rolagem da tela pelo usuario, estando sempre visivel e localizando a posição da leitura. ",
+      "timestamp": "2026-05-08T12:44:41.742Z"
+    },
+    {
+      "id": 5,
+      "title": "Quatro tipos de callout",
+      "status": "adjusted",
+      "comment": "Gostamos da possibilidade de ter textos destacados, porém os tipos de informações deve ser definidas pelo content design (pois pode ter destaques do tipo: frases de efeito, citações, entre outras que vão ser definidas ainda) e as cores devem acompanhar o design system. ",
+      "timestamp": "2026-05-08T12:51:41.960Z"
+    },
+    {
+      "id": 6,
+      "title": "Tipografia editorial",
+      "status": "pending",
+      "comment": "Decidir ainda!",
+      "timestamp": null
+    },
+    {
+      "id": 7,
+      "title": "Fundo e identidade visual",
+      "status": "rejected",
+      "comment": "Fundo deve ser branco. Podemos usar a cor verde, mas ela não precisa ser a destaque. Podemos explorar outras cores como a cor princiapl principal. \n\nos card não devem ser tão delimitados mas devem estar mais integrados com o layout da pagina. ",
+      "timestamp": "2026-05-08T13:02:49.834Z"
+    },
+    {
+      "id": 8,
+      "title": "Modo escuro",
+      "status": "approved",
+      "comment": "",
+      "timestamp": "2026-05-08T13:09:59.118Z"
+    },
+    {
+      "id": 9,
+      "title": "Trilhas pedagógicas (V1 simplificada)",
+      "status": "pending",
+      "comment": "Queremos que tenha os trilhas de aprendizagem para ainda não temos definido o local, se ficará na sidebar, no inicio do artigo ou em outro lugar melhor. \n\nLembrança - Importante que em todos os artigos tenha ao final da pagina indicação de artigos relacionados. ",
+      "timestamp": null
+    },
+    {
+      "id": 10,
+      "title": "Pacote de acessibilidade",
+      "status": "approved",
+      "comment": "",
+      "timestamp": "2026-05-08T13:23:14.196Z"
+    },
+    {
+      "id": 11,
+      "title": "Busca",
+      "status": "approved",
+      "comment": "",
+      "timestamp": "2026-05-08T13:28:18.025Z"
+    },
+    {
+      "id": 12,
+      "title": "Feedback do leitor",
+      "status": "adjusted",
+      "comment": "Não vamos usar emojis, use Foi util ou Não foi útil.   ",
+      "timestamp": "2026-05-08T13:29:34.722Z"
+    },
+    {
+      "id": 13,
+      "title": "Conteúdo multimodal",
+      "status": "pending",
+      "comment": "",
+      "timestamp": null
+    },
+    {
+      "id": 14,
+      "title": "Metadados obrigatórios",
+      "status": "adjusted",
+      "comment": "nao precisa da versão do moodle. pensar se vamos mostrar tipo, categoria, tags.",
+      "timestamp": "2026-05-08T13:33:26.529Z"
+    },
+    {
+      "id": 15,
+      "title": "Escopo negativo da V1",
+      "status": "approved",
+      "comment": "Tudo fica fora do V1.",
+      "timestamp": "2026-05-08T13:34:32.933Z"
+    }
+  ]
+}
