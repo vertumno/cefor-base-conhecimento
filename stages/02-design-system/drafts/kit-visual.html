@@ -447,6 +447,79 @@
   }
   .moodlecode-foot strong { color: var(--ink-2); }
 
+  /* Passo a passo */
+  .steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-left: 2px solid var(--line);
+    margin-left: 17px;
+    max-width: 660px;
+  }
+  .step {
+    position: relative;
+    margin-left: -17px;
+    padding: 0 0 30px 44px;
+  }
+  .step:last-child { padding-bottom: 0; }
+  .step-num {
+    position: absolute;
+    left: -17px; top: -3px;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: .9rem;
+    font-variant-numeric: tabular-nums;
+    border: 3px solid var(--bg);
+  }
+  .step-title { font-weight: 700; color: var(--ink); font-size: 1.04rem; margin: 4px 0 6px; line-height: 1.3; }
+  .step-body { color: var(--ink-2); font-size: .94rem; line-height: 1.55; margin: 0; }
+  .step-body code {
+    font-family: var(--mono); font-size: .85em;
+    background: var(--bg-2); border: 1px solid var(--line);
+    padding: 1px 5px; border-radius: 4px;
+  }
+  .step-shot {
+    margin-top: 12px;
+    background: var(--bg-2);
+    border: 1px dashed var(--line-2);
+    border-radius: var(--r-md);
+    padding: 26px 20px;
+    text-align: center;
+    color: var(--ink-3);
+    font-size: .8rem;
+  }
+  .step-check {
+    position: relative;
+    margin-left: -17px;
+    padding: 14px 18px 14px 44px;
+    margin-bottom: 30px;
+    background: var(--accent-soft);
+    border-radius: var(--r-md);
+    font-size: .92rem;
+    color: var(--accent-deep);
+    line-height: 1.5;
+  }
+  .step-check-icon {
+    position: absolute;
+    left: -15px; top: 14px;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    border: 3px solid var(--bg);
+  }
+  .step-check-icon svg { width: 15px; height: 15px; }
+  .step-check b {
+    display: block;
+    font-size: .68rem; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 2px;
+  }
+
   /* Cards */
   .card {
     background: var(--paper);
@@ -525,6 +598,7 @@
     <a href="#botoes">Botões</a>
     <a href="#callouts">Callouts</a>
     <a href="#versao-codigo">Versão e MoodleCode</a>
+    <a href="#passo-a-passo">Passo a passo</a>
     <a href="#cards">Cards</a>
     <a href="#progresso">Progresso estrutural</a>
     <a href="#breadcrumb">Breadcrumb</a>
@@ -791,6 +865,48 @@
 &lt;/div&gt;</pre>
         <div class="moodlecode-foot"><strong>Onde colar:</strong> no editor de Rótulo ou Página, clique em <em>Ferramentas → Código-fonte HTML</em> e cole no ponto desejado.</div>
       </div>
+    </section>
+
+    <!-- ====================== PASSO A PASSO ====================== -->
+    <section class="sg-section" id="passo-a-passo">
+      <h2>Passo a passo</h2>
+      <p class="sg-lead">Componente para tutoriais — o tipo de artigo mais comum no CEFOR. Passos numerados sobre uma linha contínua, com espaço para captura de tela e <strong>checkpoints de verificação</strong> entre blocos (padrão "Passo a Passo com Checkpoint" da Camada 4). O checkpoint confirma que o leitor está no caminho certo antes de seguir.</p>
+
+      <ol class="steps">
+        <li class="step">
+          <span class="step-num">1</span>
+          <p class="step-title">Acesse as configurações do livro de notas</p>
+          <p class="step-body">No menu lateral do curso, vá em <code>Notas → Configurações do livro de notas</code>.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">2</span>
+          <p class="step-title">Adicione uma categoria</p>
+          <p class="step-body">Clique em <strong>Adicionar categoria</strong> na parte inferior da página.</p>
+          <div class="step-shot">[ Captura de tela — botão "Adicionar categoria" em destaque ]</div>
+        </li>
+        <li class="step">
+          <span class="step-num">3</span>
+          <p class="step-title">Defina nome e cálculo agregado</p>
+          <p class="step-body">Dê um nome claro (ex.: "Avaliações formativas") e escolha <em>Média ponderada de notas</em> como cálculo agregado.</p>
+        </li>
+        <li class="step-check">
+          <span class="step-check-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <b>Confira</b>
+          Você deve ver a nova categoria na árvore do livro de notas. Um aviso amarelo de "o peso ainda não fecha 100%" é esperado neste ponto — vamos resolver isso no próximo bloco.
+        </li>
+        <li class="step">
+          <span class="step-num">4</span>
+          <p class="step-title">Repita para cada agrupamento</p>
+          <p class="step-body">Crie uma categoria para cada grupo previsto no plano de ensino. Ainda não é necessário adicionar as atividades.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">5</span>
+          <p class="step-title">Salve as alterações</p>
+          <p class="step-body">Role até o fim da página e clique em <strong>Salvar mudanças</strong>.</p>
+        </li>
+      </ol>
+
+      <div class="sg-note"><strong>Conecta com a Camada 4 (Padrões de Conteúdo):</strong> o número de passos por bloco e a frequência dos checkpoints são regras editoriais a definir. O checkpoint deve ser sempre <strong>verificável visualmente</strong> ("você deve ver X"), nunca vago ("deve estar funcionando").</div>
     </section>
 
     <!-- ====================== CARDS ====================== -->

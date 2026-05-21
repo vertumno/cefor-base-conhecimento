@@ -2,10 +2,10 @@
   "metadata": {
     "documento": "Vocabulário Controlado — Base de Conhecimento CEFOR/IFes",
     "camada": "3 — Vocabulário Controlado",
-    "versao": "1.0",
-    "status": "DRAFT — terminologia da arquitetura completa; demais categorias com estrutura mas a preencher com Rute e Juliana",
+    "versao": "1.1",
+    "status": "DRAFT — arquitetura + Eixo 2 (6 categorias) + Eixo 3 (25 tópicos) completos; categorias de termos Moodle/pedagógicos a preencher com Rute e Juliana",
     "data_criacao": "2026-05-19",
-    "ultima_atualizacao": "2026-05-19",
+    "ultima_atualizacao": "2026-05-21",
     "responsaveis": {
       "termos_estruturais": "Elton Vinicius",
       "termos_pedagogicos": "Rute Fávero (pendente)",
@@ -253,7 +253,7 @@
           "sinonimos_aceitos": [],
           "sinonimos_rejeitados": ["área", "tema", "seção"],
           "definicao": "Eixo 2. Responde: qual domínio de conhecimento? Cardinalidade: 1 por artigo.",
-          "contexto_uso": "Valores aprovados (5 de 6): Ferramentas e Recursos, Pedagogia e Planejamento, Acessibilidade, Conduta e Conformidade, Identidade. A 6ª categoria fica a definir no Sprint 3.",
+          "contexto_uso": "Os 6 valores estão fechados (ver categoria categorias_da_base): Ferramentas e Recursos, Gestão e Operação do Moodle, Pedagogia e Planejamento, Acessibilidade, Conduta e Conformidade, Identidade. A 6ª categoria — Gestão e Operação do Moodle — foi decidida em 2026-05-21 (Elton + Claude) para abrigar o conteúdo operacional do AVA (config de curso, matrícula, notas, backup, navegação), separando-o das atividades/ferramentas. 'Moodle' não é categoria porque toda a base é sobre Moodle.",
           "termo_moodle": null,
           "termo_mec": null,
           "termo_popular": null,
@@ -266,7 +266,7 @@
           "sinonimos_aceitos": [],
           "sinonimos_rejeitados": ["tag", "etiqueta", "palavra-chave"],
           "definicao": "Eixo 3. Responde: qual assunto específico? Vocabulário controlado fechado (25 termos). Cardinalidade: 2 a 4 por artigo.",
-          "contexto_uso": "Substitui as 82 tags livres do sistema antigo. A pessoa escolhe entre os 25 tópicos da lista fechada, não digita livremente. Lista final dos 25 a definir no Sprint 3.",
+          "contexto_uso": "Substitui as 82 tags livres do sistema antigo (62% usadas 1x só). A pessoa escolhe entre os 25 tópicos da lista fechada (ver categoria topicos_controlados), não digita livremente. Lista dos 25 decidida em 2026-05-21 (Elton + Claude) a partir das tags reais do inventário; refinamento pedagógico fino fica pendente com Rute.",
           "termo_moodle": null,
           "termo_mec": null,
           "termo_popular": "Tag, etiqueta",
@@ -364,6 +364,104 @@
       ]
     },
 
+    "categorias_da_base": {
+      "ordem": 4.1,
+      "descricao": "Os 6 valores fechados do Eixo 2 (Categoria). Cada artigo tem exatamente 1. A categoria define o domínio de conhecimento e sustenta a URL semântica. Hierarquia rasa (1 nível).",
+      "status": "definitivo",
+      "responsavel": "Elton + Marquito (5 aprovadas em 2026-05-14) + Elton (6ª em 2026-05-21)",
+      "termos": [
+        {
+          "termo_preferido": "Ferramentas e Recursos",
+          "slug": "ferramentas",
+          "definicao": "Atividades e recursos do Moodle (Questionário, Tarefa, Fórum, H5P, Rótulo, Webconferência) + ferramentas externas e GPTs.",
+          "contexto_uso": "Absorve as atividades do AVA. O 'fazer' com ferramentas. Distinta de Gestão e Operação (que cuida do AVA em si, não das atividades).",
+          "consolida_antigas": ["Recurso Educacional", "Ferramentas de autoria", "Ferramentas de comunicação", "parte de Inteligência Artificial"],
+          "decisao_origem": [17],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Gestão e Operação do Moodle",
+          "slug": "gestao-moodle",
+          "definicao": "Operação do AVA: configuração de curso, matrícula e inscrição, notas e livro de notas, backup e restauração, navegação, Moodle Codes.",
+          "contexto_uso": "É a 6ª categoria. Abriga o grosso do conteúdo operacional de Moodle que não é nem atividade (Ferramentas) nem pedagogia. Avaliação atravessa esta categoria e Ferramentas — quem unifica é o Eixo 3 (Tópicos).",
+          "consolida_antigas": ["parte de Ambiente Virtual de Aprendizagem", "Ambiente virtual", "Moodle", "Moodle x Sistema Acadêmico"],
+          "decisao_origem": [17],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Pedagogia e Planejamento",
+          "slug": "pedagogia",
+          "definicao": "Planejamento, design educacional, fundamentos pedagógicos, mediação, uso conceitual de tecnologias.",
+          "contexto_uso": "O 'porquê' e o 'como planejar'. Tipicamente artigos Conceituais.",
+          "consolida_antigas": ["Aspectos Pedagógicos", "Conhecimentos Pedagógicos", "Tecnologias Educacionais (conceitual)", "parte de Inteligência Artificial"],
+          "decisao_origem": [17],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Acessibilidade",
+          "slug": "acessibilidade",
+          "definicao": "Recursos e práticas de acessibilidade no AVA: Libras, audiodescrição, inclusão, desenho universal.",
+          "contexto_uso": "Peso estratégico (Decisão 10). Transversal no acervo antigo, vira categoria própria.",
+          "consolida_antigas": ["transversal (sem categoria própria antes)"],
+          "decisao_origem": [10, 17],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Conduta e Conformidade",
+          "slug": "conduta",
+          "definicao": "Direitos autorais, segurança digital, netiqueta, procedimentos administrativos e de conformidade.",
+          "contexto_uso": "Regras e boa conduta. Antes espalhado e em cauda longa.",
+          "consolida_antigas": ["Direitos Autorais", "Netiqueta", "Segurança", "Procedimento Administrativo", "Procedimentos de Comunicação"],
+          "decisao_origem": [17],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Identidade",
+          "slug": "identidade",
+          "definicao": "Padrão visual, MOOC, ReLiCefor e templates institucionais do CEFOR.",
+          "contexto_uso": "A 'cara' institucional. Usar 'Identidade' (não 'Identidade Cefor') como rótulo de categoria.",
+          "consolida_antigas": ["Padrão Visual", "MOOC", "Livros Digitais (e-book)", "templates institucionais"],
+          "decisao_origem": [17],
+          "status": "definitivo"
+        }
+      ]
+    },
+
+    "topicos_controlados": {
+      "ordem": 4.2,
+      "descricao": "Os 25 valores fechados do Eixo 3 (Tópico). Cada artigo recebe de 2 a 4. Substitui as 82 tags livres. Casing fixo, sem auto-criação. Termos com definição técnica completa vivem nas categorias atividades_moodle/recursos_moodle/etc.; aqui ficam como lista de descoberta.",
+      "status": "a_validar",
+      "responsavel": "Elton + Marquito (lista 2026-05-21) + Rute (refinamento pedagógico pendente)",
+      "nota": "Lista derivada das tags reais do inventário. 'Prova' (8x) NÃO é tópico — é sinônimo popular de Questionário. 'Ferramenta', 'Atividade', 'Externo' viraram a categoria Ferramentas e Recursos, não tópicos. Tópicos prospectivos (Fórum, Tarefa, Backup, Matrícula) entram apesar de tag fraca, a confirmar no mapeamento dos 131 artigos.",
+      "termos": [
+        { "termo_preferido": "Questionário", "grupo": "Atividades e Avaliação", "sinonimos_aceitos": ["quiz"], "sinonimos_rejeitados": ["prova", "teste", "avaliação"], "status": "a_validar" },
+        { "termo_preferido": "Banco de Questões", "grupo": "Atividades e Avaliação", "status": "a_validar" },
+        { "termo_preferido": "Tarefa", "grupo": "Atividades e Avaliação", "sinonimos_rejeitados": ["atividade (genérico)"], "status": "a_validar" },
+        { "termo_preferido": "Fórum", "grupo": "Atividades e Avaliação", "status": "a_validar" },
+        { "termo_preferido": "Livro de Notas", "grupo": "Atividades e Avaliação", "sinonimos_aceitos": ["notas", "gradebook"], "status": "a_validar" },
+        { "termo_preferido": "H5P", "grupo": "Recursos e Mídia", "status": "a_validar" },
+        { "termo_preferido": "Rótulo", "grupo": "Recursos e Mídia", "status": "a_validar" },
+        { "termo_preferido": "Webconferência", "grupo": "Recursos e Mídia", "sinonimos_aceitos": ["webconf"], "status": "a_validar" },
+        { "termo_preferido": "Vídeo", "grupo": "Recursos e Mídia", "status": "a_validar" },
+        { "termo_preferido": "Áudio e Podcast", "grupo": "Recursos e Mídia", "definicao": "Cobre narração de artigo, áudio e podcast (Decisão 13).", "status": "a_validar" },
+        { "termo_preferido": "Livro Digital", "grupo": "Recursos e Mídia", "sinonimos_aceitos": ["e-book"], "status": "a_validar" },
+        { "termo_preferido": "Configuração de Curso", "grupo": "Gestão do AVA", "sinonimos_aceitos": ["configuração"], "status": "a_validar" },
+        { "termo_preferido": "Matrícula e Inscrição", "grupo": "Gestão do AVA", "status": "a_validar" },
+        { "termo_preferido": "Backup e Restauração", "grupo": "Gestão do AVA", "status": "a_validar" },
+        { "termo_preferido": "Moodle Codes", "grupo": "Gestão do AVA", "sinonimos_aceitos": ["código"], "status": "a_validar" },
+        { "termo_preferido": "Sala Virtual", "grupo": "Gestão do AVA", "definicao": "O curso como ambiente. 'minha sala' (popular) → curso/ambiente virtual.", "status": "a_validar" },
+        { "termo_preferido": "IA Generativa", "grupo": "Inteligência Artificial", "sinonimos_aceitos": ["IA"], "status": "a_validar" },
+        { "termo_preferido": "GPT Customizado", "grupo": "Inteligência Artificial", "sinonimos_aceitos": ["GPT"], "status": "a_validar" },
+        { "termo_preferido": "Libras", "grupo": "Acessibilidade", "decisao_origem": [13], "status": "a_validar" },
+        { "termo_preferido": "Audiodescrição", "grupo": "Acessibilidade", "decisao_origem": [13], "status": "a_validar" },
+        { "termo_preferido": "Inclusão e Desenho Universal", "grupo": "Acessibilidade", "sinonimos_aceitos": ["acessibilidade", "contraste"], "status": "a_validar" },
+        { "termo_preferido": "Planejamento e Design Educacional", "grupo": "Pedagogia", "sinonimos_aceitos": ["planejamento"], "status": "a_validar" },
+        { "termo_preferido": "Padrão Visual", "grupo": "Identidade", "status": "a_validar" },
+        { "termo_preferido": "MOOC", "grupo": "Identidade", "status": "a_validar" },
+        { "termo_preferido": "Direitos Autorais e Segurança", "grupo": "Conduta", "sinonimos_aceitos": ["segurança digital", "netiqueta"], "status": "a_validar" }
+      ]
+    },
+
     "atividades_moodle": {
       "ordem": 5,
       "descricao": "Termos das atividades disponíveis no Moodle. Aqui é crítico distinguir o termo Moodle (interface) do termo pedagógico (MEC ou prática) do termo popular (como o público fala).",
@@ -441,13 +539,13 @@
   },
 
   "lacunas_e_proximos_passos": {
-    "categorias_completas": ["arquitetura_cefor", "tipos_de_artigo", "eixos_da_taxonomia", "componentes_ui_da_base"],
+    "categorias_completas": ["arquitetura_cefor", "tipos_de_artigo", "eixos_da_taxonomia", "categorias_da_base", "topicos_controlados", "componentes_ui_da_base"],
     "categorias_pendentes": ["atividades_moodle", "recursos_moodle", "papeis", "conceitos_pedagogicos", "conceitos_tecnicos", "vocabulario_natural_do_publico"],
     "proximas_acoes": [
+      "Mapear os 131 artigos do inventário nos novos eixos (categoria + tópicos) — valida a 6ª categoria e os 25 tópicos na prática",
+      "Refinamento pedagógico fino dos 25 tópicos com Rute (status a_validar → definitivo)",
       "Sessão dedicada com Juliana para preencher atividades_moodle e recursos_moodle",
       "Sessão dedicada com Rute para preencher conceitos_pedagogicos e papéis",
-      "Definição dos 25 tópicos do Eixo 3 (Sprint 3 — depende de Elton + Marquito)",
-      "Definição da 6ª categoria do Eixo 2 (Sprint 3)",
       "Implementação do linter automatizado consumindo este JSON (Fase 3)"
     ]
   },
@@ -457,6 +555,12 @@
       "versao": "1.0",
       "data": "2026-05-19",
       "mudanca": "Versão inicial. Categorias 1-4 (arquitetura, tipos, eixos, componentes UI) preenchidas. Demais categorias com estrutura criada mas sem termos.",
+      "por": "Elton + Claude"
+    },
+    {
+      "versao": "1.1",
+      "data": "2026-05-21",
+      "mudanca": "Fechado o Eixo 2 com a 6ª categoria 'Gestão e Operação do Moodle' (nova seção categorias_da_base, com slugs e consolidação das categorias antigas). Fechado o Eixo 3 com os 25 tópicos controlados (nova seção topicos_controlados), derivados das tags reais do inventário. Decisão Elton + Claude; refinamento pedagógico pendente com Rute.",
       "por": "Elton + Claude"
     }
   ]
