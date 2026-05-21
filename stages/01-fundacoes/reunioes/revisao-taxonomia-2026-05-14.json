@@ -1,0 +1,68 @@
+{
+  "document": "Revisão da Proposta de Taxonomia + Interface do Artigo",
+  "project": "Base de Conhecimento CEFOR/IFes",
+  "source_draft": "stages/01-fundacoes/drafts/proposta-taxonomia-e-interface-artigo.md",
+  "exported_at": "2026-05-14T20:01:46.009Z",
+  "meta": {
+    "date": "2026-05-14",
+    "revisor": "Marquito, Juliana e Elton"
+  },
+  "reviews": [
+    {
+      "id": 1,
+      "title": "Arquitetura em 4 eixos",
+      "status": "approved",
+      "comment": "",
+      "timestamp": "2026-05-14T19:15:55.544Z"
+    },
+    {
+      "id": 2,
+      "title": "Eixo 1 — Tipos (5 valores)",
+      "status": "approved",
+      "comment": "",
+      "timestamp": "2026-05-14T19:16:47.464Z"
+    },
+    {
+      "id": 3,
+      "title": "Eixo 2 — Categorias (6 valores)",
+      "status": "approved",
+      "comment": "",
+      "timestamp": "2026-05-14T19:17:19.816Z"
+    },
+    {
+      "id": 4,
+      "title": "Eixo 3 — Tópicos (vocabulário controlado)",
+      "status": "approved",
+      "comment": "",
+      "timestamp": "2026-05-14T19:18:06.264Z"
+    },
+    {
+      "id": 5,
+      "title": "Eixo 4 — Trilhas (5 com critério rígido)",
+      "status": "adjusted",
+      "comment": "Queremos que um artigo possa estar em mais de uma trilha. ",
+      "timestamp": "2026-05-14T19:18:38.768Z"
+    },
+    {
+      "id": 6,
+      "title": "Interface do artigo — cabeçalho + meta",
+      "status": "approved",
+      "comment": "",
+      "timestamp": "2026-05-14T20:00:03.521Z"
+    },
+    {
+      "id": 7,
+      "title": "Interface do artigo — blocos multimodais (Decisão 13)",
+      "status": "approved",
+      "comment": "Colocar sempre libras em primeiro na posição. Depois ouvir o texto. ",
+      "timestamp": "2026-05-14T19:59:09.177Z"
+    },
+    {
+      "id": 8,
+      "title": "Interface do artigo — rodapé",
+      "status": "approved",
+      "comment": "CASSARO, Juliana. Configurando o livro de notas do Moodle. Base de Conhecimento CEFOR/IFes, 2026. Revisado em 12 mai. 2026.",
+      "timestamp": "2026-05-14T19:59:57.012Z"
+    }
+  ]
+}

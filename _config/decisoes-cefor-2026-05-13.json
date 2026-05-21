@@ -1,0 +1,113 @@
+{
+  "document": "Decisões de Consolidação Fase 0 → Fase 1",
+  "project": "Base de Conhecimento CEFOR/IFes",
+  "exported_at": "2026-05-13T15:28:14.654Z",
+  "meta": {},
+  "decisions": [
+    {
+      "id": 1,
+      "title": "Propósito-farol da Base",
+      "status": "adjusted",
+      "comment": "Não será um formação estruturada, mas seria um espaço de aprendizagem e atualização contínua.\n",
+      "timestamp": "2026-05-08T12:20:38.095Z"
+    },
+    {
+      "id": 2,
+      "title": "Segmentação por perfil",
+      "status": "adjusted",
+      "comment": "SIm, vamos fazer segmentação por perfil mas sem navegação por perfil na home. Usaremos apenas a categorização de conteúdo para fazer a segmentação do perfil.",
+      "timestamp": "2026-05-08T12:30:35.927Z"
+    },
+    {
+      "id": 3,
+      "title": "TL;DR obrigatório",
+      "status": "rejected",
+      "comment": "AVALIAR SE É UM RECURSO UTILIZADO ATUALMENTE",
+      "timestamp": "2026-05-08T12:43:12.945Z"
+    },
+    {
+      "id": 4,
+      "title": "Tempo de leitura, índice e barra de progresso",
+      "status": "approved",
+      "comment": "Indice deve acompanhar a rolagem da tela pelo usuario, estando sempre visivel e localizando a posição da leitura. ",
+      "timestamp": "2026-05-08T12:44:41.742Z"
+    },
+    {
+      "id": 5,
+      "title": "Quatro tipos de callout",
+      "status": "adjusted",
+      "comment": "Gostamos da possibilidade de ter textos destacados, porém os tipos de informações deve ser definidas pelo content design (pois pode ter destaques do tipo: frases de efeito, citações, entre outras que vão ser definidas ainda) e as cores devem acompanhar o design system. ",
+      "timestamp": "2026-05-08T12:51:41.960Z"
+    },
+    {
+      "id": 6,
+      "title": "Tipografia editorial",
+      "status": "adjusted",
+      "comment": "Tudo sem serifa.",
+      "timestamp": "2026-05-13T15:09:26.206Z"
+    },
+    {
+      "id": 7,
+      "title": "Fundo e identidade visual",
+      "status": "rejected",
+      "comment": "Fundo deve ser branco. Podemos usar a cor verde, mas ela não precisa ser a destaque. Podemos explorar outras cores como a cor princiapl principal. \n\nos card não devem ser tão delimitados mas devem estar mais integrados com o layout da pagina. ",
+      "timestamp": "2026-05-08T13:02:49.834Z"
+    },
+    {
+      "id": 8,
+      "title": "Modo escuro",
+      "status": "approved",
+      "comment": "",
+      "timestamp": "2026-05-08T13:09:59.118Z"
+    },
+    {
+      "id": 9,
+      "title": "Trilhas pedagógicas (V1 simplificada)",
+      "status": "adjusted",
+      "comment": "Queremos que tenha as trilhas de aprendizagem mas ainda não temos definido o local, se ficará na sidebar, no inicio do artigo ou em outro lugar melhor. \n\nLembrança - Importante que em todos os artigos tenha ao final da pagina indicação de artigos relacionados. ",
+      "timestamp": "2026-05-13T15:10:38.054Z"
+    },
+    {
+      "id": 10,
+      "title": "Pacote de acessibilidade",
+      "status": "approved",
+      "comment": "",
+      "timestamp": "2026-05-08T13:23:14.196Z"
+    },
+    {
+      "id": 11,
+      "title": "Busca",
+      "status": "approved",
+      "comment": "",
+      "timestamp": "2026-05-08T13:28:18.025Z"
+    },
+    {
+      "id": 12,
+      "title": "Feedback do leitor",
+      "status": "adjusted",
+      "comment": "Não vamos usar emojis, use Foi util ou Não foi útil.   ",
+      "timestamp": "2026-05-08T13:29:34.722Z"
+    },
+    {
+      "id": 13,
+      "title": "Conteúdo multimodal",
+      "status": "adjusted",
+      "comment": "Não precisa de aba para mobile, retire essa opção. O site sempre deve ser responsivo. \n\nPrecisa ter a opção de incluir video em Libras que será a tradução em Libras do texto do artigo. A solução pode ser um accordion.\n\nAs imagens podem ou não ter uma legenda. E além disso, quero que tenha a opção de ter um campo de audiodescrição que descreva a imagem para cegos e fica visivel para todos. \n\nQueremos que o artigo tenha a opção escutado em audio. \nQueremos que o artigo tenha opção Podcast. \n\nPretendemos que alguns artigo tenham a possibilidade de ter infograficos/imagens que sistentizem. resumo, reforce os principais conceitos abordados no artigo. \n",
+      "timestamp": "2026-05-13T15:11:19.710Z"
+    },
+    {
+      "id": 14,
+      "title": "Metadados obrigatórios",
+      "status": "adjusted",
+      "comment": "nao precisa da versão do moodle. pensar se vamos mostrar tipo, categoria, tags.",
+      "timestamp": "2026-05-08T13:33:26.529Z"
+    },
+    {
+      "id": 15,
+      "title": "Escopo negativo da V1",
+      "status": "approved",
+      "comment": "Tudo fica fora do V1.",
+      "timestamp": "2026-05-08T13:34:32.933Z"
+    }
+  ]
+}

@@ -1,0 +1,302 @@
+# Validar etapa da Base de Conhecimento - Marquito, Elton. Ju e Ruti
+
+  Meeting started: 14/05/2026, 15:55:28
+  Duration: 64 minutes
+  Participants: Elton Vinicius, Juliana Cristina da Sillva Cassaro Cassaro, Marcos Vinícius Forecchi Accioly, Rutinha
+
+  [View original transcript](https://app.tactiq.io/api/2/u/m/r/mqals3bIzC3ZrRezt0L3?o=txt)
+
+    
+
+  
+
+  
+
+  ## Transcript
+
+  00:00 Elton Vinicius: Já entrou. Deve ser por isso.
+00:21 Marcos Vinícius Forecchi Accioly: Não funciona, eu acho. Manda ver.
+00:39 Elton Vinicius: Acho que vai entrar será que vai entrar as meninas também?
+00:43 Marcos Vinícius Forecchi Accioly: Não sei tô na dúvida com quem você marcou.
+00:46 Elton Vinicius: É uma case 16, vamos esperar um pouco.
+00:49 Marcos Vinícius Forecchi Accioly: A Rute e a Ju, tá bom?
+00:51 Elton Vinicius: Só esperar um pouquinho.
+00:51 Marcos Vinícius Forecchi Accioly: Claro
+02:23 Elton Vinicius: Não vou não.
+06:41 Marcos Vinícius Forecchi Accioly: só você
+07:44 Marcos Vinícius Forecchi Accioly: você que
+07:51 Elton Vinicius: Acho que vamos né. Já que ninguém veio embora. Bora lá, deixa eu abrir aqui.
+08:38 Elton Vinicius: Tô no trabalho. Não sei se eu consigo deixa eu ver vou tentar aqui. tá Vou ver se eu consigo dar uma passada aí então.
+10:17 Marcos Vinícius Forecchi Accioly: nós
+10:50 Elton Vinicius: Tá aqui é só para a gente apresentar só para apresentar o estado atual assim. Como que a gente chegou até aqui, né para saber em que etapa que estamos na ideia do protótipo o caminho percorrido para realizar a base de conhecimento com qualidade editorial sensibilidade foco em quem usa no dia a dia vamos lá tá aqui, ele tá trazendo um pouco do que do que ele do que tem a gente tem hoje, né? Tipo 60 artigos no site tem que tá errado isso aqui, né?
+11:28 Marcos Vinícius Forecchi Accioly: No livro. A gente já viu que tem mais.
+11:39 Elton Vinicius: Aqui tá mais ou menos 7 artigo de referências que foram analisados e o servidor novo do WordPress que está instalado e pronto tá a base atual funciona, mas não tem padrão de tutorial não tem acessibilidade e nem foi crescendo sem sistema. A proposta é reconstruído zero com método, tá? Eu pedi para ele fazer uma apresentação. Não tô vendo agora apresentação porque estamos fazendo isso a base. É o lugar onde qualquer profissional Dead resolve problemas com autonomia. Estou com problema agora então a ideia de ser espaço de consulta.
+12:14 Elton Vinicius: E de aprendizado. Quero aprender algo novo, eu peguei tudo que a gente tinha feito, né de conversa ali para poder a nossa conversa também foi guia assim para a gente tomar. Beleza a gente fez o que que aconteceu já né? A gente fez um benchmark com algumas plataformas de conteúdo. Foi especialmente o que a Ju fez tá aí fez um relatório aquele fala do
+12:40 Marcos Vinícius Forecchi Accioly: Tá bom.
+12:45 Elton Vinicius: Brainstorm que a gente fez beleza e o ju a gente foi decidindo algumas coisas e a ideia é essa agora a gente você vê também ajudar a gente caminhar na etapa que a gente tá aquele botou algumas coisas que a gente decidiu que acho que não precisa mostrar agora que a gente vai ver depois coisas que ficaram definidos, tá? Acho que isso aqui é legal. Antes de qualquer cor fonte de definir as regras de conteúdo. É o que garante que a base vai funcionar de verdade não só parecer bonita. Que aquilo né? A ideia é a gente ter um design System e um context System.
+13:28 Elton Vinicius: Agora a gente está numa camada, já tem algumas coisas de conta insiste que já tá definindo e de designs existem é mais ou menos isso que a gente vai querer.
+13:37 Marcos Vinícius Forecchi Accioly: Design System da base né? Não é um
+13:40 Elton Vinicius: Não da base da base, tá? A gente fez a gente a ideia agora é apresentar uma proposta de estrutura de artigo e funcionalidades. A gente percebeu que para fazer essa definição a gente precisava ter clareza de algumas coisas do content insistem que as categorias ataconomia, né? Então a gente fez uma análise, né de como que estão os artigos categorizados percursos e isso foi reformulado assim pelo Cloud então a ideia também agora a gente validar isso assim o quanto que essas categorias são? Um direcionamento bom para a gente seguir ou seja, se você usar você acha que aqui pode ser outras formas, né? E então a gente vai olhar tanta taxonomia como interface é isso que eu vou mostrar para você agora que a gente
+14:48 Marcos Vinícius Forecchi Accioly: tá
+14:49 Elton Vinicius: Montou? Tá bom então, vai ter uma proposta de interface uma de e uma do artigo que vem depois da aprovação de hoje, tá? Depois disso a gente fecha, beleza?
+15:00 Marcos Vinícius Forecchi Accioly: Precisando fazer dois. Esse ano vocês têm básico então que vocês fizeram.
+15:04 Elton Vinicius: Exato, esse daí já é mais. Principalmente as funcionalidades e já uma ideia de Design si assim de organização da interface assim, né? Então a ideia. Por que que aconteceu? A gente tava vendo pesquisando várias coisas, mas foi aí vamos testar vamos ver como funciona, então a gente começou a testar. Então é uma proposta já Inicial, mas não é ele todo refinado.
+15:32 Marcos Vinícius Forecchi Accioly: Não, mas é ótimo que já tem algo, né? Ah tá.
+15:38 Elton Vinicius: Vamos artefatos, já muda aqui para cá, tá? Então primeiro que eu quero te mostrar É acho que é o do taxonomia interface do artigo são 131 artigos aqui da base a gente eu e a tomar uns 15 decisões assim de funcionalidade e a análise que ele fez Ele propôs. Tá vamos lá análise que ele fez. Ele propôs uma arquitetura em quatro eixos, então ele pegou o que a gente tinha e Ele montou em quatro eixos aí, quais seriam esses quatro eixos É esse aqui que a gente vai fazer agora que a ideia é fazer agora, entendeu? Até botar aqui Juliana, Juliana e Elton, beleza? E
+16:22 Marcos Vinícius Forecchi Accioly: rro
+16:30 Elton Vinicius: aí a gente já aí eu cresci artefato aqui onde a gente já coloca as decisões e já já eram já aproveita do que a gente conversar aqui. Então primeiro é o seguinte, ele substituiu o modelo atual que atualmente a gente tem categoria os temas, né? Que ele chama de fototipos e as tags livres que a gente que não tava pegando funcionando e os percursos. E eles sugere isso mudar para quatro eixos com papéis Claros então ele acrescenta essa ideia de tipo, então assim um artigo vai ter o tipo que é o Como se lê ele então se ele é tutorial, né? Ele vai.
+17:15 Juliana Cristina da Sillva Cassaro Cassaro: Ele faz a indicação, pois ele coloca quais são os tipos que ele sugere.
+17:16 Elton Vinicius: a indicação E isso então seriam essa daqui o tipo que teria um valor então cada artigo só tem um tipo a categoria cada cada artigo, só tem uma categoria. E o tópicos ele pode ter de dois a quatro tópicos relacionados e no trilha vai ser sempre assim, ele faz parte ou não de uma trilha e não sei se está aqui parte de uma jornada tá 01 valor.
+17:50 Marcos Vinícius Forecchi Accioly: E não vai ter tag livre mais.
+17:52 Elton Vinicius: E não teria as tag livre mais.
+17:55 Marcos Vinícius Forecchi Accioly: Tá bom.
+17:57 Elton Vinicius: a regra mãe cada eixo responde a única pergunta, se dois eixos responde a mesma um deles sai então sempre vai estar em
+18:06 Juliana Cristina da Sillva Cassaro Cassaro: Ele ele sugere que as tags seja sejam padronizada, sejam criadas essas tags para que seja escrita sempre da mesma forma, né? E ele sugere algumas tags lá também no final, não sei se não lembro se aqui aparece mas ele sugere tipo
+18:20 Elton Vinicius: É que ele tá chamando de tópicos.
+18:22 Juliana Cristina da Sillva Cassaro Cassaro: documentos, tipo é documentos você sempre documentos é documento não é
+18:26 Elton Vinicius: Ele vai mostrar lá embaixo.
+18:27 Juliana Cristina da Sillva Cassaro Cassaro: documentos ele sugere no sentido de controlar isso para o vocabulário seja padronizado.
+18:35 Elton Vinicius: Né, mas as tags Livres mesmo como um arquivo perguntou que seria mais uma
+18:39 Juliana Cristina da Sillva Cassaro Cassaro: Eu entendi que não.
+18:39 Elton Vinicius: categoria de categoração, não vai ter seria tópicos, pelo menos essa foi a proposta que ele fez a partir do que ele analisou, né? Talvez se a gente pode repensar a ver até fazer para que ele pesquise. Que que você acha? Você acha que vale a pena a gente?
+18:54 Juliana Cristina da Sillva Cassaro Cassaro: Mas lembre que ele a gente pode incluir tags com a supervisão da Rute.
+18:59 Elton Vinicius: Então mas a tag que ele fala é o tópicos, entendeu?
+19:05 Marcos Vinícius Forecchi Accioly: Ele vai usar internamente no sistema os tópicos.
+19:08 Elton Vinicius: Que é esse aqui ó, por exemplo vocabulário controlado. Ele substitui 82 tags livres. Usada uma só vez por 25 controlados. Então não vai ser ferramenta e ferramentas que ajudava falando, né? A gente tinha várias variações. Então seria uma lista fechada. Um formato único então por exemplo tópicos operacionais então questionário então teria esses padrões, eu acho que assim pode acrescentar o que vai lembrar é que tipo você só consegue ter até quatro por artigo, então que é um pouco parecido com que a gente vai fazer, né? Acho que o que ele fez foi organizar e deixar bem criar regras.
+19:58 Marcos Vinícius Forecchi Accioly: Sim, eu acho que uma coisa que foi uma vantagem é que ele pegou as tags, já
+19:59 Elton Vinicius: tá
+20:02 Marcos Vinícius Forecchi Accioly: fez uma análise e aí já sugeriu então não precisa a gente já Como já tem tempo de base de conhecimento, tá tudo bem assim, entendeu? Em algum momento vai criar mais tópicos, talvez. E aí crie o tópico pode ser usado não precisa ficar nesses tópicos, né, mas não tem mais tag livre então a pessoa vai ter que selecionar dois tópicos, né?
+20:21 Elton Vinicius: É isso dos Tópicos. Então teria essas quatro formas de categorização tá uma coisa que a gente percebeu cara. Que tipo 42% dos artigos não tem percurso e o que acontecia muitos dos percursos. Eles eram usados como categoria, né? Então tipo fazer sentido ele ser uma trilha. Na aqui no eixo Tipo o que teria sonhos essas possibilidades tutorial aquilo usa referência então tipo. Conceitual solução de problema e recurso então sempre estaria entre um desses.
+21:03 Elton Vinicius: tipos Que é o que Ele identificou, né?
+21:07 Marcos Vinícius Forecchi Accioly: Tutorial referência conceitual solução de problema ou recurso, tá bom? Acho que é isso em algum momento, talvez a gente vai entender que tem outro, mas a gente chega. Acho que é isso.
+21:19 Elton Vinicius: Beleza categoria, ele reduziu as 20 categorias para 6 então a gente teria apenas essas seis categorias. né Então muda o Ferramentas e recurso pedagogia e planejamento acessibilidade conduta e conformidade e identidade se for que é o que é os padrões visuais. Tá então seria essa daqui. Acho que também é o que acho que você tá sentindo. Talvez o que a gente sentiu assim que talvez isso vai na prática a gente vai sentir que precisa de uma de outro.
+22:00 Marcos Vinícius Forecchi Accioly: É mas eu acho que é um bom lugar para começar.
+22:03 Elton Vinicius: E já tá organizado, né? Porque a gente acho que os problemas foram resolvidos que era os problemas de duplicidade artigo que tava em todas as que tava em todas as categorias, três categorias estão Acaba que ele não adianta nada da categoria, porque ele era uma categoria que todos os artigos tinham que tinha 60%, 80% estava na mesma categoria, então, tipo era uma categoria que não fazia diferença nenhuma, né? Porque tudo tava lá então aqui é o top controlado tal que a gente também teria.
+22:36 Elton Vinicius: Desse jeito aqui, acho que e as trilhas então eles substituiu 12 percurso por 5 trilhas, pelo menos nesse momento. E aí o critério é começo meio e fim reais validados pela Ruth ao menos cinco ao menos cinco artigos e cada artigo e no máximo uma trilha.
+22:57 Marcos Vinícius Forecchi Accioly: Já não gosto tanto. Eu acho que as três são para você reaproveitar artigos aparecer mais de uma trilha porque ele faz sentido faz sentido.
+23:08 Elton Vinicius: Problema né?
+23:09 Marcos Vinícius Forecchi Accioly: Não tem problema nenhum. Tá sem áudio.
+23:15 Juliana Cristina da Sillva Cassaro Cassaro: De Marquito que o que ele compreendeu de trilha e talvez a gente precise se for o caso para poder alterar é de que a trilha é uma linha de conhecimento, você tem um início meio e fim é um percurso de conhecimento e não são artigos soltos sobre aquele conteúdo, entendeu? É tipo assim, não é um curso, né?
+23:31 Marcos Vinícius Forecchi Accioly: Eu acho que as duas coisas são verdade.
+23:34 Juliana Cristina da Sillva Cassaro Cassaro: Não é um curso não é uma formação, não é isso? Porque do jeito que a gente tá usando é isso isso ele entendeu que a gente estava criando uma outra
+23:39 Elton Vinicius: Que foi o maior problema que a gente ficou né?
+23:43 Juliana Cristina da Sillva Cassaro Cassaro: categoria para unificar artigos de assuntos semelhantes e as trilhas isso e as trilhas do jeito que ele tá propondo não seria uma outra categoria seria uma linha de início meio e fim ensinando como é que faz uma coisa aí ele aí ele
+23:56 Marcos Vinícius Forecchi Accioly: Ele tá melhorando o que a gente fez.
+24:02 Juliana Cristina da Sillva Cassaro Cassaro: entendeu? Sugeriu de que um artigo não poderia estar em mais de uma trilha o mesmo artigo não poderia estar em mais de uma trilha. Eu até falei com ela, falei alto a gente Talvez possa ter conteúdos que
+24:14 Marcos Vinícius Forecchi Accioly: sim
+24:14 Juliana Cristina da Sillva Cassaro Cassaro: Que possam estar mais de uma trilha, mas aí eu não sei pensando que é início meio e fim a informação se talvez a gente teria que ter dois artigos um escrito mais focado para um não não sei entendeu?
+24:28 Marcos Vinícius Forecchi Accioly: Não não quanto mais a gente reaproveitar conteúdo melhor o conteúdo ser mais atômico vai ser melhor então por exemplo. Ó, tem um artigo que assim como fazer um bom prompt, ele vai entrar na trilha de a para professores e a para estudantes em outras trilhas, ele vai entrar em algum momento, entendeu? Então tipo mesmo que tenha começo meio e fim. Nossa Ruth achei que era um detergente de repente ficou muito parecido com tudo que tá acontecendo no Brasil. Olha lá gente, ela deu uma bebidinha ali.
+24:54 Elton Vinicius: Olha isso é detergente.
+24:56 Marcos Vinícius Forecchi Accioly: Não é possível.
+25:05 Juliana Cristina da Sillva Cassaro Cassaro: Gente, eu perdi falei cara Ipê com bolsonarista. Eu perdi essa daí.
+25:06 Marcos Vinícius Forecchi Accioly: Nossa, Juliana, tá bombando bombando só bebendo detergente os personagens
+25:11 Rutinha: Nossa tá bombando.
+25:12 Juliana Cristina da Sillva Cassaro Cassaro: Eu perdi gente. Não vi não.
+25:18 Marcos Vinícius Forecchi Accioly: tomando banho de detergente para mostrar que é seguro não.
+25:22 Rutinha: Eu tenho para mim é mais e mais uma etapa da entendeu seleção natural vai resolver muita coisa aí depois disso.
+25:34 Marcos Vinícius Forecchi Accioly: Eu gosto dessa ideia.
+25:36 Juliana Cristina da Sillva Cassaro Cassaro: cara
+25:37 Marcos Vinícius Forecchi Accioly: Assim gente a gente vai ter mais trilhas, eu acho o máximo tá que a trilha seja uma coisa pensada no começo meio e fim antiga quando a gente começou ela era isso. Depois ela virou uma categoria de organização, tipo assim, sei lá ferramentas aí alguém botou no percurso tanto que o nome não era entre ele era percurso, mas trilha bem melhor que a gente já tem trilhas que a gente já faz a gente já tem esse conceito que a gente trouxe. Em algum momento para nós para cgts, mas eu acho que a gente também essa coisa de cada artigo no máximo uma trilha não faz sentido. Não sei se a gente tem que fazer um hard um limitador rádio assim de tem que ter pelo menos cinco artigos, mas pode ser acho que a gente pode entender assim um de começo de fim em três no meio, né? Três que são legal.
+26:26 Marcos Vinícius Forecchi Accioly: Lembrando que o artigo eles têm que funcionar dentro e fora da trilha isso que é interessante também então se um artigo fosse só de começo para poder ser o começo de uma trilha não faz sentido ele tem que ser uma coisa que serve de começo a uma trilha. Mas também ele serve sozinho, então tipo assim, né? Eu acho que Enfim essa ferramenta que você fez aí tá legal, né de aprovar ajustar o rejeitar. Acho que uma coisa que pode ficar para outras. Eu tô até um microfonezinho. E aí você fica na hora que alguém for falar. Tipo assim,
+26:54 Elton Vinicius: Foi exatamente eu falei vou ter que isso mas eu também tenho que juntar com a
+26:56 Marcos Vinícius Forecchi Accioly: você vai falar agora sobre os Voice, você liga ele já escreve aí nessa caixa porque você não precisa ficar preocupado você foi querer escrever você falou mas eu tenho a transcrição porque eu espero.
+27:12 Elton Vinicius: transcrição já.
+27:14 Rutinha: Isso isso que é relacionamento, né? A pessoa já sabe o que a outra tá pensando em gesto dentro da telinha.
+27:18 Elton Vinicius: E a ideia é essa a gente se aproveitar que a Rute chegou aí, né? Se você
+27:21 Marcos Vinícius Forecchi Accioly: É porque a gente pela câmera, nem tô olhando para ele que ele tá na minha frente ó, mas tipo a tela tá na minha frente, mas eu acho que tá assim, ele é muito bom de fazer as coisas uma coisa que a gente tem que lembrar também que elas são muito boas de tentar dar uma solução para um problema que não existe às vezes tá? Então ela falou algumas coisas muito boas aí mas ah não cada artigo no máximo uma trilha como se fosse uma máxima. Cala a boca não nada a ver. Tipo assim. Tem coisas que fala que nada a ver, tipo assim, não não faz sentido para a gente.
+27:53 Marcos Vinícius Forecchi Accioly: E aí que tá o rio mas ninguém loop mesmo, né? A gente aqui agora definindo o que que ela falou se faz sentido. Não faz entendeu? Para a gente ir para próxima etapa com um conteúdo já curado é isso que não faz sentido, talvez pra gente eu acho que nesse momento igual a gente tá fazendo todas as outras coisas, né? Faz Sentido tópicos, mas parece que faz parece que cinco tá bom para iniciar sabe? Sei lá para cima, né que a gente já decidiu. Vamos em frente não faz sentido.
+28:20 Marcos Vinícius Forecchi Accioly: Um artigo que tem usado só uma vez depois a gente pode mudar de ideia faz sentido sim e Vamos alterar o nosso tema, entendeu? Mas
+28:33 Elton Vinicius: quiser comentar alguma coisa também Rute, mas a ideia é um dos maiores problemas era trilha, né? Que a gente que sugeriu a gente fazer garantir que ela não seja uma categoria, mas sim algo que seja.
+28:48 Marcos Vinícius Forecchi Accioly: Tem começo meio e fim, né?
+28:50 Rutinha: no mantido o percurso e a
+28:54 Elton Vinicius: Então, eu lembro que você tinha comentado e eu fiquei meio na dúvida na época quando você falou naquela reunião que a gente fez e a trilha e percurso são coisas diferentes, né?
+29:06 Rutinha: Na reunião, eu pensei sim, né? Que era mas lembrando, né? A gente tava naquela coisa de falar tudo que a gente né Queria eu tinha pensado o percurso como um conjunto de coisas mesmo que tivessem saidinhas menores como é a trilha que vocês estão montando é o percurso. Ele ficaria mais para organização das trilhas mesmo então por exemplo dentro de uma que deu um exemplo aí que eu gostei muito aprender a fazer promete especificamente seria uma trilhazinha ele faria aqueles lá beleza? Terminou aquilo ali para o estudante, mas ele é esse essa trilha tem vários percursos, depois ele pode aprender a fazer imagem.
+29:49 Rutinha: Depois ele pode entendeu? Como se fosse assim juntar várias trilhas viravam percussão, até para que isso organizassem as trilhas, mas isso eu não tinha pensado o nome trilha, mas ficou ainda melhor pensando em Um percurso organizando trilha.
+30:05 Marcos Vinícius Forecchi Accioly: Eu gosto mais dessa ideia também, porque defendendo aí.
+30:09 Elton Vinicius: Essa que tá assim.
+30:11 Marcos Vinícius Forecchi Accioly: A Rute acabou de falar, eu acho que liga com uma coisa que estavam incômodo na minha cabeça, eu não tava conseguindo definir também, mas acho que defino muito bem que é o que que me vem assim, quando a gente faz o trilha ser fora aqui, por exemplo, ele é uma coisa limitada. Tipo assim e ele tem um objetivo bem específico, tipo a gente vai fazer o trilha para falar da mudança do mundo para o outro não é uma coisa que fica muito perene assim, né? Eu acho que na base os percursos eles são como se fosse um percurso formativo, entende? Eu entendo mais assim, ele não tava sendo usado assim, mas o jeito que eu sempre antevi os percurso era um pouco assim, tipo assim, percurso proficiência e a por exemplo. Beleza para você fazer isso pode fazer pegar artigo separados como se fosse microcréditos ou pegar já trilhas pré-prontas, tipo assim.
+31:01 Marcos Vinícius Forecchi Accioly: Trabalhando com engenharia de prontos engenharia de contexto engenharia de estudar o percurso que é como se fosse o curso, por isso que ele chama percurso até né? É como se ele fosse o curso as trilhas como se fosse talvez minicurso ou disciplinas dentro do contexto da base de conhecimento tá gente que é uma coisa bem menor do que um curso Claro, mas o percurso seria o que que é o objetivo que tem um objetivo pedagógico. Vamos dizer assim a trilha. Talvez teria.
+31:32 Marcos Vinícius Forecchi Accioly: Um objetivo mais ferramental poderia até inverter esse nome mas eu gosto de percurso é uma coisa. mas parruda vamos dizer assim, mas proficiência em ar avaliação fundamentada tipo assim aí
+31:55 Rutinha: acessibilidade na educação a distância
+31:57 Marcos Vinícius Forecchi Accioly: Acessibilidade na EAD é um percurso. E aí pode ter várias telhas dentro, não sei né? São coisas que me vem agora também que talvez a gente possa fazer uma alteração aí de manter os percursos como conjuntos maiores como coisas que vão profissionalizar ou ajudar a pessoa né aí por um caminho de Formação mesmo. Ah, eu precisava entender de a beleza a gente tem aqui. E a iniciante dentro da base de conhecimento, ele vai ter várias coisas dentro, entendeu? Várias trilhas.
+32:29 Marcos Vinícius Forecchi Accioly: E é legal porque as trilhas isso pensando fazendo uma analogia com parques nacionais tá o parque nacional. Ele vai ter vários ele tem percursos maiores que são formados por trilhas menores. Então você tá no você tá numa trilha aí ela desemboca para uma outra desemboca para uma outra segue em frente. Mas se você anda tudo você andou aquele parque nacional. Você fez todas as trilhas sendo Um percurso é o percurso do Parque, entendeu? então
+33:02 Rutinha: Isso responderia também uma questão muito importante para a gente aí agora bem prática mesmo que aconteceu a gente acabou visualizando isso tanto na em relação ao Moodle quanto em relação a gente teve que criar um local dentro do nosso site para colocar as ações de a a gente. Depois criou antes disso criou um local para assim. Ah, muda um novo lembra aquela confusão, o que que o professor acha? Onde que ele acha isso, o que que ele vai fazer? E aí a gente criou um lugar dentro do site, mas gente assim, né? O site ele não é exatamente para isso, né? Não é esse lugar. Então talvez isso resolver isso também essa questão, tipo assim professor chegou precisa do mundo.
+33:45 Rutinha: Tem lá um percurso inteiro com várias trilhas que ele poderia, entendeu? É uma outra possibilidade da gente resolver também esse problema que é uma coisa que a gente teve que inventar um lugar.
+33:56 Elton Vinicius: Então seria tipo um percurso seria percurso Professor muda dominando mudo. Aí ele teria uma trilha de iniciando no mudo, teria uma trilha de
+34:13 Rutinha: isso
+34:18 Marcos Vinícius Forecchi Accioly: Que elas nem precisam ser em ordem cada trilha, pode ser feita. Ele poderia até inclusive escolher na hora de olhar um percurso uma coisa que ele poderia fazer dentro da base. Puxar a ordem das trilhas em que ele quer fazer. Acho que vou fazer esse primeiro essa depois essa aqui depois essa ele poderia pedir para o negócio embaralhar para ele embaralha para mim ou Me fornece uma ordem das trilhas. Aí ele traz uma ordem padrão, não sei né? São só viagens assim a gente complexa e fica mais um pouco tá gente fazendo isso.
+34:54 Marcos Vinícius Forecchi Accioly: Aí uma certa complexidade, mas também ganhei uma certa solidez a base ficou um pouco mais sólido.
+35:03 Rutinha: Tá fechado Ju.
+35:09 Juliana Cristina da Sillva Cassaro Cassaro: Só é o fato dele poder embaralhar ele poder fazer mexer nisso ou o fato de ter percurso e trilha.
+35:14 Marcos Vinícius Forecchi Accioly: Percurso e trilha porque a gente na hora de criar vai ter que pensar mais né?
+35:16 Juliana Cristina da Sillva Cassaro Cassaro: Claro
+35:19 Marcos Vinícius Forecchi Accioly: Tipo o artigo é a parte atômica. A trilha é um micro pedaço de conhecimento que não é uma categoria. E aí eu acho que a trilha pode ter começo meio e fim e o percurso ele não tem começo meio e fim, mas ele organiza. Do que a gente pensa que é uma boa formação naquela área? Tô pensando assim, tá gente?
+35:50 Juliana Cristina da Sillva Cassaro Cassaro: Ele pode organizar trilhas ou pode organizar artigos?
+35:53 Marcos Vinícius Forecchi Accioly: O percurso também.
+35:54 Juliana Cristina da Sillva Cassaro Cassaro: Percurso ele precisaria ele precisaria.
+35:55 Marcos Vinícius Forecchi Accioly: Ele pode ter filhos, ele pode ter coisas diferentes.
+36:00 Juliana Cristina da Sillva Cassaro Cassaro: Eu vejo eu não vejo que ele precisa ter trilha, eu não vejo que
+36:00 Marcos Vinícius Forecchi Accioly: legal
+36:04 Juliana Cristina da Sillva Cassaro Cassaro: Obrigatoriamente a gente tem que ter todos os artigos, tem que estar vinculado a uma trilha. Eu não entendi dessa forma nós podemos ter então o percurso ele
+36:08 Marcos Vinícius Forecchi Accioly: Ah não também acho que não.
+36:12 Juliana Cristina da Sillva Cassaro Cassaro: pode ter as trilhas, mas talvez ele possa ter um artigo solto lá também, talvez não ou não.
+36:19 Elton Vinicius: Tá legal.
+36:20 Marcos Vinícius Forecchi Accioly: Acho que sim, não vejo porque não
+36:21 Juliana Cristina da Sillva Cassaro Cassaro: ou não
+36:25 Marcos Vinícius Forecchi Accioly: Não vejo porque não porque que ele não poderia.
+36:29 Rutinha: Se for necessário, se não tiver alguma tinta.
+36:36 Marcos Vinícius Forecchi Accioly: Isso aí Total total.
+36:40 Juliana Cristina da Sillva Cassaro Cassaro: Se complementa mas não tá vinculada nenhuma trilha necessariamente.
+36:43 Marcos Vinícius Forecchi Accioly: Eu acho que é um é mais um refinamento, mas assim a gente em algum momento vai precisar fazer uma V zero gente porque isso pode ficar por uma vez um V2, entendeu? V3 não precisa ser feito agora poderia ficar assim, eu acho que é uma adição que não é tão complexa, né? Para a gente adicionar. Acho que funciona só tô dizendo para a gente começar a pensar que assim seria bom em 15 dias que a nossa ideia era até o final de Abril mais uns 15 dias a gente já tem uma versão zero da base para a gente botar ela para rodar.
+37:20 Marcos Vinícius Forecchi Accioly: Né? Então tô pensando também no fator tempo, porque assim isso é infinito a gente pode ficar decidindo isso para o resto da vida, nós estamos criando sistema, entendeu? Então o sistema não tem fim, a gente vai inventando e colocando dentro deles, então ele colocando dentro dele.
+37:36 Elton Vinicius: Beleza eu vou pegar essa transcrição isso que a gente conversou.
+37:37 Juliana Cristina da Sillva Cassaro Cassaro: beleza
+37:42 Elton Vinicius: incorporar no projeto
+37:43 Marcos Vinícius Forecchi Accioly: Assim mas já sei gente que a gente vai arrebentar com essa base nova. Tipo assim. Vai ficar melhor de ler vai ficar melhor de usar. Já tô sentindo que tipo assim vai ficar mais organizado enquanto conteúdo isso daí é lindo, entendeu?
+38:00 Elton Vinicius: É uma outra coisa que a gente queria validar É algumas funcionalidades dentro da do artigo, né? Que que vocês olhassem assim, a gente não refinou ainda o layout do jeito que ele vai ficar menos posicionamentos aqui são três coisas da interface do artigo cabeçalho na parte de cima como algumas coisas muito modais e o rodapé.
+38:24 Marcos Vinícius Forecchi Accioly: tá muito rápido, não tô conseguindo ver mas
+38:27 Elton Vinicius: Eu vou te mostrar com calma aí.
+38:28 Marcos Vinícius Forecchi Accioly: Tá mas que a minha calma só dá mais 10 minutos, eu tenho para fisioterapia.
+38:32 Elton Vinicius: Isso por isso que eu tô acelerando aqui.
+38:34 Rutinha: Blocos multimodais deixa eu mandar mais coração.
+38:37 Elton Vinicius: Então, o que que eu vou botar aqui? Eu vou botar aqui uma proposta de estrutura de arquivo, que que é para a gente olhar as funcionalidades, tá então se ele ficaria não tá trabalhado as cores nem necessariamente aqui ficaria o Brad
+38:50 Marcos Vinícius Forecchi Accioly: Só um instante, ele é categoria mudou a configurar o livro de notas.
+38:55 Juliana Cristina da Sillva Cassaro Cassaro: Vou dar uma saidinha rapidinho gente.
+38:59 Elton Vinicius: Cão e a categoria ele tá nessa categoria o título a gente viu? Que um subtítulo que resume é uma coisa boa assim para
+39:13 Marcos Vinícius Forecchi Accioly: E configurar livros.
+39:15 Elton Vinicius: Seria o nome do artigo que ele.
+39:21 Rutinha: Gostou do artigo?
+39:23 Elton Vinicius: É mas eu não precisa realmente.
+39:25 Marcos Vinícius Forecchi Accioly: Você precisaria porque ele já vai vir grande ali, tipo assim sabe que é início mudava configurando o livro de notas vai ficar confuso não existe configurando livro de notas. Mas está dentro da mesma coisa.
+39:36 Elton Vinicius: Já não precisa ter então o esse texto. Subtítulo. A ideia é ter um nome do autor, né? O tempo de leitura e aqui tá a categoria tipo lá que a gente mostrou, né tutorial logo abaixo, a gente teria as opções multimodais assim.
+39:58 Marcos Vinícius Forecchi Accioly: Gosto muito.
+39:59 Elton Vinicius: Que um é a leitura, né? Aqui só tá simulando aqui, a gente Pensou um podcast que seria um áudio gerado. Lá no tipo que ele é outra forma, que que não seja a leitura do artigo e tem que tipo uma tradução em Libras desse material, né? Aqui a gente tem um
+40:20 Marcos Vinícius Forecchi Accioly: Dá para ver.
+40:23 Elton Vinicius: índice que ele acompanha o scroll, então assim eles a gente vai descendo ele vai posicionando junto nessa tem aqui também em cima uns Crown a ideia também deixar que ele vai.
+40:37 Marcos Vinícius Forecchi Accioly: Ele preenche a tela. Isso é ótimo, porque você sabe quanto tempo falta mais ou menos vai acostumando com a leitura, né?
+40:43 Elton Vinicius: Então são elementos que vão ajudar se a gente pediu para incluir, né? Outra coisa que a gente pensou também é de incluir audiodescrição das imagens que ser que poderia a ideia botar um.
+40:57 Marcos Vinícius Forecchi Accioly: Seria áudio, descrição ou texto?
+40:59 Juliana Cristina da Sillva Cassaro Cassaro: Preciso ir.
+41:00 Elton Vinicius: texto descrição falou Júlio texto descrição
+41:02 Juliana Cristina da Sillva Cassaro Cassaro: desculpa Ah minha linda.
+41:05 Elton Vinicius: Porque Tecnicamente isso aí precisa estar resolvido, né? Beleza.
+41:09 Marcos Vinícius Forecchi Accioly: É f***. Só tem que ficar ligado se essa descrição da imagem também não tá ligado ao Alt da imagem se ele vem do Out ou não isso Tecnicamente vai fazer diferença porque o leitor de tela não vai a imagem depois ler a descrição, ele vai ler e já tentar ler, entendeu? Então é legal, ele tá separado, mas ele precisa fazer parte da tag de imagem é senão vai aparecer que tem duas imagens para que a pessoa que é cega, né, então.
+41:41 Marcos Vinícius Forecchi Accioly: Legal em assim entrelinha o olho essas coisas toda destaque tá tudo muito
+41:46 Elton Vinicius: e
+41:48 Marcos Vinícius Forecchi Accioly: maneiro, tá? Já tá muito bom assim, se a gente implementar a base assim já vai ser ótimo.
+41:54 Elton Vinicius: Não teria esses caos né? Mas aí a ideia é refinar melhor isso aqui que eu não achei muito pobre mas aí autor no final teria esse avançar para dar trilha. Eu não achei que ficou bem resolvido aqui assim porque não fica claro que é de uma trilha. Então não sei o que.
+42:19 Marcos Vinícius Forecchi Accioly: Eu ficar claro também, eles estão muito perto e muito iguais. Talvez ele tem
+42:21 Elton Vinicius: sim
+42:22 Marcos Vinícius Forecchi Accioly: que estar mais com cara de que você daqui, você vai para lá e daqui você vai para lá não é? Só um link para um outro artigo, né? Tem mais cara de avanço e voltar né?
+42:31 Elton Vinicius: E de que avance volta porque eu tô numa trilha porque nem toda.
+42:35 Marcos Vinícius Forecchi Accioly: Isso tá escrito, né? Não sei o quê um box da trilha e entro tem uma avançar e voltar e não ser solto assim porque aqui não dá para tanto perceber outra coisa que eu acho que eu compartilhar também, tem que aparecer lá em cima, tá?
+42:49 Elton Vinicius: Bom É sim, isso é uma falha que é a ideia aqui.
+42:53 Marcos Vinícius Forecchi Accioly: Ele também aparece aí pode aparecer lá embaixo também, ele pode ficar embaixo do menu onde quando a pessoa tá rolando porque a qualquer ponta ela pode compartilhar.
+43:03 Elton Vinicius: Então isso foi uma discussão que a gente teve hoje, ela pensou isso também eu eu propus de não porque eu queria que a experiência da Leitura tivesse menos de ruído possível que ele literal, né? Então eu poderia tinha outras informações aqui também de úteis que ele poderia fazer não eu quero.
+43:25 Rutinha: A experiência de leitura tivesse o mínimo de ruído possível?
+43:32 Marcos Vinícius Forecchi Accioly: Mas assim você pode pensar também amigo, que talvez seja um botão só e ele tem como se fosse um menu e ele tem várias coisas ali ficou compartilhado.
+43:43 Elton Vinicius: sim
+43:43 Marcos Vinícius Forecchi Accioly: Né? Vou copiar e você copiar a situação quem não precisa se chamar compartilhar, né? Ele pode ser?
+43:48 Elton Vinicius: Não a ideia não é teu texto, na verdade. É só ter o ícone.
+43:51 Marcos Vinícius Forecchi Accioly: Isso às vezes pode estar ali, ele pode ser mais coisas, tipo assim pequena mensagem para WhatsApp a pessoa clica tem uma mensagemzinha que já vai com o link ela Cola não é não é o link puro entendeu? Tipo assim já é uma
+44:01 Elton Vinicius: já
+44:04 Marcos Vinícius Forecchi Accioly: mensagem que ela veja esse artigo no site tal. Não sei.
+44:10 Elton Vinicius: Quando tiver na trilha teria essa parte trilha que acabou que é uma solução
+44:10 Marcos Vinícius Forecchi Accioly: Não acho de todo ruim que tem ali não digamos assim, entendeu? Mas eu acho ruim acrescentando mais coisas, assim ficar muito clã assim muita coisa aí.
+44:28 Elton Vinicius: que ainda a gente tá vendo se realmente é boa sempre que acaba ficando quando ele abre fica realmente muito grande, talvez. Mostrar só o próximo assim o anterior próximo.
+44:41 Marcos Vinícius Forecchi Accioly: Eu talvez quando ele rolar já fecha.
+44:47 Elton Vinicius: legal
+44:47 Marcos Vinícius Forecchi Accioly: E outra e outra e outra coisa, talvez interessante.
+44:51 Elton Vinicius: Do boxe da Trilha do Sai de bar eu tiver aberto e ele começar a rolar a página
+44:56 Marcos Vinícius Forecchi Accioly: Por exemplo.
+44:57 Elton Vinicius: ele já fecharia automaticamente.
+44:59 Marcos Vinícius Forecchi Accioly: É porque ele voltou a ler ele voltou a ler. Talvez isso dê um glitch, porque se ele rola para ver as outras opções do box vai dar um problema. Talvez tenha um tanto que ele tem que rolar ele rolou um pouco mais fecha o box agora também achei curioso ser trilha e ter o nome da trilha, mas embaixo tá escrito passo ao invés do artigo é um passo.
+45:21 Elton Vinicius: Beleza, e aí, depois teria ativos relacionados, né? Que aquele sugeriu o tipo
+45:22 Marcos Vinícius Forecchi Accioly: Não são na trilha são artigos, né? É um artigo 7 de 15 Artigo 8 de 15. Talvez o percurso pode ter um passo que é um dos Passos, pode ser a trilha um dos Passos, pode ser um artigo um dos Passos, pode ser um exercício vamos dizer que a gente vai colocar exercícios depois na base de conhecimento. Entendeu uma coisa que ele faz. Pode ser aí eu gosto mais de passo.
+45:49 Marcos Vinícius Forecchi Accioly: Para o percurso do que para trilha porque na trilha a gente sabe que literalmente são artigos.
+46:04 Elton Vinicius: o tipo, né? Então tutorial conceitual ou referência, né? Mas o título aqui é a categoria em baixo com o tempo de leitura a possibilidade de clicar no
+46:13 Marcos Vinícius Forecchi Accioly: ótimo
+46:16 Elton Vinicius: tópico. E aí eu acho que vou vender por uma página que todos os artigos que tem esse tópico tutorial que é o que a gente já tem hoje. A ideia era que vocês visse as funcionalidades, principalmente claro que se quiseres sugestão de Interface também fica à vontade, mas alguma mais algum comentário.
+46:38 Marcos Vinícius Forecchi Accioly: Que que são as outras coisas a bolinha verdinha no canto inferior direito?
+46:42 Elton Vinicius: Ah tá aqui, né que seria o ver libras.
+46:46 Marcos Vinícius Forecchi Accioly: superior acessibilidade a barra de acessibilidade, nossa ótimo
+46:55 Elton Vinicius: Reclama olha aqui, vamos lá, eu acho que era isso a ideia a gente.
+46:57 Marcos Vinícius Forecchi Accioly: É meio que vai ser um plugin que a gente fez, né? Tô entendendo isso.
+47:01 Rutinha: Isso daí vai ser assim, que delícia para eu rasgar na cara das pessoas de inclusão.
+47:09 Marcos Vinícius Forecchi Accioly: Aqui eu vou ter que partir velho. vocês fazem aí junto com
+47:14 Elton Vinicius: A gente para a gente seguir mesmo, é isso mesmo, vamos seguir.
+47:16 Marcos Vinícius Forecchi Accioly: Mas tem mais coisas você acha antes? Eu gosto muito areia, tá? Tipo assim uma coisa que não é branco é bem confortável de ler.
+47:29 Elton Vinicius: Legal legal.
+47:30 Rutinha: Falar cansa menos o olho né? Fica em
+47:34 Marcos Vinícius Forecchi Accioly: Assim para mim cara, tá bem resolvido. Inclusive em termos de design System assim é muita coisa para resolver. Não sei que os detalhes que precisar você vai resolver em outra coisa e online a gente acertar detalhes é uma coisa, né? Outra coisa é tivesse que mudar toda a fonte mudar todas a gente sabe que no primeiro. Hoje nós vamos ficar acertando várias coisinhas que ao Navegar nós vamos nós vamos perceber, tá?
+48:00 Elton Vinicius: Então beleza, valeu Marquito. Obrigado aí vai lá vai lá fisioterapia.
+48:06 Rutinha: Ainda bem que eu consegui ver Adorei viu?
+48:09 Marcos Vinícius Forecchi Accioly: Se tiver mais coisa vai com a Rute valendo aí que aí.
+48:12 Elton Vinicius: Eu vou mostrar só um negócio para ela, se ela tiver uns minutinhos que eu acho que que acho que ela vai curtir assim, né da ideia, tá bom?
+48:15 Rutinha: Tenho sim
+48:21 Marcos Vinícius Forecchi Accioly: gente
+48:21 Elton Vinicius: Valeu, valeu.
+48:23 Rutinha: uma consulta
+48:24 Elton Vinicius: Boa consulta. Em Rute, deixa eu te mostrar aqui uma coisa maneira quando a gente quando eu comecei a montar essa proposta do projeto, né do básico de conhecimento uma coisa estava Clara é a montagem do Design System, né? Esse sistema muito bem definido de de referências de design mesmo de cor, qual espaçamento qual tudo isso vai isso para quando trabalha com Ele cria uma consistência muito boa e tipo assim é necessário. E cria uma consistência. E aí eu fiquei pensando assim, a gente precisava também.
+49:13 Elton Vinicius: Ter essa consistência para a produção dos conteúdos aí que que eu fiz eu peguei todo o conhecimento de design System até um exemplo de design System o autor de design System e falei assim. Vem cá a gente precisa também fazer isso para conteúdo. Tem alguma coisa semelhante isso que a gente vai fazer apesar de conteúdo e aí Nossa Senhora. Aí Ele trouxe o contexistem. Que é só achar aqui vou te mostrar.
+49:52 Elton Vinicius: Que eu queria te mostrar, mas o que eu acho isso que eu vou mexer tanto nessa pasta aqui.
+50:02 Rutinha: Eu não conheço nenhum termo.
+50:04 Elton Vinicius: é Mais detalhado do que fazer o seguinte. O que tem?
+50:38 Elton Vinicius: E amarelo porque assim eu coloquei quando eu fiz isso eu coloquei quem tava no projeto, né? E você Rute Makita e também a qual você julgo e Marquita porque eu vejo tanto o nome da rua. A gente vai precisar olhar isso porque ela ele falou assim, olha é que vai. Ser especialista em context System assim, né? E aí a gente foi montando uma proposta de acontecência a partir de algumas coisas que eu fui interando com ele também para poder. Pedir para ele mostrar aqui.
+51:29 Elton Vinicius: Eu não me banana aqui no antigo é um conjunto de regras padrões instrumentos que garante qualquer artigo publicado na base por qualquer pessoa com ou sem ar em qualquer momento tem a qualidade e a mesma voz é a mesma utilidade então a separação de responsabilidades com design simples. Com as coisas como as coisas são escritas organizadas avaliadas e mantidas e usar nesses como as coisas aparecem se parecem se comportam e se navegam né?
+51:59 Rutinha: Entendi.
+52:00 Elton Vinicius: Ele criou essas 10 camadas o que tem para ver as terras só para você ter uma ideia. Falei ok? E aí eu achei tão legal que eu também nunca tinha visto feito assim, eu falei Caraca isso vai ser legal a gente ter né? Três essas três define quem é a base e para quem ela escreve. Então vai ter um guia editorial estratégico. Ensinando fazendo e acelera o mano valida e O escopo negativo que a base não é repositório de PDF blog manual do mundo pensa que lembra que a gente está sempre falando sobre contexto a importância de contexto para tudo quando a gente define essas coisas, né? É tipo vai sempre ter um contexto que garante que ela não se perca, né que ele vai sempre na mesma direção.
+52:54 Rutinha: É como se tivesse feito por escrito aquilo que a gente pensa intuitivamente para base, né?
+52:59 Elton Vinicius: E chega alguma coisa a gente decide junto, a gente se acha que esse ativo vai tipo assim, é isso que ele tá fazendo, né? Fazendo essa validação editorial, a voz é uma só colega experiente colega experiente que explica com paciência o Tom varia urgente direto perdido acolhedores explorando inspirador tem de muito isso aqui não.
+53:23 Rutinha: Se a pessoa tiver com urgência ele é direto, se a pessoa tiver perdida, ele é acolhedor. Ele é inspirador.
+53:29 Elton Vinicius: Às vezes eu fico lendo rápido, aí eu mapa de modelos mentais como o público pensa professor que migrou do presencial acha que o mundo é Google classroom mais complicado. mediadores experientes não explora recursos avançados Então informa o Tom e estrutura. Então, ele também sugere mapear né? Esses tipos de perfis, né?
+53:57 Rutinha: De quem tá usando?
+53:59 Elton Vinicius: E aí tem a camada de linguagem padrão, essas três define, como se escreve? Então vou vocabulário controlado. Resolve as quatro terminologias simultâneas do público. Então prova online é muito popular que é igual a questionário, aí esse é um controle que vai isso daí é um problema, mas que a gente tem na atual, né? E quando eu vou lá cadastrar um artigo sempre qualquer cadastro é o feeling, né? Sempre então.
+54:33 Rutinha: O que que a gente disse já escreveu dizendo a mesma coisa?
+54:37 Elton Vinicius: Exatamente aí eu tenho que caçar então assim, talvez a gente vai ter. Talvez um mini sistema antes um GPT que tenha todos que a gente passa para poder ele explicar para gente ó, vai ser esse daqui, né? Já tem ou a gente faz um sisteminha antes que faz isso ou faz lá dentro também é muito melhor.
+54:58 Rutinha: Isso é um problema inclusive é um problema de catalogação de informação.
+55:06 Elton Vinicius: Total total então teria também essa biblioteca de padrões sete padrões de estrutura narrativa Passo a passo com Check Point problema diagnóstico solução quando usar quando não usar o analogia do mundo real antes e depois então várias formas, né de padrões de também definir os tipos de call out deferido na decisão 5. E os blocos multimodais novos? Padrões de legibilidade métricas objetivas menor igual a 20 palavras frases em tutoriais os tipos né de informação como que ele usar né? Acho que é isso, não sei o que que é flash.
+55:54 Rutinha: Nem eu.
+55:56 Elton Vinicius: O máximo duas dois temos dragão não explicado por sessão.
+56:01 Rutinha: Nem sei ficou complicado, né? Ele vai ele vai saber o que que é o jargão do
+56:03 Elton Vinicius: É aqui tá resumido, né? Depois a gente pode olhar com calma, o que que é
+56:07 Rutinha: negócio.
+56:12 Elton Vinicius: esses padrões assim, né? Como que ele define? Tá pública de qualidade? Com sete dimensões e pesos. Tá acionabilidade precisão técnicas na habilidade completude clareza conformidade frescor escola menor 2.5 não publicas, qual a maior que 4.5 vira artigo modelo usado na triagem isso foi usado na triagem dos 131 artigos existentes é?
+56:47 Rutinha: Essa daí tá espetacular.
+56:49 Elton Vinicius: Que legal, né.
+56:51 Rutinha: Nossa essa tá muito boa, porque isso é uma questão muito importante para criação de conteúdo Educacional. O que que a qualidade no conteúdo Educacional? Eu gostei. Inclusive das dimensões.
+57:03 Elton Vinicius: É muito massa assim a gente ter isso para validar um ativo, né? Ele já validar ou ele para escrever mesmo, né? Tem um que vai escrever esse critérios. Então tem esse vai ter tudo isso no conto de System, essas três definem como a base se sustenta no tempo câmera de operação é sempre de vida, então é política de depreciação e atinjas automático seis meses sem revisão aparece um Bad de revisão pendente isso daí ele tava falando isso na hora que a gente estava montando esse modelo de página, ele vai botar vai ter um aviso de que tá obsoleto.
+57:45 Elton Vinicius: Mas eu tirei isso, eu falei não não vou querer botar isso não, porque eu também acho que não vai ter essa esse tempo de desatualização.
+57:53 Rutinha: E o problema também porque se tiver o aviso a gente vai ter que ir lá ficar olhando, né? E dá tempo.
+57:59 Elton Vinicius: Então esse aqui é uma coisa que ele sugeriu e que talvez a gente vê se o que que poderia ter ou não, né? Depois de tantos anos fluxo publicado arquivado, eu acho que não vai ter isso não, mas a gente pode olhar.
+58:12 Rutinha: É muito assim. Acho que se tivesse um jeito de ter um aviso de depreciação de 12 meses, mas que não aparecesse na face.
+58:23 Elton Vinicius: Só para administradores, né? Tipo assim a gente comenta e aparece legal. Acho
+58:25 Rutinha: Porque aí de repente a gente né? Dá aquela olhadinha aí tem alguma coisa lá
+58:27 Elton Vinicius: que é isso que pode ser?
+58:32 Rutinha: isso aqui realmente já não tira mais pelo menos a gente já tem uma atenção, né? Já sabe onde olhar, mas acho que 12 meses seria melhor do que vocês.
+58:38 Elton Vinicius: Legal, então. Dentro da política de depreciação 12 meses a gente teria um Bad que mostraria que alguma coisa precisaria ser Revista. Mas isso só para administradores não seria público legal. Aí tem esse. Capacidade real 4 a 5 artigos por mês gargalo é a revisão humana não geração com e.a. Define slas não lembro o que que é isso 48 horas para correção urgente, define o fluxo com e a Geração revisão com Juliana revisão pedagógica de publicação isso aqui é porque eu tinha pedido para ele organizar.
+59:31 Elton Vinicius: um fluxo de publicação de conteúdo que também pudesse ser feito por Mas seguindo Esse princípio de que o foco é humano tem que ter passado por humano, então ele criou esse passo a passo aqui, né? E aqui estragar de validação, né? Que é isso aqui, né? Então, aí a gente pode depois isso tudo é para definir depois né?
+01:00:00 Rutinha: Gostei, achei até que também poderia pensar em depois um fluxo desse para quando outras pessoas submetem a base.
+01:00:08 Elton Vinicius: Na verdade é para isso é para tipo assim, depois ela já tá pensando que numa versão 2 onde vai ter pessoas que publicam vai ter para garantir, na verdade foi um pouco isso mesmo, quando as outras pessoas pô, tem esses monte de validação que mostra o artigo não faz. Tá falando só sobre tal coisa o score foi baixo, né? Taxa de resolução 60 esse método de sucesso, beleza e os botões. Foi útil, né? Buscas, beleza? Eu queria só te mostrar porque é uma coisa que vai ser importante assim você que tem uma visão muito boa assim, né de
+01:00:57 Rutinha: Eu adorei aquilo que são da qualidade ali, depois eu vou até o de qualidade para mim tá espetacular, depois eu vou até ver essa o que que ele tá batendo com a minha escrita porque eu tô me debruçando sobre isso, né sobre a questão de qualidade de conteúdo e eu amei assim, ficou muito bom.
+01:01:13 Elton Vinicius: A gente pode depois botar. Talvez o que você tá pesquisando, né? Você já tá definindo aí tipo como critério também.
+01:01:24 Rutinha: É mas assim é muito teórico, né aí tá aí é uma coisa bem tá prática a síntese da prática mesmo da qualidade.
+01:01:34 Elton Vinicius: Eu tenho visto o pessoal falar o ideal não né? Mas assim uma prática de você pegar a teoria transformar e como transformar ela numa fórmula. Para você conseguir medir, né? Então tipo isso assim, né ele
+01:01:56 Rutinha: Exatamente exatamente eu tô aqui escrevendo escrevendo sobre o que que é um
+01:02:01 Elton Vinicius: E aí assim talvez depois vê tipo como criar uma fórmula.
+01:02:02 Rutinha: conteúdo de qualidade com a e tal e isso daí meio que resume ou da minha escrita. Deixa só abrir a porta aqui, pera aí rapidinho.
+01:02:40 Rutinha: Sim, sim, ainda bem acabou que ficou entre uma coisa e outra e eu consegui
+01:02:41 Elton Vinicius: Não tranquilo era só isso mesmo quero te também você tava já. Assim tava Que bom que você conseguiu vir.
+01:02:55 Rutinha: encaixar. Eu adorei depois eu queria ver então se a gente só principalmente essa parte aí que você me mostrou. Eu realmente eu queria dar uma checada nela em relação ao que eu tô escrevendo de repente até tem alguma coisinha para acrescentar ou não e no mais eu amei. Eu gostei demais daquela caixa com os
+01:03:08 Elton Vinicius: Legal boa ideia
+01:03:13 Rutinha: itens muito modais. Se tiver a possibilidade de mudar de ordem, eu ia te pedir para deixar Sempre libras em primeiro. Aí depois a parte de ouvir e depois dos outros porque os outros não é o texto e presider, né? Os outros por exemplo podcast, a gente poderia ter outras coisas que fosse na criação de um infográfico e tal. Eles não são textos completo, então eles viriam logo depois se tivesse a possibilidade.
+01:03:44 Elton Vinicius: Legal, eu já vou botar aqui colocar sempre libras em primeiro.
+01:03:50 Rutinha: Isso aí depois ouvir o texto.
+01:03:54 Elton Vinicius: tá
+01:03:55 Rutinha: Porque aí a gente já consegue também criar duas coisas de acessibilidade e ao mesmo tempo cria uma regra, né? Que é o texto completo. O resto seria né síntese.
+01:04:05 Elton Vinicius: Estou sentindo né? Porque aí tem o texto completo em Libras desconto em áudio e depois outras formas de você interagir com texto, né?
+01:04:18 Rutinha: E eu pedi libras primeiro mais por conta do ser forte essa característica o ideal seria primeiro ouvir o texto, né? Depois em Libras. Mas como é uma bandeira meio que tem mesmo no setor acaba que eu acho que vale a pena deixar.
+01:04:31 Elton Vinicius: Não Total perfeito gente massa o pai como é que você tá? Tá tudo bem como as coisas tá bom? Que bom. Valeu então viu? Brigadão e a gente depois.
+01:04:42 Rutinha: E depois me avisa da próxima porque eu gostaria de participar.
+01:04:51 Elton Vinicius: Eu vou sempre marcar você nessas reuniões em que a gente tiver e te aviso aí se você conseguir entrar, tá bom?
+  

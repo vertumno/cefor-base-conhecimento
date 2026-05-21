@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Configurando o livro de notas no Moodle · Base CEFOR/IFes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-2: #f5f2ec;
+    --paper: #ffffff;
+    --ink: #14110d;
+    --ink-2: #4a4439;
+    --ink-3: #8a8273;
+    --line: #e2dccd;
+    --line-2: #d4cdba;
+    --accent: #1f5142;
+    --accent-2: #2d6a4f;
+    --accent-soft: #e3ecdf;
+    --gold: #b08544;
+    --gold-soft: #f3e7d0;
+    --rose: #b3433a;
+    --rose-soft: #f4dcd7;
+    --sun: #c98a1e;
+    --sun-soft: #f7e6c4;
+    --sky: #2c5e8f;
+    --sky-soft: #d9e7f3;
+    --serif: 'Inter', system-ui, -apple-system, sans-serif;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 16px;
+    --r-xl: 24px;
+    --shadow-sm: 0 1px 2px rgba(20,17,13,.04), 0 1px 1px rgba(20,17,13,.03);
+    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
+    --shadow-lg: 0 24px 48px -12px rgba(20,17,13,.16), 0 8px 16px -8px rgba(20,17,13,.08);
+    --font-scale: 1;
+  }
+  [data-theme="dark"] {
+    --bg: #14110d;
+    --bg-2: #1c1814;
+    --paper: #221d17;
+    --ink: #f4f1ea;
+    --ink-2: #c9c2b3;
+    --ink-3: #8a8273;
+    --line: #2e2820;
+    --line-2: #3a342a;
+    --accent: #6cb89a;
+    --accent-2: #87cdb0;
+    --accent-soft: #1e2e26;
+    --gold-soft: #2e2516;
+    --rose-soft: #2e1a17;
+    --sun-soft: #2e2310;
+    --sky-soft: #16222e;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: calc(16px * var(--font-scale));
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background .3s, color .3s, font-size .2s;
+  }
+
+  /* Barra de progresso de leitura (decisao 4) */
+  .progress-rail {
+    position: fixed; inset: 0 0 auto 0;
+    height: 3px; z-index: 200;
+    background: transparent;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    width: 0%;
+    transition: width .15s ease-out;
+  }
+
+  /* Toolbar fixa de acessibilidade + tema */
+  .toolbar {
+    position: fixed;
+    top: 16px; right: 16px;
+    z-index: 150;
+    display: flex;
+    gap: 6px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 4px;
+    box-shadow: var(--shadow-md);
+  }
+  .toolbar button {
+    border: 0;
+    background: transparent;
+    color: var(--ink-2);
+    width: 36px; height: 36px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: .92rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .15s, color .15s;
+  }
+  .toolbar button:hover { background: var(--bg-2); color: var(--ink); }
+  .toolbar button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+  .toolbar .sep { width: 1px; background: var(--line); margin: 6px 2px; }
+  .toolbar .fs-1 { font-size: .8rem; }
+  .toolbar .fs-2 { font-size: .95rem; }
+  .toolbar .fs-3 { font-size: 1.1rem; }
+
+  /* MASTHEAD do artigo */
+  .masthead {
+    position: relative;
+    padding: 96px 24px 48px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .masthead::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(800px 400px at 15% 20%, rgba(31,81,66,.07), transparent 60%),
+      radial-gradient(600px 300px at 85% 80%, rgba(176,133,68,.07), transparent 60%);
+    pointer-events: none;
+  }
+  .masthead-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .breadcrumb {
+    font-size: .78rem;
+    color: var(--ink-3);
+    margin-bottom: 18px;
+    letter-spacing: .02em;
+  }
+  .breadcrumb a { color: var(--ink-3); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb span { margin: 0 8px; opacity: .5; }
+
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--sans);
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  .kicker::before {
+    content: ''; height: 1px; width: 28px;
+    background: var(--accent); opacity: .5;
+  }
+
+  .masthead h1 {
+    font-family: var(--sans);
+    font-size: clamp(2.2rem, 4.8vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -.035em;
+    margin: 0 0 18px;
+    max-width: 880px;
+  }
+  .masthead h1 em {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .subtitle {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: clamp(1.02rem, 1.5vw, 1.18rem);
+    line-height: 1.5;
+    color: var(--ink-2);
+    margin: 0 0 32px;
+    max-width: 720px;
+  }
+  .masthead-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 32px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    font-size: .82rem;
+    color: var(--ink-3);
+    align-items: center;
+  }
+  .meta-block { display: flex; flex-direction: column; gap: 2px; }
+  .meta-block .label {
+    font-size: .68rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--ink-3);
+  }
+  .meta-block .value {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .meta-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-left: auto;
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--bg-2);
+    color: var(--ink-2);
+    font-size: .72rem;
+    font-weight: 500;
+    border: 1px solid var(--line);
+  }
+
+  /* Layout principal */
+  .shell {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 64px;
+    align-items: flex-start;
+  }
+  @media (max-width: 960px) {
+    .shell { grid-template-columns: 1fr; gap: 24px; }
+    .sidebar { position: static !important; }
+    .shell > .sidebar[style] { grid-column: 1 !important; grid-row: 2 !important; }
+    .shell > .prose[style] { grid-column: 1 !important; grid-row: 1 !important; }
+  }
+
+  /* SIDEBAR (indice / TOC com scrollspy) */
+  .sidebar {
+    position: sticky;
+    top: 80px;
+    padding: 8px 0;
+  }
+  .toc-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 20px 22px;
+    box-shadow: var(--shadow-sm);
+  }
+  .toc-title {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 14px;
+  }
+  .toc-list { list-style: none; margin: 0; padding: 0; }
+  .toc-list li { margin: 0; }
+  .toc-list a {
+    display: block;
+    padding: 8px 0 8px 14px;
+    border-left: 2px solid var(--line);
+    color: var(--ink-2);
+    text-decoration: none;
+    font-size: .88rem;
+    line-height: 1.4;
+    transition: color .15s, border-color .15s, padding-left .15s;
+  }
+  .toc-list a:hover { color: var(--ink); border-color: var(--ink-3); }
+  .toc-list a.active {
+    color: var(--accent);
+    border-color: var(--accent);
+    font-weight: 600;
+    padding-left: 18px;
+  }
+  .toc-list .l-2 a {
+    padding-left: 28px;
+    font-size: .82rem;
+    color: var(--ink-3);
+  }
+  .toc-list .l-2 a.active { padding-left: 32px; }
+
+  /* Botao TL;DR */
+  .tldr-toggle-wrap {
+    margin-top: 16px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 16px 18px;
+    box-shadow: var(--shadow-sm);
+  }
+  .tldr-toggle-wrap p {
+    margin: 0 0 10px;
+    font-size: .78rem;
+    color: var(--ink-3);
+    line-height: 1.4;
+  }
+  .tldr-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-radius: var(--r-md);
+    border: 1px solid var(--line);
+    background: var(--bg-2);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: .84rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .tldr-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  .tldr-toggle[aria-pressed="true"] { background: var(--accent); color: white; border-color: var(--accent); }
+  .tldr-toggle .switch {
+    width: 28px; height: 16px;
+    background: var(--line);
+    border-radius: 999px;
+    position: relative;
+    transition: background .2s;
+  }
+  .tldr-toggle .switch::after {
+    content: '';
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--paper);
+    transition: left .2s;
+  }
+  .tldr-toggle[aria-pressed="true"] .switch { background: rgba(255,255,255,.4); }
+  .tldr-toggle[aria-pressed="true"] .switch::after { left: 14px; }
+
+  /* CONTEUDO do artigo */
+  article.prose {
+    font-family: var(--sans);
+    font-size: 1.02rem;
+    line-height: 1.68;
+    color: var(--ink-2);
+    max-width: 680px;
+  }
+  article.prose h2 {
+    font-family: var(--sans);
+    font-size: clamp(1.4rem, 2.2vw, 1.7rem);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -.02em;
+    color: var(--ink);
+    margin: 56px 0 14px;
+    scroll-margin-top: 80px;
+  }
+  article.prose h3 {
+    font-family: var(--sans);
+    font-size: 1.12rem;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    color: var(--ink);
+    margin: 36px 0 10px;
+    scroll-margin-top: 80px;
+  }
+  article.prose p {
+    margin: 0 0 18px;
+  }
+  article.prose p:first-of-type {
+    font-size: 1.12rem;
+    line-height: 1.6;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  article.prose strong { font-weight: 600; color: var(--ink); }
+  article.prose em { font-style: italic; }
+  article.prose a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  article.prose ul, article.prose ol {
+    margin: 0 0 24px;
+    padding-left: 24px;
+  }
+  article.prose li { margin-bottom: 8px; }
+  article.prose code {
+    font-family: var(--mono);
+    font-size: .92em;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+
+  /* TL;DR painel (decisao 3 - opt-in) */
+  .tldr-panel {
+    display: none;
+    margin: 0 0 40px;
+    padding: 24px 28px;
+    background: var(--accent-soft);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--r-md);
+  }
+  .tldr-panel.open { display: block; }
+  .tldr-panel .tldr-label {
+    font-family: var(--sans);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+  .tldr-panel ul {
+    margin: 0;
+    padding-left: 20px;
+    font-family: var(--sans);
+    font-size: .98rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .tldr-panel li { margin-bottom: 6px; }
+
+  /* Callouts (decisao 5) - cores do DS */
+  .callout {
+    margin: 28px 0;
+    padding: 18px 22px;
+    border-radius: var(--r-md);
+    border-left: 4px solid;
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+  .callout .c-label {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .callout.nota { background: var(--sky-soft); border-color: var(--sky); }
+  .callout.nota .c-label { color: var(--sky); }
+  .callout.atencao { background: var(--sun-soft); border-color: var(--sun); }
+  .callout.atencao .c-label { color: var(--sun); }
+  .callout.critico { background: var(--rose-soft); border-color: var(--rose); }
+  .callout.critico .c-label { color: var(--rose); }
+
+  /* Citacao editorial (frase de efeito) */
+  .pullquote {
+    margin: 48px -20px;
+    padding: 36px 28px;
+    font-family: var(--sans);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.35;
+    letter-spacing: -.015em;
+    color: var(--accent);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+    position: relative;
+  }
+  .pullquote::before {
+    content: '';
+    width: 32px; height: 3px;
+    border-radius: 2px;
+    background: var(--gold);
+    position: absolute;
+    top: -2px; left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Bloco "Foi util?" (decisao 12) */
+  .feedback {
+    margin: 64px 0 40px;
+    padding: 28px 32px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .feedback h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 0 0 16px;
+  }
+  .feedback-buttons {
+    display: inline-flex;
+    gap: 8px;
+    background: var(--bg-2);
+    padding: 4px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+  }
+  .feedback-buttons button {
+    border: 0;
+    background: transparent;
+    padding: 8px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: .9rem;
+    font-weight: 500;
+    color: var(--ink-2);
+    transition: background .15s, color .15s;
+  }
+  .feedback-buttons button:hover { color: var(--ink); }
+  .feedback-buttons button.active-yes { background: var(--accent); color: white; }
+  .feedback-buttons button.active-no { background: var(--rose); color: white; }
+  .feedback-thanks {
+    display: none;
+    margin-top: 14px;
+    font-size: .88rem;
+    color: var(--ink-3);
+  }
+  .feedback-thanks.show { display: block; }
+
+  /* Artigos relacionados (decisao 9) */
+  .related {
+    margin-top: 72px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+  .related-title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.6rem;
+    margin: 0 0 6px;
+  }
+  .related-sub {
+    color: var(--ink-3);
+    font-size: .92rem;
+    margin: 0 0 24px;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 760px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 22px 22px 20px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform .15s, box-shadow .15s, border-color .15s;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .related-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--ink-3);
+  }
+  .related-card .r-kicker {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .related-card h4 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    margin: 0;
+  }
+  .related-card .r-meta {
+    font-size: .76rem;
+    color: var(--ink-3);
+    margin-top: auto;
+    padding-top: 12px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Barra de progresso (decisao 4) -->
+<div class="progress-rail" aria-hidden="true">
+  <div class="progress-fill" id="progressFill"></div>
+</div>
+
+<!-- Toolbar: acessibilidade (decisao 10) + tema (decisao 8) -->
+<div class="toolbar" role="toolbar" aria-label="Preferencias de leitura">
+  <button class="fs-1" data-fs="0.94" aria-label="Fonte menor">A</button>
+  <button class="fs-2" data-fs="1" aria-pressed="true" aria-label="Fonte padrao">A</button>
+  <button class="fs-3" data-fs="1.12" aria-label="Fonte maior">A</button>
+  <div class="sep"></div>
+  <button id="themeToggle" aria-label="Alternar tema claro/escuro">&#9789;</button>
+</div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <nav class="breadcrumb" aria-label="Trilha de navegacao">
+      <a href="#">Base CEFOR</a><span>/</span>
+      <a href="#">Moodle</a><span>/</span>
+      <a href="#">Avaliacao</a>
+    </nav>
+    <div class="kicker">Tutorial &middot; Nivel intermediario</div>
+    <h1>Configurando o <em>livro de notas</em> do Moodle</h1>
+    <p class="subtitle">
+      Como montar o gradebook do seu curso passo a passo: criar categorias, definir
+      pesos por agrupamento, aplicar formulas e revisar antes de publicar para os estudantes.
+    </p>
+
+    <div class="masthead-meta">
+      <div class="meta-block">
+        <span class="label">Tipo</span>
+        <span class="value">Tutorial</span>
+      </div>
+      <div class="meta-block">
+        <span class="label">Categoria</span>
+        <span class="value">Moodle / Avaliacao</span>
+      </div>
+      <div class="meta-block">
+        <span class="label">Atualizado</span>
+        <span class="value">12 mai 2026</span>
+      </div>
+      <div class="meta-block">
+        <span class="label">Leitura</span>
+        <span class="value">8 min</span>
+      </div>
+      <div class="meta-tags" aria-label="Tags">
+        <span class="tag">gradebook</span>
+        <span class="tag">notas</span>
+        <span class="tag">categorias</span>
+        <span class="tag">ponderacao</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SHELL -->
+<div class="shell">
+  <!-- SIDEBAR: indice scrollspy + ativar TL;DR (renderizado a direita via grid) -->
+  <aside class="sidebar" style="grid-column: 2;">
+    <div class="toc-card">
+      <p class="toc-title">Neste artigo</p>
+      <ul class="toc-list" id="toc">
+        <li><a href="#contexto">Antes de comecar</a></li>
+        <li><a href="#categorias">Criar categorias de nota</a></li>
+        <li class="l-2"><a href="#categorias-pesos">Pesos por categoria</a></li>
+        <li><a href="#formulas">Aplicar formulas</a></li>
+        <li><a href="#revisao">Revisao final</a></li>
+        <li><a href="#publicacao">Publicar para estudantes</a></li>
+      </ul>
+    </div>
+
+    <!-- Ativar TL;DR (decisao 3 - opt-in) -->
+    <div class="tldr-toggle-wrap">
+      <p>Resumo executivo opcional para conteudos longos.</p>
+      <button class="tldr-toggle" id="tldrToggle" aria-pressed="false" aria-controls="tldrPanel">
+        <span>Mostrar resumo (TL;DR)</span>
+        <span class="switch" aria-hidden="true"></span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- CONTEUDO (renderizado a esquerda via grid) -->
+  <article class="prose" style="grid-column: 1; grid-row: 1;">
+
+    <!-- TL;DR painel - escondido por padrao -->
+    <aside class="tldr-panel" id="tldrPanel" aria-live="polite">
+      <p class="tldr-label">Resumo &middot; TL;DR</p>
+      <ul>
+        <li>Crie <strong>categorias</strong> antes dos itens de nota para organizar o gradebook por agrupamento pedagogico.</li>
+        <li>Defina <strong>pesos</strong> coerentes com o plano de ensino &mdash; a soma das categorias-raiz deve fechar em 100%.</li>
+        <li>Use <strong>formulas</strong> apenas para casos especiais (mediana, descartar menor nota, bonus).</li>
+        <li>Revise como estudante (modo "ver como") antes de tornar visivel.</li>
+      </ul>
+    </aside>
+
+    <h2 id="contexto">Antes de comecar</h2>
+    <p>
+      O livro de notas do Moodle &mdash; tambem chamado de <em>gradebook</em> &mdash;
+      e a estrutura que organiza, calcula e exibe as notas de um curso. Configura-lo
+      antes de criar as atividades evita retrabalho e protege o calculo final contra
+      surpresas no fechamento do periodo.
+    </p>
+    <p>
+      Este tutorial assume que voce ja tem permissao de <code>professor</code> ou
+      <code>editor</code> no curso e que a plataforma esta em uma versao igual ou
+      superior a 4.x. As telas podem variar levemente conforme o tema instalado, mas
+      a logica e identica.
+    </p>
+
+    <div class="callout nota">
+      <span class="c-label">Nota</span>
+      Sempre que possivel, alinhe a estrutura do gradebook com a estrutura do plano
+      de ensino. Isso reduz o numero de duvidas dos estudantes e facilita o trabalho
+      do tutor de turma.
+    </div>
+
+    <h2 id="categorias">Criar categorias de nota</h2>
+    <p>
+      Categorias agrupam itens semelhantes &mdash; por exemplo, todas as atividades
+      diagnosticas, todas as avaliacoes formativas, ou todos os trabalhos de uma
+      unidade. Comece pelas categorias para que, ao criar atividades depois, elas
+      possam ser <strong>direcionadas para o grupo correto</strong> ja na criacao.
+    </p>
+    <ol>
+      <li>Acesse <em>Notas &rarr; Configuracoes do livro de notas</em>.</li>
+      <li>Clique em <strong>Adicionar categoria</strong>.</li>
+      <li>Defina o nome (ex.: "Avaliacoes formativas") e o calculo agregado.</li>
+      <li>Salve e repita para cada agrupamento previsto no plano.</li>
+    </ol>
+
+    <h3 id="categorias-pesos">Pesos por categoria</h3>
+    <p>
+      Quando o calculo agregado for <em>media ponderada</em>, cada categoria filha
+      precisa ter um peso. A soma dos pesos das categorias-raiz deve ser 100. O
+      Moodle sinaliza em vermelho qualquer desbalanceamento &mdash; nao publique o
+      curso com avisos pendentes.
+    </p>
+
+    <div class="pullquote">
+      Configure o gradebook como se voce fosse o estudante consultando a nota na
+      vespera do fechamento.
+    </div>
+
+    <h2 id="formulas">Aplicar formulas</h2>
+    <p>
+      Formulas no Moodle usam a sintaxe <code>=funcao(referencias)</code>, onde
+      referencias sao apelidos dos itens de nota. Use-as com parcimonia: cada
+      formula adicional aumenta a chance de erro silencioso quando uma atividade e
+      excluida ou renomeada.
+    </p>
+
+    <div class="callout atencao">
+      <span class="c-label">Atencao</span>
+      Sempre que renomear um item de nota referenciado em formula, revise a formula
+      manualmente. O Moodle nao atualiza referencias automaticamente em todos os
+      contextos.
+    </div>
+
+    <p>
+      Tres formulas frequentes no contexto do CEFOR:
+    </p>
+    <ul>
+      <li><code>=min(...)</code> &mdash; descartar a menor nota de um conjunto de exercicios.</li>
+      <li><code>=median(...)</code> &mdash; suavizar outliers em avaliacoes por pares.</li>
+      <li><code>=sum(...) * 1.1</code> &mdash; bonus de 10% sobre um conjunto de atividades extras.</li>
+    </ul>
+
+    <h2 id="revisao">Revisao final</h2>
+    <p>
+      Antes de tornar o livro de notas visivel para os estudantes, ative o modo
+      <strong>"Ver como estudante"</strong> e percorra o gradebook. Verifique se:
+    </p>
+    <ul>
+      <li>Os nomes das categorias estao em linguagem clara, sem jargao interno.</li>
+      <li>As atividades ainda nao realizadas aparecem com tracejado (e nao com zero).</li>
+      <li>O total geral coincide com o calculo manual de uma turma piloto.</li>
+    </ul>
+
+    <div class="callout critico">
+      <span class="c-label">Critico</span>
+      Nunca lance notas reais em ambiente de producao antes de validar o calculo
+      total. Erros de ponderacao publicados ja foram, no passado, causa de revisao
+      formal de notas no IFes.
+    </div>
+
+    <h2 id="publicacao">Publicar para estudantes</h2>
+    <p>
+      Quando estiver tudo validado, retire o livro de notas do modo <em>oculto</em>
+      em <em>Configuracoes &rarr; Aparencia &rarr; Mostrar livro de notas aos
+      estudantes</em>. Comunique a turma pelo forum de avisos explicando como
+      consultar e quando esperar o fechamento parcial.
+    </p>
+    <p>
+      Pronto: voce tem um gradebook coerente com seu plano de ensino, auditavel e
+      compreensivel para a turma.
+    </p>
+
+    <!-- FEEDBACK (decisao 12) -->
+    <section class="feedback" aria-label="Feedback do leitor">
+      <h3>Este artigo foi util?</h3>
+      <div class="feedback-buttons" id="feedback">
+        <button data-fb="yes">Foi util</button>
+        <button data-fb="no">Nao foi util</button>
+      </div>
+      <p class="feedback-thanks" id="feedbackThanks">Obrigado pelo retorno. Sua resposta ajuda a equipe a priorizar revisoes.</p>
+    </section>
+
+    <!-- ARTIGOS RELACIONADOS (decisao 9) -->
+    <section class="related" aria-labelledby="relatedTitle">
+      <h3 class="related-title" id="relatedTitle">Artigos relacionados</h3>
+      <p class="related-sub">Conteudos sugeridos a partir do que voce acabou de ler.</p>
+      <div class="related-grid">
+        <a class="related-card" href="#">
+          <span class="r-kicker">Tutorial</span>
+          <h4>Configurando rubricas em atividades de envio</h4>
+          <span class="r-meta">6 min &middot; Moodle / Avaliacao</span>
+        </a>
+        <a class="related-card" href="#">
+          <span class="r-kicker">Guia</span>
+          <h4>Boas praticas no design de avaliacoes online</h4>
+          <span class="r-meta">12 min &middot; Pedagogia</span>
+        </a>
+        <a class="related-card" href="#">
+          <span class="r-kicker">Referencia</span>
+          <h4>Formulas suportadas no gradebook do Moodle</h4>
+          <span class="r-meta">4 min &middot; Moodle / Avaliacao</span>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</div>
+
+<script>
+  // Barra de progresso
+  const progressFill = document.getElementById('progressFill');
+  function updateProgress() {
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    const pct = max > 0 ? (scrolled / max) * 100 : 0;
+    progressFill.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // Scrollspy do indice
+  const tocLinks = document.querySelectorAll('#toc a');
+  const sections = Array.from(tocLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  function spy() {
+    const y = window.scrollY + 120;
+    let current = sections[0];
+    for (const s of sections) {
+      if (s.offsetTop <= y) current = s;
+    }
+    tocLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
+    });
+  }
+  window.addEventListener('scroll', spy, { passive: true });
+  spy();
+
+  // Tema claro / escuro
+  const themeToggle = document.getElementById('themeToggle');
+  const savedTheme = localStorage.getItem('cefor-theme');
+  if (savedTheme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('cefor-theme', 'light');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('cefor-theme', 'dark');
+    }
+  });
+
+  // Acessibilidade - tamanho da fonte
+  const fsButtons = document.querySelectorAll('.toolbar button[data-fs]');
+  fsButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      fsButtons.forEach(b => b.setAttribute('aria-pressed', 'false'));
+      btn.setAttribute('aria-pressed', 'true');
+      document.documentElement.style.setProperty('--font-scale', btn.dataset.fs);
+    });
+  });
+
+  // TL;DR opt-in
+  const tldrToggle = document.getElementById('tldrToggle');
+  const tldrPanel = document.getElementById('tldrPanel');
+  tldrToggle.addEventListener('click', () => {
+    const pressed = tldrToggle.getAttribute('aria-pressed') === 'true';
+    tldrToggle.setAttribute('aria-pressed', String(!pressed));
+    tldrPanel.classList.toggle('open', !pressed);
+    tldrToggle.querySelector('span:first-child').textContent =
+      !pressed ? 'Ocultar resumo (TL;DR)' : 'Mostrar resumo (TL;DR)';
+  });
+
+  // Feedback
+  const fbButtons = document.querySelectorAll('#feedback button');
+  const fbThanks = document.getElementById('feedbackThanks');
+  fbButtons.forEach(b => {
+    b.addEventListener('click', () => {
+      fbButtons.forEach(x => x.classList.remove('active-yes', 'active-no'));
+      b.classList.add(b.dataset.fb === 'yes' ? 'active-yes' : 'active-no');
+      fbThanks.classList.add('show');
+    });
+  });
+</script>
+
+</body>
+</html>

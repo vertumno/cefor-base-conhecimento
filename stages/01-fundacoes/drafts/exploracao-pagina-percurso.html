@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Exploração · Página de Percurso — Base CEFOR/IFes</title>
+<meta name="description" content="Como o percurso é apresentado como página própria e como aparece dentro do artigo/trilha." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     Tokens herdados de prototipo-artigo.html
+     ============================================================ */
+  :root {
+    --bg: #ffffff;
+    --bg-2: #f7f5f1;
+    --bg-3: #efeae0;
+    --paper: #ffffff;
+    --ink: #14110d;
+    --ink-2: #4a4439;
+    --ink-3: #8a8273;
+    --line: #e7e3d8;
+    --line-2: #d4cdba;
+    --accent: #1f5142;
+    --accent-2: #2d6a4f;
+    --accent-soft: #e3ecdf;
+    --gold: #b08544;
+    --gold-soft: #f3e7d0;
+    --gold-deep: #8c6a36;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 16px;
+    --r-xl: 24px;
+    --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
+    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
+    --shadow-lg: 0 24px 48px -12px rgba(20,17,13,.12);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg-2);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+
+  /* ============================================================
+     Doc de exploração (frame em volta)
+     ============================================================ */
+  .doc-header {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 18px 32px;
+    font-size: .82rem;
+    letter-spacing: .04em;
+  }
+  .doc-header strong { font-weight: 700; }
+  .doc-header .pill {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 2px 9px;
+    border-radius: 99px;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-right: 10px;
+  }
+
+  /* ============================================================
+     LAYOUT GERAL DA PÁGINA DE PERCURSO
+     ============================================================ */
+  .topbar {
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 32px;
+  }
+  .topbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .brand {
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: -.005em;
+  }
+  .brand-mark { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    font-size: .88rem;
+  }
+  .nav-links a {
+    color: var(--ink-2);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color .15s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a.active {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .breadcrumb {
+    background: var(--bg-2);
+    padding: 14px 32px;
+    border-bottom: 1px solid var(--line);
+    font-size: .82rem;
+    color: var(--ink-3);
+  }
+  .breadcrumb-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .breadcrumb a {
+    color: var(--ink-2);
+    text-decoration: none;
+    transition: color .15s;
+  }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb .sep { color: var(--ink-3); }
+  .breadcrumb .current { color: var(--ink); font-weight: 600; }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ============================================================
+     HERO DO PERCURSO
+     ============================================================ */
+  .percurso-hero {
+    padding: 56px 0 48px;
+    border-bottom: 1px solid var(--line);
+  }
+  .percurso-hero-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .percurso-hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  .kicker-percurso {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px 6px 10px;
+    background: var(--gold-soft);
+    color: var(--gold-deep);
+    border-radius: 99px;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin: 0 0 18px;
+  }
+  .kicker-percurso svg {
+    width: 14px; height: 14px;
+  }
+
+  .percurso-hero h1 {
+    font-size: 3rem;
+    line-height: 1.05;
+    font-weight: 700;
+    margin: 0 0 18px;
+    letter-spacing: -.015em;
+  }
+  @media (max-width: 700px) { .percurso-hero h1 { font-size: 2.2rem; } }
+  .percurso-hero .subtitle {
+    font-size: 1.18rem;
+    color: var(--ink-2);
+    margin: 0 0 24px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  .percurso-hero .description {
+    font-size: 1rem;
+    color: var(--ink-2);
+    margin: 0 0 14px;
+    line-height: 1.6;
+    max-width: 60ch;
+  }
+
+  /* Stats card */
+  .stats-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+  }
+  .stats-card h3 {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 18px;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .stat {
+    border-left: 3px solid var(--gold);
+    padding-left: 12px;
+  }
+  .stat-num {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-label {
+    font-size: .8rem;
+    color: var(--ink-2);
+    line-height: 1.3;
+  }
+  .stats-foot {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--line);
+    font-size: .82rem;
+    color: var(--ink-3);
+    line-height: 1.5;
+  }
+  .stats-foot strong { color: var(--ink); font-weight: 600; }
+
+  /* ============================================================
+     "PARA QUEM" + "O QUE VOCÊ VAI DOMINAR"
+     ============================================================ */
+  .meta-cards {
+    padding: 56px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  @media (max-width: 800px) { .meta-cards { grid-template-columns: 1fr; } }
+
+  .meta-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 28px 32px;
+  }
+  .meta-card-title {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .meta-card-title svg { width: 16px; height: 16px; }
+  .meta-card ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .meta-card li {
+    padding: 8px 0 8px 26px;
+    position: relative;
+    font-size: .95rem;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .meta-card li + li {
+    border-top: 1px solid var(--line);
+  }
+  .meta-card li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 18px;
+    width: 14px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  /* ============================================================
+     COMO PERCORRER
+     ============================================================ */
+  .percorrer {
+    background: var(--accent-soft);
+    border-radius: var(--r-lg);
+    padding: 32px 36px;
+    margin-bottom: 64px;
+    border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
+  }
+  .percorrer h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: var(--accent);
+  }
+  .percorrer .lead {
+    font-size: 1rem;
+    color: var(--ink-2);
+    margin: 0 0 16px;
+    line-height: 1.55;
+  }
+  .percorrer .lead strong { color: var(--ink); }
+  .percorrer-routes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin-top: 16px;
+  }
+  @media (max-width: 800px) { .percorrer-routes { grid-template-columns: 1fr; } }
+  .route {
+    background: var(--paper);
+    border-radius: var(--r-md);
+    padding: 16px 18px;
+    border: 1px solid var(--line);
+  }
+  .route-perfil {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 6px;
+  }
+  .route-sug {
+    font-size: .92rem;
+    color: var(--ink);
+    line-height: 1.4;
+    margin: 0;
+  }
+  .route-sug a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .route-sug a:hover { text-decoration: underline; }
+
+  /* ============================================================
+     TRILHAS DO PERCURSO
+     ============================================================ */
+  .section-title {
+    font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 8px;
+  }
+  .section-h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 8px;
+    letter-spacing: -.01em;
+  }
+  .section-lead {
+    font-size: 1rem;
+    color: var(--ink-2);
+    margin: 0 0 32px;
+    max-width: 65ch;
+  }
+
+  .trilhas-block { padding: 24px 0 56px; }
+
+  .trilha-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 800px) { .trilha-cards { grid-template-columns: 1fr; } }
+
+  .trilha-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 28px 28px 24px;
+    transition: border-color .15s, transform .15s, box-shadow .15s;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .trilha-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    opacity: .8;
+  }
+  .trilha-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .trilha-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .trilha-card-kicker {
+    font-size: .64rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 6px;
+  }
+  .trilha-card h3 {
+    font-size: 1.32rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+    color: var(--ink);
+    letter-spacing: -.005em;
+  }
+  .trilha-card-num {
+    flex-shrink: 0;
+    background: var(--bg-2);
+    color: var(--ink-2);
+    font-size: .72rem;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 99px;
+    letter-spacing: .04em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .trilha-card-desc {
+    font-size: .94rem;
+    color: var(--ink-2);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .trilha-card-articles {
+    list-style: none;
+    margin: 4px 0 0;
+    padding: 0;
+    border-top: 1px dashed var(--line);
+    padding-top: 14px;
+  }
+  .trilha-card-articles li {
+    font-size: .82rem;
+    color: var(--ink-3);
+    padding: 4px 0 4px 16px;
+    position: relative;
+    line-height: 1.4;
+  }
+  .trilha-card-articles li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    top: 2px;
+    color: var(--ink-3);
+    font-weight: 700;
+  }
+  .trilha-card-articles li.more {
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+  .trilha-card-articles li.more::before { content: '+'; color: var(--accent); }
+  .trilha-card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+  .trilha-card-cta {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: .92rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .trilha-card-cta::after {
+    content: '→';
+    transition: transform .15s;
+  }
+  .trilha-card-cta:hover::after { transform: translateX(3px); }
+  .trilha-card-time {
+    font-size: .78rem;
+    color: var(--ink-3);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .trilha-card-time svg { width: 12px; height: 12px; }
+
+  /* ============================================================
+     ARTIGOS COMPLEMENTARES (soltos)
+     ============================================================ */
+  .complementares { padding: 24px 0 56px; }
+  .complementares-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 800px) { .complementares-list { grid-template-columns: 1fr; } }
+  .complementar-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 18px 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .15s, transform .15s;
+    display: block;
+  }
+  .complementar-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .complementar-kicker {
+    font-size: .64rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 6px;
+  }
+  .complementar-card h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 6px;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+  .complementar-card p {
+    font-size: .85rem;
+    color: var(--ink-2);
+    margin: 0;
+    line-height: 1.4;
+  }
+  .complementar-card:hover h4 { color: var(--accent); }
+
+  /* ============================================================
+     SOBRE / RODAPÉ EDITORIAL
+     ============================================================ */
+  .sobre-percurso {
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+    padding: 48px 0;
+    margin-top: 32px;
+  }
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+  }
+  @media (max-width: 800px) { .sobre-grid { grid-template-columns: 1fr; gap: 32px; } }
+  .sobre-block h3 {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 12px;
+  }
+  .sobre-block p {
+    margin: 0 0 10px;
+    font-size: .92rem;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .sobre-block .meta-line {
+    font-size: .82rem;
+    color: var(--ink-3);
+    margin-top: 14px;
+  }
+  .sobre-block .meta-line span + span::before {
+    content: '·';
+    margin: 0 8px;
+    color: var(--line-2);
+  }
+
+  /* ============================================================
+     SEPARADOR ENTRE EXEMPLOS
+     ============================================================ */
+  .separator-section {
+    margin: 80px 0 0;
+    padding: 56px 32px 24px;
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .separator-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .separator-section .pill {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 3px 12px;
+    border-radius: 99px;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .separator-section h2 {
+    font-size: 1.8rem;
+    margin: 0 0 8px;
+    font-weight: 700;
+  }
+  .separator-section p {
+    font-size: 1rem;
+    color: color-mix(in srgb, var(--bg) 75%, transparent);
+    margin: 0;
+    max-width: 70ch;
+  }
+
+  /* ============================================================
+     MINI-EXEMPLO 1 — chip de percurso no box de trilha
+     ============================================================ */
+  .mini-demo-wrap {
+    background: var(--bg-2);
+    padding: 48px 32px 64px;
+  }
+  .mini-demo-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 48px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .mini-demo-grid { grid-template-columns: 1fr; }
+  }
+  .mini-demo-text h3 {
+    font-size: 1.32rem;
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+  .mini-demo-text p {
+    margin: 0 0 10px;
+    font-size: .96rem;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .mini-demo-text code {
+    font-family: var(--mono);
+    background: var(--bg-3);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: .82rem;
+  }
+
+  /* Box de trilha (adaptado do prototipo + acordeão da Decisão 30) */
+  .box-trilha-demo {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+  .box-trilha-head {
+    padding: 12px 18px;
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .box-trilha-head-label {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .box-trilha-head-label .count {
+    background: var(--ink);
+    color: var(--bg);
+    font-size: .62rem;
+    padding: 2px 7px;
+    border-radius: 99px;
+  }
+
+  .acc-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-family: var(--sans);
+    text-align: left;
+    transition: background .15s;
+  }
+  .acc-toggle:hover { background: var(--bg-2); }
+  .acc-name {
+    flex: 1;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .acc-pos {
+    font-size: .72rem;
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+  .acc-chev {
+    width: 16px; height: 16px;
+    color: var(--ink-3);
+    transition: transform .25s;
+  }
+  .acc-toggle[aria-expanded="true"] .acc-chev { transform: rotate(180deg); }
+  .acc-toggle[aria-expanded="true"] { background: var(--bg-2); }
+  .acc-item + .acc-item { border-top: 1px solid var(--line); }
+  .acc-body {
+    padding: 4px 18px 16px;
+    background: var(--bg-2);
+    border-top: 1px solid var(--line);
+  }
+  .acc-body[hidden] { display: none; }
+
+  /* Chip de percurso DENTRO do acordeão expandido (a "atribuição") */
+  .percurso-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold-soft);
+    color: var(--gold-deep);
+    padding: 6px 12px 6px 10px;
+    border-radius: 99px;
+    font-size: .72rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 14px;
+    transition: background .15s;
+  }
+  .percurso-chip:hover { background: color-mix(in srgb, var(--gold) 30%, var(--gold-soft)); }
+  .percurso-chip svg { width: 12px; height: 12px; }
+  .percurso-chip strong { font-weight: 700; }
+
+  .acc-progress { margin-bottom: 14px; }
+  .progress-bar {
+    height: 4px;
+    background: var(--bg-3);
+    border-radius: 99px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 99px;
+  }
+  .pos {
+    font-size: .78rem;
+    color: var(--ink-3);
+    line-height: 1.3;
+  }
+  .pos b { color: var(--ink); font-weight: 700; }
+  .articles-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .articles-list li a {
+    display: block;
+    padding: 7px 0 7px 12px;
+    border-left: 2px solid var(--line);
+    font-size: .82rem;
+    color: var(--ink-2);
+    text-decoration: none;
+    line-height: 1.4;
+  }
+  .articles-list li.current a {
+    color: var(--accent);
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ============================================================
+     MINI-EXEMPLO 2 — listagem de percursos (na home / /percursos)
+     ============================================================ */
+  .listagem-wrap {
+    padding: 48px 32px 96px;
+  }
+  .listagem-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .listagem-intro {
+    margin-bottom: 28px;
+  }
+  .listagem-intro h3 {
+    font-size: 1.32rem;
+    font-weight: 700;
+    margin: 0 0 6px;
+  }
+  .listagem-intro p {
+    font-size: .96rem;
+    color: var(--ink-2);
+    margin: 0;
+  }
+
+  .percurso-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+  }
+  @media (max-width: 900px) { .percurso-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .percurso-grid { grid-template-columns: 1fr; } }
+
+  .percurso-list-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 24px 26px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color .15s, transform .15s, box-shadow .15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .percurso-list-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--gold);
+  }
+  .percurso-list-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .percurso-list-card .kicker-mini {
+    font-size: .64rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+  }
+  .percurso-list-card h4 {
+    font-size: 1.16rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+  }
+  .percurso-list-card p {
+    font-size: .88rem;
+    color: var(--ink-2);
+    margin: 0;
+    line-height: 1.45;
+  }
+  .percurso-list-card-foot {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line);
+    font-size: .76rem;
+    color: var(--ink-3);
+    display: flex;
+    gap: 16px;
+  }
+  .percurso-list-card-foot span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* ============================================================
+     Rodapé global do doc
+     ============================================================ */
+  .doc-footer {
+    background: var(--bg-3);
+    padding: 32px;
+    text-align: center;
+    color: var(--ink-3);
+    font-size: .82rem;
+    border-top: 1px solid var(--line);
+  }
+  .doc-footer code {
+    font-family: var(--mono);
+    background: var(--paper);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: .78rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     CABEÇALHO DO DOC DE EXPLORAÇÃO
+     ============================================================ -->
+<div class="doc-header">
+  <span class="pill">Exploração</span>
+  <strong>Como o percurso é apresentado na base.</strong>
+  Fase 1 · Vinculado à Decisão 18 (arquitetura) e Decisão 27 (percurso é só agregação).
+</div>
+
+<!-- ============================================================
+     PARTE 1 — PÁGINA DEDICADA DO PERCURSO
+     ============================================================ -->
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-mark">●</span>
+      Base de Conhecimento <strong>CEFOR/IFes</strong>
+    </div>
+    <nav class="nav-links">
+      <a href="#">Artigos</a>
+      <a href="#">Trilhas</a>
+      <a href="#" class="active">Percursos</a>
+      <a href="#">Buscar</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="breadcrumb" aria-label="Trilha de navegação">
+  <div class="breadcrumb-inner">
+    <a href="#">Início</a>
+    <span class="sep">›</span>
+    <a href="#">Percursos</a>
+    <span class="sep">›</span>
+    <span class="current">Dominando o Moodle</span>
+  </div>
+</nav>
+
+<main class="container">
+
+  <!-- HERO -->
+  <section class="percurso-hero">
+    <div class="percurso-hero-grid">
+      <div>
+        <div class="kicker-percurso">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 3 6 21"/><polyline points="18 3 18 21"/><line x1="6" y1="8" x2="18" y2="8"/><line x1="6" y1="16" x2="18" y2="16"/></svg>
+          Percurso
+        </div>
+        <h1>Dominando o Moodle</h1>
+        <p class="subtitle">
+          Conjunto curado de trilhas para professores e mediadores que querem aproveitar o Moodle do CEFOR para muito além do básico.
+        </p>
+        <p class="description">
+          Este percurso reúne tudo o que a equipe do CEFOR considera essencial para
+          conduzir uma sala virtual de forma confiante — da estrutura de avaliação à comunicação com estudantes.
+          Não há uma ordem fixa para percorrê-lo: você escolhe por onde começar conforme sua urgência ou
+          seu interesse pedagógico.
+        </p>
+        <p class="description">
+          Cada trilha é uma micro-jornada autocontida. Cada artigo, dentro ou fora das trilhas,
+          também funciona sozinho. Use o percurso como mapa, não como roteiro.
+        </p>
+      </div>
+
+      <aside class="stats-card">
+        <h3>Composição do percurso</h3>
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-num">4</div>
+            <div class="stat-label">trilhas curadas</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">34</div>
+            <div class="stat-label">artigos em trilhas</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3</div>
+            <div class="stat-label">artigos complementares</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">~6h</div>
+            <div class="stat-label">leitura total estimada</div>
+          </div>
+        </div>
+        <div class="stats-foot">
+          <strong>Sem ordem obrigatória.</strong> Sem certificado, sem rastreamento de progresso.
+          Você pode entrar por qualquer trilha ou artigo.
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- META: PARA QUEM + O QUE VOCÊ VAI DOMINAR -->
+  <section class="meta-cards">
+    <div class="meta-card">
+      <h2 class="meta-card-title">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Para quem é este percurso
+      </h2>
+      <ul>
+        <li>Professores que já dão aula no Moodle, mas se sentem usando "10% da ferramenta"</li>
+        <li>Mediadores de tutoria que precisam apoiar professores em decisões pedagógicas</li>
+        <li>Coordenadores de curso que tomam decisões sobre estrutura de avaliação</li>
+        <li>Quem nunca usou o Moodle e quer um mapa antes de começar</li>
+      </ul>
+    </div>
+
+    <div class="meta-card">
+      <h2 class="meta-card-title">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        O que você vai dominar
+      </h2>
+      <ul>
+        <li>Estruturar a avaliação de um curso usando categorias e pesos com critério</li>
+        <li>Criar questionários, tarefas e fóruns alinhados ao plano de ensino</li>
+        <li>Configurar o livro de notas para refletir a realidade do seu curso</li>
+        <li>Comunicar-se com a turma sem virar central de atendimento</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- COMO PERCORRER -->
+  <section class="percorrer">
+    <h2>Como percorrer este conjunto</h2>
+    <p class="lead">
+      Não existe um "primeiro passo" obrigatório. As trilhas são independentes —
+      você pode entrar pela que faz mais sentido para sua realidade agora.
+      <strong>Três sugestões de ponto de partida</strong>, conforme seu perfil:
+    </p>
+    <div class="percorrer-routes">
+      <div class="route">
+        <p class="route-perfil">Se você é novo no Moodle</p>
+        <p class="route-sug">
+          Comece pelos artigos complementares: <a href="#">O que é o Moodle</a> e
+          <a href="#">primeiros acessos</a>. Depois siga para a trilha
+          <a href="#">Avaliação no Moodle</a>.
+        </p>
+      </div>
+      <div class="route">
+        <p class="route-perfil">Se já dá aula no Moodle</p>
+        <p class="route-sug">
+          Comece pela trilha <a href="#">Configurando questionários</a> ou
+          <a href="#">Gerenciando notas</a> — onde estão as decisões pedagógicas mais críticas.
+        </p>
+      </div>
+      <div class="route">
+        <p class="route-perfil">Se é mediador / coordenador</p>
+        <p class="route-sug">
+          A trilha <a href="#">Comunicando com estudantes</a> traz padrões
+          de tutoria que apoiam o trabalho de orientação sem sobrecarregar o professor.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRILHAS DO PERCURSO -->
+  <section class="trilhas-block">
+    <p class="section-title">Trilhas deste percurso</p>
+    <h2 class="section-h2">Quatro micro-jornadas para escolher</h2>
+    <p class="section-lead">
+      Cada trilha é uma sequência curta de artigos com começo, meio e fim. Você pode terminar uma, pular outra, ou abrir só os artigos que interessam — todos funcionam sozinhos.
+    </p>
+
+    <div class="trilha-cards">
+
+      <!-- Trilha 1 -->
+      <article class="trilha-card">
+        <div class="trilha-card-head">
+          <div>
+            <p class="trilha-card-kicker">Trilha</p>
+            <h3>Avaliação no Moodle</h3>
+          </div>
+          <span class="trilha-card-num">15 artigos</span>
+        </div>
+        <p class="trilha-card-desc">
+          Da estrutura geral de avaliação ao fechamento do período. Como o livro de notas funciona, como aplicar rubricas e como evitar retrabalho no fim do curso.
+        </p>
+        <ul class="trilha-card-articles">
+          <li>Introdução ao sistema de avaliação do Moodle</li>
+          <li>Tipos de atividades avaliativas</li>
+          <li>Criando questionários no Moodle</li>
+          <li>Banco de questões: tipos e formatos</li>
+          <li>Avaliação por pares (Workshop)</li>
+          <li class="more">+ 10 artigos</li>
+        </ul>
+        <div class="trilha-card-actions">
+          <a href="#" class="trilha-card-cta">Começar pela primeira</a>
+          <span class="trilha-card-time">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            ~2h30
+          </span>
+        </div>
+      </article>
+
+      <!-- Trilha 2 -->
+      <article class="trilha-card">
+        <div class="trilha-card-head">
+          <div>
+            <p class="trilha-card-kicker">Trilha</p>
+            <h3>Configurando questionários</h3>
+          </div>
+          <span class="trilha-card-num">8 artigos</span>
+        </div>
+        <p class="trilha-card-desc">
+          Tudo sobre a atividade de questionário do Moodle — banco de questões, tipos de pergunta, feedback automático e configuração de tentativas.
+        </p>
+        <ul class="trilha-card-articles">
+          <li>Anatomia de um questionário no Moodle</li>
+          <li>Criando um banco de questões organizado</li>
+          <li>Tipos de pergunta e quando usar cada um</li>
+          <li>Definindo feedback automático por questão</li>
+          <li>Configurando tentativas, tempo e prazos</li>
+          <li class="more">+ 3 artigos</li>
+        </ul>
+        <div class="trilha-card-actions">
+          <a href="#" class="trilha-card-cta">Começar pela primeira</a>
+          <span class="trilha-card-time">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            ~1h20
+          </span>
+        </div>
+      </article>
+
+      <!-- Trilha 3 -->
+      <article class="trilha-card">
+        <div class="trilha-card-head">
+          <div>
+            <p class="trilha-card-kicker">Trilha</p>
+            <h3>Gerenciando notas</h3>
+          </div>
+          <span class="trilha-card-num">6 artigos</span>
+        </div>
+        <p class="trilha-card-desc">
+          O livro de notas em profundidade. Cálculos, exportações, ajustes manuais e relatórios — como manter a base de avaliação confiável ao longo do curso.
+        </p>
+        <ul class="trilha-card-articles">
+          <li>Configurando o livro de notas do Moodle</li>
+          <li>Exportando notas para o sistema acadêmico</li>
+          <li>Ajustes manuais e arredondamentos</li>
+          <li>Relatórios de desempenho da turma</li>
+          <li>Recalcular nota final após mudança de peso</li>
+          <li class="more">+ 1 artigo</li>
+        </ul>
+        <div class="trilha-card-actions">
+          <a href="#" class="trilha-card-cta">Começar pela primeira</a>
+          <span class="trilha-card-time">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            ~1h
+          </span>
+        </div>
+      </article>
+
+      <!-- Trilha 4 -->
+      <article class="trilha-card">
+        <div class="trilha-card-head">
+          <div>
+            <p class="trilha-card-kicker">Trilha</p>
+            <h3>Comunicando com estudantes</h3>
+          </div>
+          <span class="trilha-card-num">5 artigos</span>
+        </div>
+        <p class="trilha-card-desc">
+          Fóruns, mensagens, anúncios e devolutivas. Padrões de comunicação que mantêm a turma engajada sem virar o professor numa central de atendimento.
+        </p>
+        <ul class="trilha-card-articles">
+          <li>Anatomia da comunicação no Moodle</li>
+          <li>Quando usar fórum, mensagem ou anúncio</li>
+          <li>Devolutivas que ensinam, não só corrigem</li>
+          <li>Configurando assinaturas e digest de e-mail</li>
+          <li>Encerrando a comunicação ao fim do período</li>
+        </ul>
+        <div class="trilha-card-actions">
+          <a href="#" class="trilha-card-cta">Começar pela primeira</a>
+          <span class="trilha-card-time">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            ~50min
+          </span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ARTIGOS COMPLEMENTARES -->
+  <section class="complementares">
+    <p class="section-title">Artigos complementares</p>
+    <h2 class="section-h2">Artigos soltos do percurso</h2>
+    <p class="section-lead">
+      Artigos que fazem parte deste percurso mas não pertencem a uma trilha específica.
+      Servem como referência geral ou ponto de partida.
+    </p>
+
+    <div class="complementares-list">
+      <a href="#" class="complementar-card">
+        <p class="complementar-kicker">Conceitual</p>
+        <h4>O que é o Moodle e por que ele é usado no IFes</h4>
+        <p>Uma visão geral da plataforma e o contexto institucional de adoção.</p>
+      </a>
+      <a href="#" class="complementar-card">
+        <p class="complementar-kicker">Referência</p>
+        <h4>Como acessar o Moodle pela primeira vez</h4>
+        <p>Passo a passo do primeiro login e tour pelas áreas principais.</p>
+      </a>
+      <a href="#" class="complementar-card">
+        <p class="complementar-kicker">Referência</p>
+        <h4>Diferenças entre o Moodle do CEFOR e versões padrão</h4>
+        <p>Plugins customizados, configurações institucionais e particularidades.</p>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- SOBRE / RODAPÉ EDITORIAL -->
+<section class="sobre-percurso">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-block">
+        <h3>Sobre este percurso</h3>
+        <p>
+          Curado pela equipe pedagógica do CEFOR. Reúne conteúdos produzidos por professores,
+          mediadores e técnicos que trabalham diariamente com o Moodle institucional.
+        </p>
+        <p>
+          As trilhas e artigos deste percurso são atualizadas individualmente. O percurso em si
+          não tem versão — ele é uma agregação viva: novos artigos podem entrar, ou trilhas podem
+          ser reorganizadas conforme a equipe identifica necessidades novas.
+        </p>
+        <div class="meta-line">
+          <span>Curadoria: Juliana Cassaro · Rute Fávero</span>
+          <span>Criado em 2026-04</span>
+          <span>Última revisão: 2026-05</span>
+        </div>
+      </div>
+
+      <div class="sobre-block">
+        <h3>Outros percursos da base</h3>
+        <p style="margin-bottom: 16px;">Conjuntos curados que dialogam com este:</p>
+        <ul style="list-style: none; margin: 0; padding: 0;">
+          <li style="padding: 8px 0; border-bottom: 1px solid var(--line);">
+            <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: .94rem;">IA para a sala de aula</a>
+            <div style="font-size: .82rem; color: var(--ink-3); margin-top: 2px;">3 trilhas · 28 artigos</div>
+          </li>
+          <li style="padding: 8px 0; border-bottom: 1px solid var(--line);">
+            <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: .94rem;">Acessibilidade e inclusão na EaD</a>
+            <div style="font-size: .82rem; color: var(--ink-3); margin-top: 2px;">2 trilhas · 14 artigos</div>
+          </li>
+          <li style="padding: 8px 0;">
+            <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: .94rem;">Coordenação de cursos no IFes</a>
+            <div style="font-size: .82rem; color: var(--ink-3); margin-top: 2px;">3 trilhas · 19 artigos</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PARTE 2 — COMO O PERCURSO APARECE DENTRO DO ARTIGO/TRILHA
+     ============================================================ -->
+
+<section class="separator-section">
+  <div class="separator-inner">
+    <span class="pill">Parte 2</span>
+    <h2>Onde o percurso aparece além da página dele</h2>
+    <p>
+      O leitor encontra o percurso por mais lugares além da página dedicada.
+      A presença é sutil — uma sinalização de pertencimento — porque o foco do artigo continua sendo o artigo.
+    </p>
+  </div>
+</section>
+
+<div class="mini-demo-wrap">
+  <div class="mini-demo-grid">
+    <div class="mini-demo-text">
+      <h3>1. Chip de percurso dentro do box de trilha</h3>
+      <p>
+        Quando o leitor abre o acordeão de uma trilha (Decisão 30), aparece logo no topo um <code>chip</code>
+        indicando: "Faz parte do percurso X". O chip é clicável e leva à página do percurso.
+      </p>
+      <p>
+        <strong>Por que ali:</strong> é o local natural onde o leitor está pensando "onde estou?". Atribuir a trilha ao percurso responde à pergunta sem ocupar espaço quando o acordeão está colapsado.
+      </p>
+      <p>
+        <strong>Visual:</strong> chip dourado (cor reservada ao percurso), pequeno, com ícone de "livro aberto" para diferenciar de chips de tópico/categoria.
+      </p>
+    </div>
+
+    <div class="box-trilha-demo">
+      <div class="box-trilha-head">
+        <span class="box-trilha-head-label">
+          <span>Trilhas deste artigo</span>
+          <span class="count">2</span>
+        </span>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-toggle" aria-expanded="true" aria-controls="acc-1">
+          <span class="acc-name">Avaliação no Moodle</span>
+          <span class="acc-pos">7/15</span>
+          <svg class="acc-chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="acc-body" id="acc-1">
+          <a href="#" class="percurso-chip">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 3 6 21"/><polyline points="18 3 18 21"/><line x1="6" y1="8" x2="18" y2="8"/><line x1="6" y1="16" x2="18" y2="16"/></svg>
+            Faz parte do percurso <strong>Dominando o Moodle</strong>
+          </a>
+          <div class="acc-progress">
+            <div class="progress-bar">
+              <div class="progress-bar-fill" style="width: 46.6%;"></div>
+            </div>
+            <span class="pos">Artigo <b>7</b> de 15</span>
+          </div>
+          <ol class="articles-list">
+            <li><a href="#">Introdução ao sistema de avaliação</a></li>
+            <li><a href="#">Tipos de atividades avaliativas</a></li>
+            <li><a href="#">Criando questionários</a></li>
+            <li class="current"><a href="#" aria-current="page">Configurando o livro de notas</a></li>
+            <li><a href="#">Aplicando rubricas em tarefas</a></li>
+            <li style="padding: 7px 0 7px 12px; border-left: 2px solid var(--line); font-size: .78rem; color: var(--ink-3);">+ 10 artigos</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-toggle" aria-expanded="false" aria-controls="acc-2">
+          <span class="acc-name">Gerenciando notas</span>
+          <span class="acc-pos">1/6</span>
+          <svg class="acc-chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================
+     PARTE 3 — LISTAGEM DE PERCURSOS
+     ============================================================ -->
+
+<section class="separator-section">
+  <div class="separator-inner">
+    <span class="pill">Parte 3</span>
+    <h2>Página de listagem (/percursos)</h2>
+    <p>
+      Quando o leitor entra em "Percursos" pelo menu principal, vê cards-resumo de cada percurso.
+      Diferente das listagens de artigos ou categorias, percursos usam acento dourado (cor reservada)
+      para sinalizar que são uma camada de curadoria, não apenas uma classificação.
+    </p>
+  </div>
+</section>
+
+<div class="listagem-wrap">
+  <div class="listagem-inner">
+    <div class="listagem-intro">
+      <h3>Percursos da Base</h3>
+      <p>Conjuntos curados de trilhas que formam caminhos formativos pedagógicos.</p>
+    </div>
+
+    <div class="percurso-grid">
+
+      <a href="#" class="percurso-list-card">
+        <p class="kicker-mini">Percurso</p>
+        <h4>Dominando o Moodle</h4>
+        <p>Trilhas essenciais para professores e mediadores que querem aproveitar a plataforma para além do básico.</p>
+        <div class="percurso-list-card-foot">
+          <span>4 trilhas</span>
+          <span>37 artigos</span>
+          <span>~6h</span>
+        </div>
+      </a>
+
+      <a href="#" class="percurso-list-card">
+        <p class="kicker-mini">Percurso</p>
+        <h4>IA para a sala de aula</h4>
+        <p>Como integrar IA generativa ao planejamento, à avaliação e à comunicação com estudantes — com critério pedagógico.</p>
+        <div class="percurso-list-card-foot">
+          <span>3 trilhas</span>
+          <span>28 artigos</span>
+          <span>~4h30</span>
+        </div>
+      </a>
+
+      <a href="#" class="percurso-list-card">
+        <p class="kicker-mini">Percurso</p>
+        <h4>Acessibilidade e inclusão na EaD</h4>
+        <p>Práticas, ferramentas e padrões de conteúdo que tornam o curso acessível desde o desenho — não como remediação.</p>
+        <div class="percurso-list-card-foot">
+          <span>2 trilhas</span>
+          <span>14 artigos</span>
+          <span>~2h</span>
+        </div>
+      </a>
+
+      <a href="#" class="percurso-list-card">
+        <p class="kicker-mini">Percurso</p>
+        <h4>Coordenação de cursos no IFes</h4>
+        <p>Para quem decide estrutura de curso: do plano de ensino à integração com o sistema acadêmico.</p>
+        <div class="percurso-list-card-foot">
+          <span>3 trilhas</span>
+          <span>19 artigos</span>
+          <span>~3h</span>
+        </div>
+      </a>
+
+      <a href="#" class="percurso-list-card">
+        <p class="kicker-mini">Percurso</p>
+        <h4>Mediação e tutoria</h4>
+        <p>Padrões de acompanhamento de turma, devolutivas e gestão de prazos no contexto da EaD do IFes.</p>
+        <div class="percurso-list-card-foot">
+          <span>2 trilhas</span>
+          <span>11 artigos</span>
+          <span>~1h40</span>
+        </div>
+      </a>
+
+      <a href="#" class="percurso-list-card">
+        <p class="kicker-mini">Percurso</p>
+        <h4>Avaliação além das notas</h4>
+        <p>Rubricas, autoavaliação, avaliação por pares e devolutivas formativas no Moodle e fora dele.</p>
+        <div class="percurso-list-card-foot">
+          <span>3 trilhas</span>
+          <span>22 artigos</span>
+          <span>~3h30</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     RODAPÉ DO DOC
+     ============================================================ -->
+<footer class="doc-footer">
+  <p>
+    Exploração técnica · vinculada à Decisão 18 (arquitetura) e Decisão 27 (percurso é só agregação).<br>
+    Próxima decisão necessária: validar este modelo de página + integrações no artigo.<br>
+    Referência canônica de design: <code>stages/01-fundacoes/drafts/prototipo-artigo.html</code>
+  </p>
+</footer>
+
+<script>
+  // Mini-demo: acordeão clicável
+  document.querySelectorAll('.acc-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      const body = document.getElementById(toggle.getAttribute('aria-controls'));
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      if (body) body.hidden = expanded;
+    });
+  });
+</script>
+
+</body>
+</html>

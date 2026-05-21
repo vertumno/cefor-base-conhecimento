@@ -1,0 +1,463 @@
+{
+  "metadata": {
+    "documento": "Vocabulário Controlado — Base de Conhecimento CEFOR/IFes",
+    "camada": "3 — Vocabulário Controlado",
+    "versao": "1.0",
+    "status": "DRAFT — terminologia da arquitetura completa; demais categorias com estrutura mas a preencher com Rute e Juliana",
+    "data_criacao": "2026-05-19",
+    "ultima_atualizacao": "2026-05-19",
+    "responsaveis": {
+      "termos_estruturais": "Elton Vinicius",
+      "termos_pedagogicos": "Rute Fávero (pendente)",
+      "termos_tecnicos_moodle": "Elton Vinicius + Juliana Cassaro (pendente)",
+      "termos_do_dia_a_dia": "Juliana Cassaro (pendente)"
+    },
+    "decisoes_origem": [17, 18, 22, 25, 26, 27, 28, 29, 30, 31, 32],
+    "referencias_canonicas": [
+      "_config/decisoes.md",
+      "stages/01-fundacoes/output/padroes-composicao.md",
+      "stages/01-fundacoes/drafts/prototipo-artigo.html",
+      "stages/01-fundacoes/drafts/exploracao-pagina-trilha.html",
+      "stages/01-fundacoes/drafts/exploracao-pagina-percurso.html"
+    ]
+  },
+
+  "schema": {
+    "descricao": "Estrutura de cada entrada de termo. Campos null indicam ausência de equivalente.",
+    "campos": {
+      "termo_preferido": "string — forma canônica a ser usada em todo conteúdo da base",
+      "sinonimos_aceitos": "array de strings — variações aceitas em contextos específicos (especificar contexto no campo contexto_uso)",
+      "sinonimos_rejeitados": "array de strings — formas que NUNCA devem aparecer no conteúdo (geram alerta no linter)",
+      "definicao": "string — definição operacional curta (1-2 frases). Não filosófica.",
+      "contexto_uso": "string — quando e como usar; observações práticas",
+      "termo_moodle": "string | null — equivalente na interface do Moodle (se houver)",
+      "termo_mec": "string | null — equivalente em documentos oficiais do MEC (se houver)",
+      "termo_popular": "string | null — como o público leigo fala (se houver)",
+      "ver_tambem": "array de strings — outros termos preferidos relacionados",
+      "decisao_origem": "array de números — quais decisões em _config/decisoes.md definiram este termo",
+      "status": "string — definitivo | a_validar | pendente"
+    },
+    "regra_de_ouro": "Quando o vocabulário do Moodle e o vocabulário pedagógico divergem, usar o termo do Moodle na primeira menção (é o que aparece na interface) seguido do termo pedagógico entre parênteses. Exemplo: 'Configure o Questionário (a ferramenta de avaliação com correção automática do Moodle)'."
+  },
+
+  "categorias": {
+
+    "arquitetura_cefor": {
+      "ordem": 1,
+      "descricao": "Termos da arquitetura estrutural da Base de Conhecimento — entidades, relações e propriedades editoriais que vivem só no contexto deste projeto.",
+      "status": "definitivo",
+      "responsavel": "Elton Vinicius",
+      "termos": [
+        {
+          "termo_preferido": "Base de Conhecimento",
+          "sinonimos_aceitos": ["Base", "Base CEFOR"],
+          "sinonimos_rejeitados": ["Portal", "Site", "Knowledge Base", "KB", "Wiki"],
+          "definicao": "Plataforma editorial do CEFOR/IFes que reúne artigos, trilhas e percursos sobre o uso pedagógico e técnico do Moodle institucional e temas correlatos.",
+          "contexto_uso": "Usar 'Base de Conhecimento' em primeira menção formal; 'Base' em referências subsequentes dentro do mesmo artigo. Nunca 'site' ou 'portal' — esses termos sugerem outras categorias de produto.",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": "Portal do CEFOR",
+          "ver_tambem": ["Artigo", "Trilha", "Percurso"],
+          "decisao_origem": [1, 17],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Artigo",
+          "sinonimos_aceitos": [],
+          "sinonimos_rejeitados": ["post", "publicação", "matéria", "texto", "documento", "página de conteúdo"],
+          "definicao": "Unidade atômica de conteúdo da Base. Resolve um problema ou explica um conceito de forma autossuficiente e encadeável.",
+          "contexto_uso": "É a unidade soberana — todo conteúdo é, no fim, um artigo. Nunca usar 'post', 'matéria' ou 'publicação'. Cada artigo deve passar no Checklist de Encadeabilidade (Camada 4.5).",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": "Texto, página, conteúdo",
+          "ver_tambem": ["Trilha", "Percurso", "Artigo encadeável", "Autossuficiência", "Encadeabilidade"],
+          "decisao_origem": [17, 18, 22, 26],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Trilha",
+          "sinonimos_aceitos": [],
+          "sinonimos_rejeitados": ["sequência", "série", "módulo", "capítulo", "playlist", "caminho"],
+          "definicao": "Micro-jornada atômica de conhecimento composta por uma sequência ordenada de artigos, com começo, meio e fim reais. Foca em um objetivo ferramental específico.",
+          "contexto_uso": "Trilha tem mínimo de 3 artigos e sem máximo definido (alerta editorial acima de 10). A ordem dos artigos importa. Pode pertencer a 0 ou mais percursos. Itens de trilha são chamados de 'artigos' (não 'passos').",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": "Sequência de aulas, série",
+          "ver_tambem": ["Artigo", "Percurso", "Artigo-âncora", "Box de trilha"],
+          "decisao_origem": [17, 18, 25],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Percurso",
+          "sinonimos_aceitos": [],
+          "sinonimos_rejeitados": ["curso", "jornada formativa", "track", "trilha grande", "caminho formativo"],
+          "definicao": "Agregação curada de trilhas e artigos soltos que compõe um caminho formativo maior. Sem ordem obrigatória, sem certificado, sem rastreamento de conclusão.",
+          "contexto_uso": "Percurso narra (curadoria pedagógica). Categoria classifica (domínio de conhecimento). Diferente de trilha porque (a) não tem ordem fixa, (b) pode conter trilhas e artigos soltos. Itens de percurso são chamados de 'passos' — que podem ser trilhas ou artigos.",
+          "termo_moodle": null,
+          "termo_mec": "Itinerário formativo (analogia, não equivalente formal)",
+          "termo_popular": "Curso, formação, jornada",
+          "ver_tambem": ["Trilha", "Passo", "Chip de percurso"],
+          "decisao_origem": [17, 18, 27],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Passo",
+          "sinonimos_aceitos": [],
+          "sinonimos_rejeitados": ["etapa", "fase", "estágio", "módulo"],
+          "definicao": "Item individual de um percurso. Pode ser uma trilha inteira ou um artigo solto.",
+          "contexto_uso": "Usado APENAS para itens de percurso. Nunca para itens de trilha (esses são 'artigos'). Exemplo: 'Passo 2 de 5' em página de percurso. Não usar 'etapa' como sinônimo.",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": "Etapa do curso",
+          "ver_tambem": ["Percurso", "Trilha", "Artigo"],
+          "decisao_origem": [18, 29],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Artigo-âncora",
+          "sinonimos_aceitos": ["primeiro artigo da trilha", "artigo de abertura"],
+          "sinonimos_rejeitados": ["introdução da trilha", "capítulo 1", "abertura"],
+          "definicao": "Primeiro artigo de uma trilha. Pode ser o mesmo em múltiplas trilhas (artigo conceitual reutilizado).",
+          "contexto_uso": "Termo editorial interno — não aparece na interface pública. Importante: artigo-âncora é editorialmente neutro quanto à trilha (não anuncia a sequência), porque pode abrir várias trilhas. A voz da sequência vive no box de trilha e na página de trilha.",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": null,
+          "ver_tambem": ["Trilha", "Artigo", "Encadeabilidade"],
+          "decisao_origem": [18, 26],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Encadeabilidade",
+          "sinonimos_aceitos": [],
+          "sinonimos_rejeitados": ["sequenciabilidade", "encadeamento"],
+          "definicao": "Propriedade do artigo de poder ser colocado em qualquer trilha sem precisar de reescrita, e a trilha ainda funcionar como sequência coerente.",
+          "contexto_uso": "Conceito editorial fundamental. Verificável pelo Checklist de Encadeabilidade (10 critérios objetivos na Camada 4.5). Cinco dos critérios são automatizáveis via linter de texto. Trabalha em par com 'autossuficiência'.",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": null,
+          "ver_tambem": ["Autossuficiência", "Artigo", "Trilha"],
+          "decisao_origem": [18, 26],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Autossuficiência",
+          "sinonimos_aceitos": ["autonomia do artigo"],
+          "sinonimos_rejeitados": ["independência"],
+          "definicao": "Propriedade do artigo de resolver o problema dele sozinho. Quem chega pelo Google consegue completar a tarefa sem precisar ler outro artigo.",
+          "contexto_uso": "Trabalha em par com 'encadeabilidade'. Todo artigo precisa ser autossuficiente E encadeável. A consequência prática é declarar pré-requisitos explicitamente (linkando outros artigos) em vez de pressupô-los.",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": null,
+          "ver_tambem": ["Encadeabilidade", "Artigo"],
+          "decisao_origem": [18, 26],
+          "status": "definitivo"
+        }
+      ]
+    },
+
+    "tipos_de_artigo": {
+      "ordem": 2,
+      "descricao": "Os 5 tipos possíveis no Eixo 1 da taxonomia. Cada artigo tem exatamente 1 tipo.",
+      "status": "definitivo",
+      "responsavel": "Elton Vinicius + Rute Fávero (validação pedagógica)",
+      "termos": [
+        {
+          "termo_preferido": "Tutorial",
+          "sinonimos_aceitos": ["passo a passo"],
+          "sinonimos_rejeitados": ["howto", "how-to", "guia prático", "manual"],
+          "definicao": "Artigo orientado à execução — leitor sai sabendo fazer uma tarefa específica do início ao fim.",
+          "contexto_uso": "Proporção típica: 70% instrução, 30% contexto. Tom direto e imperativo. Sempre tem caminho feliz + tratamento dos erros mais comuns.",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": "Passo a passo",
+          "ver_tambem": ["Conceitual", "Solução de Problema"],
+          "decisao_origem": [17],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Referência",
+          "sinonimos_aceitos": ["consulta rápida"],
+          "sinonimos_rejeitados": ["cheatsheet", "cola", "resumo", "atalho"],
+          "definicao": "Artigo de consulta rápida — listas, tabelas comparativas, especificações técnicas. Sem narrativa.",
+          "contexto_uso": "Proporção: 90% instrução, 10% contexto. Sem introdução longa. Formato escaneável (tabelas, listas). Para quem já sabe o que está procurando.",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": "Consulta rápida",
+          "ver_tambem": ["Tutorial", "Recurso"],
+          "decisao_origem": [17],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Conceitual",
+          "sinonimos_aceitos": ["guia conceitual"],
+          "sinonimos_rejeitados": ["teoria", "fundamentação", "ensaio"],
+          "definicao": "Artigo que explica o porquê de algo — modelos mentais, paradigmas, decisões pedagógicas.",
+          "contexto_uso": "Proporção: 40% instrução, 60% contexto. Usa analogias do mundo real (padrão da Camada 4). Útil quando o leitor precisa decidir entre alternativas, não apenas executar uma.",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": "Explicação, teoria",
+          "ver_tambem": ["Tutorial", "Solução de Problema"],
+          "decisao_origem": [17],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Solução de Problema",
+          "sinonimos_aceitos": ["troubleshooting"],
+          "sinonimos_rejeitados": ["bug fix", "FAQ", "perguntas frequentes"],
+          "definicao": "Artigo organizado por sintoma — leitor chega com um problema concreto e sai com a solução aplicada.",
+          "contexto_uso": "Estrutura padrão (Camada 4): 1. Sintoma → 2. Causa provável → 3. Solução → 4. Prevenção. Começa pelo sintoma, não pela causa — gera identificação imediata.",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": "Não está funcionando",
+          "ver_tambem": ["Tutorial", "Conceitual"],
+          "decisao_origem": [17],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Recurso",
+          "sinonimos_aceitos": [],
+          "sinonimos_rejeitados": ["download", "anexo", "material", "ferramenta"],
+          "definicao": "Artigo que oferece material reutilizável — template, modelo de planilha, checklist, rubrica em branco, exemplo de plano de ensino.",
+          "contexto_uso": "Proporção: 50% template, 30% instrução, 20% contexto. Tem download ou material copiável como elemento central. Sempre acompanhado de instrução de uso.",
+          "termo_moodle": "Recurso (Resource)",
+          "termo_mec": null,
+          "termo_popular": "Modelo, template",
+          "ver_tambem": ["Tutorial", "Referência"],
+          "decisao_origem": [17],
+          "status": "definitivo"
+        }
+      ]
+    },
+
+    "eixos_da_taxonomia": {
+      "ordem": 3,
+      "descricao": "Os 4 eixos que classificam todo artigo da Base. Cada eixo responde a uma pergunta diferente.",
+      "status": "definitivo",
+      "responsavel": "Elton + Marquito + Rute (sessão 2026-05-14)",
+      "termos": [
+        {
+          "termo_preferido": "Tipo",
+          "sinonimos_aceitos": [],
+          "sinonimos_rejeitados": ["formato", "categoria de artigo"],
+          "definicao": "Eixo 1. Responde: como se lê/usa este artigo? Cardinalidade: 1 por artigo.",
+          "contexto_uso": "Valores possíveis: Tutorial, Referência, Conceitual, Solução de Problema, Recurso (ver categoria tipos_de_artigo).",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": null,
+          "ver_tambem": ["Categoria", "Tópico", "Trilha"],
+          "decisao_origem": [17],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Categoria",
+          "sinonimos_aceitos": [],
+          "sinonimos_rejeitados": ["área", "tema", "seção"],
+          "definicao": "Eixo 2. Responde: qual domínio de conhecimento? Cardinalidade: 1 por artigo.",
+          "contexto_uso": "Valores aprovados (5 de 6): Ferramentas e Recursos, Pedagogia e Planejamento, Acessibilidade, Conduta e Conformidade, Identidade. A 6ª categoria fica a definir no Sprint 3.",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": null,
+          "ver_tambem": ["Tipo", "Tópico", "Trilha"],
+          "decisao_origem": [17],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Tópico",
+          "sinonimos_aceitos": [],
+          "sinonimos_rejeitados": ["tag", "etiqueta", "palavra-chave"],
+          "definicao": "Eixo 3. Responde: qual assunto específico? Vocabulário controlado fechado (25 termos). Cardinalidade: 2 a 4 por artigo.",
+          "contexto_uso": "Substitui as 82 tags livres do sistema antigo. A pessoa escolhe entre os 25 tópicos da lista fechada, não digita livremente. Lista final dos 25 a definir no Sprint 3.",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": "Tag, etiqueta",
+          "ver_tambem": ["Tipo", "Categoria", "Trilha"],
+          "decisao_origem": [17],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Trilha",
+          "sinonimos_aceitos": [],
+          "sinonimos_rejeitados": [],
+          "definicao": "Eixo 4. Responde: faz parte de uma jornada curada? Cardinalidade: 0 ou mais por artigo.",
+          "contexto_uso": "Aqui 'Trilha' é o nome do eixo da taxonomia. O conceito de Trilha está definido na categoria arquitetura_cefor.",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": null,
+          "ver_tambem": ["Tipo", "Categoria", "Tópico"],
+          "decisao_origem": [17, 18, 25],
+          "status": "definitivo"
+        }
+      ]
+    },
+
+    "componentes_ui_da_base": {
+      "ordem": 4,
+      "descricao": "Termos que designam componentes visuais da Base — interface, não conteúdo. Aparecem em decisões de design e em conversas internas, raramente no conteúdo dos artigos.",
+      "status": "definitivo",
+      "responsavel": "Elton Vinicius",
+      "termos": [
+        {
+          "termo_preferido": "Box de trilha",
+          "sinonimos_aceitos": ["caixa de trilha"],
+          "sinonimos_rejeitados": ["widget de trilha", "componente de trilha", "sidebar de trilha"],
+          "definicao": "Componente que aparece no sidebar do artigo quando ele pertence a uma ou mais trilhas. Implementado como acordeão multi-trilha.",
+          "contexto_uso": "Aparece sempre que o artigo está vinculado a uma trilha (vínculo estrutural, não comportamental — Decisão 28). Especificação completa: Padrão 4.2 da Camada 4.5.",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": null,
+          "ver_tambem": ["Trilha", "Acordeão multi-trilha"],
+          "decisao_origem": [18, 28, 30],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Chip de percurso",
+          "sinonimos_aceitos": ["chip dourado", "atribuição de percurso"],
+          "sinonimos_rejeitados": ["badge de percurso", "tag de percurso", "marca de percurso"],
+          "definicao": "Pequeno componente dourado que aparece no topo do box de trilha expandido, indicando que aquela trilha faz parte de um percurso.",
+          "contexto_uso": "Cor reservada: dourado (--gold-soft + --gold-deep). Clicável, leva à página do percurso. Especificação: Padrão 4.3 da Camada 4.5.",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": null,
+          "ver_tambem": ["Percurso", "Box de trilha"],
+          "decisao_origem": [31],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Acordeão multi-trilha",
+          "sinonimos_aceitos": ["acordeão de trilhas"],
+          "sinonimos_rejeitados": ["tabs de trilha", "menu de trilhas"],
+          "definicao": "Variante do box de trilha que lida com múltiplas trilhas — cada uma vira um item expansível com nome, posição compacta visível e chevron.",
+          "contexto_uso": "Sub-opção A.2 escolhida em 2026-05-19 (Decisão 30). Primeira trilha expandida por padrão. Permite múltiplas trilhas abertas simultaneamente.",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": null,
+          "ver_tambem": ["Box de trilha", "Trilha"],
+          "decisao_origem": [30],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Checkpoint intermediário",
+          "sinonimos_aceitos": [],
+          "sinonimos_rejeitados": ["marco", "milestone", "ponto de controle"],
+          "definicao": "Bloco textual entre artigos na página de trilha que sinaliza fim de um bloco temático. Texto estático escrito pela curadoria.",
+          "contexto_uso": "Opcional. Aparece a cada 3-5 artigos em trilhas longas. NÃO é rastreamento pessoal — é narrativa curada da própria trilha (compatível com Decisão 29). Especificação: Padrão 4.4.1.",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": null,
+          "ver_tambem": ["Trilha", "Página de trilha"],
+          "decisao_origem": [29],
+          "status": "definitivo"
+        },
+        {
+          "termo_preferido": "Posição estrutural",
+          "sinonimos_aceitos": ["posição na trilha"],
+          "sinonimos_rejeitados": ["progresso", "porcentagem", "avanço"],
+          "definicao": "Indicação de onde, na sequência da trilha, um artigo se encaixa. Independente do leitor.",
+          "contexto_uso": "Aparece como 'Artigo X de Y'. NÃO usar 'Passo' (ver categoria arquitetura_cefor — Passo é só para itens de percurso). A barra de progresso visual representa esta posição estrutural, não progresso pessoal do leitor.",
+          "termo_moodle": null,
+          "termo_mec": null,
+          "termo_popular": null,
+          "ver_tambem": ["Trilha", "Artigo"],
+          "decisao_origem": [29],
+          "status": "definitivo"
+        }
+      ]
+    },
+
+    "atividades_moodle": {
+      "ordem": 5,
+      "descricao": "Termos das atividades disponíveis no Moodle. Aqui é crítico distinguir o termo Moodle (interface) do termo pedagógico (MEC ou prática) do termo popular (como o público fala).",
+      "status": "pendente_validacao",
+      "responsavel": "Elton + Juliana Cassaro (termos técnicos) + Rute Fávero (termos pedagógicos)",
+      "nota": "Estrutura criada com termo de exemplo. Lista completa será preenchida em sessão dedicada com Juliana e Rute. Categorias a cobrir: Questionário, Tarefa, Fórum, Wiki, Glossário, H5P, Workshop, Pesquisa, Chat, Banco de questões.",
+      "termos": [
+        {
+          "termo_preferido": "Questionário",
+          "sinonimos_aceitos": ["quiz (em contexto técnico Moodle)"],
+          "sinonimos_rejeitados": ["prova", "teste", "avaliação (quando se refere à atividade Moodle)"],
+          "definicao": "Atividade do Moodle que apresenta perguntas ao aluno com correção automática.",
+          "contexto_uso": "Usar 'Questionário' sempre que se referir à atividade específica do Moodle. Usar 'avaliação' apenas quando se referir ao conceito pedagógico mais amplo. Aplicar a Regra de Ouro do schema: na primeira menção, 'Questionário (a ferramenta de avaliação com correção automática do Moodle)'.",
+          "termo_moodle": "Questionário (Quiz)",
+          "termo_mec": "Avaliação (quando aplicável)",
+          "termo_popular": "Prova online, prova",
+          "ver_tambem": ["Banco de questões", "Tarefa"],
+          "decisao_origem": [17],
+          "status": "a_validar"
+        }
+      ]
+    },
+
+    "recursos_moodle": {
+      "ordem": 6,
+      "descricao": "Termos dos recursos (não-atividades) do Moodle — arquivo, página, URL, livro, rótulo, pasta.",
+      "status": "pendente",
+      "responsavel": "Elton + Juliana Cassaro",
+      "nota": "Estrutura criada, termos a preencher.",
+      "termos": []
+    },
+
+    "papeis": {
+      "ordem": 7,
+      "descricao": "Como se referir aos diferentes papéis institucionais — mediador, professor, tutor, coordenador, estudante.",
+      "status": "pendente",
+      "responsavel": "Rute Fávero + Juliana Cassaro",
+      "nota": "Categoria crítica porque envolve identidade profissional. Precisa de validação pedagógica antes de fechar.",
+      "termos": []
+    },
+
+    "conceitos_pedagogicos": {
+      "ordem": 8,
+      "descricao": "Termos pedagógicos — sala virtual, ambiente virtual, AVA, percurso formativo, avaliação somativa/formativa, etc.",
+      "status": "pendente",
+      "responsavel": "Rute Fávero",
+      "nota": "Categoria depende fortemente da Rute. Reservada para Sprint 1 quando ela estiver disponível.",
+      "termos": []
+    },
+
+    "conceitos_tecnicos": {
+      "ordem": 9,
+      "descricao": "Termos técnicos de gestão da plataforma — backup, restauração, inscrição, matrícula, bloco, plugin, tema.",
+      "status": "pendente",
+      "responsavel": "Elton Vinicius",
+      "nota": "Pode ser preenchido em sessão dedicada por Elton.",
+      "termos": []
+    },
+
+    "vocabulario_natural_do_publico": {
+      "ordem": 10,
+      "descricao": "Como o público realmente fala — a 'tradução' do que professores dizem para o que o sistema chama. Insumo direto para SEO interno e busca semântica.",
+      "status": "pendente",
+      "responsavel": "Juliana Cassaro + Rute Fávero (são as 'antenas' do vocabulário real, registrando termos novos que surgem em atendimentos)",
+      "nota": "Exemplos do escopo original: 'minha sala' (curso), 'postar atividade' (adicionar atividade), 'abrir o Moodle' (acessar o AVA), 'aquele chat' (mensagens). Documento vivo — termos novos entram conforme aparecem.",
+      "termos": []
+    }
+  },
+
+  "como_usar_este_arquivo": {
+    "para_humanos": "Consultar antes de escrever qualquer artigo. Procurar pelo termo que você quer usar; se ele aparece como 'sinonimo_rejeitado' de outro, trocar para o 'termo_preferido' correspondente.",
+    "para_ia": "Inserir este JSON no contexto de qualquer geração de conteúdo da Base. Validar saída contra 'sinonimos_rejeitados' antes de propor publicação.",
+    "para_linter": "Cada entrada com 'sinonimos_rejeitados' não-vazio gera regra de busca. Match positivo dispara warning no fluxo de revisão (Camada 9 — ContentOps).",
+    "para_busca_interna": "Sinônimos aceitos e termo_popular alimentam o índice de busca — leitor que digita 'prova' encontra artigos que tratam de 'Questionário'."
+  },
+
+  "lacunas_e_proximos_passos": {
+    "categorias_completas": ["arquitetura_cefor", "tipos_de_artigo", "eixos_da_taxonomia", "componentes_ui_da_base"],
+    "categorias_pendentes": ["atividades_moodle", "recursos_moodle", "papeis", "conceitos_pedagogicos", "conceitos_tecnicos", "vocabulario_natural_do_publico"],
+    "proximas_acoes": [
+      "Sessão dedicada com Juliana para preencher atividades_moodle e recursos_moodle",
+      "Sessão dedicada com Rute para preencher conceitos_pedagogicos e papéis",
+      "Definição dos 25 tópicos do Eixo 3 (Sprint 3 — depende de Elton + Marquito)",
+      "Definição da 6ª categoria do Eixo 2 (Sprint 3)",
+      "Implementação do linter automatizado consumindo este JSON (Fase 3)"
+    ]
+  },
+
+  "historico_de_versoes": [
+    {
+      "versao": "1.0",
+      "data": "2026-05-19",
+      "mudanca": "Versão inicial. Categorias 1-4 (arquitetura, tipos, eixos, componentes UI) preenchidas. Demais categorias com estrutura criada mas sem termos.",
+      "por": "Elton + Claude"
+    }
+  ]
+}

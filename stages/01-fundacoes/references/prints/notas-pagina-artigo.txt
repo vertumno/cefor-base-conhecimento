@@ -1,0 +1,7 @@
+Ter um indice que acompanha a posição da sessão do texto
+
+Titulo + subtítulo (que detalha mais o que tem no artigo) 
+
+Resumo (tl, dr) - seria opcional e usado somente se usuário ativar e para conteúdos grandes. 
+
+Deve ter artigos relacionados ao final. 

@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Exploração · Página de Trilha — Base CEFOR/IFes</title>
+<meta name="description" content="Como uma trilha é apresentada como página própria — a casca que dá voz à sequência." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     Tokens herdados de prototipo-artigo.html
+     ============================================================ */
+  :root {
+    --bg: #ffffff;
+    --bg-2: #f7f5f1;
+    --bg-3: #efeae0;
+    --paper: #ffffff;
+    --ink: #14110d;
+    --ink-2: #4a4439;
+    --ink-3: #8a8273;
+    --line: #e7e3d8;
+    --line-2: #d4cdba;
+    --accent: #1f5142;
+    --accent-2: #2d6a4f;
+    --accent-soft: #e3ecdf;
+    --accent-deep: #143a30;
+    --gold: #b08544;
+    --gold-soft: #f3e7d0;
+    --gold-deep: #8c6a36;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 16px;
+    --r-xl: 24px;
+    --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
+    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
+    --shadow-lg: 0 24px 48px -12px rgba(20,17,13,.12);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg-2);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+
+  /* ============================================================
+     Doc de exploração (header)
+     ============================================================ */
+  .doc-header {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 18px 32px;
+    font-size: .82rem;
+    letter-spacing: .04em;
+  }
+  .doc-header strong { font-weight: 700; }
+  .doc-header .pill {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 2px 9px;
+    border-radius: 99px;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-right: 10px;
+  }
+
+  /* ============================================================
+     Topbar e breadcrumb
+     ============================================================ */
+  .topbar {
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 32px;
+  }
+  .topbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .brand {
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: -.005em;
+  }
+  .brand-mark { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    font-size: .88rem;
+  }
+  .nav-links a {
+    color: var(--ink-2);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color .15s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a.active {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .breadcrumb {
+    background: var(--bg-2);
+    padding: 14px 32px;
+    border-bottom: 1px solid var(--line);
+    font-size: .82rem;
+    color: var(--ink-3);
+  }
+  .breadcrumb-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .breadcrumb a {
+    color: var(--ink-2);
+    text-decoration: none;
+    transition: color .15s;
+  }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb .sep { color: var(--ink-3); }
+  .breadcrumb .current { color: var(--ink); font-weight: 600; }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ============================================================
+     HERO DA TRILHA
+     ============================================================ */
+  .trilha-hero {
+    padding: 56px 0 48px;
+    border-bottom: 1px solid var(--line);
+  }
+  .trilha-hero-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .trilha-hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  .kicker-trilha {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px 6px 10px;
+    background: var(--accent-soft);
+    color: var(--accent-deep);
+    border-radius: 99px;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin: 0 0 18px;
+  }
+  .kicker-trilha svg {
+    width: 14px; height: 14px;
+  }
+
+  .trilha-hero h1 {
+    font-size: 3rem;
+    line-height: 1.05;
+    font-weight: 700;
+    margin: 0 0 18px;
+    letter-spacing: -.015em;
+  }
+  @media (max-width: 700px) { .trilha-hero h1 { font-size: 2.2rem; } }
+  .trilha-hero .subtitle {
+    font-size: 1.18rem;
+    color: var(--ink-2);
+    margin: 0 0 24px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  .trilha-hero .description {
+    font-size: 1rem;
+    color: var(--ink-2);
+    margin: 0 0 14px;
+    line-height: 1.6;
+    max-width: 60ch;
+  }
+
+  /* Chip dourado de percurso — herdado da página de percurso */
+  .percurso-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold-soft);
+    color: var(--gold-deep);
+    padding: 8px 14px 8px 12px;
+    border-radius: 99px;
+    font-size: .82rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 14px;
+    transition: background .15s;
+  }
+  .percurso-chip:hover {
+    background: color-mix(in srgb, var(--gold) 28%, var(--gold-soft));
+  }
+  .percurso-chip svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .percurso-chip strong { font-weight: 700; }
+
+  /* Stats card lateral */
+  .stats-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+  }
+  .stats-card h3 {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 18px;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .stat {
+    border-left: 3px solid var(--accent);
+    padding-left: 12px;
+  }
+  .stat-num {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-label {
+    font-size: .8rem;
+    color: var(--ink-2);
+    line-height: 1.3;
+  }
+  .stats-cta {
+    display: block;
+    margin-top: 22px;
+    padding: 12px 18px;
+    background: var(--accent);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: var(--r-md);
+    font-weight: 600;
+    font-size: .94rem;
+    transition: background .15s;
+  }
+  .stats-cta:hover { background: var(--accent-2); }
+  .stats-cta::after { content: ' →'; }
+
+  /* ============================================================
+     PRA QUEM / O QUE VAI DOMINAR / PRÉ-REQUISITOS
+     ============================================================ */
+  .meta-cards {
+    padding: 56px 0 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  @media (max-width: 800px) { .meta-cards { grid-template-columns: 1fr; } }
+
+  .meta-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 28px 32px;
+  }
+  .meta-card-title {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .meta-card-title svg { width: 16px; height: 16px; }
+  .meta-card ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .meta-card li {
+    padding: 8px 0 8px 26px;
+    position: relative;
+    font-size: .95rem;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .meta-card li + li {
+    border-top: 1px solid var(--line);
+  }
+  .meta-card li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 18px;
+    width: 14px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  /* Pré-requisitos — bloco horizontal, mais sutil */
+  .pre-req {
+    background: var(--bg-3);
+    border-radius: var(--r-lg);
+    padding: 22px 28px;
+    margin-bottom: 56px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+  @media (max-width: 700px) { .pre-req { grid-template-columns: 1fr; gap: 14px; } }
+  .pre-req-label {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    padding-top: 4px;
+    white-space: nowrap;
+  }
+  .pre-req-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .pre-req-list li {
+    font-size: .92rem;
+    color: var(--ink-2);
+    line-height: 1.4;
+  }
+  .pre-req-list a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  }
+  .pre-req-list a:hover { border-bottom-color: var(--accent); }
+  .pre-req-list li.empty {
+    color: var(--ink-3);
+    font-style: italic;
+  }
+
+  /* ============================================================
+     LISTA DE ARTIGOS — coração da página
+     ============================================================ */
+  .section-title-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .section-title {
+    font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0;
+  }
+  .section-h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 8px;
+    letter-spacing: -.01em;
+  }
+  .section-lead {
+    font-size: 1rem;
+    color: var(--ink-2);
+    margin: 0 0 36px;
+    max-width: 65ch;
+  }
+
+  .artigos-block { padding: 24px 0 56px; }
+
+  .artigos-stream {
+    border-left: 2px solid var(--line);
+    margin-left: 18px;
+    padding-left: 0;
+  }
+  .artigo-item {
+    position: relative;
+    padding: 0 0 28px 36px;
+    margin-left: -18px;
+  }
+  .artigo-item:last-child { padding-bottom: 0; }
+  .artigo-item-num {
+    position: absolute;
+    left: -17px;
+    top: 14px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .82rem;
+    font-weight: 700;
+    color: var(--ink-2);
+    transition: border-color .15s, color .15s, background .15s;
+    font-variant-numeric: tabular-nums;
+  }
+  .artigo-item-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 20px 24px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: border-color .15s, transform .15s, box-shadow .15s;
+  }
+  .artigo-item:hover .artigo-item-num {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+  .artigo-item:hover .artigo-item-card {
+    border-color: var(--accent);
+    transform: translateX(2px);
+    box-shadow: var(--shadow-sm);
+  }
+  .artigo-item:hover .artigo-item-card h3 { color: var(--accent); }
+
+  .artigo-item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .artigo-item-head h3 {
+    font-size: 1.12rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.3;
+    color: var(--ink);
+    flex: 1;
+    min-width: 0;
+    transition: color .15s;
+  }
+  .artigo-item-meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-shrink: 0;
+    font-size: .76rem;
+    color: var(--ink-3);
+  }
+  .artigo-item-type {
+    background: var(--bg-2);
+    color: var(--ink-2);
+    padding: 3px 9px;
+    border-radius: 99px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    font-size: .68rem;
+  }
+  .artigo-item-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
+  .artigo-item-time svg { width: 11px; height: 11px; }
+  .artigo-item-desc {
+    font-size: .92rem;
+    color: var(--ink-2);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Checkpoints intermediários — divisores narrativos opcionais */
+  .checkpoint {
+    margin: 24px 0 28px -18px;
+    padding: 14px 24px;
+    background: var(--accent-soft);
+    border-radius: var(--r-md);
+    font-size: .9rem;
+    color: var(--accent-deep);
+    border-left: 3px solid var(--accent);
+    line-height: 1.5;
+  }
+  .checkpoint-label {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* ============================================================
+     RESULTADO ESPERADO (no fim da trilha)
+     ============================================================ */
+  .resultado {
+    background: var(--paper);
+    border: 2px solid var(--accent);
+    border-radius: var(--r-lg);
+    padding: 32px 36px;
+    margin-top: 56px;
+  }
+  .resultado-label {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .resultado h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 12px;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+  .resultado p {
+    font-size: 1rem;
+    color: var(--ink-2);
+    margin: 0 0 12px;
+    line-height: 1.6;
+  }
+
+  /* ============================================================
+     COMO ESTA TRILHA FOI PENSADA
+     ============================================================ */
+  .pensada {
+    background: var(--bg-3);
+    border-radius: var(--r-lg);
+    padding: 32px 36px;
+    margin: 56px 0;
+  }
+  .pensada h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 12px;
+    color: var(--ink);
+  }
+  .pensada p {
+    font-size: .96rem;
+    color: var(--ink-2);
+    margin: 0 0 12px;
+    line-height: 1.6;
+    max-width: 70ch;
+  }
+  .pensada p:last-child { margin-bottom: 0; }
+
+  /* ============================================================
+     OUTRAS TRILHAS RELACIONADAS
+     ============================================================ */
+  .outras-trilhas {
+    padding: 0 0 56px;
+  }
+  .outras-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 800px) { .outras-grid { grid-template-columns: 1fr; } }
+  .outra-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 20px 22px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: border-color .15s, transform .15s;
+    position: relative;
+  }
+  .outra-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    border-radius: var(--r-lg) 0 0 var(--r-lg);
+    opacity: .8;
+  }
+  .outra-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .outra-kicker {
+    font-size: .64rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 6px;
+  }
+  .outra-card h4 {
+    font-size: 1.04rem;
+    font-weight: 700;
+    margin: 0 0 6px;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+  .outra-card:hover h4 { color: var(--accent); }
+  .outra-card p {
+    font-size: .84rem;
+    color: var(--ink-2);
+    margin: 0 0 10px;
+    line-height: 1.4;
+  }
+  .outra-card .foot {
+    font-size: .74rem;
+    color: var(--ink-3);
+    padding-top: 8px;
+    border-top: 1px dashed var(--line);
+  }
+
+  /* ============================================================
+     SOBRE ESTA TRILHA (rodapé)
+     ============================================================ */
+  .sobre-trilha {
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+    padding: 48px 0;
+    margin-top: 32px;
+  }
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 56px;
+  }
+  @media (max-width: 800px) { .sobre-grid { grid-template-columns: 1fr; gap: 32px; } }
+  .sobre-block h3 {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 12px;
+  }
+  .sobre-block p {
+    margin: 0 0 10px;
+    font-size: .92rem;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .sobre-block .meta-line {
+    font-size: .82rem;
+    color: var(--ink-3);
+    margin-top: 14px;
+  }
+  .sobre-block .meta-line span + span::before {
+    content: '·';
+    margin: 0 8px;
+    color: var(--line-2);
+  }
+
+  /* ============================================================
+     Rodapé do doc
+     ============================================================ */
+  .doc-footer {
+    background: var(--bg-3);
+    padding: 32px;
+    text-align: center;
+    color: var(--ink-3);
+    font-size: .82rem;
+    border-top: 1px solid var(--line);
+  }
+  .doc-footer code {
+    font-family: var(--mono);
+    background: var(--paper);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: .78rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     CABEÇALHO DO DOC DE EXPLORAÇÃO
+     ============================================================ -->
+<div class="doc-header">
+  <span class="pill">Exploração</span>
+  <strong>Página de Trilha — a casca que dá voz à sequência.</strong>
+  Fase 1 · Padrão 4.4 da Camada 4.5 (Padrões de Composição).
+</div>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-mark">●</span>
+      Base de Conhecimento <strong>CEFOR/IFes</strong>
+    </div>
+    <nav class="nav-links">
+      <a href="#">Artigos</a>
+      <a href="#" class="active">Trilhas</a>
+      <a href="#">Percursos</a>
+      <a href="#">Buscar</a>
+    </nav>
+  </div>
+</header>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Trilha de navegação">
+  <div class="breadcrumb-inner">
+    <a href="#">Início</a>
+    <span class="sep">›</span>
+    <a href="#">Trilhas</a>
+    <span class="sep">›</span>
+    <span class="current">Avaliação no Moodle</span>
+  </div>
+</nav>
+
+<main class="container">
+
+  <!-- HERO -->
+  <section class="trilha-hero">
+    <div class="trilha-hero-grid">
+      <div>
+        <div class="kicker-trilha">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><polyline points="3 12 9 12"/><polyline points="15 12 21 12"/></svg>
+          Trilha
+        </div>
+        <h1>Avaliação no Moodle</h1>
+        <p class="subtitle">
+          Do desenho da estrutura de avaliação ao fechamento do período letivo. Quinze artigos em sequência, com começo, meio e fim.
+        </p>
+        <p class="description">
+          Esta trilha cobre o que um professor precisa saber para conduzir a avaliação de um curso no Moodle institucional do IFes, do planejamento à entrega final de notas no sistema acadêmico. É uma micro-jornada autocontida — não pressupõe domínio prévio do Moodle, mas também não tenta ensinar a plataforma inteira.
+        </p>
+        <p class="description">
+          A ordem dos artigos importa. Cada um introduz conceitos que o próximo desenvolve. Você pode pular artigos que já domina, mas o ganho da sequência é exatamente fechar o ciclo completo de avaliação sem buracos.
+        </p>
+        <a href="#" class="percurso-chip">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 3 6 21"/><polyline points="18 3 18 21"/><line x1="6" y1="8" x2="18" y2="8"/><line x1="6" y1="16" x2="18" y2="16"/></svg>
+          Esta trilha faz parte do percurso <strong>Dominando o Moodle</strong>
+        </a>
+      </div>
+
+      <aside class="stats-card">
+        <h3>Composição da trilha</h3>
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-num">15</div>
+            <div class="stat-label">artigos em sequência</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">~2h30</div>
+            <div class="stat-label">leitura total estimada</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3</div>
+            <div class="stat-label">pré-requisitos</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">1</div>
+            <div class="stat-label">percurso vinculado</div>
+          </div>
+        </div>
+        <a href="#" class="stats-cta">Começar pelo primeiro artigo</a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- META: PARA QUEM + O QUE VAI DOMINAR -->
+  <section class="meta-cards">
+    <div class="meta-card">
+      <h2 class="meta-card-title">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Para quem é esta trilha
+      </h2>
+      <ul>
+        <li>Professores que vão conduzir um curso no Moodle do IFes neste semestre</li>
+        <li>Mediadores que apoiam professores em decisões sobre avaliação</li>
+        <li>Coordenadores que precisam validar estruturas de avaliação dos cursos</li>
+        <li>Quem já dá aula no Moodle mas nunca se aprofundou no livro de notas</li>
+      </ul>
+    </div>
+
+    <div class="meta-card">
+      <h2 class="meta-card-title">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        O que você vai dominar
+      </h2>
+      <ul>
+        <li>Desenhar a estrutura de avaliação de um curso com categorias e pesos coerentes</li>
+        <li>Criar questionários, atribuir rubricas e configurar feedbacks automáticos</li>
+        <li>Operar o livro de notas com confiança, do início ao fechamento do período</li>
+        <li>Exportar notas para o sistema acadêmico sem retrabalho</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PRÉ-REQUISITOS -->
+  <section class="pre-req">
+    <div class="pre-req-label">Antes de começar a trilha</div>
+    <ul class="pre-req-list">
+      <li>Ter acesso ao Moodle do IFes com perfil de <strong>professor</strong> ou <strong>editor</strong> em pelo menos um curso. <a href="#">Como acessar o Moodle pela primeira vez</a></li>
+      <li>Ter o plano de ensino do curso definido — incluindo critérios de avaliação e pesos. <a href="#">Modelo institucional de plano de ensino</a></li>
+      <li>Familiaridade básica com a interface do Moodle (criar atividade, mover bloco). <a href="#">Tour rápido pela interface do Moodle</a></li>
+    </ul>
+  </section>
+
+  <!-- LISTA DE ARTIGOS -->
+  <section class="artigos-block">
+    <div class="section-title-row">
+      <p class="section-title">Os 15 artigos desta trilha</p>
+    </div>
+    <h2 class="section-h2">Caminho completo, em ordem</h2>
+    <p class="section-lead">
+      A sequência abaixo foi pensada para construir conhecimento camada por camada. Cada artigo encerra um tema antes de o próximo começar, mas a ordem revela conexões que ficam invisíveis se você ler avulso.
+    </p>
+
+    <div class="artigos-stream">
+
+      <!-- Artigo 1 -->
+      <div class="artigo-item">
+        <div class="artigo-item-num">1</div>
+        <a href="#" class="artigo-item-card">
+          <div class="artigo-item-head">
+            <h3>Introdução ao sistema de avaliação do Moodle</h3>
+            <div class="artigo-item-meta">
+              <span class="artigo-item-type">Conceitual</span>
+              <span class="artigo-item-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                8 min
+              </span>
+            </div>
+          </div>
+          <p class="artigo-item-desc">Como o Moodle pensa avaliação — atividades, itens de nota, categorias e livro de notas. O modelo mental que orienta tudo o que vem depois.</p>
+        </a>
+      </div>
+
+      <!-- Artigo 2 -->
+      <div class="artigo-item">
+        <div class="artigo-item-num">2</div>
+        <a href="#" class="artigo-item-card">
+          <div class="artigo-item-head">
+            <h3>Tipos de atividades avaliativas</h3>
+            <div class="artigo-item-meta">
+              <span class="artigo-item-type">Referência</span>
+              <span class="artigo-item-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                10 min
+              </span>
+            </div>
+          </div>
+          <p class="artigo-item-desc">Questionário, tarefa, fórum avaliativo, oficina e wiki — quando cada um faz sentido pedagógico, com critério "quando NÃO usar".</p>
+        </a>
+      </div>
+
+      <!-- Artigo 3 -->
+      <div class="artigo-item">
+        <div class="artigo-item-num">3</div>
+        <a href="#" class="artigo-item-card">
+          <div class="artigo-item-head">
+            <h3>Criando questionários no Moodle</h3>
+            <div class="artigo-item-meta">
+              <span class="artigo-item-type">Tutorial</span>
+              <span class="artigo-item-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                12 min
+              </span>
+            </div>
+          </div>
+          <p class="artigo-item-desc">Passo a passo da criação de um questionário — configurações iniciais, tempo, tentativas e regras de fechamento.</p>
+        </a>
+      </div>
+
+      <!-- Checkpoint -->
+      <div class="checkpoint">
+        <span class="checkpoint-label">Fim do bloco 1 — Estrutura e atividades</span>
+        Até aqui, você sabe que tipos de avaliação existem no Moodle e como criar a mais comum (questionário). A partir do próximo artigo, entramos no detalhamento técnico de banco de questões e variações avançadas.
+      </div>
+
+      <!-- Artigo 4 -->
+      <div class="artigo-item">
+        <div class="artigo-item-num">4</div>
+        <a href="#" class="artigo-item-card">
+          <div class="artigo-item-head">
+            <h3>Banco de questões: tipos e formatos</h3>
+            <div class="artigo-item-meta">
+              <span class="artigo-item-type">Referência</span>
+              <span class="artigo-item-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                9 min
+              </span>
+            </div>
+          </div>
+          <p class="artigo-item-desc">Múltipla escolha, V/F, resposta curta, ensaio, correspondência — particularidades de correção e bom uso pedagógico de cada um.</p>
+        </a>
+      </div>
+
+      <!-- Artigo 5 -->
+      <div class="artigo-item">
+        <div class="artigo-item-num">5</div>
+        <a href="#" class="artigo-item-card">
+          <div class="artigo-item-head">
+            <h3>Avaliação por pares (Workshop)</h3>
+            <div class="artigo-item-meta">
+              <span class="artigo-item-type">Tutorial</span>
+              <span class="artigo-item-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                15 min
+              </span>
+            </div>
+          </div>
+          <p class="artigo-item-desc">Como configurar atividade de oficina (Workshop) — distribuição automática, rubricas de avaliação e cálculo da nota composta.</p>
+        </a>
+      </div>
+
+      <!-- Artigo 6 -->
+      <div class="artigo-item">
+        <div class="artigo-item-num">6</div>
+        <a href="#" class="artigo-item-card">
+          <div class="artigo-item-head">
+            <h3>Banco de questões: importando perguntas do Word</h3>
+            <div class="artigo-item-meta">
+              <span class="artigo-item-type">Tutorial</span>
+              <span class="artigo-item-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                7 min
+              </span>
+            </div>
+          </div>
+          <p class="artigo-item-desc">Formato GIFT e Aiken — como migrar questões existentes de um documento Word para o banco de questões do Moodle.</p>
+        </a>
+      </div>
+
+      <!-- Artigo 7 -->
+      <div class="artigo-item">
+        <div class="artigo-item-num">7</div>
+        <a href="#" class="artigo-item-card">
+          <div class="artigo-item-head">
+            <h3>Configurando o livro de notas</h3>
+            <div class="artigo-item-meta">
+              <span class="artigo-item-type">Tutorial</span>
+              <span class="artigo-item-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                14 min
+              </span>
+            </div>
+          </div>
+          <p class="artigo-item-desc">Estruturar categorias, definir pesos, escolher método de agregação. O artigo mais central da trilha — todo o resto depende dele.</p>
+        </a>
+      </div>
+
+      <!-- Checkpoint -->
+      <div class="checkpoint">
+        <span class="checkpoint-label">Fim do bloco 2 — Atividades e estrutura</span>
+        Aqui você tem o esqueleto montado: tipos de atividade, banco de questões e a estrutura básica do livro de notas. Os próximos artigos refinam a avaliação com rubricas e feedback automático.
+      </div>
+
+      <!-- Artigo 8 -->
+      <div class="artigo-item">
+        <div class="artigo-item-num">8</div>
+        <a href="#" class="artigo-item-card">
+          <div class="artigo-item-head">
+            <h3>Aplicando rubricas em atividades de envio</h3>
+            <div class="artigo-item-meta">
+              <span class="artigo-item-type">Tutorial</span>
+              <span class="artigo-item-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                11 min
+              </span>
+            </div>
+          </div>
+          <p class="artigo-item-desc">Configurar rubrica avaliativa em tarefas — critérios, descritores e cálculo automático da nota a partir dos níveis selecionados.</p>
+        </a>
+      </div>
+
+      <!-- Artigo 9 -->
+      <div class="artigo-item">
+        <div class="artigo-item-num">9</div>
+        <a href="#" class="artigo-item-card">
+          <div class="artigo-item-head">
+            <h3>Configurando rubricas guias</h3>
+            <div class="artigo-item-meta">
+              <span class="artigo-item-type">Conceitual</span>
+              <span class="artigo-item-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                9 min
+              </span>
+            </div>
+          </div>
+          <p class="artigo-item-desc">Quando usar rubrica-guia em vez de rubrica tradicional — diferenças, quando faz sentido pedagógico e como configurar.</p>
+        </a>
+      </div>
+
+      <!-- Artigo 10 -->
+      <div class="artigo-item">
+        <div class="artigo-item-num">10</div>
+        <a href="#" class="artigo-item-card">
+          <div class="artigo-item-head">
+            <h3>Exportando notas para o sistema acadêmico</h3>
+            <div class="artigo-item-meta">
+              <span class="artigo-item-type">Tutorial</span>
+              <span class="artigo-item-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                8 min
+              </span>
+            </div>
+          </div>
+          <p class="artigo-item-desc">Gerar relatório de notas no formato exigido pela secretaria acadêmica do IFes e validar os números antes de enviar.</p>
+        </a>
+      </div>
+
+      <!-- Artigo 11 -->
+      <div class="artigo-item">
+        <div class="artigo-item-num">11</div>
+        <a href="#" class="artigo-item-card">
+          <div class="artigo-item-head">
+            <h3>Relatórios de desempenho da turma</h3>
+            <div class="artigo-item-meta">
+              <span class="artigo-item-type">Referência</span>
+              <span class="artigo-item-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                10 min
+              </span>
+            </div>
+          </div>
+          <p class="artigo-item-desc">Quais relatórios o Moodle oferece, como gerar e como interpretar — leitura prática para identificar gargalos de aprendizagem.</p>
+        </a>
+      </div>
+
+      <!-- Artigo 12 -->
+      <div class="artigo-item">
+        <div class="artigo-item-num">12</div>
+        <a href="#" class="artigo-item-card">
+          <div class="artigo-item-head">
+            <h3>Feedbacks automatizados por nota</h3>
+            <div class="artigo-item-meta">
+              <span class="artigo-item-type">Tutorial</span>
+              <span class="artigo-item-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                9 min
+              </span>
+            </div>
+          </div>
+          <p class="artigo-item-desc">Configurar mensagens automáticas por faixa de nota — útil em turmas grandes para feedback formativo sem retrabalho.</p>
+        </a>
+      </div>
+
+      <!-- Artigo 13 -->
+      <div class="artigo-item">
+        <div class="artigo-item-num">13</div>
+        <a href="#" class="artigo-item-card">
+          <div class="artigo-item-head">
+            <h3>Integração com o portfólio digital</h3>
+            <div class="artigo-item-meta">
+              <span class="artigo-item-type">Conceitual</span>
+              <span class="artigo-item-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                7 min
+              </span>
+            </div>
+          </div>
+          <p class="artigo-item-desc">Como atividades avaliativas alimentam o portfólio do estudante e como configurar para que o portfólio seja útil ao próprio aluno.</p>
+        </a>
+      </div>
+
+      <!-- Artigo 14 -->
+      <div class="artigo-item">
+        <div class="artigo-item-num">14</div>
+        <a href="#" class="artigo-item-card">
+          <div class="artigo-item-head">
+            <h3>Revisão e aprovação de notas</h3>
+            <div class="artigo-item-meta">
+              <span class="artigo-item-type">Tutorial</span>
+              <span class="artigo-item-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                8 min
+              </span>
+            </div>
+          </div>
+          <p class="artigo-item-desc">Checklist de revisão antes do fechamento — pesos, ausências, ajustes manuais e arredondamento institucional.</p>
+        </a>
+      </div>
+
+      <!-- Artigo 15 -->
+      <div class="artigo-item">
+        <div class="artigo-item-num">15</div>
+        <a href="#" class="artigo-item-card">
+          <div class="artigo-item-head">
+            <h3>Fechamento do período letivo</h3>
+            <div class="artigo-item-meta">
+              <span class="artigo-item-type">Tutorial</span>
+              <span class="artigo-item-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                10 min
+              </span>
+            </div>
+          </div>
+          <p class="artigo-item-desc">Última etapa: bloquear notas, gerar ata final, arquivar o curso e preparar a sala para o próximo semestre.</p>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- RESULTADO ESPERADO -->
+    <div class="resultado">
+      <p class="resultado-label">Ao final desta trilha</p>
+      <h3>Você terá conduzido um ciclo completo de avaliação no Moodle</h3>
+      <p>
+        Da estrutura inicial — categorias, pesos e tipos de atividade — até o fechamento do período com a ata pronta para o sistema acadêmico, esta trilha cobre todas as decisões e configurações que um professor toma ao avaliar uma turma no Moodle do IFes.
+      </p>
+      <p>
+        A partir daqui, faz sentido seguir para a trilha <a href="#" style="color: var(--accent); font-weight: 600;">Gerenciando notas</a>, que aprofunda os ajustes manuais e relatórios — ou explorar artigos avulsos sobre temas específicos da avaliação.
+      </p>
+    </div>
+  </section>
+
+  <!-- COMO ESTA TRILHA FOI PENSADA -->
+  <section class="pensada">
+    <h2>Como esta trilha foi pensada</h2>
+    <p>
+      A ordem dos 15 artigos não é arbitrária. Eles foram organizados em três blocos: <strong>estrutura e atividades</strong> (artigos 1-3), <strong>aprofundamento técnico</strong> (4-7) e <strong>operação e fechamento</strong> (8-15). Os checkpoints intermediários sinalizam essas transições.
+    </p>
+    <p>
+      Cada artigo foi escrito para funcionar sozinho — se você caiu aqui por busca, qualquer um dos 15 resolve o problema específico que tratar. A trilha existe para o caso oposto: quem chega sem saber por onde começar e quer um caminho curado.
+    </p>
+    <p>
+      A trilha é revista a cada semestre letivo. Mudanças na interface do Moodle, novas práticas do CEFOR e feedback de leitores podem reorganizar a ordem ou substituir artigos.
+    </p>
+  </section>
+
+  <!-- OUTRAS TRILHAS RELACIONADAS -->
+  <section class="outras-trilhas">
+    <div class="section-title-row">
+      <p class="section-title">Trilhas relacionadas</p>
+    </div>
+    <h2 class="section-h2">Caminhos que se conectam a este</h2>
+    <p class="section-lead">
+      Trilhas que pertencem ao mesmo percurso "Dominando o Moodle" ou que cobrem temas próximos.
+    </p>
+
+    <div class="outras-grid">
+
+      <a href="#" class="outra-card">
+        <p class="outra-kicker">Trilha · mesmo percurso</p>
+        <h4>Gerenciando notas</h4>
+        <p>O livro de notas em profundidade — cálculos, exportações, ajustes e relatórios.</p>
+        <div class="foot">6 artigos · ~1h</div>
+      </a>
+
+      <a href="#" class="outra-card">
+        <p class="outra-kicker">Trilha · mesmo percurso</p>
+        <h4>Configurando questionários</h4>
+        <p>A atividade de questionário em profundidade — banco, feedback, configurações.</p>
+        <div class="foot">8 artigos · ~1h20</div>
+      </a>
+
+      <a href="#" class="outra-card">
+        <p class="outra-kicker">Trilha · outro percurso</p>
+        <h4>Avaliação por evidências de processo</h4>
+        <p>Como avaliar processos de aprendizagem (e não só resultados) usando o Moodle.</p>
+        <div class="foot">7 artigos · ~2h</div>
+      </a>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- SOBRE ESTA TRILHA -->
+<section class="sobre-trilha">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-block">
+        <h3>Sobre esta trilha</h3>
+        <p>
+          Curada pela equipe pedagógica do CEFOR a partir de demandas reais de professores no atendimento à equipe de TI educacional. A ordem foi validada com mediadores de pelo menos três cursos antes de ser publicada.
+        </p>
+        <p>
+          Os artigos são revistos individualmente conforme a política de depreciação (12 meses ou após atualização do Moodle). A trilha como um todo é reavaliada a cada início de semestre.
+        </p>
+        <div class="meta-line">
+          <span>Curadoria: Juliana Cassaro · Rute Fávero</span>
+          <span>Criada em 2026-04</span>
+          <span>Última revisão da trilha: 2026-05</span>
+        </div>
+      </div>
+
+      <div class="sobre-block">
+        <h3>Pertence ao percurso</h3>
+        <a href="#" style="display: block; padding: 14px 18px; background: var(--gold-soft); border-radius: var(--r-md); text-decoration: none; color: var(--ink); transition: background .15s;">
+          <span style="display: block; font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 4px;">Percurso</span>
+          <span style="font-weight: 700; font-size: 1.04rem; color: var(--ink); display: block; margin-bottom: 4px;">Dominando o Moodle</span>
+          <span style="font-size: .82rem; color: var(--ink-3);">4 trilhas · 37 artigos · ~6h</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RODAPÉ DO DOC -->
+<footer class="doc-footer">
+  <p>
+    Exploração técnica · Padrão 4.4 da Camada 4.5 — Padrões de Composição.<br>
+    Fecha o conjunto Artigo / Trilha / Percurso. Próximo passo: validar com Rute e Marquito.<br>
+    Referência canônica de design: <code>stages/01-fundacoes/drafts/prototipo-artigo.html</code>
+  </p>
+</footer>
+
+</body>
+</html>

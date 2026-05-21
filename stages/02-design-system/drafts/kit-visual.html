@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kit Visual · Design System — Base CEFOR/IFes</title>
+<meta name="description" content="Style guide vivo: tokens e componentes do produto. Camadas 2 e 3 do Design System." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     TOKENS — fonte única de verdade (espelho do prototipo-artigo.html)
+     Decisão 6: 100% sans-serif · Decisão 8: dark mode · Decisão 10: alto contraste
+     ============================================================ */
+  :root {
+    --bg: #ffffff;
+    --bg-2: #f7f5f1;
+    --bg-3: #efeae0;
+    --paper: #ffffff;
+    --ink: #14110d;
+    --ink-2: #4a4439;
+    --ink-3: #8a8273;
+    --line: #e7e3d8;
+    --line-2: #d4cdba;
+    --accent: #1f5142;
+    --accent-2: #2d6a4f;
+    --accent-soft: #e3ecdf;
+    --accent-deep: #143a30;
+    --gold: #b08544;
+    --gold-soft: #f3e7d0;
+    --gold-deep: #8c6a36;
+    --rose: #b3433a;
+    --rose-soft: #f4dcd7;
+    --sun: #c98a1e;
+    --sun-soft: #f7e6c4;
+    --sky: #2c5e8f;
+    --sky-soft: #d9e7f3;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --dyslexic: 'Lexend', 'Inter', sans-serif;
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 16px;
+    --r-xl: 24px;
+    --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
+    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
+    --shadow-lg: 0 24px 48px -12px rgba(20,17,13,.12);
+    --font-scale: 1;
+  }
+
+  [data-theme="dark"] {
+    --bg: #0e0c0a;
+    --bg-2: #16130f;
+    --bg-3: #1e1a14;
+    --paper: #1a1612;
+    --ink: #f4f1ea;
+    --ink-2: #c9c2b3;
+    --ink-3: #8a8273;
+    --line: #2a251e;
+    --line-2: #3a342a;
+    --accent: #6cb89a;
+    --accent-2: #87cdb0;
+    --accent-soft: #19251f;
+    --accent-deep: #a7dcc6;
+    --gold-soft: #2e2516;
+    --gold-deep: #d9a955;
+    --rose-soft: #2e1a17;
+    --sun-soft: #2e2310;
+    --sky-soft: #16222e;
+  }
+
+  [data-contrast="high"] {
+    --bg: #000000;
+    --bg-2: #0a0a0a;
+    --bg-3: #141414;
+    --paper: #000000;
+    --ink: #ffff00;
+    --ink-2: #ffffff;
+    --ink-3: #c0c0c0;
+    --line: #ffff00;
+    --line-2: #ffffff;
+    --accent: #00ff88;
+    --accent-2: #66ffaa;
+    --accent-soft: #003322;
+    --accent-deep: #66ffaa;
+    --gold: #ffff00;
+    --gold-soft: #1a1a00;
+    --gold-deep: #ffff00;
+    --rose: #ff6b6b;
+    --rose-soft: #2a0000;
+    --sun: #ffaa00;
+    --sun-soft: #2a1a00;
+    --sky: #66ccff;
+    --sky-soft: #001a2a;
+  }
+
+  [data-font="dyslexic"] { --sans: var(--dyslexic); }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: calc(16px * var(--font-scale));
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    transition: background .3s, color .3s;
+  }
+
+  /* ============================================================
+     LAYOUT do style guide
+     ============================================================ */
+  .sg-shell { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+  @media (max-width: 860px) { .sg-shell { grid-template-columns: 1fr; } }
+
+  .sg-nav {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--bg-2);
+    border-right: 1px solid var(--line);
+    padding: 28px 20px;
+  }
+  @media (max-width: 860px) { .sg-nav { position: static; height: auto; } }
+  .sg-nav-brand {
+    font-weight: 700;
+    font-size: .95rem;
+    margin-bottom: 4px;
+    letter-spacing: -.01em;
+  }
+  .sg-nav-brand .dot { color: var(--accent); }
+  .sg-nav-sub {
+    font-size: .72rem;
+    color: var(--ink-3);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 600;
+  }
+  .sg-nav a {
+    display: block;
+    padding: 7px 10px;
+    font-size: .86rem;
+    color: var(--ink-2);
+    text-decoration: none;
+    border-radius: var(--r-sm);
+    transition: background .15s, color .15s;
+  }
+  .sg-nav a:hover { background: var(--bg-3); color: var(--accent); }
+  .sg-nav-group {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 20px 0 6px 10px;
+  }
+
+  .sg-main { padding: 0; max-width: 100%; overflow-x: hidden; }
+
+  /* Toolbar de modos */
+  .sg-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .sg-toolbar-title { font-size: .82rem; color: var(--ink-3); font-weight: 600; }
+  .sg-toggles { display: flex; gap: 8px; flex-wrap: wrap; }
+  .sg-toggle {
+    border: 1px solid var(--line-2);
+    background: var(--paper);
+    color: var(--ink-2);
+    padding: 6px 14px;
+    border-radius: 99px;
+    font-size: .78rem;
+    font-weight: 600;
+    font-family: var(--sans);
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .sg-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  .sg-toggle[aria-pressed="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  .sg-section { padding: 48px 40px; border-bottom: 1px solid var(--line); }
+  @media (max-width: 600px) { .sg-section { padding: 36px 22px; } }
+  .sg-section > h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 6px;
+    letter-spacing: -.01em;
+  }
+  .sg-section > .sg-lead {
+    font-size: .98rem;
+    color: var(--ink-2);
+    margin: 0 0 32px;
+    max-width: 70ch;
+  }
+  .sg-sub {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 36px 0 16px;
+  }
+
+  /* ====== Swatches de cor ====== */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 14px;
+  }
+  .swatch {
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: var(--paper);
+  }
+  .swatch-chip { height: 64px; width: 100%; }
+  .swatch-meta { padding: 10px 12px; }
+  .swatch-name { font-size: .82rem; font-weight: 600; }
+  .swatch-var { font-family: var(--mono); font-size: .7rem; color: var(--ink-3); margin-top: 2px; }
+  .swatch-hex { font-family: var(--mono); font-size: .7rem; color: var(--ink-2); margin-top: 2px; }
+  .swatch-use { font-size: .72rem; color: var(--ink-3); margin-top: 6px; line-height: 1.35; }
+
+  /* ====== Tipografia ====== */
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--line);
+    flex-wrap: wrap;
+  }
+  .type-spec {
+    font-family: var(--mono);
+    font-size: .72rem;
+    color: var(--ink-3);
+    width: 150px;
+    flex-shrink: 0;
+  }
+  .type-sample { color: var(--ink); }
+
+  /* ====== Espaçamento ====== */
+  .space-row { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
+  .space-bar { background: var(--accent); height: 16px; border-radius: 3px; }
+  .space-label { font-family: var(--mono); font-size: .76rem; color: var(--ink-2); }
+
+  /* ====== Radius ====== */
+  .radius-grid { display: flex; gap: 18px; flex-wrap: wrap; }
+  .radius-box {
+    width: 90px; height: 90px;
+    background: var(--accent-soft);
+    border: 2px solid var(--accent);
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: 8px;
+    font-family: var(--mono);
+    font-size: .68rem;
+    color: var(--accent-deep);
+  }
+
+  /* ====== Sombras ====== */
+  .shadow-grid { display: flex; gap: 24px; flex-wrap: wrap; }
+  .shadow-box {
+    width: 140px; height: 90px;
+    background: var(--paper);
+    border-radius: var(--r-md);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: .72rem; color: var(--ink-2);
+    border: 1px solid var(--line);
+  }
+
+  /* ====== Demo grid genérico ====== */
+  .demo-grid { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .demo-stack { display: flex; flex-direction: column; gap: 14px; max-width: 640px; }
+  .demo-label {
+    font-family: var(--mono);
+    font-size: .7rem;
+    color: var(--ink-3);
+    margin-top: 4px;
+  }
+
+  /* ============================================================
+     COMPONENTES (espelhos dos protótipos)
+     ============================================================ */
+
+  /* Kickers / pílulas */
+  .kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px 6px 10px;
+    border-radius: 99px;
+    font-size: .72rem; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase;
+  }
+  .kicker.trilha { background: var(--accent-soft); color: var(--accent-deep); }
+  .kicker.percurso { background: var(--gold-soft); color: var(--gold-deep); }
+  .kicker svg { width: 14px; height: 14px; }
+
+  /* Badges */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 99px;
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+  }
+  .badge.tipo { background: var(--bg-2); color: var(--ink-2); }
+  .badge.cat { background: transparent; color: var(--ink-3); border: 1px solid var(--line-2); }
+
+  /* Chip de percurso */
+  .percurso-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold-soft); color: var(--gold-deep);
+    padding: 6px 12px 6px 10px;
+    border-radius: 99px;
+    font-size: .78rem; font-weight: 600;
+    text-decoration: none;
+  }
+  .percurso-chip svg { width: 12px; height: 12px; }
+  .percurso-chip strong { font-weight: 700; }
+
+  /* Botões */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 20px;
+    border-radius: var(--r-md);
+    font-size: .9rem; font-weight: 600;
+    font-family: var(--sans);
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all .15s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-2); }
+  .btn-secondary { background: var(--paper); color: var(--accent); border-color: var(--line-2); }
+  .btn-secondary:hover { border-color: var(--accent); }
+  .btn-ghost { background: transparent; color: var(--ink-2); }
+  .btn-ghost:hover { background: var(--bg-2); color: var(--accent); }
+
+  /* Callouts */
+  .callout {
+    border-radius: var(--r-md);
+    padding: 16px 18px 16px 20px;
+    border-left: 4px solid;
+    font-size: .92rem;
+    line-height: 1.5;
+  }
+  .callout-title { font-weight: 700; margin: 0 0 4px; font-size: .92rem; }
+  .callout p { margin: 0; color: var(--ink-2); }
+  .callout.dica { background: var(--accent-soft); border-color: var(--accent); }
+  .callout.dica .callout-title { color: var(--accent-deep); }
+  .callout.info { background: var(--sky-soft); border-color: var(--sky); }
+  .callout.info .callout-title { color: var(--sky); }
+  .callout.atencao { background: var(--sun-soft); border-color: var(--sun); }
+  .callout.atencao .callout-title { color: var(--sun); }
+  .callout.cuidado { background: var(--rose-soft); border-color: var(--rose); }
+  .callout.cuidado .callout-title { color: var(--rose); }
+
+  /* Cards */
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 22px 24px;
+    transition: border-color .15s, transform .15s, box-shadow .15s;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    max-width: 340px;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .card.trilha-card::before, .card.percurso-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  }
+  .card.trilha-card::before { background: var(--accent); }
+  .card.percurso-card::before { background: var(--gold); }
+  .card.percurso-card:hover { border-color: var(--gold); }
+  .card h4 { font-size: 1.1rem; font-weight: 700; margin: 8px 0 6px; line-height: 1.25; }
+  .card p { font-size: .86rem; color: var(--ink-2); margin: 0 0 12px; line-height: 1.45; }
+  .card-foot { font-size: .74rem; color: var(--ink-3); padding-top: 10px; border-top: 1px dashed var(--line); }
+
+  /* Barra de progresso estrutural */
+  .progress-demo { max-width: 280px; }
+  .progress-bar { height: 4px; background: var(--bg-3); border-radius: 99px; overflow: hidden; margin-bottom: 6px; }
+  .progress-bar-fill { height: 100%; background: var(--accent); border-radius: 99px; }
+  .progress-label { font-size: .78rem; color: var(--ink-3); }
+  .progress-label b { color: var(--ink); }
+
+  /* Breadcrumb */
+  .breadcrumb-demo { font-size: .82rem; color: var(--ink-3); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .breadcrumb-demo a { color: var(--ink-2); text-decoration: none; }
+  .breadcrumb-demo a:hover { color: var(--accent); }
+  .breadcrumb-demo .current { color: var(--ink); font-weight: 600; }
+
+  /* Nota / a definir */
+  .sg-note {
+    background: var(--sun-soft);
+    border: 1px solid color-mix(in srgb, var(--sun) 40%, transparent);
+    border-radius: var(--r-md);
+    padding: 14px 18px;
+    font-size: .86rem;
+    color: var(--ink-2);
+    line-height: 1.5;
+    margin-top: 16px;
+  }
+  .sg-note strong { color: var(--ink); }
+
+  .sg-footer { padding: 32px 40px; color: var(--ink-3); font-size: .82rem; }
+  .sg-footer code { font-family: var(--mono); background: var(--bg-2); padding: 2px 6px; border-radius: 4px; }
+</style>
+</head>
+<body>
+<div class="sg-shell">
+
+  <!-- NAV -->
+  <nav class="sg-nav">
+    <div class="sg-nav-brand"><span class="dot">●</span> Base CEFOR/IFes</div>
+    <div class="sg-nav-sub">Kit Visual</div>
+
+    <div class="sg-nav-group">Fundamentos</div>
+    <a href="#cores">Cores</a>
+    <a href="#identidade">Identidade cromática</a>
+    <a href="#tipografia">Tipografia</a>
+    <a href="#espacamento">Espaçamento</a>
+    <a href="#raios">Raios de borda</a>
+    <a href="#sombras">Sombras</a>
+
+    <div class="sg-nav-group">Componentes</div>
+    <a href="#kickers">Kickers e pílulas</a>
+    <a href="#badges">Badges</a>
+    <a href="#chip-percurso">Chip de percurso</a>
+    <a href="#botoes">Botões</a>
+    <a href="#callouts">Callouts</a>
+    <a href="#cards">Cards</a>
+    <a href="#progresso">Progresso estrutural</a>
+    <a href="#breadcrumb">Breadcrumb</a>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="sg-main">
+
+    <!-- TOOLBAR -->
+    <div class="sg-toolbar">
+      <span class="sg-toolbar-title">Kit Visual — tokens e componentes do produto</span>
+      <div class="sg-toggles">
+        <button class="sg-toggle" data-theme-btn="light" aria-pressed="true">Claro</button>
+        <button class="sg-toggle" data-theme-btn="dark" aria-pressed="false">Escuro</button>
+        <button class="sg-toggle" id="contrastBtn" aria-pressed="false">Alto contraste</button>
+        <button class="sg-toggle" id="dyslexicBtn" aria-pressed="false">Fonte dislexia</button>
+      </div>
+    </div>
+
+    <!-- ====================== CORES ====================== -->
+    <section class="sg-section" id="cores">
+      <h2>Cores</h2>
+      <p class="sg-lead">Paleta inspirada em papel — fundo branco quente, tinta quase-preta, verde IFES como acento institucional e dourado reservado ao percurso. Todos os valores vivem como tokens CSS. Alterne os modos na barra acima para ver os tokens reagirem.</p>
+
+      <div class="sg-sub">Superfícies</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-chip" style="background:var(--bg)"></div><div class="swatch-meta"><div class="swatch-name">Fundo</div><div class="swatch-var">--bg</div><div class="swatch-hex">#ffffff</div><div class="swatch-use">Fundo geral da página</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--bg-2)"></div><div class="swatch-meta"><div class="swatch-name">Fundo 2</div><div class="swatch-var">--bg-2</div><div class="swatch-hex">#f7f5f1</div><div class="swatch-use">Blocos sutis, hover</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--bg-3)"></div><div class="swatch-meta"><div class="swatch-name">Fundo 3</div><div class="swatch-var">--bg-3</div><div class="swatch-hex">#efeae0</div><div class="swatch-use">Blocos de destaque neutro</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--paper)"></div><div class="swatch-meta"><div class="swatch-name">Papel</div><div class="swatch-var">--paper</div><div class="swatch-hex">#ffffff</div><div class="swatch-use">Superfície de cards</div></div></div>
+      </div>
+
+      <div class="sg-sub">Tinta (texto)</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-chip" style="background:var(--ink)"></div><div class="swatch-meta"><div class="swatch-name">Tinta</div><div class="swatch-var">--ink</div><div class="swatch-hex">#14110d</div><div class="swatch-use">Títulos, texto principal</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--ink-2)"></div><div class="swatch-meta"><div class="swatch-name">Tinta 2</div><div class="swatch-var">--ink-2</div><div class="swatch-hex">#4a4439</div><div class="swatch-use">Corpo de texto, parágrafos</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--ink-3)"></div><div class="swatch-meta"><div class="swatch-name">Tinta 3</div><div class="swatch-var">--ink-3</div><div class="swatch-hex">#8a8273</div><div class="swatch-use">Metadados, legendas</div></div></div>
+      </div>
+
+      <div class="sg-sub">Linhas e divisores</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-chip" style="background:var(--line)"></div><div class="swatch-meta"><div class="swatch-name">Linha</div><div class="swatch-var">--line</div><div class="swatch-hex">#e7e3d8</div><div class="swatch-use">Bordas padrão, divisores</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--line-2)"></div><div class="swatch-meta"><div class="swatch-name">Linha 2</div><div class="swatch-var">--line-2</div><div class="swatch-hex">#d4cdba</div><div class="swatch-use">Bordas de ênfase</div></div></div>
+      </div>
+
+      <div class="sg-sub">Verde IFES — acento institucional (cor da trilha)</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-chip" style="background:var(--accent)"></div><div class="swatch-meta"><div class="swatch-name">Accent</div><div class="swatch-var">--accent</div><div class="swatch-hex">#1f5142</div><div class="swatch-use">Links, botões, identidade da trilha</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--accent-2)"></div><div class="swatch-meta"><div class="swatch-name">Accent 2</div><div class="swatch-var">--accent-2</div><div class="swatch-hex">#2d6a4f</div><div class="swatch-use">Hover de verde</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--accent-soft)"></div><div class="swatch-meta"><div class="swatch-name">Accent soft</div><div class="swatch-var">--accent-soft</div><div class="swatch-hex">#e3ecdf</div><div class="swatch-use">Fundos de pílula/callout verde</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--accent-deep)"></div><div class="swatch-meta"><div class="swatch-name">Accent deep</div><div class="swatch-var">--accent-deep</div><div class="swatch-hex">#143a30</div><div class="swatch-use">Texto sobre fundo verde claro</div></div></div>
+      </div>
+
+      <div class="sg-sub">Dourado — reservado ao percurso</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-chip" style="background:var(--gold)"></div><div class="swatch-meta"><div class="swatch-name">Gold</div><div class="swatch-var">--gold</div><div class="swatch-hex">#b08544</div><div class="swatch-use">Borda/acento de percurso</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--gold-soft)"></div><div class="swatch-meta"><div class="swatch-name">Gold soft</div><div class="swatch-var">--gold-soft</div><div class="swatch-hex">#f3e7d0</div><div class="swatch-use">Fundo de chip de percurso</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--gold-deep)"></div><div class="swatch-meta"><div class="swatch-name">Gold deep</div><div class="swatch-var">--gold-deep</div><div class="swatch-hex">#8c6a36</div><div class="swatch-use">Texto sobre fundo dourado claro</div></div></div>
+      </div>
+
+      <div class="sg-sub">Cores semânticas (callouts)</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-chip" style="background:var(--sky)"></div><div class="swatch-meta"><div class="swatch-name">Sky</div><div class="swatch-var">--sky</div><div class="swatch-hex">#2c5e8f</div><div class="swatch-use">Informação / nota</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--sun)"></div><div class="swatch-meta"><div class="swatch-name">Sun</div><div class="swatch-var">--sun</div><div class="swatch-hex">#c98a1e</div><div class="swatch-use">Atenção</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--rose)"></div><div class="swatch-meta"><div class="swatch-name">Rose</div><div class="swatch-var">--rose</div><div class="swatch-hex">#b3433a</div><div class="swatch-use">Cuidado / risco</div></div></div>
+      </div>
+    </section>
+
+    <!-- ====================== IDENTIDADE CROMÁTICA ====================== -->
+    <section class="sg-section" id="identidade">
+      <h2>Identidade cromática</h2>
+      <p class="sg-lead">Regra de leitura de cor da Base — cada camada de organização tem (ou não tem) uma cor reservada. Isso permite que o leitor saiba, só pela cor, em que nível está.</p>
+      <div class="demo-stack" style="max-width:760px">
+        <div class="callout dica"><p class="callout-title">Verde IFES = Trilha + identidade do produto</p><p>Links, botões, foco, box de trilha, kicker de trilha. É a cor de ação e de pertencimento institucional.</p></div>
+        <div class="callout" style="background:var(--gold-soft);border-color:var(--gold)"><p class="callout-title" style="color:var(--gold-deep)">Dourado = Percurso (e somente percurso)</p><p>Chip de percurso, borda de card de percurso, kicker de percurso. Nunca usar dourado para outra coisa — é a assinatura visual da camada de curadoria maior.</p></div>
+        <div class="callout" style="background:var(--bg-2);border-color:var(--line-2)"><p class="callout-title">Neutro = Categoria e Tópico</p><p>Categoria e tópico classificam, não narram. Por isso ficam em tons neutros (tinta/linha), sem cor própria — não competem com trilha e percurso.</p></div>
+      </div>
+    </section>
+
+    <!-- ====================== TIPOGRAFIA ====================== -->
+    <section class="sg-section" id="tipografia">
+      <h2>Tipografia</h2>
+      <p class="sg-lead">100% sans-serif (Decisão 6). <strong>Inter</strong> para todo o texto, <strong>JetBrains Mono</strong> para código e valores técnicos, <strong>Lexend</strong> como alternativa para dislexia (ative na barra acima).</p>
+
+      <div class="sg-sub">Escala</div>
+      <div class="type-row"><span class="type-spec">H1 · 3rem · 700</span><span class="type-sample" style="font-size:3rem;font-weight:700;line-height:1.05;letter-spacing:-.015em">Configurando o livro de notas</span></div>
+      <div class="type-row"><span class="type-spec">H2 · 1.8rem · 700</span><span class="type-sample" style="font-size:1.8rem;font-weight:700">Quatro micro-jornadas</span></div>
+      <div class="type-row"><span class="type-spec">H3 · 1.3rem · 700</span><span class="type-sample" style="font-size:1.3rem;font-weight:700">Avaliação no Moodle</span></div>
+      <div class="type-row"><span class="type-spec">Subtítulo · 1.18rem · 400</span><span class="type-sample" style="font-size:1.18rem;color:var(--ink-2)">Do desenho da estrutura ao fechamento do período.</span></div>
+      <div class="type-row"><span class="type-spec">Corpo · 1rem · 400</span><span class="type-sample" style="font-size:1rem;color:var(--ink-2)">O Moodle pensa avaliação em camadas: atividades, itens de nota, categorias e livro de notas.</span></div>
+      <div class="type-row"><span class="type-spec">Meta · .82rem · 400</span><span class="type-sample" style="font-size:.82rem;color:var(--ink-3)">8 min de leitura · Atualizado em mai. 2026</span></div>
+      <div class="type-row"><span class="type-spec">Kicker · .72rem · 700</span><span class="type-sample" style="font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)">Tutorial</span></div>
+      <div class="type-row"><span class="type-spec">Mono · .82rem</span><span class="type-sample" style="font-family:var(--mono);font-size:.82rem;color:var(--ink-2)">--accent: #1f5142;</span></div>
+    </section>
+
+    <!-- ====================== ESPAÇAMENTO ====================== -->
+    <section class="sg-section" id="espacamento">
+      <h2>Espaçamento</h2>
+      <p class="sg-lead">Escala base de múltiplos de 4px. Usada em padding, gap e margens.</p>
+      <div class="space-row"><span class="space-bar" style="width:4px"></span><span class="space-label">4px · xs</span></div>
+      <div class="space-row"><span class="space-bar" style="width:8px"></span><span class="space-label">8px · sm</span></div>
+      <div class="space-row"><span class="space-bar" style="width:16px"></span><span class="space-label">16px · md</span></div>
+      <div class="space-row"><span class="space-bar" style="width:24px"></span><span class="space-label">24px · lg</span></div>
+      <div class="space-row"><span class="space-bar" style="width:32px"></span><span class="space-label">32px · xl</span></div>
+      <div class="space-row"><span class="space-bar" style="width:48px"></span><span class="space-label">48px · 2xl</span></div>
+      <div class="space-row"><span class="space-bar" style="width:64px"></span><span class="space-label">64px · 3xl</span></div>
+      <div class="sg-note"><strong>A definir como token:</strong> a escala existe na prática nos protótipos mas ainda não foi nomeada formalmente. Sugiro fixar <code>--space-xs</code> a <code>--space-3xl</code> antes da implementação na Fase 3.</div>
+    </section>
+
+    <!-- ====================== RAIOS ====================== -->
+    <section class="sg-section" id="raios">
+      <h2>Raios de borda</h2>
+      <p class="sg-lead">Quatro raios. Quanto maior o elemento, maior o raio.</p>
+      <div class="radius-grid">
+        <div class="radius-box" style="border-radius:var(--r-sm)">--r-sm · 6px</div>
+        <div class="radius-box" style="border-radius:var(--r-md)">--r-md · 10px</div>
+        <div class="radius-box" style="border-radius:var(--r-lg)">--r-lg · 16px</div>
+        <div class="radius-box" style="border-radius:var(--r-xl)">--r-xl · 24px</div>
+      </div>
+    </section>
+
+    <!-- ====================== SOMBRAS ====================== -->
+    <section class="sg-section" id="sombras">
+      <h2>Sombras</h2>
+      <p class="sg-lead">Três níveis de elevação. Discretas — papel não flutua muito.</p>
+      <div class="shadow-grid">
+        <div class="shadow-box" style="box-shadow:var(--shadow-sm)">--shadow-sm</div>
+        <div class="shadow-box" style="box-shadow:var(--shadow-md)">--shadow-md</div>
+        <div class="shadow-box" style="box-shadow:var(--shadow-lg)">--shadow-lg</div>
+      </div>
+    </section>
+
+    <!-- ====================== KICKERS ====================== -->
+    <section class="sg-section" id="kickers">
+      <h2>Kickers e pílulas</h2>
+      <p class="sg-lead">Rótulos curtos em caixa alta que identificam o tipo de página. A cor segue a identidade cromática.</p>
+      <div class="demo-grid">
+        <span class="kicker trilha">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><polyline points="3 12 9 12"/><polyline points="15 12 21 12"/></svg>
+          Trilha
+        </span>
+        <span class="kicker percurso">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 3 6 21"/><polyline points="18 3 18 21"/><line x1="6" y1="8" x2="18" y2="8"/><line x1="6" y1="16" x2="18" y2="16"/></svg>
+          Percurso
+        </span>
+      </div>
+    </section>
+
+    <!-- ====================== BADGES ====================== -->
+    <section class="sg-section" id="badges">
+      <h2>Badges</h2>
+      <p class="sg-lead">Marcadores de metadado. Tipo de artigo (fundo cheio) e categoria (contorno).</p>
+      <div class="sg-sub">Tipo de artigo (Eixo 1 — 5 valores)</div>
+      <div class="demo-grid">
+        <span class="badge tipo">Tutorial</span>
+        <span class="badge tipo">Referência</span>
+        <span class="badge tipo">Conceitual</span>
+        <span class="badge tipo">Solução de Problema</span>
+        <span class="badge tipo">Recurso</span>
+      </div>
+      <div class="sg-sub">Categoria (Eixo 2 — contorno)</div>
+      <div class="demo-grid">
+        <span class="badge cat">Ferramentas e Recursos</span>
+        <span class="badge cat">Pedagogia e Planejamento</span>
+        <span class="badge cat">Acessibilidade</span>
+        <span class="badge cat">Conduta e Conformidade</span>
+        <span class="badge cat">Identidade</span>
+      </div>
+    </section>
+
+    <!-- ====================== CHIP DE PERCURSO ====================== -->
+    <section class="sg-section" id="chip-percurso">
+      <h2>Chip de percurso</h2>
+      <p class="sg-lead">Sinaliza que uma trilha faz parte de um percurso. Dourado, com ícone de livro aberto. Aparece no topo do box de trilha expandido.</p>
+      <a href="#" class="percurso-chip">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 3 6 21"/><polyline points="18 3 18 21"/><line x1="6" y1="8" x2="18" y2="8"/><line x1="6" y1="16" x2="18" y2="16"/></svg>
+        Faz parte do percurso <strong>Dominando o Moodle</strong>
+      </a>
+    </section>
+
+    <!-- ====================== BOTÕES ====================== -->
+    <section class="sg-section" id="botoes">
+      <h2>Botões</h2>
+      <p class="sg-lead">Três níveis de ênfase. Primário verde para a ação principal; secundário com contorno; fantasma para ações terciárias.</p>
+      <div class="demo-grid">
+        <button class="btn btn-primary">Começar pelo primeiro artigo</button>
+        <button class="btn btn-secondary">Ver todos os artigos</button>
+        <button class="btn btn-ghost">Compartilhar</button>
+      </div>
+    </section>
+
+    <!-- ====================== CALLOUTS ====================== -->
+    <section class="sg-section" id="callouts">
+      <h2>Callouts</h2>
+      <p class="sg-lead">Blocos de destaque dentro do artigo. Quatro cores semânticas disponíveis. Os <strong>tipos</strong> (nome e quando usar cada um) ainda não foram fixados — isso é trabalho de Content Design (Decisão 5).</p>
+      <div class="demo-stack">
+        <div class="callout dica"><p class="callout-title">Dica</p><p>Use categorias de nota para agrupar atividades de mesmo tipo — facilita aplicar pesos depois.</p></div>
+        <div class="callout info"><p class="callout-title">Nota</p><p>O livro de notas do Moodle do IFes usa o método de agregação "média ponderada" como padrão institucional.</p></div>
+        <div class="callout atencao"><p class="callout-title">Atenção</p><p>Alterar o peso de uma categoria recalcula todas as notas já lançadas. Confira antes de salvar.</p></div>
+        <div class="callout cuidado"><p class="callout-title">Cuidado</p><p>Excluir uma categoria de nota apaga os itens associados. Esta ação não pode ser desfeita.</p></div>
+      </div>
+      <div class="sg-note"><strong>A definir com Content Design:</strong> quantos tipos de callout existem, como se chamam e a regra de quando usar cada um. As 4 cores acima estão prontas no DS — falta o mapeamento tipo → cor.</div>
+    </section>
+
+    <!-- ====================== CARDS ====================== -->
+    <section class="sg-section" id="cards">
+      <h2>Cards</h2>
+      <p class="sg-lead">Previews para listagens. Artigo (neutro), trilha (borda verde), percurso (borda dourada).</p>
+      <div class="demo-grid" style="align-items:stretch">
+        <a href="#" class="card">
+          <span class="badge tipo">Tutorial</span>
+          <h4>Configurando o livro de notas do Moodle</h4>
+          <p>Estruturar categorias, definir pesos e escolher o método de agregação.</p>
+          <div class="card-foot">Pedagogia e Planejamento · 14 min</div>
+        </a>
+        <a href="#" class="card trilha-card">
+          <span class="kicker trilha" style="font-size:.64rem">Trilha</span>
+          <h4>Avaliação no Moodle</h4>
+          <p>Do desenho da estrutura ao fechamento do período letivo.</p>
+          <div class="card-foot">15 artigos · ~2h30</div>
+        </a>
+        <a href="#" class="card percurso-card">
+          <span class="kicker percurso" style="font-size:.64rem">Percurso</span>
+          <h4>Dominando o Moodle</h4>
+          <p>Conjunto curado de trilhas para ir além do básico.</p>
+          <div class="card-foot">4 trilhas · 37 artigos · ~6h</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ====================== PROGRESSO ====================== -->
+    <section class="sg-section" id="progresso">
+      <h2>Progresso estrutural</h2>
+      <p class="sg-lead">Posição do artigo na trilha — <strong>não</strong> progresso pessoal do leitor (Decisão 29). Sem login, mostramos apenas onde o artigo está na sequência.</p>
+      <div class="progress-demo">
+        <div class="progress-bar"><div class="progress-bar-fill" style="width:46.6%"></div></div>
+        <span class="progress-label">Artigo <b>7</b> de 15</span>
+      </div>
+    </section>
+
+    <!-- ====================== BREADCRUMB ====================== -->
+    <section class="sg-section" id="breadcrumb">
+      <h2>Breadcrumb</h2>
+      <p class="sg-lead">Navegação de contexto. Reflete a hierarquia da arquitetura de informação.</p>
+      <nav class="breadcrumb-demo" aria-label="exemplo">
+        <a href="#">Início</a><span>›</span>
+        <a href="#">Trilhas</a><span>›</span>
+        <span class="current">Avaliação no Moodle</span>
+      </nav>
+    </section>
+
+    <footer class="sg-footer">
+      <p>Kit Visual · Camadas 2 (Tokens) e 3 (Componentes) do Design System.<br>
+      Tokens espelham <code>stages/01-fundacoes/drafts/prototipo-artigo.html</code>. Modos claro/escuro/contraste e fonte para dislexia conforme Decisões 6, 8 e 10.</p>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  const root = document.documentElement;
+
+  // Claro / Escuro
+  document.querySelectorAll('[data-theme-btn]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const mode = btn.getAttribute('data-theme-btn');
+      root.setAttribute('data-theme', mode);
+      document.querySelectorAll('[data-theme-btn]').forEach(b =>
+        b.setAttribute('aria-pressed', String(b === btn)));
+    });
+  });
+
+  // Alto contraste (toggle independente)
+  const contrastBtn = document.getElementById('contrastBtn');
+  contrastBtn.addEventListener('click', () => {
+    const on = root.getAttribute('data-contrast') === 'high';
+    if (on) root.removeAttribute('data-contrast');
+    else root.setAttribute('data-contrast', 'high');
+    contrastBtn.setAttribute('aria-pressed', String(!on));
+  });
+
+  // Fonte dislexia (toggle independente)
+  const dyslexicBtn = document.getElementById('dyslexicBtn');
+  dyslexicBtn.addEventListener('click', () => {
+    const on = root.getAttribute('data-font') === 'dyslexic';
+    if (on) root.removeAttribute('data-font');
+    else root.setAttribute('data-font', 'dyslexic');
+    dyslexicBtn.setAttribute('aria-pressed', String(!on));
+  });
+</script>
+</body>
+</html>

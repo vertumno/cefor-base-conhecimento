@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Revisão da Proposta · Taxonomia + Interface do Artigo · Base CEFOR/IFes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f1ea;
+    --bg-2: #ebe6db;
+    --paper: #ffffff;
+    --ink: #14110d;
+    --ink-2: #4a4439;
+    --ink-3: #8a8273;
+    --line: #e2dccd;
+    --line-2: #d4cdba;
+    --accent: #1f5142;
+    --accent-2: #2d6a4f;
+    --accent-soft: #e3ecdf;
+    --gold: #b08544;
+    --gold-soft: #f3e7d0;
+    --rose: #b3433a;
+    --rose-soft: #f4dcd7;
+    --sun: #c98a1e;
+    --sun-soft: #f7e6c4;
+    --sky: #2c5e8f;
+    --sky-soft: #d9e7f3;
+    --serif: 'Fraunces', 'Source Serif 4', Georgia, serif;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 16px;
+    --r-xl: 24px;
+    --shadow-sm: 0 1px 2px rgba(20,17,13,.04), 0 1px 1px rgba(20,17,13,.03);
+    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
+    --shadow-lg: 0 24px 48px -12px rgba(20,17,13,.16), 0 8px 16px -8px rgba(20,17,13,.08);
+  }
+  [data-theme="dark"] {
+    --bg: #14110d;
+    --bg-2: #1c1814;
+    --paper: #221d17;
+    --ink: #f4f1ea;
+    --ink-2: #c9c2b3;
+    --ink-3: #8a8273;
+    --line: #2e2820;
+    --line-2: #3a342a;
+    --accent: #6cb89a;
+    --accent-2: #87cdb0;
+    --accent-soft: #1e2e26;
+    --gold-soft: #2e2516;
+    --rose-soft: #2e1a17;
+    --sun-soft: #2e2310;
+    --sky-soft: #16222e;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background .3s, color .3s;
+  }
+
+  .progress-rail { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 200; background: transparent; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--gold)); width: 0%; transition: width .15s ease-out; }
+
+  /* MASTHEAD */
+  .masthead { position: relative; padding: 80px 24px 56px; overflow: hidden; border-bottom: 1px solid var(--line); }
+  .masthead::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(800px 400px at 15% 20%, rgba(31,81,66,.08), transparent 60%),
+      radial-gradient(600px 300px at 85% 80%, rgba(176,133,68,.08), transparent 60%);
+    pointer-events: none;
+  }
+  .masthead-inner { max-width: 1080px; margin: 0 auto; position: relative; }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--sans); font-size: .72rem; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+  }
+  .kicker::before, .kicker::after { content: ''; height: 1px; width: 28px; background: var(--accent); opacity: .5; }
+  .masthead h1 {
+    font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 600; line-height: 1.04; letter-spacing: -.02em;
+    margin: 0 0 20px; font-variation-settings: "opsz" 144;
+  }
+  .masthead h1 em { font-style: italic; font-weight: 500; color: var(--accent); }
+  .masthead-lead { max-width: 720px; font-size: 1.08rem; color: var(--ink-2); line-height: 1.55; margin: 0 0 32px; }
+  .masthead-meta {
+    display: flex; flex-wrap: wrap; gap: 24px 40px;
+    padding-top: 24px; border-top: 1px solid var(--line);
+    font-size: .82rem; color: var(--ink-3);
+  }
+  .masthead-meta div { display: flex; flex-direction: column; gap: 2px; }
+  .masthead-meta strong { color: var(--ink); font-family: var(--serif); font-size: 1.05rem; font-weight: 600; }
+
+  /* Layout */
+  .shell {
+    max-width: 1080px; margin: 0 auto; padding: 0 24px;
+    display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: flex-start;
+  }
+  @media (max-width: 960px) {
+    .shell { grid-template-columns: 1fr; gap: 24px; }
+    .sidebar { position: static !important; order: -1; }
+  }
+
+  /* SIDEBAR */
+  .sidebar { position: sticky; top: 24px; padding: 24px 0; }
+  .ring-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; box-shadow: var(--shadow-sm); margin-bottom: 16px; }
+  .ring-wrap { display: flex; align-items: center; gap: 18px; }
+  .ring { width: 88px; height: 88px; flex-shrink: 0; }
+  .ring-text { font-family: var(--serif); font-weight: 600; font-size: 1.5rem; fill: var(--ink); }
+  .ring-text-2 { font-family: var(--sans); font-size: .65rem; fill: var(--ink-3); letter-spacing: .1em; }
+  .ring-bg { fill: none; stroke: var(--line); stroke-width: 8; }
+  .ring-fg { fill: none; stroke: var(--accent); stroke-width: 8; stroke-linecap: round; transition: stroke-dasharray .5s ease; transform: rotate(-90deg); transform-origin: center; }
+  .ring-label-title { font-family: var(--serif); font-size: 1rem; font-weight: 600; margin: 0 0 4px; }
+  .ring-label-sub { font-size: .82rem; color: var(--ink-3); }
+  .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .stat-pill { text-align: center; padding: 8px 4px; border-radius: var(--r-sm); font-size: .72rem; }
+  .stat-pill strong { display: block; font-family: var(--serif); font-size: 1.4rem; font-weight: 600; }
+  .stat-pill.app { background: var(--accent-soft); color: var(--accent); }
+  .stat-pill.adj { background: var(--sun-soft); color: var(--sun); }
+  .stat-pill.rej { background: var(--rose-soft); color: var(--rose); }
+
+  .nav-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 18px 20px; box-shadow: var(--shadow-sm); margin-bottom: 16px; }
+  .nav-title { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 12px; }
+  .nav-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .nav-dot {
+    aspect-ratio: 1; border-radius: var(--r-sm); background: var(--bg-2); border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: .85rem; font-weight: 600; color: var(--ink-3);
+    cursor: pointer; transition: transform .12s, box-shadow .12s; text-decoration: none;
+  }
+  .nav-dot:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+  .nav-dot.s-approved { background: var(--accent); color: white; border-color: var(--accent); }
+  .nav-dot.s-adjusted { background: var(--sun); color: white; border-color: var(--sun); }
+  .nav-dot.s-rejected { background: var(--rose); color: white; border-color: var(--rose); }
+
+  .actions-stack { display: flex; flex-direction: column; gap: 8px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    padding: 11px 16px; border-radius: var(--r-md); cursor: pointer;
+    font-family: var(--sans); font-size: .88rem; font-weight: 500;
+    transition: all .15s; text-decoration: none;
+  }
+  .btn:hover { border-color: var(--ink-3); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+  .btn-primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+  .btn-ghost { background: transparent; border-color: transparent; color: var(--ink-2); }
+  .btn-danger:hover { color: var(--rose); border-color: var(--rose); }
+  .btn-icon { width: 38px; height: 38px; padding: 0; flex-shrink: 0; }
+
+  .theme-toggle { position: fixed; top: 16px; right: 16px; z-index: 150; }
+
+  /* Meta inputs */
+  .meta-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 32px; padding-top: 32px; }
+  .meta-inputs label { display: flex; flex-direction: column; gap: 6px; font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+  .meta-inputs input {
+    padding: 12px 14px; border: 1px solid var(--line); background: var(--paper);
+    border-radius: var(--r-md); font-family: var(--sans); font-size: 1rem; color: var(--ink);
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .meta-inputs input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+
+  /* REVIEW CARD */
+  .review {
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-xl);
+    margin-bottom: 28px; overflow: hidden; box-shadow: var(--shadow-sm);
+    transition: transform .2s, box-shadow .2s, border-color .2s; scroll-margin-top: 24px;
+  }
+  .review:hover { border-color: var(--line-2); box-shadow: var(--shadow-md); }
+  .review.s-approved { border-color: var(--accent); }
+  .review.s-adjusted { border-color: var(--sun); }
+  .review.s-rejected { border-color: var(--rose); }
+
+  .review-head {
+    display: grid; grid-template-columns: auto 1fr auto; gap: 24px;
+    align-items: center; padding: 28px 32px 18px;
+  }
+  .review-num {
+    font-family: var(--serif); font-size: 3.4rem; font-weight: 600;
+    line-height: 1; color: var(--line-2); letter-spacing: -.04em;
+    font-variation-settings: "opsz" 144; transition: color .25s;
+  }
+  .review.s-approved .review-num { color: var(--accent); }
+  .review.s-adjusted .review-num { color: var(--sun); }
+  .review.s-rejected .review-num { color: var(--rose); }
+  .review-titlebox h2 {
+    font-family: var(--serif); font-size: 1.6rem; font-weight: 600;
+    line-height: 1.2; margin: 0 0 6px; letter-spacing: -.01em;
+  }
+  .review-question { color: var(--ink-2); font-size: .98rem; margin: 0; line-height: 1.5; }
+  .status-badge {
+    font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    padding: 6px 10px; border-radius: 99px; background: var(--bg-2); color: var(--ink-3);
+  }
+  .s-approved .status-badge { background: var(--accent-soft); color: var(--accent); }
+  .s-adjusted .status-badge { background: var(--sun-soft); color: var(--sun); }
+  .s-rejected .status-badge { background: var(--rose-soft); color: var(--rose); }
+
+  .review-body { padding: 6px 32px 28px; }
+  .panel-label {
+    font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ink-3); margin: 22px 0 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .panel-label::before { content: ''; width: 18px; height: 1px; background: var(--ink-3); }
+  .panel-label:first-child { margin-top: 0; }
+
+  .proposal {
+    font-size: 1rem; line-height: 1.65; color: var(--ink);
+    padding: 18px 22px;
+    background: linear-gradient(135deg, var(--accent-soft), transparent);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--r-md) var(--r-md) 0;
+  }
+  .proposal strong { color: var(--accent); font-weight: 600; }
+  .proposal p { margin: 0 0 12px; }
+  .proposal p:last-child { margin-bottom: 0; }
+
+  .example-frame {
+    background: var(--bg-2); border-radius: var(--r-md);
+    padding: 22px; border: 1px dashed var(--line-2); position: relative;
+  }
+  .example-frame::after {
+    content: 'Como ficaria'; position: absolute; top: -8px; right: 14px;
+    background: var(--bg-2); padding: 0 8px; font-size: .68rem; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3);
+  }
+
+  /* REVIEW FOOTER */
+  .review-foot { background: linear-gradient(180deg, transparent, var(--bg-2)); padding: 24px 32px 28px; border-top: 1px solid var(--line); }
+  .segment {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
+    background: var(--paper); padding: 4px; border: 1px solid var(--line);
+    border-radius: 99px; margin-bottom: 16px; box-shadow: var(--shadow-sm);
+  }
+  .segment input { position: absolute; opacity: 0; pointer-events: none; }
+  .segment label {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 11px 16px; border-radius: 99px; cursor: pointer;
+    font-size: .9rem; font-weight: 500; color: var(--ink-2);
+    transition: all .18s; user-select: none;
+  }
+  .segment label:hover { background: var(--bg-2); }
+  .segment input:checked + label.opt-app { background: var(--accent); color: white; box-shadow: 0 2px 8px rgba(31,81,66,.3); }
+  .segment input:checked + label.opt-adj { background: var(--sun); color: white; box-shadow: 0 2px 8px rgba(201,138,30,.3); }
+  .segment input:checked + label.opt-rej { background: var(--rose); color: white; box-shadow: 0 2px 8px rgba(179,67,58,.3); }
+  textarea.comment {
+    width: 100%; min-height: 80px; padding: 14px 16px;
+    border: 1px solid var(--line); border-radius: var(--r-md);
+    font-family: var(--sans); font-size: .95rem; line-height: 1.5;
+    resize: vertical; background: var(--paper); color: var(--ink);
+    transition: border-color .15s, box-shadow .15s;
+  }
+  textarea.comment::placeholder { color: var(--ink-3); }
+  textarea.comment:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+
+  /* ============ EXAMPLE-SPECIFIC ============ */
+  /* Eixos overview */
+  .eixos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .eixo-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; }
+  .eixo-num { font-family: var(--serif); font-size: 1.6rem; font-weight: 600; color: var(--accent); line-height: 1; margin-bottom: 4px; }
+  .eixo-card h4 { font-family: var(--serif); font-size: 1.1rem; margin: 0 0 6px; }
+  .eixo-card p { margin: 0; font-size: .82rem; color: var(--ink-3); line-height: 1.5; }
+  .eixo-card .eixo-card-tag { font-size: .68rem; color: var(--accent); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-top: 8px; display: block; }
+
+  /* Tipos list */
+  .tipos-list { display: flex; flex-direction: column; gap: 8px; }
+  .tipo-row { display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 10px 14px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-sm); align-items: start; }
+  .tipo-pill { background: var(--accent-soft); color: var(--accent); font-weight: 600; font-size: .82rem; padding: 4px 10px; border-radius: 99px; text-align: center; height: fit-content; }
+  .tipo-desc { font-size: .85rem; color: var(--ink-2); line-height: 1.45; }
+  .tipo-desc small { display: block; color: var(--ink-3); font-size: .78rem; margin-top: 2px; }
+
+  /* Categorias list */
+  .cat-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .cat-row { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 12px 14px; }
+  .cat-row strong { font-family: var(--serif); font-size: 1rem; display: block; margin-bottom: 2px; }
+  .cat-row .cat-meta { display: flex; gap: 10px; font-size: .72rem; color: var(--ink-3); font-family: var(--mono); }
+  .cat-row .cat-meta span:first-child { color: var(--accent); }
+
+  /* Categorias detalhadas (com lista de artigos exemplo) */
+  .cat-detailed { display: flex; flex-direction: column; gap: 8px; }
+  .cat-detail-row { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px 16px; }
+  .cat-detail-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 8px; border-bottom: 1px dashed var(--line); margin-bottom: 8px; flex-wrap: wrap; }
+  .cat-detail-head strong { font-family: var(--serif); font-size: 1.05rem; }
+  .cat-detail-head .cat-detail-meta { font-size: .76rem; color: var(--ink-3); font-family: var(--mono); }
+  .cat-detail-head .cat-detail-meta code { background: var(--bg-2); padding: 1px 5px; border-radius: 3px; color: var(--accent); }
+  .cat-detail-list { margin: 0; padding-left: 18px; font-size: .84rem; color: var(--ink-2); line-height: 1.55; }
+  .cat-detail-list li { margin: 2px 0; }
+
+  /* Tópicos chips */
+  .topicos-groups { display: flex; flex-direction: column; gap: 12px; }
+  .topicos-group { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 10px 14px; }
+  .topicos-group-title { font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); font-weight: 700; margin-bottom: 8px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+  .chip { background: var(--bg-2); border: 1px solid var(--line); border-radius: 99px; padding: 3px 10px; font-size: .78rem; color: var(--ink-2); font-family: var(--mono); }
+
+  /* Trilhas list */
+  .trilhas-list { display: flex; flex-direction: column; gap: 8px; }
+  .trilha-row { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; padding: 12px 14px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-sm); }
+  .trilha-icon { width: 32px; height: 32px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-weight: 700; font-size: .92rem; }
+  .trilha-row strong { font-family: var(--serif); font-size: 1rem; }
+  .trilha-row small { display: block; color: var(--ink-3); font-size: .78rem; margin-top: 2px; }
+  .trilha-count { font-family: var(--mono); font-size: .78rem; color: var(--ink-3); }
+
+  /* Mock article header */
+  .mock-article { background: white; border: 1px solid var(--line); border-radius: var(--r-md); padding: 22px; font-family: var(--sans); }
+  .mock-article .m-bread { font-size: .72rem; color: var(--ink-3); margin-bottom: 10px; }
+  .mock-article .m-bread a { color: var(--ink-3); text-decoration: none; }
+  .mock-article .m-tipo { display: inline-block; background: var(--accent-soft); color: var(--accent); font-size: .68rem; font-weight: 700; padding: 4px 10px; border-radius: 99px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; }
+  .mock-article h4 { font-family: var(--sans); font-size: 1.25rem; font-weight: 700; line-height: 1.18; letter-spacing: -.02em; margin: 0 0 8px; color: var(--ink); }
+  .mock-article .m-subtitle { font-family: var(--sans); font-size: .98rem; font-weight: 400; line-height: 1.45; color: var(--ink-2); margin: 0 0 12px; }
+  .mock-article .m-meta { font-size: .82rem; color: var(--ink-3); display: flex; flex-wrap: wrap; gap: 12px; padding-top: 10px; border-top: 1px dashed var(--line); }
+  .mock-article .m-meta b { color: var(--ink); font-weight: 600; }
+  .mock-article .m-trilha { background: var(--gold-soft); color: var(--ink); font-size: .78rem; padding: 6px 12px; border-radius: var(--r-sm); margin: 10px 0; display: inline-block; border-left: 3px solid var(--gold); }
+
+  /* Multimodal blocks mock */
+  .multimodal-stack { display: flex; flex-direction: column; gap: 8px; }
+  .mm-row { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: center; padding: 10px 14px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-sm); }
+  .mm-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: .9rem; }
+  .mm-row strong { font-size: .9rem; display: block; }
+  .mm-row small { display: block; color: var(--ink-3); font-size: .76rem; }
+
+  /* Footer mock */
+  .footer-mock { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-md); padding: 18px; }
+  .footer-mock-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
+  .footer-mock-fb { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; align-items: center; padding: 12px; background: var(--bg-2); border-radius: var(--r-sm); }
+  .footer-mock-fb-q { font-size: .85rem; color: var(--ink-2); margin-right: 4px; }
+  .footer-mock-fb-btn { background: var(--paper); color: var(--ink-2); border: 1px solid var(--line); font-size: .78rem; padding: 5px 14px; border-radius: 99px; }
+  .footer-mock-fb-btn.yes { background: var(--accent); color: white; border-color: var(--accent); }
+  .footer-mock-share { margin-left: auto; background: var(--paper); border: 1px solid var(--line); color: var(--ink-2); font-size: .78rem; padding: 5px 14px; border-radius: 99px; cursor: pointer; }
+  .footer-mock-trilha { background: var(--gold-soft); border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent); border-radius: var(--r-md); padding: 14px; margin-bottom: 14px; }
+  .footer-mock-trilha-head { font-size: .82rem; color: var(--ink); margin-bottom: 10px; }
+  .footer-mock-trilha-head b { color: var(--accent); }
+  .footer-mock-trilha-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .footer-mock-trilha-card { background: var(--paper); padding: 10px 12px; border-radius: var(--r-sm); border: 1px solid var(--line); }
+  .footer-mock-trilha-card.right { text-align: right; }
+  .footer-mock-trilha-card small { font-size: .68rem; color: var(--accent); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  .footer-mock-trilha-card span { display: block; font-size: .84rem; margin-top: 4px; font-weight: 500; color: var(--ink); }
+  .footer-mock-autor { display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg-2); border-radius: var(--r-sm); margin-bottom: 14px; }
+  .footer-mock-autor-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-weight: 700; font-size: .85rem; flex-shrink: 0; }
+  .footer-mock-autor strong { font-family: var(--serif); font-size: .98rem; display: block; }
+  .footer-mock-autor small { display: block; font-size: .76rem; color: var(--ink-3); margin-top: 1px; }
+  .footer-mock-rel { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .footer-mock-card { background: var(--bg-2); padding: 10px 12px; border-radius: var(--r-sm); border: 1px solid var(--line); }
+  .footer-mock-card small { font-size: .68rem; color: var(--accent); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  .footer-mock-card span { display: block; font-size: .85rem; margin-top: 4px; font-weight: 500; }
+
+  /* Stat callouts */
+  .stat-callout { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; padding: 14px 16px; background: var(--rose-soft); border-left: 3px solid var(--rose); border-radius: 0 var(--r-md) var(--r-md) 0; margin: 8px 0; }
+  .stat-callout-num { font-family: var(--serif); font-size: 2rem; font-weight: 600; color: var(--rose); line-height: 1; }
+  .stat-callout p { margin: 0; font-size: .88rem; line-height: 1.4; color: var(--ink-2); }
+  .stat-callout p strong { color: var(--ink); }
+
+  /* Summary final */
+  .summary-final { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 32px; margin: 48px 0 32px; box-shadow: var(--shadow-md); }
+  .summary-final h2 { font-family: var(--serif); font-size: 1.8rem; font-weight: 600; margin: 0 0 8px; letter-spacing: -.01em; }
+  .summary-sub { font-size: .92rem; color: var(--ink-3); margin: 0 0 24px; }
+  .summary-list { display: flex; flex-direction: column; gap: 10px; }
+  .summary-item { display: grid; grid-template-columns: 32px 1fr auto; gap: 16px; padding: 14px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r-md); align-items: center; }
+  .summary-item-ico { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--bg); color: var(--ink-3); font-size: .9rem; font-weight: 600; }
+  .summary-item.s-approved { border-color: var(--accent); }
+  .summary-item.s-approved .summary-item-ico { background: var(--accent); color: white; }
+  .summary-item.s-adjusted { border-color: var(--sun); }
+  .summary-item.s-adjusted .summary-item-ico { background: var(--sun); color: white; }
+  .summary-item.s-rejected { border-color: var(--rose); }
+  .summary-item.s-rejected .summary-item-ico { background: var(--rose); color: white; }
+  .summary-item-title { font-size: .92rem; }
+  .summary-item-comment { display: block; color: var(--ink-3); font-size: .8rem; font-style: italic; margin-top: 2px; }
+  .summary-item-num { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--ink-3); }
+
+  footer { text-align: center; color: var(--ink-3); font-size: .82rem; padding: 48px 16px; line-height: 1.6; }
+  footer strong { color: var(--ink-2); }
+
+  @media print {
+    .sidebar, .theme-toggle, .progress-rail { display: none !important; }
+    .shell { grid-template-columns: 1fr; }
+    .review { box-shadow: none; break-inside: avoid; page-break-inside: avoid; }
+    body { background: white; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-rail"><div class="progress-fill" id="progressBar"></div></div>
+<button class="btn btn-icon theme-toggle" onclick="toggleTheme()" title="Alternar tema" id="themeBtn">🌙</button>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="kicker">Fase 1 · Fundações · Revisão da Proposta</div>
+    <h1>Taxonomia + Interface do <em>Artigo</em>.</h1>
+    <p class="masthead-lead">
+      Esta proposta nasce da análise de <strong>131 artigos</strong> da base antiga e das <strong>15 decisões já consolidadas</strong>. Apresenta uma arquitetura em <strong>4 eixos</strong> (Tipo, Categoria, Tópicos, Trilha) e fecha o layout do artigo. Revise item por item, aprove, ajuste ou rejeite com comentário — e exporte o resultado em JSON ao final.
+    </p>
+    <div class="masthead-meta">
+      <div><strong>8</strong><span>itens de revisão</span></div>
+      <div><strong>~30 min</strong><span>tempo estimado</span></div>
+      <div><strong>Marcos + Rute</strong><span>revisores principais</span></div>
+      <div><strong>2026-05-13</strong><span>data da proposta</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+
+  <main>
+    <div class="meta-inputs">
+      <label>Data da revisão
+        <input type="date" id="metaDate" />
+      </label>
+      <label>Revisor(es)
+        <input type="text" id="metaRevisor" placeholder="Marcos, Rute" />
+      </label>
+    </div>
+
+    <div id="reviewsContainer"></div>
+
+    <section class="summary-final" id="summaryBlock">
+      <h2>Resumo final</h2>
+      <p class="summary-sub">Atualiza em tempo real. Use os botões da barra lateral para exportar.</p>
+      <div class="summary-list" id="summaryList"></div>
+    </section>
+
+    <footer>
+      Os dados são salvos automaticamente no navegador.<br/>
+      Use <strong>Exportar JSON</strong> para enviar ao Elton e atualizar o draft da proposta.
+    </footer>
+  </main>
+
+  <aside class="sidebar">
+    <div class="ring-card">
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 100 100">
+          <circle class="ring-bg" cx="50" cy="50" r="42" />
+          <circle class="ring-fg" id="ringFg" cx="50" cy="50" r="42" stroke-dasharray="0 264" />
+          <text class="ring-text" x="50" y="52" text-anchor="middle" id="ringNum">0</text>
+          <text class="ring-text-2" x="50" y="66" text-anchor="middle">DE 8</text>
+        </svg>
+        <div>
+          <p class="ring-label-title">Progresso</p>
+          <p class="ring-label-sub" id="ringSub">Comece marcando o 1º item</p>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-pill app"><strong id="statApp">0</strong>aprov.</div>
+        <div class="stat-pill adj"><strong id="statAdj">0</strong>ajust.</div>
+        <div class="stat-pill rej"><strong id="statRej">0</strong>rejei.</div>
+      </div>
+    </div>
+
+    <div class="nav-card">
+      <p class="nav-title">Mapa rápido</p>
+      <div class="nav-grid" id="navGrid"></div>
+    </div>
+
+    <div class="actions-stack">
+      <button class="btn btn-primary" onclick="exportJSON()">💾 Exportar JSON</button>
+      <button class="btn" onclick="exportMD()">📄 Exportar Markdown</button>
+      <button class="btn" onclick="importJSON()">📥 Importar JSON</button>
+      <button class="btn" onclick="window.print()">🖨️ Imprimir / PDF</button>
+      <button class="btn btn-ghost btn-danger" onclick="clearAll()">🗑️ Limpar tudo</button>
+    </div>
+  </aside>
+
+</div>
+
+<input type="file" id="fileInput" accept=".json" style="display:none" />
+
+<script>
+const REVIEWS = [
+  {
+    id: 1,
+    title: "Arquitetura em 4 eixos",
+    question: "Adotar quatro eixos taxonômicos com papéis distintos e não-sobrepostos?",
+    proposal: `
+      <p><strong>Substituir o modelo atual</strong> (categoria + tipo + tags livres + percursos sobrepostos) por <strong>4 eixos com papéis claros</strong>:</p>
+      <p><strong>1. Tipo</strong> — formato editorial (<em>como se lê</em>). 1 valor por artigo.<br/>
+      <strong>2. Categoria</strong> — área de conhecimento (<em>onde mora</em>). 1 valor por artigo, define URL.<br/>
+      <strong>3. Tópicos</strong> — vocabulário controlado (<em>do que fala</em>). 2-4 valores por artigo.<br/>
+      <strong>4. Trilha</strong> — percurso didático sequencial (<em>parte de uma jornada?</em>). 0 ou 1 valor.</p>
+      <p>A regra-mãe: cada eixo responde a <strong>uma única pergunta</strong>. Se dois eixos respondem à mesma, um deles sai.</p>
+    `,
+    example: `
+      <div class="eixos-grid">
+        <div class="eixo-card">
+          <div class="eixo-num">1</div>
+          <h4>Tipo</h4>
+          <p>Que tipo de leitura esperar?</p>
+          <span class="eixo-card-tag">5 valores fechados · 1 por artigo</span>
+        </div>
+        <div class="eixo-card">
+          <div class="eixo-num">2</div>
+          <h4>Categoria</h4>
+          <p>Em que parte da base mora?</p>
+          <span class="eixo-card-tag">6 valores fechados · 1 por artigo · vira URL</span>
+        </div>
+        <div class="eixo-card">
+          <div class="eixo-num">3</div>
+          <h4>Tópicos</h4>
+          <p>De que assuntos fala?</p>
+          <span class="eixo-card-tag">~25 termos · 2-4 por artigo</span>
+        </div>
+        <div class="eixo-card">
+          <div class="eixo-num">4</div>
+          <h4>Trilha</h4>
+          <p>Faz parte de uma jornada?</p>
+          <span class="eixo-card-tag">~5 trilhas · 0 ou 1 por artigo</span>
+        </div>
+      </div>
+      <div class="stat-callout">
+        <div class="stat-callout-num">42%</div>
+        <p><strong>Hoje 42% dos artigos não têm percurso.</strong> O modelo atual usa percurso como "categoria alternativa", não como sequência didática. Os 4 eixos resolvem isso com papéis distintos.</p>
+      </div>
+    `
+  },
+  {
+    id: 2,
+    title: "Eixo 1 — Tipos (5 valores)",
+    question: "Substituir os 10 tipos atuais (incluindo 30 artigos como \"Outros\") por 5 tipos fechados?",
+    proposal: `
+      <p><strong>5 tipos fechados</strong>, cada um com esqueleto editorial e expectativa de leitura próprios:</p>
+      <p><strong>Tutorial</strong> · <strong>Referência</strong> · <strong>Conceitual</strong> · <strong>Solução de Problema</strong> · <strong>Recurso</strong></p>
+      <p><strong>Eliminados:</strong> "Outros" (30 artigos hoje sem classificação útil) e "Evento/Divulgação" (não pertence a uma base de conhecimento). Cada artigo "Outros" precisa ser reclassificado em um dos 5.</p>
+    `,
+    example: `
+      <div class="tipos-list">
+        <div class="tipo-row">
+          <span class="tipo-pill">Tutorial</span>
+          <span class="tipo-desc">Passo-a-passo executável com checkpoint.<small>Pré-requisitos → Passos numerados → Verificação → Próximos passos</small></span>
+        </div>
+        <div class="tipo-row">
+          <span class="tipo-pill">Referência</span>
+          <span class="tipo-desc">Consulta rápida, listas, dicionários, modelos.<small>Resumo → Lista/tabela → Detalhes por item</small></span>
+        </div>
+        <div class="tipo-row">
+          <span class="tipo-pill">Conceitual</span>
+          <span class="tipo-desc">Entender o "porquê", fundamentos pedagógicos.<small>Problema → Conceitos → Aplicação prática</small></span>
+        </div>
+        <div class="tipo-row">
+          <span class="tipo-pill">Solução de Problema</span>
+          <span class="tipo-desc">Troubleshooting, "tenho erro X".<small>Sintoma → Causa provável → Solução → Como evitar</small></span>
+        </div>
+        <div class="tipo-row">
+          <span class="tipo-pill">Recurso</span>
+          <span class="tipo-desc">Apresenta uma ferramenta, link, GPT, plugin.<small>O que é → Quando usar → Como acessar → Exemplo</small></span>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: 3,
+    title: "Eixo 2 — Categorias (6 valores)",
+    question: "Substituir as 20 categorias atuais (com duplicação e 5 artigos vazios) por 6 categorias fechadas?",
+    proposal: `
+      <p>As 20 categorias atuais têm duplicação flagrante (AVA com 59 artigos vs Ambiente Virtual com 12, vs Moodle com 7), cauda longa inútil (10 categorias com 1-2 artigos) e 5 artigos sem categoria.</p>
+      <p>Proposta: <strong>6 categorias fechadas, hierarquia rasa (1 nível)</strong>. Cada categoria vira a URL semântica do artigo. Cobertura estimada acima:</p>
+    `,
+    example: `
+      <div class="cat-detailed">
+        <div class="cat-detail-row">
+          <div class="cat-detail-head">
+            <strong>Moodle (AVA)</strong>
+            <span class="cat-detail-meta"><code>/moodle/</code> · ~75 artigos</span>
+          </div>
+          <ul class="cat-detail-list">
+            <li>"Configurando o livro de notas do Moodle"</li>
+            <li>"Como criar um questionário no Moodle"</li>
+            <li>"Atividade de Base de Dados no Moodle"</li>
+            <li>"Moodle e suas principais ferramentas — visão aluno"</li>
+            <li>"Montagem de um banco de questões e sorteios automáticos"</li>
+          </ul>
+        </div>
+        <div class="cat-detail-row">
+          <div class="cat-detail-head">
+            <strong>Ferramentas e Recursos</strong>
+            <span class="cat-detail-meta"><code>/ferramentas/</code> · ~20 artigos</span>
+          </div>
+          <ul class="cat-detail-list">
+            <li>"Descubra o ReLiCefor"</li>
+            <li>"Oficinas de IA: aprendendo na prática com o Cefor"</li>
+            <li>"GPT customizado para criação de material didático"</li>
+            <li>"Vídeo Summarizer: resumindo aulas gravadas"</li>
+            <li>"Ferramentas de autoria H5P para conteúdo interativo"</li>
+          </ul>
+        </div>
+        <div class="cat-detail-row">
+          <div class="cat-detail-head">
+            <strong>Pedagogia e Planejamento</strong>
+            <span class="cat-detail-meta"><code>/pedagogia/</code> · ~10 artigos</span>
+          </div>
+          <ul class="cat-detail-list">
+            <li>"Taxonomia de Bloom Revisitada (2.0): habilidades humanas e IA"</li>
+            <li>"Metodologia de elaboração de disciplina EaD no IFes"</li>
+            <li>"Boas práticas no design de avaliações online"</li>
+            <li>"Planejamento pedagógico de uma disciplina EaD"</li>
+            <li>"Princípios de comunicação assíncrona com estudantes"</li>
+          </ul>
+        </div>
+        <div class="cat-detail-row">
+          <div class="cat-detail-head">
+            <strong>Acessibilidade</strong>
+            <span class="cat-detail-meta"><code>/acessibilidade/</code> · ~8 artigos</span>
+          </div>
+          <ul class="cat-detail-list">
+            <li>"Acessibilidade Digital: cuidados ao inserir recursos no Moodle"</li>
+            <li>"Videobook em Libras de termos da Educação a Distância"</li>
+            <li>"Como configurar tempo ampliado sem expor estudante com NE"</li>
+            <li>"VLibras no AVA: ativando a tradução automática"</li>
+            <li>"Audiodescrição: como escrever descrições eficazes para imagens"</li>
+          </ul>
+        </div>
+        <div class="cat-detail-row">
+          <div class="cat-detail-head">
+            <strong>Conduta e Conformidade</strong>
+            <span class="cat-detail-meta"><code>/conduta/</code> · ~6 artigos</span>
+          </div>
+          <ul class="cat-detail-list">
+            <li>"Netiqueta — Regras de Etiqueta na Internet"</li>
+            <li>"Direitos Autorais em materiais didáticos"</li>
+            <li>"Segurança do navegador para professores"</li>
+            <li>"Definição de endereço de rede (IP) para acesso à prova"</li>
+            <li>"Política de uso de IA generativa na produção de material"</li>
+          </ul>
+        </div>
+        <div class="cat-detail-row">
+          <div class="cat-detail-head">
+            <strong>Identidade Cefor</strong>
+            <span class="cat-detail-meta"><code>/identidade/</code> · ~7 artigos</span>
+          </div>
+          <ul class="cat-detail-list">
+            <li>"Padrões visuais do Cefor"</li>
+            <li>"Processo e modelos de documentos para Cursos Abertos (MOOC)"</li>
+            <li>"Templates de apresentação institucional"</li>
+            <li>"Manual do sistema de suporte Cefor (GLPI)"</li>
+            <li>"Identidade visual aplicada ao Moodle: capa de curso e cabeçalhos"</li>
+          </ul>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: 4,
+    title: "Eixo 3 — Tópicos (vocabulário controlado)",
+    question: "Substituir as 82 tags livres (62% usadas 1 vez só) por ~25 tópicos controlados com casing único?",
+    proposal: `
+      <p>Hoje há <strong>82 temas únicos com 62% de cauda longa</strong> — não suportam descoberta. Inconsistências de casing (<code>Ferramenta</code> vs <code>Ferramentas</code>, <code>mooc</code> vs <code>MOOC</code>) e sinônimos não tratados.</p>
+      <p>Proposta: <strong>lista fechada de ~25 tópicos</strong> agrupados, com <strong>casing único definido</strong>. Cada artigo tem 2-4 tópicos. Sem auto-criação.</p>
+      <p><strong>Regras de governança:</strong> casing fixo (sempre <em>Questionário</em>, nunca <em>questionario</em>); sinônimos rejeitados explicitamente; <strong>adição de novo termo exige validação</strong>; tópicos órfãos removidos no ciclo mensal.</p>
+    `,
+    example: `
+      <div class="topicos-groups">
+        <div class="topicos-group">
+          <div class="topicos-group-title">Operacionais Moodle</div>
+          <div class="chips">
+            <span class="chip">Questionário</span>
+            <span class="chip">Prova</span>
+            <span class="chip">Banco de Questões</span>
+            <span class="chip">Notas</span>
+            <span class="chip">Livro de Notas</span>
+            <span class="chip">Tarefa</span>
+            <span class="chip">Fórum</span>
+            <span class="chip">Sala Virtual</span>
+            <span class="chip">Backup</span>
+            <span class="chip">Matrícula</span>
+            <span class="chip">Configuração de Curso</span>
+          </div>
+        </div>
+        <div class="topicos-group">
+          <div class="topicos-group-title">Mídia e Recursos</div>
+          <div class="chips">
+            <span class="chip">Vídeo</span>
+            <span class="chip">H5P</span>
+            <span class="chip">Rótulo</span>
+            <span class="chip">Livro Digital</span>
+            <span class="chip">Webconferência</span>
+            <span class="chip">Áudio</span>
+            <span class="chip">Apresentação</span>
+          </div>
+        </div>
+        <div class="topicos-group">
+          <div class="topicos-group-title">IA · Acessibilidade · Identidade · Conduta</div>
+          <div class="chips">
+            <span class="chip">IA Generativa</span>
+            <span class="chip">GPT Customizado</span>
+            <span class="chip">IA na Aula</span>
+            <span class="chip">Libras</span>
+            <span class="chip">Audiodescrição</span>
+            <span class="chip">Contraste</span>
+            <span class="chip">Inclusão</span>
+            <span class="chip">Padrão Visual</span>
+            <span class="chip">MOOC</span>
+            <span class="chip">ReLiCefor</span>
+            <span class="chip">Direitos Autorais</span>
+            <span class="chip">Segurança Digital</span>
+            <span class="chip">Netiqueta</span>
+          </div>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: 5,
+    title: "Eixo 4 — Trilhas (5 com critério rígido)",
+    question: "Substituir os 12 percursos atuais (com duplicação, 404 e percursos quebrados) por 5 trilhas com critério rígido de adesão?",
+    proposal: `
+      <p>Hoje 12 percursos com problemas: 6 duplicam nomes de categoria, 1 está 404, "Professor Moodle" declara 44 artigos mas só 11 visíveis, 42% do acervo está fora de qualquer trilha.</p>
+      <p>Proposta: <strong>5 trilhas com critério rígido</strong> — começo/meio/fim reais, validadas pela Rute, ao menos 5 artigos, e cada artigo em <strong>no máximo 1 trilha</strong>. Trilha que não cumprir o mínimo é dissolvida.</p>
+    `,
+    example: `
+      <div class="trilhas-list">
+        <div class="trilha-row">
+          <div class="trilha-icon">1</div>
+          <div><strong>Iniciando no Moodle</strong><small>Onboarding · cobre o caminho da chegada até o primeiro curso configurado</small></div>
+          <span class="trilha-count">~12 artigos</span>
+        </div>
+        <div class="trilha-row">
+          <div class="trilha-icon">2</div>
+          <div><strong>Avaliação no Moodle</strong><small>Consolida "Tudo sobre prova" + "Livro de Notas"</small></div>
+          <span class="trilha-count">~15 artigos</span>
+        </div>
+        <div class="trilha-row">
+          <div class="trilha-icon">3</div>
+          <div><strong>Acessibilidade no AVA</strong><small>Pacote completo eMAG/WCAG aplicado a cursos</small></div>
+          <span class="trilha-count">~7 artigos</span>
+        </div>
+        <div class="trilha-row">
+          <div class="trilha-icon">4</div>
+          <div><strong>IA para Professores</strong><small>Da introdução à criação de GPTs customizados</small></div>
+          <span class="trilha-count">~8 artigos</span>
+        </div>
+        <div class="trilha-row">
+          <div class="trilha-icon">5</div>
+          <div><strong>Padrão Visual Cefor</strong><small>Identidade aplicada em cursos, MOOCs e materiais</small></div>
+          <span class="trilha-count">~5 artigos</span>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: 6,
+    title: "Interface do artigo — cabeçalho + meta",
+    question: "Como deve aparecer o topo do artigo? Subtítulo obrigatório, autor obrigatório, tipo como badge?",
+    proposal: `
+      <p><strong>Exibir no topo:</strong> breadcrumb (Início › Categoria › Título), <strong>selo de Tipo</strong> ao lado, H1, <strong>subtítulo obrigatório</strong> em todo artigo (Decisão 16 — adendo de hoje), <strong>autor obrigatório</strong> (Decisão 14), tempo de leitura.</p>
+      <p><strong>Não exibir no topo:</strong> Categoria como badge separado (já está no breadcrumb), Tags/Tópicos (vão no rodapé), Versão do Moodle, <strong>Última revisão</strong> (removida — metadado interno apenas), <strong>Revisor pedagógico</strong> (papel não existe na operação).</p>
+      <p><strong>Trilha (se aplicável):</strong> a posição na trilha sai do cabeçalho e vai para a <strong>sidebar</strong> do artigo, em destaque acima do índice. Refinamento da Decisão 9.</p>
+    `,
+    example: `
+      <div class="mock-article">
+        <div class="m-bread"><a>Início</a> › <a>Acessibilidade</a> › Como configurar tempo ampliado…</div>
+        <span class="m-tipo">Tutorial</span>
+        <h4>Como configurar tempo ampliado no questionário sem expor o estudante com NE</h4>
+        <p class="m-subtitle">O passo a passo para configurar tempo extra sem que o estudante apareça como exceção para os colegas.</p>
+        <div class="m-meta">
+          <span>Por <b>Juliana Cassaro</b></span>
+          <span>⏱ <b>6 min</b> de leitura</span>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: 7,
+    title: "Interface do artigo — blocos multimodais (Decisão 13)",
+    question: "Como acomodar os formatos multimodais aprovados na Decisão 13: Libras, áudio, podcast, audiodescrição, infográfico-resumo?",
+    proposal: `
+      <p>A Decisão 13 ampliou o multimodal. <strong>Cada bloco é opcional por artigo</strong>, mas o template precisa estar pronto para todos:</p>
+      <p><strong>Tradução em Libras</strong> — accordion recolhível no topo, fechado por padrão, com vídeo da tradução completa do texto do artigo.<br/>
+      <strong>Áudio do artigo</strong> — player "Ouvir o artigo · 6 min" próximo ao tempo de leitura.<br/>
+      <strong>Podcast</strong> — player separado quando existir produção dedicada (não é o mesmo que narração).<br/>
+      <strong>Audiodescrição de imagens</strong> — texto descritivo <strong>visível para todos</strong>, abaixo da imagem (não só no <code>alt</code>).<br/>
+      <strong>Infográfico-resumo</strong> — bloco editorial dedicado que sintetiza visualmente o artigo.</p>
+      <p>Implicação para ContentOps: cada formato adicional aumenta o custo de produção e exige Custom Fields no WordPress.</p>
+    `,
+    example: `
+      <div class="multimodal-stack">
+        <div class="mm-row"><div class="mm-icon">🤟</div><div><strong>Tradução em Libras (accordion)</strong><small>Fechado por padrão · vídeo da tradução completa do artigo</small></div></div>
+        <div class="mm-row"><div class="mm-icon">▶</div><div><strong>Ouvir o artigo</strong><small>Player no topo · TTS ou áudio gravado · "6 min"</small></div></div>
+        <div class="mm-row"><div class="mm-icon">🎙</div><div><strong>Podcast</strong><small>Quando houver produção dedicada · player com capa e duração</small></div></div>
+        <div class="mm-row"><div class="mm-icon">👁</div><div><strong>Imagem com audiodescrição visível</strong><small>"Descrição da imagem: ..." abaixo da imagem · visível para todos</small></div></div>
+        <div class="mm-row"><div class="mm-icon">📊</div><div><strong>Infográfico-resumo</strong><small>Bloco editorial opcional · sintetiza conceitos do artigo</small></div></div>
+      </div>
+    `
+  },
+  {
+    id: 8,
+    title: "Interface do artigo — rodapé",
+    question: "Como fechar o artigo? Chips de tópicos, feedback único, share dropdown, bloco-trilha explícito, autor no fim e relacionados.",
+    proposal: `
+      <p><strong>Ao final de todo artigo</strong>, na ordem abaixo:</p>
+      <p><strong>1. Chips de tópicos</strong> — descoberta lateral por assunto (clique leva ao agrupamento).<br/>
+      <strong>2. "Foi útil?" / "Não foi útil?"</strong> — única ocorrência no artigo (saiu da sidebar). Em texto, sem emoji (Decisão 12).<br/>
+      <strong>3. Botão "Compartilhar" com dropdown</strong> — um único botão que abre menu com <em>Copiar link</em> e <em>Copiar ABNT</em>. Substitui os múltiplos botões espalhados.<br/>
+      <strong>4. Bloco "Faz parte da trilha"</strong> — se em trilha, um <em>card destacado</em> envolvendo Anterior/Próximo, deixando claro que esses links pertencem a uma jornada didática (refinamento da Decisão 9).<br/>
+      <strong>5. Bloco de autoria</strong> — autor + foto/avatar + breve descrição (eco do topo, mais completo).<br/>
+      <strong>6. "Artigos relacionados" (3-5 cards)</strong> — <em>obrigatório em todos os artigos</em> (Decisão 9), gerados por interseção de tópicos + categoria.</p>
+      <p><strong>Removido:</strong> data de última revisão no rodapé (segue a Decisão 14 ajustada). Botões soltos de copiar link/âncora/ABNT (consolidados no dropdown do Compartilhar).</p>
+    `,
+    example: `
+      <div class="footer-mock">
+        <div class="footer-mock-chips">
+          <span class="chip">Questionário</span>
+          <span class="chip">Inclusão</span>
+          <span class="chip">Configuração de Curso</span>
+        </div>
+        <div class="footer-mock-fb">
+          <span class="footer-mock-fb-q">Este artigo foi útil?</span>
+          <span class="footer-mock-fb-btn yes">Foi útil</span>
+          <span class="footer-mock-fb-btn">Não foi útil</span>
+          <span class="footer-mock-share">📤 Compartilhar ▾</span>
+        </div>
+        <div class="footer-mock-trilha">
+          <div class="footer-mock-trilha-head">📚 Faz parte da trilha · <b>Acessibilidade no AVA</b> · 4 de 7</div>
+          <div class="footer-mock-trilha-nav">
+            <div class="footer-mock-trilha-card">
+              <small>← Anterior · 3 de 7</small>
+              <span>Botão de acessibilidade no AVA</span>
+            </div>
+            <div class="footer-mock-trilha-card right">
+              <small>Próximo · 5 de 7 →</small>
+              <span>Audiodescrição em imagens do Moodle</span>
+            </div>
+          </div>
+        </div>
+        <div class="footer-mock-autor">
+          <div class="footer-mock-autor-avatar">JC</div>
+          <div>
+            <strong>Juliana Cassaro</strong>
+            <small>Designer e conteudista · CEFOR/IFes</small>
+          </div>
+        </div>
+        <div class="footer-mock-rel">
+          <div class="footer-mock-card"><small>Tutorial</small><span>Configurando rubricas em atividades de envio</span></div>
+          <div class="footer-mock-card"><small>Conceitual</small><span>Boas práticas no design de avaliações online</span></div>
+        </div>
+      </div>
+    `
+  }
+];
+
+const STORAGE_KEY = 'cefor_proposta_revisao_v1';
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : { meta: {}, reviews: {}, theme: 'light' };
+  } catch { return { meta: {}, reviews: {}, theme: 'light' }; }
+}
+function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+let state = loadState();
+
+const STATUS_LABEL = { approved: 'Aprovado', adjusted: 'Ajustado', rejected: 'Rejeitado' };
+const STATUS_ICON = { approved: '✓', adjusted: '⚙', rejected: '✗' };
+
+function render() {
+  const c = document.getElementById('reviewsContainer');
+  c.innerHTML = REVIEWS.map(r => {
+    const rev = state.reviews[r.id] || {};
+    const status = rev.status || '';
+    const cls = status ? 's-' + status : '';
+    const badge = status ? `<span class="status-badge">${STATUS_ICON[status]} ${STATUS_LABEL[status]}</span>` : `<span class="status-badge">○ Pendente</span>`;
+    const num = String(r.id).padStart(2, '0');
+    return `
+      <article class="review ${cls}" id="r-${r.id}">
+        <header class="review-head">
+          <div class="review-num">${num}</div>
+          <div class="review-titlebox">
+            <h2>${r.title}</h2>
+            <p class="review-question">${r.question}</p>
+          </div>
+          ${badge}
+        </header>
+        <div class="review-body">
+          <p class="panel-label">Proposta</p>
+          <div class="proposal">${r.proposal}</div>
+          <p class="panel-label">Como ficaria</p>
+          <div class="example-frame">${r.example}</div>
+        </div>
+        <footer class="review-foot">
+          <p class="panel-label">Sua revisão</p>
+          <div class="segment">
+            <input type="radio" id="r${r.id}-app" name="r${r.id}" ${status==='approved'?'checked':''} onchange="setStatus(${r.id}, 'approved')" />
+            <label for="r${r.id}-app" class="opt-app">✓ Aprovado</label>
+            <input type="radio" id="r${r.id}-adj" name="r${r.id}" ${status==='adjusted'?'checked':''} onchange="setStatus(${r.id}, 'adjusted')" />
+            <label for="r${r.id}-adj" class="opt-adj">⚙ Ajustado</label>
+            <input type="radio" id="r${r.id}-rej" name="r${r.id}" ${status==='rejected'?'checked':''} onchange="setStatus(${r.id}, 'rejected')" />
+            <label for="r${r.id}-rej" class="opt-rej">✗ Rejeitado</label>
+          </div>
+          <textarea class="comment" placeholder="Comentários, ajustes, ressalvas... (opcional, fortemente recomendado se 'Ajustado' ou 'Rejeitado')" oninput="setComment(${r.id}, this.value)">${(rev.comment || '').replace(/</g,'&lt;')}</textarea>
+        </footer>
+      </article>
+    `;
+  }).join('');
+  renderNav();
+  updateStats();
+  renderSummary();
+}
+
+function renderNav() {
+  const grid = document.getElementById('navGrid');
+  grid.innerHTML = REVIEWS.map(r => {
+    const s = (state.reviews[r.id] || {}).status;
+    const cls = s ? 's-' + s : '';
+    return `<a href="#r-${r.id}" class="nav-dot ${cls}" title="${r.title}">${r.id}</a>`;
+  }).join('');
+}
+
+function setStatus(id, status) {
+  if (!state.reviews[id]) state.reviews[id] = {};
+  state.reviews[id].status = status;
+  state.reviews[id].timestamp = new Date().toISOString();
+  saveState();
+  const el = document.getElementById('r-'+id);
+  el.className = 'review s-' + status;
+  el.querySelector('.status-badge').innerHTML = STATUS_ICON[status] + ' ' + STATUS_LABEL[status];
+  renderNav(); updateStats(); renderSummary();
+}
+function setComment(id, val) {
+  if (!state.reviews[id]) state.reviews[id] = {};
+  state.reviews[id].comment = val;
+  saveState();
+  renderSummary();
+}
+
+function updateStats() {
+  let a=0, j=0, r=0;
+  Object.values(state.reviews).forEach(d => {
+    if (d.status === 'approved') a++;
+    else if (d.status === 'adjusted') j++;
+    else if (d.status === 'rejected') r++;
+  });
+  const total = a+j+r;
+  document.getElementById('statApp').textContent = a;
+  document.getElementById('statAdj').textContent = j;
+  document.getElementById('statRej').textContent = r;
+  document.getElementById('ringNum').textContent = total;
+  const circ = 2 * Math.PI * 42;
+  const fill = (total / REVIEWS.length) * circ;
+  document.getElementById('ringFg').setAttribute('stroke-dasharray', `${fill} ${circ}`);
+  const sub = total === 0 ? 'Comece marcando o 1º item'
+    : total === REVIEWS.length ? 'Tudo pronto! Exporte o resultado.'
+    : `${REVIEWS.length - total} restante${REVIEWS.length - total !== 1 ? 's' : ''}`;
+  document.getElementById('ringSub').textContent = sub;
+}
+
+function renderSummary() {
+  const list = document.getElementById('summaryList');
+  list.innerHTML = REVIEWS.map(r => {
+    const rev = state.reviews[r.id] || {};
+    const s = rev.status || '';
+    const cls = s ? 's-' + s : '';
+    const ico = s ? STATUS_ICON[s] : '○';
+    const com = rev.comment ? `<span class="summary-item-comment">"${rev.comment.replace(/</g,'&lt;').slice(0,160)}${rev.comment.length>160?'…':''}"</span>` : '';
+    return `<a href="#r-${r.id}" style="text-decoration:none;color:inherit;"><div class="summary-item ${cls}">
+      <div class="summary-item-ico">${ico}</div>
+      <div><div class="summary-item-title"><strong>${r.id}.</strong> ${r.title}</div>${com}</div>
+      <div class="summary-item-num">${String(r.id).padStart(2,'0')}</div>
+    </div></a>`;
+  }).join('');
+}
+
+document.getElementById('metaDate').addEventListener('change', e => { state.meta.date = e.target.value; saveState(); });
+document.getElementById('metaRevisor').addEventListener('input', e => { state.meta.revisor = e.target.value; saveState(); });
+
+function exportJSON() {
+  const data = {
+    document: 'Revisão da Proposta de Taxonomia + Interface do Artigo',
+    project: 'Base de Conhecimento CEFOR/IFes',
+    source_draft: 'stages/01-fundacoes/drafts/proposta-taxonomia-e-interface-artigo.md',
+    exported_at: new Date().toISOString(),
+    meta: state.meta,
+    reviews: REVIEWS.map(r => ({
+      id: r.id,
+      title: r.title,
+      status: (state.reviews[r.id] && state.reviews[r.id].status) || 'pending',
+      comment: (state.reviews[r.id] && state.reviews[r.id].comment) || '',
+      timestamp: (state.reviews[r.id] && state.reviews[r.id].timestamp) || null
+    }))
+  };
+  download(`revisao-proposta-taxonomia-${new Date().toISOString().slice(0,10)}.json`, JSON.stringify(data, null, 2), 'application/json');
+}
+function exportMD() {
+  const date = state.meta.date || new Date().toISOString().slice(0,10);
+  const revisor = state.meta.revisor || '___________';
+  let md = `# Resultado da Revisão — Proposta de Taxonomia + Interface do Artigo\n\n**Data:** ${date}\n**Revisor(es):** ${revisor}\n**Exportado em:** ${new Date().toLocaleString('pt-BR')}\n**Draft revisado:** stages/01-fundacoes/drafts/proposta-taxonomia-e-interface-artigo.md\n\n---\n\n`;
+  REVIEWS.forEach(r => {
+    const rev = state.reviews[r.id] || {};
+    const s = rev.status || 'pending';
+    const lab = s==='approved'?'[x] Aprovado':s==='adjusted'?'[~] Ajustado':s==='rejected'?'[ ] Rejeitado':'[ ] Pendente';
+    md += `## ${r.id}. ${r.title}\n\n**Status:** ${lab}\n\n`;
+    if (rev.comment) md += `**Comentário:** ${rev.comment}\n\n`;
+    md += `---\n\n`;
+  });
+  let a=0,j=0,rej=0,p=0;
+  REVIEWS.forEach(r => {
+    const s = (state.reviews[r.id]||{}).status;
+    if (s==='approved') a++; else if (s==='adjusted') j++; else if (s==='rejected') rej++; else p++;
+  });
+  md += `## Resumo\n\n- ✓ Aprovados: ${a}\n- ⚙ Ajustados: ${j}\n- ✗ Rejeitados: ${rej}\n- ○ Pendentes: ${p}\n`;
+  download(`revisao-proposta-taxonomia-${new Date().toISOString().slice(0,10)}.md`, md, 'text/markdown');
+}
+function download(name, content, mime) {
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = name; a.click();
+  URL.revokeObjectURL(url);
+}
+function importJSON() { document.getElementById('fileInput').click(); }
+document.getElementById('fileInput').addEventListener('change', e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = ev => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (data.meta) state.meta = data.meta;
+      if (Array.isArray(data.reviews)) {
+        const nd = {};
+        data.reviews.forEach(d => {
+          nd[d.id] = { status: d.status === 'pending' ? '' : d.status, comment: d.comment || '', timestamp: d.timestamp };
+        });
+        state.reviews = nd;
+      }
+      saveState(); hydrate(); render();
+      alert('Importado com sucesso!');
+    } catch (err) { alert('Erro ao importar: ' + err.message); }
+  };
+  r.readAsText(f);
+});
+function clearAll() {
+  if (!confirm('Limpar todas as revisões e comentários?')) return;
+  state = { meta: {}, reviews: {}, theme: state.theme };
+  saveState(); hydrate(); render();
+}
+function hydrate() {
+  document.getElementById('metaDate').value = state.meta.date || '';
+  document.getElementById('metaRevisor').value = state.meta.revisor || '';
+}
+
+function toggleTheme() {
+  state.theme = state.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', state.theme);
+  document.getElementById('themeBtn').textContent = state.theme === 'dark' ? '☀️' : '🌙';
+  saveState();
+}
+if (state.theme === 'dark') {
+  document.documentElement.setAttribute('data-theme', 'dark');
+  document.getElementById('themeBtn').textContent = '☀️';
+}
+
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+});
+
+hydrate();
+render();
+</script>
+</body>
+</html>

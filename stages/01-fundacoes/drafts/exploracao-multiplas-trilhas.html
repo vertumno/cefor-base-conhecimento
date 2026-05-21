@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Exploração · Artigo em múltiplas trilhas — Base CEFOR/IFes</title>
+<meta name="description" content="Três sub-opções visuais para representar um artigo que pertence a mais de uma trilha." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     Tokens herdados de prototipo-artigo.html
+     ============================================================ */
+  :root {
+    --bg: #ffffff;
+    --bg-2: #f7f5f1;
+    --bg-3: #efeae0;
+    --paper: #ffffff;
+    --ink: #14110d;
+    --ink-2: #4a4439;
+    --ink-3: #8a8273;
+    --line: #e7e3d8;
+    --line-2: #d4cdba;
+    --accent: #1f5142;
+    --accent-2: #2d6a4f;
+    --accent-soft: #e3ecdf;
+    --gold: #b08544;
+    --gold-soft: #f3e7d0;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 16px;
+    --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
+    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg-2);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============================================================
+     Layout da página de exploração
+     ============================================================ */
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 64px 32px 96px;
+  }
+  .page-header {
+    margin-bottom: 56px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+  }
+  .kicker {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 12px;
+  }
+  .page-header h1 {
+    font-size: 2.4rem;
+    line-height: 1.15;
+    font-weight: 700;
+    margin: 0 0 14px;
+    letter-spacing: -.01em;
+  }
+  .page-header .lead {
+    font-size: 1.05rem;
+    color: var(--ink-2);
+    max-width: 70ch;
+    margin: 0;
+  }
+
+  .scenario {
+    margin-top: 24px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 22px 26px;
+  }
+  .scenario h3 {
+    font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 12px;
+  }
+  .scenario p {
+    margin: 0 0 8px;
+    font-size: .96rem;
+    color: var(--ink-2);
+  }
+  .scenario ul {
+    margin: 12px 0 0;
+    padding-left: 22px;
+  }
+  .scenario li {
+    font-size: .94rem;
+    color: var(--ink-2);
+    margin-bottom: 4px;
+  }
+  .scenario li b { color: var(--ink); font-weight: 600; }
+
+  section.option {
+    margin-top: 72px;
+    padding-top: 56px;
+    border-top: 2px dashed var(--line-2);
+  }
+  section.option:first-of-type {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .option-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 800px) {
+    .option-head { grid-template-columns: 1fr; gap: 20px; }
+  }
+  .option-head h2 {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin: 0 0 8px;
+    font-weight: 700;
+  }
+  .option-head .meta {
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 14px;
+  }
+  .option-head p { margin: 0; color: var(--ink-2); }
+
+  .pros-cons {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 16px 18px;
+    font-size: .9rem;
+  }
+  .pros-cons dt {
+    font-weight: 700;
+    color: var(--ink);
+    font-size: .72rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .pros-cons dt.con { color: var(--gold); margin-top: 14px; }
+  .pros-cons dd {
+    margin: 0;
+    color: var(--ink-2);
+    line-height: 1.45;
+  }
+
+  .demo-frame {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 28px;
+    box-shadow: var(--shadow-md);
+  }
+  .demo-frame-label {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .demo-frame-label::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* Simula a largura da sidebar do protótipo (~320px) */
+  .sidebar-sim {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  /* ============================================================
+     SHARED · estilos base do box de trilha (do protótipo)
+     ============================================================ */
+  .box-trilha {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+  .box-trilha-head {
+    padding: 12px 18px;
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .box-trilha-head-label {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .box-trilha-head-label .count {
+    background: var(--ink);
+    color: var(--bg);
+    font-size: .62rem;
+    padding: 2px 7px;
+    border-radius: 99px;
+    letter-spacing: .04em;
+  }
+  .progress-bar {
+    height: 4px;
+    background: var(--bg-3);
+    border-radius: 99px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 99px;
+  }
+  .pos {
+    font-size: .78rem;
+    color: var(--ink-3);
+    line-height: 1.3;
+  }
+  .pos b { color: var(--ink); font-weight: 700; }
+  .articles-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .articles-list li { margin: 0; }
+  .articles-list li a {
+    display: block;
+    padding: 7px 0 7px 12px;
+    border-left: 2px solid var(--line);
+    font-size: .83rem;
+    color: var(--ink-2);
+    text-decoration: none;
+    line-height: 1.4;
+    transition: color .15s, border-color .15s;
+  }
+  .articles-list li a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .articles-list li.current a {
+    color: var(--accent);
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ============================================================
+     A.1 — Abas
+     ============================================================ */
+  .v-tabs-strip {
+    display: flex;
+    border-bottom: 1px solid var(--line);
+    overflow-x: auto;
+    background: var(--bg-2);
+  }
+  .v-tabs-strip::-webkit-scrollbar { height: 0; }
+  .v-tab {
+    flex: 1 0 auto;
+    padding: 12px 14px;
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    font-family: var(--sans);
+    font-size: .8rem;
+    font-weight: 500;
+    color: var(--ink-3);
+    cursor: pointer;
+    text-align: left;
+    line-height: 1.3;
+    transition: color .15s, border-color .15s, background .15s;
+    white-space: nowrap;
+    min-width: 0;
+  }
+  .v-tab:hover { color: var(--ink-2); background: var(--bg); }
+  .v-tab[aria-selected="true"] {
+    color: var(--accent);
+    font-weight: 600;
+    border-bottom-color: var(--accent);
+    background: var(--paper);
+  }
+  .v-tabs-body { padding: 16px 18px 18px; }
+  .v-tabs-pos {
+    margin-bottom: 14px;
+  }
+
+  /* ============================================================
+     A.2 — Acordeão
+     ============================================================ */
+  .v-accordion-item + .v-accordion-item {
+    border-top: 1px solid var(--line);
+  }
+  .v-accordion-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-family: var(--sans);
+    text-align: left;
+    transition: background .15s;
+  }
+  .v-accordion-toggle:hover { background: var(--bg-2); }
+  .v-accordion-name {
+    flex: 1;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .v-accordion-pos {
+    font-size: .72rem;
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+  }
+  .v-accordion-chev {
+    width: 16px; height: 16px;
+    color: var(--ink-3);
+    flex-shrink: 0;
+    transition: transform .25s;
+  }
+  .v-accordion-toggle[aria-expanded="true"] .v-accordion-chev {
+    transform: rotate(180deg);
+  }
+  .v-accordion-toggle[aria-expanded="true"] {
+    background: var(--bg-2);
+  }
+  .v-accordion-body {
+    padding: 4px 18px 18px;
+    background: var(--bg-2);
+    border-top: 1px solid var(--line);
+  }
+  .v-accordion-body[hidden] { display: none; }
+  .v-accordion-progress { margin-bottom: 14px; }
+
+  /* ============================================================
+     A.3 — Cards
+     ============================================================ */
+  .v-cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px 18px 18px;
+  }
+  .v-card {
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 14px 16px;
+    background: var(--bg);
+    transition: border-color .15s, transform .15s, box-shadow .15s;
+  }
+  .v-card:hover {
+    border-color: var(--line-2);
+  }
+  .v-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .v-card-name {
+    font-size: .92rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+    flex: 1;
+  }
+  .v-card-pos {
+    font-size: .7rem;
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+    font-weight: 600;
+    letter-spacing: .02em;
+  }
+  .v-card-progress {
+    height: 3px;
+    background: var(--bg-3);
+    border-radius: 99px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+  .v-card-progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 99px;
+  }
+  .v-card-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .v-card-nav a {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    text-decoration: none;
+    color: var(--ink-2);
+    background: var(--paper);
+    transition: border-color .15s, color .15s;
+    min-width: 0;
+  }
+  .v-card-nav a:hover { border-color: var(--accent); color: var(--accent); }
+  .v-card-nav .tn-label {
+    font-size: .58rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .v-card-nav a:hover .tn-label { color: var(--accent); }
+  .v-card-nav .tn-title {
+    font-size: .76rem;
+    font-weight: 500;
+    line-height: 1.25;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .v-card-nav .next { text-align: right; }
+  .v-card-link {
+    margin-top: 10px;
+    font-size: .76rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .v-card-link:hover { text-decoration: underline; }
+  .v-card-link::after { content: '→'; }
+
+  /* ============================================================
+     Rodapé
+     ============================================================ */
+  .footer {
+    margin-top: 96px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-3);
+    font-size: .82rem;
+  }
+  .footer code {
+    font-family: var(--mono);
+    background: var(--bg-3);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: .78rem;
+  }
+</style>
+</head>
+<body>
+
+<main class="page">
+
+  <header class="page-header">
+    <p class="kicker">Exploração · Fase 1 · Fundações</p>
+    <h1>Artigo em múltiplas trilhas — como representar?</h1>
+    <p class="lead">
+      A Decisão 18 estabeleceu que um artigo pode pertencer a mais de uma trilha. Em conversa de 2026-05-19,
+      a equipe escolheu a Opção A (mostrar todas as trilhas no artigo). Este documento explora três sub-opções
+      visuais para implementar isso, sempre dentro do vocabulário visual do <code>prototipo-artigo.html</code>.
+    </p>
+
+    <div class="scenario">
+      <h3>Cenário de teste</h3>
+      <p>Artigo: <b>"Como fazer um bom prompt para o ChatGPT"</b> — pertence a três trilhas:</p>
+      <ul>
+        <li><b>IA para professores</b> — artigo 5 de 12</li>
+        <li><b>IA para mediadores</b> — artigo 3 de 9</li>
+        <li><b>Avaliação com IA</b> — artigo 2 de 7</li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       A.1 — Abas
+       ============================================================ -->
+  <section class="option" id="opt-tabs">
+    <div class="option-head">
+      <div>
+        <p class="meta">Sub-opção A.1</p>
+        <h2>Abas no topo do box</h2>
+        <p>
+          Cada trilha vira uma aba clicável no topo. Ao trocar de aba, o conteúdo abaixo
+          (posição, barra e lista de artigos) atualiza. Mostra <strong>uma trilha por vez</strong>,
+          mas todas estão visíveis nos rótulos das abas.
+        </p>
+      </div>
+      <dl class="pros-cons">
+        <dt>Pontos fortes</dt>
+        <dd>
+          Familiar (toda interface usa abas). Mostra todas as trilhas no rótulo.
+          Compacto verticalmente — não cresce conforme aumenta o número de trilhas.
+        </dd>
+        <dt class="con">Limitações</dt>
+        <dd>
+          Com 5+ trilhas, as abas quebram em scroll horizontal — esconde nomes.
+          Só uma trilha visível "por inteiro" por vez. Difícil comparar trilhas lado a lado.
+        </dd>
+      </dl>
+    </div>
+
+    <div class="demo-frame">
+      <p class="demo-frame-label">Demonstrativo · aparece no sidebar do artigo</p>
+      <div class="sidebar-sim">
+
+        <div class="box-trilha" data-variant="tabs">
+          <div class="box-trilha-head">
+            <span class="box-trilha-head-label">
+              <span>Trilhas deste artigo</span>
+              <span class="count">3</span>
+            </span>
+          </div>
+
+          <div class="v-tabs-strip" role="tablist">
+            <button class="v-tab" role="tab" aria-selected="true" data-tab="t1">IA para professores</button>
+            <button class="v-tab" role="tab" aria-selected="false" data-tab="t2">IA para mediadores</button>
+            <button class="v-tab" role="tab" aria-selected="false" data-tab="t3">Avaliação com IA</button>
+          </div>
+
+          <div class="v-tabs-body">
+            <div class="v-tabs-pos" data-panel="t1">
+              <div class="progress-bar">
+                <div class="progress-bar-fill" style="width: 41.6%;"></div>
+              </div>
+              <span class="pos">Artigo <b>5</b> de 12 · IA para professores</span>
+            </div>
+            <ol class="articles-list" data-panel="t1">
+              <li><a href="#">O que é IA generativa e o que ela faz bem</a></li>
+              <li><a href="#">ChatGPT, Claude, Gemini: como decidir qual usar</a></li>
+              <li><a href="#">Criando uma conta institucional segura</a></li>
+              <li><a href="#">Anatomia de uma conversa com IA</a></li>
+              <li class="current"><a href="#" aria-current="page">Como fazer um bom prompt para o ChatGPT</a></li>
+              <li><a href="#">Refinando respostas: técnicas de iteração</a></li>
+              <li><a href="#">Quando NÃO usar IA na preparação de aula</a></li>
+              <li><a href="#">Adaptando textos para o nível da turma</a></li>
+              <li><a href="#">Gerando questões a partir de um texto-base</a></li>
+              <li><a href="#">Revisão crítica de saída da IA</a></li>
+              <li><a href="#">Citando uso de IA em material didático</a></li>
+              <li><a href="#">Limites éticos e LGPD na sala de aula</a></li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       A.2 — Acordeão
+       ============================================================ -->
+  <section class="option" id="opt-accordion">
+    <div class="option-head">
+      <div>
+        <p class="meta">Sub-opção A.2</p>
+        <h2>Lista expansível (acordeão)</h2>
+        <p>
+          Todas as trilhas aparecem empilhadas, cada uma com seu nome e posição compacta visível.
+          A primeira fica expandida por padrão; as outras podem ser abertas em qualquer ordem.
+          Pode-se permitir <strong>múltiplas abertas ao mesmo tempo</strong> ou só uma por vez (a definir).
+        </p>
+      </div>
+      <dl class="pros-cons">
+        <dt>Pontos fortes</dt>
+        <dd>
+          Escala bem (10+ trilhas continuam legíveis). Posição (artigo X de Y) sempre visível,
+          mesmo colapsado. Padrão estético idêntico ao box de trilha do protótipo atual.
+        </dd>
+        <dt class="con">Limitações</dt>
+        <dd>
+          Exige clique para ver a lista completa de cada trilha. Pode crescer verticalmente se
+          várias trilhas estiverem abertas simultaneamente.
+        </dd>
+      </dl>
+    </div>
+
+    <div class="demo-frame">
+      <p class="demo-frame-label">Demonstrativo · aparece no sidebar do artigo</p>
+      <div class="sidebar-sim">
+
+        <div class="box-trilha" data-variant="accordion">
+          <div class="box-trilha-head">
+            <span class="box-trilha-head-label">
+              <span>Trilhas deste artigo</span>
+              <span class="count">3</span>
+            </span>
+          </div>
+
+          <!-- Trilha 1 -->
+          <div class="v-accordion-item">
+            <button class="v-accordion-toggle" aria-expanded="true" aria-controls="acc-t1">
+              <span class="v-accordion-name">IA para professores</span>
+              <span class="v-accordion-pos">5/12</span>
+              <svg class="v-accordion-chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="v-accordion-body" id="acc-t1">
+              <div class="v-accordion-progress">
+                <div class="progress-bar">
+                  <div class="progress-bar-fill" style="width: 41.6%;"></div>
+                </div>
+                <span class="pos">Artigo <b>5</b> de 12</span>
+              </div>
+              <ol class="articles-list">
+                <li><a href="#">O que é IA generativa e o que ela faz bem</a></li>
+                <li><a href="#">ChatGPT, Claude, Gemini: como decidir qual usar</a></li>
+                <li><a href="#">Criando uma conta institucional segura</a></li>
+                <li><a href="#">Anatomia de uma conversa com IA</a></li>
+                <li class="current"><a href="#" aria-current="page">Como fazer um bom prompt para o ChatGPT</a></li>
+                <li><a href="#">Refinando respostas: técnicas de iteração</a></li>
+                <li><a href="#">Quando NÃO usar IA na preparação de aula</a></li>
+                <li><a href="#">Adaptando textos para o nível da turma</a></li>
+                <li><a href="#">Gerando questões a partir de um texto-base</a></li>
+                <li><a href="#">Revisão crítica de saída da IA</a></li>
+                <li><a href="#">Citando uso de IA em material didático</a></li>
+                <li><a href="#">Limites éticos e LGPD na sala de aula</a></li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Trilha 2 -->
+          <div class="v-accordion-item">
+            <button class="v-accordion-toggle" aria-expanded="false" aria-controls="acc-t2">
+              <span class="v-accordion-name">IA para mediadores</span>
+              <span class="v-accordion-pos">3/9</span>
+              <svg class="v-accordion-chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="v-accordion-body" id="acc-t2" hidden>
+              <div class="v-accordion-progress">
+                <div class="progress-bar">
+                  <div class="progress-bar-fill" style="width: 33.3%;"></div>
+                </div>
+                <span class="pos">Artigo <b>3</b> de 9</span>
+              </div>
+              <ol class="articles-list">
+                <li><a href="#">O papel do mediador na era da IA</a></li>
+                <li><a href="#">IA como apoio na tutoria, não substituta</a></li>
+                <li class="current"><a href="#" aria-current="page">Como fazer um bom prompt para o ChatGPT</a></li>
+                <li><a href="#">Respondendo dúvidas de estudantes com apoio de IA</a></li>
+                <li><a href="#">Identificando uso indevido de IA por estudantes</a></li>
+                <li><a href="#">Devolutivas geradas com IA: o que revisar sempre</a></li>
+                <li><a href="#">Protegendo dados de estudantes em ferramentas externas</a></li>
+                <li><a href="#">Conversas difíceis sobre IA com a turma</a></li>
+                <li><a href="#">Encerramento: postura do mediador frente à IA</a></li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Trilha 3 -->
+          <div class="v-accordion-item">
+            <button class="v-accordion-toggle" aria-expanded="false" aria-controls="acc-t3">
+              <span class="v-accordion-name">Avaliação com IA</span>
+              <span class="v-accordion-pos">2/7</span>
+              <svg class="v-accordion-chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="v-accordion-body" id="acc-t3" hidden>
+              <div class="v-accordion-progress">
+                <div class="progress-bar">
+                  <div class="progress-bar-fill" style="width: 28.5%;"></div>
+                </div>
+                <span class="pos">Artigo <b>2</b> de 7</span>
+              </div>
+              <ol class="articles-list">
+                <li><a href="#">O que muda na avaliação quando os estudantes usam IA</a></li>
+                <li class="current"><a href="#" aria-current="page">Como fazer um bom prompt para o ChatGPT</a></li>
+                <li><a href="#">Desenhando questões resistentes à IA</a></li>
+                <li><a href="#">Avaliação por evidência de processo</a></li>
+                <li><a href="#">Rubrica para avaliar uso responsável de IA</a></li>
+                <li><a href="#">Devolutivas que ensinam, mesmo com IA no meio</a></li>
+                <li><a href="#">Política institucional de uso de IA em avaliações</a></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       A.3 — Cards
+       ============================================================ -->
+  <section class="option" id="opt-cards">
+    <div class="option-head">
+      <div>
+        <p class="meta">Sub-opção A.3</p>
+        <h2>Cards empilhados com navegação compacta</h2>
+        <p>
+          Cada trilha vira um card pequeno com nome, posição, barra de progresso e os botões prev/next
+          já visíveis. A lista completa de artigos da trilha não aparece — o leitor precisa clicar em
+          "Ver trilha completa" para ver tudo. <strong>Foco em ação imediata</strong>, não em exploração.
+        </p>
+      </div>
+      <dl class="pros-cons">
+        <dt>Pontos fortes</dt>
+        <dd>
+          Prev/next de todas as trilhas visíveis ao mesmo tempo — leitor decide qual seguir sem clicar.
+          Visualmente claro qual trilha está mais "no começo" e qual está mais "no fim".
+        </dd>
+        <dt class="con">Limitações</dt>
+        <dd>
+          Cresce verticalmente conforme número de trilhas. Não mostra a sequência de artigos completos
+          (perde o efeito "índice" da trilha). Com 5+ trilhas a sidebar fica longa.
+        </dd>
+      </dl>
+    </div>
+
+    <div class="demo-frame">
+      <p class="demo-frame-label">Demonstrativo · aparece no sidebar do artigo</p>
+      <div class="sidebar-sim">
+
+        <div class="box-trilha" data-variant="cards">
+          <div class="box-trilha-head">
+            <span class="box-trilha-head-label">
+              <span>Trilhas deste artigo</span>
+              <span class="count">3</span>
+            </span>
+          </div>
+
+          <div class="v-cards-list">
+
+            <!-- Card trilha 1 -->
+            <div class="v-card">
+              <div class="v-card-head">
+                <span class="v-card-name">IA para professores</span>
+                <span class="v-card-pos">5 / 12</span>
+              </div>
+              <div class="v-card-progress">
+                <div class="v-card-progress-fill" style="width: 41.6%;"></div>
+              </div>
+              <div class="v-card-nav">
+                <a href="#" class="prev">
+                  <span class="tn-label">← Anterior</span>
+                  <span class="tn-title">Anatomia de uma conversa com IA</span>
+                </a>
+                <a href="#" class="next">
+                  <span class="tn-label">Próximo →</span>
+                  <span class="tn-title">Refinando respostas: técnicas de iteração</span>
+                </a>
+              </div>
+              <a href="#" class="v-card-link">Ver trilha completa</a>
+            </div>
+
+            <!-- Card trilha 2 -->
+            <div class="v-card">
+              <div class="v-card-head">
+                <span class="v-card-name">IA para mediadores</span>
+                <span class="v-card-pos">3 / 9</span>
+              </div>
+              <div class="v-card-progress">
+                <div class="v-card-progress-fill" style="width: 33.3%;"></div>
+              </div>
+              <div class="v-card-nav">
+                <a href="#" class="prev">
+                  <span class="tn-label">← Anterior</span>
+                  <span class="tn-title">IA como apoio na tutoria, não substituta</span>
+                </a>
+                <a href="#" class="next">
+                  <span class="tn-label">Próximo →</span>
+                  <span class="tn-title">Respondendo dúvidas de estudantes com apoio de IA</span>
+                </a>
+              </div>
+              <a href="#" class="v-card-link">Ver trilha completa</a>
+            </div>
+
+            <!-- Card trilha 3 -->
+            <div class="v-card">
+              <div class="v-card-head">
+                <span class="v-card-name">Avaliação com IA</span>
+                <span class="v-card-pos">2 / 7</span>
+              </div>
+              <div class="v-card-progress">
+                <div class="v-card-progress-fill" style="width: 28.5%;"></div>
+              </div>
+              <div class="v-card-nav">
+                <a href="#" class="prev">
+                  <span class="tn-label">← Anterior</span>
+                  <span class="tn-title">O que muda na avaliação quando os estudantes usam IA</span>
+                </a>
+                <a href="#" class="next">
+                  <span class="tn-label">Próximo →</span>
+                  <span class="tn-title">Desenhando questões resistentes à IA</span>
+                </a>
+              </div>
+              <a href="#" class="v-card-link">Ver trilha completa</a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>
+      Exploração técnica · vinculada à Decisão 18 (arquitetura Trilha/Percurso) e à decisão de 2026-05-19 sobre apresentação visual de múltiplas trilhas.<br>
+      Referência canônica de design: <code>stages/01-fundacoes/drafts/prototipo-artigo.html</code>
+    </p>
+  </footer>
+
+</main>
+
+<script>
+  // A.1 — Abas: troca a aba ativa
+  document.querySelectorAll('[data-variant="tabs"] .v-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const tabs = tab.parentElement.querySelectorAll('.v-tab');
+      tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+      tab.setAttribute('aria-selected', 'true');
+      // Nota: trocar conteúdo dos panels exigiria mais dados; nesta demo só o destaque da aba muda.
+    });
+  });
+
+  // A.2 — Acordeão: expandir/colapsar itens
+  document.querySelectorAll('.v-accordion-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      const body = document.getElementById(toggle.getAttribute('aria-controls'));
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      if (body) body.hidden = expanded;
+    });
+  });
+</script>
+
+</body>
+</html>

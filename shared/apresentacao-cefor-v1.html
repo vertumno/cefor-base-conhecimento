@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base de Conhecimento CEFOR — Apresentação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f1ea;
+    --bg-2: #ebe6db;
+    --paper: #ffffff;
+    --ink: #14110d;
+    --ink-2: #4a4439;
+    --ink-3: #8a8273;
+    --line: #e2dccd;
+    --accent: #1f5142;
+    --accent-2: #2d6a4f;
+    --accent-soft: #e3ecdf;
+    --gold: #b08544;
+    --rose: #b3433a;
+    --sun: #c98a1e;
+    --sky: #2c5e8f;
+    --slide-w: 100vw;
+    --slide-h: 100vh;
+  }
+
+  [data-theme="dark"] {
+    --bg: #121009;
+    --bg-2: #1c1810;
+    --paper: #1e1b14;
+    --ink: #f0ece2;
+    --ink-2: #c8c0ae;
+    --ink-3: #8a8273;
+    --line: #2e2a22;
+    --accent: #4a9b7a;
+    --accent-2: #5db892;
+    --accent-soft: #1a2e25;
+    --gold: #d4a855;
+    --rose: #d46660;
+    --sun: #d4a040;
+    --sky: #5a90c8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 100%; height: 100%;
+    background: var(--bg);
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--ink);
+    overflow: hidden;
+    transition: background .3s, color .3s;
+  }
+
+  /* SLIDES CONTAINER */
+  .deck {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 64px;
+    opacity: 0;
+    transform: translateX(40px);
+    pointer-events: none;
+    transition: opacity .45s cubic-bezier(.4,0,.2,1), transform .45s cubic-bezier(.4,0,.2,1);
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  .slide.prev {
+    opacity: 0;
+    transform: translateX(-40px);
+    pointer-events: none;
+  }
+
+  /* PROGRESS BAR */
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    transition: width .4s ease;
+    z-index: 100;
+  }
+
+  /* CONTROLS */
+  .controls {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    z-index: 100;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 8px 20px;
+    box-shadow: 0 4px 24px rgba(0,0,0,.08);
+  }
+
+  .btn-nav {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--ink-2);
+    font-size: 18px;
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: background .2s, color .2s;
+  }
+
+  .btn-nav:hover { background: var(--bg-2); color: var(--accent); }
+  .btn-nav:disabled { opacity: .3; cursor: default; }
+
+  .slide-counter {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    color: var(--ink-3);
+    min-width: 56px;
+    text-align: center;
+    font-variation-settings: "opsz" 14;
+  }
+
+  .btn-dots {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--line);
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+  }
+
+  .dot.active {
+    background: var(--accent);
+    transform: scale(1.4);
+  }
+
+  /* THEME TOGGLE */
+  .theme-toggle {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 100;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--ink-2);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background .2s, color .2s;
+  }
+
+  .theme-toggle:hover { background: var(--bg-2); }
+
+  /* SLIDE NUMBER */
+  .slide-num {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 72;
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--ink-3);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    z-index: 100;
+  }
+
+  /* ─── SLIDE TYPES ─── */
+
+  /* COVER */
+  .slide-cover {
+    background: var(--bg);
+    text-align: center;
+  }
+
+  .cover-kicker {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .cover-kicker::before, .cover-kicker::after {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--ink-3);
+  }
+
+  .cover-headline {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-size: clamp(36px, 5vw, 72px);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .cover-headline em {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .cover-lead {
+    font-size: 18px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    max-width: 540px;
+    margin: 0 auto 40px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    text-align: center;
+  }
+
+  .meta-label {
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 4px;
+  }
+
+  .meta-value {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 24;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .cover-divider {
+    width: 64px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    margin: 32px auto;
+    border-radius: 2px;
+  }
+
+  /* CONTENT SLIDES */
+  .slide-content {
+    max-width: 880px;
+    width: 100%;
+  }
+
+  .section-kicker {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .slide-title {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 72;
+    font-size: clamp(28px, 3.5vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+
+  .slide-title em {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .slide-body {
+    display: grid;
+    gap: 20px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px 24px;
+    transition: transform .2s, box-shadow .2s;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,.08);
+  }
+
+  .card-num {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 72;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--line);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .card-desc {
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+
+  .cards-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .cards-3col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 140px 1px 1fr;
+    gap: 0 20px;
+    align-items: start;
+    padding-bottom: 24px;
+  }
+
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  .timeline-label {
+    text-align: right;
+    padding-top: 2px;
+  }
+
+  .timeline-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    letter-spacing: .05em;
+  }
+
+  .badge-done { background: var(--accent-soft); color: var(--accent); }
+  .badge-active { background: #fef3dd; color: var(--sun); }
+  .badge-next { background: var(--bg-2); color: var(--ink-3); }
+
+  .timeline-line {
+    width: 1px;
+    background: var(--line);
+    position: relative;
+    min-height: 64px;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+
+  .timeline-line.active .timeline-dot { background: var(--sun); }
+  .timeline-line.next .timeline-dot { background: var(--line); }
+
+  .timeline-content {
+    padding-top: 0;
+  }
+
+  .timeline-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .timeline-desc {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+
+  /* PILL TAGS */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--bg-2);
+    color: var(--ink-2);
+    border: 1px solid var(--line);
+  }
+
+  .tag.accent { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+  .tag.gold { background: #fef3dd; color: var(--gold); border-color: transparent; }
+
+  /* STAT BLOCKS */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .stat-block {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 72;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--ink-3);
+    line-height: 1.4;
+  }
+
+  /* DECISION TABLE */
+  .decision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+
+  .decision-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .decision-card.approved { border-left: 3px solid var(--accent); }
+  .decision-card.adjusted { border-left: 3px solid var(--sun); }
+  .decision-card.rejected { border-left: 3px solid var(--rose); }
+
+  .dec-status {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .dec-status.approved { color: var(--accent); }
+  .dec-status.adjusted { color: var(--sun); }
+  .dec-status.rejected { color: var(--rose); }
+
+  .dec-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .dec-desc {
+    font-size: 12px;
+    color: var(--ink-3);
+    line-height: 1.4;
+  }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    background: linear-gradient(135deg, var(--accent-soft) 0%, var(--bg-2) 100%);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 16px 16px 0;
+    padding: 24px 28px;
+    margin: 0;
+  }
+
+  .pull-quote p {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 72;
+    font-size: clamp(18px, 2.2vw, 26px);
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+
+  .pull-quote cite {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    color: var(--ink-3);
+    margin-top: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  /* FINAL SLIDE */
+  .slide-final {
+    text-align: center;
+    background: var(--bg);
+  }
+
+  .final-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 999px;
+    margin-top: 32px;
+    cursor: default;
+    letter-spacing: .02em;
+  }
+
+  /* FEATURE LIST */
+  .feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+
+  .feature-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .feature-text {
+    flex: 1;
+  }
+
+  .feature-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+
+  .feature-desc {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+
+  /* TWO COLUMNS */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  /* HORIZONTAL LIST */
+  .h-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .h-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+
+  .h-item::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: var(--accent-soft);
+    border: 1px solid rgba(31,81,66,.2);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-top: 16px;
+  }
+
+  .highlight-box p {
+    font-size: 14px;
+    color: var(--accent);
+    line-height: 1.6;
+  }
+
+  .highlight-box strong { font-weight: 700; }
+
+  /* BIG TEXT SLIDE */
+  .big-text {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-size: clamp(22px, 3vw, 42px);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink);
+    text-align: center;
+    max-width: 700px;
+  }
+
+  .big-text em {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .sub-text {
+    font-size: 16px;
+    color: var(--ink-2);
+    text-align: center;
+    max-width: 520px;
+    line-height: 1.65;
+    margin-top: 20px;
+  }
+
+  /* KEYBOARD HINT */
+  kbd {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 2px 7px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    color: var(--ink-3);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .slide { padding: 32px 28px; }
+    .cards-2col, .cards-3col, .decision-grid, .two-col { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .timeline-item { grid-template-columns: 90px 1px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- SLIDE NUMBER -->
+<div class="slide-num" id="slideNum">01 / 09</div>
+
+<!-- THEME TOGGLE -->
+<button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+  <span id="themeIcon">☾</span>
+  <span id="themeLabel">Escuro</span>
+</button>
+
+<!-- DECK -->
+<div class="deck" id="deck">
+
+  <!-- SLIDE 1: CAPA -->
+  <section class="slide slide-cover active" data-index="0">
+    <div class="cover-kicker">CEFOR / IFes</div>
+    <div class="cover-headline">
+      Nova <em>Base de Conhecimento</em><br>— como chegamos até aqui
+    </div>
+    <p class="cover-lead">
+      Da ideia ao protótipo: o caminho percorrido para redesenhar a base de conhecimento do CEFOR com qualidade editorial, acessibilidade e foco em quem usa no dia a dia.
+    </p>
+    <div class="cover-divider"></div>
+    <div class="cover-meta">
+      <div class="meta-item">
+        <div class="meta-label">Data</div>
+        <div class="meta-value">Maio 2026</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Fase atual</div>
+        <div class="meta-value">Fase 1 — Fundações</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Equipe</div>
+        <div class="meta-value">Elton · Marcos · Juliana · Rute</div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-3);margin-top:48px;">
+      Use <kbd>→</kbd> / <kbd>←</kbd> ou os botões abaixo para navegar
+    </p>
+  </section>
+
+  <!-- SLIDE 2: PONTO DE PARTIDA -->
+  <section class="slide" data-index="1">
+    <div class="slide-content">
+      <div class="section-kicker">Ponto de partida</div>
+      <h2 class="slide-title">O que temos <em>hoje</em></h2>
+      <div class="stats-row">
+        <div class="stat-block">
+          <div class="stat-num">~60</div>
+          <div class="stat-label">artigos no site atual</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">12</div>
+          <div class="stat-label">percursos temáticos existentes</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">7</div>
+          <div class="stat-label">sites de referência analisados por Juliana</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">1</div>
+          <div class="stat-label">servidor novo com WordPress instalado e pronto</div>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top:24px;">
+        <p>A base atual funciona, mas <strong>não tem padrão editorial, não tem acessibilidade e foi crescendo sem sistema.</strong> A proposta é reconstruir do zero — com método.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: PROPÓSITO -->
+  <section class="slide" data-index="2">
+    <div class="slide-content" style="max-width:700px;">
+      <div class="section-kicker">Propósito-farol</div>
+      <h2 class="slide-title">Por que estamos <em>fazendo isso</em></h2>
+      <blockquote class="pull-quote">
+        <p>"A Base de Conhecimento do CEFOR é o lugar onde qualquer profissional de EaD do IFES resolve problemas com autonomia e se atualiza continuamente."</p>
+        <cite>— Definido pela equipe na reunião de 01/04/2026</cite>
+      </blockquote>
+      <div style="margin-top:28px;" class="two-col">
+        <div>
+          <div class="card-title" style="margin-bottom:10px;">📌 Consulta</div>
+          <div class="h-list">
+            <div class="h-item">Estou com um problema agora</div>
+            <div class="h-item">Preciso da resposta rápida</div>
+            <div class="h-item">Sem precisar ligar para ninguém</div>
+          </div>
+        </div>
+        <div>
+          <div class="card-title" style="margin-bottom:10px;">📚 Aprendizagem</div>
+          <div class="h-list">
+            <div class="h-item">Quero aprender algo novo</div>
+            <div class="h-item">Quero me atualizar</div>
+            <div class="h-item">No meu ritmo, quando eu quiser</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: O QUE FOI FEITO — FASE 0 -->
+  <section class="slide" data-index="3">
+    <div class="slide-content">
+      <div class="section-kicker">Fase 0 — concluída em abril/maio 2026</div>
+      <h2 class="slide-title"><em>Benchmarking</em> e decisões de base</h2>
+      <div class="two-col">
+        <div>
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="feature-icon">🔍</div>
+              <div class="feature-text">
+                <div class="feature-title">Pesquisa de benchmarking</div>
+                <div class="feature-desc">Juliana analisou 7 plataformas de conhecimento com 5 lentes diferentes (Medium, Canva, Algolia, Notion, Zendesk, Coursera, Claude Blog)</div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">📊</div>
+              <div class="feature-text">
+                <div class="feature-title">Relatório comparativo</div>
+                <div class="feature-desc">Análise consolidada: lacunas, oportunidades e prioridades rankeadas para a nova base</div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🗣️</div>
+              <div class="feature-text">
+                <div class="feature-title">Reunião de brainstorm</div>
+                <div class="feature-desc">Elton, Marquito, Rute e Juliana — consensos sobre propósito, público, funcionalidades e sonhos</div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">✅</div>
+              <div class="feature-text">
+                <div class="feature-title">16 decisões fechadas</div>
+                <div class="feature-desc">Elton + Juliana consolidaram as decisões em duas sessões (08/05 e 13/05). Fase 0 oficialmente encerrada.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="card-title" style="margin-bottom:12px; font-size:13px; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-3);">Resultado das 16 decisões</div>
+          <div class="decision-grid" style="grid-template-columns:1fr;">
+            <div class="decision-card approved" style="display:flex;align-items:center;gap:12px;padding:12px 16px;">
+              <div style="font-family:'Fraunces',serif;font-size:28px;font-weight:700;color:var(--accent);font-variation-settings:'opsz' 72">6</div>
+              <div>
+                <div class="dec-status approved">Aprovadas</div>
+                <div class="dec-desc">Índice sticky, modo escuro, acessibilidade, busca, multimodal ampliado, subtítulo obrigatório</div>
+              </div>
+            </div>
+            <div class="decision-card adjusted" style="display:flex;align-items:center;gap:12px;padding:12px 16px;">
+              <div style="font-family:'Fraunces',serif;font-size:28px;font-weight:700;color:var(--sun);font-variation-settings:'opsz' 72">8</div>
+              <div>
+                <div class="dec-status adjusted">Ajustadas</div>
+                <div class="dec-desc">Propósito, perfis, callouts, tipografia sans, trilhas, feedback textual, metadados, fundo branco</div>
+              </div>
+            </div>
+            <div class="decision-card rejected" style="display:flex;align-items:center;gap:12px;padding:12px 16px;">
+              <div style="font-family:'Fraunces',serif;font-size:28px;font-weight:700;color:var(--rose);font-variation-settings:'opsz' 72">2</div>
+              <div>
+                <div class="dec-status rejected">Rejeitadas</div>
+                <div class="dec-desc">TL;DR obrigatório e fundo bege (equipe preferiu fundo branco e sem resumo automático)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: DECISÕES-CHAVE -->
+  <section class="slide" data-index="4">
+    <div class="slide-content">
+      <div class="section-kicker">As decisões que mais importam</div>
+      <h2 class="slide-title">O que ficou <em>definido</em></h2>
+      <div class="decision-grid">
+        <div class="decision-card approved">
+          <div class="dec-status approved">✓ Aprovado</div>
+          <div class="dec-title">Índice sticky com scroll-tracking</div>
+          <div class="dec-desc">Sempre visível na lateral, rastreando a posição de leitura em tempo real</div>
+        </div>
+        <div class="decision-card approved">
+          <div class="dec-status approved">✓ Aprovado</div>
+          <div class="dec-title">Modo escuro nativo</div>
+          <div class="dec-desc">Via CSS custom properties desde o dia 1. Respeita preferência do sistema operacional</div>
+        </div>
+        <div class="decision-card approved">
+          <div class="dec-status approved">✓ Aprovado</div>
+          <div class="dec-title">Pacote completo de acessibilidade</div>
+          <div class="dec-desc">VLibras, A+/A-, alto contraste, fonte dislexia, atalhos de teclado — eMAG + WCAG 2.2</div>
+        </div>
+        <div class="decision-card adjusted">
+          <div class="dec-status adjusted">→ Ajustado</div>
+          <div class="dec-title">Multimodal ampliado</div>
+          <div class="dec-desc">Áudio do artigo, vídeo em Libras (accordion), audiodescrição visível, opção de podcast, infográficos</div>
+        </div>
+        <div class="decision-card adjusted">
+          <div class="dec-status adjusted">→ Ajustado</div>
+          <div class="dec-title">Subtítulo obrigatório em todos os artigos</div>
+          <div class="dec-desc">Logo abaixo do título. Delimita escopo e orienta o leitor antes de ele investir tempo</div>
+        </div>
+        <div class="decision-card adjusted">
+          <div class="dec-status adjusted">→ Ajustado</div>
+          <div class="dec-title">Autor sempre exibido</div>
+          <div class="dec-desc">Nome do autor visível em todos os artigos, obrigatório. Compliance com legislação de IA</div>
+        </div>
+        <div class="decision-card approved">
+          <div class="dec-status approved">✓ Aprovado</div>
+          <div class="dec-title">Busca modal (Ctrl+K)</div>
+          <div class="dec-desc">Full-text, filtros por categoria/perfil, atalhos visíveis. IA para busca fica na V2</div>
+        </div>
+        <div class="decision-card adjusted">
+          <div class="dec-status adjusted">→ Ajustado</div>
+          <div class="dec-title">Trilhas pedagógicas na V1</div>
+          <div class="dec-desc">Como curadoria editorial, sem tracking de progresso. Artigos relacionados obrigatórios ao final</div>
+        </div>
+        <div class="decision-card adjusted">
+          <div class="dec-status adjusted">→ Ajustado</div>
+          <div class="dec-title">Feedback: "Foi útil / Não foi útil"</div>
+          <div class="dec-desc">Texto limpo, sem emojis. Tom institucional. Com campo opcional "O que faltou?"</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: FASE 1 — O QUE ESTÁ ACONTECENDO -->
+  <section class="slide" data-index="5">
+    <div class="slide-content">
+      <div class="section-kicker">Fase 1 — em andamento</div>
+      <h2 class="slide-title"><em>Fundações</em> antes do visual</h2>
+      <p style="font-size:15px;color:var(--ink-2);margin-bottom:28px;line-height:1.6;">
+        Antes de qualquer cor, fonte ou tela: definir as <strong>regras do conteúdo</strong>. É o que garante que a base vai funcionar de verdade — não só parecer bonita.
+      </p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-label">
+            <span class="timeline-badge badge-done">Concluída</span>
+          </div>
+          <div class="timeline-line"><div class="timeline-dot"></div></div>
+          <div class="timeline-content">
+            <div class="timeline-title">Sprint 1 — Camadas 1 a 3</div>
+            <div class="timeline-desc">Princípios editoriais · Voz e tom · Vocabulário controlado (termos do CEFOR padronizados)</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-label">
+            <span class="timeline-badge badge-active">Em andamento</span>
+          </div>
+          <div class="timeline-line active"><div class="timeline-dot"></div></div>
+          <div class="timeline-content">
+            <div class="timeline-title">Sprint 2/3 — Taxonomia + Interface do artigo</div>
+            <div class="timeline-desc">Como os artigos são organizados, encontrados e como a página de artigo vai ser estruturada. <strong>É aqui que estamos agora.</strong></div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-label">
+            <span class="timeline-badge badge-next">Próximo</span>
+          </div>
+          <div class="timeline-line next"><div class="timeline-dot"></div></div>
+          <div class="timeline-content">
+            <div class="timeline-title">Sprint 4 — Operação e métricas</div>
+            <div class="timeline-desc">Como manter a base viva: ciclo de revisão, quem faz o quê, como medir se está funcionando</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-label">
+            <span class="timeline-badge badge-next">Fase 2</span>
+          </div>
+          <div class="timeline-line next"><div class="timeline-dot"></div></div>
+          <div class="timeline-content">
+            <div class="timeline-title">Design System</div>
+            <div class="timeline-desc">Visual, tipografia, componentes. Só depois que as fundações estiverem prontas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 7: PROPOSTA DE TAXONOMIA -->
+  <section class="slide" data-index="6">
+    <div class="slide-content">
+      <div class="section-kicker">Fase 1 — Sprint 3 (agora)</div>
+      <h2 class="slide-title">Proposta de <em>taxonomia e interface</em></h2>
+      <div class="two-col">
+        <div>
+          <div class="card-title" style="margin-bottom:12px;">🗂️ O que é taxonomia</div>
+          <p style="font-size:14px;color:var(--ink-2);line-height:1.6;margin-bottom:16px;">É o sistema de categorias, tipos de conteúdo e tags que permite que os artigos sejam <strong>encontrados, organizados e relacionados</strong> entre si de forma consistente.</p>
+          <div class="h-list">
+            <div class="h-item">Tipos de artigo: Tutorial, Referência, Conceito, Guia</div>
+            <div class="h-item">Categorias: Moodle, Produção de conteúdo, Gestão de cursos…</div>
+            <div class="h-item">Tags controladas: termos do vocabulário padronizado</div>
+            <div class="h-item">Perfis de público: Professor, Mediador, Coordenador, Técnico</div>
+          </div>
+        </div>
+        <div>
+          <div class="card-title" style="margin-bottom:12px;">📄 Interface do artigo</div>
+          <p style="font-size:14px;color:var(--ink-2);line-height:1.6;margin-bottom:16px;">Como a página de um artigo vai ser estruturada — a anatomia da experiência de leitura.</p>
+          <div class="h-list">
+            <div class="h-item">Cabeçalho: título + subtítulo + autor + tempo de leitura</div>
+            <div class="h-item">Índice sticky na lateral, com scroll-tracking</div>
+            <div class="h-item">Blocos multimodais: Libras, áudio, infográfico</div>
+            <div class="h-item">Artigos relacionados ao final (obrigatório)</div>
+            <div class="h-item">Feedback e ações de compartilhamento</div>
+          </div>
+        </div>
+      </div>
+      <div class="highlight-box">
+        <p>Preparamos dois artefatos para revisão da equipe — são <strong>propostas, não decisões.</strong> A reunião de hoje é justamente para fechar esses pontos com vocês.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 8: OS DOIS ARTEFATOS -->
+  <section class="slide" data-index="7">
+    <div class="slide-content" style="max-width:800px;">
+      <div class="section-kicker">Para revisão hoje</div>
+      <h2 class="slide-title">Dois artefatos para <em>decidir juntos</em></h2>
+      <div class="cards-2col" style="margin-top:8px;">
+        <div class="card" style="border-left:4px solid var(--accent);">
+          <div class="card-num">01</div>
+          <div class="card-title" style="font-size:16px;">Proposta de Taxonomia e Interface</div>
+          <div class="card-desc" style="margin-bottom:14px;">
+            Sistema completo de categorias, tipos de artigo, tags e a anatomia de como uma página de artigo vai funcionar. Inclui 3 opções de sidebar (lateral, embutida, flutuante) para votação.
+          </div>
+          <div class="tags">
+            <span class="tag accent">proposta-revisao-interativa.html</span>
+          </div>
+        </div>
+        <div class="card" style="border-left:4px solid var(--gold);">
+          <div class="card-num">02</div>
+          <div class="card-title" style="font-size:16px;">Protótipo de Artigo</div>
+          <div class="card-desc" style="margin-bottom:14px;">
+            Página de artigo funcional e navegável com todas as decisões da Fase 0 implementadas: índice sticky, modo escuro, acessibilidade, multimodal, feedback, metadados — artigo real de exemplo.
+          </div>
+          <div class="tags">
+            <span class="tag gold">prototipo-artigo.html</span>
+          </div>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top:20px;">
+        <p><strong>O que precisamos de vocês:</strong> feedback sobre a estrutura proposta, validação pedagógica (Rute) e aprovação técnica (Marquito) antes de avançar para o Design System.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 9: PRÓXIMOS PASSOS -->
+  <section class="slide slide-final" data-index="8">
+    <div class="slide-content" style="max-width:720px; text-align:center;">
+      <div class="section-kicker">Próximos passos</div>
+      <h2 class="slide-title" style="text-align:center;">O que vem depois da <em>aprovação de hoje</em></h2>
+      <div class="cards-3col" style="text-align:left;margin:24px 0;">
+        <div class="card">
+          <div class="card-num" style="color:var(--accent);">01</div>
+          <div class="card-title">Fechar a Fase 1</div>
+          <div class="card-desc">Finalizar Content System, taxonomia e política operacional. Cada camada vira um artefato consultável.</div>
+        </div>
+        <div class="card">
+          <div class="card-num" style="color:var(--gold);">02</div>
+          <div class="card-title">Design System (Fase 2)</div>
+          <div class="card-desc">Visual, tipografia, componentes e tokens. Com as fundações prontas, o design será muito mais rápido e consistente.</div>
+        </div>
+        <div class="card">
+          <div class="card-num" style="color:var(--sky);">03</div>
+          <div class="card-title">Tema WordPress (Fase 3)</div>
+          <div class="card-desc">Implementação no servidor novo já instalado. Templates de artigo, Custom Post Types, busca.</div>
+        </div>
+      </div>
+      <div class="final-cta">
+        ✦ Vamos ver os artefatos?
+      </div>
+      <p style="font-size:13px;color:var(--ink-3);margin-top:20px;">
+        proposta-revisao-interativa.html → prototipo-artigo.html
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <button class="btn-nav" id="btnPrev" onclick="navigate(-1)" disabled aria-label="Anterior">←</button>
+  <div class="btn-dots" id="dotsContainer"></div>
+  <span class="slide-counter" id="counter">1 / 9</span>
+  <button class="btn-nav" id="btnNext" onclick="navigate(1)" aria-label="Próximo">→</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+  let dark = false;
+
+  // Build dots
+  const dotsContainer = document.getElementById('dotsContainer');
+  for (let i = 0; i < total; i++) {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', `Ir para slide ${i + 1}`);
+    d.onclick = () => goTo(i);
+    dotsContainer.appendChild(d);
+  }
+
+  function updateUI() {
+    const dots = dotsContainer.querySelectorAll('.dot');
+    slides.forEach((s, i) => {
+      s.classList.remove('active', 'prev');
+      if (i === current) s.classList.add('active');
+      else if (i < current) s.classList.add('prev');
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    document.getElementById('counter').textContent = `${current + 1} / ${total}`;
+    document.getElementById('slideNum').textContent = String(current + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+    document.getElementById('btnPrev').disabled = current === 0;
+    document.getElementById('btnNext').disabled = current === total - 1;
+    document.getElementById('progressBar').style.width = ((current + 1) / total * 100) + '%';
+  }
+
+  function navigate(dir) {
+    const next = current + dir;
+    if (next >= 0 && next < total) { current = next; updateUI(); }
+  }
+
+  function goTo(idx) { current = idx; updateUI(); }
+
+  function toggleTheme() {
+    dark = !dark;
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : '');
+    document.getElementById('themeIcon').textContent = dark ? '☀' : '☾';
+    document.getElementById('themeLabel').textContent = dark ? 'Claro' : 'Escuro';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); navigate(1); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); navigate(-1); }
+    if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+  });
+
+  // Touch swipe
+  let touchStartX = 0;
+  document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) navigate(dx < 0 ? 1 : -1);
+  }, { passive: true });
+
+  updateUI();
+</script>
+</body>
+</html>

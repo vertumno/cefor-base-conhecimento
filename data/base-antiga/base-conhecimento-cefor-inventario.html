@@ -84,6 +84,177 @@ td a{color:var(--accent);text-decoration:none;font-weight:500}td a:hover{text-de
   <nav class="tabs-nav" id="tN"></nav>
   <div id="tC"></div>
 </section>
-<script src="app.js"></script>
+<script>
+(function(){
+  const $ = (s,c=document)=>c.querySelector(s);
+  const $$ = (s,c=document)=>[...c.querySelectorAll(s)];
+  const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const dropZone = $('#dropZone');
+  const fileInput = $('#fileInput');
+  const uploadSection = $('#uploadSection');
+  const sB = $('#sB');
+  const mainContent = $('#mainContent');
+  const tN = $('#tN');
+  const tC = $('#tC');
+
+  dropZone.addEventListener('click', ()=>fileInput.click());
+  fileInput.addEventListener('change', e=>{
+    const f = e.target.files[0]; if(f) loadFile(f);
+  });
+  ['dragenter','dragover'].forEach(ev=>dropZone.addEventListener(ev,e=>{e.preventDefault();e.stopPropagation();dropZone.classList.add('drag');}));
+  ['dragleave','drop'].forEach(ev=>dropZone.addEventListener(ev,e=>{e.preventDefault();e.stopPropagation();dropZone.classList.remove('drag');}));
+  dropZone.addEventListener('drop', e=>{
+    const f = e.dataTransfer.files && e.dataTransfer.files[0];
+    if(f) loadFile(f);
+  });
+  // Auto-load se o arquivo estiver ao lado
+  fetch('base-conhecimento-cefor-inventario.json').then(r=>r.ok?r.json():null).then(d=>{ if(d) render(d); }).catch(()=>{});
+
+  function loadFile(file){
+    const r = new FileReader();
+    r.onload = e=>{
+      try { render(JSON.parse(e.target.result)); }
+      catch(err){ alert('JSON invalido: '+err.message); }
+    };
+    r.readAsText(file,'utf-8');
+  }
+
+  function render(data){
+    uploadSection.classList.add('hidden');
+    sB.classList.remove('hidden');
+    mainContent.classList.remove('hidden');
+    renderStats(data.meta||{});
+    buildTabs(data);
+  }
+
+  function renderStats(m){
+    const stats = [
+      ['total_artigos','Artigos'],
+      ['total_percursos','Percursos'],
+      ['categorias_unicas','Categorias'],
+      ['temas_unicos','Temas'],
+    ];
+    sB.innerHTML = stats.map(([k,l])=>`<div class="stat"><div class="stat-n">${esc(m[k]??'-')}</div><div class="stat-l">${l}</div></div>`).join('')
+      + `<div class="stat"><div class="stat-n" style="font-size:1.4rem;line-height:1.6">${esc(m.plataforma||'-')}</div><div class="stat-l">Plataforma</div></div>`;
+  }
+
+  function buildTabs(d){
+    const tabs = [
+      {id:'percursos', label:'Percursos', render:()=>tabPercursos(d.percursos||[])},
+      {id:'artigos', label:'Artigos', render:()=>tabArtigos(d.artigos||[])},
+      {id:'categorias', label:'Categorias', render:()=>tabTax(d.taxonomias?.categorias||{}, 'categoria')},
+      {id:'temas', label:'Temas', render:()=>tabTax(d.taxonomias?.temas||{}, 'tema')},
+      {id:'problemas', label:'Problemas', render:()=>tabProblemas(d.problemas||[])},
+    ];
+    tN.innerHTML = tabs.map((t,i)=>`<button class="tab-btn ${i===0?'active':''}" data-tab="${t.id}">${t.label}</button>`).join('');
+    tC.innerHTML = tabs.map((t,i)=>`<div class="tab-panel ${i===0?'active':''}" id="p-${t.id}"></div>`).join('');
+    tabs.forEach(t=>{ $('#p-'+t.id).innerHTML = t.render(); });
+    $$('.tab-btn').forEach(b=>b.addEventListener('click',()=>{
+      $$('.tab-btn').forEach(x=>x.classList.remove('active'));
+      $$('.tab-panel').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      $('#p-'+b.dataset.tab).classList.add('active');
+    }));
+    wireSearches();
+    wireSorts();
+  }
+
+  function searchBar(id,ph){
+    return `<div class="search-bar">
+      <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/></svg>
+      <input type="text" id="${id}" placeholder="${ph}">
+    </div>`;
+  }
+
+  function tabPercursos(list){
+    const rows = list.map(p=>`<tr>
+      <td><strong>${esc(p.nome)}</strong><br><a href="${esc(p.url)}" target="_blank">${esc(p.slug)}</a></td>
+      <td data-n="${p.qtd_declarada||0}">${p.qtd_declarada||0}</td>
+      <td data-n="${p.qtd_encontrada||0}">${p.qtd_encontrada||0}</td>
+      <td><span class="b ${p.status==='OK'?'bo':'bw'}">${esc(p.status)}</span></td>
+    </tr>`).join('');
+    return searchBar('s-percursos','Buscar percurso...') + `<div class="tw"><div class="ts"><table data-table="percursos">
+      <thead><tr><th data-sort="text">Percurso</th><th data-sort="num">Declarado</th><th data-sort="num">Encontrado</th><th data-sort="text">Status</th></tr></thead>
+      <tbody>${rows}</tbody></table></div></div>`;
+  }
+
+  function tabArtigos(list){
+    const rows = list.map(a=>`<tr>
+      <td>${a.id}</td>
+      <td><a href="${esc(a.url)}" target="_blank"><strong>${esc(a.titulo)}</strong></a><br><small style="color:var(--text2)">${esc(a.slug)}</small></td>
+      <td><span class="b bc">${esc(a.categoria||'-')}</span></td>
+      <td><div class="br">${(a.temas||[]).map(t=>`<span class="b bt">${esc(t)}</span>`).join('')||'<span style="color:var(--text2)">-</span>'}</div></td>
+      <td><span class="b bp">${esc(a.tipo||'-')}</span></td>
+      <td data-n="${(a.percursos||[]).length}">${(a.percursos||[]).length}</td>
+      <td>${a.alerta_obsoleto?`<span class="b be">${esc(a.alerta_obsoleto)}</span>`:'<span style="color:var(--green)">OK</span>'}</td>
+    </tr>`).join('');
+    return searchBar('s-artigos','Buscar artigo, categoria, tema...') + `<div class="tw"><div class="ts"><table data-table="artigos">
+      <thead><tr><th data-sort="num">ID</th><th data-sort="text">Titulo</th><th data-sort="text">Categoria</th><th data-sort="text">Temas</th><th data-sort="text">Tipo</th><th data-sort="num">Percursos</th><th data-sort="text">Alerta</th></tr></thead>
+      <tbody>${rows}</tbody></table></div></div>`;
+  }
+
+  function tabTax(obj,label){
+    const entries = Object.entries(obj).sort((a,b)=>b[1]-a[1]);
+    const max = entries.length ? entries[0][1] : 1;
+    const rows = entries.map(([k,v])=>`<tr>
+      <td><strong>${esc(k)}</strong></td>
+      <td data-n="${v}">${v}</td>
+      <td style="min-width:200px"><div class="cb"><div class="cbf" style="width:${(v/max*100).toFixed(1)}%;background:var(--accent)"></div></div></td>
+    </tr>`).join('');
+    return searchBar('s-'+label,'Buscar '+label+'...') + `<div class="tw"><div class="ts"><table data-table="${label}">
+      <thead><tr><th data-sort="text">${label[0].toUpperCase()+label.slice(1)}</th><th data-sort="num">Artigos</th><th>Distribuicao</th></tr></thead>
+      <tbody>${rows}</tbody></table></div></div>`;
+  }
+
+  function tabProblemas(list){
+    const sevClass = {CRITICA:'bsc',ALTA:'bsa',MEDIA:'bsm',BAIXA:'bsb'};
+    const rows = list.map(p=>`<tr>
+      <td><span class="b ${sevClass[p.severidade]||'bc'}">${esc(p.severidade)}</span></td>
+      <td><strong>${esc(p.problema)}</strong></td>
+      <td>${esc(p.impacto)}</td>
+      <td>${esc(p.afetados)}</td>
+    </tr>`).join('');
+    return searchBar('s-problemas','Buscar problema...') + `<div class="tw"><div class="ts"><table data-table="problemas">
+      <thead><tr><th data-sort="text">Severidade</th><th data-sort="text">Problema</th><th data-sort="text">Impacto</th><th data-sort="text">Afetados</th></tr></thead>
+      <tbody>${rows}</tbody></table></div></div>`;
+  }
+
+  function wireSearches(){
+    $$('.search-bar input').forEach(inp=>{
+      inp.addEventListener('input',()=>{
+        const q = inp.value.toLowerCase();
+        const table = inp.closest('.tab-panel').querySelector('table');
+        $$('tbody tr',table).forEach(tr=>{
+          tr.style.display = tr.textContent.toLowerCase().includes(q) ? '' : 'none';
+        });
+      });
+    });
+  }
+
+  function wireSorts(){
+    $$('table').forEach(table=>{
+      $$('th[data-sort]',table).forEach((th,idx)=>{
+        th.addEventListener('click',()=>{
+          const type = th.dataset.sort;
+          const asc = !th.classList.contains('sa');
+          $$('th',table).forEach(x=>x.classList.remove('sa','sd'));
+          th.classList.add(asc?'sa':'sd');
+          const rows = $$('tbody tr',table);
+          rows.sort((a,b)=>{
+            const A = a.children[idx], B = b.children[idx];
+            if(type==='num'){
+              return (parseFloat(A.dataset.n||A.textContent)||0) - (parseFloat(B.dataset.n||B.textContent)||0);
+            }
+            return A.textContent.localeCompare(B.textContent,'pt-BR');
+          });
+          if(!asc) rows.reverse();
+          const tb = table.querySelector('tbody');
+          rows.forEach(r=>tb.appendChild(r));
+        });
+      });
+    });
+  }
+})();
+</script>
 </body>
 </html>

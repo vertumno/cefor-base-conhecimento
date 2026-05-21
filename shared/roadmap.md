@@ -1,7 +1,7 @@
 # Roadmap — Base de Conhecimento CEFOR/IFes
 
-> **Versão:** 0.2 — Inclui Content System
-> **Data:** 2026-04-07
+> **Versão:** 0.3 — Taxonomia e interface do artigo validadas
+> **Data:** 2026-05-14 (criado 2026-04-07)
 > **Aprovação:** Elton + Marcos
 > **Plataforma:** WordPress (servidor novo, já instalado)
 
@@ -85,11 +85,11 @@ Fase 5 ─ Lançamento e Operação Contínua
 
 ---
 
-## Fase 0 — Pesquisa e Benchmarking
+## Fase 0 — Pesquisa e Benchmarking ✅ CONCLUÍDA
 
 **Objetivo:** Colecionar referências e ideias que alimentem as decisões de todas as fases seguintes.
 
-**Status:** Em andamento (tarefa da Juliana)
+**Status:** ✅ CONCLUÍDA — 16 decisões registradas em `_config/decisoes.md`
 
 | Entrega | Responsável | Descrição |
 |---|---|---|
@@ -103,11 +103,19 @@ Fase 5 ─ Lançamento e Operação Contínua
 
 ---
 
-## Fase 1 — Fundações
+## Fase 1 — Fundações 🔄 EM ANDAMENTO
 
 **Objetivo:** Definir as regras do jogo antes de tocar em visual ou código. Sem essa fase, o design fica bonito mas sem alma, e a produção de conteúdo fica inconsistente.
 
 **Esta é a fase mais crítica do projeto. É aqui que se define o que torna a base excelente — não no visual.**
+
+**Status parcial (2026-05-14):**
+- ✅ Taxonomia em 4 eixos validada (Tipo, Categoria, Tópico, Trilha) — Decisão 17
+- ✅ Arquitetura Trilha/Percurso definida — Decisão 18
+- ✅ Interface do artigo validada (cabeçalho, multimodal, rodapé) — Decisões 19-24
+- ✅ Protótipo `prototipo-artigo.html` referendado como referência canônica
+- ⏳ Content System (camadas 1-10) — pendente
+- ⏳ URLs semânticas + Estratégia de descoberta — pendente
 
 A Fase 1 é composta por 3 blocos: o **Content System** (10 camadas), a **Taxonomia** e a **Estratégia de Descoberta**.
 
@@ -136,11 +144,14 @@ As camadas 1 a 7 são interdependentes e devem ser definidas em conjunto.
 
 ### Bloco 2 — Taxonomia
 
-| Entrega | Pilar | Responsável | Descrição |
-|---|---|---|---|
-| **Estrutura de Categorias e Tags** | Pilar 4 | Elton + Marcos | Categorias (árvore, flat ou mista), sistema de tags (controlado vs livre vs híbrido), nomenclatura alinhada com o Vocabulário Controlado (Camada 3 do CS). |
-| **Modelo de Percursos/Trilhas** | Pilar 4 | Elton + Rute | Como artigos se conectam em sequência. Artigos relacionados (manual, automático ou híbrido). |
-| **URLs Semânticas** | Pilar 4 | Elton + Marcos | Estrutura de URLs para artigos, percursos, categorias e busca. |
+> ✅ Arquitetura de 4 eixos aprovada em 2026-05-14. Falta formalizar o documento de output em `stages/01-fundacoes/output/taxonomia.md`.
+
+| Entrega | Pilar | Status | Responsável | Descrição |
+|---|---|---|---|---|
+| **Arquitetura em 4 eixos** | Pilar 4 | ✅ Validado | Elton + Marquito | Tipo (1) + Categoria (1) + Tópico (2-4) + Trilha (0+). Tags livres abolidas. 25 tópicos controlados. |
+| **Arquitetura Trilha/Percurso** | Pilar 4 | ✅ Validado | Elton + Marquito + Rute | Trilha = jornada atômica de artigos (começo, meio, fim). Percurso = conjunto de trilhas + possíveis artigos soltos. Um artigo pode estar em múltiplas trilhas. |
+| **Documento formal de taxonomia** | Pilar 4 | ⏳ Pendente | Elton | Formalizar em `stages/01-fundacoes/output/taxonomia.md` com todos os valores, regras e exemplos. |
+| **URLs Semânticas** | Pilar 4 | ⏳ Pendente | Elton + Marcos | Estrutura de URLs para artigos, trilhas, percursos, categorias e busca. |
 
 ---
 
@@ -376,8 +387,6 @@ Ideias do brainstorm que **não** entram neste roadmap, mas ficam registradas:
 ---
 
 *Documento criado em: 2026-04-07*
-*Atualizado em: 2026-04-07*
-*Versão: 0.2 — Inclui Content System (10 camadas)*
+*Atualizado em: 2026-05-14*
+*Versão: 0.3 — Taxonomia e interface do artigo validadas*
 *Projeto: Base de Conhecimento CEFOR/IFes — Reformulação*
-
-— Morgan, planejando o futuro 📊
