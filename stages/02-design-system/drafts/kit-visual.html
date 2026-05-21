@@ -36,6 +36,9 @@
     --sun-soft: #f7e6c4;
     --sky: #2c5e8f;
     --sky-soft: #d9e7f3;
+    --violet: #7a5a9b;
+    --violet-soft: #ece3f2;
+    --violet-deep: #553d70;
     --sans: 'Inter', system-ui, -apple-system, sans-serif;
     --mono: 'JetBrains Mono', ui-monospace, monospace;
     --dyslexic: 'Lexend', 'Inter', sans-serif;
@@ -68,6 +71,8 @@
     --rose-soft: #2e1a17;
     --sun-soft: #2e2310;
     --sky-soft: #16222e;
+    --violet-soft: #251d2e;
+    --violet-deep: #c5a9dd;
   }
 
   [data-contrast="high"] {
@@ -93,6 +98,9 @@
     --sun-soft: #2a1a00;
     --sky: #66ccff;
     --sky-soft: #001a2a;
+    --violet: #cc88ff;
+    --violet-soft: #1a0a2a;
+    --violet-deep: #cc88ff;
   }
 
   [data-font="dyslexic"] { --sans: var(--dyslexic); }
@@ -369,12 +377,75 @@
   .callout p { margin: 0; color: var(--ink-2); }
   .callout.dica { background: var(--accent-soft); border-color: var(--accent); }
   .callout.dica .callout-title { color: var(--accent-deep); }
-  .callout.info { background: var(--sky-soft); border-color: var(--sky); }
-  .callout.info .callout-title { color: var(--sky); }
+  .callout.nota { background: var(--sky-soft); border-color: var(--sky); }
+  .callout.nota .callout-title { color: var(--sky); }
   .callout.atencao { background: var(--sun-soft); border-color: var(--sun); }
   .callout.atencao .callout-title { color: var(--sun); }
   .callout.cuidado { background: var(--rose-soft); border-color: var(--rose); }
   .callout.cuidado .callout-title { color: var(--rose); }
+  .callout.prereq { background: var(--bg-3); border-color: var(--ink-3); }
+  .callout.prereq .callout-title { color: var(--ink-2); }
+  .callout.acesso { background: var(--violet-soft); border-color: var(--violet); }
+  .callout.acesso .callout-title { color: var(--violet-deep); }
+  .callout.acesso .callout-icon { color: var(--violet); }
+  .callout-title { display: flex; align-items: center; gap: 8px; }
+  .callout-title svg { width: 15px; height: 15px; }
+
+  /* Selo de versão do Moodle */
+  .version-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 5px 12px 5px 10px;
+    border-radius: 99px;
+    background: var(--bg-2);
+    border: 1px solid var(--line-2);
+    font-size: .76rem; font-weight: 600;
+    color: var(--ink-2);
+  }
+  .version-badge svg { width: 13px; height: 13px; color: var(--accent); }
+  .version-badge.outdated { background: var(--sun-soft); border-color: var(--sun); }
+  .version-badge.outdated svg { color: var(--sun); }
+
+  /* Bloco MoodleCode */
+  .moodlecode {
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    max-width: 640px;
+  }
+  .moodlecode-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 14px;
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .moodlecode-tag {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .moodlecode-tag svg { width: 13px; height: 13px; }
+  .moodlecode-copy {
+    border: 1px solid var(--line-2); background: var(--paper);
+    color: var(--ink-2); font-family: var(--sans);
+    font-size: .72rem; font-weight: 600;
+    padding: 4px 10px; border-radius: var(--r-sm); cursor: pointer;
+    transition: all .15s;
+  }
+  .moodlecode-copy:hover { border-color: var(--accent); color: var(--accent); }
+  .moodlecode pre {
+    margin: 0; padding: 14px;
+    font-family: var(--mono); font-size: .8rem;
+    color: var(--ink); background: var(--paper);
+    overflow-x: auto; line-height: 1.5;
+  }
+  .moodlecode-foot {
+    padding: 10px 14px;
+    background: var(--bg-2);
+    border-top: 1px solid var(--line);
+    font-size: .78rem; color: var(--ink-3);
+    line-height: 1.4;
+  }
+  .moodlecode-foot strong { color: var(--ink-2); }
 
   /* Cards */
   .card {
@@ -453,6 +524,7 @@
     <a href="#chip-percurso">Chip de percurso</a>
     <a href="#botoes">Botões</a>
     <a href="#callouts">Callouts</a>
+    <a href="#versao-codigo">Versão e MoodleCode</a>
     <a href="#cards">Cards</a>
     <a href="#progresso">Progresso estrutural</a>
     <a href="#breadcrumb">Breadcrumb</a>
@@ -518,7 +590,9 @@
         <div class="swatch"><div class="swatch-chip" style="background:var(--sky)"></div><div class="swatch-meta"><div class="swatch-name">Sky</div><div class="swatch-var">--sky</div><div class="swatch-hex">#2c5e8f</div><div class="swatch-use">Informação / nota</div></div></div>
         <div class="swatch"><div class="swatch-chip" style="background:var(--sun)"></div><div class="swatch-meta"><div class="swatch-name">Sun</div><div class="swatch-var">--sun</div><div class="swatch-hex">#c98a1e</div><div class="swatch-use">Atenção</div></div></div>
         <div class="swatch"><div class="swatch-chip" style="background:var(--rose)"></div><div class="swatch-meta"><div class="swatch-name">Rose</div><div class="swatch-var">--rose</div><div class="swatch-hex">#b3433a</div><div class="swatch-use">Cuidado / risco</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--violet)"></div><div class="swatch-meta"><div class="swatch-name">Violet</div><div class="swatch-var">--violet</div><div class="swatch-hex">#7a5a9b</div><div class="swatch-use">Acessibilidade (cor reservada)</div></div></div>
       </div>
+      <div class="sg-note"><strong>Roxo = acessibilidade.</strong> Cor reservada ao callout de acessibilidade (Decisão 5). Não conflita com verde (trilha/ação), dourado (percurso) nem com as 3 cores de severidade. Comunica a bandeira de inclusão do CEFOR sem depender da escrita do autor.</div>
     </section>
 
     <!-- ====================== IDENTIDADE CROMÁTICA ====================== -->
@@ -647,14 +721,76 @@
     <!-- ====================== CALLOUTS ====================== -->
     <section class="sg-section" id="callouts">
       <h2>Callouts</h2>
-      <p class="sg-lead">Blocos de destaque dentro do artigo. Quatro cores semânticas disponíveis. Os <strong>tipos</strong> (nome e quando usar cada um) ainda não foram fixados — isso é trabalho de Content Design (Decisão 5).</p>
+      <p class="sg-lead">Blocos de destaque dentro do artigo. <strong>6 tipos</strong> derivados da análise dos 131 artigos da base antiga (Decisão 5). Quatro de severidade + Pré-requisito + Acessibilidade.</p>
+
+      <div class="sg-sub">Severidade</div>
       <div class="demo-stack">
-        <div class="callout dica"><p class="callout-title">Dica</p><p>Use categorias de nota para agrupar atividades de mesmo tipo — facilita aplicar pesos depois.</p></div>
-        <div class="callout info"><p class="callout-title">Nota</p><p>O livro de notas do Moodle do IFes usa o método de agregação "média ponderada" como padrão institucional.</p></div>
-        <div class="callout atencao"><p class="callout-title">Atenção</p><p>Alterar o peso de uma categoria recalcula todas as notas já lançadas. Confira antes de salvar.</p></div>
-        <div class="callout cuidado"><p class="callout-title">Cuidado</p><p>Excluir uma categoria de nota apaga os itens associados. Esta ação não pode ser desfeita.</p></div>
+        <div class="callout dica">
+          <p class="callout-title"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>Dica</p>
+          <p>Use categorias de nota para agrupar atividades de mesmo tipo — facilita aplicar pesos depois.</p>
+        </div>
+        <div class="callout nota">
+          <p class="callout-title"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>Nota</p>
+          <p>O livro de notas do Moodle do IFes usa "média ponderada" como método de agregação padrão institucional.</p>
+        </div>
+        <div class="callout atencao">
+          <p class="callout-title"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Atenção</p>
+          <p>Alterar o peso de uma categoria recalcula todas as notas já lançadas. Confira antes de salvar.</p>
+        </div>
+        <div class="callout cuidado">
+          <p class="callout-title"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>Cuidado</p>
+          <p>Nunca lance notas reais antes de validar o cálculo total. Erros de ponderação publicados já causaram revisão formal de notas no IFes.</p>
+        </div>
       </div>
-      <div class="sg-note"><strong>A definir com Content Design:</strong> quantos tipos de callout existem, como se chamam e a regra de quando usar cada um. As 4 cores acima estão prontas no DS — falta o mapeamento tipo → cor.</div>
+
+      <div class="sg-sub">Contextuais do CEFOR</div>
+      <div class="demo-stack">
+        <div class="callout prereq">
+          <p class="callout-title"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Pré-requisito</p>
+          <p>Este tutorial assume que você já tem permissão de <strong>professor</strong> ou <strong>editor</strong> no curso. <a href="#" style="color:var(--accent)">Veja como solicitar acesso</a>.</p>
+        </div>
+        <div class="callout acesso">
+          <p class="callout-title"><svg class="callout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="8" r="1.4" fill="currentColor"/><path d="M8 11h8M12 11v6M12 17l-2.5 2M12 17l2.5 2"/></svg>Acessibilidade</p>
+          <p>Sempre adicione audiodescrição ao inserir imagens informativas. Estudantes com leitor de tela dependem disso para acompanhar o conteúdo.</p>
+        </div>
+      </div>
+
+      <div class="sg-note"><strong>Decisão 5 — pronta para registro.</strong> Os 6 tipos foram derivados do conteúdo real: severidade (Dica, Nota, Atenção, Cuidado) + os dois padrões mais recorrentes e institucionalmente importantes do CEFOR (Pré-requisito e Acessibilidade). Falta só você referendar e eu registro no <code>decisoes.md</code>.</div>
+    </section>
+
+    <!-- ====================== SELO DE VERSÃO + MOODLECODE ====================== -->
+    <section class="sg-section" id="versao-codigo">
+      <h2>Selo de versão e bloco MoodleCode</h2>
+      <p class="sg-lead">Dois componentes que <strong>não são callout</strong>, mas o conteúdo da base antiga exige. Muitos artigos são versão-específicos; e a categoria #MoodleCodes inteira é "cole este código".</p>
+
+      <div class="sg-sub">Selo de versão do Moodle</div>
+      <p style="font-size:.9rem;color:var(--ink-2);margin:0 0 14px;max-width:65ch">Badge no cabeçalho do artigo. Comunica a qual versão o conteúdo se refere. A variante "desatualizado" sinaliza (só para admins) que passou da revisão programada — Princípio 7.</p>
+      <div class="demo-grid">
+        <span class="version-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Validado no Moodle 4.x
+        </span>
+        <span class="version-badge outdated">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Escrito para Moodle 3.9 · revisão pendente
+        </span>
+      </div>
+
+      <div class="sg-sub">Bloco MoodleCode</div>
+      <p style="font-size:.9rem;color:var(--ink-2);margin:0 0 14px;max-width:65ch">Para a categoria #MoodleCodes — código pronto para colar no editor HTML do Moodle, com botão copiar e instrução de onde aplicar.</p>
+      <div class="moodlecode">
+        <div class="moodlecode-head">
+          <span class="moodlecode-tag">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            MoodleCode
+          </span>
+          <button class="moodlecode-copy" onclick="navigator.clipboard&&navigator.clipboard.writeText(this.closest('.moodlecode').querySelector('pre').innerText)">Copiar</button>
+        </div>
+        <pre>&lt;div class="audiodescricao"&gt;
+  &lt;img src="grafico.png" alt="Gráfico de barras: matrículas por campus em 2025"&gt;
+&lt;/div&gt;</pre>
+        <div class="moodlecode-foot"><strong>Onde colar:</strong> no editor de Rótulo ou Página, clique em <em>Ferramentas → Código-fonte HTML</em> e cole no ponto desejado.</div>
+      </div>
     </section>
 
     <!-- ====================== CARDS ====================== -->

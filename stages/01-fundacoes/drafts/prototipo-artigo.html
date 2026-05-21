@@ -182,10 +182,12 @@
   .toolbar button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .toolbar button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
   .toolbar .sep { width: 1px; background: var(--line); margin: 6px 2px; align-self: stretch; }
-  .toolbar .fs-1 { font-size: .76rem; }
-  .toolbar .fs-2 { font-size: .92rem; }
-  .toolbar .fs-3 { font-size: 1.08rem; }
   .toolbar button svg { width: 16px; height: 16px; }
+  /* Estado contraído: só o gatilho de acessibilidade aparece */
+  .toolbar-controls { display: flex; gap: 4px; align-items: center; }
+  .toolbar[data-collapsed="true"] .toolbar-controls { display: none; }
+  .a11y-trigger svg { width: 18px; height: 18px; }
+  .toolbar[data-collapsed="false"] #a11yTrigger { background: var(--ink); color: var(--bg); }
 
   /* VLibras widget */
   .vlibras-widget {
@@ -1073,20 +1075,18 @@
   .share-btn {
     display: inline-flex;
     align-items: center;
-    gap: 7px;
+    justify-content: center;
+    width: 38px; height: 38px;
     background: var(--paper);
     border: 1px solid var(--line);
     color: var(--ink-2);
-    padding: 7px 14px;
     border-radius: 999px;
     cursor: pointer;
     font-family: var(--sans);
-    font-size: .82rem;
-    font-weight: 500;
     transition: all .15s;
-    white-space: nowrap;
   }
-  .share-btn svg { width: 14px; height: 14px; }
+  .share-btn svg { width: 16px; height: 16px; }
+  .share-menu-sep { height: 1px; background: var(--line); margin: 4px 8px; }
   .share-btn:hover { border-color: var(--accent); color: var(--accent); }
   .share-btn[aria-expanded="true"] { background: var(--accent); color: white; border-color: var(--accent); }
   .share-menu {
@@ -1259,23 +1259,24 @@
   <div class="progress-fill" id="progressFill"></div>
 </div>
 
-<!-- Toolbar acessibilidade -->
-<div class="toolbar" role="toolbar" aria-label="Preferências de leitura">
-  <button class="fs-1" data-fs="0.92" aria-label="Diminuir fonte" title="Diminuir fonte">A</button>
-  <button class="fs-2" data-fs="1" aria-pressed="true" aria-label="Fonte padrão" title="Fonte padrão">A</button>
-  <button class="fs-3" data-fs="1.14" aria-label="Aumentar fonte" title="Aumentar fonte">A</button>
-  <div class="sep"></div>
-  <button id="contrastToggle" aria-label="Alto contraste" title="Alto contraste" aria-pressed="false">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v20"/><path d="M12 2a10 10 0 0 1 0 20"/></svg>
+<!-- Toolbar acessibilidade — contraída por padrão; abre no botão de acessibilidade -->
+<div class="toolbar" role="toolbar" aria-label="Preferências de leitura" data-collapsed="true">
+  <button id="a11yTrigger" class="a11y-trigger" aria-expanded="false" aria-controls="toolbarControls" aria-label="Abrir preferências de leitura" title="Acessibilidade e tema">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7.5" r="1.4" fill="currentColor" stroke="none"/><path d="M7 10.5h10"/><path d="M12 10.5V18"/><path d="m12 13.5-3 4.5"/><path d="m12 13.5 3 4.5"/></svg>
   </button>
-  <button id="dyslexicToggle" aria-label="Fonte para dislexia" title="Fonte para dislexia" aria-pressed="false">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
-  </button>
-  <div class="sep"></div>
-  <button id="themeToggle" aria-label="Alternar tema claro/escuro" title="Tema escuro">
-    <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    <svg id="iconSun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-  </button>
+  <div class="toolbar-controls" id="toolbarControls">
+    <button id="contrastToggle" aria-label="Alto contraste" title="Alto contraste" aria-pressed="false">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v20"/><path d="M12 2a10 10 0 0 1 0 20"/></svg>
+    </button>
+    <button id="dyslexicToggle" aria-label="Fonte para dislexia" title="Fonte para dislexia" aria-pressed="false">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+    </button>
+    <div class="sep"></div>
+    <button id="themeToggle" aria-label="Alternar tema claro/escuro" title="Tema escuro">
+      <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg id="iconSun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </div>
 </div>
 
 <!-- Widget VLibras -->
@@ -1322,6 +1323,11 @@
 
 <!-- ============ TOOLBAR DO ARTIGO (multimodal) ============ -->
 <div class="article-actions" role="toolbar" aria-label="Formatos do artigo">
+  <!-- Ordem obrigatória dos blocos multimodais (Decisão 19): 1. Libras · 2. Ouvir · 3. Outros formatos -->
+  <button class="action-btn" id="librasBtn" aria-pressed="false" aria-controls="librasPanel">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="4" r="1"/><path d="m18 19 1-7-5.87.94"/><path d="m5 8 1 7 5.87-.94"/><path d="M12.93 17.52L9.5 21l-1-4"/><path d="m7 13 1.5 6 3.5-2"/></svg>
+    Tradução em Libras
+  </button>
   <button class="action-btn" id="audioBtn" aria-pressed="false">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
     Ouvir o artigo
@@ -1331,10 +1337,6 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
     Podcast (ep. 12)
     <span class="duration">22 min</span>
-  </button>
-  <button class="action-btn" id="librasBtn" aria-pressed="false" aria-controls="librasPanel">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="4" r="1"/><path d="m18 19 1-7-5.87.94"/><path d="m5 8 1 7 5.87-.94"/><path d="M12.93 17.52L9.5 21l-1-4"/><path d="m7 13 1.5 6 3.5-2"/></svg>
-    Tradução em Libras
   </button>
 </div>
 
@@ -1657,11 +1659,23 @@
         <div class="topics-row-header">
           <span class="topics-label">Tópicos</span>
           <div class="share-wrap">
-            <button class="share-btn" id="shareBtn" aria-haspopup="true" aria-expanded="false">
+            <button class="share-btn" id="shareBtn" aria-haspopup="true" aria-expanded="false" aria-label="Compartilhar" title="Compartilhar">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-              Compartilhar
             </button>
             <div class="share-menu" id="shareMenu" role="menu" hidden>
+              <button role="menuitem" id="shareWhatsapp">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.892c0 2.096.549 4.142 1.595 5.945L0 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.582 0 11.94-5.335 11.944-11.893a11.821 11.821 0 0 0-3.487-8.413"/></svg>
+                WhatsApp
+              </button>
+              <button role="menuitem" id="shareX">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.39-6.933ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                X (Twitter)
+              </button>
+              <button role="menuitem" id="shareInstagram">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069M12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0m0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881"/></svg>
+                Instagram
+              </button>
+              <div class="share-menu-sep" role="separator"></div>
               <button role="menuitem" id="shareCopyLink">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
                 Copiar link
@@ -1760,14 +1774,19 @@
     localStorage.setItem('cefor-theme', isDark ? 'light' : 'dark');
   });
 
-  // Tamanho de fonte
-  document.querySelectorAll('.toolbar button[data-fs]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.toolbar button[data-fs]')
-        .forEach(b => b.setAttribute('aria-pressed', 'false'));
-      btn.setAttribute('aria-pressed', 'true');
-      document.documentElement.style.setProperty('--font-scale', btn.dataset.fs);
-    });
+  // Toolbar de acessibilidade — contrair/expandir
+  const a11yTrigger = document.getElementById('a11yTrigger');
+  const toolbarEl = document.querySelector('.toolbar');
+  a11yTrigger.addEventListener('click', () => {
+    const collapsed = toolbarEl.getAttribute('data-collapsed') === 'true';
+    toolbarEl.setAttribute('data-collapsed', String(!collapsed));
+    a11yTrigger.setAttribute('aria-expanded', String(collapsed));
+  });
+  document.addEventListener('click', (e) => {
+    if (toolbarEl.getAttribute('data-collapsed') === 'false' && !toolbarEl.contains(e.target)) {
+      toolbarEl.setAttribute('data-collapsed', 'true');
+      a11yTrigger.setAttribute('aria-expanded', 'false');
+    }
   });
 
   // Alto contraste
@@ -1849,6 +1868,22 @@
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !shareMenu.hidden) { closeShare(); shareBtn.focus(); }
+  });
+  const shareUrl = window.location.href;
+  const shareTitle = document.title.split(' · ')[0];
+  document.getElementById('shareWhatsapp').addEventListener('click', () => {
+    window.open('https://wa.me/?text=' + encodeURIComponent(shareTitle + ' — ' + shareUrl), '_blank', 'noopener');
+    closeShare();
+  });
+  document.getElementById('shareX').addEventListener('click', () => {
+    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareTitle) + '&url=' + encodeURIComponent(shareUrl), '_blank', 'noopener');
+    closeShare();
+  });
+  document.getElementById('shareInstagram').addEventListener('click', () => {
+    // O Instagram não permite compartilhar links diretamente pela web — copiamos o link para colar no story/bio.
+    navigator.clipboard?.writeText(shareUrl);
+    alert('O Instagram não permite compartilhar links diretamente. O link foi copiado — cole no seu story ou na bio.');
+    closeShare();
   });
   document.getElementById('shareCopyLink').addEventListener('click', () => {
     navigator.clipboard?.writeText(window.location.href);
