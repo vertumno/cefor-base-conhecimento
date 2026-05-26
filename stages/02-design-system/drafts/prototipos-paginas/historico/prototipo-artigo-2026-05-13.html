@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Configurando o livro de notas do Moodle · Base CEFOR/IFes (protótipo)</title>
+<title>Configurando o livro de notas do Moodle · Base CEFOR/Ifes (protótipo)</title>
 <meta name="description" content="Protótipo do artigo aplicando todas as decisões fechadas até 2026-05-13." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lexend:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   /* ============================================================
-     PROTÓTIPO DA PÁGINA DE ARTIGO — Base CEFOR/IFes
+     PROTÓTIPO DA PÁGINA DE ARTIGO — Base CEFOR/Ifes
      Reflete as decisões consolidadas (versão 2026-05-13)
      ============================================================ */
 
@@ -1352,7 +1352,7 @@
 
     <h2 id="revisao">Revisão final</h2>
     <p>
-      Antes de tornar o livro de notas visível para os estudantes, há uma verificação que poucos professores fazem — e que já evitou revisões formais de notas no IFes: ativar o modo <strong>"Ver como estudante"</strong> e percorrer o gradebook inteiro como se você fosse o aluno. Esse modo mostra exatamente o que o estudante vai ver: quais atividades aparecem, com quais rótulos, em que ordem, e qual nota parcial está sendo calculada em cada categoria.
+      Antes de tornar o livro de notas visível para os estudantes, há uma verificação que poucos professores fazem — e que já evitou revisões formais de notas no Ifes: ativar o modo <strong>"Ver como estudante"</strong> e percorrer o gradebook inteiro como se você fosse o aluno. Esse modo mostra exatamente o que o estudante vai ver: quais atividades aparecem, com quais rótulos, em que ordem, e qual nota parcial está sendo calculada em cada categoria.
     </p>
     <p>
       O principal valor do teste é revelar discrepâncias entre o que o professor configurou e o que o estudante interpreta. Um nome de categoria genérico — "Categoria 1" — pode ser informativo para quem criou a estrutura, mas é completamente opaco para o estudante que precisa entender de onde vem a sua nota. Da mesma forma, uma atividade ainda não realizada que aparece como "0" em vez de "—" pode fazer o aluno acreditar que falhou numa avaliação que nem aconteceu ainda.
@@ -1371,7 +1371,7 @@
 
     <div class="callout critico">
       <span class="c-label">Crítico</span>
-      Nunca lance notas reais em ambiente de produção antes de validar o cálculo total. Erros de ponderação publicados já foram, no passado, causa de revisão formal de notas no IFes — um processo que mobiliza coordenação, CGAE e, em alguns casos, a reitoria para corrigir notas já divulgadas para os estudantes.
+      Nunca lance notas reais em ambiente de produção antes de validar o cálculo total. Erros de ponderação publicados já foram, no passado, causa de revisão formal de notas no Ifes — um processo que mobiliza coordenação, CGAE e, em alguns casos, a reitoria para corrigir notas já divulgadas para os estudantes.
     </div>
 
     <h2 id="resumo">Em resumo</h2>
@@ -1382,7 +1382,7 @@
       A etapa de verificação no modo "Ver como estudante" é a mais frequentemente pulada — e a que mais protege contra erros que chegam ao estudante. O Moodle não impede que você publique um gradebook com erros; ele alerta quando pode, mas não bloqueia. A responsabilidade de verificar é do professor, e o custo de um erro após a publicação é sempre maior do que o de uma verificação preventiva antes dela.
     </p>
     <p>
-      Se algum detalhe da configuração gerar dúvida — especialmente sobre o encadeamento de pesos em hierarquias com subcategorias ou sobre o comportamento de fórmulas específicas — o artigo <a href="#">Fórmulas suportadas no gradebook do Moodle</a> traz a referência completa de todas as funções disponíveis, com exemplos aplicados ao contexto do IFes.
+      Se algum detalhe da configuração gerar dúvida — especialmente sobre o encadeamento de pesos em hierarquias com subcategorias ou sobre o comportamento de fórmulas específicas — o artigo <a href="#">Fórmulas suportadas no gradebook do Moodle</a> traz a referência completa de todas as funções disponíveis, com exemplos aplicados ao contexto do Ifes.
     </p>
 
     <h2 id="publicacao">Publicar para estudantes</h2>
@@ -1413,7 +1413,7 @@
         <div class="author-details">
           <span class="author-byline-label">Autora</span>
           <span class="author-name-sm">Juliana Cassaro</span>
-          <span class="author-role-sm">Designer e conteudista · CGTE/CEFOR/IFes</span>
+          <span class="author-role-sm">Designer e conteudista · CGTE/CEFOR/Ifes</span>
         </div>
       </div>
 
@@ -1632,7 +1632,7 @@
     closeShare();
   });
   document.getElementById('shareCopyAbnt').addEventListener('click', () => {
-    const abnt = 'CASSARO, Juliana. Configurando o livro de notas do Moodle. Base de Conhecimento CEFOR/IFes, 2026. Disponível em: <url>. Acesso em: hoje.';
+    const abnt = 'CASSARO, Juliana. Configurando o livro de notas do Moodle. Base de Conhecimento CEFOR/Ifes, 2026. Disponível em: <url>. Acesso em: hoje.';
     navigator.clipboard?.writeText(abnt);
     alert('Citação ABNT copiada para a área de transferência.');
     closeShare();

@@ -1,4 +1,4 @@
-# Roadmap — Base de Conhecimento CEFOR/IFes
+# Roadmap — Base de Conhecimento CEFOR/Ifes
 
 > **Versão:** 0.3 — Taxonomia e interface do artigo validadas
 > **Data:** 2026-05-14 (criado 2026-04-07)
@@ -9,7 +9,7 @@
 
 ## Visão do Projeto
 
-Criar uma nova Base de Conhecimento **muito bem estruturada, bonita, com experiência de leitura excelente, extremamente útil e funcional** para profissionais de EaD do IFes. Ambições maiores (gamificação, chatbot, contribuição wiki, certificação) ficam para fases futuras.
+Criar uma nova Base de Conhecimento **muito bem estruturada, bonita, com experiência de leitura excelente, extremamente útil e funcional** para profissionais de EaD do Ifes. Ambições maiores (gamificação, chatbot, contribuição wiki, certificação) ficam para fases futuras.
 
 ---
 
@@ -270,7 +270,7 @@ Usa a Rubrica de Qualidade (Camada 5 do Content System) para decidir o destino d
 | **Lançamento interno (beta)** | Elton | Base disponível para equipe CGTE e grupo seleto de usuários. Coleta de feedback estruturado |
 | **Ajustes pós-feedback** | Elton + Marcos | Correções e melhorias baseadas no feedback real |
 | **Redirecionamento da base antiga** | Elton + Marcos | URLs antigas redirecionadas para os novos artigos (301 redirects). Evita links quebrados |
-| **Lançamento público** | Elton + Marcos | Base disponível para todos os profissionais de EaD do IFes |
+| **Lançamento público** | Elton + Marcos | Base disponível para todos os profissionais de EaD do Ifes |
 
 ### Etapa 5.2 — Operação Contínua (ContentOps)
 
@@ -389,4 +389,4 @@ Ideias do brainstorm que **não** entram neste roadmap, mas ficam registradas:
 *Documento criado em: 2026-04-07*
 *Atualizado em: 2026-05-14*
 *Versão: 0.3 — Taxonomia e interface do artigo validadas*
-*Projeto: Base de Conhecimento CEFOR/IFes — Reformulação*
+*Projeto: Base de Conhecimento CEFOR/Ifes — Reformulação*

@@ -1,4 +1,4 @@
-# Roadmap de Migração — Base de Conhecimento CEFOR/IFes
+# Roadmap de Migração — Base de Conhecimento CEFOR/Ifes
 
 > **Revisão 3 — 2026-05-21.** Incorpora a atualização do content-system feita pelo Elton.
 > Sobre a revisão 2 (estratégia "migrar bruto, curar depois"), esta revisão: corrige o
@@ -87,7 +87,7 @@ recupera o banco e a pasta `uploads` sem o plugin). Essa extração é feita pel
 | `stages/01-fundacoes/output/contentsystem.md` | Parte A: governança editorial. Parte B: **spec WordPress** — CPTs, custom fields, taxonomias, blocos, estados, checklist de aceitação. | Fases B, E, F, H |
 | `stages/01-fundacoes/output/vocabulario-controlado.json` | Vocabulário controlado; termos dos 5 Tipos, 4 eixos, 25 Tópicos. | Fases B, G |
 | `stages/02-design-system/output/design.md` | Design System: tokens (CSS custom properties), 3 modos, componentes. **É a spec de tema em formato WordPress.** | Fase F |
-| `stages/01-fundacoes/drafts/prototipo-artigo.html` · `stages/02-design-system/drafts/kit-visual.html` | Interface canônica do artigo · style guide vivo dos tokens. | Fase F |
+| `stages/02-design-system/drafts/prototipos-paginas/prototipo-artigo.html` · `stages/02-design-system/drafts/kit-visual.html` | Interface canônica do artigo · style guide vivo dos tokens. | Fase F |
 
 ## O quadro: estrutura antiga ≠ estrutura nova
 

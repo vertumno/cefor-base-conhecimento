@@ -1,0 +1,2283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Configurando o livro de notas do Moodle · Base CEFOR/Ifes (protótipo)</title>
+<meta name="description" content="Protótipo do artigo aplicando todas as decisões fechadas até 2026-05-19 (Decisões 1-32)." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lexend:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     PROTÓTIPO DA PÁGINA DE ARTIGO — Base CEFOR/Ifes
+     Reflete as decisões consolidadas até 2026-05-19 (Decisões 1-32)
+     + Camadas 1 (Princípios Editoriais) e 4.5 (Padrões de Composição)
+     Atualizações 2026-05-19:
+       · Box de trilha agora é multi-trilha em acordeão (Decisão 30)
+       · "Passo X de Y" trocado por "Artigo X de Y" (Decisão 29)
+       · Chip dourado de percurso dentro do acordeão (Decisão 31)
+       · Componente prev/next removido do rodapé (Decisão 32)
+     Atualizações 2026-05-21 (Padrão 4.1 — Artigo encadeável):
+       · Kicker "Categoria · Tipo" no topo do cabeçalho (Decisão 23)
+       · Bloco de entrada explícito: pré-requisitos linkados + objetivo
+         (Princípio 2; Checklist de Encadeabilidade critérios 3-4)
+       · Bloco de saída: "O que você sabe fazer agora" + próximos
+         caminhos plurais (Checklist critérios 5-6)
+     Snapshot da versão anterior: prototipo-artigo-2026-05-13.html
+     ============================================================ */
+
+  :root {
+    --bg: #ffffff;
+    --bg-2: #f7f5f1;
+    --bg-3: #efeae0;
+    --paper: #ffffff;
+    --ink: #14110d;
+    --ink-2: #4a4439;
+    --ink-3: #8a8273;
+    --line: #e7e3d8;
+    --line-2: #d4cdba;
+    --accent: #1f5142;
+    --accent-2: #2d6a4f;
+    --accent-soft: #e3ecdf;
+    --gold: #b08544;
+    --gold-soft: #f3e7d0;
+    --gold-deep: #8c6a36;
+    --rose: #b3433a;
+    --rose-soft: #f4dcd7;
+    --sun: #c98a1e;
+    --sun-soft: #f7e6c4;
+    --sky: #2c5e8f;
+    --sky-soft: #d9e7f3;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --dyslexic: 'Lexend', 'Inter', sans-serif;
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 16px;
+    --r-xl: 24px;
+    --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
+    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
+    --shadow-lg: 0 24px 48px -12px rgba(20,17,13,.12);
+    --font-scale: 1;
+  }
+
+  [data-theme="dark"] {
+    --bg: #0e0c0a;
+    --bg-2: #16130f;
+    --bg-3: #1e1a14;
+    --paper: #1a1612;
+    --ink: #f4f1ea;
+    --ink-2: #c9c2b3;
+    --ink-3: #8a8273;
+    --line: #2a251e;
+    --line-2: #3a342a;
+    --accent: #6cb89a;
+    --accent-2: #87cdb0;
+    --accent-soft: #19251f;
+    --gold-soft: #2e2516;
+    --gold-deep: #d9a955;
+    --rose-soft: #2e1a17;
+    --sun-soft: #2e2310;
+    --sky-soft: #16222e;
+  }
+
+  [data-contrast="high"] {
+    --bg: #000000;
+    --bg-2: #0a0a0a;
+    --bg-3: #141414;
+    --paper: #000000;
+    --ink: #ffff00;
+    --ink-2: #ffffff;
+    --ink-3: #c0c0c0;
+    --line: #ffff00;
+    --line-2: #ffffff;
+    --accent: #00ff88;
+    --accent-2: #66ffaa;
+    --accent-soft: #003322;
+    --gold: #ffff00;
+    --gold-soft: #1a1a00;
+    --gold-deep: #ffff00;
+    --rose: #ff6b6b;
+    --rose-soft: #2a0000;
+    --sun: #ffaa00;
+    --sun-soft: #2a1a00;
+    --sky: #66ccff;
+    --sky-soft: #001a2a;
+  }
+
+  [data-font="dyslexic"] { --sans: var(--dyslexic); }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: calc(16px * var(--font-scale));
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    transition: background .3s, color .3s, font-size .2s;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100px; left: 8px;
+    background: var(--accent);
+    color: white;
+    padding: 10px 18px;
+    border-radius: var(--r-md);
+    text-decoration: none;
+    font-weight: 600;
+    z-index: 1000;
+    transition: top .2s;
+  }
+  .skip-link:focus { top: 8px; }
+
+  /* ---------- Header (igual à home) ---------- */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255, 255, 255, .92); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .site-header a { text-decoration: none; }
+  [data-theme="dark"] .site-header { background: rgba(14, 12, 10, .92); }
+  .header-inner {
+    max-width: 1280px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; color: var(--ink); }
+  .brand:hover { text-decoration: none; }
+  .brand-mark {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--accent); color: #fff;
+    display: grid; place-items: center; font-weight: 800; letter-spacing: -.02em;
+    box-shadow: var(--shadow-sm);
+  }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .brand-text strong { font-size: .95rem; letter-spacing: -.01em; }
+  .brand-text span { font-size: .75rem; color: var(--ink-3); }
+
+  .nav { display: flex; gap: 6px; margin-left: 8px; }
+  .nav a {
+    color: var(--ink-2); font-size: .9rem; font-weight: 500;
+    padding: 8px 12px; border-radius: 8px;
+  }
+  .nav a:hover { background: var(--bg-2); text-decoration: none; color: var(--ink); }
+
+  .header-search { margin-left: auto; position: relative; max-width: 280px; flex: 1; }
+  .header-search input {
+    width: 100%; padding: 9px 12px 9px 36px; font: inherit; font-size: .9rem;
+    background: var(--bg-2); border: 1px solid var(--line); color: var(--ink);
+    border-radius: 8px;
+  }
+  .header-search input::placeholder { color: var(--ink-3); }
+  .header-search svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--ink-3); }
+
+  .a11y-toggles { display: flex; gap: 4px; }
+  .icon-btn {
+    width: 36px; height: 36px; display: grid; place-items: center;
+    background: transparent; border: 1px solid var(--line); border-radius: 8px;
+    color: var(--ink-2); cursor: pointer;
+  }
+  .icon-btn:hover { background: var(--bg-2); color: var(--ink); }
+  .icon-btn[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-deep); }
+
+
+  /* Barra de progresso */
+  .progress-rail {
+    position: fixed; inset: 0 0 auto 0;
+    height: 3px; z-index: 200;
+    background: transparent;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    width: 0%;
+    transition: width .15s ease-out;
+  }
+
+  /* ================ TOOLBAR DE ACESSIBILIDADE ================ */
+  .toolbar {
+    position: fixed;
+    top: 14px; right: 14px;
+    z-index: 150;
+    display: flex;
+    gap: 4px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 4px;
+    box-shadow: var(--shadow-md);
+    flex-wrap: wrap;
+    max-width: calc(100vw - 28px);
+  }
+  .toolbar button {
+    border: 0;
+    background: transparent;
+    color: var(--ink-2);
+    width: 36px; height: 36px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: .9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .15s, color .15s;
+  }
+  .toolbar button:hover { background: var(--bg-2); color: var(--ink); }
+  .toolbar button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .toolbar button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+  .toolbar .sep { width: 1px; background: var(--line); margin: 6px 2px; align-self: stretch; }
+  .toolbar button svg { width: 16px; height: 16px; }
+  /* Estado contraído: só o gatilho de acessibilidade aparece */
+  .toolbar-controls { display: flex; gap: 4px; align-items: center; }
+  .toolbar[data-collapsed="true"] .toolbar-controls { display: none; }
+  .a11y-trigger svg { width: 18px; height: 18px; }
+  .toolbar[data-collapsed="false"] #a11yTrigger { background: var(--ink); color: var(--bg); }
+
+  /* VLibras widget */
+  .vlibras-widget {
+    position: fixed;
+    bottom: 20px; right: 20px;
+    z-index: 140;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    border: 0;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: .72rem;
+    letter-spacing: .06em;
+  }
+  .vlibras-widget svg { width: 24px; height: 24px; }
+  .vlibras-widget:hover { transform: scale(1.05); }
+  .vlibras-widget::after {
+    content: 'VLibras';
+    position: absolute;
+    right: 64px;
+    background: var(--ink);
+    color: var(--bg);
+    padding: 4px 10px;
+    border-radius: var(--r-sm);
+    font-size: .76rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s;
+    white-space: nowrap;
+  }
+  .vlibras-widget:hover::after { opacity: 1; }
+
+  /* ================ MASTHEAD ================ */
+  /* padding horizontal removido do .masthead; agora é no .masthead-inner
+     para alinhar com o .shell que usa padding interno */
+  .masthead {
+    position: relative;
+    padding: 88px 0 40px;
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .masthead::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(800px 400px at 12% 20%, rgba(31,81,66,.05), transparent 60%),
+      radial-gradient(600px 300px at 85% 80%, rgba(176,133,68,.05), transparent 60%);
+    pointer-events: none;
+  }
+  .masthead-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+  }
+
+  .breadcrumb {
+    font-size: .78rem;
+    color: var(--ink-3);
+    margin-bottom: 16px;
+    letter-spacing: .02em;
+  }
+  .breadcrumb a { color: var(--ink-3); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb span { margin: 0 8px; opacity: .5; }
+
+  .head-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+    align-items: center;
+  }
+  .tipo-badge {
+    display: inline-flex;
+    align-items: center;
+    align-self: center;
+    gap: 6px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 5px 12px;
+    border-radius: 99px;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .masthead h1 {
+    font-family: var(--sans);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -.035em;
+    margin: 0 0 18px;
+    max-width: 900px;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: clamp(1rem, 1.5vw, 1.18rem);
+    line-height: 1.5;
+    color: var(--ink-2);
+    margin: 0 0 28px;
+    max-width: 720px;
+  }
+
+  .masthead-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .meta-item svg { width: 15px; height: 15px; color: var(--ink-3); flex-shrink: 0; }
+  .meta-name {
+    font-size: .9rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .meta-time {
+    font-size: .9rem;
+    color: var(--ink-2);
+  }
+  .meta-sep {
+    display: inline-block;
+    width: 1px;
+    height: 14px;
+    background: var(--line);
+    margin: 0 24px;
+    flex-shrink: 0;
+  }
+  .meta-item .author-avatar {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: .75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ================ TOOLBAR DO ARTIGO — multimodal ================ */
+  .article-actions {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 20px 24px 0;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--ink);
+    padding: 9px 14px;
+    border-radius: 99px;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: .86rem;
+    font-weight: 500;
+    transition: all .15s;
+    text-decoration: none;
+  }
+  .action-btn:hover { border-color: var(--ink-3); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+  .action-btn[aria-pressed="true"] { background: var(--accent); color: white; border-color: var(--accent); }
+  .action-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+  .action-btn .duration {
+    margin-left: 4px;
+    font-size: .72rem;
+    color: var(--ink-3);
+    font-family: var(--mono);
+  }
+  .action-btn[aria-pressed="true"] .duration { color: rgba(255,255,255,.75); }
+  .article-actions .spacer { flex: 1; }
+
+  /* Libras accordion */
+  .libras-accordion {
+    max-width: 1120px;
+    margin: 16px auto 0;
+    padding: 0 24px;
+  }
+  .libras-panel {
+    background: var(--paper);
+    border: 1px solid var(--accent);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    display: none;
+  }
+  .libras-panel.open { display: block; }
+  .libras-panel .lp-head {
+    padding: 12px 18px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 600;
+    font-size: .92rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .libras-panel .lp-body { padding: 18px; }
+  .libras-video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    border-radius: var(--r-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    position: relative;
+  }
+  .libras-video::after {
+    content: '';
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.2);
+    display: block;
+    position: absolute;
+  }
+  .libras-video span {
+    position: absolute;
+    bottom: 12px; left: 12px;
+    background: rgba(0,0,0,.6);
+    padding: 4px 10px;
+    border-radius: var(--r-sm);
+    font-size: .76rem;
+    font-weight: 500;
+  }
+
+  /* ================ LAYOUT PRINCIPAL ================ */
+  .shell {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 64px;
+    align-items: flex-start;
+  }
+  @media (max-width: 980px) {
+    .shell { grid-template-columns: 1fr; gap: 32px; }
+    .sidebar { position: static !important; }
+    .article-actions { padding-top: 16px; }
+  }
+
+  /* ================ SIDEBAR ================ */
+  .sidebar {
+    position: sticky;
+    top: 80px;
+    padding: 8px 0;
+  }
+
+  /* ================================================================
+     Box de trilha — multi-trilha em acordeão (Decisão 30)
+     Cada trilha vira um item; chip dourado de percurso (Decisão 31)
+     aparece no topo do acordeão expandido quando aplicável.
+     ================================================================ */
+  .side-trilha {
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    margin-bottom: 14px;
+    background: var(--paper);
+  }
+  .side-trilha-head {
+    padding: 12px 18px;
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .side-trilha-head-label {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .side-trilha-count {
+    background: var(--ink);
+    color: var(--bg);
+    font-size: .62rem;
+    padding: 2px 7px;
+    border-radius: 99px;
+    letter-spacing: .04em;
+  }
+
+  /* Itens do acordeão (uma trilha por item) */
+  .trilha-acc-item + .trilha-acc-item {
+    border-top: 1px solid var(--line);
+  }
+  .trilha-acc-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-family: var(--sans);
+    text-align: left;
+    transition: background .15s;
+  }
+  .trilha-acc-toggle:hover { background: var(--bg-2); }
+  .trilha-acc-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .trilha-acc-name {
+    flex: 1;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .trilha-acc-pos {
+    font-size: .72rem;
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+  }
+  .trilha-acc-chev {
+    width: 16px; height: 16px;
+    color: var(--ink-3);
+    flex-shrink: 0;
+    transition: transform .25s;
+  }
+  .trilha-acc-toggle[aria-expanded="true"] .trilha-acc-chev {
+    transform: rotate(180deg);
+  }
+  .trilha-acc-toggle[aria-expanded="true"] {
+    background: var(--bg-2);
+  }
+  .trilha-acc-body {
+    padding: 4px 18px 16px;
+    background: var(--bg-2);
+    border-top: 1px solid var(--line);
+  }
+  .trilha-acc-body[hidden] { display: none; }
+
+  /* Chip dourado de percurso (Decisão 31) */
+  .trilha-percurso-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold-soft);
+    color: var(--gold-deep);
+    padding: 6px 12px 6px 10px;
+    border-radius: 99px;
+    font-size: .72rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 10px 0 14px;
+    transition: background .15s;
+  }
+  .trilha-percurso-chip:hover {
+    background: color-mix(in srgb, var(--gold) 28%, var(--gold-soft));
+  }
+  .trilha-percurso-chip svg {
+    width: 12px; height: 12px;
+    flex-shrink: 0;
+  }
+  .trilha-percurso-chip strong { font-weight: 700; }
+
+  /* Barra de progresso estrutural (Decisão 29 — posição, não progresso pessoal) */
+  .side-trilha-progress { margin-bottom: 14px; }
+  .side-trilha-bar {
+    height: 4px;
+    background: var(--bg-3);
+    border-radius: 99px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .side-trilha-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 99px;
+  }
+  .side-trilha-pos {
+    font-size: .78rem;
+    color: var(--ink-3);
+  }
+  .side-trilha-pos b { color: var(--ink); font-weight: 700; }
+
+  /* Lista numerada de artigos da trilha */
+  .side-trilha-articles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .side-trilha-articles li { margin: 0; }
+  .side-trilha-articles li a {
+    display: block;
+    padding: 7px 0 7px 12px;
+    border-left: 2px solid var(--line);
+    font-size: .83rem;
+    color: var(--ink-2);
+    text-decoration: none;
+    line-height: 1.4;
+    transition: color .15s, border-color .15s;
+  }
+  .side-trilha-articles li a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .side-trilha-articles li.current a {
+    color: var(--accent);
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* TOC */
+  .toc-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 22px 24px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 14px;
+  }
+  .toc-title {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 14px;
+  }
+  .toc-list { list-style: none; margin: 0; padding: 0; }
+  .toc-list li { margin: 0; }
+  .toc-list a {
+    display: block;
+    padding: 8px 0 8px 14px;
+    border-left: 2px solid var(--line);
+    color: var(--ink-2);
+    text-decoration: none;
+    font-size: .88rem;
+    line-height: 1.4;
+    transition: color .15s, border-color .15s, padding-left .15s;
+  }
+  .toc-list a:hover { color: var(--ink); border-color: var(--ink-3); }
+  .toc-list a.active {
+    color: var(--accent);
+    border-color: var(--accent);
+    font-weight: 600;
+    padding-left: 18px;
+  }
+  .toc-list .l-2 a {
+    padding-left: 28px;
+    font-size: .82rem;
+    color: var(--ink-3);
+  }
+  .toc-list .l-2 a.active { padding-left: 32px; }
+
+  /* ================ CONTEÚDO DO ARTIGO ================ */
+  article.prose {
+    font-family: var(--sans);
+    font-size: 1.04rem;
+    line-height: 1.7;
+    color: var(--ink-2);
+    max-width: 700px;
+  }
+  article.prose h2 {
+    font-family: var(--sans);
+    font-size: clamp(1.45rem, 2.2vw, 1.8rem);
+    font-weight: 700;
+    line-height: 1.22;
+    letter-spacing: -.022em;
+    color: var(--ink);
+    margin: 56px 0 14px;
+    scroll-margin-top: 90px;
+  }
+  article.prose h2:first-of-type { margin-top: 16px; }
+  article.prose h3 {
+    font-family: var(--sans);
+    font-size: 1.16rem;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    color: var(--ink);
+    margin: 36px 0 10px;
+    scroll-margin-top: 90px;
+  }
+  article.prose p { margin: 0 0 18px; }
+  article.prose p:first-of-type {
+    font-size: 1.14rem;
+    line-height: 1.6;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  article.prose strong { font-weight: 600; color: var(--ink); }
+  article.prose em { font-style: italic; }
+  article.prose a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  article.prose ul, article.prose ol { margin: 0 0 24px; padding-left: 24px; }
+  article.prose li { margin-bottom: 8px; }
+  article.prose code {
+    font-family: var(--mono);
+    font-size: .92em;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+
+  /* ============================================================
+     Bloco de código / prompt (alinhado com catálogo #1 — ajuste 2026-05-26)
+     Sem cabeçalho/título. Botão de copiar apenas com ícone, sutil,
+     flutuante no canto superior direito; ganha presença ao hover do bloco.
+     ============================================================ */
+  .code-prompt-block {
+    position: relative;
+    margin: 24px 0;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: var(--bg-2);
+    transition: border-color .2s;
+  }
+  .code-prompt-block:hover { border-color: var(--line-2); }
+  .code-copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--ink-3);
+    border-radius: var(--r-sm);
+    cursor: pointer;
+    opacity: .45;
+    transition: opacity .15s, color .15s, background .15s, border-color .15s;
+  }
+  .code-prompt-block:hover .code-copy-btn { opacity: 1; }
+  .code-copy-btn:hover,
+  .code-copy-btn:focus-visible {
+    color: var(--accent);
+    background: var(--paper);
+    border-color: var(--line-2);
+    opacity: 1;
+    outline: none;
+  }
+  .code-copy-btn:focus-visible { box-shadow: 0 0 0 2px var(--accent-soft); }
+  .code-copy-btn.copied {
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    opacity: 1;
+  }
+  .code-copy-btn > span { display: none; }
+  .code-prompt-content {
+    margin: 0;
+    padding: 18px 48px 18px 18px;
+    font-family: var(--mono);
+    font-size: .82rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    overflow-x: auto;
+    white-space: pre-wrap;
+  }
+  .code-prompt-content .code-comment {
+    color: var(--ink-3);
+    font-style: italic;
+  }
+  .code-prompt-content .code-variable {
+    background: var(--sun-soft);
+    color: var(--ink);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 600;
+    border: 1px dashed var(--sun);
+  }
+
+  /* Compartilhar no topo (masthead) — variante "ghost" do share-btn */
+  .masthead-meta .share-wrap { margin-left: auto; }
+  .share-btn-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+    border-radius: var(--r-sm);
+    font-size: .82rem;
+    font-family: var(--sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .share-btn-top:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+  .share-btn-top:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .share-btn-top[aria-expanded="true"] {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .share-btn-top svg { width: 14px; height: 14px; }
+
+  /* Callouts */
+  .callout {
+    margin: 28px 0;
+    padding: 18px 22px;
+    border-radius: var(--r-md);
+    border-left: 4px solid;
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+  .callout .c-label {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .callout.nota { background: var(--sky-soft); border-color: var(--sky); }
+  .callout.nota .c-label { color: var(--sky); }
+  .callout.atencao { background: var(--sun-soft); border-color: var(--sun); }
+  .callout.atencao .c-label { color: var(--sun); }
+  .callout.critico { background: var(--rose-soft); border-color: var(--rose); }
+  .callout.critico .c-label { color: var(--rose); }
+  .callout.dica { background: var(--accent-soft); border-color: var(--accent); }
+  .callout.dica .c-label { color: var(--accent); }
+
+  /* Pullquote */
+  .pullquote {
+    margin: 48px -20px;
+    padding: 36px 28px;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.32;
+    letter-spacing: -.018em;
+    color: var(--accent);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+    position: relative;
+  }
+  .pullquote::before {
+    content: '';
+    width: 32px; height: 3px;
+    border-radius: 2px;
+    background: var(--gold);
+    position: absolute;
+    top: -2px; left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Figura com AD colapsável */
+  .figure { margin: 32px 0; }
+  .figure-img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, var(--bg-3), var(--bg-2));
+    border-radius: var(--r-md);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-3);
+    font-size: .9rem;
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .figure-caption {
+    font-size: .85rem;
+    color: var(--ink-3);
+    margin: 0;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* AD toggle */
+  .ad-toggle-wrap { margin-top: 10px; }
+  .ad-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink-3);
+    padding: 5px 12px;
+    border-radius: 99px;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: .76rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    transition: all .15s;
+  }
+  .ad-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  .ad-toggle[aria-expanded="true"] {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .ad-toggle svg { width: 14px; height: 14px; }
+
+  .figure-audiodesc {
+    margin-top: 8px;
+    padding: 12px 16px;
+    background: var(--bg-2);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--r-sm) var(--r-sm) 0;
+    font-size: .88rem;
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+  .figure-audiodesc[hidden] { display: none; }
+
+  /* Infográfico-resumo */
+  .infographic {
+    margin: 48px 0;
+    background: linear-gradient(135deg, var(--accent-soft), var(--bg-2));
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 28px;
+  }
+  .infographic-label {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .infographic-label::before {
+    content: '';
+    width: 18px;
+    height: 2px;
+    background: var(--accent);
+  }
+  .infographic h3 {
+    font-family: var(--sans);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .infographic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 600px) { .infographic-grid { grid-template-columns: 1fr; } }
+  .infographic-step {
+    background: var(--paper);
+    border-radius: var(--r-md);
+    padding: 16px;
+    border: 1px solid var(--line);
+  }
+  .infographic-step-num {
+    width: 28px; height: 28px;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: .9rem;
+    margin-bottom: 10px;
+  }
+  .infographic-step strong {
+    display: block;
+    font-size: .95rem;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .infographic-step span {
+    display: block;
+    font-size: .82rem;
+    color: var(--ink-3);
+    line-height: 1.45;
+  }
+  .infographic-audiodesc {
+    margin-top: 16px;
+    padding: 10px 14px;
+    background: rgba(255,255,255,.5);
+    border-radius: var(--r-sm);
+    font-size: .82rem;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .infographic-audiodesc[hidden] { display: none; }
+  [data-theme="dark"] .infographic-audiodesc { background: rgba(0,0,0,.25); }
+  .infographic-audiodesc strong {
+    color: var(--accent);
+    font-size: .72rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  /* ================ KICKER CATEGORIA · TIPO (Decisão 23) ================ */
+  .head-kicker {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+    font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .head-kicker a { color: var(--accent); text-decoration: none; }
+  .head-kicker a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .head-kicker .kicker-sep { color: var(--ink-3); opacity: .6; }
+  .head-kicker .kicker-tipo { color: var(--ink-3); }
+
+  /* ================ BLOCO DE ENTRADA — pré-requisitos + objetivo (Padrão 4.1) ================ */
+  .entry-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin: 8px 0 36px;
+    padding: 22px 24px;
+    background: var(--bg-2);
+    border-radius: var(--r-lg);
+  }
+  @media (max-width: 600px) { .entry-block { grid-template-columns: 1fr; gap: 18px; } }
+  .entry-label {
+    display: block;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 10px;
+  }
+  .entry-goal .entry-label { color: var(--accent); }
+  .entry-block ul { margin: 0; padding-left: 18px; }
+  .entry-block li { margin-bottom: 6px; font-size: .95rem; line-height: 1.5; color: var(--ink-2); }
+  .entry-block .entry-goal p { margin: 0; font-size: .95rem; line-height: 1.55; color: var(--ink); }
+
+  /* ================ BLOCO DE SAÍDA — o que você sabe + próximos caminhos (Padrão 4.1, critérios 5-6) ================ */
+  .outcome-block {
+    margin: 56px 0 0;
+    padding: 28px;
+    background: var(--accent-soft);
+    border-radius: var(--r-lg);
+  }
+  .outcome-label {
+    display: block;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .outcome-list { list-style: none; margin: 0 0 28px; padding: 0; }
+  .outcome-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .outcome-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0; top: 2px;
+    width: 19px; height: 19px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .7rem;
+    font-weight: 700;
+  }
+  .outcome-next-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 600px) { .outcome-next-grid { grid-template-columns: 1fr; } }
+  .next-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 14px 16px;
+    text-decoration: none;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    transition: transform .15s, border-color .15s, box-shadow .15s;
+  }
+  .next-card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow-sm); }
+  .next-card .nc-tipo {
+    font-size: .64rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .next-card .nc-title { font-size: .92rem; font-weight: 600; line-height: 1.3; }
+
+  /* ================ FOOTER DO ARTIGO ================ */
+  .article-foot { max-width: 700px; margin-top: 64px; }
+
+  /* Tópicos + Compartilhar */
+  .topics-row {
+    margin: 0 0 48px;
+  }
+  .topics-row-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .topics-label {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .topics-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .topic-chip {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+    padding: 5px 12px;
+    border-radius: 99px;
+    text-decoration: none;
+    font-size: .82rem;
+    font-family: var(--sans);
+    transition: all .15s;
+  }
+  .topic-chip:hover { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+
+  /* Botão compartilhar — inline com tópicos */
+  .share-wrap { position: relative; }
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px; height: 38px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: var(--sans);
+    transition: all .15s;
+  }
+  .share-btn svg { width: 16px; height: 16px; }
+  .share-menu-sep { height: 1px; background: var(--line); margin: 4px 8px; }
+  .share-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .share-btn[aria-expanded="true"] { background: var(--accent); color: white; border-color: var(--accent); }
+  .share-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 6px);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    box-shadow: var(--shadow-lg);
+    min-width: 200px;
+    padding: 6px;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .share-menu[hidden] { display: none; }
+  .share-menu button {
+    background: transparent;
+    border: 0;
+    color: var(--ink);
+    padding: 9px 12px;
+    border-radius: var(--r-sm);
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: .88rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background .15s, color .15s;
+  }
+  .share-menu button svg { width: 15px; height: 15px; color: var(--ink-3); }
+  .share-menu button:hover { background: var(--bg-2); color: var(--accent); }
+  .share-menu button:hover svg { color: var(--accent); }
+
+  /* Artigos relacionados */
+  .related {
+    margin: 0;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+  .related h3 {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin: 0 0 6px;
+    color: var(--ink);
+    letter-spacing: -.018em;
+  }
+  .related-sub {
+    color: var(--ink-3);
+    font-size: .92rem;
+    margin: 0 0 22px;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 760px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 20px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform .15s, box-shadow .15s, border-color .15s;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .related-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--ink-3);
+  }
+  .related-card .r-tipo {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .related-card h4 {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.3;
+    margin: 0;
+    color: var(--ink);
+  }
+  .related-card .r-meta {
+    font-size: .78rem;
+    color: var(--ink-3);
+    margin-top: auto;
+    padding-top: 10px;
+  }
+
+  /* Autor no fim do artigo */
+  .article-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+    margin-bottom: 32px;
+  }
+  .article-author .author-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .88rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .article-author .author-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .author-byline-label {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .author-name-sm {
+    font-size: .96rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .author-role-sm {
+    font-size: .82rem;
+    color: var(--ink-3);
+  }
+
+  /* Banner de protótipo */
+  .proto-banner {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 8px 16px;
+    text-align: center;
+    font-size: .82rem;
+    font-family: var(--sans);
+  }
+  .proto-banner strong { color: var(--accent); font-weight: 700; }
+
+  @media (max-width: 960px) {
+    .header-search { display: none; }
+    .nav { display: none; }
+  }
+
+  @media (max-width: 540px) {
+    .toolbar { top: auto; bottom: 12px; right: 12px; left: 12px; justify-content: center; }
+    .vlibras-widget { bottom: 80px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#conteudo" class="skip-link">Pular para o conteúdo principal</a>
+
+<div class="proto-banner">
+  <strong>PROTÓTIPO v0.4</strong> · página de artigo · decisões consolidadas até <strong>2026-05-19</strong> + Padrão 4.1 ·
+  Use a toolbar superior direita para testar acessibilidade e tema
+</div>
+
+<div class="progress-rail" aria-hidden="true">
+  <div class="progress-fill" id="progressFill"></div>
+</div>
+
+<!-- ============================================================
+     HEADER (igual à home)
+     ============================================================ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="home-proposta.html" class="brand">
+      <span class="brand-mark">C</span>
+      <span class="brand-text">
+        <strong>Base de Conhecimento</strong>
+        <span>CEFOR · Ifes</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
+      <a href="exploracao-pagina-percurso.html">Percursos</a>
+      <a href="prototipo-artigo.html">Todos os artigos</a>
+      <a href="#">Sobre</a>
+    </nav>
+    <form class="header-search" role="search" action="/buscar" method="get">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar"/>
+    </form>
+    <div class="a11y-toggles" role="group" aria-label="Preferências de leitura">
+      <button class="icon-btn" id="btn-theme" aria-label="Alternar modo escuro" aria-pressed="false" title="Modo escuro">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn" id="btn-contrast" aria-label="Alto contraste" aria-pressed="false" title="Alto contraste">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/><path d="M12 3a9 9 0 0 1 0 18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Toolbar acessibilidade — contraída por padrão; abre no botão de acessibilidade -->
+<div class="toolbar" role="toolbar" aria-label="Preferências de leitura" data-collapsed="true">
+  <button id="a11yTrigger" class="a11y-trigger" aria-expanded="false" aria-controls="toolbarControls" aria-label="Abrir preferências de leitura" title="Acessibilidade e tema">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7.5" r="1.4" fill="currentColor" stroke="none"/><path d="M7 10.5h10"/><path d="M12 10.5V18"/><path d="m12 13.5-3 4.5"/><path d="m12 13.5 3 4.5"/></svg>
+  </button>
+  <div class="toolbar-controls" id="toolbarControls">
+    <button id="contrastToggle" aria-label="Alto contraste" title="Alto contraste" aria-pressed="false">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v20"/><path d="M12 2a10 10 0 0 1 0 20"/></svg>
+    </button>
+    <button id="dyslexicToggle" aria-label="Fonte para dislexia" title="Fonte para dislexia" aria-pressed="false">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+    </button>
+    <div class="sep"></div>
+    <button id="themeToggle" aria-label="Alternar tema claro/escuro" title="Tema escuro">
+      <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg id="iconSun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- Widget VLibras -->
+<button class="vlibras-widget" aria-label="VLibras — Tradução para Libras" title="VLibras">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="4" r="1"/><path d="m18 19 1-7-5.87.94"/><path d="m5 8 1 7 5.87-.94"/><path d="M12.93 17.52L9.5 21l-1-4"/><path d="m7 13 1.5 6 3.5-2"/></svg>
+</button>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="masthead">
+  <div class="masthead-inner">
+
+    <nav class="breadcrumb" aria-label="Trilha de navegação">
+      <a href="home-proposta.html">Início</a><span>/</span>
+      <a href="#">Moodle (AVA)</a><span>/</span>
+      Configurando o livro de notas
+    </nav>
+
+    <!-- Kicker Categoria · Tipo (Decisão 23 — primeiro elemento do cabeçalho) -->
+    <div class="head-kicker">
+      <a href="#">Ferramentas e Recursos</a>
+      <span class="kicker-sep" aria-hidden="true">·</span>
+      <span class="kicker-tipo">Tutorial</span>
+    </div>
+
+    <h1>Configurando o livro de notas do Moodle</h1>
+
+    <p class="subtitle">
+      Como montar o gradebook do seu curso passo a passo: criar categorias, definir pesos por agrupamento, aplicar fórmulas e revisar antes de publicar para os estudantes.
+    </p>
+
+    <div class="masthead-meta">
+      <div class="meta-item">
+        <span class="author-avatar" aria-hidden="true">JC</span>
+        <span class="meta-name">Juliana Cassaro</span>
+      </div>
+      <span class="meta-sep" aria-hidden="true"></span>
+      <div class="meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span class="meta-time">8 min de leitura</span>
+      </div>
+
+      <!-- Compartilhar no topo do artigo (refinamento 2026-05-26) -->
+      <div class="share-wrap">
+        <button class="share-btn-top" data-share-trigger aria-haspopup="true" aria-expanded="false" aria-label="Compartilhar este artigo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          Compartilhar
+        </button>
+        <div class="share-menu" data-share-menu role="menu" hidden>
+          <button role="menuitem" data-share="whatsapp">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.892c0 2.096.549 4.142 1.595 5.945L0 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.582 0 11.94-5.335 11.944-11.893a11.821 11.821 0 0 0-3.487-8.413"/></svg>
+            WhatsApp
+          </button>
+          <button role="menuitem" data-share="x">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.39-6.933ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+            X (Twitter)
+          </button>
+          <button role="menuitem" data-share="instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069M12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0m0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881"/></svg>
+            Instagram
+          </button>
+          <div class="share-menu-sep" role="separator"></div>
+          <button role="menuitem" data-share="copy-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            Copiar link
+          </button>
+          <button role="menuitem" data-share="copy-abnt">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Copiar citação ABNT
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ TOOLBAR DO ARTIGO (multimodal) ============ -->
+<div class="article-actions" role="toolbar" aria-label="Formatos do artigo">
+  <!-- Ordem obrigatória dos blocos multimodais (Decisão 19): 1. Libras · 2. Ouvir · 3. Outros formatos -->
+  <button class="action-btn" id="librasBtn" aria-pressed="false" aria-controls="librasPanel">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="4" r="1"/><path d="m18 19 1-7-5.87.94"/><path d="m5 8 1 7 5.87-.94"/><path d="M12.93 17.52L9.5 21l-1-4"/><path d="m7 13 1.5 6 3.5-2"/></svg>
+    Tradução em Libras
+  </button>
+  <button class="action-btn" id="audioBtn" aria-pressed="false">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+    Ouvir o artigo
+    <span class="duration">8 min</span>
+  </button>
+  <button class="action-btn" id="podcastBtn">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+    Podcast (ep. 12)
+    <span class="duration">22 min</span>
+  </button>
+</div>
+
+<!-- Accordion de Libras -->
+<div class="libras-accordion">
+  <div class="libras-panel" id="librasPanel" aria-live="polite">
+    <div class="lp-head">
+      <span>Tradução em Libras</span>
+      <span style="font-size: .76rem; opacity: .8;">vídeo completo do artigo · 12 min em Libras</span>
+    </div>
+    <div class="lp-body">
+      <div class="libras-video" role="img" aria-label="Vídeo da tradução do artigo em Libras">
+        <span>Tradução em Libras — Configurando o livro de notas</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SHELL ============ -->
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" style="grid-column: 2;">
+
+    <!-- Índice do artigo -->
+    <div class="toc-card">
+      <p class="toc-title">Neste artigo</p>
+      <ul class="toc-list" id="toc">
+        <li><a href="#contexto">Antes de começar</a></li>
+        <li><a href="#categorias">Criar categorias de nota</a></li>
+        <li class="l-2"><a href="#pesos">Pesos por categoria</a></li>
+        <li><a href="#formulas">Aplicar fórmulas</a></li>
+        <li><a href="#revisao">Revisão final</a></li>
+        <li><a href="#resumo">Em resumo</a></li>
+        <li><a href="#publicacao">Publicar para estudantes</a></li>
+      </ul>
+    </div>
+
+    <!-- Box de trilhas — multi-trilha em acordeão (Decisão 30) + chip de percurso (Decisão 31) -->
+    <div class="side-trilha">
+      <div class="side-trilha-head">
+        <span class="side-trilha-head-label">
+          <span>Trilhas deste artigo</span>
+          <span class="side-trilha-count">2</span>
+        </span>
+      </div>
+
+      <!-- Trilha 1: Avaliação no Moodle (primeira, expandida por padrão) -->
+      <div class="trilha-acc-item">
+        <button class="trilha-acc-toggle" aria-expanded="true" aria-controls="trilhaBody-1">
+          <span class="trilha-acc-name">Avaliação no Moodle</span>
+          <span class="trilha-acc-pos">7/15</span>
+          <svg class="trilha-acc-chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="trilha-acc-body" id="trilhaBody-1">
+          <a href="#" class="trilha-percurso-chip">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 3 6 21"/><polyline points="18 3 18 21"/><line x1="6" y1="8" x2="18" y2="8"/><line x1="6" y1="16" x2="18" y2="16"/></svg>
+            Faz parte do percurso <strong>Dominando o Moodle</strong>
+          </a>
+          <div class="side-trilha-progress">
+            <div class="side-trilha-bar">
+              <div class="side-trilha-bar-fill" style="width: 46.6%;"></div>
+            </div>
+            <span class="side-trilha-pos">Artigo <b>7</b> de 15</span>
+          </div>
+          <ol class="side-trilha-articles">
+            <li><a href="#">Introdução ao sistema de avaliação do Moodle</a></li>
+            <li><a href="#">Tipos de atividades avaliativas</a></li>
+            <li><a href="#">Criando questionários no Moodle</a></li>
+            <li><a href="#">Banco de questões: tipos e formatos</a></li>
+            <li><a href="#">Avaliação por pares (Workshop)</a></li>
+            <li><a href="#">Banco de questões: importando do Word</a></li>
+            <li class="current"><a href="#" aria-current="page">Configurando o livro de notas</a></li>
+            <li><a href="#">Aplicando rubricas em atividades de envio</a></li>
+            <li><a href="#">Configurando rubricas guias</a></li>
+            <li><a href="#">Exportando notas para o sistema acadêmico</a></li>
+            <li><a href="#">Relatórios de desempenho da turma</a></li>
+            <li><a href="#">Feedbacks automatizados por nota</a></li>
+            <li><a href="#">Integração com o portfólio digital</a></li>
+            <li><a href="#">Revisão e aprovação de notas</a></li>
+            <li><a href="#">Fechamento do período letivo</a></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Trilha 2: Gerenciando notas (colapsada por padrão) -->
+      <div class="trilha-acc-item">
+        <button class="trilha-acc-toggle" aria-expanded="false" aria-controls="trilhaBody-2">
+          <span class="trilha-acc-name">Gerenciando notas</span>
+          <span class="trilha-acc-pos">1/6</span>
+          <svg class="trilha-acc-chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="trilha-acc-body" id="trilhaBody-2" hidden>
+          <a href="#" class="trilha-percurso-chip">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 3 6 21"/><polyline points="18 3 18 21"/><line x1="6" y1="8" x2="18" y2="8"/><line x1="6" y1="16" x2="18" y2="16"/></svg>
+            Faz parte do percurso <strong>Dominando o Moodle</strong>
+          </a>
+          <div class="side-trilha-progress">
+            <div class="side-trilha-bar">
+              <div class="side-trilha-bar-fill" style="width: 16.6%;"></div>
+            </div>
+            <span class="side-trilha-pos">Artigo <b>1</b> de 6</span>
+          </div>
+          <ol class="side-trilha-articles">
+            <li class="current"><a href="#" aria-current="page">Configurando o livro de notas do Moodle</a></li>
+            <li><a href="#">Exportando notas para o sistema acadêmico</a></li>
+            <li><a href="#">Ajustes manuais e arredondamentos</a></li>
+            <li><a href="#">Relatórios de desempenho da turma</a></li>
+            <li><a href="#">Recalcular nota final após mudança de peso</a></li>
+            <li><a href="#">Encerramento de notas no fim do período</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <article class="prose" id="conteudo" style="grid-column: 1; grid-row: 1;">
+
+    <!-- Bloco de entrada — pré-requisitos linkados + objetivo (Padrão 4.1 / Princípio 2 / Checklist critérios 3-4) -->
+    <div class="entry-block">
+      <div class="entry-col entry-prereq">
+        <span class="entry-label">Antes de começar, você precisa</span>
+        <ul>
+          <li>Ter um <a href="#">curso criado no Moodle</a></li>
+          <li>Já ter <a href="#">adicionado as atividades avaliativas</a> ao curso</li>
+          <li>Permissão de <code>professor</code> ou <code>editor</code> no curso</li>
+        </ul>
+      </div>
+      <div class="entry-col entry-goal">
+        <span class="entry-label">Ao final, você será capaz de</span>
+        <p>Montar o livro de notas do seu curso com categorias, pesos balanceados e fórmulas — e validá-lo no modo "Ver como estudante" antes de publicar para a turma.</p>
+      </div>
+    </div>
+
+    <h2 id="contexto">Antes de começar</h2>
+    <p>
+      O livro de notas do Moodle — também chamado de <em>gradebook</em> — é a estrutura central que organiza, calcula e exibe as avaliações de um curso. Ele não é apenas um lugar onde as notas aparecem: é um sistema de regras que determina como cada atividade contribui para a nota final do estudante, seguindo o peso que você definiu no plano de ensino. Por isso, configurar o gradebook antes de criar as atividades não é um capricho metodológico — é uma decisão prática que protege o cálculo final e evita retrabalho nas semanas mais críticas do curso.
+    </p>
+    <p>
+      A estrutura básica do livro de notas é composta por <strong>categorias</strong> e <strong>itens de nota</strong>. As categorias agrupam atividades semelhantes e recebem um peso relativo na nota final. Os itens de nota são as atividades propriamente ditas — questionários, tarefas, fóruns — que ficam dentro de cada categoria. O cálculo final percorre essa hierarquia: soma os itens de cada categoria, aplica o peso dela e então combina todas as categorias para chegar ao total do curso.
+    </p>
+    <p>
+      Este tutorial assume que você já tem permissão de <code>professor</code> ou <code>editor</code> no curso. As telas podem variar levemente conforme o tema instalado, mas a lógica de navegação é idêntica. Ao final deste guia, você terá o gradebook configurado com categorias, pesos balanceados e uma verificação completa antes da publicação.
+    </p>
+
+    <div class="callout nota">
+      <span class="c-label">Nota</span>
+      Sempre que possível, alinhe a estrutura do gradebook com a estrutura do plano de ensino. Isso reduz o número de dúvidas dos estudantes e facilita o trabalho do tutor de turma, que poderá interpretar as notas sem precisar consultar o professor a cada fechamento.
+    </div>
+
+    <h2 id="categorias">Criar categorias de nota</h2>
+    <p>
+      Categorias são os agrupadores da sua estrutura de avaliação. Elas respondem à pergunta: "que tipo de atividade é essa e que papel ela tem na nota final?" Um curso bem estruturado costuma ter entre três e cinco categorias — por exemplo, <em>Avaliações diagnósticas</em>, <em>Avaliações formativas</em> e <em>Avaliações somativas</em>. Categorias com peso zero também existem: servem para agrupar atividades de participação sem impacto na nota, mas que o professor quer acompanhar separadamente.
+    </p>
+    <p>
+      O momento de criar as categorias importa. Se você criar as atividades antes de montar a estrutura, cada nova atividade cairá em "Curso" — a categoria raiz padrão do Moodle — e você precisará reorganizá-las depois, uma por uma. Criar categorias primeiro significa que, ao adicionar uma atividade, você já escolhe a categoria correta no ato da criação. O fluxo é mais limpo e o risco de erro é menor.
+    </p>
+    <ol>
+      <li>Acesse <em>Notas → Configurações do livro de notas</em> no menu lateral do curso.</li>
+      <li>Clique em <strong>Adicionar categoria</strong> na parte inferior da página.</li>
+      <li>Defina o nome da categoria — por exemplo, "Avaliações formativas" — e escolha o cálculo agregado. Para a maioria dos casos, <em>Média ponderada de notas</em> é a opção adequada.</li>
+      <li>Salve e repita para cada agrupamento previsto no plano de ensino. Não é necessário adicionar as atividades ainda.</li>
+    </ol>
+    <p>
+      Ao terminar, você verá a lista de categorias na árvore do livro de notas. Neste ponto, o Moodle pode exibir alertas indicando que os pesos ainda somam zero ou não fecham 100 — isso é esperado. O próximo passo é exatamente definir esses pesos.
+    </p>
+
+    <figure class="figure">
+      <div class="figure-img" role="img" aria-label="Captura de tela mostrando o painel de configuração de categorias do livro de notas">
+        [Captura de tela — Painel de categorias]
+      </div>
+      <p class="figure-caption">Figura 1 · Árvore de categorias do livro de notas após a criação das três categorias principais (Moodle 4.x).</p>
+      <div class="ad-toggle-wrap">
+        <button class="ad-toggle" aria-expanded="false" aria-controls="ad-fig1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Descrição da imagem
+        </button>
+      </div>
+      <div class="figure-audiodesc" id="ad-fig1" hidden>
+        Tela do Moodle aberta na seção "Configurações do livro de notas". No topo, breadcrumb com o nome do curso. À esquerda, lista de categorias já criadas: "Avaliações diagnósticas" (peso 10), "Avaliações formativas" (peso 30) e "Avaliações somativas" (peso 60). À direita, botão verde "Adicionar categoria" em destaque. No rodapé, um aviso amarelo indica que o total ainda não fecha 100%.
+      </div>
+    </figure>
+
+    <h3 id="pesos">Pesos por categoria</h3>
+    <p>
+      Quando o cálculo agregado for <em>média ponderada</em>, cada categoria precisa de um peso. O peso expressa a proporção daquela categoria na nota final do curso: uma categoria com peso 60 representa 60% da nota, enquanto uma com peso 40 representa os outros 40%. A soma dos pesos das categorias de primeiro nível deve sempre fechar em 100 — o Moodle sinaliza em vermelho qualquer desbalanceamento, mas não impede a publicação.
+    </p>
+    <p>
+      Categorias aninhadas — subcategorias dentro de categorias — também recebem pesos, mas calculados dentro do escopo da categoria-pai. Por exemplo, se <em>Avaliações somativas</em> tem peso 60 e dentro dela você criou duas subcategorias de peso 50 cada, o resultado final é que cada subcategoria representa 30% do total do curso (50% de 60%). Esse encadeamento é poderoso, mas exige atenção redobrada: um erro de peso em um nível intermediário afeta silenciosamente o cálculo de tudo que está abaixo dele.
+    </p>
+    <p>
+      O Moodle não impede que você publique o curso com pesos incorretos. Ele apenas alerta. Por isso, valide o cálculo manualmente antes de prosseguir: some todos os pesos das categorias de primeiro nível e confirme que chegam a 100. Se o gradebook usa subcategorias, faça o mesmo em cada nível da hierarquia.
+    </p>
+
+    <div class="pullquote">
+      Configure o gradebook como se você fosse o estudante consultando a nota na véspera do fechamento.
+    </div>
+
+    <h2 id="formulas">Aplicar fórmulas</h2>
+    <p>
+      Fórmulas permitem cálculos mais complexos do que a média ponderada simples. No Moodle, elas usam a sintaxe <code>=função(referências)</code>, onde as referências são apelidos dos itens de nota — identificadores únicos que você atribui a cada atividade na tela de edição do item. A fórmula fica vinculada ao item que a recebe, e o Moodle recalcula o valor automaticamente toda vez que uma nota-base é alterada.
+    </p>
+    <p>
+      A decisão de usar fórmulas deve ser cuidadosa. Cada fórmula cria uma dependência entre atividades: se um item referenciado for excluído ou renomeado, a fórmula pode quebrar silenciosamente, retornando zero ou um valor inesperado sem avisar o professor. Por isso, use fórmulas apenas quando o cálculo realmente não puder ser feito com as opções de agregação padrão — a média ponderada resolve a maioria dos cenários sem esse risco.
+    </p>
+    <p>
+      Quando as fórmulas são inevitáveis, documente-as. Um comentário interno na descrição do item de nota, registrando qual fórmula está ativa e o que ela calcula, pode salvar horas de diagnóstico no futuro — especialmente quando outro professor assumir o curso ou quando o ambiente for atualizado para uma nova versão do Moodle.
+    </p>
+
+    <div class="callout atencao">
+      <span class="c-label">Atenção</span>
+      Sempre que renomear um item de nota referenciado em fórmula, revise a fórmula manualmente. O Moodle não atualiza referências automaticamente em todos os contextos — em alguns casos, o apelido antigo permanece na fórmula e o cálculo passa a retornar zero sem nenhum aviso visível na interface.
+    </div>
+
+    <p>Três fórmulas frequentes no contexto do CEFOR:</p>
+    <ul>
+      <li><code>=min(...)</code> — descarta a menor nota de um conjunto, útil em séries de exercícios onde o estudante tem mais tentativas do que vale a nota.</li>
+      <li><code>=median(...)</code> — usa a mediana em vez da média, reduzindo o impacto de outliers em avaliações por pares com muitos avaliadores.</li>
+      <li><code>=sum(...) * 1.1</code> — aplica bônus de 10% sobre um conjunto de atividades extras, sem ultrapassar a nota máxima do item.</li>
+    </ul>
+
+    <p>
+      A escrita completa de uma fórmula que <strong>descarta a menor nota entre quatro exercícios</strong> — somando as quatro e subtraindo a menor — fica assim no campo de fórmula do item de nota. Os apelidos <code>ex1</code> a <code>ex4</code> são os <em>idnumbers</em> que você atribuiu aos itens de nota dos exercícios:
+    </p>
+
+    <div class="code-prompt-block">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)" aria-label="Copiar fórmula" title="Copiar fórmula">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span>Copiar</span>
+      </button>
+<pre class="code-prompt-content"><code><span class="code-comment">;; Soma as 4 notas e subtrai a menor (descarta a pior tentativa)</span>
+=sum(<span class="code-variable">[[ex1]]</span>, <span class="code-variable">[[ex2]]</span>, <span class="code-variable">[[ex3]]</span>, <span class="code-variable">[[ex4]]</span>) - min(<span class="code-variable">[[ex1]]</span>, <span class="code-variable">[[ex2]]</span>, <span class="code-variable">[[ex3]]</span>, <span class="code-variable">[[ex4]]</span>)</code></pre>
+    </div>
+
+    <p>
+      Os termos em destaque dourado são <em>variáveis</em> da fórmula — referenciam os <em>idnumbers</em> que você definiu ao criar cada exercício no Livro de Notas. Se renomear qualquer um, lembre de atualizar aqui também (ver alerta acima).
+    </p>
+
+    <h2 id="revisao">Revisão final</h2>
+    <p>
+      Antes de tornar o livro de notas visível para os estudantes, há uma verificação que poucos professores fazem — e que já evitou revisões formais de notas no Ifes: ativar o modo <strong>"Ver como estudante"</strong> e percorrer o gradebook inteiro como se você fosse o aluno. Esse modo mostra exatamente o que o estudante vai ver: quais atividades aparecem, com quais rótulos, em que ordem, e qual nota parcial está sendo calculada em cada categoria.
+    </p>
+    <p>
+      O principal valor do teste é revelar discrepâncias entre o que o professor configurou e o que o estudante interpreta. Um nome de categoria genérico — "Categoria 1" — pode ser informativo para quem criou a estrutura, mas é completamente opaco para o estudante que precisa entender de onde vem a sua nota. Da mesma forma, uma atividade ainda não realizada que aparece como "0" em vez de "—" pode fazer o aluno acreditar que falhou numa avaliação que nem aconteceu ainda.
+    </p>
+    <p>
+      Além do teste visual, valide o cálculo total manualmente com pelo menos um perfil de nota hipotético. Escolha uma distribuição simples — por exemplo, nota máxima em todas as categorias — e calcule à mão o resultado esperado. Compare com o que o Moodle exibe. Se os números coincidem, o gradebook está correto. Se houver diferença, o problema quase sempre está nos pesos ou numa fórmula com referência quebrada.
+    </p>
+
+    <p>Durante o teste, verifique especialmente:</p>
+    <ul>
+      <li>Os nomes das categorias estão em linguagem clara, sem jargão interno ou abreviações que só a equipe entende.</li>
+      <li>As atividades ainda não realizadas aparecem com tracejado (—) e não com zero, para não distorcer a nota parcial antes do fechamento.</li>
+      <li>O total geral coincide com o cálculo manual de pelo menos um perfil de nota hipotético.</li>
+      <li>Nenhuma categoria aparece com peso zero quando deveria ter impacto na nota final.</li>
+    </ul>
+
+    <div class="callout critico">
+      <span class="c-label">Crítico</span>
+      Nunca lance notas reais em ambiente de produção antes de validar o cálculo total. Erros de ponderação publicados já foram, no passado, causa de revisão formal de notas no Ifes — um processo que mobiliza coordenação, CGAE e, em alguns casos, a reitoria para corrigir notas já divulgadas para os estudantes.
+    </div>
+
+    <h2 id="resumo">Em resumo</h2>
+    <p>
+      O processo de configuração do gradebook segue uma sequência clara que não pode ser invertida sem custo: primeiro a estrutura de categorias, depois os pesos, depois as fórmulas quando necessárias, e só então a verificação. Fazer nessa ordem garante que cada atividade criada após a configuração já encontre o lugar certo no livro de notas, sem necessidade de reorganização posterior.
+    </p>
+    <p>
+      A etapa de verificação no modo "Ver como estudante" é a mais frequentemente pulada — e a que mais protege contra erros que chegam ao estudante. O Moodle não impede que você publique um gradebook com erros; ele alerta quando pode, mas não bloqueia. A responsabilidade de verificar é do professor, e o custo de um erro após a publicação é sempre maior do que o de uma verificação preventiva antes dela.
+    </p>
+    <p>
+      Se algum detalhe da configuração gerar dúvida — especialmente sobre o encadeamento de pesos em hierarquias com subcategorias ou sobre o comportamento de fórmulas específicas — o artigo <a href="#">Fórmulas suportadas no gradebook do Moodle</a> traz a referência completa de todas as funções disponíveis, com exemplos aplicados ao contexto do Ifes.
+    </p>
+
+    <h2 id="publicacao">Publicar para estudantes</h2>
+    <p>
+      Com o gradebook validado, o passo final é torná-lo visível. No Moodle, o livro de notas pode estar oculto para os estudantes mesmo que o curso esteja publicado — esse é o comportamento padrão em cursos novos. Para publicá-lo, acesse <em>Configurações → Aparência → Mostrar livro de notas aos estudantes</em> e altere para <em>Sim</em>. A partir desse momento, cada estudante poderá ver sua própria nota em cada categoria, sem ver as notas dos colegas.
+    </p>
+    <p>
+      Só publicar não é suficiente. Os estudantes precisam saber que o livro de notas está disponível, como acessá-lo e o que esperar encontrar lá. Um comunicado no fórum de avisos do curso, na semana anterior ao primeiro fechamento parcial, é o mínimo. Explique a estrutura de categorias, os pesos de cada uma e o que acontece com atividades não realizadas no período. Quanto mais claro for o comunicado, menor o volume de dúvidas no atendimento.
+    </p>
+    <p>
+      Um ponto que gera muita dúvida nos estudantes: o livro de notas exibe a nota <em>parcial acumulada</em>, não a nota final do curso. Isso significa que, nas primeiras semanas, o aluno vai ver uma nota que parece baixa — simplesmente porque a maioria das atividades ainda não foi realizada. Incluir no comunicado uma explicação de como interpretar a nota parcial evita uma enxurrada de mensagens ansiosas nas primeiras semanas do período letivo.
+    </p>
+    <p>
+      Após a publicação, reserve um momento na semana seguinte para verificar se há estudantes com anomalias visíveis no gradebook — notas claramente fora do padrão da turma, zeros em atividades que todos realizaram, ou categorias com valor nulo sem razão aparente. Esses casos raramente são erros do estudante: quase sempre indicam um item de nota mal configurado ou uma fórmula que não está capturando a referência correta.
+    </p>
+
+    <div class="callout dica">
+      <span class="c-label">Dica</span>
+      Em vez de comunicar apenas pelo fórum, considere gravar um vídeo curto de dois a três minutos mostrando como o estudante acessa e interpreta o próprio livro de notas. Coloque o vídeo na seção de avisos do curso. O índice de dúvidas relacionadas a notas no atendimento cai consideravelmente quando os estudantes têm uma referência visual de como navegar pelo gradebook.
+    </div>
+
+    <!-- Bloco de saída — o que você sabe fazer agora + próximos caminhos plurais (Padrão 4.1 / Checklist critérios 5-6) -->
+    <div class="outcome-block">
+      <span class="outcome-label">O que você sabe fazer agora</span>
+      <ul class="outcome-list">
+        <li>Criar e organizar categorias de nota na árvore do livro de notas</li>
+        <li>Definir e validar pesos por categoria e subcategoria até fechar 100</li>
+        <li>Aplicar fórmulas com segurança e documentá-las para revisões futuras</li>
+        <li>Verificar o gradebook no modo "Ver como estudante" e publicá-lo com um comunicado claro à turma</li>
+      </ul>
+      <span class="outcome-label">Próximos caminhos</span>
+      <div class="outcome-next-grid">
+        <a href="#" class="next-card">
+          <span class="nc-tipo">Referência</span>
+          <span class="nc-title">Fórmulas suportadas no gradebook do Moodle</span>
+        </a>
+        <a href="#" class="next-card">
+          <span class="nc-tipo">Tutorial</span>
+          <span class="nc-title">Exportando notas para o sistema acadêmico</span>
+        </a>
+        <a href="#" class="next-card">
+          <span class="nc-tipo">Tutorial</span>
+          <span class="nc-title">Aplicando rubricas em atividades de envio</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ============ FOOTER DO ARTIGO ============ -->
+    <div class="article-foot">
+
+      <!-- Autor -->
+      <div class="article-author">
+        <div class="author-avatar" aria-hidden="true">JC</div>
+        <div class="author-details">
+          <span class="author-byline-label">Autora</span>
+          <span class="author-name-sm">Juliana Cassaro</span>
+          <span class="author-role-sm">Designer e conteudista · CGTE/CEFOR/Ifes</span>
+        </div>
+      </div>
+
+      <!-- Tópicos + Compartilhar -->
+      <div class="topics-row">
+        <div class="topics-row-header">
+          <span class="topics-label">Tópicos</span>
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" data-share-trigger aria-haspopup="true" aria-expanded="false" aria-label="Compartilhar" title="Compartilhar">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </button>
+            <div class="share-menu" id="shareMenu" data-share-menu role="menu" hidden>
+              <button role="menuitem" id="shareWhatsapp" data-share="whatsapp">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.892c0 2.096.549 4.142 1.595 5.945L0 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.582 0 11.94-5.335 11.944-11.893a11.821 11.821 0 0 0-3.487-8.413"/></svg>
+                WhatsApp
+              </button>
+              <button role="menuitem" id="shareX" data-share="x">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.39-6.933ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                X (Twitter)
+              </button>
+              <button role="menuitem" id="shareInstagram" data-share="instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069M12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0m0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881"/></svg>
+                Instagram
+              </button>
+              <div class="share-menu-sep" role="separator"></div>
+              <button role="menuitem" id="shareCopyLink" data-share="copy-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                Copiar link
+              </button>
+              <button role="menuitem" id="shareCopyAbnt" data-share="copy-abnt">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                Copiar citação ABNT
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="topics-chips">
+          <a href="#" class="topic-chip">Notas</a>
+          <a href="#" class="topic-chip">Livro de Notas</a>
+          <a href="#" class="topic-chip">Configuração de Curso</a>
+          <a href="#" class="topic-chip">Avaliação</a>
+        </div>
+      </div>
+
+      <!-- Artigos relacionados -->
+      <section class="related" aria-labelledby="relatedTitle">
+        <h3 id="relatedTitle">Artigos relacionados</h3>
+        <p class="related-sub">Conteúdos sugeridos com base nos tópicos e na categoria.</p>
+        <div class="related-grid">
+          <a class="related-card" href="#">
+            <span class="r-tipo">Tutorial</span>
+            <h4>Configurando rubricas em atividades de envio</h4>
+            <span class="r-meta">6 min · Moodle (AVA)</span>
+          </a>
+          <a class="related-card" href="#">
+            <span class="r-tipo">Conceitual</span>
+            <h4>Boas práticas no design de avaliações online</h4>
+            <span class="r-meta">12 min · Pedagogia e Planejamento</span>
+          </a>
+          <a class="related-card" href="#">
+            <span class="r-tipo">Referência</span>
+            <h4>Fórmulas suportadas no gradebook do Moodle</h4>
+            <span class="r-meta">4 min · Moodle (AVA)</span>
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+  </article>
+</div>
+
+<script>
+  // Barra de progresso
+  const progressFill = document.getElementById('progressFill');
+  function updateProgress() {
+    const h = document.documentElement;
+    const pct = h.scrollHeight - h.clientHeight > 0
+      ? (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100 : 0;
+    progressFill.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // Scrollspy do índice
+  const tocLinks = document.querySelectorAll('#toc a');
+  const sections = Array.from(tocLinks)
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+  function spy() {
+    const y = window.scrollY + 140;
+    let current = sections[0];
+    for (const s of sections) { if (s.offsetTop <= y) current = s; }
+    if (!current) return;
+    tocLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
+    });
+  }
+  window.addEventListener('scroll', spy, { passive: true });
+  spy();
+
+  // Tema claro / escuro (sincronizado com o menu superior)
+  const themeToggle = document.getElementById('themeToggle');
+  const btnTheme = document.getElementById('btn-theme');
+  const iconMoon = document.getElementById('iconMoon');
+  const iconSun = document.getElementById('iconSun');
+
+  function setTheme(dark) {
+    if (dark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      if (iconMoon) iconMoon.style.display = 'none';
+      if (iconSun) iconSun.style.display = '';
+      if (btnTheme) btnTheme.setAttribute('aria-pressed', 'true');
+      if (themeToggle) themeToggle.setAttribute('aria-pressed', 'true');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      if (iconMoon) iconMoon.style.display = '';
+      if (iconSun) iconSun.style.display = 'none';
+      if (btnTheme) btnTheme.setAttribute('aria-pressed', 'false');
+      if (themeToggle) themeToggle.setAttribute('aria-pressed', 'false');
+    }
+  }
+
+  if (localStorage.getItem('cefor-theme') === 'dark') setTheme(true);
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      setTheme(!isDark);
+      localStorage.setItem('cefor-theme', isDark ? 'light' : 'dark');
+    });
+  }
+
+  if (btnTheme) {
+    btnTheme.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      setTheme(!isDark);
+      localStorage.setItem('cefor-theme', isDark ? 'light' : 'dark');
+    });
+  }
+
+  // Toolbar de acessibilidade — contrair/expandir
+  const a11yTrigger = document.getElementById('a11yTrigger');
+  const toolbarEl = document.querySelector('.toolbar');
+  a11yTrigger.addEventListener('click', () => {
+    const collapsed = toolbarEl.getAttribute('data-collapsed') === 'true';
+    toolbarEl.setAttribute('data-collapsed', String(!collapsed));
+    a11yTrigger.setAttribute('aria-expanded', String(collapsed));
+  });
+  document.addEventListener('click', (e) => {
+    if (toolbarEl.getAttribute('data-collapsed') === 'false' && !toolbarEl.contains(e.target)) {
+      toolbarEl.setAttribute('data-collapsed', 'true');
+      a11yTrigger.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Alto contraste (sincronizado com o menu superior)
+  const contrastToggle = document.getElementById('contrastToggle');
+  const btnContrast = document.getElementById('btn-contrast');
+
+  function setContrast(high) {
+    if (high) {
+      document.documentElement.setAttribute('data-contrast', 'high');
+      if (contrastToggle) contrastToggle.setAttribute('aria-pressed', 'true');
+      if (btnContrast) btnContrast.setAttribute('aria-pressed', 'true');
+    } else {
+      document.documentElement.removeAttribute('data-contrast');
+      if (contrastToggle) contrastToggle.setAttribute('aria-pressed', 'false');
+      if (btnContrast) btnContrast.setAttribute('aria-pressed', 'false');
+    }
+  }
+
+  if (contrastToggle) {
+    contrastToggle.addEventListener('click', () => {
+      const on = document.documentElement.getAttribute('data-contrast') === 'high';
+      setContrast(!on);
+    });
+  }
+
+  if (btnContrast) {
+    btnContrast.addEventListener('click', () => {
+      const on = document.documentElement.getAttribute('data-contrast') === 'high';
+      setContrast(!on);
+    });
+  }
+
+  // Fonte para dislexia
+  const dyslexicToggle = document.getElementById('dyslexicToggle');
+  dyslexicToggle.addEventListener('click', () => {
+    const on = document.documentElement.getAttribute('data-font') === 'dyslexic';
+    if (on) document.documentElement.removeAttribute('data-font');
+    else document.documentElement.setAttribute('data-font', 'dyslexic');
+    dyslexicToggle.setAttribute('aria-pressed', String(!on));
+  });
+
+  // Libras accordion
+  const librasBtn = document.getElementById('librasBtn');
+  const librasPanel = document.getElementById('librasPanel');
+  librasBtn.addEventListener('click', () => {
+    const open = librasBtn.getAttribute('aria-pressed') === 'true';
+    librasBtn.setAttribute('aria-pressed', String(!open));
+    librasPanel.classList.toggle('open', !open);
+    if (!open) setTimeout(() => librasPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+  });
+
+  // Áudio (mock)
+  const audioBtn = document.getElementById('audioBtn');
+  audioBtn.addEventListener('click', () => {
+    const playing = audioBtn.getAttribute('aria-pressed') === 'true';
+    audioBtn.setAttribute('aria-pressed', String(!playing));
+    const svg = audioBtn.querySelector('svg');
+    svg.style.opacity = playing ? '1' : '.5';
+  });
+
+  // Acordeão multi-trilha (Decisão 30) — cada item expande/colapsa independentemente
+  document.querySelectorAll('.trilha-acc-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      const body = document.getElementById(toggle.getAttribute('aria-controls'));
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      if (body) body.hidden = expanded;
+    });
+  });
+
+  // AD toggles — para figuras e infográficos
+  document.querySelectorAll('.ad-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const target = document.getElementById(btn.getAttribute('aria-controls'));
+      btn.setAttribute('aria-expanded', String(!expanded));
+      target.hidden = expanded;
+    });
+  });
+
+  // ============================================================
+  // Compartilhar — multi-instância (topo + rodapé)
+  // Refinamento 2026-05-26 (E): WhatsApp com mensagem formatada,
+  // compartilhar acessível também no topo do artigo.
+  // ============================================================
+  const shareUrl = window.location.href;
+  const shareTitle = document.title.split(' · ')[0];
+  const shareSubtitle = document.querySelector('.subtitle')?.textContent.trim() || '';
+
+  // Mensagem editorial para WhatsApp (asterisco vira negrito no app).
+  function whatsappMessage() {
+    const lines = [
+      '*' + shareTitle + '*',
+      '',
+      shareSubtitle,
+      '',
+      '📘 Base de Conhecimento CEFOR/Ifes',
+      '🔗 ' + shareUrl
+    ];
+    return lines.filter(l => l !== null).join('\n');
+  }
+
+  function shareAction(kind) {
+    switch (kind) {
+      case 'whatsapp':
+        window.open('https://wa.me/?text=' + encodeURIComponent(whatsappMessage()), '_blank', 'noopener');
+        break;
+      case 'x':
+        window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareTitle) + '&url=' + encodeURIComponent(shareUrl), '_blank', 'noopener');
+        break;
+      case 'instagram':
+        navigator.clipboard?.writeText(shareUrl);
+        alert('O Instagram não permite compartilhar links diretamente. O link foi copiado — cole no seu story ou na bio.');
+        break;
+      case 'copy-link':
+        navigator.clipboard?.writeText(shareUrl);
+        alert('Link copiado para a área de transferência.');
+        break;
+      case 'copy-abnt': {
+        const abnt = 'CASSARO, Juliana. ' + shareTitle + '. Base de Conhecimento CEFOR/Ifes, 2026. Disponível em: ' + shareUrl + '. Acesso em: hoje.';
+        navigator.clipboard?.writeText(abnt);
+        alert('Citação ABNT copiada para a área de transferência.');
+        break;
+      }
+    }
+  }
+
+  const shareWraps = document.querySelectorAll('.share-wrap');
+  shareWraps.forEach(wrap => {
+    const trigger = wrap.querySelector('[data-share-trigger]');
+    const menu = wrap.querySelector('[data-share-menu]');
+    if (!trigger || !menu) return;
+
+    function closeMenu() {
+      menu.hidden = true;
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+    function openMenu() {
+      // Fecha outros menus abertos antes de abrir este
+      shareWraps.forEach(w => {
+        if (w === wrap) return;
+        const t = w.querySelector('[data-share-trigger]');
+        const m = w.querySelector('[data-share-menu]');
+        if (m && !m.hidden) {
+          m.hidden = true;
+          t?.setAttribute('aria-expanded', 'false');
+        }
+      });
+      menu.hidden = false;
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (menu.hidden) openMenu(); else closeMenu();
+    });
+
+    menu.querySelectorAll('[data-share]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        shareAction(btn.dataset.share);
+        closeMenu();
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!menu.hidden && !trigger.contains(e.target) && !menu.contains(e.target)) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.hidden) { closeMenu(); trigger.focus(); }
+    });
+  });
+
+  // ============================================================
+  // Bloco de código — copiar (alinhado com catálogo #1)
+  // Refinamento 2026-05-26 (B): botão só-ícone, feedback troca o glyph.
+  // ============================================================
+  function copyCodeBlock(button) {
+    const block = button.closest('.code-prompt-block');
+    if (!block) return;
+    const code = block.querySelector('.code-prompt-content');
+    const text = code ? code.innerText : '';
+
+    navigator.clipboard.writeText(text).then(() => {
+      const originalHtml = button.innerHTML;
+      const originalLabel = button.getAttribute('aria-label');
+      button.classList.add('copied');
+      button.setAttribute('aria-label', 'Copiado');
+      button.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Copiado</span>';
+      setTimeout(() => {
+        button.classList.remove('copied');
+        button.innerHTML = originalHtml;
+        if (originalLabel) button.setAttribute('aria-label', originalLabel);
+      }, 1600);
+    }).catch(err => {
+      console.error('Falha ao copiar:', err);
+    });
+  }
+  window.copyCodeBlock = copyCodeBlock; // exposto para o onclick inline do HTML
+
+  // ============================================================
+  // Box de trilha — auto-close ao rolar (refinamento 2026-05-26 — E)
+  // - Colapsa trilhas expandidas quando o usuário rola além do hero do artigo
+  // - Pausa enquanto o mouse ou foco estiver dentro do box (não trava o usuário)
+  // - Se o usuário interagiu manualmente com o toggle, NÃO interfere mais
+  // ============================================================
+  (function autoCollapseTrilha() {
+    const sideTrilha = document.querySelector('.side-trilha');
+    if (!sideTrilha || !('IntersectionObserver' in window)) return;
+
+    let isInsideTrilha = false;
+    let userInteracted = false;
+    let autoCollapsed = false;
+
+    sideTrilha.addEventListener('mouseenter', () => { isInsideTrilha = true; });
+    sideTrilha.addEventListener('mouseleave', () => { isInsideTrilha = false; });
+    sideTrilha.addEventListener('focusin', () => { isInsideTrilha = true; });
+    sideTrilha.addEventListener('focusout', () => { isInsideTrilha = false; });
+
+    // Interação manual no toggle → cancela qualquer auto-comportamento
+    sideTrilha.querySelectorAll('.trilha-acc-toggle').forEach(btn => {
+      btn.addEventListener('click', () => { userInteracted = true; }, { capture: true });
+    });
+
+    function collapseAllExpanded() {
+      sideTrilha.querySelectorAll('.trilha-acc-toggle[aria-expanded="true"]').forEach(btn => {
+        btn.setAttribute('aria-expanded', 'false');
+        const body = document.getElementById(btn.getAttribute('aria-controls'));
+        if (body) body.hidden = true;
+      });
+    }
+
+    // Sentinela: o masthead. Quando sai do viewport (rolou para baixo), colapsa.
+    const sentinel = document.querySelector('.masthead');
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      const e = entries[0];
+      if (e.isIntersecting) return; // ainda vendo o cabeçalho — não fazer nada
+      if (autoCollapsed || userInteracted || isInsideTrilha) return;
+      collapseAllExpanded();
+      autoCollapsed = true;
+      observer.disconnect();
+    }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+    observer.observe(sentinel);
+  })();
+</script>
+
+</body>
+</html>

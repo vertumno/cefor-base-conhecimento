@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Base de Conhecimento CEFOR/Ifes — Home v2</title>
+<meta name="description" content="Proposta v2 da Home inspirada na linguagem visual do Claude. Layout escuro com grid de cards, filtros por categoria e hero tipográfico." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     HOME v2 — Inspiração Claude blog layout
+     Light default · Category filters · Card grid · CTA banner
+     ============================================================ */
+
+  :root {
+    --bg: #ffffff;
+    --bg-2: #f7f5f1;
+    --bg-3: #efeae0;
+    --paper: #ffffff;
+    --paper-elevated: #faf8f4;
+    --ink: #14110d;
+    --ink-2: #4a4439;
+    --ink-3: #8a8273;
+    --line: #e7e3d8;
+    --line-2: #d4cdba;
+    --accent: #1f5142;
+    --accent-2: #2d6a4f;
+    --accent-soft: #e3ecdf;
+    --accent-deep: #143a30;
+    --accent-solid: #1f5142;
+    --accent-solid-2: #2d6a4f;
+    --gold: #b08544;
+    --gold-soft: #f3e7d0;
+    --gold-deep: #8c6a36;
+    --rose: #b3433a;   --rose-soft: #f4dcd7;
+    --sky: #2c5e8f;    --sky-soft: #d9e7f3;
+    --violet: #7a5a9b; --violet-soft: #ece3f2;
+    --sun: #c98a1e;    --sun-soft: #f7e6c4;
+    --teal: #2a8f7a;   --teal-soft: #ddf0eb;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-xl: 24px;
+    --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
+    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
+    --shadow-lg: 0 24px 48px -12px rgba(20,17,13,.12);
+
+    /* Card illustration palette (Claude-style muted tones) */
+    --card-green: #c8ddd0;
+    --card-peach: #e8cfc0;
+    --card-blue: #bdd0e0;
+    --card-cream: #e4ddd0;
+    --card-sage: #cdddc8;
+    --card-rose: #e0c8c4;
+    --card-lavender: #d4cce0;
+    --card-sand: #ddd8c8;
+  }
+  [data-theme="dark"] {
+    --bg: #0e0c0a; --bg-2: #16130f; --bg-3: #1e1a14;
+    --paper: #1a1612; --paper-elevated: #231f19;
+    --ink: #f4f1ea; --ink-2: #c9c2b3; --ink-3: #8a8273;
+    --line: #2a251e; --line-2: #3a342a;
+    --accent: #6cb89a; --accent-2: #87cdb0;
+    --accent-soft: #19251f; --accent-deep: #c8e8d8;
+    --gold: #d9a955; --gold-soft: #2e2516; --gold-deep: #d9a955;
+    --rose: #e07a6e; --rose-soft: #2c1916;
+    --sky: #6da3d4; --sky-soft: #152030;
+    --violet: #b898d4; --violet-soft: #1e1528;
+    --sun: #e0b860; --sun-soft: #2a2010;
+    --teal: #5fb8a8; --teal-soft: #12251f;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.25);
+    --shadow-lg: 0 24px 48px -12px rgba(0,0,0,.4);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--sans); font-size: 16px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: none; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  img { max-width: 100%; display: block; }
+
+  /* ---------- Skip Link ---------- */
+  .skip { position: absolute; left: -9999px; top: 8px; background: var(--accent); color: var(--bg); padding: 8px 12px; border-radius: 6px; z-index: 100; font-weight: 600; }
+  .skip:focus { left: 8px; }
+
+  /* ============================================================
+     HEADER — dark, minimal (Claude-style thin top bar)
+     ============================================================ */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--accent-solid);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .site-header a { text-decoration: none; }
+  .header-inner {
+    max-width: 1320px; margin: 0 auto; padding: 14px 32px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; color: #ffffff; }
+  .brand:hover { text-decoration: none; }
+  .brand-mark {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: #ffffff; color: var(--accent-solid);
+    display: grid; place-items: center; font-weight: 800; letter-spacing: -.02em;
+    box-shadow: var(--shadow-sm);
+  }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .brand-text strong { font-size: .95rem; letter-spacing: -.01em; color: #ffffff; }
+  .brand-text span { font-size: .75rem; color: #a8c3ba; }
+
+  .nav { display: flex; gap: 6px; margin-left: auto; }
+  .nav a {
+    color: rgba(255,255,255,0.85); font-size: .9rem; font-weight: 500;
+    padding: 8px 12px; border-radius: 8px;
+  }
+  .nav a:hover { background: rgba(255,255,255,0.12); color: #ffffff; }
+
+  .header-search { position: relative; max-width: 260px; flex: 1; }
+  .header-search input {
+    width: 100%; padding: 9px 12px 9px 36px; font: inherit; font-size: .88rem;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); color: #fff;
+    border-radius: 8px;
+  }
+  .header-search input::placeholder { color: rgba(255,255,255,0.5); }
+  .header-search svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.6); }
+
+  .a11y-toggles { display: flex; gap: 4px; }
+  .icon-btn {
+    width: 36px; height: 36px; display: grid; place-items: center;
+    background: transparent; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;
+    color: rgba(255,255,255,0.8); cursor: pointer;
+  }
+  .icon-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+  /* ============================================================
+     HERO — Claude-style: large type + category tags
+     ============================================================ */
+  .hero {
+    position: relative;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 0%, var(--accent-soft) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 95% 10%, var(--gold-soft) 0%, transparent 55%),
+      var(--bg-2);
+    border-bottom: 1px solid var(--line);
+    padding: 72px 32px 56px;
+  }
+  .hero-inner {
+    max-width: 1320px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: end;
+  }
+  .hero-left { max-width: 680px; }
+  .hero-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: .82rem; color: var(--ink-3); margin-bottom: 20px;
+  }
+  .hero-kicker .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .hero h1 {
+    font-size: clamp(2.6rem, 5.5vw, 4rem);
+    line-height: 1.02; letter-spacing: -.035em;
+    font-weight: 800; margin: 0 0 20px;
+    color: var(--ink);
+  }
+  .hero h1 em { font-style: normal; color: var(--accent-2); }
+  [data-theme="dark"] .hero h1 em { color: var(--accent); }
+  .hero-sub {
+    font-size: 1.1rem; color: var(--ink-2); line-height: 1.6;
+    max-width: 560px; margin: 0 0 28px;
+  }
+
+  /* Hero search */  
+  .hero-search {
+    display: flex; align-items: center; gap: 0;
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: 14px; padding: 5px; max-width: 560px;
+  }
+  .hero-search:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .hero-search svg { margin: 0 12px; color: var(--ink-3); flex-shrink: 0; }
+  .hero-search input {
+    flex: 1; border: none; background: transparent; color: var(--ink);
+    padding: 13px 0; font: inherit; font-size: .98rem;
+  }
+  .hero-search input:focus { outline: none; }
+  .hero-search input::placeholder { color: var(--ink-3); }
+  .hero-search button {
+    background: var(--accent-solid); color: #fff; border: none;
+    padding: 11px 20px; font: inherit; font-weight: 600; font-size: .92rem;
+    border-radius: 10px; cursor: pointer; white-space: nowrap;
+  }
+  .hero-search button:hover { background: var(--accent-solid-2); }
+
+  /* Category filter tags — Claude-style, right column */
+  .hero-right { display: flex; flex-direction: column; gap: 0; align-items: flex-end; }
+  .filter-label {
+    font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink-3); margin-bottom: 12px;
+  }
+  .filter-tags { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+  .filter-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 18px; border-radius: 99px;
+    background: var(--paper); border: 1px solid var(--line);
+    font-size: .92rem; font-weight: 600; color: var(--ink-2);
+    cursor: pointer; transition: all .15s;
+    white-space: nowrap;
+  }
+  .filter-tag:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+  .filter-tag.active { background: var(--accent-solid); border-color: var(--accent-solid); color: #fff; }
+  .filter-tag .tag-count {
+    font-size: .72rem; font-weight: 700; opacity: .6;
+    background: rgba(255,255,255,.1); padding: 2px 7px; border-radius: 99px;
+  }
+  .filter-tag.active .tag-count { background: rgba(255,255,255,.2); opacity: 1; }
+
+  /* ============================================================
+     FEATURED ROW — horizontal scroll of highlighted items
+     ============================================================ */
+  .featured {
+    background: var(--bg);
+    padding: 56px 32px 48px;
+    border-bottom: 1px solid var(--line);
+  }
+  .featured-inner { max-width: 1320px; margin: 0 auto; }
+  .featured-label {
+    font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink-3); margin-bottom: 18px;
+  }
+  .featured-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  }
+  .featured-card {
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg);
+    padding: 20px; display: flex; flex-direction: column; gap: 10px;
+    box-shadow: var(--shadow-sm);
+    transition: border-color .15s, transform .15s, box-shadow .15s;
+  }
+  .featured-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .featured-card .fc-kicker {
+    font-size: .7rem; font-weight: 600; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--accent);
+  }
+  .featured-card h3 {
+    margin: 0; font-size: 1.02rem; font-weight: 600; line-height: 1.3;
+    color: var(--ink); letter-spacing: -.005em;
+  }
+  .featured-card .fc-meta {
+    margin-top: auto; font-size: .78rem; color: var(--ink-3);
+    display: flex; gap: 12px; padding-top: 8px;
+  }
+
+  /* ============================================================
+     CONTENT GRID — 3-col card grid (Claude blog style)
+     ============================================================ */
+  .content-section {
+    padding: 48px 32px 64px;
+  }
+  .content-inner { max-width: 1320px; margin: 0 auto; }
+  .content-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; gap: 16px;
+  }
+  .content-head h2 {
+    font-size: 1.4rem; font-weight: 700; margin: 0;
+    letter-spacing: -.01em; color: var(--ink);
+  }
+  .content-head .see-all {
+    font-size: .88rem; font-weight: 500; color: var(--accent-2);
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .content-head .see-all:hover { text-decoration: underline; }
+
+  /* ============================================================
+     TWO-COLUMN CONTENT LAYOUT WITH SIDEBAR FILTER (RIGHT SIDE)
+     ============================================================ */
+  .content-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 40px;
+    align-items: start;
+    margin-top: 24px;
+  }
+  @media (max-width: 960px) {
+    .content-layout {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .filter-sidebar {
+      position: static !important;
+      order: -1; /* Sidebar goes to top on mobile */
+    }
+  }
+
+  .content-main {
+    flex: 1;
+  }
+
+  /* The card grid spans 3 columns on desktop when sidebar is present */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 1200px) {
+    .card-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* SIDEBAR FILTER PANEL */
+  .filter-sidebar {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: sticky;
+    top: 90px;
+  }
+  
+  .sidebar-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink-2);
+    margin: 0 0 4px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+    letter-spacing: -.01em;
+  }
+
+  /* Accordion groups */
+  .filter-accordion {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 16px;
+  }
+  .filter-accordion:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  .filter-accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 6px 0;
+    font-family: var(--sans);
+    font-size: .84rem;
+    font-weight: 600;
+    color: var(--ink-2);
+    cursor: pointer;
+    text-align: left;
+  }
+  .filter-accordion-header:hover {
+    color: var(--accent-solid);
+  }
+  [data-theme="dark"] .filter-accordion-header:hover {
+    color: var(--accent);
+  }
+  .filter-accordion-header .chevron {
+    transition: transform 0.25s ease;
+    color: var(--ink-3);
+    width: 12px;
+    height: 12px;
+  }
+  
+  /* Accordion open/close states */
+  .filter-accordion.active .filter-accordion-header .chevron {
+    transform: rotate(180deg);
+  }
+  .filter-accordion-content {
+    display: none;
+    padding-top: 10px;
+  }
+  .filter-accordion.active .filter-accordion-content {
+    display: block;
+  }
+
+  /* Select sorting dropdown style (Sutil elegant box) */
+  .sidebar-select {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: var(--r-sm);
+    border: 1px solid var(--line-2);
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: .82rem;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    transition: border-color .15s, box-shadow .15s;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238a8273' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+    padding-right: 30px;
+  }
+  .sidebar-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+
+  /* Checkboxes */
+  .sidebar-checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .sidebar-cb-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .84rem;
+    font-weight: 500;
+    color: var(--ink-2);
+    cursor: pointer;
+    user-select: none;
+    transition: color .12s;
+  }
+  .sidebar-cb-label:hover {
+    color: var(--ink);
+  }
+  .sidebar-cb-label input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border: 1.2px solid var(--line-2);
+    border-radius: 3px;
+    background: var(--paper);
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    transition: border-color .15s, background-color .15s;
+    flex-shrink: 0;
+  }
+  .sidebar-cb-label input[type="checkbox"]::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    transform: scale(0);
+    transition: transform .12s ease-in-out;
+    background-color: var(--accent-solid);
+    clip-path: polygon(14% 44%, 0 58%, 38% 96%, 100% 23%, 86% 9%, 38% 68%);
+  }
+  [data-theme="dark"] .sidebar-cb-label input[type="checkbox"]::before {
+    background-color: var(--accent);
+  }
+  .sidebar-cb-label input[type="checkbox"]:checked {
+    background-color: var(--accent-soft);
+    border-color: var(--accent-solid);
+  }
+  [data-theme="dark"] .sidebar-cb-label input[type="checkbox"]:checked {
+    background-color: rgba(108, 184, 154, 0.15);
+    border-color: var(--accent);
+  }
+  .sidebar-cb-label input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+
+  /* Sidebar stats counters */
+  .sidebar-stats {
+    font-size: .78rem;
+    color: var(--ink-3);
+    font-weight: 500;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+  }
+  .sidebar-stats strong {
+    color: var(--accent-solid);
+    font-weight: 700;
+  }
+  [data-theme="dark"] .sidebar-stats strong {
+    color: var(--accent);
+  }
+
+  /* Individual card — Claude style with illustration area */
+  .card {
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: var(--r-lg); overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: opacity .2s ease, transform .2s ease, border-color .15s, transform .15s, box-shadow .15s;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+  /* Illustration area on top — Claude-style colored backgrounds */
+  .card-illust {
+    height: 160px; display: grid; place-items: center;
+    position: relative; overflow: hidden;
+  }
+  .card-illust svg { width: 64px; height: 64px; opacity: .35; }
+  .card-illust .illust-icon {
+    width: 72px; height: 72px; border-radius: 16px;
+    background: rgba(255,255,255,.85);
+    display: grid; place-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  }
+  .card-illust .illust-icon svg { width: 32px; height: 32px; opacity: 1; color: var(--accent-solid); }
+
+  /* Card body */
+  .card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .card-kicker {
+    font-size: .7rem; font-weight: 600; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--ink-3);
+  }
+  .card h3 {
+    margin: 0; font-size: 1.06rem; font-weight: 600; line-height: 1.35;
+    color: var(--ink); letter-spacing: -.005em;
+  }
+  .card .card-desc {
+    font-size: .88rem; color: var(--ink-2); line-height: 1.5;
+    margin: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .card .card-meta {
+    margin-top: auto; padding-top: 10px;
+    display: flex; gap: 10px; font-size: .76rem; color: var(--ink-3);
+    align-items: center;
+  }
+  .card .type-pill {
+    padding: 3px 9px; border-radius: 99px; font-weight: 600;
+    font-size: .68rem; letter-spacing: .03em;
+  }
+  .type-tutorial { background: var(--sky-soft); color: var(--sky); }
+  .type-referencia { background: var(--line); color: var(--ink-2); }
+  .type-conceitual { background: var(--violet-soft); color: var(--violet); }
+  .type-problema { background: var(--rose-soft); color: var(--rose); }
+  .type-recurso { background: var(--sun-soft); color: var(--sun); }
+
+  /* Show more button — Claude style */
+  .show-more-wrap { text-align: center; margin-top: 36px; }
+  .show-more {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px; border-radius: 99px;
+    background: transparent; border: 1px solid var(--line);
+    color: var(--ink-2); font: inherit; font-size: .9rem; font-weight: 500;
+    cursor: pointer; transition: all .15s;
+  }
+  .show-more:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+  /* ============================================================
+     CTA BANNER — Dark enterprise-style section (Claude-inspired)
+     ============================================================ */
+  .cta-banner {
+    background: var(--accent-solid);
+    padding: 80px 32px;
+    border-top: 1px solid rgba(255,255,255,.08);
+  }
+  .cta-inner {
+    max-width: 1320px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+  }
+  .cta-left h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800;
+    line-height: 1.08; letter-spacing: -.02em;
+    color: #ffffff; margin: 0 0 16px;
+  }
+  .cta-left p {
+    font-size: 1.05rem; color: rgba(255,255,255,.75);
+    line-height: 1.55; margin: 0 0 28px; max-width: 480px;
+  }
+  .cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 24px; border-radius: 10px;
+    font: inherit; font-weight: 600; font-size: .95rem;
+    cursor: pointer; transition: all .15s; border: none;
+  }
+  .cta-btn-primary { background: #fff; color: var(--accent-solid); }
+  .cta-btn-primary:hover { background: #f0f0f0; transform: translateY(-1px); }
+  .cta-btn-secondary {
+    background: transparent; color: #fff;
+    border: 1px solid rgba(255,255,255,.3);
+  }
+  .cta-btn-secondary:hover { border-color: rgba(255,255,255,.6); background: rgba(255,255,255,.08); }
+
+  .cta-right {
+    background: #fff; border: 1px solid rgba(255,255,255,.15);
+    border-radius: var(--r-xl); padding: 32px;
+    position: relative;
+  }
+  [data-theme="dark"] .cta-right { background: var(--bg); border-color: var(--line); }
+  .cta-right h3 {
+    font-size: 1.15rem; font-weight: 700; color: var(--ink);
+    margin: 0 0 8px;
+  }
+  .cta-right h3, .cta-right p { color: var(--ink); }
+  [data-theme="dark"] .cta-right h3, [data-theme="dark"] .cta-right p { color: var(--ink); }
+  .cta-right p {
+    font-size: .92rem; color: var(--ink-2); line-height: 1.5;
+    margin: 0 0 20px;
+  }
+  .cta-stat-row { display: flex; gap: 24px; }
+  .cta-stat {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .cta-stat .num {
+    font-size: 1.8rem; font-weight: 800; color: var(--accent-solid);
+    line-height: 1; font-variant-numeric: tabular-nums;
+  }
+  [data-theme="dark"] .cta-stat .num { color: var(--accent); }
+  .cta-stat .label {
+    font-size: .78rem; color: var(--ink-3); font-weight: 500;
+  }
+
+  /* ============================================================
+     FOOTER — Dark, comprehensive (Claude-style)
+     ============================================================ */
+  .site-footer {
+    background: var(--ink); color: #d4cdba;
+    border-top: 1px solid var(--line);
+    padding: 56px 32px 32px;
+  }
+  [data-theme="dark"] .site-footer { background: var(--bg-2); }
+  .footer-inner {
+    max-width: 1320px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px;
+  }
+  .footer-inner h5 {
+    font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+    color: #fff; margin: 0 0 16px; font-weight: 600;
+  }
+  [data-theme="dark"] .footer-inner h5 { color: var(--ink-2); }
+  .footer-inner a {
+    display: block; padding: 4px 0; font-size: .88rem; color: #d4cdba;
+    transition: color .1s;
+  }
+  .footer-inner a:hover { color: #fff; }
+  [data-theme="dark"] .footer-inner a { color: var(--ink-3); }
+  [data-theme="dark"] .footer-inner a:hover { color: var(--accent); }
+  .footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .footer-brand-mark {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: var(--accent-solid); color: #fff;
+    display: grid; place-items: center; font-weight: 800; font-size: .85rem;
+  }
+  .footer-brand-text { font-size: .88rem; color: #d4cdba; }
+  .footer-brand-text strong { color: #fff; font-weight: 600; }
+  [data-theme="dark"] .footer-brand-text { color: var(--ink-2); }
+  [data-theme="dark"] .footer-brand-text strong { color: var(--ink); }
+  .footer-desc {
+    font-size: .85rem; color: #d4cdba; line-height: 1.55; margin: 0 0 16px;
+  }
+  .footer-license {
+    font-size: .78rem; color: #8a8273; opacity: .7;
+    line-height: 1.4;
+  }
+  [data-theme="dark"] .footer-desc { color: var(--ink-3); }
+
+  .footer-bottom {
+    max-width: 1320px; margin: 28px auto 0; padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,.1);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    font-size: .78rem; color: #8a8273;
+  }
+  [data-theme="dark"] .footer-bottom { border-color: var(--line); color: var(--ink-3); }
+
+  /* ============================================================
+     RESPONSIVIDADE
+     ============================================================ */
+  @media (max-width: 1080px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+    .hero-right { align-items: flex-start; }
+    .filter-tags { flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
+    .cta-inner { grid-template-columns: 1fr; gap: 40px; }
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
+    .featured-row { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .header-search { display: none; }
+    .nav { display: none; }
+    .hero { padding: 48px 20px 40px; }
+    .hero h1 { font-size: 2.2rem; }
+    .card-grid { grid-template-columns: 1fr; }
+    .featured-row { grid-template-columns: 1fr; }
+    .featured { padding: 32px 20px 20px; }
+    .content-section { padding: 32px 20px 48px; }
+    .cta-banner { padding: 48px 20px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .cta-stat-row { flex-wrap: wrap; }
+  }
+  @media (max-width: 480px) {
+    .footer-inner { grid-template-columns: 1fr; }
+    .header-inner { padding: 12px 16px; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="home-proposta-v2.html" class="brand">
+      <span class="brand-mark">C</span>
+      <span class="brand-text">
+        <strong>Base de Conhecimento</strong>
+        <span>CEFOR · Ifes</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="exploracao-pagina-percurso.html">Percursos</a>
+      <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
+      <a href="prototipo-artigo.html">Todos os artigos</a>
+    </nav>
+    <form class="header-search" role="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar" />
+    </form>
+    <div class="a11y-toggles" role="group" aria-label="Preferências">
+      <button class="icon-btn" id="btn-theme" aria-label="Alternar modo escuro" aria-pressed="false" title="Modo escuro">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============================================================
+       HERO — large type + category tags sidebar
+       ============================================================ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <h1 id="hero-title">Aprenda.<br>Consulte.<br><em>Ensine melhor.</em></h1>
+        <p class="hero-sub">Tutoriais, referências e trilhas práticas sobre Moodle, acessibilidade, IA na educação e padrão visual — produzidos pelo time do CEFOR/Ifes.</p>
+
+        <form class="hero-search" role="search" action="/buscar" method="get">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input type="search" name="q" placeholder="Questionário, Livro de Notas, H5P, IA Generativa…" aria-label="Buscar na base de conhecimento" />
+          <button type="submit">Buscar</button>
+        </form>
+      </div>
+
+      <div class="hero-right" role="navigation" aria-label="Filtrar por categoria">
+        <p class="filter-label">Explorar por categoria</p>
+        <div class="filter-tags">
+          <a class="filter-tag" href="#" data-cat="moodle">Moodle <span class="tag-count">48</span></a>
+          <a class="filter-tag" href="#" data-cat="ferramentas">Ferramentas <span class="tag-count">36</span></a>
+          <a class="filter-tag" href="#" data-cat="pedagogia">Pedagogia <span class="tag-count">18</span></a>
+          <a class="filter-tag" href="#" data-cat="acessibilidade">Acessibilidade <span class="tag-count">12</span></a>
+          <a class="filter-tag" href="#" data-cat="conduta">Conduta <span class="tag-count">9</span></a>
+          <a class="filter-tag" href="#" data-cat="identidade">Identidade <span class="tag-count">8</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FEATURED ROW — horizontal highlights
+       ============================================================ -->
+  <section class="featured" aria-label="Mais recentes">
+    <div class="featured-inner">
+      <p class="featured-label">Mais recentes</p>
+      <div class="featured-row">
+
+        <a class="featured-card" href="prototipo-artigo.html">
+          <span class="fc-kicker">Percurso · Novo</span>
+          <h3>Dominando o Moodle: do primeiro curso à avaliação avançada</h3>
+          <div class="fc-meta">
+            <span>4 trilhas</span>
+            <span>34 artigos</span>
+            <span>~6h</span>
+          </div>
+        </a>
+
+        <a class="featured-card" href="#">
+          <span class="fc-kicker">Trilha · IA</span>
+          <h3>IA para Professores: do planejamento à correção</h3>
+          <div class="fc-meta">
+            <span>8 artigos</span>
+            <span>~1h15</span>
+          </div>
+        </a>
+
+        <a class="featured-card" href="#">
+          <span class="fc-kicker">Novo artigo</span>
+          <h3>Como usar GPTs customizados para criar atividades</h3>
+          <div class="fc-meta">
+            <span>Tutorial</span>
+            <span>12 min</span>
+          </div>
+        </a>
+
+        <a class="featured-card" href="#">
+          <span class="fc-kicker">Atualizado</span>
+          <h3>Configurando o livro de notas do Moodle — edição 2026</h3>
+          <div class="fc-meta">
+            <span>Tutorial</span>
+            <span>10 min</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTENT GRID — 3-column cards with illustration areas
+       ============================================================ -->
+  <section class="content-section" aria-labelledby="grid-title">
+    <div class="content-inner">
+      <div class="content-head">
+        <h2 id="grid-title">Todos os artigos</h2>
+        <a href="#" class="see-all">Ver catálogo completo →</a>
+      </div>
+
+      <div class="content-layout">
+        <!-- Main content: Card Grid and pagination -->
+        <div class="content-main">
+          <div class="card-grid">
+
+            <!-- Card 1 -->
+            <a class="card" href="#" data-category="moodle" data-type="tutorial">
+              <div class="card-illust" style="background: var(--card-green);">
+                <div class="illust-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Gestão e Operação do Moodle</span>
+                <h3>Configurando o livro de notas do Moodle</h3>
+                <p class="card-desc">Passo a passo para estruturar categorias, pesos e cálculos de notas. Do zero ao relatório final.</p>
+                <div class="card-meta">
+                  <span class="type-pill type-tutorial">Tutorial</span>
+                  <span>10 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 2 -->
+            <a class="card" href="#" data-category="ferramentas" data-type="referencia">
+              <div class="card-illust" style="background: var(--card-peach);">
+                <div class="illust-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Ferramentas e Recursos</span>
+                <h3>H5P: tipos de conteúdo interativo e quando usar cada um</h3>
+                <p class="card-desc">Guia de referência dos 20+ tipos de conteúdo H5P com exemplos reais de cursos do CEFOR.</p>
+                <div class="card-meta">
+                  <span class="type-pill type-referencia">Referência</span>
+                  <span>14 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 3 -->
+            <a class="card" href="#" data-category="acessibilidade" data-type="solucao">
+              <div class="card-illust" style="background: var(--card-blue);">
+                <div class="illust-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Acessibilidade</span>
+                <h3>Como conceder tempo ampliado em um questionário</h3>
+                <p class="card-desc">Passo a passo para configurar extensão de tempo individual para estudantes com necessidades específicas.</p>
+                <div class="card-meta">
+                  <span class="type-pill type-problema">Solução</span>
+                  <span>6 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 4 -->
+            <a class="card" href="#" data-category="pedagogia" data-type="conceitual">
+              <div class="card-illust" style="background: var(--card-cream);">
+                <div class="illust-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Pedagogia e Planejamento</span>
+                <h3>O que é design educacional e por que ele importa</h3>
+                <p class="card-desc">Conceitos fundamentais do design educacional aplicados ao contexto do ensino a distância no Ifes.</p>
+                <div class="card-meta">
+                  <span class="type-pill type-conceitual">Conceitual</span>
+                  <span>8 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 5 -->
+            <a class="card" href="#" data-category="ferramentas" data-type="tutorial">
+              <div class="card-illust" style="background: var(--card-sage);">
+                <div class="illust-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Ferramentas e Recursos</span>
+                <h3>Criando questionários no Moodle: passo a passo</h3>
+                <p class="card-desc">Do banco de questões ao questionário publicado, incluindo tentativas, prazos e feedback automático.</p>
+                <div class="card-meta">
+                  <span class="type-pill type-tutorial">Tutorial</span>
+                  <span>12 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 6 -->
+            <a class="card" href="#" data-category="conduta" data-type="referencia">
+              <div class="card-illust" style="background: var(--card-rose);">
+                <div class="illust-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Conduta e Conformidade</span>
+                <h3>Direitos autorais no Moodle: o que pode e o que não pode</h3>
+                <p class="card-desc">Guia jurídico simplificado sobre uso de imagens, textos e vídeos em materiais de curso do Ifes.</p>
+                <div class="card-meta">
+                  <span class="type-pill type-referencia">Referência</span>
+                  <span>9 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 7 -->
+            <a class="card" href="#" data-category="ferramentas" data-type="tutorial">
+              <div class="card-illust" style="background: var(--card-lavender);">
+                <div class="illust-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Ferramentas e Recursos</span>
+                <h3>GPTs customizados: criando assistentes para atividades</h3>
+                <p class="card-desc">Como criar GPTs personalizados para gerar exercises, dar feedback e apoiar o planejamento de aulas.</p>
+                <div class="card-meta">
+                  <span class="type-pill type-tutorial">Tutorial</span>
+                  <span>15 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 8 -->
+            <a class="card" href="#" data-category="moodle" data-type="tutorial">
+              <div class="card-illust" style="background: var(--card-sand);">
+                <div class="illust-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Gestão e Operação do Moodle</span>
+                <h3>Backup e restauração de cursos no Moodle</h3>
+                <p class="card-desc">Como fazer backup seguro, restaurar em outra disciplina e transferir conteúdo entre semestres.</p>
+                <div class="card-meta">
+                  <span class="type-pill type-tutorial">Tutorial</span>
+                  <span>8 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 9 -->
+            <a class="card" href="#" data-category="acessibilidade" data-type="referencia">
+              <div class="card-illust" style="background: var(--card-green);">
+                <div class="illust-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Acessibilidade</span>
+                <h3>Audiodescrição em vídeos educacionais: quando e como</h3>
+                <p class="card-desc">Orientações práticas para produzir ou contratar audiodescrição em materiais de vídeoaula.</p>
+                <div class="card-meta">
+                  <span class="type-pill type-referencia">Referência</span>
+                  <span>11 min</span>
+                </div>
+              </div>
+            </a>
+
+          </div>
+
+          <div class="show-more-wrap">
+            <button class="show-more">
+              Mostrar mais artigos
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Sidebar Filter Area (Collapsible accordions as requested) -->
+        <aside class="filter-sidebar">
+          <h3 class="sidebar-title">Filtrar e ordenar</h3>
+
+          <!-- Accordion 1: Ordenação -->
+          <div class="filter-accordion">
+            <button class="filter-accordion-header" type="button" aria-expanded="false">
+              <span>Ordenar por</span>
+              <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-accordion-content">
+              <select id="sort-select" class="sidebar-select">
+                <option value="recent">Mais recentes</option>
+                <option value="az">Título (A-Z)</option>
+                <option value="time">Tempo de leitura</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Accordion 2: Categorias -->
+          <div class="filter-accordion">
+            <button class="filter-accordion-header" type="button" aria-expanded="false">
+              <span>Categoria</span>
+              <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-accordion-content">
+              <div class="sidebar-checkboxes" id="category-checkboxes">
+                <label class="sidebar-cb-label">
+                  <input type="checkbox" name="cat" value="moodle" checked> Moodle / Gestão
+                </label>
+                <label class="sidebar-cb-label">
+                  <input type="checkbox" name="cat" value="ferramentas" checked> Ferramentas & Recursos
+                </label>
+                <label class="sidebar-cb-label">
+                  <input type="checkbox" name="cat" value="acessibilidade" checked> Acessibilidade
+                </label>
+                <label class="sidebar-cb-label">
+                  <input type="checkbox" name="cat" value="pedagogia" checked> Pedagogia & Planejamento
+                </label>
+                <label class="sidebar-cb-label">
+                  <input type="checkbox" name="cat" value="conduta" checked> Conduta & Conformidade
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Accordion 3: Tipos -->
+          <div class="filter-accordion">
+            <button class="filter-accordion-header" type="button" aria-expanded="false">
+              <span>Tipo de artigo</span>
+              <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-accordion-content">
+              <div class="sidebar-checkboxes" id="type-checkboxes">
+                <label class="sidebar-cb-label">
+                  <input type="checkbox" name="type" value="tutorial" checked> Tutorial
+                </label>
+                <label class="sidebar-cb-label">
+                  <input type="checkbox" name="type" value="referencia" checked> Referência
+                </label>
+                <label class="sidebar-cb-label">
+                  <input type="checkbox" name="type" value="solucao" checked> Solução / Problema
+                </label>
+                <label class="sidebar-cb-label">
+                  <input type="checkbox" name="type" value="conceitual" checked> Conceitual
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-stats" id="filter-stats">
+            Mostrando <strong>9</strong> artigos
+          </div>
+        </aside>
+      </div>
+
+  <!-- ============================================================
+       CTA BANNER — Enterprise-style conversion section
+       ============================================================ -->
+  <section class="cta-banner" aria-labelledby="cta-title">
+    <div class="cta-inner">
+      <div class="cta-left">
+        <h2 id="cta-title">Construindo conhecimento institucional<br>para a EaD do Ifes</h2>
+        <p>Uma base viva, curada pelo time pedagógico do CEFOR. Cada artigo é revisado, acessível e feito para resolver problemas reais do dia a dia.</p>
+        <div class="cta-buttons">
+          <a class="cta-btn cta-btn-primary" href="exploracao-multiplas-trilhas.html">Explorar trilhas</a>
+          <a class="cta-btn cta-btn-secondary" href="exploracao-pagina-percurso.html">Ver percursos</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <h3>Conteúdo feito por quem ensina</h3>
+        <p>Professores, mediadores e técnicos produzem e revisam cada artigo. A base cresce com a prática real do CEFOR.</p>
+        <div class="cta-stat-row">
+          <div class="cta-stat">
+            <span class="num">131</span>
+            <span class="label">artigos publicados</span>
+          </div>
+          <div class="cta-stat">
+            <span class="num">12</span>
+            <span class="label">trilhas curadas</span>
+          </div>
+          <div class="cta-stat">
+            <span class="num">3</span>
+            <span class="label">percursos formativos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <span class="footer-brand-mark">C</span>
+        <span class="footer-brand-text"><strong>Base de Conhecimento</strong> · CEFOR/Ifes</span>
+      </div>
+      <p class="footer-desc">
+        Produzida pelo Centro de Referência em Formação e em EaD do Instituto Federal do Espírito Santo.
+      </p>
+      <p class="footer-license">Conteúdo sob licença Creative Commons BY-NC-SA 4.0, salvo quando indicado.</p>
+    </div>
+    <div>
+      <h5>Navegar</h5>
+      <a href="exploracao-pagina-percurso.html">Percursos</a>
+      <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
+      <a href="prototipo-artigo.html">Todos os artigos</a>
+      <a href="#">Categorias</a>
+      <a href="#">Tópicos</a>
+    </div>
+    <div>
+      <h5>Sobre</h5>
+      <a href="#">O CEFOR</a>
+      <a href="#">Equipe editorial</a>
+      <a href="#">Como contribuir</a>
+      <a href="#">Acessibilidade do site</a>
+    </div>
+    <div>
+      <h5>Recursos</h5>
+      <a href="https://cefor.ifes.edu.br" target="_blank" rel="noopener">cefor.ifes.edu.br ↗</a>
+      <a href="#">ReLiCefor</a>
+      <a href="#">MOOC</a>
+      <a href="#">Feed RSS</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 CEFOR · Instituto Federal do Espírito Santo</span>
+    <span>Proposta visual v2 · Em construção</span>
+  </div>
+</footer>
+<script>
+  // Toggle dark mode (since default is light)
+  const html = document.documentElement;
+  const btnTheme = document.getElementById('btn-theme');
+
+  function setTheme(dark) {
+    if (dark) {
+      html.setAttribute('data-theme', 'dark');
+      if (btnTheme) btnTheme.setAttribute('aria-pressed', 'true');
+    } else {
+      html.removeAttribute('data-theme');
+      if (btnTheme) btnTheme.setAttribute('aria-pressed', 'false');
+    }
+  }
+
+  // Load initial theme from localStorage
+  if (localStorage.getItem('cefor-theme') === 'dark') {
+    setTheme(true);
+  }
+
+  if (btnTheme) {
+    btnTheme.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      setTheme(!isDark);
+      localStorage.setItem('cefor-theme', isDark ? 'light' : 'dark');
+    });
+  }
+
+  // Card Filtering Logic (Checkbox-based, multiple selection support)
+  const cards = document.querySelectorAll('.card-grid .card');
+  const catCheckboxes = document.querySelectorAll('#category-checkboxes input[type="checkbox"]');
+  const typeCheckboxes = document.querySelectorAll('#type-checkboxes input[type="checkbox"]');
+  const statsNum = document.querySelector('#filter-stats strong');
+  const sortSelect = document.getElementById('sort-select');
+  const cardGrid = document.querySelector('.card-grid');
+
+  // Initialize data-index on cards for original order sorting
+  cards.forEach((card, index) => {
+    card.setAttribute('data-index', index);
+  });
+
+  // Collapsible Accordions Toggle Logic
+  document.querySelectorAll('.filter-accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const accordion = header.parentElement;
+      const expanded = accordion.classList.contains('active');
+      
+      accordion.classList.toggle('active');
+      header.setAttribute('aria-expanded', !expanded);
+    });
+  });
+
+  // Sorting Logic
+  function sortArticles() {
+    if (!sortSelect || !cardGrid) return;
+    const sortBy = sortSelect.value;
+    const cardArray = Array.from(cards);
+
+    if (sortBy === 'az') {
+      cardArray.sort((a, b) => {
+        const titleA = a.querySelector('h3').textContent.trim();
+        const titleB = b.querySelector('h3').textContent.trim();
+        return titleA.localeCompare(titleB, 'pt-BR');
+      });
+    } else if (sortBy === 'time') {
+      cardArray.sort((a, b) => {
+        const timeAText = a.querySelector('.card-meta span:last-child').textContent;
+        const timeBText = b.querySelector('.card-meta span:last-child').textContent;
+        const timeA = parseInt(timeAText) || 0;
+        const timeB = parseInt(timeBText) || 0;
+        return timeA - timeB;
+      });
+    } else {
+      // Default: sort by original index
+      cardArray.sort((a, b) => {
+        const indexA = parseInt(a.getAttribute('data-index')) || 0;
+        const indexB = parseInt(b.getAttribute('data-index')) || 0;
+        return indexA - indexB;
+      });
+    }
+
+    // Re-append to DOM in sorted order
+    cardArray.forEach(card => {
+      cardGrid.appendChild(card);
+    });
+  }
+
+  // Filtering Logic
+  function filterArticles() {
+    const activeCats = Array.from(catCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+    const activeTypes = Array.from(typeCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+    
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const cardCat = card.getAttribute('data-category');
+      const cardType = card.getAttribute('data-type');
+
+      // If no checkbox is checked in a group, it behaves as "show all" (no filter active)
+      const catMatch = (activeCats.length === 0 || activeCats.includes(cardCat));
+      const typeMatch = (activeTypes.length === 0 || activeTypes.includes(cardType));
+
+      if (catMatch && typeMatch) {
+        card.style.display = 'flex';
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'scale(1)';
+        }, 10);
+        visibleCount++;
+      } else {
+        card.style.opacity = '0';
+        card.style.transform = 'scale(0.95)';
+        card.style.display = 'none';
+      }
+    });
+
+    if (statsNum) {
+      statsNum.textContent = visibleCount;
+    }
+  }
+
+  // Bind change events
+  catCheckboxes.forEach(cb => cb.addEventListener('change', filterArticles));
+  typeCheckboxes.forEach(cb => cb.addEventListener('change', filterArticles));
+  if (sortSelect) sortSelect.addEventListener('change', sortArticles);
+
+  // Sync Hero Sidebar tags with content grid checkboxes
+  document.querySelectorAll('.filter-tag').forEach(tag => {
+    tag.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      const cat = tag.getAttribute('data-cat');
+      if (!cat) return;
+
+      // Update active tag styling in sidebar
+      document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+      tag.classList.add('active');
+
+      // Uncheck all category checkboxes, then check ONLY the selected category
+      catCheckboxes.forEach(cb => {
+        cb.checked = (cb.value === cat);
+      });
+      
+      // Expand Category accordion if collapsed
+      const catAccordion = document.querySelector('#category-checkboxes').closest('.filter-accordion');
+      if (catAccordion && !catAccordion.classList.contains('active')) {
+        catAccordion.classList.add('active');
+        catAccordion.querySelector('.filter-accordion-header').setAttribute('aria-expanded', 'true');
+      }
+
+      // Re-run filter and reset sorting
+      if (sortSelect) sortSelect.value = 'recent';
+      sortArticles();
+      filterArticles();
+      
+      // Smooth scroll to the article section
+      const contentSection = document.querySelector('.content-section');
+      if (contentSection) {
+        contentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>

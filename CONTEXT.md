@@ -1,6 +1,6 @@
-# Base de Conhecimento CEFOR/IFes
+# Base de Conhecimento CEFOR/Ifes
 
-Redesign completo da Base de Conhecimento do CEFOR para profissionais de EaD do IFes.
+Redesign completo da Base de Conhecimento do CEFOR para profissionais de EaD do Ifes.
 
 ## Task Routing
 

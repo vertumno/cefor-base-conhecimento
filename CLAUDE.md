@@ -1,4 +1,4 @@
-# Base de Conhecimento CEFOR/IFes
+# Base de Conhecimento CEFOR/Ifes
 
 Workspace para o redesign da Base de Conhecimento do CEFOR. Cada stage corresponde a uma fase do projeto. O output de cada stage alimenta o proximo.
 

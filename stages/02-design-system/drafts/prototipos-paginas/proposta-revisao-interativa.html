@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Revisão da Proposta · Taxonomia + Interface do Artigo · Base CEFOR/IFes</title>
+<title>Revisão da Proposta · Taxonomia + Interface do Artigo · Base CEFOR/Ifes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -601,7 +601,7 @@ const REVIEWS = [
           </div>
           <ul class="cat-detail-list">
             <li>"Taxonomia de Bloom Revisitada (2.0): habilidades humanas e IA"</li>
-            <li>"Metodologia de elaboração de disciplina EaD no IFes"</li>
+            <li>"Metodologia de elaboração de disciplina EaD no Ifes"</li>
             <li>"Boas práticas no design de avaliações online"</li>
             <li>"Planejamento pedagógico de uma disciplina EaD"</li>
             <li>"Princípios de comunicação assíncrona com estudantes"</li>
@@ -836,7 +836,7 @@ const REVIEWS = [
           <div class="footer-mock-autor-avatar">JC</div>
           <div>
             <strong>Juliana Cassaro</strong>
-            <small>Designer e conteudista · CEFOR/IFes</small>
+            <small>Designer e conteudista · CEFOR/Ifes</small>
           </div>
         </div>
         <div class="footer-mock-rel">
@@ -975,8 +975,8 @@ document.getElementById('metaRevisor').addEventListener('input', e => { state.me
 function exportJSON() {
   const data = {
     document: 'Revisão da Proposta de Taxonomia + Interface do Artigo',
-    project: 'Base de Conhecimento CEFOR/IFes',
-    source_draft: 'stages/01-fundacoes/drafts/proposta-taxonomia-e-interface-artigo.md',
+    project: 'Base de Conhecimento CEFOR/Ifes',
+    source_draft: 'stages/02-design-system/drafts/prototipos-paginas/proposta-taxonomia-e-interface-artigo.md',
     exported_at: new Date().toISOString(),
     meta: state.meta,
     reviews: REVIEWS.map(r => ({
@@ -992,7 +992,7 @@ function exportJSON() {
 function exportMD() {
   const date = state.meta.date || new Date().toISOString().slice(0,10);
   const revisor = state.meta.revisor || '___________';
-  let md = `# Resultado da Revisão — Proposta de Taxonomia + Interface do Artigo\n\n**Data:** ${date}\n**Revisor(es):** ${revisor}\n**Exportado em:** ${new Date().toLocaleString('pt-BR')}\n**Draft revisado:** stages/01-fundacoes/drafts/proposta-taxonomia-e-interface-artigo.md\n\n---\n\n`;
+  let md = `# Resultado da Revisão — Proposta de Taxonomia + Interface do Artigo\n\n**Data:** ${date}\n**Revisor(es):** ${revisor}\n**Exportado em:** ${new Date().toLocaleString('pt-BR')}\n**Draft revisado:** stages/02-design-system/drafts/prototipos-paginas/proposta-taxonomia-e-interface-artigo.md\n\n---\n\n`;
   REVIEWS.forEach(r => {
     const rev = state.reviews[r.id] || {};
     const s = rev.status || 'pending';

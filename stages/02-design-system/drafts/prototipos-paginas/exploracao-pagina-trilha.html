@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Exploração · Página de Trilha — Base CEFOR/IFes</title>
+<title>Exploração · Página de Trilha — Base CEFOR/Ifes</title>
 <meta name="description" content="Como uma trilha é apresentada como página própria — a casca que dá voz à sequência." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,6 +38,21 @@
     --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
     --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
     --shadow-lg: 0 24px 48px -12px rgba(20,17,13,.12);
+  }
+
+  [data-theme="dark"] {
+    --bg: #0e0c0a; --bg-2: #16130f; --bg-3: #1e1a14; --paper: #1a1612;
+    --ink: #f4f1ea; --ink-2: #c9c2b3; --ink-3: #8a8273;
+    --line: #2a251e; --line-2: #3a342a;
+    --accent: #6cb89a; --accent-2: #87cdb0; --accent-soft: #19251f; --accent-deep: #c8e8d8;
+    --gold-soft: #2e2516; --gold-deep: #d9a955;
+  }
+  [data-contrast="high"] {
+    --bg:#000; --bg-2:#0a0a0a; --bg-3:#141414; --paper:#000;
+    --ink:#ffff00; --ink-2:#fff; --ink-3:#c0c0c0;
+    --line:#ffff00; --line-2:#fff;
+    --accent:#00ff88; --accent-2:#66ffaa; --accent-soft:#003322; --accent-deep:#00ff88;
+    --gold:#ffff00; --gold-soft:#1a1a00; --gold-deep:#ffff00;
   }
 
   * { box-sizing: border-box; }
@@ -77,44 +92,61 @@
     margin-right: 10px;
   }
 
-  /* ============================================================
-     Topbar e breadcrumb
-     ============================================================ */
-  .topbar {
-    background: var(--paper);
-    border-bottom: 1px solid var(--line);
-    padding: 14px 32px;
+  /* ---------- Header (igual à home) ---------- */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: #1f5142;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  .topbar-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+  .site-header a { text-decoration: none; }
+  [data-theme="dark"] .site-header { background: #143a30; }
+  .header-inner {
+    max-width: 1280px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; gap: 24px;
   }
-  .brand {
-    font-weight: 700;
-    font-size: 1rem;
-    letter-spacing: -.005em;
+  .brand { display: flex; align-items: center; gap: 12px; color: #ffffff; }
+  .brand:hover { text-decoration: none; }
+  .brand-mark {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: #ffffff; color: #1f5142;
+    display: grid; place-items: center; font-weight: 800; letter-spacing: -.02em;
+    box-shadow: var(--shadow-sm);
   }
-  .brand-mark { color: var(--accent); }
-  .nav-links {
-    display: flex;
-    gap: 28px;
-    font-size: .88rem;
+  [data-theme="dark"] .brand-mark { color: #143a30; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .brand-text strong { font-size: .95rem; letter-spacing: -.01em; color: #ffffff; }
+  .brand-text span { font-size: .75rem; color: #a8c3ba; }
+
+  .nav { display: flex; gap: 6px; margin-left: auto; }
+  .nav a {
+    color: rgba(255, 255, 255, 0.85); font-size: .9rem; font-weight: 500;
+    padding: 8px 12px; border-radius: 8px;
   }
-  .nav-links a {
-    color: var(--ink-2);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color .15s;
+  .nav a:hover { background: rgba(255, 255, 255, 0.15); text-decoration: none; color: #ffffff; }
+
+  .header-search { position: relative; max-width: 280px; flex: 1; }
+  .header-search input {
+    width: 100%; padding: 9px 12px 9px 36px; font: inherit; font-size: .9rem;
+    background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2); color: #ffffff;
+    border-radius: 8px;
   }
-  .nav-links a:hover { color: var(--accent); }
-  .nav-links a.active {
-    color: var(--accent);
-    font-weight: 600;
+  .header-search input::placeholder { color: rgba(255, 255, 255, 0.6); }
+  .header-search svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: rgba(255, 255, 255, 0.7); }
+
+  .a11y-toggles { display: flex; gap: 4px; }
+  .icon-btn {
+    width: 36px; height: 36px; display: grid; place-items: center;
+    background: transparent; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px;
+    color: rgba(255, 255, 255, 0.85); cursor: pointer;
   }
+  .icon-btn:hover { background: rgba(255, 255, 255, 0.15); color: #ffffff; }
+  .icon-btn[aria-pressed="true"] { background: #ffffff; border-color: #ffffff; color: #1f5142; }
+
+  @media (max-width: 960px) {
+    .header-search { display: none; }
+    .nav { display: none; }
+  }
+
 
   .breadcrumb {
     background: var(--bg-2);
@@ -725,26 +757,42 @@
   Fase 1 · Padrão 4.4 da Camada 4.5 (Padrões de Composição).
 </div>
 
-<!-- TOPBAR -->
-<header class="topbar">
-  <div class="topbar-inner">
-    <div class="brand">
-      <span class="brand-mark">●</span>
-      Base de Conhecimento <strong>CEFOR/IFes</strong>
-    </div>
-    <nav class="nav-links">
-      <a href="#">Artigos</a>
-      <a href="#" class="active">Trilhas</a>
-      <a href="#">Percursos</a>
-      <a href="#">Buscar</a>
+<!-- ============================================================
+     HEADER (igual à home)
+     ============================================================ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="home-proposta.html" class="brand">
+      <span class="brand-mark">C</span>
+      <span class="brand-text">
+        <strong>Base de Conhecimento</strong>
+        <span>CEFOR · Ifes</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="exploracao-pagina-percurso.html">Percursos</a>
+      <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
+      <a href="prototipo-artigo.html">Todos os artigos</a>
     </nav>
+    <form class="header-search" role="search" action="/buscar" method="get">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar"/>
+    </form>
+    <div class="a11y-toggles" role="group" aria-label="Preferências de leitura">
+      <button class="icon-btn" id="btn-theme" aria-label="Alternar modo escuro" aria-pressed="false" title="Modo escuro">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn" id="btn-contrast" aria-label="Alto contraste" aria-pressed="false" title="Alto contraste">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/><path d="M12 3a9 9 0 0 1 0 18"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
 <!-- BREADCRUMB -->
 <nav class="breadcrumb" aria-label="Trilha de navegação">
   <div class="breadcrumb-inner">
-    <a href="#">Início</a>
+    <a href="home-proposta.html">Início</a>
     <span class="sep">›</span>
     <a href="#">Trilhas</a>
     <span class="sep">›</span>
@@ -767,7 +815,7 @@
           Do desenho da estrutura de avaliação ao fechamento do período letivo. Quinze artigos em sequência, com começo, meio e fim.
         </p>
         <p class="description">
-          Esta trilha cobre o que um professor precisa saber para conduzir a avaliação de um curso no Moodle institucional do IFes, do planejamento à entrega final de notas no sistema acadêmico. É uma micro-jornada autocontida — não pressupõe domínio prévio do Moodle, mas também não tenta ensinar a plataforma inteira.
+          Esta trilha cobre o que um professor precisa saber para conduzir a avaliação de um curso no Moodle institucional do Ifes, do planejamento à entrega final de notas no sistema acadêmico. É uma micro-jornada autocontida — não pressupõe domínio prévio do Moodle, mas também não tenta ensinar a plataforma inteira.
         </p>
         <p class="description">
           A ordem dos artigos importa. Cada um introduz conceitos que o próximo desenvolve. Você pode pular artigos que já domina, mas o ganho da sequência é exatamente fechar o ciclo completo de avaliação sem buracos.
@@ -811,7 +859,7 @@
         Para quem é esta trilha
       </h2>
       <ul>
-        <li>Professores que vão conduzir um curso no Moodle do IFes neste semestre</li>
+        <li>Professores que vão conduzir um curso no Moodle do Ifes neste semestre</li>
         <li>Mediadores que apoiam professores em decisões sobre avaliação</li>
         <li>Coordenadores que precisam validar estruturas de avaliação dos cursos</li>
         <li>Quem já dá aula no Moodle mas nunca se aprofundou no livro de notas</li>
@@ -836,7 +884,7 @@
   <section class="pre-req">
     <div class="pre-req-label">Antes de começar a trilha</div>
     <ul class="pre-req-list">
-      <li>Ter acesso ao Moodle do IFes com perfil de <strong>professor</strong> ou <strong>editor</strong> em pelo menos um curso. <a href="#">Como acessar o Moodle pela primeira vez</a></li>
+      <li>Ter acesso ao Moodle do Ifes com perfil de <strong>professor</strong> ou <strong>editor</strong> em pelo menos um curso. <a href="#">Como acessar o Moodle pela primeira vez</a></li>
       <li>Ter o plano de ensino do curso definido — incluindo critérios de avaliação e pesos. <a href="#">Modelo institucional de plano de ensino</a></li>
       <li>Familiaridade básica com a interface do Moodle (criar atividade, mover bloco). <a href="#">Tour rápido pela interface do Moodle</a></li>
     </ul>
@@ -1042,7 +1090,7 @@
               </span>
             </div>
           </div>
-          <p class="artigo-item-desc">Gerar relatório de notas no formato exigido pela secretaria acadêmica do IFes e validar os números antes de enviar.</p>
+          <p class="artigo-item-desc">Gerar relatório de notas no formato exigido pela secretaria acadêmica do Ifes e validar os números antes de enviar.</p>
         </a>
       </div>
 
@@ -1143,7 +1191,7 @@
       <p class="resultado-label">Ao final desta trilha</p>
       <h3>Você terá conduzido um ciclo completo de avaliação no Moodle</h3>
       <p>
-        Da estrutura inicial — categorias, pesos e tipos de atividade — até o fechamento do período com a ata pronta para o sistema acadêmico, esta trilha cobre todas as decisões e configurações que um professor toma ao avaliar uma turma no Moodle do IFes.
+        Da estrutura inicial — categorias, pesos e tipos de atividade — até o fechamento do período com a ata pronta para o sistema acadêmico, esta trilha cobre todas as decisões e configurações que um professor toma ao avaliar uma turma no Moodle do Ifes.
       </p>
       <p>
         A partir daqui, faz sentido seguir para a trilha <a href="#" style="color: var(--accent); font-weight: 600;">Gerenciando notas</a>, que aprofunda os ajustes manuais e relatórios — ou explorar artigos avulsos sobre temas específicos da avaliação.
@@ -1239,9 +1287,52 @@
   <p>
     Exploração técnica · Padrão 4.4 da Camada 4.5 — Padrões de Composição.<br>
     Fecha o conjunto Artigo / Trilha / Percurso. Próximo passo: validar com Rute e Marquito.<br>
-    Referência canônica de design: <code>stages/01-fundacoes/drafts/prototipo-artigo.html</code>
+    Referência canônica de design: <code>stages/02-design-system/drafts/prototipos-paginas/prototipo-artigo.html</code>
   </p>
 </footer>
 
+<script>
+  // Toggle dark mode e alto contraste
+  const html = document.documentElement;
+  const btnTheme = document.getElementById('btn-theme');
+  const btnContrast = document.getElementById('btn-contrast');
+
+  function setTheme(dark) {
+    if (dark) {
+      html.setAttribute('data-theme', 'dark');
+      if (btnTheme) btnTheme.setAttribute('aria-pressed', 'true');
+    } else {
+      html.removeAttribute('data-theme');
+      if (btnTheme) btnTheme.setAttribute('aria-pressed', 'false');
+    }
+  }
+
+  function setContrast(high) {
+    if (high) {
+      html.setAttribute('data-contrast', 'high');
+      if (btnContrast) btnContrast.setAttribute('aria-pressed', 'true');
+    } else {
+      html.removeAttribute('data-contrast');
+      if (btnContrast) btnContrast.setAttribute('aria-pressed', 'false');
+    }
+  }
+
+  if (localStorage.getItem('cefor-theme') === 'dark') setTheme(true);
+
+  if (btnTheme) {
+    btnTheme.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      setTheme(!isDark);
+      localStorage.setItem('cefor-theme', isDark ? 'light' : 'dark');
+    });
+  }
+
+  if (btnContrast) {
+    btnContrast.addEventListener('click', () => {
+      const isHC = html.getAttribute('data-contrast') === 'high';
+      setContrast(!isHC);
+    });
+  }
+</script>
 </body>
 </html>

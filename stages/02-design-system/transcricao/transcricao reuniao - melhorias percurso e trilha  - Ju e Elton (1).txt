@@ -1,0 +1,72 @@
+# Base de Conhecimento - Ju e Elton
+
+  Meeting started: 26/05/2026, 09:23:04
+  Duration: 23 minutes
+  Participants: Elton Vinicius, Juliana Cristina da Sillva Cassaro Cassaro
+
+  [View original transcript](https://app.tactiq.io/api/2/u/m/r/5UwAW0hXjKWGqWU9ppn0?o=txt)
+
+    
+
+  
+
+  
+
+  ## Transcript
+
+  00:00 Elton Vinicius: tranquilo
+01:21 Elton Vinicius: Eu tinha pedido há muito tempo já.
+01:23 Juliana Cristina da Sillva Cassaro Cassaro: Pedir agora, eu tava lá na biblioteca.
+01:30 Elton Vinicius: correria aí
+01:31 Juliana Cristina da Sillva Cassaro Cassaro: Mas tá bom.
+01:36 Elton Vinicius: E aí como é que você tá? Foi bom lá o evento?
+01:38 Juliana Cristina da Sillva Cassaro Cassaro: Foi ótimo Elton.
+01:40 Elton Vinicius: é
+01:41 Juliana Cristina da Sillva Cassaro Cassaro: Muito bom muito muito muito, muito bom muito bom.
+01:45 Elton Vinicius: Ele era de que mesmo? altas habilidades em altas habilidades
+01:50 Juliana Cristina da Sillva Cassaro Cassaro: os dois são
+01:54 Elton Vinicius: Nossa, muito bom, né? Porque foi bom para você e para o seu menino lá, né? O Daniel que é ou não. Os dois são também. Nossa.
+02:05 Juliana Cristina da Sillva Cassaro Cassaro: Os dois muito bom vale a pena vale a pena aí porque às vezes a gente não dá conta de buscar tantas informações, né? Por mais que às vezes pode até parecer Raso porque tem muito profissional, né muito. Mas é profundo para gente de certa forma é um pouco profundo para gente né? Porque a gente às vezes não dá conta, né de Saber tudo, né?
+02:31 Elton Vinicius: Aí você não tem uma base, né? Tão grande assim, né? E o que diferencia exatamente assim que qual que é a grande característica do Óleo de altas habilidades assim só porque eu não sei.
+02:45 Juliana Cristina da Sillva Cassaro Cassaro: Então a pessoa que tem altas habilidades superdotação ela o cérebro é a
+02:50 Elton Vinicius: É a mesma coisa.
+02:51 Juliana Cristina da Sillva Cassaro Cassaro: mesma coisa é é assim hoje é tratado como sinônimo. Tá mas existe uma certa diferença, mas no Brasil por conta da tradução assim. Pelo que eu entendi a
+03:04 Elton Vinicius: Entendi, não de inteligência cognitiva assim, né?
+03:04 Juliana Cristina da Sillva Cassaro Cassaro: mesma coisa, né? Altas habilidades e superdotação, mas o cérebro funciona diferente as conexões neurais são diferentes então enquanto o cérebro de uma pessoa normal, ele a gente chama de como se fosse Hobby de conexões como estivesse pontos de conexões então para se conectar na parte do cérebro com outro ele usa esses Rubi de conexões, né? O cérebro adotado ele cria outras ramificações para se conectar com as outras partes do cérebro. Ele não depende desses hubs, então ele cria caminhos alternativos de conexões, então ele tem um nível de conexão maior isso faz com que ele tenha um proce.
+03:44 Juliana Cristina da Sillva Cassaro Cassaro: Muito maior então ele consegue processar as informações de uma maneira mais rápida, né aí pensando em questão de cérebro. Essa é a grande diferença, né? Então isso faz com que ele possa ter habilidades, né e facilidades para aprender coisas ou fazer coisas, né mais do que a maioria mas não é só a parte acadêmica, então pode ser tanto uma altas habilidades focada, mas na área acadêmica, mas também pode ser uma altas habilidades para música. Pode chamar outras habilidades ao esporte por exemplo, entendeu? Não necessariamente Acadêmico.
+04:32 Juliana Cristina da Sillva Cassaro Cassaro: Acadêmico mesmo assim ou de matemática essas coisas, às vezes ele pode ter um QI bom, mas isso é para o lado do esporte, por exemplo, entendeu? Tem uma facilidade esportiva, né de percepção de tomar decisões de estratégia daquele tipo de jogo, né? Que é fora do comum, por exemplo, né que ele consegue. Às vezes acadêmicamente não é então as pessoas acham que só o acadêmico
+04:57 Elton Vinicius: Tipo esses grandes atletas assim fora da curva, né? Que fazem uma coisa que
+05:01 Juliana Cristina da Sillva Cassaro Cassaro: que existe enquanto superdotação, entendeu? Mas não necessariamente. Então acho que vai ter barulho aqui. Você ouviu?
+05:19 Elton Vinicius: O que é dia de moendo um barulhinho lá no fundo?
+05:28 Juliana Cristina da Sillva Cassaro Cassaro: Estão instalando o ar condicionado aqui na sala do lado.
+05:31 Elton Vinicius: Eu acho que não tá muito ruim não.
+05:32 Juliana Cristina da Sillva Cassaro Cassaro: Acho que eu vou ter que ir para o meu celular.
+05:42 Elton Vinicius: Ô, Ju, vamos lá então.
+05:45 Juliana Cristina da Sillva Cassaro Cassaro: Eu vou deixar desligado e vou aqui para poder te ouvir, tá?
+05:50 Elton Vinicius: Tá, beleza. Eu conversei com o Marquito, né semana passada. Ele também tá querendo dar uma acelerada assim também para a gente começar a que essa parte de implementação vai ser bem trabalhosa, né tipo de montar no Wordpress. ajustar tudo então, a gente sentou ele já começou a fazer uma organização do De dessa implementação assim, né uma parte mais técnica e como que a gente vai fazer para poder? Agilizar não só agilizar mas executar mesmo, né? O projeto. Tecnicamente falando que é uma coisa é a gente tem uma proposta aqui de interface outra coisa é isso tá conectado dentro do WordPress, né? E tá funcionando e a gente testar exatamente ver como é que funciona então esse Esse é um ponto assim que a gente tava olhando aí eu avancei na Nas páginas assim eu algumas coisas foi avançando também do Design do context System coisas que davam para avançar que não eram tão críticos, né? E a gente acho que vai vendo vai ajustando conforme a gente vai também identificando problemas tal essas coisas assim eu Que eu tô pensando agora é a gente já tem uma.
+07:54 Elton Vinicius: É a última vez que a gente parou a gente tava fechando o conteúdo. É porque faz tempo mesmo, né? Foi na quarta terça-feira que a gente fez uma semana vão ser bastante coisa já tá tentando lembrar o que que a gente já tinha feito que você já tinha visto a gente tava naquela organização do conteúdo. Como que o percurso ia ser organizado né? Taxonomia, né? Essas questões todas aí que que eu fiz eu falei assim, caramba, a gente não sei se eu fiz quando você tava com quando eu tava com você, mas aí eu pedi para ele fazer uma página do percurso para eu ter uma ideia, tipo assim, como é que vai ser né? Como é que você sugere que seja né? Aí eu achei bom a sugestão dele e aqui porque acho que Uma ideia legal assim de como ele fez para a gente.
+08:48 Elton Vinicius: usar janela da janela Que é essa aqui? Ó, então ele fez tipo. uma página que Do percurso, né? Acho que a gente pode Claro refinar depois ele mas a ideia geral assim, eu achei interessante. Então tem o nome do percurso, né? O percurso ele vai ter informação sobre o percurso percurso reúne tudo que a equipe se for considera essencial para conduzir uma sala virtual de forma confiante na estrutura de avaliação comunicação com estudante não é uma ordem fixa própria com ele, você escolhe pode começar conforme sua urgência.
+09:37 Elton Vinicius: Sem interesse pedagógico cada trilha é um micro jornada com auto contida cada artigo dentro ou fora das trilhas também funciona sozinho usa o percurso como mapa não como roteiro. Então aquele aí ele para quem que é né para quem é esse percurso pessoas que dão aula no mundo, mas sempre usando 10% da ferramenta. E o que você vai dominar? Que a gente pode ver esse vai ficar mesmo aquele explica como percorrer não existe um primeiro passo obrigatório as trilhas são independentes. Você pode entrar pela que faz mais sentido para sua realidade agora três sugestões de pontos de partida, conforme seu perfil se você é novo no mundo comece pelos artigos complementares. O que é mudo primeiros acesso depois fica a trilha avaliação no mundo se você já dá aula começa pelo configurando e gerenciar notas, onde estão as decisões pedagógicas mais críticas você mediador, achei legal que ele fez isso aqui não sei se é realmente útil assim comunicando com traz padrões de tutoria que apoiam o trabalho.
+10:46 Elton Vinicius: E aí aquele traz a trilha, né? Que seria uma aquele tá falando o que seria a trilha não que seria a trilha do percurso, né? Então teria essas trilhas, por exemplo, né se comunicando com os estudantes e teria os artigos soltos aqui. Que são que ele separou, né? vocês poderia talvez ficar mais junto mais sequencial, mas Outros percursos ele fala um pouquinho que é o percurso. Então isso é a ideia de percurso que eu acho que a gente pode refinar mas é uma página que mostra os Trilhas e artigos juntos, né que tem a ver com aquilo que tinha pensado de Esse percurso formativo assim, né? E aí tem a trilha, deixa eu ver se ele botou aqui. Ah botou a trilha. Ah, não não é assim não.
+11:53 Elton Vinicius: Esse aqui era o teste, deixa eu abrir aqui uma trilha. A página de trilha acabou ficando muito parecido que é essa daqui seria de trilha que eu já não achei que é legal ficar igual assim. Apesar de essa página inicial aqui, talvez isso aqui não precisaria ter mas Antes de começar a ter acesso ao mundo e bota aqui uns pré-requisitos, né? Que ele botou a mesma coisa para criar trilho. Aí ele mostra diferente já aqui né? Que aí é sequencial. Teoricamente sequencial, né? Mas ele botou que seriam todos os artigos que estão vinculados a essa trilha.
+12:39 Elton Vinicius: E aí a gente pode também refinar depois né essas informações como está essa trilha foi pensada a ordem dos 15 artigos não é arbitrar eles foram organizados em Três blocos, estrutura e atividades aprofundamento técnica ordem de fechamento. Cada artigo foi escrito para funcionar sozinho se você caiu aqui por busca qualquer um dos 15 resolve o problema. Que tratar da TV existe para o caso oposto quem chega sem saber por onde começar e quero um caminho Curado? A cara ele vai botar no monte de coisas que a gente Teoricamente definiu, né? Beleza, e aí, tem algumas trilhas relacionadas isso aqui pertence ao percurso. Então fiz esses testes aqui.
+13:35 Juliana Cristina da Sillva Cassaro Cassaro: O que só me incomodou um pouco Elton, foi? Tipo assim, eu tô entendendo que eu entrei dentro de uma trilha específica, né? E eu entrei dentro de um percurso específico, mas ficou me parecendo às vezes muita informação no início e isso aí e depois e só lá embaixo é que
+13:50 Elton Vinicius: Aqui né?
+13:54 Juliana Cristina da Sillva Cassaro Cassaro: eu vejo. Quais são os itens daquela trilha? Quais são os itens daquele percurso, entendeu? Eu tenho a sensação de que quando eu entrar no percurso eu já quero ver quais são as coisas do percurso assim e não uma explicação muito longa para quem que é o que que você vai dormir, tipo assim, eu acho que isso pode ter mas me incomoda. Isso tá numa barra de rolagem.
+14:18 Elton Vinicius: Enorme né?
+14:22 Juliana Cristina da Sillva Cassaro Cassaro: Para caramba assim se isso talvez tivesse dividido em duas colunas e talvez a trilha, né do lado esquerdo, por exemplo e do lado direito a gente tivesse essas outras informações que complementasse de alguma maneira, talvez me incomodou um pouco isso. Eu acho que é legal explicar talvez é legal ter as possibilidades, né? O que que você vai trilhar? O que que você vai dominar?
+14:45 Elton Vinicius: Aí também assim para pensar, né? Se todos os recursos tivesse aqui o cara
+14:48 Juliana Cristina da Sillva Cassaro Cassaro: É nisso daí ou a gente opta por ter no site, talvez é uma explicação. Tem
+14:48 Elton Vinicius: toda vez vai ter que ler a mesma coisa.
+14:59 Juliana Cristina da Sillva Cassaro Cassaro: uma parte, tipo entenda o que que é um percurso? Que é que é uma trilha na nossa base de conhecimento, por exemplo e talvez lá a gente tem uma explicação do que que é se a pessoa quiser entender o que que é essa trilha a pessoa pode ir lá e acessar aquele artigo para entender. Como é que funciona e na trilha já ter a trilha.
+15:16 Elton Vinicius: Muito bom, Ju, eu acho que pode até aqui assim, nem que seja aqui ó, tipo saber mais sobre o que o que é uma trilha a pessoa clica vai para a parte que
+15:26 Juliana Cristina da Sillva Cassaro Cassaro: isso
+15:28 Elton Vinicius: explica o que é trilha e como usar.
+15:30 Juliana Cristina da Sillva Cassaro Cassaro: E como que tá organizado, entendeu as trilhas você fora assim, mas eu tinha
+15:34 Elton Vinicius: Pô, gostei muito dessas sugestão a página do percurso da trilha não tem que
+15:35 Juliana Cristina da Sillva Cassaro Cassaro: que ser mais direto.
+15:44 Elton Vinicius: ser mais direto e não não que é uma trilha e porque como é usado uma trilha
+15:48 Juliana Cristina da Sillva Cassaro Cassaro: Explicando ela.
+15:52 Elton Vinicius: como foi montada uma trilha. Porque existe uma trilha, para que que você deveria seguir, mas sim já direto para trilha e mais objetivo que ele vai. obter
+16:06 Juliana Cristina da Sillva Cassaro Cassaro: De ser de ser funcional, então ele tem que mostrar. Quais são as trilhas. Quais são os percurso né? Os artigos soltos, pode ser o caminho, você pode começar por aqui. Acho que isso também é legal, né de ter a opção de Talvez de mostrar. Eu gosto da ideia de colocar.
+  

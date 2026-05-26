@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Configurando o livro de notas do Moodle · Base CEFOR/IFes (protótipo)</title>
+<title>Configurando o livro de notas do Moodle · Base CEFOR/Ifes (protótipo)</title>
 <meta name="description" content="Protótipo do artigo aplicando todas as decisões fechadas até 2026-05-19 (Decisões 1-32)." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lexend:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   /* ============================================================
-     PROTÓTIPO DA PÁGINA DE ARTIGO — Base CEFOR/IFes
+     PROTÓTIPO DA PÁGINA DE ARTIGO — Base CEFOR/Ifes
      Reflete as decisões consolidadas até 2026-05-19 (Decisões 1-32)
      + Camadas 1 (Princípios Editoriais) e 4.5 (Padrões de Composição)
      Atualizações 2026-05-19:
@@ -135,6 +135,57 @@
   }
   .skip-link:focus { top: 8px; }
 
+  /* ---------- Header (igual à home) ---------- */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: #1f5142;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .site-header a { text-decoration: none; }
+  [data-theme="dark"] .site-header { background: #143a30; }
+  .header-inner {
+    max-width: 1280px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; color: #ffffff; }
+  .brand:hover { text-decoration: none; }
+  .brand-mark {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: #ffffff; color: #1f5142;
+    display: grid; place-items: center; font-weight: 800; letter-spacing: -.02em;
+    box-shadow: var(--shadow-sm);
+  }
+  [data-theme="dark"] .brand-mark { color: #143a30; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .brand-text strong { font-size: .95rem; letter-spacing: -.01em; color: #ffffff; }
+  .brand-text span { font-size: .75rem; color: #a8c3ba; }
+
+  .nav { display: flex; gap: 6px; margin-left: auto; }
+  .nav a {
+    color: rgba(255, 255, 255, 0.85); font-size: .9rem; font-weight: 500;
+    padding: 8px 12px; border-radius: 8px;
+  }
+  .nav a:hover { background: rgba(255, 255, 255, 0.15); text-decoration: none; color: #ffffff; }
+
+  .header-search { position: relative; max-width: 280px; flex: 1; }
+  .header-search input {
+    width: 100%; padding: 9px 12px 9px 36px; font: inherit; font-size: .9rem;
+    background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2); color: #ffffff;
+    border-radius: 8px;
+  }
+  .header-search input::placeholder { color: rgba(255, 255, 255, 0.6); }
+  .header-search svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: rgba(255, 255, 255, 0.7); }
+
+  .a11y-toggles { display: flex; gap: 4px; }
+  .icon-btn {
+    width: 36px; height: 36px; display: grid; place-items: center;
+    background: transparent; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px;
+    color: rgba(255, 255, 255, 0.85); cursor: pointer;
+  }
+  .icon-btn:hover { background: rgba(255, 255, 255, 0.15); color: #ffffff; }
+  .icon-btn[aria-pressed="true"] { background: #ffffff; border-color: #ffffff; color: #1f5142; }
+
+
   /* Barra de progresso */
   .progress-rail {
     position: fixed; inset: 0 0 auto 0;
@@ -226,11 +277,12 @@
   .vlibras-widget:hover::after { opacity: 1; }
 
   /* ================ MASTHEAD ================ */
-  /* padding horizontal removido do .masthead; agora é no .masthead-inner
-     para alinhar com o .shell que usa padding interno */
+  /* Redesenho 2026-05-26: grid 2 colunas (conteúdo | meta lateral).
+     Padding superior/inferior reduzido. Autor sai do topo (vai só no rodapé).
+     Breadcrumb encerra na categoria; sem head-kicker. */
   .masthead {
     position: relative;
-    padding: 88px 0 40px;
+    padding: 56px 0 32px;
     border-bottom: 1px solid var(--line);
     overflow: hidden;
   }
@@ -247,99 +299,147 @@
     margin: 0 auto;
     padding: 0 24px;
     position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 56px;
+    align-items: start;
   }
+  @media (max-width: 900px) {
+    .masthead-inner { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  .masthead-content { min-width: 0; }
 
   .breadcrumb {
     font-size: .78rem;
     color: var(--ink-3);
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     letter-spacing: .02em;
   }
   .breadcrumb a { color: var(--ink-3); text-decoration: none; }
   .breadcrumb a:hover { color: var(--accent); }
   .breadcrumb span { margin: 0 8px; opacity: .5; }
 
-  .head-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 18px;
-    align-items: center;
-  }
-  .tipo-badge {
-    display: inline-flex;
-    align-items: center;
-    align-self: center;
-    gap: 6px;
-    background: var(--accent-soft);
-    color: var(--accent);
-    padding: 5px 12px;
-    border-radius: 99px;
-    font-size: .72rem;
-    font-weight: 700;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-  }
   .masthead h1 {
     font-family: var(--sans);
-    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-size: clamp(1.9rem, 4.2vw, 3rem);
     font-weight: 800;
     line-height: 1.08;
     letter-spacing: -.035em;
-    margin: 0 0 18px;
+    margin: 0 0 16px;
     max-width: 900px;
     color: var(--ink);
   }
   .subtitle {
     font-family: var(--sans);
     font-weight: 400;
-    font-size: clamp(1rem, 1.5vw, 1.18rem);
+    font-size: clamp(1rem, 1.5vw, 1.16rem);
     line-height: 1.5;
     color: var(--ink-2);
-    margin: 0 0 28px;
+    margin: 0;
     max-width: 720px;
   }
 
+  /* Meta lateral — direita no desktop, abaixo no mobile */
   .masthead-meta {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0;
-    padding-top: 16px;
-    border-top: 1px solid var(--line);
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 28px;
+    border-left: 1px solid var(--line);
+    align-self: stretch;
   }
-  .meta-item {
+  @media (max-width: 900px) {
+    .masthead-meta {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 18px 32px;
+      padding-left: 0;
+      padding-top: 18px;
+      border-left: none;
+      border-top: 1px solid var(--line);
+    }
+  }
+
+  .meta-block {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
   }
-  .meta-item svg { width: 15px; height: 15px; color: var(--ink-3); flex-shrink: 0; }
-  .meta-name {
-    font-size: .9rem;
-    font-weight: 500;
+  .meta-block .meta-label {
+    font-size: .64rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .meta-block .meta-value {
+    font-size: .93rem;
     color: var(--ink);
+    font-weight: 500;
+    line-height: 1.35;
   }
-  .meta-time {
-    font-size: .9rem;
-    color: var(--ink-2);
+  .meta-block .meta-value a {
+    color: var(--accent);
+    text-decoration: none;
   }
-  .meta-sep {
-    display: inline-block;
-    width: 1px;
+  .meta-block .meta-value a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .meta-block.meta-time .meta-value {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .meta-block.meta-time .meta-value svg {
+    width: 14px;
     height: 14px;
-    background: var(--line);
-    margin: 0 24px;
+    color: var(--ink-3);
     flex-shrink: 0;
   }
-  .meta-item .author-avatar {
-    width: 30px; height: 30px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: white;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: .75rem;
-    font-weight: 700;
+
+  /* Meta-block "Compartilhar" — ação inline (texto+ícone) com aparência de link, não de botão */
+  .meta-block.meta-share .meta-share-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: .93rem;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--accent);
+    text-align: left;
+    transition: color .15s;
+  }
+  .meta-block.meta-share .meta-share-action:hover .meta-share-text {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .meta-block.meta-share .meta-share-action:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .meta-block.meta-share .meta-share-action svg {
+    width: 14px;
+    height: 14px;
+    color: var(--ink-3);
     flex-shrink: 0;
+    transition: color .15s;
+  }
+  .meta-block.meta-share .meta-share-action:hover svg,
+  .meta-block.meta-share .meta-share-action.copied svg {
+    color: var(--accent);
+  }
+  .meta-block.meta-share .meta-share-action.copied {
+    color: var(--accent-deep);
   }
 
   /* ================ TOOLBAR DO ARTIGO — multimodal ================ */
@@ -465,17 +565,18 @@
      Cada trilha vira um item; chip dourado de percurso (Decisão 31)
      aparece no topo do acordeão expandido quando aplicável.
      ================================================================ */
+  /* Teste 2026-05-26 — sem background nem borda no box externo. */
   .side-trilha {
-    border: 1px solid var(--line);
-    border-radius: var(--r-lg);
-    overflow: hidden;
+    border: 0;
+    border-radius: 0;
+    overflow: visible;
     margin-bottom: 14px;
-    background: var(--paper);
+    background: transparent;
   }
   .side-trilha-head {
-    padding: 12px 18px;
-    background: var(--bg-2);
-    border-bottom: 1px solid var(--line);
+    padding: 0 0 10px;
+    background: transparent;
+    border-bottom: 0;
   }
   .side-trilha-head-label {
     font-size: .68rem;
@@ -488,12 +589,13 @@
     align-items: center;
   }
   .side-trilha-count {
-    background: var(--ink);
-    color: var(--bg);
-    font-size: .62rem;
-    padding: 2px 7px;
-    border-radius: 99px;
-    letter-spacing: .04em;
+    background: transparent;
+    color: var(--ink-3);
+    font-size: .68rem;
+    font-weight: 700;
+    padding: 0;
+    border-radius: 0;
+    letter-spacing: 0;
   }
 
   /* Itens do acordeão (uma trilha por item) */
@@ -505,16 +607,21 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 18px;
+    padding: 12px 0;
     background: transparent;
     border: 0;
     cursor: pointer;
     font-family: var(--sans);
     text-align: left;
-    transition: background .15s;
+    transition: color .15s;
   }
-  .trilha-acc-toggle:hover { background: var(--bg-2); }
-  .trilha-acc-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .trilha-acc-toggle:hover .trilha-acc-name { color: var(--accent); }
+  .trilha-acc-toggle:hover .trilha-acc-chev { color: var(--accent); }
+  .trilha-acc-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: var(--r-sm);
+  }
   .trilha-acc-name {
     flex: 1;
     font-size: .9rem;
@@ -536,40 +643,56 @@
   }
   .trilha-acc-toggle[aria-expanded="true"] .trilha-acc-chev {
     transform: rotate(180deg);
+    color: var(--accent);
   }
-  .trilha-acc-toggle[aria-expanded="true"] {
-    background: var(--bg-2);
+  .trilha-acc-toggle[aria-expanded="true"] .trilha-acc-name {
+    color: var(--accent);
   }
   .trilha-acc-body {
-    padding: 4px 18px 16px;
-    background: var(--bg-2);
-    border-top: 1px solid var(--line);
+    padding: 4px 0 16px;
+    background: transparent;
+    border-top: 0;
   }
   .trilha-acc-body[hidden] { display: none; }
 
-  /* Chip dourado de percurso (Decisão 31) */
+  /* Chip de percurso (Decisão 31) — versão sutil 2026-05-26: sem pill,
+     padrão "label · nome" alinhado com a estética dos meta-blocks.
+     Cor dourada preservada como identidade do percurso. */
   .trilha-percurso-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--gold-soft);
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    margin: 2px 0 14px;
+    font-size: .76rem;
+    line-height: 1.4;
     color: var(--gold-deep);
-    padding: 6px 12px 6px 10px;
-    border-radius: 99px;
-    font-size: .72rem;
-    font-weight: 600;
     text-decoration: none;
-    margin: 10px 0 14px;
-    transition: background .15s;
+    transition: color .15s;
   }
-  .trilha-percurso-chip:hover {
-    background: color-mix(in srgb, var(--gold) 28%, var(--gold-soft));
+  .trilha-percurso-chip:hover { color: var(--gold); }
+  .trilha-percurso-chip:hover .chip-name {
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
   .trilha-percurso-chip svg {
-    width: 12px; height: 12px;
+    width: 12px;
+    height: 12px;
+    color: var(--gold);
     flex-shrink: 0;
+    align-self: center;
   }
-  .trilha-percurso-chip strong { font-weight: 700; }
+  .trilha-percurso-chip .chip-label {
+    font-size: .62rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .trilha-percurso-chip .chip-name {
+    font-weight: 600;
+    color: var(--gold-deep);
+  }
 
   /* Barra de progresso estrutural (Decisão 29 — posição, não progresso pessoal) */
   .side-trilha-progress { margin-bottom: 14px; }
@@ -618,14 +741,14 @@
     font-weight: 600;
   }
 
-  /* TOC */
+  /* TOC — sem fundo/borda (teste 2026-05-26) */
   .toc-card {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: var(--r-lg);
-    padding: 22px 24px;
-    box-shadow: var(--shadow-sm);
-    margin-bottom: 14px;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    margin-bottom: 32px;
   }
   .toc-title {
     font-size: .68rem;
@@ -713,6 +836,81 @@
     border: 1px solid var(--line);
     padding: 1px 6px;
     border-radius: 4px;
+  }
+
+  /* ============================================================
+     Bloco de código / prompt (alinhado com catálogo #1 — ajuste 2026-05-26)
+     Sem cabeçalho/título. Botão de copiar apenas com ícone, sutil,
+     flutuante no canto superior direito; ganha presença ao hover do bloco.
+     ============================================================ */
+  .code-prompt-block {
+    position: relative;
+    margin: 24px 0;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: var(--bg-2);
+    transition: border-color .2s;
+  }
+  .code-prompt-block:hover { border-color: var(--line-2); }
+  .code-copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--ink-3);
+    border-radius: var(--r-sm);
+    cursor: pointer;
+    opacity: .45;
+    transition: opacity .15s, color .15s, background .15s, border-color .15s;
+  }
+  .code-prompt-block:hover .code-copy-btn { opacity: 1; }
+  .code-copy-btn:hover,
+  .code-copy-btn:focus-visible {
+    color: var(--accent);
+    background: var(--paper);
+    border-color: var(--line-2);
+    opacity: 1;
+    outline: none;
+  }
+  .code-copy-btn:focus-visible { box-shadow: 0 0 0 2px var(--accent-soft); }
+  .code-copy-btn.copied {
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    opacity: 1;
+  }
+  .code-copy-btn > span { display: none; }
+  .code-prompt-content {
+    margin: 0;
+    padding: 18px 48px 18px 18px;
+    font-family: var(--mono);
+    font-size: .82rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    overflow-x: auto;
+    white-space: pre-wrap;
+  }
+  .code-prompt-content .code-comment {
+    color: var(--ink-3);
+    font-style: italic;
+  }
+  .code-prompt-content .code-variable {
+    background: var(--sun-soft);
+    color: var(--ink);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 600;
+    border: 1px dashed var(--sun);
   }
 
   /* Callouts */
@@ -915,113 +1113,9 @@
   }
 
   /* ================ KICKER CATEGORIA · TIPO (Decisão 23) ================ */
-  .head-kicker {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 14px;
-    font-size: .76rem;
-    font-weight: 700;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-  }
-  .head-kicker a { color: var(--accent); text-decoration: none; }
-  .head-kicker a:hover { text-decoration: underline; text-underline-offset: 3px; }
-  .head-kicker .kicker-sep { color: var(--ink-3); opacity: .6; }
-  .head-kicker .kicker-tipo { color: var(--ink-3); }
-
-  /* ================ BLOCO DE ENTRADA — pré-requisitos + objetivo (Padrão 4.1) ================ */
-  .entry-block {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    margin: 8px 0 36px;
-    padding: 22px 24px;
-    background: var(--bg-2);
-    border-radius: var(--r-lg);
-  }
-  @media (max-width: 600px) { .entry-block { grid-template-columns: 1fr; gap: 18px; } }
-  .entry-label {
-    display: block;
-    font-size: .68rem;
-    font-weight: 700;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    margin-bottom: 10px;
-  }
-  .entry-goal .entry-label { color: var(--accent); }
-  .entry-block ul { margin: 0; padding-left: 18px; }
-  .entry-block li { margin-bottom: 6px; font-size: .95rem; line-height: 1.5; color: var(--ink-2); }
-  .entry-block .entry-goal p { margin: 0; font-size: .95rem; line-height: 1.55; color: var(--ink); }
-
-  /* ================ BLOCO DE SAÍDA — o que você sabe + próximos caminhos (Padrão 4.1, critérios 5-6) ================ */
-  .outcome-block {
-    margin: 56px 0 0;
-    padding: 28px;
-    background: var(--accent-soft);
-    border-radius: var(--r-lg);
-  }
-  .outcome-label {
-    display: block;
-    font-size: .68rem;
-    font-weight: 700;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 14px;
-  }
-  .outcome-list { list-style: none; margin: 0 0 28px; padding: 0; }
-  .outcome-list li {
-    position: relative;
-    padding-left: 30px;
-    margin-bottom: 10px;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--ink);
-  }
-  .outcome-list li::before {
-    content: '✓';
-    position: absolute;
-    left: 0; top: 2px;
-    width: 19px; height: 19px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: .7rem;
-    font-weight: 700;
-  }
-  .outcome-next-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-  }
-  @media (max-width: 600px) { .outcome-next-grid { grid-template-columns: 1fr; } }
-  .next-card {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: var(--r-md);
-    padding: 14px 16px;
-    text-decoration: none;
-    color: var(--ink);
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    transition: transform .15s, border-color .15s, box-shadow .15s;
-  }
-  .next-card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow-sm); }
-  .next-card .nc-tipo {
-    font-size: .64rem;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-  .next-card .nc-title { font-size: .92rem; font-weight: 600; line-height: 1.3; }
+  /* head-kicker, entry-block e outcome-block removidos em 2026-05-26.
+     - head-kicker: redundante com a meta lateral (Categoria/Tipo agora vivem ali).
+     - entry-block / outcome-block: deferidos para reavaliar na V3. */
 
   /* ================ FOOTER DO ARTIGO ================ */
   .article-foot { max-width: 700px; margin-top: 64px; }
@@ -1231,6 +1325,11 @@
   }
   .proto-banner strong { color: var(--accent); font-weight: 700; }
 
+  @media (max-width: 960px) {
+    .header-search { display: none; }
+    .nav { display: none; }
+  }
+
   @media (max-width: 540px) {
     .toolbar { top: auto; bottom: 12px; right: 12px; left: 12px; justify-content: center; }
     .vlibras-widget { bottom: 80px; }
@@ -1249,6 +1348,38 @@
 <div class="progress-rail" aria-hidden="true">
   <div class="progress-fill" id="progressFill"></div>
 </div>
+
+<!-- ============================================================
+     HEADER (igual à home)
+     ============================================================ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="home-proposta.html" class="brand">
+      <span class="brand-mark">C</span>
+      <span class="brand-text">
+        <strong>Base de Conhecimento</strong>
+        <span>CEFOR · Ifes</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="exploracao-pagina-percurso.html">Percursos</a>
+      <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
+      <a href="prototipo-artigo.html">Todos os artigos</a>
+    </nav>
+    <form class="header-search" role="search" action="/buscar" method="get">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar"/>
+    </form>
+    <div class="a11y-toggles" role="group" aria-label="Preferências de leitura">
+      <button class="icon-btn" id="btn-theme" aria-label="Alternar modo escuro" aria-pressed="false" title="Modo escuro">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn" id="btn-contrast" aria-label="Alto contraste" aria-pressed="false" title="Alto contraste">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/><path d="M12 3a9 9 0 0 1 0 18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
 
 <!-- Toolbar acessibilidade — contraída por padrão; abre no botão de acessibilidade -->
 <div class="toolbar" role="toolbar" aria-label="Preferências de leitura" data-collapsed="true">
@@ -1279,36 +1410,44 @@
 <header class="masthead">
   <div class="masthead-inner">
 
-    <nav class="breadcrumb" aria-label="Trilha de navegação">
-      <a href="#">Início</a><span>/</span>
-      <a href="#">Moodle (AVA)</a><span>/</span>
-      Configurando o livro de notas
-    </nav>
+    <div class="masthead-content">
+      <!-- Breadcrumb encerra na categoria (refinamento 2026-05-26 — não inclui título do artigo) -->
+      <nav class="breadcrumb" aria-label="Trilha de navegação">
+        <a href="home-proposta.html">Início</a><span>/</span>
+        <a href="#">Gestão e Operação do Moodle</a>
+      </nav>
 
-    <!-- Kicker Categoria · Tipo (Decisão 23 — primeiro elemento do cabeçalho) -->
-    <div class="head-kicker">
-      <a href="#">Ferramentas e Recursos</a>
-      <span class="kicker-sep" aria-hidden="true">·</span>
-      <span class="kicker-tipo">Tutorial</span>
+      <h1>Configurando o livro de notas do Moodle</h1>
+
+      <p class="subtitle">
+        Como montar o gradebook do seu curso passo a passo: criar categorias, definir pesos por agrupamento, aplicar fórmulas e revisar antes de publicar para os estudantes.
+      </p>
     </div>
 
-    <h1>Configurando o livro de notas do Moodle</h1>
-
-    <p class="subtitle">
-      Como montar o gradebook do seu curso passo a passo: criar categorias, definir pesos por agrupamento, aplicar fórmulas e revisar antes de publicar para os estudantes.
-    </p>
-
-    <div class="masthead-meta">
-      <div class="meta-item">
-        <span class="author-avatar" aria-hidden="true">JC</span>
-        <span class="meta-name">Juliana Cassaro</span>
+    <!-- Meta lateral (direita) — Tipo, Tempo de leitura, Compartilhar.
+         Categoria removida em 2026-05-26 — já vive no breadcrumb. -->
+    <aside class="masthead-meta" aria-label="Informações do artigo">
+      <div class="meta-block">
+        <span class="meta-label">Tipo</span>
+        <span class="meta-value">Tutorial</span>
       </div>
-      <span class="meta-sep" aria-hidden="true"></span>
-      <div class="meta-item">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <span class="meta-time">8 min de leitura</span>
+      <div class="meta-block meta-time">
+        <span class="meta-label">Tempo de leitura</span>
+        <span class="meta-value">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          8 min
+        </span>
       </div>
-    </div>
+
+      <!-- Compartilhar (meta-block 2026-05-26) — ação inline "Copiar link". Compartilhar completo segue no rodapé. -->
+      <div class="meta-block meta-share">
+        <span class="meta-label">Compartilhar</span>
+        <button class="meta-value meta-share-action" id="copyLinkTop" type="button" aria-label="Copiar link deste artigo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          <span class="meta-share-text">Copiar link</span>
+        </button>
+      </div>
+    </aside>
   </div>
 </header>
 
@@ -1385,7 +1524,8 @@
         <div class="trilha-acc-body" id="trilhaBody-1">
           <a href="#" class="trilha-percurso-chip">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 3 6 21"/><polyline points="18 3 18 21"/><line x1="6" y1="8" x2="18" y2="8"/><line x1="6" y1="16" x2="18" y2="16"/></svg>
-            Faz parte do percurso <strong>Dominando o Moodle</strong>
+            <span class="chip-label">Percurso</span>
+            <span class="chip-name">Dominando o Moodle</span>
           </a>
           <div class="side-trilha-progress">
             <div class="side-trilha-bar">
@@ -1423,7 +1563,8 @@
         <div class="trilha-acc-body" id="trilhaBody-2" hidden>
           <a href="#" class="trilha-percurso-chip">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 3 6 21"/><polyline points="18 3 18 21"/><line x1="6" y1="8" x2="18" y2="8"/><line x1="6" y1="16" x2="18" y2="16"/></svg>
-            Faz parte do percurso <strong>Dominando o Moodle</strong>
+            <span class="chip-label">Percurso</span>
+            <span class="chip-name">Dominando o Moodle</span>
           </a>
           <div class="side-trilha-progress">
             <div class="side-trilha-bar">
@@ -1448,21 +1589,7 @@
   <!-- CONTEÚDO -->
   <article class="prose" id="conteudo" style="grid-column: 1; grid-row: 1;">
 
-    <!-- Bloco de entrada — pré-requisitos linkados + objetivo (Padrão 4.1 / Princípio 2 / Checklist critérios 3-4) -->
-    <div class="entry-block">
-      <div class="entry-col entry-prereq">
-        <span class="entry-label">Antes de começar, você precisa</span>
-        <ul>
-          <li>Ter um <a href="#">curso criado no Moodle</a></li>
-          <li>Já ter <a href="#">adicionado as atividades avaliativas</a> ao curso</li>
-          <li>Permissão de <code>professor</code> ou <code>editor</code> no curso</li>
-        </ul>
-      </div>
-      <div class="entry-col entry-goal">
-        <span class="entry-label">Ao final, você será capaz de</span>
-        <p>Montar o livro de notas do seu curso com categorias, pesos balanceados e fórmulas — e validá-lo no modo "Ver como estudante" antes de publicar para a turma.</p>
-      </div>
-    </div>
+    <!-- entry-block removido em 2026-05-26 — deferido para reavaliação na V3. -->
 
     <h2 id="contexto">Antes de começar</h2>
     <p>
@@ -1551,9 +1678,26 @@
       <li><code>=sum(...) * 1.1</code> — aplica bônus de 10% sobre um conjunto de atividades extras, sem ultrapassar a nota máxima do item.</li>
     </ul>
 
+    <p>
+      A escrita completa de uma fórmula que <strong>descarta a menor nota entre quatro exercícios</strong> — somando as quatro e subtraindo a menor — fica assim no campo de fórmula do item de nota. Os apelidos <code>ex1</code> a <code>ex4</code> são os <em>idnumbers</em> que você atribuiu aos itens de nota dos exercícios:
+    </p>
+
+    <div class="code-prompt-block">
+      <button class="code-copy-btn" onclick="copyCodeBlock(this)" aria-label="Copiar fórmula" title="Copiar fórmula">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span>Copiar</span>
+      </button>
+<pre class="code-prompt-content"><code><span class="code-comment">;; Soma as 4 notas e subtrai a menor (descarta a pior tentativa)</span>
+=sum(<span class="code-variable">[[ex1]]</span>, <span class="code-variable">[[ex2]]</span>, <span class="code-variable">[[ex3]]</span>, <span class="code-variable">[[ex4]]</span>) - min(<span class="code-variable">[[ex1]]</span>, <span class="code-variable">[[ex2]]</span>, <span class="code-variable">[[ex3]]</span>, <span class="code-variable">[[ex4]]</span>)</code></pre>
+    </div>
+
+    <p>
+      Os termos em destaque dourado são <em>variáveis</em> da fórmula — referenciam os <em>idnumbers</em> que você definiu ao criar cada exercício no Livro de Notas. Se renomear qualquer um, lembre de atualizar aqui também (ver alerta acima).
+    </p>
+
     <h2 id="revisao">Revisão final</h2>
     <p>
-      Antes de tornar o livro de notas visível para os estudantes, há uma verificação que poucos professores fazem — e que já evitou revisões formais de notas no IFes: ativar o modo <strong>"Ver como estudante"</strong> e percorrer o gradebook inteiro como se você fosse o aluno. Esse modo mostra exatamente o que o estudante vai ver: quais atividades aparecem, com quais rótulos, em que ordem, e qual nota parcial está sendo calculada em cada categoria.
+      Antes de tornar o livro de notas visível para os estudantes, há uma verificação que poucos professores fazem — e que já evitou revisões formais de notas no Ifes: ativar o modo <strong>"Ver como estudante"</strong> e percorrer o gradebook inteiro como se você fosse o aluno. Esse modo mostra exatamente o que o estudante vai ver: quais atividades aparecem, com quais rótulos, em que ordem, e qual nota parcial está sendo calculada em cada categoria.
     </p>
     <p>
       O principal valor do teste é revelar discrepâncias entre o que o professor configurou e o que o estudante interpreta. Um nome de categoria genérico — "Categoria 1" — pode ser informativo para quem criou a estrutura, mas é completamente opaco para o estudante que precisa entender de onde vem a sua nota. Da mesma forma, uma atividade ainda não realizada que aparece como "0" em vez de "—" pode fazer o aluno acreditar que falhou numa avaliação que nem aconteceu ainda.
@@ -1572,7 +1716,7 @@
 
     <div class="callout critico">
       <span class="c-label">Crítico</span>
-      Nunca lance notas reais em ambiente de produção antes de validar o cálculo total. Erros de ponderação publicados já foram, no passado, causa de revisão formal de notas no IFes — um processo que mobiliza coordenação, CGAE e, em alguns casos, a reitoria para corrigir notas já divulgadas para os estudantes.
+      Nunca lance notas reais em ambiente de produção antes de validar o cálculo total. Erros de ponderação publicados já foram, no passado, causa de revisão formal de notas no Ifes — um processo que mobiliza coordenação, CGAE e, em alguns casos, a reitoria para corrigir notas já divulgadas para os estudantes.
     </div>
 
     <h2 id="resumo">Em resumo</h2>
@@ -1583,7 +1727,7 @@
       A etapa de verificação no modo "Ver como estudante" é a mais frequentemente pulada — e a que mais protege contra erros que chegam ao estudante. O Moodle não impede que você publique um gradebook com erros; ele alerta quando pode, mas não bloqueia. A responsabilidade de verificar é do professor, e o custo de um erro após a publicação é sempre maior do que o de uma verificação preventiva antes dela.
     </p>
     <p>
-      Se algum detalhe da configuração gerar dúvida — especialmente sobre o encadeamento de pesos em hierarquias com subcategorias ou sobre o comportamento de fórmulas específicas — o artigo <a href="#">Fórmulas suportadas no gradebook do Moodle</a> traz a referência completa de todas as funções disponíveis, com exemplos aplicados ao contexto do IFes.
+      Se algum detalhe da configuração gerar dúvida — especialmente sobre o encadeamento de pesos em hierarquias com subcategorias ou sobre o comportamento de fórmulas específicas — o artigo <a href="#">Fórmulas suportadas no gradebook do Moodle</a> traz a referência completa de todas as funções disponíveis, com exemplos aplicados ao contexto do Ifes.
     </p>
 
     <h2 id="publicacao">Publicar para estudantes</h2>
@@ -1605,31 +1749,7 @@
       Em vez de comunicar apenas pelo fórum, considere gravar um vídeo curto de dois a três minutos mostrando como o estudante acessa e interpreta o próprio livro de notas. Coloque o vídeo na seção de avisos do curso. O índice de dúvidas relacionadas a notas no atendimento cai consideravelmente quando os estudantes têm uma referência visual de como navegar pelo gradebook.
     </div>
 
-    <!-- Bloco de saída — o que você sabe fazer agora + próximos caminhos plurais (Padrão 4.1 / Checklist critérios 5-6) -->
-    <div class="outcome-block">
-      <span class="outcome-label">O que você sabe fazer agora</span>
-      <ul class="outcome-list">
-        <li>Criar e organizar categorias de nota na árvore do livro de notas</li>
-        <li>Definir e validar pesos por categoria e subcategoria até fechar 100</li>
-        <li>Aplicar fórmulas com segurança e documentá-las para revisões futuras</li>
-        <li>Verificar o gradebook no modo "Ver como estudante" e publicá-lo com um comunicado claro à turma</li>
-      </ul>
-      <span class="outcome-label">Próximos caminhos</span>
-      <div class="outcome-next-grid">
-        <a href="#" class="next-card">
-          <span class="nc-tipo">Referência</span>
-          <span class="nc-title">Fórmulas suportadas no gradebook do Moodle</span>
-        </a>
-        <a href="#" class="next-card">
-          <span class="nc-tipo">Tutorial</span>
-          <span class="nc-title">Exportando notas para o sistema acadêmico</span>
-        </a>
-        <a href="#" class="next-card">
-          <span class="nc-tipo">Tutorial</span>
-          <span class="nc-title">Aplicando rubricas em atividades de envio</span>
-        </a>
-      </div>
-    </div>
+    <!-- outcome-block removido em 2026-05-26 — deferido para reavaliação na V3. -->
 
     <!-- ============ FOOTER DO ARTIGO ============ -->
     <div class="article-foot">
@@ -1640,7 +1760,7 @@
         <div class="author-details">
           <span class="author-byline-label">Autora</span>
           <span class="author-name-sm">Juliana Cassaro</span>
-          <span class="author-role-sm">Designer e conteudista · CGTE/CEFOR/IFes</span>
+          <span class="author-role-sm">Designer e conteudista · CGTE/CEFOR/Ifes</span>
         </div>
       </div>
 
@@ -1649,28 +1769,28 @@
         <div class="topics-row-header">
           <span class="topics-label">Tópicos</span>
           <div class="share-wrap">
-            <button class="share-btn" id="shareBtn" aria-haspopup="true" aria-expanded="false" aria-label="Compartilhar" title="Compartilhar">
+            <button class="share-btn" id="shareBtn" data-share-trigger aria-haspopup="true" aria-expanded="false" aria-label="Compartilhar" title="Compartilhar">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
             </button>
-            <div class="share-menu" id="shareMenu" role="menu" hidden>
-              <button role="menuitem" id="shareWhatsapp">
+            <div class="share-menu" id="shareMenu" data-share-menu role="menu" hidden>
+              <button role="menuitem" id="shareWhatsapp" data-share="whatsapp">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.892c0 2.096.549 4.142 1.595 5.945L0 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.582 0 11.94-5.335 11.944-11.893a11.821 11.821 0 0 0-3.487-8.413"/></svg>
                 WhatsApp
               </button>
-              <button role="menuitem" id="shareX">
+              <button role="menuitem" id="shareX" data-share="x">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.39-6.933ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
                 X (Twitter)
               </button>
-              <button role="menuitem" id="shareInstagram">
+              <button role="menuitem" id="shareInstagram" data-share="instagram">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069M12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0m0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881"/></svg>
                 Instagram
               </button>
               <div class="share-menu-sep" role="separator"></div>
-              <button role="menuitem" id="shareCopyLink">
+              <button role="menuitem" id="shareCopyLink" data-share="copy-link">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
                 Copiar link
               </button>
-              <button role="menuitem" id="shareCopyAbnt">
+              <button role="menuitem" id="shareCopyAbnt" data-share="copy-abnt">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
                 Copiar citação ABNT
               </button>
@@ -1742,27 +1862,45 @@
   window.addEventListener('scroll', spy, { passive: true });
   spy();
 
-  // Tema claro / escuro
+  // Tema claro / escuro (sincronizado com o menu superior)
   const themeToggle = document.getElementById('themeToggle');
+  const btnTheme = document.getElementById('btn-theme');
   const iconMoon = document.getElementById('iconMoon');
   const iconSun = document.getElementById('iconSun');
+
   function setTheme(dark) {
     if (dark) {
       document.documentElement.setAttribute('data-theme', 'dark');
-      iconMoon.style.display = 'none';
-      iconSun.style.display = '';
+      if (iconMoon) iconMoon.style.display = 'none';
+      if (iconSun) iconSun.style.display = '';
+      if (btnTheme) btnTheme.setAttribute('aria-pressed', 'true');
+      if (themeToggle) themeToggle.setAttribute('aria-pressed', 'true');
     } else {
       document.documentElement.removeAttribute('data-theme');
-      iconMoon.style.display = '';
-      iconSun.style.display = 'none';
+      if (iconMoon) iconMoon.style.display = '';
+      if (iconSun) iconSun.style.display = 'none';
+      if (btnTheme) btnTheme.setAttribute('aria-pressed', 'false');
+      if (themeToggle) themeToggle.setAttribute('aria-pressed', 'false');
     }
   }
+
   if (localStorage.getItem('cefor-theme') === 'dark') setTheme(true);
-  themeToggle.addEventListener('click', () => {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    setTheme(!isDark);
-    localStorage.setItem('cefor-theme', isDark ? 'light' : 'dark');
-  });
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      setTheme(!isDark);
+      localStorage.setItem('cefor-theme', isDark ? 'light' : 'dark');
+    });
+  }
+
+  if (btnTheme) {
+    btnTheme.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      setTheme(!isDark);
+      localStorage.setItem('cefor-theme', isDark ? 'light' : 'dark');
+    });
+  }
 
   // Toolbar de acessibilidade — contrair/expandir
   const a11yTrigger = document.getElementById('a11yTrigger');
@@ -1779,15 +1917,35 @@
     }
   });
 
-  // Alto contraste
+  // Alto contraste (sincronizado com o menu superior)
   const contrastToggle = document.getElementById('contrastToggle');
-  contrastToggle.addEventListener('click', () => {
-    const on = document.documentElement.getAttribute('data-contrast') === 'high';
-    document.documentElement.toggleAttribute('data-contrast', !on);
-    if (!on) document.documentElement.setAttribute('data-contrast', 'high');
-    else document.documentElement.removeAttribute('data-contrast');
-    contrastToggle.setAttribute('aria-pressed', String(!on));
-  });
+  const btnContrast = document.getElementById('btn-contrast');
+
+  function setContrast(high) {
+    if (high) {
+      document.documentElement.setAttribute('data-contrast', 'high');
+      if (contrastToggle) contrastToggle.setAttribute('aria-pressed', 'true');
+      if (btnContrast) btnContrast.setAttribute('aria-pressed', 'true');
+    } else {
+      document.documentElement.removeAttribute('data-contrast');
+      if (contrastToggle) contrastToggle.setAttribute('aria-pressed', 'false');
+      if (btnContrast) btnContrast.setAttribute('aria-pressed', 'false');
+    }
+  }
+
+  if (contrastToggle) {
+    contrastToggle.addEventListener('click', () => {
+      const on = document.documentElement.getAttribute('data-contrast') === 'high';
+      setContrast(!on);
+    });
+  }
+
+  if (btnContrast) {
+    btnContrast.addEventListener('click', () => {
+      const on = document.documentElement.getAttribute('data-contrast') === 'high';
+      setContrast(!on);
+    });
+  }
 
   // Fonte para dislexia
   const dyslexicToggle = document.getElementById('dyslexicToggle');
@@ -1837,55 +1995,194 @@
     });
   });
 
-  // Compartilhar — dropdown
-  const shareBtn = document.getElementById('shareBtn');
-  const shareMenu = document.getElementById('shareMenu');
-  function closeShare() {
-    shareMenu.hidden = true;
-    shareBtn.setAttribute('aria-expanded', 'false');
-  }
-  shareBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const open = !shareMenu.hidden;
-    if (open) closeShare();
-    else {
-      shareMenu.hidden = false;
-      shareBtn.setAttribute('aria-expanded', 'true');
-    }
-  });
-  document.addEventListener('click', (e) => {
-    if (!shareMenu.hidden && !shareBtn.contains(e.target) && !shareMenu.contains(e.target)) closeShare();
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !shareMenu.hidden) { closeShare(); shareBtn.focus(); }
-  });
+  // ============================================================
+  // Compartilhar — multi-instância (topo + rodapé)
+  // Refinamento 2026-05-26 (E): WhatsApp com mensagem formatada,
+  // compartilhar acessível também no topo do artigo.
+  // ============================================================
   const shareUrl = window.location.href;
   const shareTitle = document.title.split(' · ')[0];
-  document.getElementById('shareWhatsapp').addEventListener('click', () => {
-    window.open('https://wa.me/?text=' + encodeURIComponent(shareTitle + ' — ' + shareUrl), '_blank', 'noopener');
-    closeShare();
+  const shareSubtitle = document.querySelector('.subtitle')?.textContent.trim() || '';
+
+  // Mensagem editorial para WhatsApp (asterisco vira negrito no app).
+  function whatsappMessage() {
+    const lines = [
+      '*' + shareTitle + '*',
+      '',
+      shareSubtitle,
+      '',
+      '📘 Base de Conhecimento CEFOR/Ifes',
+      '🔗 ' + shareUrl
+    ];
+    return lines.filter(l => l !== null).join('\n');
+  }
+
+  function shareAction(kind) {
+    switch (kind) {
+      case 'whatsapp':
+        window.open('https://wa.me/?text=' + encodeURIComponent(whatsappMessage()), '_blank', 'noopener');
+        break;
+      case 'x':
+        window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareTitle) + '&url=' + encodeURIComponent(shareUrl), '_blank', 'noopener');
+        break;
+      case 'instagram':
+        navigator.clipboard?.writeText(shareUrl);
+        alert('O Instagram não permite compartilhar links diretamente. O link foi copiado — cole no seu story ou na bio.');
+        break;
+      case 'copy-link':
+        navigator.clipboard?.writeText(shareUrl);
+        alert('Link copiado para a área de transferência.');
+        break;
+      case 'copy-abnt': {
+        const abnt = 'CASSARO, Juliana. ' + shareTitle + '. Base de Conhecimento CEFOR/Ifes, 2026. Disponível em: ' + shareUrl + '. Acesso em: hoje.';
+        navigator.clipboard?.writeText(abnt);
+        alert('Citação ABNT copiada para a área de transferência.');
+        break;
+      }
+    }
+  }
+
+  const shareWraps = document.querySelectorAll('.share-wrap');
+  shareWraps.forEach(wrap => {
+    const trigger = wrap.querySelector('[data-share-trigger]');
+    const menu = wrap.querySelector('[data-share-menu]');
+    if (!trigger || !menu) return;
+
+    function closeMenu() {
+      menu.hidden = true;
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+    function openMenu() {
+      // Fecha outros menus abertos antes de abrir este
+      shareWraps.forEach(w => {
+        if (w === wrap) return;
+        const t = w.querySelector('[data-share-trigger]');
+        const m = w.querySelector('[data-share-menu]');
+        if (m && !m.hidden) {
+          m.hidden = true;
+          t?.setAttribute('aria-expanded', 'false');
+        }
+      });
+      menu.hidden = false;
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (menu.hidden) openMenu(); else closeMenu();
+    });
+
+    menu.querySelectorAll('[data-share]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        shareAction(btn.dataset.share);
+        closeMenu();
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!menu.hidden && !trigger.contains(e.target) && !menu.contains(e.target)) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.hidden) { closeMenu(); trigger.focus(); }
+    });
   });
-  document.getElementById('shareX').addEventListener('click', () => {
-    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareTitle) + '&url=' + encodeURIComponent(shareUrl), '_blank', 'noopener');
-    closeShare();
-  });
-  document.getElementById('shareInstagram').addEventListener('click', () => {
-    // O Instagram não permite compartilhar links diretamente pela web — copiamos o link para colar no story/bio.
-    navigator.clipboard?.writeText(shareUrl);
-    alert('O Instagram não permite compartilhar links diretamente. O link foi copiado — cole no seu story ou na bio.');
-    closeShare();
-  });
-  document.getElementById('shareCopyLink').addEventListener('click', () => {
-    navigator.clipboard?.writeText(window.location.href);
-    alert('Link copiado para a área de transferência.');
-    closeShare();
-  });
-  document.getElementById('shareCopyAbnt').addEventListener('click', () => {
-    const abnt = 'CASSARO, Juliana. Configurando o livro de notas do Moodle. Base de Conhecimento CEFOR/IFes, 2026. Disponível em: <url>. Acesso em: hoje.';
-    navigator.clipboard?.writeText(abnt);
-    alert('Citação ABNT copiada para a área de transferência.');
-    closeShare();
-  });
+
+  // ============================================================
+  // Bloco de código — copiar (alinhado com catálogo #1)
+  // Refinamento 2026-05-26 (B): botão só-ícone, feedback troca o glyph.
+  // ============================================================
+  function copyCodeBlock(button) {
+    const block = button.closest('.code-prompt-block');
+    if (!block) return;
+    const code = block.querySelector('.code-prompt-content');
+    const text = code ? code.innerText : '';
+
+    navigator.clipboard.writeText(text).then(() => {
+      const originalHtml = button.innerHTML;
+      const originalLabel = button.getAttribute('aria-label');
+      button.classList.add('copied');
+      button.setAttribute('aria-label', 'Copiado');
+      button.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Copiado</span>';
+      setTimeout(() => {
+        button.classList.remove('copied');
+        button.innerHTML = originalHtml;
+        if (originalLabel) button.setAttribute('aria-label', originalLabel);
+      }, 1600);
+    }).catch(err => {
+      console.error('Falha ao copiar:', err);
+    });
+  }
+  window.copyCodeBlock = copyCodeBlock; // exposto para o onclick inline do HTML
+
+  // ============================================================
+  // Copiar link do artigo (botão na meta lateral da masthead)
+  // Substituiu o dropdown de Compartilhar do topo em 2026-05-26.
+  // ============================================================
+  (function initCopyLinkTop() {
+    const btn = document.getElementById('copyLinkTop');
+    if (!btn) return;
+    const label = btn.querySelector('.meta-share-text');
+    btn.addEventListener('click', () => {
+      navigator.clipboard?.writeText(window.location.href).then(() => {
+        const originalText = label?.textContent;
+        btn.classList.add('copied');
+        if (label) label.textContent = 'Link copiado';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          if (label && originalText) label.textContent = originalText;
+        }, 1800);
+      }).catch(err => {
+        console.error('Falha ao copiar link:', err);
+      });
+    });
+  })();
+
+  // ============================================================
+  // Box de trilha — auto-close ao rolar (refinamento 2026-05-26 — E)
+  // - Colapsa trilhas expandidas quando o usuário rola além do hero do artigo
+  // - Pausa enquanto o mouse ou foco estiver dentro do box (não trava o usuário)
+  // - Se o usuário interagiu manualmente com o toggle, NÃO interfere mais
+  // ============================================================
+  (function autoCollapseTrilha() {
+    const sideTrilha = document.querySelector('.side-trilha');
+    if (!sideTrilha || !('IntersectionObserver' in window)) return;
+
+    let isInsideTrilha = false;
+    let userInteracted = false;
+    let autoCollapsed = false;
+
+    sideTrilha.addEventListener('mouseenter', () => { isInsideTrilha = true; });
+    sideTrilha.addEventListener('mouseleave', () => { isInsideTrilha = false; });
+    sideTrilha.addEventListener('focusin', () => { isInsideTrilha = true; });
+    sideTrilha.addEventListener('focusout', () => { isInsideTrilha = false; });
+
+    // Interação manual no toggle → cancela qualquer auto-comportamento
+    sideTrilha.querySelectorAll('.trilha-acc-toggle').forEach(btn => {
+      btn.addEventListener('click', () => { userInteracted = true; }, { capture: true });
+    });
+
+    function collapseAllExpanded() {
+      sideTrilha.querySelectorAll('.trilha-acc-toggle[aria-expanded="true"]').forEach(btn => {
+        btn.setAttribute('aria-expanded', 'false');
+        const body = document.getElementById(btn.getAttribute('aria-controls'));
+        if (body) body.hidden = true;
+      });
+    }
+
+    // Sentinela: o masthead. Quando sai do viewport (rolou para baixo), colapsa.
+    const sentinel = document.querySelector('.masthead');
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      const e = entries[0];
+      if (e.isIntersecting) return; // ainda vendo o cabeçalho — não fazer nada
+      if (autoCollapsed || userInteracted || isInsideTrilha) return;
+      collapseAllExpanded();
+      autoCollapsed = true;
+      observer.disconnect();
+    }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+    observer.observe(sentinel);
+  })();
 </script>
 
 </body>

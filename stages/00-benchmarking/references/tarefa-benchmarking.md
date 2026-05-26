@@ -1,14 +1,14 @@
 # Tarefa: Pesquisa e Benchmarking — Base de Conhecimento CEFOR
 
 **Para:** Juliana
-**Projeto:** Reformulação da Base de Conhecimento CEFOR/IFes
+**Projeto:** Reformulação da Base de Conhecimento CEFOR/Ifes
 **Etapa:** Benchmarking (pesquisa de referências)
 
 ---
 
 ## Contexto rápido
 
-Estamos redesenhando a Base de Conhecimento do CEFOR — o site com tutoriais e materiais para profissionais de EaD do IFes. Antes de criar qualquer coisa, queremos pesquisar o que já existe de bom lá fora para nos inspirar e tomar decisões com mais segurança.
+Estamos redesenhando a Base de Conhecimento do CEFOR — o site com tutoriais e materiais para profissionais de EaD do Ifes. Antes de criar qualquer coisa, queremos pesquisar o que já existe de bom lá fora para nos inspirar e tomar decisões com mais segurança.
 
 Sua missão é **visitar sites e plataformas e colecionar ideias que podemos aproveitar no nosso projeto**. Você vai olhar 5 aspectos específicos e anotar o que chamar atenção — coisas que funcionam bem e que poderiam servir de inspiração para a nossa Base de Conhecimento. Não é para avaliar se o site é bom ou ruim. É para **trazer ideias concretas** do que existe por aí.
 
@@ -288,5 +288,5 @@ Em média 15 a 20 minutos por site. Não precisa mergulhar fundo — um olhar at
 
 ---
 
-*Projeto: Base de Conhecimento CEFOR/IFes*
+*Projeto: Base de Conhecimento CEFOR/Ifes*
 *Criado em: 2026-04-07*

@@ -1,7 +1,7 @@
-# Pilares do Sistema — Base de Conhecimento CEFOR/IFes
+# Pilares do Sistema — Base de Conhecimento CEFOR/Ifes
 
 > **Documento de orientação de escopo**
-> Este documento registra os 11 pilares que estruturam o projeto da nova Base de Conhecimento do CEFOR/IFes.
+> Este documento registra os 11 pilares que estruturam o projeto da nova Base de Conhecimento do CEFOR/Ifes.
 > Cada pilar representa um sistema a ser **detalhado e especificado em etapa futura**, após benchmarking e pesquisa.
 
 ---
@@ -274,4 +274,4 @@ Garante que os artigos sejam encontrados — tanto por buscadores tradicionais (
 
 *Documento criado em: 2026-04-07*
 *Versão: 0.1 — Escopo inicial, pré-benchmarking*
-*Projeto: Base de Conhecimento CEFOR/IFes — Reformulação*
+*Projeto: Base de Conhecimento CEFOR/Ifes — Reformulação*

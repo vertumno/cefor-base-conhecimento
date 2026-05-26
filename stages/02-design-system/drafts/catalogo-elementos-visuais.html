@@ -1,0 +1,2680 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Catálogo de Elementos Visuais · Design System — Base CEFOR/Ifes</title>
+<meta name="description" content="Catálogo interativo: 10 elementos consolidados + 14 candidatos a avaliar para artigos da Base de Conhecimento CEFOR/Ifes." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     TOKENS DO DESIGN SYSTEM (Espelhados do design.md / kit-visual.html)
+     ============================================================ */
+  :root {
+    --bg: #ffffff;
+    --bg-2: #f7f5f1;
+    --bg-3: #efeae0;
+    --paper: #ffffff;
+    --ink: #14110d;
+    --ink-2: #4a4439;
+    --ink-3: #8a8273;
+    --line: #e7e3d8;
+    --line-2: #d4cdba;
+    --accent: #1f5142;
+    --accent-2: #2d6a4f;
+    --accent-soft: #e3ecdf;
+    --accent-deep: #143a30;
+    --gold: #b08544;
+    --gold-soft: #f3e7d0;
+    --gold-deep: #8c6a36;
+    --rose: #b3433a;
+    --rose-soft: #f4dcd7;
+    --sun: #c98a1e;
+    --sun-soft: #f7e6c4;
+    --sky: #2c5e8f;
+    --sky-soft: #d9e7f3;
+    --violet: #7a5a9b;
+    --violet-soft: #ece3f2;
+    --violet-deep: #553d70;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --dyslexic: 'Lexend', 'Inter', sans-serif;
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 16px;
+    --r-xl: 24px;
+    --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
+    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
+    --shadow-lg: 0 24px 48px -12px rgba(20,17,13,.12);
+    --font-scale: 1;
+  }
+
+  [data-theme="dark"] {
+    --bg: #0e0c0a;
+    --bg-2: #16130f;
+    --bg-3: #1e1a14;
+    --paper: #1a1612;
+    --ink: #f4f1ea;
+    --ink-2: #c9c2b3;
+    --ink-3: #8a8273;
+    --line: #2a251e;
+    --line-2: #3a342a;
+    --accent: #6cb89a;
+    --accent-2: #87cdb0;
+    --accent-soft: #19251f;
+    --accent-deep: #a7dcc6;
+    --gold: #d9a955;
+    --gold-soft: #2e2516;
+    --gold-deep: #e8c37d;
+    --rose: #e06c64;
+    --rose-soft: #2e1a17;
+    --sun: #e5a93c;
+    --sun-soft: #2e2310;
+    --sky: #5b92c6;
+    --sky-soft: #16222e;
+    --violet: #aa8cdb;
+    --violet-soft: #251d2e;
+    --violet-deep: #c5a9dd;
+  }
+
+  [data-contrast="high"] {
+    --bg: #000000;
+    --bg-2: #0a0a0a;
+    --bg-3: #141414;
+    --paper: #000000;
+    --ink: #ffff00;
+    --ink-2: #ffffff;
+    --ink-3: #c0c0c0;
+    --line: #ffff00;
+    --line-2: #ffffff;
+    --accent: #00ff88;
+    --accent-2: #66ffaa;
+    --accent-soft: #003322;
+    --accent-deep: #66ffaa;
+    --gold: #ffff00;
+    --gold-soft: #1a1a00;
+    --gold-deep: #ffff00;
+    --rose: #ff6b6b;
+    --rose-soft: #2a0000;
+    --sun: #ffaa00;
+    --sun-soft: #2a1a00;
+    --sky: #66ccff;
+    --sky-soft: #001a2a;
+    --violet: #cc88ff;
+    --violet-soft: #1a0a2a;
+    --violet-deep: #cc88ff;
+  }
+
+  [data-font="dyslexic"] { --sans: var(--dyslexic); }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: calc(16px * var(--font-scale));
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    transition: background .3s, color .3s;
+  }
+
+  /* ============================================================
+     LAYOUT DO CATÁLOGO (Shell)
+     ============================================================ */
+  .sg-shell { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+  @media (max-width: 900px) { .sg-shell { grid-template-columns: 1fr; } }
+
+  .sg-nav {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--bg-2);
+    border-right: 1px solid var(--line);
+    padding: 28px 20px;
+    z-index: 10;
+  }
+  @media (max-width: 900px) { .sg-nav { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); } }
+  
+  .sg-nav-brand {
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+    letter-spacing: -.02em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sg-nav-brand .dot { color: var(--accent); }
+  .sg-nav-sub {
+    font-size: .7rem;
+    color: var(--ink-3);
+    margin-bottom: 28px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-weight: 700;
+  }
+  .sg-nav a {
+    display: block;
+    padding: 8px 12px;
+    font-size: .84rem;
+    color: var(--ink-2);
+    text-decoration: none;
+    border-radius: var(--r-sm);
+    transition: background .15s, color .15s;
+    line-height: 1.35;
+    margin-bottom: 4px;
+  }
+  .sg-nav a:hover { background: var(--bg-3); color: var(--accent); }
+  .sg-nav-group {
+    font-size: .65rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 24px 0 8px 8px;
+  }
+
+  .sg-main { padding: 0; max-width: 100%; overflow-x: hidden; }
+
+  /* Toolbar de modos interativa */
+  .sg-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 600px) { .sg-toolbar { padding: 14px 20px; } }
+  .sg-toolbar-title { font-size: .8rem; color: var(--ink-3); font-weight: 600; }
+  .sg-toggles { display: flex; gap: 8px; flex-wrap: wrap; }
+  .sg-toggle {
+    border: 1px solid var(--line-2);
+    background: var(--paper);
+    color: var(--ink-2);
+    padding: 6px 14px;
+    border-radius: 99px;
+    font-size: .78rem;
+    font-weight: 600;
+    font-family: var(--sans);
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .sg-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  .sg-toggle.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  /* Seções */
+  .sg-section { padding: 48px 40px; border-bottom: 1px solid var(--line); max-width: 800px; }
+  @media (max-width: 600px) { .sg-section { padding: 36px 20px; } }
+  
+  .sg-section > h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 6px;
+    letter-spacing: -.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sg-section > h2 span.num {
+    font-size: 1rem;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 4px 10px;
+    border-radius: 99px;
+    font-family: var(--mono);
+  }
+  .sg-section > .sg-lead {
+    font-size: .98rem;
+    color: var(--ink-2);
+    margin: 0 0 28px;
+    line-height: 1.55;
+  }
+
+  .demo-container {
+    background: var(--paper);
+    border: 1px dashed var(--line-2);
+    border-radius: var(--r-lg);
+    padding: 24px;
+    margin-top: 16px;
+    box-shadow: var(--shadow-sm);
+  }
+  @media (max-width: 600px) { .demo-container { padding: 16px; } }
+
+  .sg-intro {
+    background: var(--bg-2);
+    padding: 40px;
+    border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 600px) { .sg-intro { padding: 30px 20px; } }
+  .sg-intro h1 { margin: 0 0 10px; font-size: 2.2rem; font-weight: 800; letter-spacing: -.03em; }
+  .sg-intro p { margin: 0; color: var(--ink-2); font-size: 1.05rem; max-width: 72ch; }
+
+  /* ============================================================
+     1. BLOCO DE PROMPT E CÓDIGO INTERATIVO (MoodleCode / AI Prompts)
+     Ajuste 2026-05-26: sem cabeçalho/título; botão copiar apenas com
+     ícone, sutil, flutuante no canto superior direito.
+     ============================================================ */
+  .code-prompt-block {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: var(--bg-2);
+    transition: border-color 0.2s;
+  }
+  .code-prompt-block:hover { border-color: var(--line-2); }
+  .code-copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--ink-3);
+    border-radius: var(--r-sm);
+    font-family: var(--sans);
+    cursor: pointer;
+    opacity: .45;
+    transition: opacity .15s, color .15s, background .15s, border-color .15s;
+  }
+  .code-prompt-block:hover .code-copy-btn { opacity: 1; }
+  .code-copy-btn:hover,
+  .code-copy-btn:focus-visible {
+    color: var(--accent);
+    background: var(--paper);
+    border-color: var(--line-2);
+    opacity: 1;
+    outline: none;
+  }
+  .code-copy-btn:focus-visible {
+    box-shadow: 0 0 0 2px var(--accent-soft);
+  }
+  .code-copy-btn.copied {
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    opacity: 1;
+  }
+  .code-copy-btn > span { display: none; } /* esconde texto auxiliar — apenas ícone */
+  .code-prompt-content {
+    margin: 0;
+    padding: 18px 48px 18px 18px; /* respira à direita para o botão flutuante */
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    overflow-x: auto;
+    white-space: pre-wrap;
+  }
+  .code-variable {
+    background: var(--sun-soft);
+    color: var(--ink);
+    padding: 2px 6px;
+    border-radius: var(--r-sm);
+    font-weight: 600;
+    border: 1px dashed var(--sun);
+  }
+
+  /* ============================================================
+     2. ABAS DE ALTERNÂNCIA CONTEXTUAL (Tabs)
+     ============================================================ */
+  .tab-group {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .tab-headers {
+    display: flex;
+    border-bottom: 1px solid var(--line);
+    gap: 8px;
+    role: tablist;
+  }
+  .tab-trigger {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--ink-3);
+    padding: 10px 16px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    font-family: var(--sans);
+    cursor: pointer;
+    transition: all 0.15s;
+    outline: none;
+  }
+  .tab-trigger:hover { color: var(--ink-2); }
+  .tab-trigger.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .tab-trigger:focus-visible {
+    outline: 2px solid var(--accent);
+    border-radius: var(--r-sm) var(--r-sm) 0 0;
+  }
+  .tab-panels {
+    padding: 16px 4px 4px;
+  }
+  .tab-panel {
+    animation: fadeIn 0.25s ease;
+  }
+  .tab-panel[hidden] {
+    display: none;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(2px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============================================================
+     3. CARTÕES DE COMPARAÇÃO (Certo vs Errado)
+     ============================================================ */
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 600px) { .comparison-grid { grid-template-columns: 1fr; } }
+  .comparison-card {
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: var(--paper);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+  }
+  .comparison-card.card-positive { border-top: 4px solid var(--accent); }
+  .comparison-card.card-negative { border-top: 4px solid var(--rose); }
+  
+  .comparison-header {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-2);
+  }
+  .comparison-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .card-positive .comparison-badge { color: var(--accent-deep); background: var(--accent-soft); padding: 2px 8px; border-radius: 99px; }
+  .card-negative .comparison-badge { color: var(--rose); background: var(--rose-soft); padding: 2px 8px; border-radius: 99px; }
+  
+  .comparison-body { padding: 16px; flex-grow: 1; display: flex; flex-direction: column; gap: 12px; }
+  .comparison-body .example-box {
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+  }
+  .comparison-caption {
+    font-size: 0.84rem;
+    color: var(--ink-2);
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  /* ============================================================
+     4. LISTA DE VERIFICAÇÃO INTERATIVA (Interactive Checklists)
+     ============================================================ */
+  .interactive-checklist {
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 18px 22px;
+    background: var(--bg-2);
+  }
+  .checklist-title {
+    margin: 0 0 14px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .checklist-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .checklist-item {
+    display: block;
+  }
+  .checklist-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .checklist-input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  .checklist-custom-box {
+    height: 20px;
+    width: 20px;
+    background-color: var(--paper);
+    border: 2px solid var(--line-2);
+    border-radius: var(--r-sm);
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+  .checklist-label:hover .checklist-custom-box {
+    border-color: var(--accent);
+  }
+  .checklist-input:checked ~ .checklist-custom-box {
+    background-color: var(--accent);
+    border-color: var(--accent);
+  }
+  .checklist-custom-box::after {
+    content: "";
+    display: none;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+    margin-bottom: 2px;
+  }
+  .checklist-input:checked ~ .checklist-custom-box::after {
+    display: block;
+  }
+  .checklist-text {
+    font-size: 0.94rem;
+    color: var(--ink-2);
+    line-height: 1.45;
+    transition: all 0.2s;
+  }
+  .checklist-input:checked ~ .checklist-text {
+    text-decoration: line-through;
+    opacity: 0.55;
+    color: var(--ink-3);
+  }
+  .checklist-input:focus-visible ~ .checklist-custom-box {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* ============================================================
+     5. CAIXA DE GLOSSÁRIO / TERMO TÉCNICO (Tooltip Inline)
+     ============================================================ */
+  .term-tooltip {
+    position: relative;
+    border-bottom: 2px dotted var(--accent);
+    font-weight: 500;
+    color: var(--accent-deep);
+    cursor: help;
+    display: inline-block;
+  }
+  .tooltip-content {
+    visibility: hidden;
+    position: absolute;
+    width: 280px;
+    background-color: var(--paper);
+    color: var(--ink-2);
+    border: 1px solid var(--line-2);
+    border-top: 3px solid var(--accent);
+    border-radius: var(--r-md);
+    padding: 12px 14px;
+    box-shadow: var(--shadow-lg);
+    z-index: 100;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    font-family: var(--sans);
+    font-weight: normal;
+  }
+  .tooltip-content strong { color: var(--ink); display: block; margin-bottom: 4px; }
+  .term-tooltip:hover .tooltip-content,
+  .term-tooltip:focus-visible .tooltip-content {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-2px);
+  }
+  .term-tooltip:focus-visible {
+    outline: 2px solid var(--accent);
+    border-radius: var(--r-sm);
+  }
+
+  /* ============================================================
+     6. ATALHOS DE TECLADO (Kbd Badges)
+     ============================================================ */
+  .kbd-key {
+    background: var(--bg-3);
+    background-image: linear-gradient(to bottom, var(--paper), var(--bg-3));
+    border: 1px solid var(--line-2);
+    border-bottom-width: 2.5px;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.06);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    font-weight: 600;
+    padding: 2.5px 6.5px;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  /* ============================================================
+     7. CITAÇÃO EDITORIAL / DEPOIMENTO (Blockquote Premium)
+     ============================================================ */
+  .blockquote-premium {
+    position: relative;
+    border-left: 4px solid var(--gold);
+    padding: 8px 0 8px 24px;
+    margin: 20px 0;
+    background: transparent;
+  }
+  .blockquote-premium::before {
+    content: "“";
+    position: absolute;
+    left: 4px;
+    top: -24px;
+    font-size: 4.8rem;
+    color: var(--gold-soft);
+    font-family: Georgia, serif;
+    line-height: 1;
+    z-index: -1;
+    opacity: 0.85;
+  }
+  [data-theme="dark"] .blockquote-premium::before { opacity: 0.15; }
+  .quote-text {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--ink-2);
+    font-style: italic;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.01em;
+  }
+  .quote-author {
+    font-size: 0.84rem;
+    color: var(--ink-3);
+    font-weight: 600;
+    font-style: normal;
+    display: block;
+  }
+  .quote-author::before {
+    content: "— ";
+  }
+
+  /* ============================================================
+     8. CARTÃO DE RECURSO / DOWNLOAD (Resource Card)
+     ============================================================ */
+  .resource-download-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    background: var(--bg-2);
+    transition: all 0.2s ease;
+  }
+  .resource-download-card:hover {
+    border-color: var(--line-2);
+    background: var(--bg-3);
+  }
+  .resource-icon-wrapper {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--r-sm);
+    background: var(--paper);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--line);
+    flex-shrink: 0;
+  }
+  .resource-svg {
+    width: 22px;
+    height: 22px;
+  }
+  .resource-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .resource-title {
+    font-size: 0.94rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .resource-meta {
+    font-size: 0.78rem;
+    color: var(--ink-3);
+  }
+  .resource-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--paper);
+    border: 1px solid var(--line-2);
+    color: var(--accent);
+    padding: 6px 14px;
+    border-radius: var(--r-sm);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .resource-download-btn:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .resource-download-btn:focus-visible {
+    outline: 2px solid var(--accent);
+  }
+
+  /* ============================================================
+     8.B / 8.C — VARIANTES DO CARTÃO (kit/lista de arquivos)
+     Aprovado 2026-05-26: #8 deve contemplar múltiplos arquivos.
+     ============================================================ */
+
+  /* Cor do ícone por tipo de arquivo (mantém o wrapper neutro) */
+  .resource-icon-wrapper.t-pdf { color: var(--rose); }
+  .resource-icon-wrapper.t-doc { color: var(--sky); }
+  .resource-icon-wrapper.t-xls { color: var(--accent); }
+  .resource-icon-wrapper.t-ppt { color: var(--sun); }
+  .resource-icon-wrapper.t-zip { color: var(--ink-3); }
+  .resource-icon-wrapper.t-vid { color: var(--violet); }
+  .resource-icon-wrapper.t-img { color: var(--gold); }
+
+  /* Label de variante (dentro do demo) */
+  .variant-label {
+    font-size: .64rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .variant-label::before {
+    content: "";
+    width: 18px;
+    height: 1px;
+    background: var(--line-2);
+  }
+  .variant-label + .variant-label { margin-top: 24px; }
+
+  /* Container do kit (variantes B e C) */
+  .resource-kit {
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    background: var(--paper);
+    overflow: hidden;
+  }
+  .resource-kit-header {
+    padding: 16px 20px 14px;
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .resource-kit-eyebrow {
+    font-size: .66rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 4px;
+  }
+  .resource-kit-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.18rem;
+    line-height: 1.3;
+    color: var(--ink);
+    margin: 0;
+  }
+  .resource-kit-desc {
+    font-size: .88rem;
+    color: var(--ink-2);
+    line-height: 1.5;
+    margin: 6px 0 0;
+  }
+
+  /* Lista de arquivos compacta (B e dentro do C) */
+  .resource-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .resource-list > li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--line);
+    transition: background .15s;
+  }
+  .resource-list > li:last-child { border-bottom: none; }
+  .resource-list > li:hover { background: var(--bg-2); }
+  .resource-list .resource-icon-wrapper {
+    width: 38px;
+    height: 38px;
+    background: var(--paper);
+  }
+  .resource-list .resource-svg { width: 18px; height: 18px; }
+  .resource-list .resource-info { flex: 1; min-width: 0; }
+  .resource-list .resource-title { font-size: .92rem; }
+  .resource-list .resource-meta { font-size: .74rem; }
+  .resource-list .resource-download-btn {
+    padding: 5px 12px;
+    font-size: .78rem;
+  }
+
+  /* Variante C — Kit com "Baixar tudo" */
+  .resource-kit-zip .resource-kit-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .resource-kit-zip-info { flex: 1; min-width: 220px; }
+  .resource-kit-zip-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: var(--r-md);
+    font-family: var(--sans);
+    font-size: .9rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid var(--accent);
+    cursor: pointer;
+    transition: all .15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .resource-kit-zip-cta:hover {
+    background: var(--accent-deep);
+    border-color: var(--accent-deep);
+  }
+  .resource-kit-zip-cta:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .resource-kit-zip-cta .cta-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.15;
+  }
+  .resource-kit-zip-cta .cta-meta {
+    font-size: .68rem;
+    font-weight: 500;
+    opacity: .85;
+    letter-spacing: .04em;
+    margin-top: 1px;
+  }
+
+  /* Disclosure dos arquivos individuais (variante C) */
+  .resource-kit-zip-details > summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 11px 20px;
+    background: transparent;
+    border: none;
+    border-top: 1px solid var(--line);
+    font-family: var(--sans);
+    font-size: .82rem;
+    color: var(--ink-2);
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    transition: background .15s, color .15s;
+  }
+  .resource-kit-zip-details > summary::-webkit-details-marker { display: none; }
+  .resource-kit-zip-details > summary:hover {
+    background: var(--bg-2);
+    color: var(--accent);
+  }
+  .resource-kit-zip-details > summary svg { color: var(--ink-3); transition: transform .2s; }
+  .resource-kit-zip-details[open] > summary svg {
+    transform: rotate(180deg);
+    color: var(--accent);
+  }
+  .resource-kit-zip-details[open] > summary {
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* ============================================================
+     9. ACORDEÃO DE FAQ (Perguntas Frequentes)
+     ============================================================ */
+  .faq-accordion-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .faq-details {
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: var(--paper);
+    transition: border-color 0.2s;
+  }
+  .faq-details:hover { border-color: var(--line-2); }
+  .faq-details[open] { border-color: var(--accent); }
+  
+  .faq-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    font-weight: 600;
+    font-size: 0.96rem;
+    color: var(--ink);
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+  }
+  .faq-summary::-webkit-details-marker { display: none; }
+  .faq-summary:hover { background: var(--bg-2); }
+  .faq-chevron {
+    transition: transform 0.2s ease;
+    color: var(--ink-3);
+    flex-shrink: 0;
+  }
+  .faq-details[open] .faq-chevron {
+    transform: rotate(180deg);
+    color: var(--accent);
+  }
+  .faq-summary:focus-visible {
+    background: var(--accent-soft);
+    color: var(--accent-deep);
+  }
+  .faq-content {
+    padding: 0 18px 16px;
+    font-size: 0.92rem;
+    color: var(--ink-2);
+    line-height: 1.55;
+    border-top: 1px solid transparent;
+  }
+  .faq-details[open] .faq-content {
+    border-top-color: var(--line);
+  }
+  .faq-content p { margin: 0; }
+
+  /* ============================================================
+     10. LINHA DO TEMPO (Process Timeline)
+     ============================================================ */
+  .process-timeline {
+    position: relative;
+    padding-left: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  .process-timeline::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background-color: var(--line-2);
+  }
+  
+  .timeline-item {
+    position: relative;
+    padding-bottom: 24px;
+  }
+  .timeline-item:last-child {
+    padding-bottom: 0;
+  }
+  .timeline-node {
+    position: absolute;
+    left: -20px;
+    top: 2px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: var(--paper);
+    border: 2px solid var(--line-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--ink-3);
+    transform: translateX(-50%);
+    z-index: 2;
+    transition: all 0.2s;
+  }
+  .timeline-item.active .timeline-node {
+    border-color: var(--accent);
+    color: var(--accent-deep);
+    background-color: var(--accent-soft);
+  }
+  .timeline-item.completed .timeline-node {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+  }
+  .timeline-content {
+    padding-left: 16px;
+  }
+  .timeline-step-title {
+    margin: 0 0 4px;
+    font-size: 0.96rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .timeline-step-desc {
+    margin: 0 0 8px;
+    font-size: 0.86rem;
+    color: var(--ink-2);
+    line-height: 1.45;
+  }
+  .timeline-role-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+    font-size: 0.72rem;
+    font-weight: 600;
+    border-radius: 4px;
+  }
+  .timeline-item.active .timeline-role-badge {
+    background: var(--accent-soft);
+    color: var(--accent-deep);
+    border-color: var(--accent);
+  }
+
+  /* ============================================================
+     SEPARADOR — Candidatos a avaliar (11-24)
+     ============================================================ */
+  .sg-divider {
+    padding: 56px 40px 24px;
+    background: var(--bg-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 600px) { .sg-divider { padding: 40px 20px 20px; } }
+  .sg-divider-eyebrow {
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin: 0 0 8px;
+  }
+  .sg-divider h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 2rem;
+    margin: 0 0 12px;
+    letter-spacing: -.02em;
+    color: var(--ink);
+  }
+  .sg-divider p {
+    margin: 0;
+    max-width: 70ch;
+    color: var(--ink-2);
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+  .sg-section.candidato > h2 span.num {
+    color: var(--gold-deep);
+    background: var(--gold-soft);
+  }
+  /* Pílula "Candidato — não decidido" removida em 2026-05-26 — todos os itens
+     foram decididos (ver output/elementos-visuais-aprovados.md). Status atual
+     fica no badge .sg-status injetado dentro do <h2>. */
+
+  /* ============================================================
+     STATUS BADGE — Aprovado / Não usar (decisão 2026-05-26)
+     Injetado via JS em cada section pelo ID, ao final do <h2>.
+     ============================================================ */
+  .sg-section > h2 { justify-content: flex-start; flex-wrap: wrap; row-gap: 6px; }
+  .sg-status {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 11px;
+    border-radius: 99px;
+    font-family: var(--sans);
+    font-size: .66rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .sg-status::before {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    font-size: .78rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+  .sg-status.is-approved {
+    background: var(--accent-soft);
+    color: var(--accent-deep);
+  }
+  .sg-status.is-approved::before {
+    content: "✓";
+    background: var(--accent);
+    color: #fff;
+  }
+  .sg-status.is-rejected {
+    background: var(--bg-3);
+    color: var(--ink-3);
+    border: 1px solid var(--line);
+  }
+  .sg-status.is-rejected::before {
+    content: "×";
+    background: var(--ink-3);
+    color: var(--bg);
+  }
+  /* Realce visual de seções rejeitadas — demo fica esmaecido para reforçar */
+  .sg-section[data-status="rejected"] .demo-container {
+    opacity: .55;
+    filter: grayscale(.35);
+    transition: opacity .2s, filter .2s;
+  }
+  .sg-section[data-status="rejected"] .demo-container:hover {
+    opacity: 1;
+    filter: none;
+  }
+  .sg-section[data-status="rejected"] .sg-lead::after {
+    content: " — não entrará no Design System.";
+    color: var(--ink-3);
+    font-style: italic;
+  }
+
+  /* ============================================================
+     11. HIGHLIGHT MARCA-TEXTO EDITORIAL (3 variantes)
+     ============================================================ */
+  .mk-tmp,
+  mark.mk-tmp {
+    background: linear-gradient(120deg,
+      color-mix(in srgb, var(--gold) 28%, transparent) 0%,
+      color-mix(in srgb, var(--gold) 18%, transparent) 100%);
+    color: inherit;
+    padding: 0.05em 0.25em;
+    border-radius: 0.45em 0.18em 0.4em 0.2em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+  .mk-perm,
+  mark.mk-perm {
+    background: color-mix(in srgb, var(--accent) 18%, transparent);
+    color: inherit;
+    padding: 0.05em 0.25em;
+    border-radius: 0.35em 0.15em 0.3em 0.18em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    font-weight: 500;
+  }
+  .mk-note,
+  mark.mk-note {
+    background: transparent;
+    border-bottom: 1.5px dotted var(--ink-3);
+    padding: 0 0.05em 0.05em;
+    color: var(--ink-2);
+    font-style: italic;
+  }
+  [data-theme="dark"] .mk-tmp { background: color-mix(in srgb, var(--gold) 22%, transparent); }
+  [data-theme="dark"] .mk-perm { background: color-mix(in srgb, var(--accent) 24%, transparent); }
+  .mk-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+    font-size: .78rem;
+    color: var(--ink-3);
+  }
+  .mk-legend > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .mk-legend .swatch {
+    width: 22px;
+    height: 12px;
+    border-radius: 3px;
+  }
+  .mk-legend .swatch.s-tmp { background: color-mix(in srgb, var(--gold) 28%, transparent); }
+  .mk-legend .swatch.s-perm { background: color-mix(in srgb, var(--accent) 18%, transparent); }
+  .mk-legend .swatch.s-note { border-bottom: 1.5px dotted var(--ink-3); background: transparent; height: 14px; }
+
+  /* ============================================================
+     12. ASIDE NUMERADO À MARGEM (Tufte sidenote)
+     ============================================================ */
+  .sn-body {
+    counter-reset: sn;
+    position: relative;
+  }
+  .sn-ref {
+    counter-increment: sn;
+    color: var(--accent);
+    font-weight: 600;
+    cursor: help;
+  }
+  .sn-ref::after {
+    content: counter(sn);
+    font-size: 0.65em;
+    vertical-align: super;
+    margin-left: 1px;
+    padding: 0 4px;
+    background: var(--accent-soft);
+    color: var(--accent-deep);
+    border-radius: 3px;
+  }
+  .sn-note {
+    display: block;
+    font-size: .82rem;
+    color: var(--ink-2);
+    line-height: 1.5;
+    padding: 8px 14px;
+    margin: 10px 0;
+    border-left: 2px solid var(--accent-soft);
+    background: var(--bg-2);
+    border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  }
+  .sn-note::before {
+    counter-increment: sn-note;
+    content: counter(sn-note);
+    display: inline-block;
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: var(--accent-deep);
+    background: var(--accent-soft);
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .sn-body { counter-reset: sn sn-note; }
+  @media (min-width: 1100px) {
+    /* Em telas largas, exibir como nota lateral verdadeira (Tufte) */
+    .sn-body { display: grid; grid-template-columns: 1fr 220px; gap: 28px; }
+    .sn-note {
+      grid-column: 2;
+      margin: 0 0 12px;
+      border-left: 1px solid var(--line);
+      background: transparent;
+      padding: 4px 0 4px 14px;
+      align-self: start;
+    }
+    .sn-body > p { grid-column: 1; }
+  }
+
+  /* ============================================================
+     13. PULL QUOTE EDITORIAL (extraído do próprio texto)
+     ============================================================ */
+  .pull-quote {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.55rem;
+    line-height: 1.35;
+    letter-spacing: -.01em;
+    color: var(--ink);
+    margin: 28px 0;
+    padding: 18px 0;
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    max-width: 38ch;
+    text-wrap: balance;
+  }
+  .pull-quote-attrib {
+    display: block;
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: .76rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 14px;
+  }
+
+  /* ============================================================
+     14. TL;DR / "EM UMA FRASE"
+     ============================================================ */
+  .tldr-box {
+    border-left: 3px solid var(--gold);
+    padding: 14px 0 14px 20px;
+    margin: 24px 0;
+  }
+  .tldr-label {
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin: 0 0 6px;
+  }
+  .tldr-text {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  /* ============================================================
+     15. RESUMO EXPANSÍVEL ("Leitura em N min")
+     ============================================================ */
+  .read-summary {
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    background: var(--paper);
+    margin: 20px 0;
+    overflow: hidden;
+  }
+  .read-summary[open] { border-color: var(--line-2); }
+  .read-summary summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    user-select: none;
+  }
+  .read-summary summary::-webkit-details-marker { display: none; }
+  .read-summary-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+  .read-summary-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .78rem;
+    color: var(--ink-3);
+    font-weight: 500;
+  }
+  .read-summary-meta svg { color: var(--ink-3); }
+  .read-summary[open] .read-summary-chevron { transform: rotate(180deg); }
+  .read-summary-chevron { transition: transform .2s; color: var(--ink-3); flex-shrink: 0; }
+  .read-summary-body {
+    padding: 4px 18px 16px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-2);
+    font-size: .94rem;
+    line-height: 1.55;
+  }
+  .read-summary-body ul { margin: 10px 0 0; padding-left: 18px; }
+  .read-summary-body li { margin-bottom: 6px; }
+
+  /* ============================================================
+     16. MINI-STEPPER TEXTUAL INLINE
+     ============================================================ */
+  .mini-stepper {
+    list-style: none;
+    counter-reset: ms;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .mini-stepper li {
+    counter-increment: ms;
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    align-items: baseline;
+    font-size: .95rem;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .mini-stepper li::before {
+    content: counter(ms);
+    grid-column: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    border-radius: 50%;
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: .72rem;
+    background: transparent;
+    align-self: start;
+    margin-top: 2px;
+  }
+  .mini-stepper li.done::before {
+    content: "✓";
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    font-family: var(--sans);
+    font-weight: 800;
+  }
+  .mini-stepper li strong { color: var(--ink); font-weight: 600; }
+  .mini-stepper li code {
+    font-family: var(--mono);
+    font-size: .82rem;
+    background: var(--bg-2);
+    padding: 1px 6px;
+    border-radius: 3px;
+    border: 1px solid var(--line);
+  }
+
+  /* ============================================================
+     17. PAINEL DE PRÉ-REQUISITOS / 18. PÓS-CONDIÇÕES
+     ============================================================ */
+  .conditions-panel {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 18px 22px;
+    margin: 20px 0;
+  }
+  .conditions-label {
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .conditions-label .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--ink-3);
+  }
+  .conditions-panel.is-pre .conditions-label .dot { background: var(--gold); }
+  .conditions-panel.is-pre .conditions-label { color: var(--gold-deep); }
+  .conditions-panel.is-post .conditions-label .dot { background: var(--accent); }
+  .conditions-panel.is-post .conditions-label { color: var(--accent-deep); }
+  .conditions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .conditions-list li {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 10px;
+    align-items: baseline;
+    font-size: .92rem;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .conditions-list li::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border: 1.5px solid var(--ink-3);
+    border-radius: 50%;
+    align-self: start;
+    margin-top: 6px;
+  }
+  .conditions-panel.is-post .conditions-list li::before {
+    border-color: var(--accent);
+    background:
+      radial-gradient(circle, var(--accent) 0 2px, transparent 2.5px);
+  }
+  .conditions-list li strong { color: var(--ink); font-weight: 600; }
+  .conditions-list li code {
+    font-family: var(--mono);
+    font-size: .82rem;
+    background: var(--paper);
+    padding: 1px 6px;
+    border-radius: 3px;
+    border: 1px solid var(--line);
+  }
+
+  /* ============================================================
+     19. PRÓXIMOS PASSOS PLURAIS (caminhos múltiplos)
+     ============================================================ */
+  .next-paths {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin: 22px 0;
+  }
+  .next-path {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    background: var(--paper);
+    text-decoration: none;
+    color: inherit;
+    transition: all .2s ease;
+    position: relative;
+  }
+  .next-path:hover {
+    border-color: var(--gold);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+  .next-path-verb {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--gold-deep);
+    line-height: 1.25;
+    letter-spacing: -.01em;
+  }
+  .next-path-desc {
+    font-size: .88rem;
+    color: var(--ink-2);
+    line-height: 1.45;
+    flex-grow: 1;
+  }
+  .next-path-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 8px;
+    border-top: 1px dashed var(--line);
+    font-size: .76rem;
+    color: var(--ink-3);
+  }
+  .next-path-foot svg { color: var(--gold); transition: transform .2s; }
+  .next-path:hover .next-path-foot svg { transform: translateX(3px); }
+
+  /* ============================================================
+     20. MATRIZ "QUANDO USAR X vs Y"
+     ============================================================ */
+  .usage-matrix {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    margin: 22px 0;
+    background: var(--paper);
+  }
+  @media (max-width: 600px) { .usage-matrix { grid-template-columns: 1fr; } }
+  .matrix-col {
+    padding: 20px 22px;
+    border-top: 3px solid;
+  }
+  .matrix-col.col-a { border-top-color: var(--accent); }
+  .matrix-col.col-b { border-top-color: var(--gold); border-left: 1px solid var(--line); }
+  @media (max-width: 600px) { .matrix-col.col-b { border-left: none; border-top: 3px solid var(--gold); } }
+  .matrix-title {
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin: 0 0 4px;
+  }
+  .col-a .matrix-title { color: var(--accent-deep); }
+  .col-b .matrix-title { color: var(--gold-deep); }
+  .matrix-name {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin: 0 0 14px;
+    color: var(--ink);
+  }
+  .matrix-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .matrix-list li {
+    font-size: .9rem;
+    color: var(--ink-2);
+    line-height: 1.5;
+    padding-left: 16px;
+    position: relative;
+  }
+  .matrix-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 8px;
+    height: 1px;
+    background: currentColor;
+    opacity: .4;
+  }
+
+  /* ============================================================
+     21. PÍLULA DE VERSÃO INLINE
+     ============================================================ */
+  .ver-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 1px 9px;
+    border: 1px solid var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent-deep);
+    border-radius: 99px;
+    font-family: var(--mono);
+    font-size: .72rem;
+    font-weight: 500;
+    line-height: 1.6;
+    vertical-align: 0.05em;
+    white-space: nowrap;
+  }
+  .ver-pill::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .ver-pill.is-warn {
+    border-color: var(--sun);
+    background: var(--sun-soft);
+    color: var(--ink);
+  }
+  .ver-pill.is-warn::before { background: var(--sun); }
+  .ver-pill.is-deprecated {
+    border-color: var(--ink-3);
+    background: var(--bg-3);
+    color: var(--ink-3);
+    text-decoration: line-through;
+  }
+  .ver-pill.is-deprecated::before { background: var(--ink-3); }
+
+  /* ============================================================
+     22. METADATA EDITORIAL (Tempo · Dificuldade · Custo)
+     ============================================================ */
+  .meta-trio {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin: 24px 0;
+  }
+  .meta-trio-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--sans);
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: var(--ink-2);
+    text-transform: uppercase;
+  }
+  .meta-trio-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    color: var(--accent);
+  }
+  .meta-trio-value {
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .meta-trio-label {
+    font-size: .68rem;
+    letter-spacing: .12em;
+    color: var(--ink-3);
+  }
+
+  /* ============================================================
+     23. CALLOUT "ERRO COMUM" (Pitfall)
+     ============================================================ */
+  .pitfall-callout {
+    border-left: 3px solid var(--rose);
+    background: color-mix(in srgb, var(--rose-soft) 60%, transparent);
+    padding: 16px 20px;
+    margin: 22px 0;
+    border-radius: 0 var(--r-md) var(--r-md) 0;
+  }
+  [data-theme="dark"] .pitfall-callout { background: color-mix(in srgb, var(--rose-soft) 80%, transparent); }
+  .pitfall-label {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.02rem;
+    color: var(--rose);
+    margin: 0 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pitfall-label::before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: var(--rose);
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><path d='M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z'/><line x1='12' y1='9' x2='12' y2='13'/><line x1='12' y1='17' x2='12.01' y2='17'/></svg>") no-repeat center / contain;
+            mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><path d='M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z'/><line x1='12' y1='9' x2='12' y2='13'/><line x1='12' y1='17' x2='12.01' y2='17'/></svg>") no-repeat center / contain;
+  }
+  .pitfall-text {
+    font-size: .94rem;
+    color: var(--ink-2);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .pitfall-text strong { color: var(--ink); font-weight: 600; }
+  .pitfall-text code {
+    font-family: var(--mono);
+    font-size: .82rem;
+    background: var(--paper);
+    padding: 1px 5px;
+    border-radius: 3px;
+    border: 1px solid var(--line);
+  }
+
+  /* ============================================================
+     24. BIG NUMBER / ESTATÍSTICA DESTACADA
+     ============================================================ */
+  .big-stat {
+    padding: 24px 0;
+    margin: 20px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    max-width: 56ch;
+  }
+  .big-stat-number {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(3.2rem, 8vw, 4.8rem);
+    line-height: 1;
+    color: var(--accent);
+    letter-spacing: -.04em;
+    margin: 0;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 2px;
+  }
+  .big-stat-number .unit {
+    font-size: 0.4em;
+    color: var(--accent);
+    font-weight: 500;
+    margin-left: 4px;
+  }
+  .big-stat-caption {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--ink);
+    line-height: 1.45;
+    margin: 8px 0 0;
+    max-width: 50ch;
+  }
+  .big-stat-source {
+    font-size: .76rem;
+    color: var(--ink-3);
+    letter-spacing: .04em;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* Utility footer */
+  .sg-footer { padding: 40px; color: var(--ink-3); font-size: .82rem; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<div class="sg-shell">
+
+  <!-- NAV -->
+  <nav class="sg-nav">
+    <div class="sg-nav-brand"><span class="dot">●</span> Base CEFOR/Ifes</div>
+    <div class="sg-nav-sub">Playbook Visual</div>
+
+    <div class="sg-nav-group">Consolidados</div>
+    <a href="#prompt">1. Bloco de Prompt/Código</a>
+    <a href="#abas">2. Abas de Alternância</a>
+    <a href="#comparacao">3. Certo vs Errado</a>
+    <a href="#checklist">4. Checklist Interativo</a>
+    <a href="#glossario">5. Glossário / Tooltip</a>
+    <a href="#shortcuts">6. Atalhos de Teclado</a>
+    <a href="#citacao">7. Citação Editorial</a>
+    <a href="#recurso">8. Cartão de Recurso</a>
+    <a href="#faq">9. Acordeão de FAQ</a>
+    <a href="#timeline">10. Linha do Tempo</a>
+
+    <div class="sg-nav-group">Candidatos (a avaliar)</div>
+    <a href="#highlight">11. Highlight marca-texto</a>
+    <a href="#sidenote">12. Aside numerado (margem)</a>
+    <a href="#pullquote">13. Pull quote editorial</a>
+    <a href="#tldr">14. TL;DR / Em uma frase</a>
+    <a href="#read-summary">15. Resumo expansível</a>
+    <a href="#mini-stepper">16. Mini-stepper textual</a>
+    <a href="#prereq">17. Pré-requisitos</a>
+    <a href="#postcond">18. Pós-condições</a>
+    <a href="#next-paths">19. Próximos passos plurais</a>
+    <a href="#matrix">20. Matriz X vs Y</a>
+    <a href="#ver-pill">21. Pílula de versão</a>
+    <a href="#meta-trio">22. Metadata tempo/dificuldade</a>
+    <a href="#pitfall">23. Erro comum (Pitfall)</a>
+    <a href="#big-stat">24. Big number / estatística</a>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="sg-main">
+
+    <!-- TOOLBAR INTERATIVA -->
+    <div class="sg-toolbar">
+      <span class="sg-toolbar-title">Simulação Editorial • Controles de Acessibilidade e Modos</span>
+      <div class="sg-toggles">
+        <button class="sg-toggle active" data-mode="light" onclick="setTheme('light')">Modo Claro</button>
+        <button class="sg-toggle" data-mode="dark" onclick="setTheme('dark')">Modo Escuro</button>
+        <button class="sg-toggle" id="contrastToggle" onclick="toggleContrast()">Alto Contraste</button>
+        <button class="sg-toggle" id="dyslexiaToggle" onclick="toggleDyslexia()">Fonte Dislexia</button>
+      </div>
+    </div>
+
+    <!-- CABEÇALHO -->
+    <header class="sg-intro">
+      <h1>Elementos Visuais Avançados</h1>
+      <p>Este guia reúne <strong>10 padrões consolidados</strong> (1–10) e <strong>14 candidatos a avaliar</strong> (11–24) — componentes refinados para apresentar conteúdo dentro de artigos longos. Estética editorial de "papel de qualidade" + acessibilidade WCAG 2.2 AA. <em>A inclusão de cada candidato no Design System ainda depende de decisão formal.</em></p>
+    </header>
+
+    <!-- 1. BLOCO DE PROMPT E CÓDIGO (ajustado 2026-05-26: sem título, ícone sutil) -->
+    <section class="sg-section" id="prompt">
+      <h2><span class="num">01</span> Bloco de Prompt / Código Interativo</h2>
+      <p class="sg-lead">Excelente para trechos de código, scripts do Moodle (MoodleCode) ou prompts de IA generativa. Áreas parametrizáveis de variáveis em destaque. O botão de copiar vive flutuante no canto superior direito, apenas com ícone, em opacidade reduzida — ganha presença ao passar o mouse sobre o bloco.</p>
+
+      <div class="demo-container">
+        <div class="code-prompt-block">
+          <button class="code-copy-btn" onclick="copyPromptCode(this)" aria-label="Copiar código" title="Copiar">
+            <svg class="icon-copy" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>Copiar</span>
+          </button>
+          <pre class="code-prompt-content"><code id="promptCodeSample">Atue como um designer instrucional. Analise o seguinte plano de aula para uma disciplina de EaD no Moodle e sugira 3 atividades interativas baseadas no bloco <span class="code-variable">[insira o nome da ferramenta, ex: H5P]</span> que promovam o engajamento colaborativo de discentes na categoria de <span class="code-variable">[pedagogia e planejamento]</span>.</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ABAS DE ALTERNÂNCIA CONTEXTUAL -->
+    <section class="sg-section" id="abas">
+      <h2><span class="num">02</span> Abas de Alternância Contextual (Tabs)</h2>
+      <p class="sg-lead">Evita a duplicação de artigos ou a confusão mental dos leitores dividindo trechos específicos por contexto de sistemas (como Moodle 4.x vs Moodle 3.9) ou sistemas operacionais.</p>
+      
+      <div class="demo-container">
+        <div class="tab-group">
+          <div class="tab-headers" role="tablist" aria-label="Versões de Software">
+            <button class="tab-trigger active" onclick="switchTab(event, 'moodle4')" role="tab" aria-selected="true">Moodle 4.x (Atual)</button>
+            <button class="tab-trigger" onclick="switchTab(event, 'moodle3')" role="tab" aria-selected="false">Moodle 3.9 (Legado)</button>
+          </div>
+          <div class="tab-panels">
+            <div id="moodle4" class="tab-panel">
+              <p style="margin: 0; color: var(--ink-2); font-size: 0.94rem;">No <strong>Moodle 4.x</strong>, clique no interruptor <strong>Modo de Edição</strong> no canto superior direito para ativá-lo imediatamente em qualquer página do curso.</p>
+            </div>
+            <div id="moodle3" class="tab-panel" hidden>
+              <p style="margin: 0; color: var(--ink-2); font-size: 0.94rem;">No <strong>Moodle 3.9</strong>, clique no botão cinza de <strong>engrenagem</strong> no canto superior direito do cabeçalho da sala e selecione a opção <strong>Ativar Edição</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CERTO VS ERRADO -->
+    <section class="sg-section" id="comparacao">
+      <h2><span class="num">03</span> Cartões de Comparação "Certo vs Errado"</h2>
+      <p class="sg-lead">Compara visualmente boas e más práticas. Ajuda na compreensão imediata de diretrizes de conformidade, pedagogia de escrita ou padrões de acessibilidade.</p>
+      
+      <div class="demo-container">
+        <div class="comparison-grid">
+          <div class="comparison-card card-positive">
+            <div class="comparison-header">
+              <span class="comparison-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Recomendado
+              </span>
+            </div>
+            <div class="comparison-body">
+              <div class="example-box" style="background: var(--paper);">
+                <p style="margin: 0 0 4px; font-weight: 700; font-size: 0.9rem; color: var(--accent-deep);">1. Configurações Iniciais</p>
+                <p style="margin: 0; font-size: 0.84rem; color: var(--ink-2);">Instruções descritivas em parágrafos normais com fonte sem serifa contrastante.</p>
+              </div>
+              <p class="comparison-caption"><strong>Estrutura Lógica:</strong> Títulos numerados sequencialmente em negrito e cores com excelente relação de contraste.</p>
+            </div>
+          </div>
+          
+          <div class="comparison-card card-negative">
+            <div class="comparison-header">
+              <span class="comparison-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Evitar
+              </span>
+            </div>
+            <div class="comparison-body">
+              <div class="example-box" style="background: var(--paper);">
+                <span style="font-family: 'Comic Sans MS', cursive; font-size: 1.1rem; color: #ff00ff; font-weight: bold; text-decoration: underline;">CLIQUE AQUI!!!</span>
+                <p style="margin: 4px 0 0; font-size: 0.84rem; color: #ccc;">Texto cinza sem contraste em cima do fundo branco.</p>
+              </div>
+              <p class="comparison-caption"><strong>Sem Acessibilidade:</strong> Links vazios como "clique aqui", mistura desnecessária de fontes informais e texto de baixíssimo contraste.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. CHECKLIST INTERATIVO -->
+    <section class="sg-section" id="checklist">
+      <h2><span class="num">04</span> Lista de Verificação Interativa</h2>
+      <p class="sg-lead">Permite que o usuário marque ativamente etapas concluídas de uma rotina de checagem. Ótimo para manter o ritmo e a autoconfiança em tarefas longas.</p>
+      
+      <div class="demo-container">
+        <div class="interactive-checklist">
+          <h4 class="checklist-title">Revisão de Configuração de Fórum</h4>
+          <ul class="checklist-items">
+            <li class="checklist-item">
+              <label class="checklist-label">
+                <input type="checkbox" class="checklist-input">
+                <span class="checklist-custom-box"></span>
+                <span class="checklist-text">Verifique se o tipo de fórum está definido como "Fórum Geral".</span>
+              </label>
+            </li>
+            <li class="checklist-item">
+              <label class="checklist-label">
+                <input type="checkbox" class="checklist-input">
+                <span class="checklist-custom-box"></span>
+                <span class="checklist-text">Defina o limite de tamanho dos anexos para no máximo 5MB.</span>
+              </label>
+            </li>
+            <li class="checklist-item">
+              <label class="checklist-label">
+                <input type="checkbox" class="checklist-input">
+                <span class="checklist-custom-box"></span>
+                <span class="checklist-text">Habilite a avaliação de posts somente após alinhar com a equipe.</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. GLOSSÁRIO / TOOLTIP INLINE -->
+    <section class="sg-section" id="glossario">
+      <h2><span class="num">05</span> Glossário de Termo Técnico (Tooltip Inline)</h2>
+      <p class="sg-lead">Uma alternativa brilhante aos links externos de glossário. Fornece uma explicação concisa inline ao focar ou passar o mouse sobre o termo com pontilhado.</p>
+      
+      <div class="demo-container">
+        <p style="margin: 0; color: var(--ink-2); font-size: 0.98rem; line-height: 1.7;">
+          Todo material que contém atividades produzidas externamente deve ser homologado via arquivo no padrão 
+          <span class="term-tooltip" tabindex="0" aria-haspopup="true" aria-expanded="false">
+            SCORM
+            <span class="tooltip-content" role="tooltip">
+              <strong>O que é SCORM?</strong>
+              SCORM (Shareable Content Object Reference Model) é um conjunto de padrões técnicos para sistemas de EaD que define a comunicação entre o conteúdo web interativo e o ambiente de aprendizagem (AVA).
+            </span>
+          </span>
+          para que o Moodle consiga capturar o progresso e as notas automáticas dos estudantes.
+        </p>
+      </div>
+    </section>
+
+    <!-- 6. ATALHOS DE TECLADO (kbd) -->
+    <section class="sg-section" id="shortcuts">
+      <h2><span class="num">06</span> Atalhos de Teclado Estilizados (Kbd)</h2>
+      <p class="sg-lead">Em vez de escrever atalhos em formato texto corrido, renderize representações tridimensionais físicas das teclas do teclado, facilitando a visualização rápida.</p>
+      
+      <div class="demo-container">
+        <p style="margin: 0; font-size: 0.96rem; color: var(--ink-2);">
+          Para ativar o interruptor de modo escuro da base de conhecimento rapidamente, use o atalho <kbd class="kbd-key">Alt</kbd> + <kbd class="kbd-key">Shift</kbd> + <kbd class="kbd-key">D</kbd>. Para abrir a barra de busca por IA, pressione <kbd class="kbd-key">Ctrl</kbd> + <kbd class="kbd-key">K</kbd>.
+        </p>
+      </div>
+    </section>
+
+    <!-- 7. CITAÇÃO EDITORIAL / DEPOIMENTO -->
+    <section class="sg-section" id="citacao">
+      <h2><span class="num">07</span> Citação Editorial / Destaque</h2>
+      <p class="sg-lead">Excelente para destacar trechos do Regulamento Geral de Ensino, portarias, instruções normativas ou citações pedagógicas importantes da EaD do IFES.</p>
+      
+      <div class="demo-container">
+        <blockquote class="blockquote-premium">
+          <p class="quote-text">
+            A acessibilidade física, metodológica e digital deve ser um norteador em toda a elaboração de materiais didáticos produzidos sob a chancela do CEFOR, garantindo a autonomia pedagógica do estudante de serviço público.
+          </p>
+          <cite class="quote-author">Portaria de Diretrizes de Ensino, IFES, Seção IV</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- 8. CARTÃO DE RECURSO PARA DOWNLOAD (3 variantes — ajuste 2026-05-26) -->
+    <section class="sg-section" id="recurso">
+      <h2><span class="num">08</span> Cartão de Recurso / Arquivo para Download</h2>
+      <p class="sg-lead">Anexa arquivos ao artigo — templates, planilhas, kits visuais. Cor do ícone indica o tipo de arquivo (PDF vermelho-tijolo, DOCX azul, XLSX verde IFES, PPTX âmbar, ZIP cinza, vídeo violeta). <strong>Três variantes</strong> para atender desde anexo simples até kit institucional completo.</p>
+
+      <div class="demo-container">
+
+        <!-- VARIANTE A — arquivo único -->
+        <p class="variant-label">Variante A · Arquivo único</p>
+        <div class="resource-download-card">
+          <div class="resource-icon-wrapper t-doc">
+            <svg class="resource-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          </div>
+          <div class="resource-info">
+            <span class="resource-title">Modelo de Plano de Ensino da Disciplina 2026</span>
+            <span class="resource-meta">DOCX · 184 KB · Última revisão em 14/05/2026</span>
+          </div>
+          <a href="#" class="resource-download-btn" onclick="event.preventDefault();">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Baixar
+          </a>
+        </div>
+
+        <!-- VARIANTE B — Lista de arquivos (kit/pacote sem zip) -->
+        <p class="variant-label">Variante B · Lista de arquivos (kit/pacote)</p>
+        <div class="resource-kit">
+          <div class="resource-kit-header">
+            <p class="resource-kit-eyebrow">Material complementar</p>
+            <h4 class="resource-kit-title">Planilhas de cálculo de notas — Moodle</h4>
+            <p class="resource-kit-desc">Três modelos prontos para diferentes critérios de avaliação. Importe diretamente no <em>Livro de notas</em> &gt; Importar arquivo CSV.</p>
+          </div>
+          <ul class="resource-list">
+            <li>
+              <div class="resource-icon-wrapper t-xls">
+                <svg class="resource-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="13" x2="15" y2="19"></line><line x1="15" y1="13" x2="9" y2="19"></line></svg>
+              </div>
+              <div class="resource-info">
+                <span class="resource-title">Cálculo natural ponderado.xlsx</span>
+                <span class="resource-meta">XLSX · 28 KB · Categorias com pesos automáticos</span>
+              </div>
+              <a href="#" class="resource-download-btn" onclick="event.preventDefault();">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Baixar
+              </a>
+            </li>
+            <li>
+              <div class="resource-icon-wrapper t-xls">
+                <svg class="resource-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="13" x2="15" y2="19"></line><line x1="15" y1="13" x2="9" y2="19"></line></svg>
+              </div>
+              <div class="resource-info">
+                <span class="resource-title">Soma simples com pesos.xlsx</span>
+                <span class="resource-meta">XLSX · 31 KB · Quando a categoria é apenas agrupamento visual</span>
+              </div>
+              <a href="#" class="resource-download-btn" onclick="event.preventDefault();">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Baixar
+              </a>
+            </li>
+            <li>
+              <div class="resource-icon-wrapper t-xls">
+                <svg class="resource-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="13" x2="15" y2="19"></line><line x1="15" y1="13" x2="9" y2="19"></line></svg>
+              </div>
+              <div class="resource-info">
+                <span class="resource-title">Média ponderada por categorias.xlsx</span>
+                <span class="resource-meta">XLSX · 42 KB · Permite descartar a menor nota da categoria</span>
+              </div>
+              <a href="#" class="resource-download-btn" onclick="event.preventDefault();">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Baixar
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- VARIANTE C — Kit com "Baixar tudo" .zip -->
+        <p class="variant-label">Variante C · Kit completo com "Baixar tudo" (.zip)</p>
+        <div class="resource-kit resource-kit-zip">
+          <div class="resource-kit-header">
+            <div class="resource-kit-zip-info">
+              <p class="resource-kit-eyebrow">Kit institucional</p>
+              <h4 class="resource-kit-title">Identidade Visual CEFOR 2026</h4>
+              <p class="resource-kit-desc">Manual da marca, logos vetoriais, paleta de cores e templates institucionais — tudo o que você precisa para produzir material no padrão CEFOR.</p>
+            </div>
+            <a href="#" class="resource-kit-zip-cta" onclick="event.preventDefault();">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span class="cta-stack">
+                Baixar tudo
+                <span class="cta-meta">.zip · 18,4 MB · 5 arquivos</span>
+              </span>
+            </a>
+          </div>
+          <details class="resource-kit-zip-details">
+            <summary>
+              <span>Ver os 5 arquivos individualmente</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </summary>
+            <ul class="resource-list">
+              <li>
+                <div class="resource-icon-wrapper t-pdf">
+                  <svg class="resource-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M9 14h6"></path><path d="M9 18h4"></path></svg>
+                </div>
+                <div class="resource-info">
+                  <span class="resource-title">Manual da marca CEFOR.pdf</span>
+                  <span class="resource-meta">PDF · 4,2 MB · 48 páginas</span>
+                </div>
+                <a href="#" class="resource-download-btn" onclick="event.preventDefault();">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  Baixar
+                </a>
+              </li>
+              <li>
+                <div class="resource-icon-wrapper t-zip">
+                  <svg class="resource-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                </div>
+                <div class="resource-info">
+                  <span class="resource-title">Logos vetoriais (SVG + EPS).zip</span>
+                  <span class="resource-meta">ZIP · 1,8 MB · Versões horizontal, vertical e símbolo</span>
+                </div>
+                <a href="#" class="resource-download-btn" onclick="event.preventDefault();">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  Baixar
+                </a>
+              </li>
+              <li>
+                <div class="resource-icon-wrapper t-ppt">
+                  <svg class="resource-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="10" cy="15" r="2"></circle><path d="M10 13v4"></path></svg>
+                </div>
+                <div class="resource-info">
+                  <span class="resource-title">Template de slides institucional.pptx</span>
+                  <span class="resource-meta">PPTX · 6,3 MB · 12 layouts com paleta CEFOR aplicada</span>
+                </div>
+                <a href="#" class="resource-download-btn" onclick="event.preventDefault();">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  Baixar
+                </a>
+              </li>
+              <li>
+                <div class="resource-icon-wrapper t-doc">
+                  <svg class="resource-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                </div>
+                <div class="resource-info">
+                  <span class="resource-title">Template de documento institucional.docx</span>
+                  <span class="resource-meta">DOCX · 580 KB · Cabeçalho, rodapé e estilos prontos</span>
+                </div>
+                <a href="#" class="resource-download-btn" onclick="event.preventDefault();">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  Baixar
+                </a>
+              </li>
+              <li>
+                <div class="resource-icon-wrapper t-img">
+                  <svg class="resource-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                </div>
+                <div class="resource-info">
+                  <span class="resource-title">Paleta de cores (Adobe Swatch).ase</span>
+                  <span class="resource-meta">ASE · 12 KB · Importa direto no Illustrator, Photoshop e Figma</span>
+                </div>
+                <a href="#" class="resource-download-btn" onclick="event.preventDefault();">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  Baixar
+                </a>
+              </li>
+            </ul>
+          </details>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 9. ACORDEÃO DE FAQ -->
+    <section class="sg-section" id="faq">
+      <h2><span class="num">09</span> Acordeão de FAQ / Dúvidas Frequentes</h2>
+      <p class="sg-lead">Ideal para perguntas curtas de encerramento de tutoriais, organizando respostas extras sem inflar verticalmente a página principal do artigo.</p>
+      
+      <div class="demo-container">
+        <div class="faq-accordion-group">
+          <details class="faq-details">
+            <summary class="faq-summary">
+              <span>Como dou acesso a um tutor de apoio nesta disciplina?</span>
+              <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </summary>
+            <div class="faq-content">
+              <p>Acesse o menu superior <strong>Participantes</strong>, clique em <strong>Inscrever Usuários</strong>, digite o nome completo ou CPF do tutor e selecione explicitamente o papel de "Tutor à Distância" ou "Tutor Presencial" no dropdown de atribuição de papéis.</p>
+            </div>
+          </details>
+          
+          <details class="faq-details">
+            <summary class="faq-summary">
+              <span>É possível reverter uma exclusão acidental de questionário?</span>
+              <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </summary>
+            <div class="faq-content">
+              <p>Sim, o Moodle conta com uma <strong>Lixeira</strong> embutida que retém atividades deletadas por até 7 dias. Vá em "Mais" na barra superior da sala, clique em "Lixeira", selecione o recurso desejado e clique em "Restaurar".</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. LINHA DO TEMPO / FLUXO DE PROCESSO -->
+    <section class="sg-section" id="timeline">
+      <h2><span class="num">10</span> Linha do Tempo / Etapas de Fluxo</h2>
+      <p class="sg-lead">Descreve fluxos burocráticos ou sequências pedagógicas que os educadores precisam seguir passo a passo para credenciamento ou aprovação de materiais.</p>
+      
+      <div class="demo-container">
+        <div class="process-timeline">
+          <div class="timeline-item completed">
+            <div class="timeline-node">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div class="timeline-content">
+              <h5 class="timeline-step-title">Etapa 1: Elaboração e Roteiro</h5>
+              <p class="timeline-step-desc">Redação dos textos e planejamento das mídias instrucionais da disciplina pelo docente de especialidade.</p>
+              <span class="timeline-role-badge">Professor Autor</span>
+            </div>
+          </div>
+          
+          <div class="timeline-item active">
+            <div class="timeline-node">2</div>
+            <div class="timeline-content">
+              <h5 class="timeline-step-title">Etapa 2: Revisão Pedagógica e Acessibilidade</h5>
+              <p class="timeline-step-desc">Revisão ortográfica, adequação de linguagem e garantia de tradução de Libras e audiodescrições de imagens.</p>
+              <span class="timeline-role-badge">Designer Instrucional</span>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-node">3</div>
+            <div class="timeline-content">
+              <h5 class="timeline-step-title">Etapa 3: Integração e AVA</h5>
+              <p class="timeline-step-desc">Publicação dos arquivos, recursos SCORM e configuração final dos blocos avaliativos no Moodle.</p>
+              <span class="timeline-role-badge">Coordenador do Curso</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEPARADOR — CANDIDATOS -->
+    <div class="sg-divider">
+      <p class="sg-divider-eyebrow">Candidatos a avaliar — 11 a 24</p>
+      <h2>Componentes propostos para apreciação</h2>
+      <p>Pesquisa em fontes editoriais e técnicas premium (Stripe Docs, Linear, Vercel, MDN, GitHub Primer, Tufte CSS, Stripe Press, NYT, The Pudding, react.dev, Anthropic Docs, Bun, Astro). Cada item traz exemplo realista no contexto Moodle/EaD. <strong>Nenhum foi decidido ainda</strong> — esta é a vitrine para a equipe escolher quais entram no DS oficial.</p>
+    </div>
+
+    <!-- 11. HIGHLIGHT MARCA-TEXTO -->
+    <section class="sg-section candidato" id="highlight">
+      <h2><span class="num">11</span> Highlight marca-texto editorial</h2>
+      <p class="sg-lead">Destaque inline em trecho específico, como caneta marca-texto. Três variantes semânticas: <strong>temporário</strong> (dourado — "leia isto agora"), <strong>permanente</strong> (verde IFES — "definição canônica") e <strong>anotação</strong> (linha pontilhada — "nota do editor"). Refinamento: borda assimétrica simulando traço manuscrito.</p>
+
+      <div class="demo-container">
+        <p style="font-size: 1rem; line-height: 1.65; color: var(--ink-2); margin: 0;">
+          O <mark class="mk-perm">livro de notas</mark> centraliza todas as avaliações de um curso no Moodle. Esqueça o atalho <mark class="mk-tmp">"Notas" na barra lateral do estudante</mark> — ele só exibe um resumo individual. Para configurar pesos, categorias e fórmulas, acesse Configurações &gt; Avaliação &gt; <mark class="mk-perm">Livro de notas</mark>. <mark class="mk-note">Usuários antigos costumam chamar isto de "agregação por pesos"</mark>; o termo correto na interface atual é <em>cálculo natural ponderado</em>.
+        </p>
+        <div class="mk-legend">
+          <span><span class="swatch s-perm"></span> Permanente — definição canônica</span>
+          <span><span class="swatch s-tmp"></span> Temporário — leia isto agora</span>
+          <span><span class="swatch s-note"></span> Anotação — nota do editor</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. ASIDE NUMERADO À MARGEM (Tufte sidenote) -->
+    <section class="sg-section candidato" id="sidenote">
+      <h2><span class="num">12</span> Aside numerado à margem (sidenote)</h2>
+      <p class="sg-lead">Padrão de Tufte CSS, Gwern e Stripe Press. Permite comentários laterais sem quebrar o fluxo do parágrafo principal. Em telas largas (≥1100px), a nota aparece como coluna lateral à direita; em telas menores, aparece inline abaixo do parágrafo. Numeração contínua por artigo.</p>
+
+      <div class="demo-container">
+        <div class="sn-body">
+          <p style="margin: 0; font-size: 1rem; line-height: 1.7; color: var(--ink-2);">
+            Os 25 tópicos do Eixo 3 não permitem digitação livre<span class="sn-ref"></span> — todos os termos vêm de uma lista fechada. A regra existe para evitar a cauda longa observada na base antiga, em que 82 tags livres concentravam 62% do uso em termos com 1 ou 2 ocorrências<span class="sn-ref"></span>. A taxonomia foi formalmente aprovada em maio de 2026<span class="sn-ref"></span>.
+          </p>
+          <span class="sn-note">Decisão tomada em 2026-05-21 após análise comparativa com Linear Issues e bases técnicas premium.</span>
+          <span class="sn-note">Levantamento da Juliana sobre o acervo legado mostrou 51 tags com 1 ocorrência apenas — ruído taxonômico clássico.</span>
+          <span class="sn-note">Decisão 17 + fechamento da 6ª categoria em <code>_config/decisoes.md</code>.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13. PULL QUOTE EDITORIAL -->
+    <section class="sg-section candidato" id="pullquote">
+      <h2><span class="num">13</span> Pull quote editorial</h2>
+      <p class="sg-lead">Trecho do próprio artigo destacado para dar ritmo à leitura — distinto de blockquote (que cita terceiros). Tipografia serifada (Fraunces) em itálico, filetes dourados horizontais. Quebra a coluna de leitura para criar pausa visual sem virar banner. Inspiração: NYT Magazine, The Pudding, Stripe Press long-form.</p>
+
+      <div class="demo-container">
+        <p style="margin: 0 0 8px; color: var(--ink-2); font-size: .98rem;">A neutralidade editorial do artigo-âncora é o ponto mais difícil da nossa arquitetura — e o mais importante.</p>
+
+        <blockquote class="pull-quote">
+          O artigo é a unidade soberana. Trilha e percurso envelopam — nunca alteram — o artigo.
+          <span class="pull-quote-attrib">Princípio editorial #1</span>
+        </blockquote>
+
+        <p style="margin: 0; color: var(--ink-2); font-size: .98rem;">Quando um artigo conceitual abre três trilhas diferentes, ele não pode anunciar nenhuma delas no corpo do texto. A voz da sequência vive no box de trilha lateral, nunca no conteúdo.</p>
+      </div>
+    </section>
+
+    <!-- 14. TL;DR / EM UMA FRASE -->
+    <section class="sg-section candidato" id="tldr">
+      <h2><span class="num">14</span> TL;DR / "Em uma frase"</h2>
+      <p class="sg-lead">Caixa curta no topo de artigos longos com a resposta direta antes do desenvolvimento. Disciplina editorial: máximo 1–2 linhas, ~40 palavras. Diferente de "Resumo" (que pode ser mais longo). Inspiração: Supabase Quick Answer, Anthropic Docs, Stripe Summary.</p>
+
+      <div class="demo-container">
+        <div class="tldr-box">
+          <p class="tldr-label">Em uma frase</p>
+          <p class="tldr-text">Configure tempo extra de prova no <strong>nível do override individual</strong> (Configurações &gt; Sobreposições de usuário) — nunca alterando o tempo geral do questionário, que afeta todos os estudantes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15. RESUMO EXPANSÍVEL -->
+    <section class="sg-section candidato" id="read-summary">
+      <h2><span class="num">15</span> Resumo expansível ("Leitura em N min")</h2>
+      <p class="sg-lead">Bloco colapsável no topo do artigo com tempo estimado de leitura e bullets do que será coberto. Permite ao leitor decidir se vai investir o tempo. Usa <code>&lt;details&gt;</code> nativo (sem JS extra). Inspiração: Vercel Docs, Linear Changelog, Notion Help.</p>
+
+      <div class="demo-container">
+        <details class="read-summary">
+          <summary>
+            <span class="read-summary-title">Resumo do artigo</span>
+            <span class="read-summary-meta">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              Leitura em 4 min
+            </span>
+            <svg class="read-summary-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="read-summary-body">
+            <p>Este artigo cobre:</p>
+            <ul>
+              <li>Como configurar tempo extra de questionário sem afetar a turma toda</li>
+              <li>Quando usar override individual vs override por grupo</li>
+              <li>Erros comuns ao aplicar acessibilidade em prova cronometrada</li>
+              <li>Como auditar quais alunos têm override ativo</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 16. MINI-STEPPER TEXTUAL -->
+    <section class="sg-section candidato" id="mini-stepper">
+      <h2><span class="num">16</span> Mini-stepper textual inline</h2>
+      <p class="sg-lead">Passo a passo enxuto para procedimentos curtos (3–6 etapas), só texto, sem cards nem screenshots. Numeradores circulares verde-outline; última etapa vira ✓ verde sólido sinalizando conclusão. Densidade editorial — não ocupa a tela inteira. Inspiração: Bun Quickstart, Astro Docs, Anthropic.</p>
+
+      <div class="demo-container">
+        <ol class="mini-stepper">
+          <li>Acesse o questionário em <strong>Configurações &gt; Sobreposições de usuário</strong>.</li>
+          <li>Clique em <strong>Adicionar sobreposição de usuário</strong> e selecione o estudante.</li>
+          <li>Defina o novo <code>Limite de tempo</code> (ex.: <code>90 min</code> em vez de <code>60 min</code>).</li>
+          <li>Mantenha as demais opções iguais às da prova original.</li>
+          <li class="done">Salve. O override aparecerá listado, ativo apenas para esse estudante.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 17. PAINEL DE PRÉ-REQUISITOS -->
+    <section class="sg-section candidato" id="prereq">
+      <h2><span class="num">17</span> Painel de pré-requisitos ("Antes de começar")</h2>
+      <p class="sg-lead">Lista compacta no topo de tutoriais técnicos — contas, permissões, versões. Reduz frustração de leitor que segue 5 passos para descobrir na metade que não tem acesso. Inspiração: Supabase Guides, Vercel Docs, Cloudflare Tutorials.</p>
+
+      <div class="demo-container">
+        <div class="conditions-panel is-pre">
+          <p class="conditions-label"><span class="dot"></span> Antes de começar</p>
+          <ul class="conditions-list">
+            <li>Perfil de <strong>Professor Editor</strong> ou superior no curso.</li>
+            <li>Pelo menos <strong>1 questionário</strong> já criado na sala.</li>
+            <li>Lista dos estudantes que precisam de override (CPF ou matrícula).</li>
+            <li>Versão do AVA <code>Moodle 4.3+</code>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 18. PAINEL DE PÓS-CONDIÇÕES -->
+    <section class="sg-section candidato" id="postcond">
+      <h2><span class="num">18</span> Painel de pós-condições ("Ao final você deve ver")</h2>
+      <p class="sg-lead">Espelho simétrico do pré-requisito, no rodapé do procedimento. Confirma o estado esperado depois da execução — sinais visíveis na interface, não só "deu certo". Permite ao leitor diagnosticar sozinho. Inspiração: GitHub Actions "Verify", Stripe "Verify integration".</p>
+
+      <div class="demo-container">
+        <div class="conditions-panel is-post">
+          <p class="conditions-label"><span class="dot"></span> Ao final, você deve ver</p>
+          <ul class="conditions-list">
+            <li>Uma linha <strong>"Sobreposições de usuário"</strong> nas configurações do questionário, com contador igual ao número de alunos liberados.</li>
+            <li>Na coluna <code>Tempo</code> do relatório de tentativas, valores diferentes do limite padrão para os alunos com override.</li>
+            <li>O estudante consegue <strong>iniciar a prova</strong> e o cronômetro mostra o tempo expandido.</li>
+            <li>Logs de auditoria registram a alteração com seu usuário e timestamp.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 19. PRÓXIMOS PASSOS PLURAIS -->
+    <section class="sg-section candidato" id="next-paths">
+      <h2><span class="num">19</span> Próximos passos plurais (caminhos múltiplos)</h2>
+      <p class="sg-lead">Fim de artigo oferece 2–4 caminhos divergentes em vez de "próximo da trilha" linear. Cada caminho tem verbo de ação em itálico serifado + 1 linha de contexto + tempo estimado. Resolve a regra de que artigo deve ser <em>autossuficiente E encadeável</em>. Inspiração: react.dev, Linear Docs, Remix.</p>
+
+      <div class="demo-container">
+        <div class="next-paths">
+          <a class="next-path" href="#">
+            <span class="next-path-verb">Aprofundar</span>
+            <span class="next-path-desc">Aplicar override por grupo em vez de aluno-a-aluno — quando vale a pena, quando não.</span>
+            <span class="next-path-foot">
+              <span>5 min</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </span>
+          </a>
+          <a class="next-path" href="#">
+            <span class="next-path-verb">Diagnosticar</span>
+            <span class="next-path-desc">O override não aparece para o aluno — checklist com as 5 causas mais comuns.</span>
+            <span class="next-path-foot">
+              <span>3 min</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </span>
+          </a>
+          <a class="next-path" href="#">
+            <span class="next-path-verb">Replicar</span>
+            <span class="next-path-desc">Aplicar a mesma política de acessibilidade em todas as avaliações de uma turma.</span>
+            <span class="next-path-foot">
+              <span>8 min</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 20. MATRIZ "QUANDO USAR X vs Y" -->
+    <section class="sg-section candidato" id="matrix">
+      <h2><span class="num">20</span> Matriz "Quando usar X vs Y"</h2>
+      <p class="sg-lead">Apoio à decisão entre opções equivalentes (ex.: Fórum vs Tarefa para entrega assíncrona). Duas colunas simétricas — verde IFES vs dourado — sem ganhador implícito. Não é tabela comparativa: cada coluna apresenta o cenário em que aquela opção brilha. Inspiração: Tailwind Docs, Stripe "Choose an integration", MDN.</p>
+
+      <div class="demo-container">
+        <div class="usage-matrix">
+          <div class="matrix-col col-a">
+            <p class="matrix-title">Use se…</p>
+            <p class="matrix-name">Questionário</p>
+            <ul class="matrix-list">
+              <li>Você precisa de <strong>correção automática</strong>.</li>
+              <li>As questões já estão no <strong>Banco de Questões</strong>.</li>
+              <li>Quer <strong>cronometrar</strong> a prova com limite de tempo.</li>
+              <li>A avaliação tem questões de múltipla escolha, V/F ou cálculo.</li>
+              <li>Você quer relatórios estatísticos por questão.</li>
+            </ul>
+          </div>
+          <div class="matrix-col col-b">
+            <p class="matrix-title">Use se…</p>
+            <p class="matrix-name">Tarefa</p>
+            <ul class="matrix-list">
+              <li>A resposta é <strong>dissertativa</strong> ou em arquivo.</li>
+              <li>Você quer aplicar <strong>rubrica de avaliação</strong> aberta.</li>
+              <li>A entrega pode ser <strong>em grupo</strong>.</li>
+              <li>Precisa devolver feedback textual por aluno.</li>
+              <li>O prazo é flexível e admite ressubmissão.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 21. PÍLULA DE VERSÃO INLINE -->
+    <section class="sg-section candidato" id="ver-pill">
+      <h2><span class="num">21</span> Pílula de versão inline</h2>
+      <p class="sg-lead">Indicador compacto de compatibilidade que vive <em>dentro</em> do parágrafo, sem virar callout separado. Densidade informacional alta com baixa interrupção visual. Três estados: padrão (disponível), atenção (em transição) e descontinuado. Inspiração: Next.js Docs "Available in vX.Y+", MDN Browser Compat.</p>
+
+      <div class="demo-container">
+        <p style="font-size: 1rem; line-height: 1.75; color: var(--ink-2); margin: 0;">
+          A funcionalidade de <strong>Sobreposições de Grupo</strong> está disponível <span class="ver-pill">Moodle 4.3+</span> e substitui o método legado de criar grupos espelho. A interface antiga <span class="ver-pill is-warn">Moodle 3.x — transição</span> ainda funciona em sandbox até o final de 2026. O plugin externo <em>Group Override Manager</em> <span class="ver-pill is-deprecated">Moodle 3.5</span> foi descontinuado e não deve mais ser instalado em ambientes de produção.
+        </p>
+      </div>
+    </section>
+
+    <!-- 22. METADATA EDITORIAL (TRIO) -->
+    <section class="sg-section candidato" id="meta-trio">
+      <h2><span class="num">22</span> Metadata editorial: tempo · dificuldade · custo</h2>
+      <p class="sg-lead">Trio horizontal no topo de tutoriais pesados — sinaliza investimento exigido do leitor antes de começar. Ícones geométricos custom (não Material Icons), tipografia em pequenas-caixas-altas. Inspiração: Smashing Magazine, NYT Cooking, Substack long reads.</p>
+
+      <div class="demo-container">
+        <div class="meta-trio">
+          <span class="meta-trio-item">
+            <span class="meta-trio-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><polyline points="12 7 12 12 15.5 14"></polyline></svg>
+            </span>
+            <span><span class="meta-trio-label">Tempo</span><br><span class="meta-trio-value">15 min</span></span>
+          </span>
+          <span class="meta-trio-item">
+            <span class="meta-trio-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 3 a9 9 0 0 1 0 18 z" fill="currentColor"></path></svg>
+            </span>
+            <span><span class="meta-trio-label">Dificuldade</span><br><span class="meta-trio-value">Intermediário</span></span>
+          </span>
+          <span class="meta-trio-item">
+            <span class="meta-trio-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 3 21 12 12 21 3 12 12 3"></polygon></svg>
+            </span>
+            <span><span class="meta-trio-label">Custo</span><br><span class="meta-trio-value">Sem custo</span></span>
+          </span>
+          <span class="meta-trio-item">
+            <span class="meta-trio-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12 L21 12"></path><path d="M3 6 L21 6"></path><path d="M3 18 L15 18"></path></svg>
+            </span>
+            <span><span class="meta-trio-label">Pré-requisitos</span><br><span class="meta-trio-value">2 itens</span></span>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 23. PITFALL (ERRO COMUM) -->
+    <section class="sg-section candidato" id="pitfall">
+      <h2><span class="num">23</span> Callout "Erro comum" (Pitfall)</h2>
+      <p class="sg-lead">Variante editorial do callout para alertar para armadilhas frequentes — usando vermelho-tijolo dessaturado (paleta editorial), não vermelho-sistema. Label "Cuidado" em serifada itálica, tom de revisor experiente, não de alarme de software. Inspiração: react.dev "Pitfall", Astro "Gotcha", Bun Docs.</p>
+
+      <div class="demo-container">
+        <div class="pitfall-callout">
+          <p class="pitfall-label">Erro comum</p>
+          <p class="pitfall-text"><strong>Ao alterar o tempo no nível do questionário</strong>, o override individual <em>não é</em> sobrescrito automaticamente — ele permanece com o valor antigo. Sempre configure o override <strong>depois</strong> de salvar a versão final da prova, ou rode <code>Atualizar overrides</code> em massa após a alteração.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 24. BIG NUMBER -->
+    <section class="sg-section candidato" id="big-stat">
+      <h2><span class="num">24</span> Big number / estatística destacada</h2>
+      <p class="sg-lead">Um número que sintetiza o ponto-chave do artigo. Tipografia serifada Fraunces 4–5rem em verde IFES, fonte sempre citada inline (não em rodapé) — disciplina jornalística. Para usar com parcimônia: 1 por artigo, máximo. Inspiração: The Pudding, NYT Upshot, Stripe Press essays.</p>
+
+      <div class="demo-container">
+        <div class="big-stat">
+          <p class="big-stat-number">73<span class="unit">%</span></p>
+          <p class="big-stat-caption">dos docentes do IFES indicam o <strong>Questionário</strong> como principal instrumento de avaliação a distância em 2025.</p>
+          <p class="big-stat-source">Levantamento interno CEFOR · n = 148 docentes · jul/2025</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="sg-footer">
+      <p>Tokens de Design da Base de Conhecimento CEFOR/Ifes. Gerado a partir das especificações de <code>design.md</code> para a Fase 2. <strong>Itens 11–24 são candidatos a avaliar</strong> — pesquisa baseada em Stripe Docs, Linear, Vercel, MDN, GitHub Primer, Tufte CSS, Stripe Press, NYT, The Pudding, react.dev, Anthropic, Bun e Astro.</p>
+    </footer>
+
+  </main>
+</div>
+
+<!-- COMPORTAMENTO INTERATIVO DO PROTÓTIPO -->
+<script>
+  // 1. Cópia Rápida de Código — botão só-ícone, feedback troca o glyph
+  function copyPromptCode(button) {
+    const codeElement = document.getElementById('promptCodeSample');
+    const textToCopy = codeElement.innerText;
+
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      const originalHtml = button.innerHTML;
+      const originalLabel = button.getAttribute('aria-label');
+      button.classList.add('copied');
+      button.setAttribute('aria-label', 'Copiado');
+      button.innerHTML = `
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span>Copiado</span>
+      `;
+
+      setTimeout(() => {
+        button.classList.remove('copied');
+        button.innerHTML = originalHtml;
+        if (originalLabel) button.setAttribute('aria-label', originalLabel);
+      }, 1600);
+    }).catch(err => {
+      console.error('Falha ao copiar:', err);
+    });
+  }
+
+  // 1b. Injeção dos badges de status (decisão de 2026-05-26)
+  // Fonte canônica: stages/02-design-system/output/elementos-visuais-aprovados.md
+  (function injectStatusBadges() {
+    const approvedIds = [
+      'prompt', 'abas', 'comparacao', 'glossario', 'shortcuts',
+      'citacao', 'recurso', 'faq', 'timeline',
+      'highlight', 'pullquote', 'matrix', 'pitfall', 'big-stat'
+    ];
+    const rejectedIds = [
+      'checklist', 'sidenote', 'tldr', 'read-summary', 'mini-stepper',
+      'prereq', 'postcond', 'next-paths', 'ver-pill', 'meta-trio'
+    ];
+
+    function addStatus(id, klass, label) {
+      const sec = document.getElementById(id);
+      if (!sec) return;
+      const h2 = sec.querySelector('h2');
+      if (!h2) return;
+      const badge = document.createElement('span');
+      badge.className = 'sg-status is-' + klass;
+      badge.textContent = label;
+      h2.appendChild(badge);
+      sec.dataset.status = klass;
+    }
+
+    approvedIds.forEach(id => addStatus(id, 'approved', 'Aprovado'));
+    rejectedIds.forEach(id => addStatus(id, 'rejected', 'Não usar'));
+  })();
+
+  // 2. Abas Contextuais
+  function switchTab(event, panelId) {
+    const tabGroup = event.target.closest('.tab-group');
+    
+    // Desativa todas as abas
+    tabGroup.querySelectorAll('.tab-trigger').forEach(trigger => {
+      trigger.classList.remove('active');
+      trigger.setAttribute('aria-selected', 'false');
+    });
+    
+    // Oculta todos os painéis
+    tabGroup.querySelectorAll('.tab-panel').forEach(panel => {
+      panel.setAttribute('hidden', 'true');
+    });
+    
+    // Ativa a aba atual
+    event.target.classList.add('active');
+    event.target.setAttribute('aria-selected', 'true');
+    
+    // Exibe o painel correspondente
+    const targetPanel = tabGroup.querySelector('#' + panelId);
+    targetPanel.removeAttribute('hidden');
+  }
+
+  // 3. Gerenciamento de Temas do Playbook
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.removeAttribute('data-contrast'); // Limpa alto contraste
+    
+    // Atualiza estados dos botões
+    document.querySelectorAll('.sg-toggle').forEach(btn => {
+      btn.classList.remove('active');
+      if (btn.getAttribute('data-mode') === theme) {
+        btn.classList.add('active');
+      }
+    });
+    document.getElementById('contrastToggle').classList.remove('active');
+  }
+
+  function toggleContrast() {
+    const isHigh = document.documentElement.getAttribute('data-contrast') === 'high';
+    const contrastBtn = document.getElementById('contrastToggle');
+    
+    if (isHigh) {
+      document.documentElement.removeAttribute('data-contrast');
+      contrastBtn.classList.remove('active');
+      // Restaura tema ativo
+      const activeThemeBtn = document.querySelector('.sg-toggle[data-mode].active');
+      if (activeThemeBtn) {
+        document.documentElement.setAttribute('data-theme', activeThemeBtn.getAttribute('data-mode'));
+      }
+    } else {
+      document.documentElement.setAttribute('data-contrast', 'high');
+      contrastBtn.classList.add('active');
+      // Desativa foco visual dos botões de tema claro/escuro
+      document.querySelectorAll('.sg-toggle[data-mode]').forEach(btn => btn.classList.remove('active'));
+    }
+  }
+
+  function toggleDyslexia() {
+    const isDyslexic = document.documentElement.getAttribute('data-font') === 'dyslexic';
+    const fontBtn = document.getElementById('dyslexiaToggle');
+    
+    if (isDyslexic) {
+      document.documentElement.removeAttribute('data-font');
+      fontBtn.classList.remove('active');
+    } else {
+      document.documentElement.setAttribute('data-font', 'dyslexic');
+      fontBtn.classList.add('active');
+    }
+  }
+</script>
+</body>
+</html>

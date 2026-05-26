@@ -1,7 +1,7 @@
 # Design System — Escopo e Estrutura
 
 > **Documento de referência**
-> Define o que compõe o Design System da Base de Conhecimento CEFOR/IFes, suas camadas, e como ele se relaciona com os 11 pilares do projeto.
+> Define o que compõe o Design System da Base de Conhecimento CEFOR/Ifes, suas camadas, e como ele se relaciona com os 11 pilares do projeto.
 
 ---
 
@@ -243,4 +243,4 @@ Os 6 pilares do DS não podem ser especificados isoladamente — são interdepen
 
 *Documento criado em: 2026-04-07*
 *Versão: 0.1 — Escopo inicial, pré-benchmarking*
-*Projeto: Base de Conhecimento CEFOR/IFes — Reformulação*
+*Projeto: Base de Conhecimento CEFOR/Ifes — Reformulação*

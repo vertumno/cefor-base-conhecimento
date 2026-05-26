@@ -1,10 +1,10 @@
-# Projeto -- Base de Conhecimento CEFOR/IFes
+# Projeto -- Base de Conhecimento CEFOR/Ifes
 
 Fonte canonica para identidade, equipe, premissas e plataforma.
 
 ## Visao
 
-Criar uma nova Base de Conhecimento muito bem estruturada, bonita, com experiencia de leitura excelente, extremamente util e funcional para profissionais de EaD do IFes.
+Criar uma nova Base de Conhecimento muito bem estruturada, bonita, com experiencia de leitura excelente, extremamente util e funcional para profissionais de EaD do Ifes.
 
 ## Proposito-Farol
 

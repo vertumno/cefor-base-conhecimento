@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "documento": "Vocabulário Controlado — Base de Conhecimento CEFOR/IFes",
+    "documento": "Vocabulário Controlado — Base de Conhecimento CEFOR/Ifes",
     "camada": "3 — Vocabulário Controlado",
     "versao": "1.1",
     "status": "DRAFT — arquitetura + Eixo 2 (6 categorias) + Eixo 3 (25 tópicos) completos; categorias de termos Moodle/pedagógicos a preencher com Rute e Juliana",
@@ -16,9 +16,9 @@
     "referencias_canonicas": [
       "_config/decisoes.md",
       "stages/01-fundacoes/output/padroes-composicao.md",
-      "stages/01-fundacoes/drafts/prototipo-artigo.html",
-      "stages/01-fundacoes/drafts/exploracao-pagina-trilha.html",
-      "stages/01-fundacoes/drafts/exploracao-pagina-percurso.html"
+      "stages/02-design-system/drafts/prototipos-paginas/prototipo-artigo.html",
+      "stages/02-design-system/drafts/prototipos-paginas/exploracao-pagina-trilha.html",
+      "stages/02-design-system/drafts/prototipos-paginas/exploracao-pagina-percurso.html"
     ]
   },
 
@@ -52,7 +52,7 @@
           "termo_preferido": "Base de Conhecimento",
           "sinonimos_aceitos": ["Base", "Base CEFOR"],
           "sinonimos_rejeitados": ["Portal", "Site", "Knowledge Base", "KB", "Wiki"],
-          "definicao": "Plataforma editorial do CEFOR/IFes que reúne artigos, trilhas e percursos sobre o uso pedagógico e técnico do Moodle institucional e temas correlatos.",
+          "definicao": "Plataforma editorial do CEFOR/Ifes que reúne artigos, trilhas e percursos sobre o uso pedagógico e técnico do Moodle institucional e temas correlatos.",
           "contexto_uso": "Usar 'Base de Conhecimento' em primeira menção formal; 'Base' em referências subsequentes dentro do mesmo artigo. Nunca 'site' ou 'portal' — esses termos sugerem outras categorias de produto.",
           "termo_moodle": null,
           "termo_mec": null,

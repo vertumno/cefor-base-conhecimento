@@ -488,7 +488,7 @@ Confirmado:
 - **Versão do Moodle:** **NÃO** será exibida como metadado fixo no artigo. (A versão pode aparecer no texto quando relevante para o conteúdo, mas não como metadado de cabeçalho — evita poluir e marcar artigos como datados rapidamente.)
 - **Tipo / Categoria / Tags:** **decisão deferida** para o trabalho de **Taxonomia da Fase 1**, junto com o desenho do template de artigo. A exibição (mostrar/não, onde, como) será resolvida no draft de proposta de taxonomia + interface do artigo.
 
-> Esta decisão será reaberta no fechamento da Fase 1 — Taxonomia, quando a proposta de arquitetura taxonômica e o layout do artigo estiverem maduros. O draft `stages/01-fundacoes/drafts/proposta-taxonomia-e-interface-artigo.md` traz a análise técnica e a proposta inicial.
+> Esta decisão será reaberta no fechamento da Fase 1 — Taxonomia, quando a proposta de arquitetura taxonômica e o layout do artigo estiverem maduros. O draft `stages/02-design-system/drafts/prototipos-paginas/proposta-taxonomia-e-interface-artigo.md` traz a análise técnica e a proposta inicial.
 
 ---
 
@@ -547,12 +547,25 @@ Confirmado:
 
 Toda a lista acima é escopo negativo confirmado. Qualquer pedido de inclusão de funcionalidade dessa lista durante as Fases 1-5 dispara uma reavaliação formal de escopo (não basta "encaixar"). Esse é o anteparo contra o risco de paralisia por ambição apontado pela análise estratégica.
 
+### Anexo 2026-05-26 — Componentes editoriais do artigo deferidos para V3
+
+Adendo formal após revisão da masthead do `prototipo-artigo.html`. Componentes prototipados a partir do Padrão 4.1 (Artigo encadeável, `padroes-composicao.md`) que **não entrarão em nenhum artigo da V1**:
+
+| Componente | Onde estava | Por que sai da V1 | Quando reavaliar |
+|---|---|---|---|
+| **Entry-block** (pré-requisitos linkados + objetivo, no topo do artigo) | Antes do `<h2 id="contexto">` no `prototipo-artigo.html` | Pré-requisitos serão tratados editorialmente no parágrafo de abertura quando relevantes; objetivo já vive implicitamente no subtítulo. Adicionar bloco visual duplica informação. | **V3** — só voltar se métricas de Fase 5 mostrarem alto bounce em tutoriais por falta de contexto de pré-requisitos. |
+| **Outcome-block** (o que você sabe fazer agora + próximos caminhos, no fim do artigo) | Após a última `<h2>` antes do `article-foot` | Coberto pelo **box de trilha multi-trilha** (Decisão 30) na sidebar + **artigos relacionados** obrigatórios no rodapé (Decisão 9 + 24). Adicionar outcome-block sobrepõe função. | **V3** — só voltar se "artigos relacionados" não funcionarem como ponte para o próximo artigo da trilha, medido via clickthrough na V1. |
+
+**Origem:** Elton, 2026-05-26, durante refinamento da masthead. Snapshot pré-remoção: `stages/02-design-system/drafts/prototipos-paginas/historico/prototipo-artigo-2026-05-26.html`.
+
+**Como aplicar:** Pedidos para recriar pré-requisitos no topo ou "o que você sabe fazer" no rodapé disparam reavaliação formal — não basta reativar o componente. Memória interna do projeto: `memory/backlog_v3.md`.
+
 ---
 
 ## Decisões da Fase 1 — Reunião de validação (2026-05-14)
 
 > Participantes: Elton Vinicius, Marquito (Marcos Vinícius Forecchi Accioly), Juliana Cristina da Silva Cassaro, Rute (Rutinelli Fávero)
-> Artefatos validados: `stages/01-fundacoes/drafts/proposta-revisao-interativa.html` e `stages/01-fundacoes/drafts/prototipo-artigo.html`
+> Artefatos validados: `stages/02-design-system/drafts/prototipos-paginas/proposta-revisao-interativa.html` e `stages/02-design-system/drafts/prototipos-paginas/prototipo-artigo.html`
 > Fonte canônica: `stages/01-fundacoes/reunioes/revisao-taxonomia-2026-05-14.json`
 
 ---
@@ -655,11 +668,11 @@ Analogia validada por Marquito: *"É como um parque nacional — o percurso é o
 
 ```
 CASSARO, Juliana. Configurando o livro de notas do Moodle.
-Base de Conhecimento CEFOR/IFes, 2026. Revisado em 12 mai. 2026.
+Base de Conhecimento CEFOR/Ifes, 2026. Revisado em 12 mai. 2026.
 ```
 
 **Estrutura:**
-`SOBRENOME, Nome. Título do artigo. Base de Conhecimento CEFOR/IFes, [ano de publicação]. Revisado em [data da última revisão].`
+`SOBRENOME, Nome. Título do artigo. Base de Conhecimento CEFOR/Ifes, [ano de publicação]. Revisado em [data da última revisão].`
 
 **Regras:**
 - O campo `Revisado em` usa a data de última revisão do metadado interno (não exibida no cabeçalho, mas presente no banco de dados — ver Decisão 14).
@@ -692,7 +705,7 @@ Base de Conhecimento CEFOR/IFes, 2026. Revisado em 12 mai. 2026.
 
 **Resolução da equipe (2026-05-14):** ✅ **APROVADO**
 
-- **`stages/01-fundacoes/drafts/prototipo-artigo.html`** é a referência canônica da interface do artigo.
+- **`stages/02-design-system/drafts/prototipos-paginas/prototipo-artigo.html`** é a referência canônica da interface do artigo.
 - Quaisquer refinamentos de interface partem dele — não da proposta de revisão interativa.
 - Próximos refinamentos identificados na reunião:
   - Box de trilha: fechar automaticamente ao rolar (com cuidado para não travar se o usuário rola dentro do box)
@@ -829,7 +842,7 @@ Estrutura confirmada do rodapé:
 
 ## Decisão 30 — Apresentação visual de múltiplas trilhas no artigo: acordeão
 
-**O que decidir:** Quando um artigo está em N trilhas, como apresentar isso no sidebar do artigo? Três sub-opções foram exploradas em `stages/01-fundacoes/drafts/exploracao-multiplas-trilhas.html`: abas (A.1), acordeão (A.2) e cards com prev/next compactos (A.3).
+**O que decidir:** Quando um artigo está em N trilhas, como apresentar isso no sidebar do artigo? Três sub-opções foram exploradas em `stages/02-design-system/drafts/prototipos-paginas/exploracao-multiplas-trilhas.html`: abas (A.1), acordeão (A.2) e cards com prev/next compactos (A.3).
 
 🔵 **Contexto:** Decorrência direta da Decisão 28 (box sempre visível). Com vínculo estrutural e múltiplas trilhas possíveis, o componente precisa lidar com 1 a N trilhas de forma elegante e escalável.
 
@@ -873,7 +886,7 @@ Estrutura confirmada do rodapé:
 
 **Resolução (2026-05-19):** ✅ **APROVADO — Modelo de 3 superfícies**
 
-**Referência canônica:** `stages/01-fundacoes/drafts/exploracao-pagina-percurso.html`
+**Referência canônica:** `stages/02-design-system/drafts/prototipos-paginas/exploracao-pagina-percurso.html`
 
 ### Hierarquia de cores
 
@@ -979,9 +992,9 @@ Quando uma trilha pertence a um percurso, aparece um chip dourado no topo do aco
 | **17** | **Taxonomia em 4 eixos** *(Fase 1 — 2026-05-14)* | ✅ **Aprovado** | Tipo (1) + Categoria (1) + Tópico (2-4) + Trilha (0+). Tags livres abolidas. 20 categorias → 6. |
 | **18** | **Nova arquitetura Trilha/Percurso** *(Fase 1 — 2026-05-14)* | 🔧 **Ajustado** | Trilha = jornada atômica de artigos. Percurso = conjunto de trilhas. Um artigo pode estar em múltiplas trilhas. |
 | **19** | **Ordem dos blocos multimodais** *(Fase 1 — 2026-05-14)* | ✅ **Aprovado** | **1. Libras · 2. Ouvir · 3. Outros formatos** |
-| **20** | **Formato da citação ABNT** *(Fase 1 — 2026-05-14)* | ✅ **Aprovado** | `SOBRENOME, Nome. Título. Base de Conhecimento CEFOR/IFes, [ano]. Revisado em [data].` |
+| **20** | **Formato da citação ABNT** *(Fase 1 — 2026-05-14)* | ✅ **Aprovado** | `SOBRENOME, Nome. Título. Base de Conhecimento CEFOR/Ifes, [ano]. Revisado em [data].` |
 | **21** | **Política de depreciação** *(Fase 1 — 2026-05-14)* | 🔧 **Ajustado** | **12 meses** (não 6); badge visível **apenas para admins**, não público |
-| **22** | **prototipo-artigo.html como referência** *(Fase 1 — 2026-05-14)* | ✅ **Aprovado** | `stages/01-fundacoes/drafts/prototipo-artigo.html` é a referência canônica da interface |
+| **22** | **prototipo-artigo.html como referência** *(Fase 1 — 2026-05-14)* | ✅ **Aprovado** | `stages/02-design-system/drafts/prototipos-paginas/prototipo-artigo.html` é a referência canônica da interface |
 | **23** | **Cabeçalho do artigo** *(Fase 1 — 2026-05-14)* | ✅ **Aprovado** | Categoria · Tipo → H1 → Subtítulo → Autor + Tempo → Multimodal → Índice |
 | **24** | **Rodapé do artigo** *(Fase 1 — 2026-05-14)* | ✅ **Aprovado** | Artigos relacionados → Feedback → ABNT → Box de trilha (se aplicável) |
 | **25** | **Tamanho da trilha** *(Fase 1 — 2026-05-19)* | ✅ **Aprovado** | Mínimo 3 artigos. **Sem máximo.** Alerta de saúde acima de ~10 (revisão pedagógica) |
@@ -1054,4 +1067,4 @@ A **Fase 0 está oficialmente concluída**. A **Fase 1 — Fundações** está e
 *Documento criado em: 2026-05-07*
 *Sessões de decisão: 2026-05-08 · 2026-05-13 · 2026-05-14 · 2026-05-19*
 *Participantes: Elton Vinicius, Juliana Cassaro, Marcos Vinícius Forecchi Accioly (Marquito), Rutinelli Fávero (Rute)*
-*Projeto: Base de Conhecimento CEFOR/IFes — Reformulação*
+*Projeto: Base de Conhecimento CEFOR/Ifes — Reformulação*

@@ -1,8 +1,8 @@
 ---
-name: Base de Conhecimento CEFOR/IFes
+name: Base de Conhecimento CEFOR/Ifes
 version: alpha
 description: >
-  Design System da Base de Conhecimento do CEFOR/IFes — plataforma pública de
+  Design System da Base de Conhecimento do CEFOR/Ifes — plataforma pública de
   formação em serviço para profissionais de EaD. Estética "papel editorial":
   fundo branco quente, tinta quase-preta, verde IFES como acento institucional
   e dourado reservado à camada de percurso. 100% sans-serif, acessível por
@@ -221,7 +221,7 @@ breakpoints:
 
 ## Overview
 
-A Base de Conhecimento do CEFOR/IFes é um **instrumento de formação em serviço** para profissionais de EaD do IFES — não um repositório, mas um espaço onde qualquer profissional resolve problemas com autonomia e se mantém atualizado (Decisão 1). O design precisa servir duas funções na mesma superfície: **consulta** ("preciso da resposta agora") e **aprendizagem contínua** ("quero evoluir").
+A Base de Conhecimento do CEFOR/Ifes é um **instrumento de formação em serviço** para profissionais de EaD do IFES — não um repositório, mas um espaço onde qualquer profissional resolve problemas com autonomia e se mantém atualizado (Decisão 1). O design precisa servir duas funções na mesma superfície: **consulta** ("preciso da resposta agora") e **aprendizagem contínua** ("quero evoluir").
 
 A linguagem visual é deliberadamente **editorial e sóbria** — "papel de qualidade". Fundo branco quente, tinta quase-preta, muito respiro, e cor usada com economia. A regra-mãe da identidade cromática: **cor narra hierarquia**. O leitor sabe em que nível está só pela cor — verde é trilha e ação institucional, dourado é exclusivamente percurso, e tudo que é classificação (categoria, tópico) fica em neutro. Cards são pouco delimitados (Decisão 7): separam-se por respiro e tipografia, não por contorno forte ou sombra pesada.
 
@@ -231,7 +231,7 @@ Três compromissos inegociáveis atravessam todos os tokens:
 2. **Acessibilidade por padrão** (Decisão 10) — WCAG 2.2 AA + e-MAG. Modo escuro, alto contraste e fonte para dislexia são tokens, não retoques. Por ser instituição pública federal, isso é cumprimento legal, não diferencial.
 3. **Tokens como fonte única de verdade** — todo valor visual vive como CSS custom property. Trocar de tema é trocar variáveis, nunca reescrever CSS. É o que torna a Fase 3 (WordPress) barata.
 
-> **Fonte canônica dos tokens:** `stages/02-design-system/drafts/kit-visual.html` (style guide vivo, interativo, com os modos claro/escuro/contraste demonstráveis). A interface de referência do artigo é `stages/01-fundacoes/drafts/prototipo-artigo.html` (Decisão 22). Este `design.md` é a destilação normativa dos dois para levar à implementação.
+> **Fonte canônica dos tokens:** `stages/02-design-system/drafts/kit-visual.html` (style guide vivo, interativo, com os modos claro/escuro/contraste demonstráveis). A interface de referência do artigo é `stages/02-design-system/drafts/prototipos-paginas/prototipo-artigo.html` (Decisão 22). Este `design.md` é a destilação normativa dos dois para levar à implementação.
 
 ## Colors
 
@@ -378,7 +378,7 @@ Passos numerados sobre linha contínua, com espaço para captura de tela e **che
 Dois botões com **texto literal**: **"Foi útil"** / **"Não foi útil"** (sem emoji). Ao marcar "Não foi útil", abre campo opcional "O que faltou?". Tom institucional.
 
 ### Rodapé do artigo — Decisões 20, 24, 32
-Ordem: **Artigos relacionados** (obrigatório em todo artigo, Decisão 9) → **Feedback** ("Foi útil/Não foi útil") → **Citação ABNT** automática no formato `SOBRENOME, Nome. Título. Base de Conhecimento CEFOR/IFes, [ano]. Revisado em [data].`
+Ordem: **Artigos relacionados** (obrigatório em todo artigo, Decisão 9) → **Feedback** ("Foi útil/Não foi útil") → **Citação ABNT** automática no formato `SOBRENOME, Nome. Título. Base de Conhecimento CEFOR/Ifes, [ano]. Revisado em [data].`
 
 ### Busca (Decisão 11)
 Modal central acionado por **Ctrl+K**, full-text, filtros por eixo de taxonomia, atalhos visíveis (ESC, setas, Enter), resultados agrupados por categoria. Resposta sintetizada por IA fica para a V2.
@@ -410,4 +410,4 @@ Flutuante na lateral, acessível por teclado: A-/A+ (escala de fonte via `--font
 
 ---
 
-> **Procedência:** Tokens espelham `stages/02-design-system/drafts/kit-visual.html`. Componentes e regras rastreiam as Decisões 1–32 de `_config/decisoes.md` e os Pilares 1, 2, 5, 6, 8, 9 de `_config/pilares.md`. Interface de referência: `stages/01-fundacoes/drafts/prototipo-artigo.html` (Decisão 22). Schema conforme spec `design.md` (google-labs-code), versão alpha.
+> **Procedência:** Tokens espelham `stages/02-design-system/drafts/kit-visual.html`. Componentes e regras rastreiam as Decisões 1–32 de `_config/decisoes.md` e os Pilares 1, 2, 5, 6, 8, 9 de `_config/pilares.md`. Interface de referência: `stages/02-design-system/drafts/prototipos-paginas/prototipo-artigo.html` (Decisão 22). Schema conforme spec `design.md` (google-labs-code), versão alpha.

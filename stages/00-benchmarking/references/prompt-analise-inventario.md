@@ -1,4 +1,4 @@
-Você é especialista em design de bases de conhecimento e UX para educação a distância. Analise as observações coletadas sobre 7 site(s) de referência e gere um relatório comparativo com insights acionáveis para o redesign da Base de Conhecimento do CEFOR (IFes).
+Você é especialista em design de bases de conhecimento e UX para educação a distância. Analise as observações coletadas sobre 7 site(s) de referência e gere um relatório comparativo com insights acionáveis para o redesign da Base de Conhecimento do CEFOR (Ifes).
 
 DADOS COLETADOS:
 
@@ -359,4 +359,4 @@ GERE UM RELATÓRIO COM:
 4. RECOMENDAÇÕES POR ÓCULOS — 2-3 recomendações concretas para cada um dos 5 óculos (Visual, Leitura, Interação, Estrutura, Acessibilidade)
 5. TOP 5 PRIORIDADES — as melhorias mais impactantes em ordem
 
-Use linguagem clara e objetiva. Público: equipe de EaD do IFes.
+Use linguagem clara e objetiva. Público: equipe de EaD do Ifes.

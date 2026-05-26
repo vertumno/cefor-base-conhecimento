@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Base de Conhecimento CEFOR/Ifes — Home (proposta)</title>
+<meta name="description" content="Proposta de Home da Base de Conhecimento CEFOR/Ifes. Aplica o design system da Fase 2 e a taxonomia da Fase 1 (4 eixos + Trilha/Percurso)." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lexend:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     HOME — Base CEFOR/Ifes (proposta v1, 2026-05-26)
+     Aplica design.md (Fase 2) + taxonomia.md (Fase 1)
+     - Inter 100% sans, paper-bege, verde IFES (trilha),
+       dourado (percurso), 6 categorias, 25 tópicos.
+     - Modos: claro (default) / escuro / alto contraste.
+     ============================================================ */
+  :root {
+    --bg: #ffffff;
+    --bg-2: #f7f5f1;
+    --bg-3: #efeae0;
+    --paper: #ffffff;
+    --ink: #14110d;
+    --ink-2: #4a4439;
+    --ink-3: #8a8273;
+    --line: #e7e3d8;
+    --line-2: #d4cdba;
+    --accent: #1f5142;
+    --accent-2: #2d6a4f;
+    --accent-soft: #e3ecdf;
+    --accent-deep: #143a30;
+    --gold: #b08544;
+    --gold-soft: #f3e7d0;
+    --gold-deep: #8c6a36;
+    --rose: #b3433a; --rose-soft: #f4dcd7;
+    --sun: #c98a1e;  --sun-soft: #f7e6c4;
+    --sky: #2c5e8f;  --sky-soft: #d9e7f3;
+    --violet: #7a5a9b; --violet-soft: #ece3f2;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-xl: 24px;
+    --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
+    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
+    --shadow-lg: 0 24px 48px -12px rgba(20,17,13,.12);
+  }
+  [data-theme="dark"] {
+    --bg: #0e0c0a; --bg-2: #16130f; --bg-3: #1e1a14; --paper: #1a1612;
+    --ink: #f4f1ea; --ink-2: #c9c2b3; --ink-3: #8a8273;
+    --line: #2a251e; --line-2: #3a342a;
+    --accent: #6cb89a; --accent-2: #87cdb0; --accent-soft: #19251f; --accent-deep: #c8e8d8;
+    --gold-soft: #2e2516; --gold-deep: #d9a955;
+  }
+  [data-contrast="high"] {
+    --bg:#000; --bg-2:#0a0a0a; --bg-3:#141414; --paper:#000;
+    --ink:#ffff00; --ink-2:#fff; --ink-3:#c0c0c0;
+    --line:#ffff00; --line-2:#fff;
+    --accent:#00ff88; --accent-2:#66ffaa; --accent-soft:#003322; --accent-deep:#00ff88;
+    --gold:#ffff00; --gold-soft:#1a1a00; --gold-deep:#ffff00;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:var(--accent); text-decoration:none; }
+  a:hover{ text-decoration:underline; text-underline-offset:3px; }
+  :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
+
+  /* ---------- Skip link ---------- */
+  .skip{ position:absolute; left:-9999px; top:8px; background:var(--ink); color:var(--bg); padding:8px 12px; border-radius:6px; z-index:100; }
+  .skip:focus{ left:8px; }
+
+  /* ---------- Header ---------- */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: #1f5142;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .site-header a { text-decoration: none; }
+  [data-theme="dark"] .site-header { background: #143a30; }
+  .header-inner {
+    max-width: 1280px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; color: #ffffff; }
+  .brand:hover { text-decoration: none; }
+  .brand-mark {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: #ffffff; color: #1f5142;
+    display: grid; place-items: center; font-weight: 800; letter-spacing: -.02em;
+    box-shadow: var(--shadow-sm);
+  }
+  [data-theme="dark"] .brand-mark { color: #143a30; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .brand-text strong { font-size: .95rem; letter-spacing: -.01em; color: #ffffff; }
+  .brand-text span { font-size: .75rem; color: #a8c3ba; }
+
+  .nav { display: flex; gap: 6px; margin-left: auto; }
+  .nav a {
+    color: rgba(255, 255, 255, 0.85); font-size: .9rem; font-weight: 500;
+    padding: 8px 12px; border-radius: 8px;
+  }
+  .nav a:hover { background: rgba(255, 255, 255, 0.15); text-decoration: none; color: #ffffff; }
+
+  .header-search { position: relative; max-width: 280px; flex: 1; }
+  .header-search input {
+    width: 100%; padding: 9px 12px 9px 36px; font: inherit; font-size: .9rem;
+    background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2); color: #ffffff;
+    border-radius: 8px;
+  }
+  .header-search input::placeholder { color: rgba(255, 255, 255, 0.6); }
+  .header-search svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: rgba(255, 255, 255, 0.7); }
+
+  .a11y-toggles { display: flex; gap: 4px; }
+  .icon-btn {
+    width: 36px; height: 36px; display: grid; place-items: center;
+    background: transparent; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px;
+    color: rgba(255, 255, 255, 0.85); cursor: pointer;
+  }
+  .icon-btn:hover { background: rgba(255, 255, 255, 0.15); color: #ffffff; }
+  .icon-btn[aria-pressed="true"] { background: #ffffff; border-color: #ffffff; color: #1f5142; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 0%, var(--accent-soft) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 95% 10%, var(--gold-soft) 0%, transparent 55%),
+      var(--bg-2);
+    border-bottom:1px solid var(--line);
+    padding:88px 24px 96px;
+  }
+  .hero-inner{ max-width:920px; margin:0 auto; text-align:center; }
+  .hero-kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:6px 14px; border-radius:999px;
+    background:var(--paper); border:1px solid var(--line);
+    font-size:.8rem; color:var(--ink-2); font-weight:500;
+    box-shadow:var(--shadow-sm);
+    margin-bottom:24px;
+  }
+  .hero-kicker .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); }
+  .hero h1{
+    font-size:clamp(2.2rem, 5vw, 3.4rem);
+    line-height:1.05; letter-spacing:-.02em;
+    font-weight:800; margin:0 0 18px;
+  }
+  .hero h1 em{ font-style:normal; color:var(--accent); }
+  .hero-sub{
+    font-size:1.15rem; color:var(--ink-2); max-width:680px;
+    margin:0 auto 36px; line-height:1.55;
+  }
+
+  /* Big search */
+  .big-search{
+    display:flex; align-items:center; gap:0;
+    background:var(--paper); border:1px solid var(--line-2);
+    border-radius:14px; box-shadow:var(--shadow-md);
+    padding:6px; max-width:680px; margin:0 auto;
+  }
+  .big-search:focus-within{ border-color:var(--accent); box-shadow:0 0 0 4px var(--accent-soft); }
+  .big-search svg{ margin:0 12px; color:var(--ink-3); flex-shrink:0; }
+  .big-search input{
+    flex:1; border:none; background:transparent; color:var(--ink);
+    padding:14px 0; font:inherit; font-size:1.05rem;
+  }
+  .big-search input:focus{ outline:none; }
+  .big-search button{
+    background:var(--accent); color:#fff; border:none;
+    padding:12px 22px; font:inherit; font-weight:600; font-size:.95rem;
+    border-radius:10px; cursor:pointer;
+  }
+  .big-search button:hover{ background:var(--accent-2); }
+
+  .quick-links{ margin-top:18px; display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
+  .quick-links span{ font-size:.85rem; color:var(--ink-3); margin-right:4px; align-self:center; }
+  .quick-links a{
+    font-size:.85rem; padding:5px 12px; border-radius:999px;
+    background:var(--paper); border:1px solid var(--line); color:var(--ink-2);
+  }
+  .quick-links a:hover{ border-color:var(--accent); color:var(--accent); text-decoration:none; }
+
+  /* ---------- Sections ---------- */
+  .section{ padding:72px 24px; }
+  .section-inner{ max-width:1200px; margin:0 auto; }
+  .section-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:36px; flex-wrap:wrap; }
+  .section-head .eyebrow{
+    font-size:.78rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--ink-3); margin-bottom:8px;
+  }
+  .section-head h2{
+    font-size:clamp(1.6rem, 3vw, 2.1rem); margin:0; letter-spacing:-.015em;
+    line-height:1.15; font-weight:700;
+  }
+  .section-head p.lede{ color:var(--ink-2); margin:8px 0 0; max-width:620px; }
+  .section-head a.see-all{ font-size:.9rem; font-weight:500; white-space:nowrap; }
+  .section-head a.see-all::after{ content:" →"; }
+
+  /* ---------- "Por onde começar" — 3 portas ---------- */
+  .doors{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .door{
+    background:var(--paper); border:1px solid var(--line);
+    border-radius:var(--r-lg); padding:28px;
+    display:flex; flex-direction:column; gap:14px;
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+  .door:hover{ transform:translateY(-2px); box-shadow:var(--shadow-md); border-color:var(--line-2); }
+  .door .door-icon{
+    width:44px; height:44px; border-radius:10px;
+    display:grid; place-items:center;
+    background:var(--bg-2); color:var(--ink);
+  }
+  .door h3{ margin:0; font-size:1.2rem; letter-spacing:-.01em; }
+  .door p{ margin:0; color:var(--ink-2); font-size:.95rem; line-height:1.55; }
+  .door .door-cta{
+    margin-top:auto; padding-top:8px;
+    font-weight:600; font-size:.9rem; color:var(--accent);
+  }
+  .door--trail{ border-top:4px solid var(--accent); }
+  .door--trail .door-icon{ background:var(--accent-soft); color:var(--accent-deep); }
+  .door--journey{ border-top:4px solid var(--gold); }
+  .door--journey .door-icon{ background:var(--gold-soft); color:var(--gold-deep); }
+  .door--journey .door-cta{ color:var(--gold-deep); }
+  .door--search{ border-top:4px solid var(--ink); }
+  .door--all{ border-top:4px solid var(--ink-3); }
+  .door--all .door-icon{ background:var(--bg-3); color:var(--ink-2); }
+
+  /* ---------- Categorias (6) ---------- */
+  .cats{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .cat{
+    display:flex; gap:16px; padding:20px;
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--r-md);
+    transition:border-color .15s, transform .15s, box-shadow .15s;
+  }
+  .cat:hover{ border-color:var(--accent); transform:translateY(-1px); box-shadow:var(--shadow-sm); text-decoration:none; }
+  .cat-emoji{
+    width:48px; height:48px; flex-shrink:0;
+    background:var(--bg-2); border-radius:10px;
+    display:grid; place-items:center; font-size:1.4rem;
+  }
+  .cat-body strong{ display:block; color:var(--ink); font-size:1rem; margin-bottom:3px; letter-spacing:-.005em; }
+  .cat-body span{ display:block; color:var(--ink-3); font-size:.83rem; }
+  .cat-count{ margin-left:auto; align-self:flex-start; font-size:.75rem; font-weight:600; color:var(--ink-3); }
+
+  /* ---------- Trilhas em destaque ---------- */
+  .trails{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .trail{
+    background:var(--paper); border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    border-radius:var(--r-md); padding:22px;
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .trail:hover{ box-shadow:var(--shadow-md); border-color:var(--line-2); border-left-color:var(--accent); text-decoration:none; }
+  .trail .trail-tag{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:.72rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--accent-deep); background:var(--accent-soft);
+    padding:4px 9px; border-radius:999px; align-self:flex-start;
+  }
+  .trail h3{ margin:0; font-size:1.15rem; letter-spacing:-.01em; color:var(--ink); }
+  .trail p{ margin:0; color:var(--ink-2); font-size:.92rem; line-height:1.5; }
+  .trail-meta{
+    margin-top:auto; padding-top:8px; display:flex; gap:14px;
+    font-size:.82rem; color:var(--ink-3);
+    border-top:1px dashed var(--line);
+  }
+  .trail-meta strong{ color:var(--ink); font-weight:600; }
+
+  /* ---------- Percurso (dourado, largo) ---------- */
+  .journey{
+    background:
+      linear-gradient(135deg, var(--gold-soft) 0%, var(--bg-2) 70%);
+    border:1px solid var(--gold);
+    border-radius:var(--r-lg);
+    padding:36px;
+    display:grid; grid-template-columns:1.4fr 1fr; gap:32px;
+    align-items:center;
+  }
+  .journey .journey-kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--gold-deep); margin-bottom:14px;
+  }
+  .journey .journey-kicker::before{
+    content:""; width:18px; height:2px; background:var(--gold-deep);
+  }
+  .journey h3{ font-size:1.8rem; margin:0 0 12px; letter-spacing:-.015em; line-height:1.15; }
+  .journey p{ color:var(--ink-2); margin:0 0 20px; font-size:1rem; }
+  .journey-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--gold-deep); color:#fff;
+    padding:11px 22px; border-radius:10px;
+    font-weight:600; font-size:.95rem;
+  }
+  .journey-btn:hover{ background:#6f5429; text-decoration:none; }
+  .journey-routes{ display:flex; flex-direction:column; gap:10px; }
+  .journey-route{
+    background:var(--paper); border:1px solid var(--gold);
+    border-left:4px solid var(--gold-deep);
+    padding:12px 14px; border-radius:8px;
+    font-size:.88rem; color:var(--ink);
+  }
+  .journey-route strong{ display:block; font-size:.74rem; letter-spacing:.06em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:2px; }
+
+  /* ---------- Recentes ---------- */
+  .recent-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .article-card{
+    display:flex; flex-direction:column; gap:8px;
+    padding:18px; background:var(--paper);
+    border:1px solid var(--line); border-radius:var(--r-md);
+    color:var(--ink);
+  }
+  .article-card:hover{ border-color:var(--line-2); box-shadow:var(--shadow-sm); text-decoration:none; }
+  .article-card .kicker{
+    font-size:.72rem; font-weight:600; letter-spacing:.05em;
+    color:var(--ink-3); text-transform:uppercase;
+  }
+  .article-card .kicker .sep{ margin:0 6px; opacity:.5; }
+  .article-card h4{ margin:0; font-size:1rem; line-height:1.3; letter-spacing:-.005em; font-weight:600; }
+  .article-card .meta{
+    margin-top:auto; padding-top:8px;
+    display:flex; gap:10px; font-size:.78rem; color:var(--ink-3);
+  }
+  .type-badge{
+    display:inline-flex; align-items:center; gap:5px;
+    font-size:.72rem; font-weight:600;
+    padding:3px 8px; border-radius:999px;
+    background:var(--bg-2); color:var(--ink-2);
+    align-self:flex-start;
+  }
+  .type-badge.tutorial{ background:var(--sky-soft); color:var(--sky); }
+  .type-badge.referencia{ background:var(--bg-3); color:var(--ink-2); }
+  .type-badge.conceitual{ background:var(--violet-soft); color:var(--violet); }
+  .type-badge.problema{ background:var(--rose-soft); color:var(--rose); }
+  .type-badge.recurso{ background:var(--sun-soft); color:#8b5e0e; }
+
+  /* ---------- Tópicos cloud ---------- */
+  .topics{
+    background:var(--bg-2);
+    padding:32px;
+    border-radius:var(--r-lg);
+    border:1px solid var(--line);
+  }
+  .topic-cloud{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+  .topic{
+    padding:7px 14px; border-radius:999px;
+    background:var(--paper); border:1px solid var(--line);
+    font-size:.88rem; color:var(--ink-2);
+  }
+  .topic:hover{ border-color:var(--accent); color:var(--accent); text-decoration:none; }
+  .topic strong{ color:var(--ink-3); font-weight:500; margin-left:4px; font-size:.78rem; }
+
+  /* ---------- Footer ---------- */
+  .site-footer{
+    margin-top:72px;
+    background:var(--ink); color:#d4cdba;
+    padding:48px 24px 32px;
+  }
+  [data-contrast="high"] .site-footer{ background:#000; border-top:2px solid var(--ink); }
+  .footer-inner{ max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:32px; }
+  .footer-inner h5{ font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:#fff; margin:0 0 14px; }
+  .footer-inner a{ color:#d4cdba; display:block; font-size:.88rem; padding:3px 0; }
+  .footer-inner a:hover{ color:#fff; }
+  .footer-bottom{
+    max-width:1200px; margin:32px auto 0; padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.1);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    font-size:.82rem; color:#8a8273;
+  }
+
+  /* ---------- Responsividade ---------- */
+  @media (max-width: 960px){
+    .doors, .cats, .trails{ grid-template-columns:1fr 1fr; }
+    .recent-grid{ grid-template-columns:1fr 1fr; }
+    .journey{ grid-template-columns:1fr; }
+    .header-search{ display:none; }
+    .nav{ display:none; }
+  }
+  @media (max-width: 620px){
+    .doors, .cats, .trails, .recent-grid{ grid-template-columns:1fr; }
+    .hero{ padding:56px 20px 64px; }
+    .section{ padding:48px 20px; }
+    .footer-inner{ grid-template-columns:1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="home-proposta.html" class="brand">
+      <span class="brand-mark">C</span>
+      <span class="brand-text">
+        <strong>Base de Conhecimento</strong>
+        <span>CEFOR · Ifes</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="exploracao-pagina-percurso.html">Percursos</a>
+      <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
+      <a href="prototipo-artigo.html">Todos os artigos</a>
+    </nav>
+    <form class="header-search" role="search" action="/buscar" method="get">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar"/>
+    </form>
+    <div class="a11y-toggles" role="group" aria-label="Preferências de leitura">
+      <button class="icon-btn" id="btn-theme" aria-label="Alternar modo escuro" aria-pressed="false" title="Modo escuro">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn" id="btn-contrast" aria-label="Alto contraste" aria-pressed="false" title="Alto contraste">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/><path d="M12 3a9 9 0 0 1 0 18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============================================================
+       HERO + BUSCA
+       ============================================================ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <h1 id="hero-title">Aprenda, consulte, ensine.<br/>Tudo o que o CEFOR sabe, em um <em>só lugar</em>.</h1>
+      <p class="hero-sub">Tutoriais, referências e trilhas práticas sobre Moodle, acessibilidade, IA na educação e padrão visual — produzidos pelo time do CEFOR/Ifes.</p>
+
+      <form class="big-search" role="search" action="/buscar" method="get">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" name="q" placeholder="Como configurar o livro de notas? Acessibilidade em vídeo? H5P?" aria-label="Buscar na base de conhecimento"/>
+        <button type="submit">Buscar</button>
+      </form>
+
+      <div class="quick-links" aria-label="Buscas frequentes">
+        <span>Buscas frequentes:</span>
+        <a href="/buscar?q=questionario">Questionário</a>
+        <a href="/buscar?q=livro+de+notas">Livro de Notas</a>
+        <a href="/buscar?q=h5p">H5P</a>
+        <a href="/buscar?q=ia+generativa">IA Generativa</a>
+        <a href="/buscar?q=libras">Libras</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3 PORTAS DE ENTRADA — busca / trilha / percurso
+       ============================================================ -->
+  <section class="section" aria-labelledby="doors-title">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Por onde começar</p>
+          <h2 id="doors-title">Três formas de usar a Base</h2>
+          <p class="lede">Cada artigo funciona sozinho — mas você também pode seguir uma sequência didática (trilha) ou um caminho formativo maior (percurso).</p>
+        </div>
+      </div>
+
+      <div class="doors">
+        <a class="door door--search" href="/buscar">
+          <div class="door-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          </div>
+          <h3>Resolver agora</h3>
+          <p>Sei o que preciso. Quero a resposta direta — um tutorial, uma referência, a solução de um problema específico.</p>
+          <span class="door-cta">Buscar artigos</span>
+        </a>
+
+        <a class="door door--trail" href="/trilhas">
+          <div class="door-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+          </div>
+          <h3>Aprender uma habilidade</h3>
+          <p>Quero uma micro-jornada com começo, meio e fim — por exemplo, dominar avaliação no Moodle ou tornar meu curso acessível.</p>
+          <span class="door-cta">Ver trilhas</span>
+        </a>
+
+        <a class="door door--journey" href="/percursos">
+          <div class="door-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Percorrer uma formação</h3>
+          <p>Quero um caminho formativo amplo, com várias trilhas combinadas — por exemplo, dominar o Moodle como professor.</p>
+          <span class="door-cta">Ver percursos</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6 CATEGORIAS — Eixo 2 da taxonomia
+       ============================================================ -->
+  <section class="section" style="background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);" aria-labelledby="cats-title">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Categoria</p>
+          <h2 id="cats-title">Explorar por categoria</h2>
+          <p class="lede">Seis grandes categorias cobrem todo o acervo. Cada artigo mora em exatamente uma delas.</p>
+        </div>
+        <a href="/categorias" class="see-all">Ver todas</a>
+      </div>
+
+      <div class="cats">
+        <a class="cat" href="/gestao-moodle">
+          <div class="cat-emoji" aria-hidden="true">⚙️</div>
+          <div class="cat-body">
+            <strong>Gestão e Operação do Moodle</strong>
+            <span>Configuração de curso, matrículas, livro de notas, backup, Moodle Codes</span>
+          </div>
+          <span class="cat-count">48</span>
+        </a>
+        <a class="cat" href="/ferramentas">
+          <div class="cat-emoji" aria-hidden="true">🧰</div>
+          <div class="cat-body">
+            <strong>Ferramentas e Recursos</strong>
+            <span>Atividades do Moodle, H5P, ferramentas externas, GPTs customizados</span>
+          </div>
+          <span class="cat-count">36</span>
+        </a>
+        <a class="cat" href="/pedagogia">
+          <div class="cat-emoji" aria-hidden="true">🎓</div>
+          <div class="cat-body">
+            <strong>Pedagogia e Planejamento</strong>
+            <span>Design educacional, fundamentos pedagógicos, planejamento</span>
+          </div>
+          <span class="cat-count">18</span>
+        </a>
+        <a class="cat" href="/acessibilidade">
+          <div class="cat-emoji" aria-hidden="true">♿</div>
+          <div class="cat-body">
+            <strong>Acessibilidade</strong>
+            <span>Libras, audiodescrição, inclusão, desenho universal</span>
+          </div>
+          <span class="cat-count">12</span>
+        </a>
+        <a class="cat" href="/conduta">
+          <div class="cat-emoji" aria-hidden="true">🛡️</div>
+          <div class="cat-body">
+            <strong>Conduta e Conformidade</strong>
+            <span>Direitos autorais, segurança digital, netiqueta, procedimentos</span>
+          </div>
+          <span class="cat-count">9</span>
+        </a>
+        <a class="cat" href="/identidade">
+          <div class="cat-emoji" aria-hidden="true">🎨</div>
+          <div class="cat-body">
+            <strong>Identidade</strong>
+            <span>Padrão visual CEFOR, MOOC, ReLiCefor, templates institucionais</span>
+          </div>
+          <span class="cat-count">8</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TRILHAS EM DESTAQUE — verde institucional
+       ============================================================ -->
+  <section class="section" aria-labelledby="trails-title">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Trilhas · sequência didática</p>
+          <h2 id="trails-title">Trilhas em destaque</h2>
+          <p class="lede">Micro-jornadas curadas pelo time pedagógico. Começo, meio e fim reais — mas cada artigo também funciona sozinho.</p>
+        </div>
+        <a href="/trilhas" class="see-all">Todas as trilhas</a>
+      </div>
+
+      <div class="trails">
+        <a class="trail" href="/trilhas/iniciando-no-moodle">
+          <span class="trail-tag">Trilha · Iniciante</span>
+          <h3>Iniciando no Moodle</h3>
+          <p>O essencial para configurar seu primeiro curso, matricular alunos e estruturar o ambiente.</p>
+          <div class="trail-meta"><span><strong>12</strong> artigos</span><span>~1h40 de leitura</span></div>
+        </a>
+        <a class="trail" href="/trilhas/avaliacao-no-moodle">
+          <span class="trail-tag">Trilha · Intermediário</span>
+          <h3>Avaliação no Moodle</h3>
+          <p>De questionários e banco de questões ao livro de notas, com configurações de acessibilidade.</p>
+          <div class="trail-meta"><span><strong>15</strong> artigos</span><span>~2h10 de leitura</span></div>
+        </a>
+        <a class="trail" href="/trilhas/acessibilidade-no-ava">
+          <span class="trail-tag">Trilha · Transversal</span>
+          <h3>Acessibilidade no AVA</h3>
+          <p>Como aplicar princípios de inclusão e desenho universal em cada elemento do curso.</p>
+          <div class="trail-meta"><span><strong>7</strong> artigos</span><span>~55 min de leitura</span></div>
+        </a>
+        <a class="trail" href="/trilhas/ia-para-professores">
+          <span class="trail-tag">Trilha · Novo</span>
+          <h3>IA para Professores</h3>
+          <p>Como usar IA generativa e GPTs customizados no planejamento, na avaliação e na correção.</p>
+          <div class="trail-meta"><span><strong>8</strong> artigos</span><span>~1h15 de leitura</span></div>
+        </a>
+        <a class="trail" href="/trilhas/padrao-visual-cefor">
+          <span class="trail-tag">Trilha · Identidade</span>
+          <h3>Padrão Visual CEFOR</h3>
+          <p>Aplique a identidade visual institucional em materiais, slides e cursos no Moodle.</p>
+          <div class="trail-meta"><span><strong>5</strong> artigos</span><span>~40 min de leitura</span></div>
+        </a>
+        <a class="trail" href="/trilhas" style="background:var(--bg-2); border-style:dashed; border-left-style:solid; align-items:center; justify-content:center; text-align:center;">
+          <span class="trail-tag" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">Catálogo completo</span>
+          <h3 style="color:var(--accent);">Explorar todas as trilhas</h3>
+          <p>Veja todas as trilhas disponíveis e em construção.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PERCURSO EM DESTAQUE — dourado, banner largo
+       ============================================================ -->
+  <section class="section" style="padding-top:0;" aria-labelledby="journey-title">
+    <div class="section-inner">
+      <article class="journey" aria-labelledby="journey-title">
+        <div>
+          <p class="journey-kicker">Percurso formativo</p>
+          <h3 id="journey-title">Dominando o Moodle</h3>
+          <p>Caminho formativo completo para professores que querem ir do primeiro curso à avaliação avançada com acessibilidade. Combina três trilhas e artigos complementares — você escolhe por onde começar.</p>
+          <a class="journey-btn" href="/percursos/dominando-o-moodle">
+            Ver percurso
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="journey-routes" aria-label="Três rotas de entrada">
+          <div class="journey-route">
+            <strong>Para quem nunca usou</strong>
+            Comece pela trilha <em>Iniciando no Moodle</em>.
+          </div>
+          <div class="journey-route">
+            <strong>Para quem já dá aulas</strong>
+            Vá direto para <em>Avaliação no Moodle</em>.
+          </div>
+          <div class="journey-route">
+            <strong>Para quem tem alunos com necessidades específicas</strong>
+            Priorize <em>Acessibilidade no AVA</em>.
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       RECENTES / ATUALIZADOS
+       ============================================================ -->
+  <section class="section" aria-labelledby="recent-title">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Editorial</p>
+          <h2 id="recent-title">Publicados recentemente</h2>
+          <p class="lede">Últimos artigos publicados pelo time editorial.</p>
+        </div>
+        <a href="/artigos?ordem=publicacao" class="see-all">Ver todos</a>
+      </div>
+
+      <div class="recent-grid">
+        <a class="article-card" href="/gestao-moodle/configurar-livro-de-notas">
+          <span class="kicker">Gestão e Operação do Moodle <span class="sep">·</span> Tutorial</span>
+          <h4>Configurando o livro de notas do Moodle</h4>
+          <div class="meta">
+            <span class="type-badge tutorial">Tutorial</span>
+          </div>
+        </a>
+        <a class="article-card" href="/ferramentas/h5p-conteudo-interativo">
+          <span class="kicker">Ferramentas e Recursos <span class="sep">·</span> Referência</span>
+          <h4>H5P: tipos de conteúdo interativo e quando usar cada um</h4>
+          <div class="meta">
+            <span class="type-badge referencia">Referência</span>
+          </div>
+        </a>
+        <a class="article-card" href="/acessibilidade/tempo-ampliado-no-questionario">
+          <span class="kicker">Acessibilidade <span class="sep">·</span> Solução</span>
+          <h4>Como conceder tempo ampliado em um questionário do Moodle</h4>
+          <div class="meta">
+            <span class="type-badge problema">Solução de Problema</span>
+          </div>
+        </a>
+        <a class="article-card" href="/pedagogia/o-que-e-design-educacional">
+          <span class="kicker">Pedagogia e Planejamento <span class="sep">·</span> Conceitual</span>
+          <h4>O que é design educacional e por que ele importa</h4>
+          <div class="meta">
+            <span class="type-badge conceitual">Conceitual</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TÓPICOS POPULARES — Eixo 3 (25 tópicos)
+       ============================================================ -->
+  <section class="section" style="padding-top:0;" aria-labelledby="topics-title">
+    <div class="section-inner">
+      <div class="topics">
+        <div class="section-head" style="margin-bottom:0;">
+          <div>
+            <p class="eyebrow">Tópico</p>
+            <h2 id="topics-title">Tópicos populares</h2>
+            <p class="lede">Assuntos específicos que atravessam as categorias. Bom para descoberta lateral.</p>
+          </div>
+          <a href="/topicos" class="see-all">Todos os 25 tópicos</a>
+        </div>
+        <div class="topic-cloud">
+          <a class="topic" href="/topicos/questionario">Questionário <strong>14</strong></a>
+          <a class="topic" href="/topicos/livro-de-notas">Livro de Notas <strong>11</strong></a>
+          <a class="topic" href="/topicos/h5p">H5P <strong>9</strong></a>
+          <a class="topic" href="/topicos/configuracao-de-curso">Configuração de Curso <strong>8</strong></a>
+          <a class="topic" href="/topicos/ia-generativa">IA Generativa <strong>7</strong></a>
+          <a class="topic" href="/topicos/tarefa">Tarefa <strong>7</strong></a>
+          <a class="topic" href="/topicos/forum">Fórum <strong>6</strong></a>
+          <a class="topic" href="/topicos/banco-de-questoes">Banco de Questões <strong>6</strong></a>
+          <a class="topic" href="/topicos/libras">Libras <strong>5</strong></a>
+          <a class="topic" href="/topicos/webconferencia">Webconferência <strong>5</strong></a>
+          <a class="topic" href="/topicos/backup-e-restauracao">Backup e Restauração <strong>4</strong></a>
+          <a class="topic" href="/topicos/gpt-customizado">GPT Customizado <strong>4</strong></a>
+          <a class="topic" href="/topicos/inclusao-e-desenho-universal">Inclusão e Desenho Universal <strong>4</strong></a>
+          <a class="topic" href="/topicos/padrao-visual">Padrão Visual <strong>3</strong></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <h5>Base de Conhecimento</h5>
+      <p style="font-size:.88rem; line-height:1.55; margin:0 0 12px;">
+        Produzida pelo <strong style="color:#fff;">CEFOR/Ifes</strong> — Centro de Referência em Formação e em EaD do Instituto Federal do Espírito Santo.
+      </p>
+      <p style="font-size:.82rem; color:#8a8273; margin:0;">Conteúdo sob licença Creative Commons BY-NC-SA 4.0, salvo quando indicado.</p>
+    </div>
+    <div>
+      <h5>Navegar</h5>
+      <a href="/trilhas">Trilhas</a>
+      <a href="/percursos">Percursos</a>
+      <a href="/artigos">Todos os artigos</a>
+    </div>
+    <div>
+      <h5>Sobre</h5>
+      <a href="/sobre">O CEFOR</a>
+      <a href="/equipe-editorial">Equipe editorial</a>
+      <a href="/como-contribuir">Como contribuir</a>
+      <a href="/acessibilidade-do-site">Acessibilidade do site</a>
+    </div>
+    <div>
+      <h5>Recursos</h5>
+      <a href="https://cefor.ifes.edu.br" target="_blank" rel="noopener">cefor.ifes.edu.br ↗</a>
+      <a href="/relicefor">ReLiCefor</a>
+      <a href="/mooc">MOOC</a>
+      <a href="/feed">Feed RSS</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 CEFOR · Instituto Federal do Espírito Santo</span>
+    <span>Versão alpha · Em construção</span>
+  </div>
+</footer>
+
+<script>
+  // Toggle dark mode
+  const html = document.documentElement;
+  const btnTheme = document.getElementById('btn-theme');
+  const btnContrast = document.getElementById('btn-contrast');
+
+  btnTheme.addEventListener('click', () => {
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    if (isDark) { html.removeAttribute('data-theme'); btnTheme.setAttribute('aria-pressed','false'); }
+    else { html.setAttribute('data-theme','dark'); btnTheme.setAttribute('aria-pressed','true'); }
+  });
+  btnContrast.addEventListener('click', () => {
+    const isHC = html.getAttribute('data-contrast') === 'high';
+    if (isHC) { html.removeAttribute('data-contrast'); btnContrast.setAttribute('aria-pressed','false'); }
+    else { html.setAttribute('data-contrast','high'); btnContrast.setAttribute('aria-pressed','true'); }
+  });
+</script>
+</body>
+</html>

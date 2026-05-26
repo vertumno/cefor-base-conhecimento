@@ -4,7 +4,7 @@
 > **Status:** Primeira camada formal do Content System
 > **Última atualização:** 2026-05-19
 > **Decisões consolidadas:** 17, 18, 22, 25, 26, 27, 28, 29, 30, 31, 32
-> **Referências canônicas:** `stages/01-fundacoes/drafts/prototipo-artigo.html`, `drafts/exploracao-multiplas-trilhas.html`, `drafts/exploracao-pagina-percurso.html`
+> **Referências canônicas:** `stages/02-design-system/drafts/prototipos-paginas/prototipo-artigo.html`, `drafts/exploracao-multiplas-trilhas.html`, `drafts/exploracao-pagina-percurso.html`
 
 ---
 
@@ -413,4 +413,4 @@ Tokens de design já definidos no `prototipo-artigo.html`:
 
 ---
 
-*Camada 4.5 do Content System · Base de Conhecimento CEFOR/IFes · Fase 1 — Fundações*
+*Camada 4.5 do Content System · Base de Conhecimento CEFOR/Ifes · Fase 1 — Fundações*

@@ -10,7 +10,7 @@
 
 ## 1. O que esta camada faz
 
-Esta camada estabelece os **princípios inegociáveis** que orientam toda decisão editorial da Base de Conhecimento CEFOR/IFes. Em conflito entre duas opções, é o conjunto de princípios aqui que arbitra.
+Esta camada estabelece os **princípios inegociáveis** que orientam toda decisão editorial da Base de Conhecimento CEFOR/Ifes. Em conflito entre duas opções, é o conjunto de princípios aqui que arbitra.
 
 Não são valores genéricos. Cada princípio tem **implicação prática verificável** — gera regras de produção, define o que cabe e o que não cabe na Base, e dá ao linter e à IA critérios objetivos de aceitação.
 
@@ -26,7 +26,7 @@ Não são valores genéricos. Cada princípio tem **implicação prática verifi
 
 | Característica | Decorrência prática |
 |---|---|
-| **Fonte oficial do CEFOR/IFes** sobre uso pedagógico e técnico do Moodle institucional | Tom institucional, mesmo em artigos assinados |
+| **Fonte oficial do CEFOR/Ifes** sobre uso pedagógico e técnico do Moodle institucional | Tom institucional, mesmo em artigos assinados |
 | **Espaço de consulta + aprendizagem + atualização contínua** | Suporta tanto quem chega com pressa quanto quem quer aprofundar |
 | **Editorialmente curada** | Toda publicação passa por revisão humana — não há contribuição aberta na V1 |
 | **Acessível por padrão** | Multimodalidade (Libras, áudio), tipografia legível, contraste WCAG AA mínimo |
@@ -38,7 +38,7 @@ Não são valores genéricos. Cada princípio tem **implicação prática verifi
 |---|---|
 | Um repositório de PDFs | PDFs viram conteúdo no Moodle, não na Base |
 | Um blog de notícias | Não publicamos conteúdo datado sem valor permanente |
-| Um manual técnico do Moodle | Documentação oficial do Moodle não precisa ser replicada — focamos no contexto IFes |
+| Um manual técnico do Moodle | Documentação oficial do Moodle não precisa ser replicada — focamos no contexto Ifes |
 | Um espaço de opinião pessoal | Tom institucional, mesmo quando assinado |
 | Uma enciclopédia completa | Cobrimos o que o público precisa, não tudo que existe |
 | Uma plataforma de cursos formais | Não há matrícula, certificado, frequência — isso é responsabilidade do AVA (Moodle) |
@@ -297,4 +297,4 @@ Princípios podem aparentemente entrar em choque. A ordem abaixo resolve isso na
 
 ---
 
-*Camada 1 do Content System · Base de Conhecimento CEFOR/IFes · Fase 1 — Fundações*
+*Camada 1 do Content System · Base de Conhecimento CEFOR/Ifes · Fase 1 — Fundações*

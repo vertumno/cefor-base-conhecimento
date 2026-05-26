@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Exploração · Artigo em múltiplas trilhas — Base CEFOR/IFes</title>
+<title>Exploração · Artigo em múltiplas trilhas — Base CEFOR/Ifes</title>
 <meta name="description" content="Três sub-opções visuais para representar um artigo que pertence a mais de uma trilha." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,6 +35,77 @@
     --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
     --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
   }
+
+  [data-theme="dark"] {
+    --bg: #0e0c0a; --bg-2: #16130f; --bg-3: #1e1a14; --paper: #1a1612;
+    --ink: #f4f1ea; --ink-2: #c9c2b3; --ink-3: #8a8273;
+    --line: #2a251e; --line-2: #3a342a;
+    --accent: #6cb89a; --accent-2: #87cdb0; --accent-soft: #19251f; --accent-deep: #c8e8d8;
+    --gold-soft: #2e2516; --gold-deep: #d9a955;
+  }
+  [data-contrast="high"] {
+    --bg:#000; --bg-2:#0a0a0a; --bg-3:#141414; --paper:#000;
+    --ink:#ffff00; --ink-2:#fff; --ink-3:#c0c0c0;
+    --line:#ffff00; --line-2:#fff;
+    --accent:#00ff88; --accent-2:#66ffaa; --accent-soft:#003322; --accent-deep:#00ff88;
+    --gold:#ffff00; --gold-soft:#1a1a00; --gold-deep:#ffff00;
+  }
+
+  /* ---------- Header (igual à home) ---------- */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: #1f5142;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .site-header a { text-decoration: none; }
+  [data-theme="dark"] .site-header { background: #143a30; }
+  .header-inner {
+    max-width: 1280px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; color: #ffffff; }
+  .brand:hover { text-decoration: none; }
+  .brand-mark {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: #ffffff; color: #1f5142;
+    display: grid; place-items: center; font-weight: 800; letter-spacing: -.02em;
+    box-shadow: var(--shadow-sm);
+  }
+  [data-theme="dark"] .brand-mark { color: #143a30; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .brand-text strong { font-size: .95rem; letter-spacing: -.01em; color: #ffffff; }
+  .brand-text span { font-size: .75rem; color: #a8c3ba; }
+
+  .nav { display: flex; gap: 6px; margin-left: auto; }
+  .nav a {
+    color: rgba(255, 255, 255, 0.85); font-size: .9rem; font-weight: 500;
+    padding: 8px 12px; border-radius: 8px;
+  }
+  .nav a:hover { background: rgba(255, 255, 255, 0.15); text-decoration: none; color: #ffffff; }
+
+  .header-search { position: relative; max-width: 280px; flex: 1; }
+  .header-search input {
+    width: 100%; padding: 9px 12px 9px 36px; font: inherit; font-size: .9rem;
+    background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2); color: #ffffff;
+    border-radius: 8px;
+  }
+  .header-search input::placeholder { color: rgba(255, 255, 255, 0.6); }
+  .header-search svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: rgba(255, 255, 255, 0.7); }
+
+  .a11y-toggles { display: flex; gap: 4px; }
+  .icon-btn {
+    width: 36px; height: 36px; display: grid; place-items: center;
+    background: transparent; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px;
+    color: rgba(255, 255, 255, 0.85); cursor: pointer;
+  }
+  .icon-btn:hover { background: rgba(255, 255, 255, 0.15); color: #ffffff; }
+  .icon-btn[aria-pressed="true"] { background: #ffffff; border-color: #ffffff; color: #1f5142; }
+
+  @media (max-width: 960px) {
+    .header-search { display: none; }
+    .nav { display: none; }
+  }
+
 
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -495,6 +566,38 @@
 </head>
 <body>
 
+<!-- ============================================================
+     HEADER (igual à home)
+     ============================================================ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="home-proposta.html" class="brand">
+      <span class="brand-mark">C</span>
+      <span class="brand-text">
+        <strong>Base de Conhecimento</strong>
+        <span>CEFOR · Ifes</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="exploracao-pagina-percurso.html">Percursos</a>
+      <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
+      <a href="prototipo-artigo.html">Todos os artigos</a>
+    </nav>
+    <form class="header-search" role="search" action="/buscar" method="get">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar"/>
+    </form>
+    <div class="a11y-toggles" role="group" aria-label="Preferências de leitura">
+      <button class="icon-btn" id="btn-theme" aria-label="Alternar modo escuro" aria-pressed="false" title="Modo escuro">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn" id="btn-contrast" aria-label="Alto contraste" aria-pressed="false" title="Alto contraste">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/><path d="M12 3a9 9 0 0 1 0 18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
 <main class="page">
 
   <header class="page-header">
@@ -839,7 +942,7 @@
   <footer class="footer">
     <p>
       Exploração técnica · vinculada à Decisão 18 (arquitetura Trilha/Percurso) e à decisão de 2026-05-19 sobre apresentação visual de múltiplas trilhas.<br>
-      Referência canônica de design: <code>stages/01-fundacoes/drafts/prototipo-artigo.html</code>
+      Referência canônica de design: <code>stages/02-design-system/drafts/prototipos-paginas/prototipo-artigo.html</code>
     </p>
   </footer>
 
@@ -865,6 +968,48 @@
       if (body) body.hidden = expanded;
     });
   });
+
+  // Toggle dark mode e alto contraste
+  const html = document.documentElement;
+  const btnTheme = document.getElementById('btn-theme');
+  const btnContrast = document.getElementById('btn-contrast');
+
+  function setTheme(dark) {
+    if (dark) {
+      html.setAttribute('data-theme', 'dark');
+      if (btnTheme) btnTheme.setAttribute('aria-pressed', 'true');
+    } else {
+      html.removeAttribute('data-theme');
+      if (btnTheme) btnTheme.setAttribute('aria-pressed', 'false');
+    }
+  }
+
+  function setContrast(high) {
+    if (high) {
+      html.setAttribute('data-contrast', 'high');
+      if (btnContrast) btnContrast.setAttribute('aria-pressed', 'true');
+    } else {
+      html.removeAttribute('data-contrast');
+      if (btnContrast) btnContrast.setAttribute('aria-pressed', 'false');
+    }
+  }
+
+  if (localStorage.getItem('cefor-theme') === 'dark') setTheme(true);
+
+  if (btnTheme) {
+    btnTheme.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      setTheme(!isDark);
+      localStorage.setItem('cefor-theme', isDark ? 'light' : 'dark');
+    });
+  }
+
+  if (btnContrast) {
+    btnContrast.addEventListener('click', () => {
+      const isHC = html.getAttribute('data-contrast') === 'high';
+      setContrast(!isHC);
+    });
+  }
 </script>
 
 </body>

@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Exploração v2 · Página de Trilha — Base CEFOR/Ifes</title>
+<meta name="description" content="Refinamento da página de trilha após reunião Ju+Elton (2026-05-26): a sequência de artigos como protagonista, explicação editorial colapsada." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-2: #f7f5f1;
+    --bg-3: #efeae0;
+    --paper: #ffffff;
+    --ink: #14110d;
+    --ink-2: #4a4439;
+    --ink-3: #8a8273;
+    --line: #e7e3d8;
+    --line-2: #d4cdba;
+    --accent: #1f5142;
+    --accent-2: #2d6a4f;
+    --accent-soft: #e3ecdf;
+    --accent-deep: #143a30;
+    --gold: #b08544;
+    --gold-soft: #f3e7d0;
+    --gold-deep: #8c6a36;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 16px;
+    --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
+    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
+  }
+  [data-theme="dark"] {
+    --bg: #0e0c0a; --bg-2: #16130f; --bg-3: #1e1a14; --paper: #1a1612;
+    --ink: #f4f1ea; --ink-2: #c9c2b3; --ink-3: #8a8273;
+    --line: #2a251e; --line-2: #3a342a;
+    --accent: #6cb89a; --accent-2: #87cdb0; --accent-soft: #19251f; --accent-deep: #c8e8d8;
+    --gold-soft: #2e2516; --gold-deep: #d9a955;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin:0; background: var(--bg-2); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+
+  .doc-header { background: var(--ink); color: var(--bg); padding: 18px 32px; font-size: .82rem; letter-spacing: .04em; }
+  .doc-header strong { font-weight: 700; }
+  .doc-header .pill { display: inline-block; background: var(--accent); color: #fff; padding: 2px 9px; border-radius: 99px; font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-right: 10px; }
+
+  /* ---------- Header (igual à home) ---------- */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: #1f5142;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .site-header a { text-decoration: none; }
+  [data-theme="dark"] .site-header { background: #143a30; }
+  .header-inner {
+    max-width: 1280px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; color: #ffffff; }
+  .brand:hover { text-decoration: none; }
+  .brand-mark {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: #ffffff; color: #1f5142;
+    display: grid; place-items: center; font-weight: 800; letter-spacing: -.02em;
+    box-shadow: var(--shadow-sm);
+  }
+  [data-theme="dark"] .brand-mark { color: #143a30; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .brand-text strong { font-size: .95rem; letter-spacing: -.01em; color: #ffffff; }
+  .brand-text span { font-size: .75rem; color: #a8c3ba; }
+
+  .nav { display: flex; gap: 6px; margin-left: auto; }
+  .nav a {
+    color: rgba(255, 255, 255, 0.85); font-size: .9rem; font-weight: 500;
+    padding: 8px 12px; border-radius: 8px;
+  }
+  .nav a:hover { background: rgba(255, 255, 255, 0.15); text-decoration: none; color: #ffffff; }
+
+  .header-search { position: relative; max-width: 280px; flex: 1; }
+  .header-search input {
+    width: 100%; padding: 9px 12px 9px 36px; font: inherit; font-size: .9rem;
+    background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2); color: #ffffff;
+    border-radius: 8px;
+  }
+  .header-search input::placeholder { color: rgba(255, 255, 255, 0.6); }
+  .header-search svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: rgba(255, 255, 255, 0.7); }
+
+  .a11y-toggles { display: flex; gap: 4px; }
+  .icon-btn {
+    width: 36px; height: 36px; display: grid; place-items: center;
+    background: transparent; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px;
+    color: rgba(255, 255, 255, 0.85); cursor: pointer;
+  }
+  .icon-btn:hover { background: rgba(255, 255, 255, 0.15); color: #ffffff; }
+  .icon-btn[aria-pressed="true"] { background: #ffffff; border-color: #ffffff; color: #1f5142; }
+
+  @media (max-width: 960px) { .header-search { display: none; } .nav { display: none; } }
+
+  .breadcrumb { background: var(--bg-2); padding: 14px 32px; border-bottom: 1px solid var(--line); font-size: .82rem; color: var(--ink-3); }
+  .breadcrumb-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .breadcrumb a { color: var(--ink-2); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb .sep { color: var(--ink-3); }
+  .breadcrumb .current { color: var(--ink); font-weight: 600; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+  /* ============================================================
+     HERO ENXUTO DA TRILHA — diferencial: barra inferior em accent verde
+     ============================================================ */
+  .hero-slim {
+    padding: 40px 0 28px;
+    border-bottom: 3px solid var(--accent);
+    position: relative;
+  }
+  .kicker-trilha {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 5px 13px 5px 10px;
+    background: var(--accent-soft); color: var(--accent-deep);
+    border-radius: 99px;
+    font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    margin: 0 0 14px;
+  }
+  .kicker-trilha svg { width: 13px; height: 13px; }
+
+  .hero-slim h1 {
+    font-size: 2.4rem; line-height: 1.08; font-weight: 700; letter-spacing: -.015em;
+    margin: 0 0 12px;
+  }
+  @media (max-width: 700px) { .hero-slim h1 { font-size: 1.9rem; } }
+  .hero-slim .subtitle {
+    font-size: 1.08rem; color: var(--ink-2); margin: 0 0 18px;
+    line-height: 1.5; max-width: 68ch;
+  }
+
+  /* Linha meta + percurso-chip + saber-mais */
+  .hero-meta {
+    display: flex; align-items: center; flex-wrap: wrap;
+    gap: 10px 18px; padding-top: 6px;
+    font-size: .9rem;
+  }
+  .hero-meta-item {
+    display: inline-flex; align-items: center; gap: 7px; color: var(--ink-2);
+  }
+  .hero-meta-item b { color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .hero-meta-item svg { width: 14px; height: 14px; color: var(--accent); }
+  .hero-meta-sep { width: 4px; height: 4px; background: var(--line-2); border-radius: 99px; display: inline-block; }
+
+  .percurso-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold-soft); color: var(--gold-deep);
+    padding: 6px 12px 6px 10px;
+    border-radius: 99px;
+    font-size: .8rem; font-weight: 600; text-decoration: none;
+    transition: background .15s;
+  }
+  .percurso-chip:hover { background: color-mix(in srgb, var(--gold) 28%, var(--gold-soft)); }
+  .percurso-chip svg { width: 13px; height: 13px; }
+  .percurso-chip strong { font-weight: 700; }
+
+  .hero-meta-link {
+    margin-left: auto; color: var(--accent); font-weight: 600;
+    text-decoration: none; font-size: .88rem;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .hero-meta-link:hover { text-decoration: underline; }
+  .hero-meta-link svg { width: 13px; height: 13px; }
+
+  /* ============================================================
+     Bloco principal — coluna única
+     ============================================================ */
+  .main-stack {
+    padding: 40px 0 56px;
+  }
+  .main-stack > section + section { margin-top: 48px; }
+
+  .section-eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 6px; }
+  .section-h2 { font-size: 1.42rem; font-weight: 700; margin: 0 0 6px; letter-spacing: -.005em; }
+  .section-lead { font-size: .94rem; color: var(--ink-2); margin: 0 0 22px; max-width: 60ch; }
+
+  /* ---------- Lista sequencial de artigos ---------- */
+  .article-list {
+    list-style: none; margin: 0; padding: 0;
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+  .article-item {
+    display: grid; grid-template-columns: 56px 1fr auto; gap: 18px;
+    padding: 18px 22px;
+    border-top: 1px solid var(--line);
+    align-items: center;
+    transition: background .15s;
+  }
+  .article-item:first-child { border-top: 0; }
+  .article-item:hover { background: var(--bg-2); }
+
+  .article-num {
+    width: 36px; height: 36px;
+    background: var(--accent-soft); color: var(--accent-deep);
+    border-radius: 99px;
+    display: grid; place-items: center;
+    font-size: .82rem; font-weight: 700; font-variant-numeric: tabular-nums;
+  }
+  .article-body { min-width: 0; }
+  .article-title {
+    font-size: 1rem; font-weight: 600; color: var(--ink);
+    margin: 0 0 3px; line-height: 1.35;
+    text-decoration: none; display: block;
+  }
+  .article-item:hover .article-title { color: var(--accent); }
+  .article-meta {
+    font-size: .78rem; color: var(--ink-3);
+    display: flex; gap: 10px; align-items: center;
+  }
+  .article-meta span { display: inline-flex; align-items: center; gap: 4px; }
+  .article-meta svg { width: 11px; height: 11px; }
+  .article-block-label {
+    font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--accent); margin-right: 6px;
+  }
+  .article-go {
+    color: var(--ink-3); font-size: 1rem;
+    transition: transform .15s, color .15s;
+  }
+  .article-item:hover .article-go { color: var(--accent); transform: translateX(3px); }
+
+  /* Separador de bloco dentro da trilha */
+  .block-divider {
+    padding: 14px 22px 8px;
+    background: var(--bg-2);
+    border-top: 1px solid var(--line);
+    font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  /* CTA "começar pela primeira" */
+  .start-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #fff;
+    padding: 12px 20px;
+    border-radius: var(--r-md);
+    text-decoration: none; font-weight: 600;
+    margin: 20px 0 0;
+    transition: background .15s, transform .15s;
+  }
+  .start-cta:hover { background: var(--accent-2); transform: translateY(-1px); }
+  .start-cta svg { width: 14px; height: 14px; }
+
+  /* ---------- Coluna lateral ---------- */
+  .side-block {
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg);
+    padding: 22px 24px; margin-bottom: 18px;
+  }
+  .side-block-title {
+    font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-3); margin: 0 0 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .side-block-title svg { width: 13px; height: 13px; color: var(--accent); }
+
+  .stats-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat-mini { border-left: 3px solid var(--accent); padding-left: 10px; }
+  .stat-mini-num { font-size: 1.4rem; font-weight: 700; line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .stat-mini-lab { font-size: .76rem; color: var(--ink-2); margin-top: 3px; line-height: 1.3; }
+
+  .preq-list { list-style: none; margin: 0; padding: 0; }
+  .preq-list li {
+    padding: 8px 0 8px 22px; position: relative;
+    font-size: .88rem; color: var(--ink-2); line-height: 1.45;
+    border-top: 1px solid var(--line);
+  }
+  .preq-list li:first-child { border-top: 0; padding-top: 0; }
+  .preq-list li::before {
+    content: ''; position: absolute; left: 0; top: 16px;
+    width: 12px; height: 1px; background: var(--accent);
+  }
+  .preq-list li:first-child::before { top: 8px; }
+  .preq-list li a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .preq-list li a:hover { text-decoration: underline; }
+
+  .related-list { list-style: none; margin: 0; padding: 0; }
+  .related-list li {
+    padding: 10px 0; border-top: 1px solid var(--line);
+  }
+  .related-list li:first-child { border-top: 0; padding-top: 0; }
+  .related-list li:last-child { padding-bottom: 0; }
+  .related-list a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: .9rem; }
+  .related-list a:hover { color: var(--accent); }
+  .related-list .meta { font-size: .76rem; color: var(--ink-3); margin-top: 2px; }
+
+  /* Saber mais link sutil */
+  .saber-mais-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--accent); text-decoration: none; font-weight: 600;
+    font-size: .86rem; margin-top: 12px;
+  }
+  .saber-mais-link:hover { text-decoration: underline; }
+  .saber-mais-link svg { width: 12px; height: 12px; }
+
+  /* ============================================================
+     Detalhes editoriais colapsados
+     ============================================================ */
+  .details-block {
+    margin: 8px 0 56px;
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+  .details-block > summary {
+    list-style: none; cursor: pointer;
+    padding: 16px 22px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: .9rem; color: var(--ink-2); font-weight: 600;
+    transition: background .15s;
+  }
+  .details-block > summary::-webkit-details-marker { display: none; }
+  .details-block > summary:hover { background: var(--bg-2); }
+  .details-block > summary .chev { transition: transform .2s; }
+  .details-block[open] > summary .chev { transform: rotate(180deg); }
+  .details-body {
+    padding: 4px 22px 22px;
+    border-top: 1px solid var(--line);
+    font-size: .92rem; color: var(--ink-2); line-height: 1.6;
+  }
+  .details-body p { margin: 14px 0 0; }
+  .details-body strong { color: var(--ink); font-weight: 700; }
+
+  /* Sobre / rodapé */
+  .sobre-trilha { background: var(--paper); border-top: 1px solid var(--line); padding: 40px 0; }
+  .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  @media (max-width: 800px) { .sobre-grid { grid-template-columns: 1fr; } }
+  .sobre-block h3 { font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 10px; }
+  .sobre-block p { margin: 0 0 8px; font-size: .9rem; color: var(--ink-2); line-height: 1.55; }
+  .sobre-block .meta-line { font-size: .8rem; color: var(--ink-3); margin-top: 14px; }
+  .sobre-block .meta-line span + span::before { content: '·'; margin: 0 8px; color: var(--line-2); }
+
+  .doc-footer {
+    background: var(--bg-3); padding: 28px 32px; text-align: center;
+    color: var(--ink-3); font-size: .8rem; border-top: 1px solid var(--line);
+  }
+  .doc-footer code { font-family: var(--mono); background: var(--paper); padding: 2px 6px; border-radius: 4px; font-size: .78rem; }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <span class="pill">v2 · Refinada</span>
+  <strong>Página de trilha — versão mais direta.</strong>
+  Ajustes da reunião Ju+Elton (2026-05-26): sequência de artigos no topo, explicação editorial colapsada, layout em 2 colunas.
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="home-proposta.html" class="brand">
+      <span class="brand-mark">C</span>
+      <span class="brand-text">
+        <strong>Base de Conhecimento</strong>
+        <span>CEFOR · Ifes</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="exploracao-pagina-percurso-v2.html">Percursos</a>
+      <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
+      <a href="prototipo-artigo.html">Todos os artigos</a>
+    </nav>
+    <form class="header-search" role="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar"/>
+    </form>
+    <div class="a11y-toggles">
+      <button class="icon-btn" id="btn-theme" aria-label="Modo escuro" aria-pressed="false">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="breadcrumb" aria-label="Trilha de navegação">
+  <div class="breadcrumb-inner">
+    <a href="home-proposta.html">Início</a>
+    <span class="sep">›</span>
+    <a href="#">Trilhas</a>
+    <span class="sep">›</span>
+    <span class="current">Avaliação no Moodle</span>
+  </div>
+</nav>
+
+<main class="container">
+
+  <!-- HERO ENXUTO -->
+  <section class="hero-slim">
+    <div class="kicker-trilha">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M3 12h6"/><path d="M15 12h6"/></svg>
+      Trilha
+    </div>
+    <h1>Avaliação no Moodle</h1>
+    <p class="subtitle">
+      Uma sequência de 15 artigos para estruturar avaliação no Moodle do CEFOR — da configuração de atividades ao fechamento de notas.
+    </p>
+
+    <div class="hero-meta">
+      <span class="hero-meta-item"><b>15</b> artigos</span>
+      <span class="hero-meta-sep"></span>
+      <span class="hero-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        ~2h30
+      </span>
+      <span class="hero-meta-sep"></span>
+      <a href="#" class="percurso-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 3 6 21"/><polyline points="18 3 18 21"/><line x1="6" y1="8" x2="18" y2="8"/><line x1="6" y1="16" x2="18" y2="16"/></svg>
+        Faz parte do percurso <strong>Dominando o Moodle</strong>
+      </a>
+      <a href="#sobre-trilha" class="hero-meta-link">
+        Saber mais sobre o que é uma trilha
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- BLOCO PRINCIPAL — coluna única -->
+  <section class="main-stack">
+
+    <section>
+      <p class="section-eyebrow">Sequência da trilha</p>
+      <h2 class="section-h2">15 artigos · organizados em 3 blocos</h2>
+      <p class="section-lead">
+        Cada artigo funciona sozinho. Se você caiu aqui por busca, qualquer um dos 15 resolve um problema específico. A ordem é uma sugestão de quem chega sem saber por onde começar.
+      </p>
+
+      <a href="#" class="start-cta">
+        Começar pelo primeiro artigo
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <ul class="article-list" style="margin-top: 22px;">
+
+        <li class="block-divider">Bloco 1 · Estrutura e atividades</li>
+
+        <li class="article-item">
+          <div class="article-num"><span>1</span></div>
+          <div class="article-body">
+            <a href="#" class="article-title">Introdução ao sistema de avaliação do Moodle</a>
+            <div class="article-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 min</span>
+              <span>Conceitual</span>
+            </div>
+          </div>
+          <span class="article-go">→</span>
+        </li>
+
+        <li class="article-item">
+          <div class="article-num"><span>2</span></div>
+          <div class="article-body">
+            <a href="#" class="article-title">Tipos de atividades avaliativas</a>
+            <div class="article-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min</span>
+              <span>Referência</span>
+            </div>
+          </div>
+          <span class="article-go">→</span>
+        </li>
+
+        <li class="article-item">
+          <div class="article-num"><span>3</span></div>
+          <div class="article-body">
+            <a href="#" class="article-title">Criando questionários no Moodle</a>
+            <div class="article-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>12 min</span>
+              <span>Tutorial</span>
+            </div>
+          </div>
+          <span class="article-go">→</span>
+        </li>
+
+        <li class="article-item">
+          <div class="article-num"><span>4</span></div>
+          <div class="article-body">
+            <a href="#" class="article-title">Configurando o livro de notas</a>
+            <div class="article-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 min</span>
+              <span>Tutorial</span>
+            </div>
+          </div>
+          <span class="article-go">→</span>
+        </li>
+
+        <li class="article-item">
+          <div class="article-num"><span>5</span></div>
+          <div class="article-body">
+            <a href="#" class="article-title">Aplicando rubricas em tarefas</a>
+            <div class="article-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>9 min</span>
+              <span>Tutorial</span>
+            </div>
+          </div>
+          <span class="article-go">→</span>
+        </li>
+
+        <li class="block-divider">Bloco 2 · Aprofundamento técnico</li>
+
+        <li class="article-item">
+          <div class="article-num"><span>6</span></div>
+          <div class="article-body">
+            <a href="#" class="article-title">Banco de questões: tipos e formatos</a>
+            <div class="article-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>11 min</span>
+              <span>Referência</span>
+            </div>
+          </div>
+          <span class="article-go">→</span>
+        </li>
+
+        <li class="article-item">
+          <div class="article-num"><span>7</span></div>
+          <div class="article-body">
+            <a href="#" class="article-title">Avaliação por pares (Workshop)</a>
+            <div class="article-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>14 min</span>
+              <span>Tutorial</span>
+            </div>
+          </div>
+          <span class="article-go">→</span>
+        </li>
+
+        <li class="article-item">
+          <div class="article-num"><span>8</span></div>
+          <div class="article-body">
+            <a href="#" class="article-title">Configurando peso por categoria de avaliação</a>
+            <div class="article-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min</span>
+              <span>Tutorial</span>
+            </div>
+          </div>
+          <span class="article-go">→</span>
+        </li>
+
+        <li class="article-item">
+          <div class="article-num"><span>9</span></div>
+          <div class="article-body">
+            <a href="#" class="article-title">Feedback automático em questionários</a>
+            <div class="article-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min</span>
+              <span>Tutorial</span>
+            </div>
+          </div>
+          <span class="article-go">→</span>
+        </li>
+
+        <li class="article-item">
+          <div class="article-num"><span>10</span></div>
+          <div class="article-body">
+            <a href="#" class="article-title">Importando questões do Word para o Moodle</a>
+            <div class="article-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>9 min</span>
+              <span>Tutorial</span>
+            </div>
+          </div>
+          <span class="article-go">→</span>
+        </li>
+
+        <li class="block-divider">Bloco 3 · Ordem de fechamento</li>
+
+        <li class="article-item">
+          <div class="article-num"><span>11</span></div>
+          <div class="article-body">
+            <a href="#" class="article-title">Recalcular nota final após mudança de peso</a>
+            <div class="article-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 min</span>
+              <span>Referência</span>
+            </div>
+          </div>
+          <span class="article-go">→</span>
+        </li>
+
+        <li class="article-item">
+          <div class="article-num"><span>12</span></div>
+          <div class="article-body">
+            <a href="#" class="article-title">Ajustes manuais e arredondamentos</a>
+            <div class="article-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min</span>
+              <span>Tutorial</span>
+            </div>
+          </div>
+          <span class="article-go">→</span>
+        </li>
+
+        <li class="article-item">
+          <div class="article-num"><span>13</span></div>
+          <div class="article-body">
+            <a href="#" class="article-title">Exportando notas para o sistema acadêmico</a>
+            <div class="article-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 min</span>
+              <span>Tutorial</span>
+            </div>
+          </div>
+          <span class="article-go">→</span>
+        </li>
+
+        <li class="article-item">
+          <div class="article-num"><span>14</span></div>
+          <div class="article-body">
+            <a href="#" class="article-title">Relatórios de desempenho da turma</a>
+            <div class="article-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min</span>
+              <span>Referência</span>
+            </div>
+          </div>
+          <span class="article-go">→</span>
+        </li>
+
+        <li class="article-item">
+          <div class="article-num"><span>15</span></div>
+          <div class="article-body">
+            <a href="#" class="article-title">Encerrando a avaliação ao fim do período</a>
+            <div class="article-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 min</span>
+              <span>Checklist</span>
+            </div>
+          </div>
+          <span class="article-go">→</span>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- TRILHAS RELACIONADAS — abaixo, em bloco próprio -->
+    <section>
+      <p class="section-eyebrow">Trilhas relacionadas</p>
+      <h2 class="section-h2">Outras trilhas do mesmo percurso</h2>
+      <p class="section-lead">
+        Esta trilha faz parte de <a href="exploracao-pagina-percurso-v2.html" style="color: var(--accent); text-decoration: none; font-weight: 600;">Dominando o Moodle</a>. Outras trilhas do mesmo percurso:
+      </p>
+
+      <div class="side-block">
+        <ul class="related-list">
+          <li>
+            <a href="#">Configurando questionários</a>
+            <div class="meta">8 artigos · ~1h20</div>
+          </li>
+          <li>
+            <a href="#">Gerenciando notas</a>
+            <div class="meta">6 artigos · ~1h</div>
+          </li>
+          <li>
+            <a href="#">Comunicando com estudantes</a>
+            <div class="meta">5 artigos · ~50min</div>
+          </li>
+        </ul>
+        <a href="exploracao-pagina-percurso-v2.html" class="saber-mais-link">
+          Ver percurso completo
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </section>
+
+  </section>
+
+  <!-- DETALHES EDITORIAIS COLAPSADOS -->
+  <details class="details-block">
+    <summary>
+      <span>Como esta trilha foi pensada</span>
+      <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </summary>
+    <div class="details-body">
+      <p>
+        A ordem dos 15 artigos <strong>não é arbitrária</strong>. Eles foram organizados em três blocos:
+        estrutura e atividades, aprofundamento técnico e ordem de fechamento.
+      </p>
+      <p>
+        Cada artigo foi escrito para <strong>funcionar sozinho</strong> — se você caiu aqui por busca,
+        qualquer um dos 15 resolve o problema. A trilha existe para o caso oposto: quem chega sem saber por
+        onde começar e quer um caminho curado.
+      </p>
+      <p>
+        Não há rastreamento de progresso entre sessões nem certificado. A trilha é uma sugestão de leitura,
+        não um curso formal.
+      </p>
+    </div>
+  </details>
+
+</main>
+
+<section class="sobre-trilha" id="sobre-trilha">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-block">
+        <h3>Sobre esta trilha</h3>
+        <p>
+          Curada pela equipe pedagógica do CEFOR. Reúne conteúdos produzidos por professores,
+          mediadores e técnicos que trabalham diariamente com o sistema de avaliação do Moodle.
+        </p>
+        <div class="meta-line">
+          <span>Curadoria: Juliana Cassaro</span>
+          <span>Criada em 2026-04</span>
+          <span>Última revisão: 2026-05</span>
+        </div>
+      </div>
+      <div class="sobre-block">
+        <h3>O que é uma trilha</h3>
+        <p>
+          Uma <strong>trilha</strong> é uma sequência curta de artigos com começo, meio e fim,
+          organizada em torno de um tema específico. Diferente de um percurso (que é um mapa amplo),
+          a trilha é uma micro-jornada autocontida.
+        </p>
+        <p>
+          Você pode percorrê-la na ordem, pular artigos ou abrir só o que interessa — todos
+          funcionam sozinhos.
+        </p>
+        <p style="margin-top: 14px;">
+          <a href="#" style="color: var(--accent); font-weight: 600; text-decoration: none;">Ler o artigo completo sobre percursos e trilhas →</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="doc-footer">
+  <p>
+    Exploração v2 · refinada após reunião Ju+Elton (2026-05-26).<br>
+    Versão histórica preservada em <code>exploracao-pagina-trilha.html</code>.<br>
+    Vinculada à Decisão 18 (arquitetura) e Decisão 30 (acordeão de trilhas no artigo).
+  </p>
+</footer>
+
+<script>
+  const html = document.documentElement;
+  const btnTheme = document.getElementById('btn-theme');
+  if (btnTheme) {
+    btnTheme.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      if (isDark) { html.removeAttribute('data-theme'); btnTheme.setAttribute('aria-pressed','false'); }
+      else { html.setAttribute('data-theme','dark'); btnTheme.setAttribute('aria-pressed','true'); }
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 {
   "document": "Revisão da Proposta de Taxonomia + Interface do Artigo",
-  "project": "Base de Conhecimento CEFOR/IFes",
-  "source_draft": "stages/01-fundacoes/drafts/proposta-taxonomia-e-interface-artigo.md",
+  "project": "Base de Conhecimento CEFOR/Ifes",
+  "source_draft": "stages/02-design-system/drafts/prototipos-paginas/proposta-taxonomia-e-interface-artigo.md",
   "exported_at": "2026-05-14T20:01:46.009Z",
   "meta": {
     "date": "2026-05-14",
@@ -61,7 +61,7 @@
       "id": 8,
       "title": "Interface do artigo — rodapé",
       "status": "approved",
-      "comment": "CASSARO, Juliana. Configurando o livro de notas do Moodle. Base de Conhecimento CEFOR/IFes, 2026. Revisado em 12 mai. 2026.",
+      "comment": "CASSARO, Juliana. Configurando o livro de notas do Moodle. Base de Conhecimento CEFOR/Ifes, 2026. Revisado em 12 mai. 2026.",
       "timestamp": "2026-05-14T19:59:57.012Z"
     }
   ]

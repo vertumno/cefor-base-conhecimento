@@ -1,7 +1,7 @@
 # Content System — Escopo e Estrutura
 
 > **Documento de referência**
-> Define o que compõe o Content System da Base de Conhecimento CEFOR/IFes, suas camadas, e como ele se relaciona com os 11 pilares e o Design System do projeto.
+> Define o que compõe o Content System da Base de Conhecimento CEFOR/Ifes, suas camadas, e como ele se relaciona com os 11 pilares e o Design System do projeto.
 
 ---
 
@@ -82,7 +82,7 @@ Assim como o Design System começa com princípios de design, o Content System c
 |---|---|
 | Um repositório de PDFs | Não hospedar documentos que deveriam estar no Moodle |
 | Um blog de notícias | Não publicar conteúdo datado sem valor permanente |
-| Um manual técnico do Moodle | Focar no "como fazer no contexto do IFes", não replicar a documentação oficial |
+| Um manual técnico do Moodle | Focar no "como fazer no contexto do Ifes", não replicar a documentação oficial |
 | Um espaço de opinião pessoal | Tom institucional, mesmo quando assinado por autor |
 | Uma enciclopédia completa | Cobrir o que o público precisa, não tudo que existe |
 
@@ -822,4 +822,4 @@ SAÚDE DA BASE — Mês/Ano
 
 *Documento criado em: 2026-04-07*
 *Versão: 0.1 — Escopo inicial, pré-benchmarking*
-*Projeto: Base de Conhecimento CEFOR/IFes — Reformulação*
+*Projeto: Base de Conhecimento CEFOR/Ifes — Reformulação*

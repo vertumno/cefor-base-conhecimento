@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Exploração v2 · Página de Percurso — Base CEFOR/Ifes</title>
+<meta name="description" content="Refinamento da página de percurso após reunião Ju+Elton (2026-05-26): mais direta, conteúdo no topo, explicação curta com link para 'saber mais'." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-2: #f7f5f1;
+    --bg-3: #efeae0;
+    --paper: #ffffff;
+    --ink: #14110d;
+    --ink-2: #4a4439;
+    --ink-3: #8a8273;
+    --line: #e7e3d8;
+    --line-2: #d4cdba;
+    --accent: #1f5142;
+    --accent-2: #2d6a4f;
+    --accent-soft: #e3ecdf;
+    --accent-deep: #143a30;
+    --gold: #b08544;
+    --gold-soft: #f3e7d0;
+    --gold-deep: #8c6a36;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 16px;
+    --r-xl: 24px;
+    --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
+    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
+  }
+  [data-theme="dark"] {
+    --bg: #0e0c0a; --bg-2: #16130f; --bg-3: #1e1a14; --paper: #1a1612;
+    --ink: #f4f1ea; --ink-2: #c9c2b3; --ink-3: #8a8273;
+    --line: #2a251e; --line-2: #3a342a;
+    --accent: #6cb89a; --accent-2: #87cdb0; --accent-soft: #19251f; --accent-deep: #c8e8d8;
+    --gold-soft: #2e2516; --gold-deep: #d9a955;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin:0; background: var(--bg-2); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+
+  /* Doc header (frame de exploração) */
+  .doc-header { background: var(--ink); color: var(--bg); padding: 18px 32px; font-size: .82rem; letter-spacing: .04em; }
+  .doc-header strong { font-weight: 700; }
+  .doc-header .pill { display: inline-block; background: var(--gold); color: var(--ink); padding: 2px 9px; border-radius: 99px; font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-right: 10px; }
+  .doc-header .pill.v2 { background: var(--accent); color: #fff; }
+
+  /* Site header */
+  /* ---------- Header (igual à home) ---------- */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: #1f5142;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .site-header a { text-decoration: none; }
+  [data-theme="dark"] .site-header { background: #143a30; }
+  .header-inner {
+    max-width: 1280px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; color: #ffffff; }
+  .brand:hover { text-decoration: none; }
+  .brand-mark {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: #ffffff; color: #1f5142;
+    display: grid; place-items: center; font-weight: 800; letter-spacing: -.02em;
+    box-shadow: var(--shadow-sm);
+  }
+  [data-theme="dark"] .brand-mark { color: #143a30; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .brand-text strong { font-size: .95rem; letter-spacing: -.01em; color: #ffffff; }
+  .brand-text span { font-size: .75rem; color: #a8c3ba; }
+
+  .nav { display: flex; gap: 6px; margin-left: auto; }
+  .nav a {
+    color: rgba(255, 255, 255, 0.85); font-size: .9rem; font-weight: 500;
+    padding: 8px 12px; border-radius: 8px;
+  }
+  .nav a:hover { background: rgba(255, 255, 255, 0.15); text-decoration: none; color: #ffffff; }
+
+  .header-search { position: relative; max-width: 280px; flex: 1; }
+  .header-search input {
+    width: 100%; padding: 9px 12px 9px 36px; font: inherit; font-size: .9rem;
+    background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2); color: #ffffff;
+    border-radius: 8px;
+  }
+  .header-search input::placeholder { color: rgba(255, 255, 255, 0.6); }
+  .header-search svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: rgba(255, 255, 255, 0.7); }
+
+  .a11y-toggles { display: flex; gap: 4px; }
+  .icon-btn {
+    width: 36px; height: 36px; display: grid; place-items: center;
+    background: transparent; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px;
+    color: rgba(255, 255, 255, 0.85); cursor: pointer;
+  }
+  .icon-btn:hover { background: rgba(255, 255, 255, 0.15); color: #ffffff; }
+  .icon-btn[aria-pressed="true"] { background: #ffffff; border-color: #ffffff; color: #1f5142; }
+
+  @media (max-width: 960px) { .header-search { display: none; } .nav { display: none; } }
+
+  .breadcrumb { background: var(--bg-2); padding: 14px 32px; border-bottom: 1px solid var(--line); font-size: .82rem; color: var(--ink-3); }
+  .breadcrumb-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .breadcrumb a { color: var(--ink-2); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb .sep { color: var(--ink-3); }
+  .breadcrumb .current { color: var(--ink); font-weight: 600; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+  /* ============================================================
+     HERO ENXUTO — DIFERENCIAL: faixa horizontal compacta
+     ============================================================ */
+  .hero-slim {
+    padding: 40px 0 28px;
+    border-bottom: 1px solid var(--line);
+  }
+  .kicker-percurso {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 5px 13px 5px 10px;
+    background: var(--gold-soft); color: var(--gold-deep);
+    border-radius: 99px;
+    font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    margin: 0 0 14px;
+  }
+  .kicker-percurso svg { width: 13px; height: 13px; }
+
+  .hero-slim h1 {
+    font-size: 2.4rem; line-height: 1.08; font-weight: 700; letter-spacing: -.015em;
+    margin: 0 0 12px;
+  }
+  @media (max-width: 700px) { .hero-slim h1 { font-size: 1.9rem; } }
+  .hero-slim .subtitle {
+    font-size: 1.08rem; color: var(--ink-2); margin: 0 0 18px;
+    line-height: 1.5; max-width: 68ch;
+  }
+
+  /* Linha de stats inline + link saber-mais */
+  .hero-meta {
+    display: flex; align-items: center; flex-wrap: wrap;
+    gap: 10px 22px; padding-top: 6px;
+    font-size: .9rem;
+  }
+  .hero-meta-item {
+    display: inline-flex; align-items: center; gap: 7px;
+    color: var(--ink-2);
+  }
+  .hero-meta-item b { color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .hero-meta-item svg { width: 14px; height: 14px; color: var(--gold-deep); }
+  .hero-meta-sep { width: 4px; height: 4px; background: var(--line-2); border-radius: 99px; display: inline-block; }
+  .hero-meta-link {
+    margin-left: auto; color: var(--accent); font-weight: 600;
+    text-decoration: none; font-size: .88rem;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .hero-meta-link:hover { text-decoration: underline; }
+  .hero-meta-link svg { width: 13px; height: 13px; }
+
+  /* ============================================================
+     TÍTULO DE SEÇÃO
+     ============================================================ */
+  .section-eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 6px; }
+  .section-h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 6px; letter-spacing: -.005em; }
+  .section-lead { font-size: .96rem; color: var(--ink-2); margin: 0 0 20px; max-width: 65ch; }
+
+  /* ============================================================
+     CONTEÚDO: TRILHAS LOGO NO TOPO
+     ============================================================ */
+  .main-content { padding: 40px 0 24px; }
+
+  /* Lista de trilhas empilhada (single-column) */
+  .trilha-cards {
+    display: flex; flex-direction: column; gap: 14px;
+  }
+
+  .trilha-card {
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg);
+    position: relative; overflow: hidden;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .trilha-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px; background: var(--accent); opacity: .85;
+  }
+  .trilha-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); }
+
+  /* Cabeçalho clicável (sem articles visíveis) */
+  .trilha-card > summary {
+    list-style: none; cursor: pointer;
+    padding: 20px 24px 18px 28px;
+    display: grid; grid-template-columns: 1fr auto auto; gap: 16px;
+    align-items: center;
+  }
+  .trilha-card > summary::-webkit-details-marker { display: none; }
+  .trilha-card-info { min-width: 0; }
+  .trilha-card-kicker { font-size: .64rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 4px; }
+  .trilha-card h3 { font-size: 1.18rem; font-weight: 700; margin: 0 0 6px; line-height: 1.25; color: var(--ink); }
+  .trilha-card-desc { font-size: .9rem; color: var(--ink-2); line-height: 1.5; margin: 0; max-width: 70ch; }
+
+  .trilha-card-num {
+    flex-shrink: 0; background: var(--bg-2); color: var(--ink-2);
+    font-size: .7rem; font-weight: 700; padding: 5px 10px;
+    border-radius: 99px; white-space: nowrap; font-variant-numeric: tabular-nums;
+  }
+  .trilha-card-time {
+    font-size: .76rem; color: var(--ink-3);
+    display: inline-flex; align-items: center; gap: 4px;
+    white-space: nowrap;
+  }
+  .trilha-card-time svg { width: 12px; height: 12px; }
+  .trilha-card-chev {
+    width: 18px; height: 18px; color: var(--ink-3);
+    transition: transform .25s;
+    margin-left: 4px;
+  }
+  .trilha-card[open] .trilha-card-chev { transform: rotate(180deg); color: var(--accent); }
+  .trilha-card[open] { border-color: var(--accent); }
+
+  /* Corpo expandido: lista de artigos */
+  .trilha-card-body {
+    padding: 4px 24px 22px 28px;
+    border-top: 1px solid var(--line);
+    background: var(--bg-2);
+  }
+  .trilha-card-articles {
+    list-style: none; margin: 14px 0 0; padding: 0;
+  }
+  .trilha-card-articles li {
+    font-size: .88rem; color: var(--ink-2);
+    padding: 7px 0 7px 18px; position: relative; line-height: 1.4;
+    border-top: 1px solid var(--line);
+  }
+  .trilha-card-articles li:first-child { border-top: 0; }
+  .trilha-card-articles li::before {
+    content: counter(art-counter); counter-increment: art-counter;
+    position: absolute; left: 0; top: 8px;
+    font-size: .7rem; color: var(--ink-3); font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .trilha-card-articles { counter-reset: art-counter; }
+  .trilha-card-articles li a { color: inherit; text-decoration: none; }
+  .trilha-card-articles li a:hover { color: var(--accent); }
+
+  .trilha-card-body-foot {
+    margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line);
+    display: flex; justify-content: flex-end;
+  }
+  .trilha-card-cta {
+    color: var(--accent); text-decoration: none; font-weight: 600; font-size: .9rem;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .trilha-card-cta::after { content: '→'; transition: transform .15s; }
+  .trilha-card-cta:hover::after { transform: translateX(3px); }
+
+  /* ============================================================
+     Blocos abaixo das trilhas — empilhados
+     ============================================================ */
+  .below-stack {
+    padding: 48px 0 40px;
+    border-top: 1px solid var(--line); margin-top: 44px;
+  }
+  .below-stack > section + section { margin-top: 40px; }
+
+  /* Complementares — empilhados (single-column), igual às trilhas */
+  .complementares-list {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .complementar-card {
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-md);
+    padding: 16px 20px; text-decoration: none; color: inherit;
+    display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center;
+    transition: border-color .15s;
+  }
+  .complementar-card:hover { border-color: var(--accent); }
+  .complementar-kicker {
+    font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ink-3); margin: 0;
+    padding: 4px 9px; background: var(--bg-2); border-radius: 99px;
+    white-space: nowrap;
+  }
+  .complementar-card h4 { font-size: .96rem; font-weight: 600; margin: 0 0 2px; line-height: 1.3; color: var(--ink); }
+  .complementar-card p { font-size: .82rem; color: var(--ink-2); margin: 0; line-height: 1.4; }
+  .complementar-card:hover h4 { color: var(--accent); }
+  .complementar-go { color: var(--ink-3); font-size: 1.1rem; transition: color .15s, transform .15s; }
+  .complementar-card:hover .complementar-go { color: var(--accent); transform: translateX(3px); }
+
+  /* Bloco lateral (mantido só para "outros percursos" inline) */
+  .side-block {
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg);
+    padding: 22px 24px; margin-bottom: 18px;
+  }
+  .side-block-title {
+    font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-3); margin: 0 0 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .side-block-title svg { width: 13px; height: 13px; color: var(--accent); }
+
+  .route { padding: 12px 0; border-top: 1px solid var(--line); }
+  .route:first-of-type { border-top: 0; padding-top: 0; }
+  .route-perfil { font-size: .72rem; font-weight: 700; color: var(--accent); margin: 0 0 4px; letter-spacing: .02em; }
+  .route-sug { font-size: .86rem; color: var(--ink-2); line-height: 1.45; margin: 0; }
+  .route-sug a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .route-sug a:hover { text-decoration: underline; }
+
+  .outros-list { list-style: none; margin: 0; padding: 0; }
+  .outros-list li { padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .outros-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+  .outros-list li:first-child { padding-top: 0; }
+  .outros-list a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: .92rem; }
+  .outros-list a:hover { color: var(--accent); }
+  .outros-list .meta { font-size: .76rem; color: var(--ink-3); margin-top: 2px; }
+
+  /* ============================================================
+     BLOCO COLAPSÁVEL: detalhes editoriais
+     ============================================================ */
+  .details-block {
+    margin: 8px 0 56px;
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+  .details-block > summary {
+    list-style: none; cursor: pointer;
+    padding: 16px 22px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: .9rem; color: var(--ink-2); font-weight: 600;
+    transition: background .15s;
+  }
+  .details-block > summary::-webkit-details-marker { display: none; }
+  .details-block > summary:hover { background: var(--bg-2); }
+  .details-block > summary .chev { transition: transform .2s; }
+  .details-block[open] > summary .chev { transform: rotate(180deg); }
+  .details-body {
+    padding: 4px 22px 22px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+    border-top: 1px solid var(--line);
+  }
+  @media (max-width: 700px) { .details-body { grid-template-columns: 1fr; gap: 18px; } }
+  .details-body h4 {
+    font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--accent); margin: 18px 0 10px;
+  }
+  .details-body ul { list-style: none; margin: 0; padding: 0; }
+  .details-body li {
+    padding: 6px 0 6px 22px; position: relative; font-size: .9rem; color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .details-body li::before {
+    content: ''; position: absolute; left: 0; top: 15px;
+    width: 12px; height: 1px; background: var(--accent);
+  }
+
+  /* ============================================================
+     Sobre / rodapé editorial
+     ============================================================ */
+  .sobre-percurso { background: var(--paper); border-top: 1px solid var(--line); padding: 40px 0; }
+  .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  @media (max-width: 800px) { .sobre-grid { grid-template-columns: 1fr; } }
+  .sobre-block h3 { font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 10px; }
+  .sobre-block p { margin: 0 0 8px; font-size: .9rem; color: var(--ink-2); line-height: 1.55; }
+  .sobre-block .meta-line { font-size: .8rem; color: var(--ink-3); margin-top: 14px; }
+  .sobre-block .meta-line span + span::before { content: '·'; margin: 0 8px; color: var(--line-2); }
+
+  .doc-footer {
+    background: var(--bg-3); padding: 28px 32px; text-align: center;
+    color: var(--ink-3); font-size: .8rem; border-top: 1px solid var(--line);
+  }
+  .doc-footer code { font-family: var(--mono); background: var(--paper); padding: 2px 6px; border-radius: 4px; font-size: .78rem; }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <span class="pill v2">v2 · Refinada</span>
+  <strong>Página de percurso — versão mais direta.</strong>
+  Ajustes da reunião Ju+Elton (2026-05-26): conteúdo principal no topo, explicação curta com link "saber mais".
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="home-proposta.html" class="brand">
+      <span class="brand-mark">C</span>
+      <span class="brand-text">
+        <strong>Base de Conhecimento</strong>
+        <span>CEFOR · Ifes</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="exploracao-pagina-percurso-v2.html">Percursos</a>
+      <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
+      <a href="prototipo-artigo.html">Todos os artigos</a>
+    </nav>
+    <form class="header-search" role="search" action="/buscar" method="get">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar"/>
+    </form>
+    <div class="a11y-toggles">
+      <button class="icon-btn" id="btn-theme" aria-label="Modo escuro" aria-pressed="false">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="breadcrumb" aria-label="Trilha de navegação">
+  <div class="breadcrumb-inner">
+    <a href="home-proposta.html">Início</a>
+    <span class="sep">›</span>
+    <a href="#">Percursos</a>
+    <span class="sep">›</span>
+    <span class="current">Dominando o Moodle</span>
+  </div>
+</nav>
+
+<main class="container">
+
+  <!-- HERO ENXUTO -->
+  <section class="hero-slim">
+    <div class="kicker-percurso">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 3 6 21"/><polyline points="18 3 18 21"/><line x1="6" y1="8" x2="18" y2="8"/><line x1="6" y1="16" x2="18" y2="16"/></svg>
+      Percurso
+    </div>
+    <h1>Dominando o Moodle</h1>
+    <p class="subtitle">
+      Trilhas e artigos curados pela equipe do CEFOR para conduzir uma sala virtual de forma confiante — da avaliação à comunicação com estudantes.
+    </p>
+
+    <div class="hero-meta">
+      <span class="hero-meta-item"><b>4</b> trilhas</span>
+      <span class="hero-meta-sep"></span>
+      <span class="hero-meta-item"><b>34</b> artigos em trilhas</span>
+      <span class="hero-meta-sep"></span>
+      <span class="hero-meta-item"><b>3</b> artigos complementares</span>
+      <span class="hero-meta-sep"></span>
+      <span class="hero-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        ~6h de leitura
+      </span>
+      <a href="#sobre-percurso" class="hero-meta-link">
+        Saber mais sobre o que é um percurso
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- TRILHAS DO PERCURSO — LOGO NO TOPO -->
+  <section class="main-content">
+    <p class="section-eyebrow">Trilhas deste percurso</p>
+    <h2 class="section-h2">Quatro micro-jornadas para escolher</h2>
+    <p class="section-lead">
+      Cada trilha funciona sozinha. Você pode começar por qualquer uma, pular outras, ou abrir só os artigos que interessam.
+    </p>
+
+    <div class="trilha-cards">
+
+      <details class="trilha-card">
+        <summary>
+          <div class="trilha-card-info">
+            <p class="trilha-card-kicker">Trilha</p>
+            <h3>Avaliação no Moodle</h3>
+            <p class="trilha-card-desc">
+              Da estrutura geral ao fechamento do período. Como o livro de notas funciona, como aplicar rubricas e como evitar retrabalho.
+            </p>
+          </div>
+          <span class="trilha-card-num">15 artigos</span>
+          <span class="trilha-card-time">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            ~2h30
+          </span>
+          <svg class="trilha-card-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="trilha-card-body">
+          <ol class="trilha-card-articles">
+            <li><a href="#">Introdução ao sistema de avaliação do Moodle</a></li>
+            <li><a href="#">Tipos de atividades avaliativas</a></li>
+            <li><a href="#">Criando questionários no Moodle</a></li>
+            <li><a href="#">Configurando o livro de notas</a></li>
+            <li><a href="#">Aplicando rubricas em tarefas</a></li>
+            <li><a href="#">Banco de questões: tipos e formatos</a></li>
+            <li><a href="#">Avaliação por pares (Workshop)</a></li>
+            <li><a href="#">Configurando peso por categoria de avaliação</a></li>
+            <li><a href="#">Feedback automático em questionários</a></li>
+            <li><a href="#">Importando questões do Word</a></li>
+            <li><a href="#">Recalcular nota final após mudança de peso</a></li>
+            <li><a href="#">Ajustes manuais e arredondamentos</a></li>
+            <li><a href="#">Exportando notas para o sistema acadêmico</a></li>
+            <li><a href="#">Relatórios de desempenho da turma</a></li>
+            <li><a href="#">Encerrando a avaliação ao fim do período</a></li>
+          </ol>
+          <div class="trilha-card-body-foot">
+            <a href="exploracao-pagina-trilha-v2.html" class="trilha-card-cta">Abrir trilha completa</a>
+          </div>
+        </div>
+      </details>
+
+      <details class="trilha-card">
+        <summary>
+          <div class="trilha-card-info">
+            <p class="trilha-card-kicker">Trilha</p>
+            <h3>Configurando questionários</h3>
+            <p class="trilha-card-desc">
+              Tudo sobre a atividade de questionário — banco de questões, tipos de pergunta, feedback automático e tentativas.
+            </p>
+          </div>
+          <span class="trilha-card-num">8 artigos</span>
+          <span class="trilha-card-time">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            ~1h20
+          </span>
+          <svg class="trilha-card-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="trilha-card-body">
+          <ol class="trilha-card-articles">
+            <li><a href="#">Anatomia de um questionário no Moodle</a></li>
+            <li><a href="#">Criando um banco de questões organizado</a></li>
+            <li><a href="#">Tipos de pergunta e quando usar cada um</a></li>
+            <li><a href="#">Definindo feedback automático por questão</a></li>
+            <li><a href="#">Configurando tentativas, tempo e prazos</a></li>
+            <li><a href="#">Aleatorização de questões e ordem</a></li>
+            <li><a href="#">Revisão e correção pós-aplicação</a></li>
+            <li><a href="#">Boas práticas em questões discursivas</a></li>
+          </ol>
+          <div class="trilha-card-body-foot">
+            <a href="#" class="trilha-card-cta">Abrir trilha completa</a>
+          </div>
+        </div>
+      </details>
+
+      <details class="trilha-card">
+        <summary>
+          <div class="trilha-card-info">
+            <p class="trilha-card-kicker">Trilha</p>
+            <h3>Gerenciando notas</h3>
+            <p class="trilha-card-desc">
+              O livro de notas em profundidade. Cálculos, exportações, ajustes manuais e relatórios — mantendo a base de avaliação confiável ao longo do curso.
+            </p>
+          </div>
+          <span class="trilha-card-num">6 artigos</span>
+          <span class="trilha-card-time">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            ~1h
+          </span>
+          <svg class="trilha-card-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="trilha-card-body">
+          <ol class="trilha-card-articles">
+            <li><a href="#">Configurando o livro de notas do Moodle</a></li>
+            <li><a href="#">Exportando notas para o sistema acadêmico</a></li>
+            <li><a href="#">Ajustes manuais e arredondamentos</a></li>
+            <li><a href="#">Relatórios de desempenho da turma</a></li>
+            <li><a href="#">Recalcular nota final após mudança de peso</a></li>
+            <li><a href="#">Ocultar e revelar notas para a turma</a></li>
+          </ol>
+          <div class="trilha-card-body-foot">
+            <a href="#" class="trilha-card-cta">Abrir trilha completa</a>
+          </div>
+        </div>
+      </details>
+
+      <details class="trilha-card">
+        <summary>
+          <div class="trilha-card-info">
+            <p class="trilha-card-kicker">Trilha</p>
+            <h3>Comunicando com estudantes</h3>
+            <p class="trilha-card-desc">
+              Fóruns, mensagens, anúncios e devolutivas. Padrões que mantêm a turma engajada sem virar central de atendimento.
+            </p>
+          </div>
+          <span class="trilha-card-num">5 artigos</span>
+          <span class="trilha-card-time">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            ~50min
+          </span>
+          <svg class="trilha-card-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="trilha-card-body">
+          <ol class="trilha-card-articles">
+            <li><a href="#">Anatomia da comunicação no Moodle</a></li>
+            <li><a href="#">Quando usar fórum, mensagem ou anúncio</a></li>
+            <li><a href="#">Devolutivas que ensinam, não só corrigem</a></li>
+            <li><a href="#">Configurando assinaturas e digest de e-mail</a></li>
+            <li><a href="#">Encerrando a comunicação ao fim do período</a></li>
+          </ol>
+          <div class="trilha-card-body-foot">
+            <a href="#" class="trilha-card-cta">Abrir trilha completa</a>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ABAIXO: blocos empilhados -->
+  <section class="below-stack">
+
+    <section>
+      <p class="section-eyebrow">Artigos complementares</p>
+      <h2 class="section-h2">Artigos soltos do percurso</h2>
+      <p class="section-lead">
+        Não pertencem a nenhuma trilha. Servem como referência geral ou ponto de partida.
+      </p>
+      <div class="complementares-list">
+        <a href="#" class="complementar-card">
+          <span class="complementar-kicker">Conceitual</span>
+          <div>
+            <h4>O que é o Moodle e por que ele é usado no Ifes</h4>
+            <p>Visão geral da plataforma e o contexto institucional de adoção.</p>
+          </div>
+          <span class="complementar-go">→</span>
+        </a>
+        <a href="#" class="complementar-card">
+          <span class="complementar-kicker">Referência</span>
+          <div>
+            <h4>Como acessar o Moodle pela primeira vez</h4>
+            <p>Passo a passo do primeiro login e tour pelas áreas principais.</p>
+          </div>
+          <span class="complementar-go">→</span>
+        </a>
+        <a href="#" class="complementar-card">
+          <span class="complementar-kicker">Referência</span>
+          <div>
+            <h4>Diferenças entre o Moodle do CEFOR e versões padrão</h4>
+            <p>Plugins customizados, configurações institucionais e particularidades.</p>
+          </div>
+          <span class="complementar-go">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <div class="side-block">
+        <p class="side-block-title">Outros percursos</p>
+        <ul class="outros-list">
+          <li>
+            <a href="#">IA para a sala de aula</a>
+            <div class="meta">3 trilhas · 28 artigos</div>
+          </li>
+          <li>
+            <a href="#">Acessibilidade e inclusão na EaD</a>
+            <div class="meta">2 trilhas · 14 artigos</div>
+          </li>
+          <li>
+            <a href="#">Coordenação de cursos no Ifes</a>
+            <div class="meta">3 trilhas · 19 artigos</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </section>
+
+  <!-- DETALHES EDITORIAIS COLAPSADOS -->
+  <details class="details-block">
+    <summary>
+      <span>Para quem é este percurso e o que você vai dominar</span>
+      <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </summary>
+    <div class="details-body">
+      <div>
+        <h4>Para quem</h4>
+        <ul>
+          <li>Professores que já dão aula no Moodle, mas usam "10% da ferramenta"</li>
+          <li>Mediadores de tutoria que apoiam professores em decisões pedagógicas</li>
+          <li>Coordenadores de curso que tomam decisões sobre avaliação</li>
+          <li>Quem nunca usou o Moodle e quer um mapa antes de começar</li>
+        </ul>
+      </div>
+      <div>
+        <h4>O que você vai dominar</h4>
+        <ul>
+          <li>Estruturar a avaliação de um curso com categorias e pesos</li>
+          <li>Criar questionários, tarefas e fóruns alinhados ao plano de ensino</li>
+          <li>Configurar o livro de notas para refletir a realidade do seu curso</li>
+          <li>Comunicar-se com a turma sem virar central de atendimento</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+</main>
+
+<section class="sobre-percurso" id="sobre-percurso">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-block">
+        <h3>Sobre este percurso</h3>
+        <p>
+          Curado pela equipe pedagógica do CEFOR. Reúne conteúdos produzidos por professores,
+          mediadores e técnicos que trabalham diariamente com o Moodle institucional.
+        </p>
+        <p>
+          As trilhas e artigos são atualizados individualmente. O percurso é uma agregação viva:
+          novos artigos podem entrar, ou trilhas podem ser reorganizadas conforme necessidades surgem.
+        </p>
+        <div class="meta-line">
+          <span>Curadoria: Juliana Cassaro · Rute Fávero</span>
+          <span>Criado em 2026-04</span>
+          <span>Última revisão: 2026-05</span>
+        </div>
+      </div>
+      <div class="sobre-block">
+        <h3>O que é um percurso</h3>
+        <p>
+          Um <strong>percurso</strong> é uma agregação curada de trilhas e artigos que dialogam
+          em torno de um tema maior. Não tem ordem fixa — você escolhe por onde entrar.
+        </p>
+        <p>
+          Diferente de uma trilha (que é uma sequência curta com começo, meio e fim), o percurso
+          funciona como um mapa: oferece direções, mas não obriga a um caminho.
+        </p>
+        <p style="margin-top: 14px;">
+          <a href="#" style="color: var(--accent); font-weight: 600; text-decoration: none;">Ler o artigo completo sobre percursos e trilhas →</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="doc-footer">
+  <p>
+    Exploração v2 · refinada após reunião Ju+Elton (2026-05-26).<br>
+    Versão histórica preservada em <code>exploracao-pagina-percurso.html</code>.<br>
+    Vinculada à Decisão 18 (arquitetura) e Decisão 27 (percurso é só agregação).
+  </p>
+</footer>
+
+<script>
+  const html = document.documentElement;
+  const btnTheme = document.getElementById('btn-theme');
+  if (btnTheme) {
+    btnTheme.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      if (isDark) { html.removeAttribute('data-theme'); btnTheme.setAttribute('aria-pressed','false'); }
+      else { html.setAttribute('data-theme','dark'); btnTheme.setAttribute('aria-pressed','true'); }
+    });
+  }
+</script>
+</body>
+</html>

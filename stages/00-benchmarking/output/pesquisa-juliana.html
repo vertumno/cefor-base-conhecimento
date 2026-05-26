@@ -335,7 +335,7 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
 <!-- SIDEBAR -->
 <aside class="sidebar">
   <div class="sb-logo">
-    <div class="sb-tag">IFes · EaD · CEFOR</div>
+    <div class="sb-tag">Ifes · EaD · CEFOR</div>
     <h1>Base de Conhecimento</h1>
     <div class="sub">Pesquisa de referências</div>
   </div>
@@ -1552,7 +1552,7 @@ async function renderRepSite(){
 // =====================================================================
 function buildPrompt(){
   if(!D.sites.length) return 'Nenhum dado disponível.';
-  let p=`Você é especialista em design de bases de conhecimento e UX para educação a distância. Analise as observações coletadas sobre ${D.sites.length} site(s) de referência e gere um relatório comparativo com insights acionáveis para o redesign da Base de Conhecimento do CEFOR (IFes).\n\nDADOS COLETADOS:\n`;
+  let p=`Você é especialista em design de bases de conhecimento e UX para educação a distância. Analise as observações coletadas sobre ${D.sites.length} site(s) de referência e gere um relatório comparativo com insights acionáveis para o redesign da Base de Conhecimento do CEFOR (Ifes).\n\nDADOS COLETADOS:\n`;
   D.sites.forEach((s,i)=>{
     p+=`\n=== ${s.nome}${s.url?' ('+s.url+')':''} ===\n`;
     OC.forEach(o=>{
@@ -1564,7 +1564,7 @@ function buildPrompt(){
       if(f12v) p+=`- Dados técnicos (F12): ${f12v}\n`;
     });
   });
-  p+=`\nGERE UM RELATÓRIO COM:\n1. PADRÕES IDENTIFICADOS — o que a maioria dos sites faz (cite percentuais)\n2. DESTAQUES POSITIVOS — melhores práticas encontradas e em qual site\n3. LACUNAS E OPORTUNIDADES — o que está ausente e diferenciaria o CEFOR\n4. RECOMENDAÇÕES POR ÓCULOS — 2-3 recomendações concretas para cada um dos 5 óculos (Visual, Leitura, Interação, Estrutura, Acessibilidade)\n5. TOP 5 PRIORIDADES — as melhorias mais impactantes em ordem\n\nUse linguagem clara e objetiva. Público: equipe de EaD do IFes.`;
+  p+=`\nGERE UM RELATÓRIO COM:\n1. PADRÕES IDENTIFICADOS — o que a maioria dos sites faz (cite percentuais)\n2. DESTAQUES POSITIVOS — melhores práticas encontradas e em qual site\n3. LACUNAS E OPORTUNIDADES — o que está ausente e diferenciaria o CEFOR\n4. RECOMENDAÇÕES POR ÓCULOS — 2-3 recomendações concretas para cada um dos 5 óculos (Visual, Leitura, Interação, Estrutura, Acessibilidade)\n5. TOP 5 PRIORIDADES — as melhorias mais impactantes em ordem\n\nUse linguagem clara e objetiva. Público: equipe de EaD do Ifes.`;
   return p;
 }
 
@@ -1863,7 +1863,7 @@ async function exportRelHTML(){
   .ia-txt{background:rgba(255,255,255,.07);border-radius:7px;padding:.9rem;font-size:13px;color:rgba(255,255,255,.82);line-height:1.75;white-space:pre-wrap}
   </style></head><body>`;
 
-  h+=`<h1>Relatório de Pesquisa — CEFOR</h1><p style="color:#9C9A8E;font-size:12.5px">Base de Conhecimento · IFes · Gerado em ${new Date().toLocaleDateString('pt-BR')}</p>
+  h+=`<h1>Relatório de Pesquisa — CEFOR</h1><p style="color:#9C9A8E;font-size:12.5px">Base de Conhecimento · Ifes · Gerado em ${new Date().toLocaleDateString('pt-BR')}</p>
   <hr style="border:none;border-top:1px solid #DDD9CE;margin:1.2rem 0"/>`;
 
   // Insights

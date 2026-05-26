@@ -1,4 +1,4 @@
-# Content System — Base de Conhecimento CEFOR/IFes
+# Content System — Base de Conhecimento CEFOR/Ifes
 
 > **Documento mestre consolidado.** Reúne as 10+ camadas do Content System em um único lugar e deriva delas a especificação acionável para a implementação no WordPress (Fase 3).
 >
@@ -11,7 +11,7 @@
 > - `stages/01-fundacoes/output/vocabulario-controlado.json` (Camada 3)
 > - `stages/01-fundacoes/output/padroes-composicao.md` (Camada 4.5)
 > - `stages/01-fundacoes/references/content-system-escopo.md` (escopo das 10 camadas)
-> - `stages/01-fundacoes/drafts/prototipo-artigo.html` (interface canônica do artigo)
+> - `stages/02-design-system/drafts/prototipos-paginas/prototipo-artigo.html` (interface canônica do artigo)
 
 ---
 
@@ -72,7 +72,7 @@ Em conflito entre dois artefatos, prevalece o de cima:
 
 ### O que a Base É / NÃO é
 
-**É:** fonte oficial do CEFOR/IFes sobre uso pedagógico e técnico do Moodle institucional · espaço de consulta + aprendizagem + atualização contínua · editorialmente curada (revisão humana sempre) · acessível por padrão · atualizada (depreciação ativa).
+**É:** fonte oficial do CEFOR/Ifes sobre uso pedagógico e técnico do Moodle institucional · espaço de consulta + aprendizagem + atualização contínua · editorialmente curada (revisão humana sempre) · acessível por padrão · atualizada (depreciação ativa).
 
 **NÃO é:** repositório de PDFs · blog de notícias · réplica do manual do Moodle · espaço de opinião pessoal · enciclopédia completa · plataforma de cursos formais (sem matrícula/certificado/frequência) · sistema de gamificação (sem badges/ranking/progresso pessoal).
 
@@ -540,7 +540,7 @@ Artigo   ──< próximos passos (plural) >── Artigo
 **Taxonomias (não custom fields — ver B.3):** `tipo`, `categoria`, `topico`.
 
 **ABNT (gerada automaticamente — Decisão 20):**
-`SOBRENOME, Nome. {título}. Base de Conhecimento CEFOR/IFes, {ano de data_publicacao}. Revisado em {data_revisao_interna}.`
+`SOBRENOME, Nome. {título}. Base de Conhecimento CEFOR/Ifes, {ano de data_publicacao}. Revisado em {data_revisao_interna}.`
 Múltiplos autores seguem norma ABNT.
 
 ### Imagens dentro do conteúdo (bloco customizado)
@@ -767,4 +767,4 @@ Padrão proposto (a confirmar com Elton + Marquito):
 
 ---
 
-*Content System (mestre consolidado) · Base de Conhecimento CEFOR/IFes · Fase 1 — Fundações*
+*Content System (mestre consolidado) · Base de Conhecimento CEFOR/Ifes · Fase 1 — Fundações*
