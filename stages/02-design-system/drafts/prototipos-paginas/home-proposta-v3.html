@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Base de Conhecimento CEFOR/Ifes — Home v3</title>
+<meta name="description" content="Proposta v3 da Home: catálogo direto com cards de topo colorido e ícones geométricos do sistema visual." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     HOME v3 — Catálogo direto, cards bold com ícones geométricos
+     Evolução da v2: remove hero/featured/CTA, foco total no catálogo
+     ============================================================ */
+
+  :root {
+    --bg: #ffffff;
+    --bg-2: #f7f5f1;
+    --paper: #ffffff;
+    --ink: #14110d;
+    --ink-2: #4a4439;
+    --ink-3: #8a8273;
+    --line: #e7e3d8;
+    --line-2: #d4cdba;
+    --accent-solid: #1f5142;
+    --accent-solid-2: #2d6a4f;
+    --accent-soft: #e3ecdf;
+    --accent: #1f5142;
+    --accent-2: #2d6a4f;
+    --bg-3: #efeae0;
+    --gold-soft: #f3e7d0;
+
+    /* Card top palette — Cores oficiais (Juliana, 2026-05-28) */
+    --type-tutorial-bg:    #FF6699;  /* goiaba — Tutorial */
+    --type-referencia-bg:  #FF9933;  /* laranja — Referência */
+    --type-solucao-bg:     #3399FF;  /* azul — Solução de Problema */
+    --type-conceitual-bg:  #9933CC;  /* roxo — Conceitual */
+    --type-recurso-bg:     #FFCC33;  /* amarelo — Recurso */
+
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-xl: 24px;
+    --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
+    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
+    --shadow-lg: 0 24px 48px -12px rgba(20,17,13,.12);
+  }
+  [data-theme="dark"] {
+    --bg: #0e0c0a; --bg-2: #16130f; --bg-3: #1e1a14;
+    --paper: #1a1612;
+    --ink: #f4f1ea; --ink-2: #c9c2b3; --ink-3: #8a8273;
+    --line: #2a251e; --line-2: #3a342a;
+    --accent-soft: #19251f;
+    --accent: #6cb89a;
+    --accent-2: #87cdb0;
+    --gold-soft: #2e2516;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.25);
+    --shadow-lg: 0 24px 48px -12px rgba(0,0,0,.4);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--sans); font-size: 16px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  img { max-width: 100%; display: block; }
+
+  .skip { position: absolute; left: -9999px; top: 8px; background: var(--accent-solid); color: #fff; padding: 8px 12px; border-radius: 6px; z-index: 100; font-weight: 600; }
+  .skip:focus { left: 8px; }
+
+  /* ============================================================
+     HEADER — dark green, minimal (idem v2)
+     ============================================================ */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--accent-solid);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .header-inner {
+    max-width: 1320px; margin: 0 auto; padding: 14px 32px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; color: #ffffff; }
+  .brand-logo {
+    width: 36px; height: 36px;
+    display: grid; place-items: center;
+  }
+  .brand-logo svg { width: 100%; height: 100%; color: #fff; }
+  .brand-text { font-size: 1.05rem; letter-spacing: -.01em; color: #fff; font-weight: 600; }
+
+  .nav { display: flex; gap: 6px; margin-left: auto; }
+  .nav a {
+    color: rgba(255,255,255,0.88); font-size: .92rem; font-weight: 500;
+    padding: 8px 14px; border-radius: 8px;
+  }
+  .nav a:hover { background: rgba(255,255,255,0.12); color: #ffffff; }
+
+  .header-search { position: relative; max-width: 280px; flex: 0 0 280px; }
+  .header-search input {
+    width: 100%; padding: 9px 12px 9px 36px; font: inherit; font-size: .88rem;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); color: #fff;
+    border-radius: 10px;
+  }
+  .header-search input::placeholder { color: rgba(255,255,255,0.55); }
+  .header-search svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.6); }
+
+  .icon-btn {
+    width: 36px; height: 36px; display: grid; place-items: center;
+    background: transparent; border: 1px solid rgba(255,255,255,0.22); border-radius: 8px;
+    color: rgba(255,255,255,0.85); cursor: pointer;
+  }
+  .icon-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+  /* ============================================================
+     HERO — Claude-style: large type + category tags (idem v2)
+     ============================================================ */
+  .hero {
+    position: relative;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 0%, var(--accent-soft) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 95% 10%, var(--gold-soft) 0%, transparent 55%),
+      var(--bg-2);
+    border-bottom: 1px solid var(--line);
+    padding: 72px 32px 56px;
+  }
+  .hero-inner {
+    max-width: 1320px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: end;
+  }
+  .hero-left { max-width: 680px; }
+  .hero-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: .82rem; color: var(--ink-3); margin-bottom: 20px;
+  }
+  .hero-kicker .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .hero h1 {
+    font-size: clamp(2.6rem, 5.5vw, 4rem);
+    line-height: 1.02; letter-spacing: -.035em;
+    font-weight: 800; margin: 0 0 20px;
+    color: var(--ink);
+  }
+  .hero h1 em { font-style: normal; color: var(--accent-2); }
+  [data-theme="dark"] .hero h1 em { color: var(--accent); }
+  .hero-sub {
+    font-size: 1.1rem; color: var(--ink-2); line-height: 1.6;
+    max-width: 560px; margin: 0 0 28px;
+  }
+  .hero-search {
+    display: flex; align-items: center; gap: 0;
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: 14px; padding: 5px; max-width: 560px;
+  }
+  .hero-search:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .hero-search svg { margin: 0 12px; color: var(--ink-3); flex-shrink: 0; }
+  .hero-search input {
+    flex: 1; border: none; background: transparent; color: var(--ink);
+    padding: 13px 0; font: inherit; font-size: .98rem;
+  }
+  .hero-search input:focus { outline: none; }
+  .hero-search input::placeholder { color: var(--ink-3); }
+  .hero-search button {
+    background: var(--accent-solid); color: #fff; border: none;
+    padding: 11px 20px; font: inherit; font-weight: 600; font-size: .92rem;
+    border-radius: 10px; cursor: pointer; white-space: nowrap;
+  }
+  .hero-search button:hover { background: var(--accent-solid-2); }
+
+  .hero-right { display: flex; flex-direction: column; gap: 0; align-items: flex-end; }
+  .filter-label {
+    font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink-3); margin-bottom: 12px;
+  }
+  .filter-tags { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+  .filter-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 18px; border-radius: 99px;
+    background: var(--paper); border: 1px solid var(--line);
+    font-size: .92rem; font-weight: 600; color: var(--ink-2);
+    cursor: pointer; transition: all .15s;
+    white-space: nowrap;
+  }
+  .filter-tag:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+  .filter-tag.active { background: var(--accent-solid); border-color: var(--accent-solid); color: #fff; }
+  .filter-tag .tag-count {
+    font-size: .72rem; font-weight: 700; opacity: .6;
+    background: rgba(0,0,0,.06); padding: 2px 7px; border-radius: 99px;
+  }
+  .filter-tag.active .tag-count { background: rgba(255,255,255,.2); opacity: 1; }
+
+  @media (max-width: 1080px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+    .hero-right { align-items: flex-start; }
+    .filter-tags { flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
+  }
+
+  /* ============================================================
+     CONTENT — Catálogo
+     ============================================================ */
+  .content-section {
+    padding: 56px 32px 72px;
+  }
+  .content-inner { max-width: 1320px; margin: 0 auto; }
+  .content-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; gap: 16px;
+  }
+  .content-head h1 {
+    font-size: 1.6rem; font-weight: 700; margin: 0;
+    letter-spacing: -.015em; color: var(--ink);
+  }
+  .content-head .see-all {
+    font-size: .9rem; font-weight: 500; color: var(--accent-solid-2);
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  [data-theme="dark"] .content-head .see-all { color: var(--accent); }
+  .content-head .see-all:hover { text-decoration: underline; }
+
+  /* Layout two-column with sidebar */
+  .content-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 40px;
+    align-items: start;
+  }
+  @media (max-width: 960px) {
+    .content-layout {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .filter-sidebar {
+      position: static !important;
+      order: -1;
+    }
+  }
+
+  /* Card grid */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 1200px) {
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .card-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============================================================
+     CARD — Bold colored top with geometric icon (assets PNG)
+     ============================================================ */
+  .card {
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: var(--r-lg); overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: opacity .2s ease, transform .2s ease, border-color .15s, box-shadow .15s;
+  }
+  .card:hover {
+    border-color: var(--accent-solid);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .card-illust {
+    aspect-ratio: 16 / 10;
+    display: grid; place-items: center;
+    position: relative; overflow: hidden;
+  }
+  .card-illust img {
+    width: 38%; height: auto; max-width: 130px;
+    opacity: .95;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,.08));
+  }
+
+  /* Type → background color mapping (top of card) */
+  .card[data-type="tutorial"]   .card-illust { background: var(--type-tutorial-bg); }
+  .card[data-type="referencia"] .card-illust { background: var(--type-referencia-bg); }
+  .card[data-type="solucao"]    .card-illust { background: var(--type-solucao-bg); }
+  .card[data-type="conceitual"] .card-illust { background: var(--type-conceitual-bg); }
+  .card[data-type="recurso"]    .card-illust { background: var(--type-recurso-bg); }
+
+  /* Card body */
+  .card-body { padding: 18px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .card-kicker {
+    font-size: .7rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-3);
+  }
+  .card h3 {
+    margin: 0; font-size: 1.05rem; font-weight: 700; line-height: 1.3;
+    color: var(--ink); letter-spacing: -.01em;
+  }
+  .card .card-desc {
+    font-size: .88rem; color: var(--ink-2); line-height: 1.5;
+    margin: 0;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .card .card-meta {
+    margin-top: auto; padding-top: 12px;
+    display: flex; gap: 10px; font-size: .78rem; color: var(--ink-3);
+    align-items: center;
+  }
+  .type-pill {
+    padding: 4px 12px; border-radius: 99px; font-weight: 600;
+    font-size: .72rem; letter-spacing: .02em; color: #fff;
+  }
+  .card[data-type="tutorial"]   .type-pill { background: var(--type-tutorial-bg); }
+  .card[data-type="referencia"] .type-pill { background: var(--type-referencia-bg); }
+  .card[data-type="solucao"]    .type-pill { background: var(--type-solucao-bg); }
+  .card[data-type="conceitual"] .type-pill { background: var(--type-conceitual-bg); }
+  .card[data-type="recurso"]    .type-pill { background: var(--type-recurso-bg); color: #5a4408; }
+
+  /* ============================================================
+     SIDEBAR FILTER (idem v2, refinada)
+     ============================================================ */
+  .filter-sidebar {
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: sticky;
+    top: 88px;
+  }
+  .sidebar-title {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+    letter-spacing: -.01em;
+  }
+
+  .filter-group {
+    padding-bottom: 4px;
+  }
+  .filter-group:not(:last-of-type) {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 16px;
+  }
+  .filter-group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 6px 0 10px;
+    font-family: var(--sans);
+    font-size: .88rem;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    text-align: left;
+  }
+  .filter-group-header:hover { color: var(--accent-solid); }
+  [data-theme="dark"] .filter-group-header:hover { color: var(--accent); }
+  .filter-group-header .chevron {
+    transition: transform .25s ease;
+    color: var(--ink-3);
+    width: 14px; height: 14px;
+  }
+  .filter-group.active .filter-group-header .chevron { transform: rotate(180deg); }
+  .filter-group-content { display: none; padding-top: 4px; }
+  .filter-group.active .filter-group-content { display: block; }
+
+  /* Sort select */
+  .sidebar-select {
+    width: 100%;
+    padding: 9px 12px;
+    border-radius: var(--r-sm);
+    border: 1px solid var(--line-2);
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: .85rem;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238a8273' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+    padding-right: 30px;
+  }
+  .sidebar-select:focus { border-color: var(--accent-solid); box-shadow: 0 0 0 3px var(--accent-soft); }
+
+  /* Checkboxes */
+  .sidebar-checkboxes { display: flex; flex-direction: column; gap: 10px; }
+  .sidebar-cb-label {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: .88rem; font-weight: 500; color: var(--ink-2);
+    cursor: pointer; user-select: none; transition: color .12s;
+  }
+  .sidebar-cb-label:hover { color: var(--ink); }
+  .sidebar-cb-label input[type="checkbox"] {
+    appearance: none; -webkit-appearance: none;
+    width: 16px; height: 16px;
+    border: 1.4px solid var(--line-2); border-radius: 4px;
+    background: var(--paper); cursor: pointer;
+    display: grid; place-content: center;
+    transition: border-color .15s, background-color .15s;
+    flex-shrink: 0;
+  }
+  .sidebar-cb-label input[type="checkbox"]::before {
+    content: ""; width: 9px; height: 9px;
+    transform: scale(0);
+    transition: transform .12s ease-in-out;
+    background-color: var(--accent-solid);
+    clip-path: polygon(14% 44%, 0 58%, 38% 96%, 100% 23%, 86% 9%, 38% 68%);
+  }
+  [data-theme="dark"] .sidebar-cb-label input[type="checkbox"]::before { background-color: var(--accent); }
+  .sidebar-cb-label input[type="checkbox"]:checked {
+    background-color: var(--accent-soft);
+    border-color: var(--accent-solid);
+  }
+  [data-theme="dark"] .sidebar-cb-label input[type="checkbox"]:checked {
+    background-color: rgba(108, 184, 154, 0.15);
+    border-color: var(--accent);
+  }
+  .sidebar-cb-label input[type="checkbox"]:checked::before { transform: scale(1); }
+
+  /* Topic groups (nested inside Tópico filter) */
+  .topic-groups { display: flex; flex-direction: column; gap: 16px; }
+  .topic-group .sidebar-checkboxes { gap: 8px; }
+  .topic-group-title {
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 8px;
+  }
+
+  .sidebar-stats {
+    font-size: .8rem; color: var(--ink-3); font-weight: 500;
+    padding-top: 14px; border-top: 1px dashed var(--line);
+  }
+  .sidebar-stats strong { color: var(--accent-solid); font-weight: 700; }
+  [data-theme="dark"] .sidebar-stats strong { color: var(--accent); }
+
+  /* Show more */
+  .show-more-wrap { text-align: center; margin-top: 40px; }
+  .show-more {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px; border-radius: 99px;
+    background: transparent; border: 1px solid var(--line-2);
+    color: var(--ink-2); font: inherit; font-size: .9rem; font-weight: 500;
+    cursor: pointer; transition: all .15s;
+  }
+  .show-more:hover { border-color: var(--accent-solid); color: var(--accent-solid); background: var(--accent-soft); }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  .site-footer {
+    background: var(--ink); color: #d4cdba;
+    padding: 56px 32px 32px;
+  }
+  [data-theme="dark"] .site-footer { background: var(--bg-2); }
+  .footer-inner {
+    max-width: 1320px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px;
+  }
+  .footer-inner h5 {
+    font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+    color: #fff; margin: 0 0 16px; font-weight: 600;
+  }
+  [data-theme="dark"] .footer-inner h5 { color: var(--ink-2); }
+  .footer-inner a {
+    display: block; padding: 4px 0; font-size: .88rem; color: #d4cdba;
+  }
+  .footer-inner a:hover { color: #fff; }
+  [data-theme="dark"] .footer-inner a { color: var(--ink-3); }
+  [data-theme="dark"] .footer-inner a:hover { color: var(--accent); }
+  .footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .footer-brand-mark {
+    width: 32px; height: 32px; display: grid; place-items: center;
+  }
+  .footer-brand-mark svg { width: 100%; height: 100%; color: #fff; }
+  .footer-brand-text { font-size: .9rem; color: #fff; font-weight: 600; }
+  .footer-desc { font-size: .85rem; color: #d4cdba; line-height: 1.55; margin: 0 0 12px; }
+  .footer-license { font-size: .78rem; color: #8a8273; opacity: .7; line-height: 1.4; }
+  [data-theme="dark"] .footer-desc { color: var(--ink-3); }
+  .footer-bottom {
+    max-width: 1320px; margin: 28px auto 0; padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,.1);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    font-size: .78rem; color: #8a8273;
+  }
+  [data-theme="dark"] .footer-bottom { border-color: var(--line); color: var(--ink-3); }
+
+  @media (max-width: 768px) {
+    .header-search { display: none; }
+    .nav { display: none; }
+    .hero { padding: 48px 20px 40px; }
+    .hero h1 { font-size: 2.2rem; }
+    .content-section { padding: 32px 20px 48px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .footer-inner { grid-template-columns: 1fr; }
+    .header-inner { padding: 12px 16px; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="home-proposta-v3.html" class="brand">
+      <span class="brand-logo" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 8 L8 32 L20 36 L20 12 Z"/>
+          <path d="M32 8 L32 32 L20 36 L20 12 Z"/>
+          <path d="M8 8 L20 12 L32 8"/>
+        </svg>
+      </span>
+      <span class="brand-text">Base de Conhecimento</span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="exploracao-pagina-percurso.html">Percursos</a>
+      <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
+      <a href="prototipo-artigo.html">Todos os artigos</a>
+    </nav>
+    <form class="header-search" role="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar" />
+    </form>
+    <button class="icon-btn" id="btn-theme" aria-label="Alternar modo escuro" aria-pressed="false" title="Modo escuro">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO (idem v2) -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <h1 id="hero-title">Aprenda.<br>Consulte.<br><em>Ensine melhor.</em></h1>
+        <p class="hero-sub">Tutoriais, referências e trilhas práticas sobre Moodle, acessibilidade, IA na educação e padrão visual — produzidos pelo time do CEFOR/Ifes.</p>
+
+        <form class="hero-search" role="search" action="/buscar" method="get">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input type="search" name="q" placeholder="Questionário, Livro de Notas, H5P, IA Generativa…" aria-label="Buscar na base de conhecimento" />
+          <button type="submit">Buscar</button>
+        </form>
+      </div>
+
+      <div class="hero-right" role="navigation" aria-label="Filtrar por categoria">
+        <p class="filter-label">Explorar por categoria</p>
+        <div class="filter-tags">
+          <a class="filter-tag" href="#" data-cat="ferramentas">Ferramentas e Recursos <span class="tag-count">36</span></a>
+          <a class="filter-tag" href="#" data-cat="gestao-moodle">Gestão e Operação do Moodle <span class="tag-count">48</span></a>
+          <a class="filter-tag" href="#" data-cat="pedagogia">Pedagogia e Planejamento <span class="tag-count">18</span></a>
+          <a class="filter-tag" href="#" data-cat="acessibilidade">Acessibilidade <span class="tag-count">12</span></a>
+          <a class="filter-tag" href="#" data-cat="conduta">Conduta e Conformidade <span class="tag-count">9</span></a>
+          <a class="filter-tag" href="#" data-cat="identidade">Identidade <span class="tag-count">8</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="content-inner">
+      <div class="content-head">
+        <h1>Todos os artigos</h1>
+        <a href="#" class="see-all">Ver catálogo completo →</a>
+      </div>
+
+      <div class="content-layout">
+
+        <!-- MAIN GRID -->
+        <div class="content-main">
+          <div class="card-grid">
+
+            <!-- Card 1 — Tutorial / Moodle -->
+            <a class="card" href="#" data-category="gestao-moodle" data-type="tutorial" data-topics="livro-notas,config-curso">
+              <div class="card-illust">
+                <img src="../../assets/icone_circulo_branco.png" alt="" />
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Gestão e Operação do Moodle</span>
+                <h3>Configurando o livro de notas do Moodle</h3>
+                <p class="card-desc">Passo a passo para estruturar categorias, pesos e cálculos de notas. Do zero ao relatório final.</p>
+                <div class="card-meta">
+                  <span class="type-pill">Tutorial</span>
+                  <span>10 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 2 — Referência / Ferramentas -->
+            <a class="card" href="#" data-category="ferramentas" data-type="referencia" data-topics="h5p,video">
+              <div class="card-illust">
+                <img src="../../assets/icone_quadrado_branco.png" alt="" />
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Ferramentas e Recursos</span>
+                <h3>H5P: tipos de conteúdo interativo e quando usar cada um</h3>
+                <p class="card-desc">Guia de referência dos 20+ tipos de conteúdo H5P com exemplos reais de cursos do CEFOR.</p>
+                <div class="card-meta">
+                  <span class="type-pill">Referência</span>
+                  <span>14 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 3 — Solução / Acessibilidade -->
+            <a class="card" href="#" data-category="acessibilidade" data-type="solucao" data-topics="questionario,inclusao-design-universal">
+              <div class="card-illust">
+                <img src="../../assets/icone_triangulo_branco.png" alt="" />
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Acessibilidade</span>
+                <h3>Como conceder tempo ampliado em um questionário</h3>
+                <p class="card-desc">Passo a passo para configurar extensão de tempo individual para estudantes com necessidades específicas.</p>
+                <div class="card-meta">
+                  <span class="type-pill">Solução</span>
+                  <span>6 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 4 — Solução / Pedagogia -->
+            <a class="card" href="#" data-category="pedagogia" data-type="conceitual" data-topics="planejamento-design-educacional">
+              <div class="card-illust">
+                <img src="../../assets/icones_losango_branco.png" alt="" />
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Pedagogia e Planejamento</span>
+                <h3>O que é design educacional e por que ele importa</h3>
+                <p class="card-desc">Conceitos fundamentais do design educacional aplicados ao contexto do ensino a distância no Ifes.</p>
+                <div class="card-meta">
+                  <span class="type-pill">Conceitual</span>
+                  <span>8 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 5 — Conceitual / Ferramentas -->
+            <a class="card" href="#" data-category="ferramentas" data-type="tutorial" data-topics="questionario,banco-questoes">
+              <div class="card-illust">
+                <img src="../../assets/icone_circulo_branco.png" alt="" />
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Ferramentas e Recursos</span>
+                <h3>Criando questionários no Moodle: passo a passo</h3>
+                <p class="card-desc">Do banco de questões ao questionário publicado, incluindo tentativas, prazos e feedback automático.</p>
+                <div class="card-meta">
+                  <span class="type-pill">Tutorial</span>
+                  <span>12 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 6 — Recurso / Conduta -->
+            <a class="card" href="#" data-category="conduta" data-type="referencia" data-topics="direitos-autorais-seguranca">
+              <div class="card-illust">
+                <img src="../../assets/icone_quadrado_branco.png" alt="" />
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Conduta e Conformidade</span>
+                <h3>Direitos autorais no Moodle: o que pode e o que não pode</h3>
+                <p class="card-desc">Guia jurídico simplificado sobre uso de imagens, textos e vídeos em materiais de curso do Ifes.</p>
+                <div class="card-meta">
+                  <span class="type-pill">Referência</span>
+                  <span>9 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 7 — Tutorial / Ferramentas -->
+            <a class="card" href="#" data-category="ferramentas" data-type="recurso" data-topics="gpt-customizado,ia-generativa">
+              <div class="card-illust">
+                <img src="../../assets/icone_hexagono_branco.png" alt="" />
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Ferramentas e Recursos</span>
+                <h3>GPTs customizados: criando assistentes para atividades</h3>
+                <p class="card-desc">Como criar GPTs personalizados para gerar exercícios, dar feedback e apoiar o planejamento de aulas.</p>
+                <div class="card-meta">
+                  <span class="type-pill">Recurso</span>
+                  <span>15 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 8 — Referência / Moodle -->
+            <a class="card" href="#" data-category="gestao-moodle" data-type="tutorial" data-topics="backup,config-curso">
+              <div class="card-illust">
+                <img src="../../assets/icone_circulo_branco.png" alt="" />
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Gestão e Operação do Moodle</span>
+                <h3>Backup e restauração de cursos no Moodle</h3>
+                <p class="card-desc">Como fazer backup seguro, restaurar em outra disciplina e transferir conteúdo entre semestres.</p>
+                <div class="card-meta">
+                  <span class="type-pill">Tutorial</span>
+                  <span>8 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 9 — Recurso / Acessibilidade -->
+            <a class="card" href="#" data-category="acessibilidade" data-type="referencia" data-topics="audiodescricao,video">
+              <div class="card-illust">
+                <img src="../../assets/icone_quadrado_branco.png" alt="" />
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Acessibilidade</span>
+                <h3>Audiodescrição em vídeos educacionais: quando e como</h3>
+                <p class="card-desc">Orientações práticas para produzir ou contratar audiodescrição em materiais de videoaula.</p>
+                <div class="card-meta">
+                  <span class="type-pill">Referência</span>
+                  <span>11 min</span>
+                </div>
+              </div>
+            </a>
+
+          </div>
+
+          <div class="show-more-wrap">
+            <button class="show-more">
+              Mostrar mais artigos
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="filter-sidebar" aria-label="Filtrar e ordenar">
+          <h2 class="sidebar-title">Filtrar e ordenar</h2>
+
+          <div class="filter-group active">
+            <button class="filter-group-header" type="button" aria-expanded="true">
+              <span>Ordenar por</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-group-content">
+              <select id="sort-select" class="sidebar-select">
+                <option value="recent">Mais recentes</option>
+                <option value="az">Título (A-Z)</option>
+                <option value="time">Tempo de leitura</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-group active">
+            <button class="filter-group-header" type="button" aria-expanded="true">
+              <span>Tipo de artigo</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-group-content">
+              <div class="sidebar-checkboxes" id="type-checkboxes">
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="tutorial" checked> Tutorial</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="referencia" checked> Referência</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="conceitual" checked> Conceitual</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="solucao" checked> Solução de Problema</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="recurso" checked> Recurso</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group active">
+            <button class="filter-group-header" type="button" aria-expanded="true">
+              <span>Categoria</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-group-content">
+              <div class="sidebar-checkboxes" id="category-checkboxes">
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="ferramentas" checked> Ferramentas e Recursos</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="gestao-moodle" checked> Gestão e Operação do Moodle</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="pedagogia" checked> Pedagogia e Planejamento</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="acessibilidade" checked> Acessibilidade</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="conduta" checked> Conduta e Conformidade</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="identidade" checked> Identidade</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <button class="filter-group-header" type="button" aria-expanded="false">
+              <span>Tópico</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-group-content">
+              <div class="topic-groups" id="topic-checkboxes">
+
+                <div class="topic-group">
+                  <p class="topic-group-title">Atividades e avaliação Moodle</p>
+                  <div class="sidebar-checkboxes">
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="questionario"> Questionário</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="banco-questoes"> Banco de Questões</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="tarefa"> Tarefa</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="forum"> Fórum</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="livro-notas"> Livro de Notas</label>
+                  </div>
+                </div>
+
+                <div class="topic-group">
+                  <p class="topic-group-title">Recursos Moodle</p>
+                  <div class="sidebar-checkboxes">
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="h5p"> H5P</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="rotulo"> Rótulo</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="webconferencia"> Webconferência</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="video"> Vídeo</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="audio-podcast"> Áudio e Podcast</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="livro-digital"> Livro Digital</label>
+                  </div>
+                </div>
+
+                <div class="topic-group">
+                  <p class="topic-group-title">Gestão do AVA</p>
+                  <div class="sidebar-checkboxes">
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="config-curso"> Configuração de Curso</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="matricula"> Matrícula e Inscrição</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="backup"> Backup e Restauração</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="moodle-codes"> Moodle Codes</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="sala-virtual"> Sala Virtual</label>
+                  </div>
+                </div>
+
+                <div class="topic-group">
+                  <p class="topic-group-title">Inteligência Artificial</p>
+                  <div class="sidebar-checkboxes">
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="ia-generativa"> IA Generativa</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="gpt-customizado"> GPT Customizado</label>
+                  </div>
+                </div>
+
+                <div class="topic-group">
+                  <p class="topic-group-title">Acessibilidade</p>
+                  <div class="sidebar-checkboxes">
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="libras"> Libras</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="audiodescricao"> Audiodescrição</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="inclusao-design-universal"> Inclusão e Desenho Universal</label>
+                  </div>
+                </div>
+
+                <div class="topic-group">
+                  <p class="topic-group-title">Pedagogia</p>
+                  <div class="sidebar-checkboxes">
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="planejamento-design-educacional"> Planejamento e Design Educacional</label>
+                  </div>
+                </div>
+
+                <div class="topic-group">
+                  <p class="topic-group-title">Identidade institucional</p>
+                  <div class="sidebar-checkboxes">
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="padrao-visual"> Padrão Visual</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="mooc"> MOOC</label>
+                  </div>
+                </div>
+
+                <div class="topic-group">
+                  <p class="topic-group-title">Conduta</p>
+                  <div class="sidebar-checkboxes">
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="direitos-autorais-seguranca"> Direitos Autorais e Segurança</label>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-stats" id="filter-stats">
+            Mostrando <strong>9</strong> artigos
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <span class="footer-brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 8 L8 32 L20 36 L20 12 Z"/>
+            <path d="M32 8 L32 32 L20 36 L20 12 Z"/>
+            <path d="M8 8 L20 12 L32 8"/>
+          </svg>
+        </span>
+        <span class="footer-brand-text">Base de Conhecimento · CEFOR/Ifes</span>
+      </div>
+      <p class="footer-desc">
+        Produzida pelo Centro de Referência em Formação e em EaD do Instituto Federal do Espírito Santo.
+      </p>
+      <p class="footer-license">Conteúdo sob licença Creative Commons BY-NC-SA 4.0, salvo quando indicado.</p>
+    </div>
+    <div>
+      <h5>Navegar</h5>
+      <a href="exploracao-pagina-percurso.html">Percursos</a>
+      <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
+      <a href="prototipo-artigo.html">Todos os artigos</a>
+      <a href="#">Categorias</a>
+      <a href="#">Tópicos</a>
+    </div>
+    <div>
+      <h5>Sobre</h5>
+      <a href="#">O CEFOR</a>
+      <a href="#">Equipe editorial</a>
+      <a href="#">Como contribuir</a>
+      <a href="#">Acessibilidade do site</a>
+    </div>
+    <div>
+      <h5>Recursos</h5>
+      <a href="https://cefor.ifes.edu.br" target="_blank" rel="noopener">cefor.ifes.edu.br ↗</a>
+      <a href="#">ReLiCefor</a>
+      <a href="#">MOOC</a>
+      <a href="#">Feed RSS</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 CEFOR · Instituto Federal do Espírito Santo</span>
+    <span>Proposta visual v3 · Em construção</span>
+  </div>
+</footer>
+
+<script>
+  const html = document.documentElement;
+  const btnTheme = document.getElementById('btn-theme');
+
+  function setTheme(dark) {
+    if (dark) {
+      html.setAttribute('data-theme', 'dark');
+      btnTheme && btnTheme.setAttribute('aria-pressed', 'true');
+    } else {
+      html.removeAttribute('data-theme');
+      btnTheme && btnTheme.setAttribute('aria-pressed', 'false');
+    }
+  }
+  if (localStorage.getItem('cefor-theme') === 'dark') setTheme(true);
+  if (btnTheme) {
+    btnTheme.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      setTheme(!isDark);
+      localStorage.setItem('cefor-theme', isDark ? 'light' : 'dark');
+    });
+  }
+
+  // Accordion toggles
+  document.querySelectorAll('.filter-group-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const group = header.parentElement;
+      const expanded = group.classList.contains('active');
+      group.classList.toggle('active');
+      header.setAttribute('aria-expanded', !expanded);
+    });
+  });
+
+  // Filter logic
+  const cards = document.querySelectorAll('.card-grid .card');
+  const catCheckboxes = document.querySelectorAll('#category-checkboxes input[type="checkbox"]');
+  const typeCheckboxes = document.querySelectorAll('#type-checkboxes input[type="checkbox"]');
+  const topicCheckboxes = document.querySelectorAll('#topic-checkboxes input[type="checkbox"]');
+  const statsNum = document.querySelector('#filter-stats strong');
+  const sortSelect = document.getElementById('sort-select');
+  const cardGrid = document.querySelector('.card-grid');
+
+  cards.forEach((card, i) => card.setAttribute('data-index', i));
+
+  function sortArticles() {
+    if (!sortSelect || !cardGrid) return;
+    const sortBy = sortSelect.value;
+    const arr = Array.from(cards);
+    if (sortBy === 'az') {
+      arr.sort((a, b) => a.querySelector('h3').textContent.trim().localeCompare(b.querySelector('h3').textContent.trim(), 'pt-BR'));
+    } else if (sortBy === 'time') {
+      arr.sort((a, b) => (parseInt(a.querySelector('.card-meta span:last-child').textContent) || 0) - (parseInt(b.querySelector('.card-meta span:last-child').textContent) || 0));
+    } else {
+      arr.sort((a, b) => parseInt(a.dataset.index) - parseInt(b.dataset.index));
+    }
+    arr.forEach(c => cardGrid.appendChild(c));
+  }
+
+  function filterArticles() {
+    const activeCats = Array.from(catCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+    const activeTypes = Array.from(typeCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+    const activeTopics = Array.from(topicCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+    let visible = 0;
+    cards.forEach(card => {
+      const cardTopics = (card.dataset.topics || '').split(',').map(s => s.trim()).filter(Boolean);
+      const catMatch = activeCats.length === 0 || activeCats.includes(card.dataset.category);
+      const typeMatch = activeTypes.length === 0 || activeTypes.includes(card.dataset.type);
+      // Topic filter: when any topic checked, card must match at least one. Empty = no filter.
+      const topicMatch = activeTopics.length === 0 || cardTopics.some(t => activeTopics.includes(t));
+      if (catMatch && typeMatch && topicMatch) {
+        card.style.display = 'flex';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    if (statsNum) statsNum.textContent = visible;
+  }
+
+  catCheckboxes.forEach(cb => cb.addEventListener('change', filterArticles));
+  typeCheckboxes.forEach(cb => cb.addEventListener('change', filterArticles));
+  topicCheckboxes.forEach(cb => cb.addEventListener('change', filterArticles));
+  if (sortSelect) sortSelect.addEventListener('change', sortArticles);
+
+  // Hero category tags → sidebar checkboxes
+  document.querySelectorAll('.filter-tag').forEach(tag => {
+    tag.addEventListener('click', (e) => {
+      e.preventDefault();
+      const cat = tag.getAttribute('data-cat');
+      if (!cat) return;
+      document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+      tag.classList.add('active');
+      catCheckboxes.forEach(cb => { cb.checked = (cb.value === cat); });
+      filterArticles();
+      const contentSection = document.querySelector('.content-section');
+      if (contentSection) contentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>

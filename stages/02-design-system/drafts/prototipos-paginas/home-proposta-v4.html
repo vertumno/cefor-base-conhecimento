@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Base de Conhecimento CEFOR/Ifes — Home v4</title>
+<meta name="description" content="Proposta v4 da Home: tokens oficiais do design system. Cor = categoria, ícone = grupo de tópico (Opção B-lite)." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     HOME v4 — Tokens oficiais (design.md beta)
+     Cor = categoria · Ícone = grupo de tópico · Tipo = badge neutro
+     ============================================================ */
+
+  :root {
+    /* Surfaces */
+    --bg: #ffffff;
+    --bg-2: #f7f5f1;
+    --bg-3: #efeae0;
+    --paper: #ffffff;
+
+    /* Ink */
+    --ink: #14110d;
+    --ink-2: #4a4439;
+    --ink-3: #8a8273;
+
+    /* Lines */
+    --line: #e7e3d8;
+    --line-2: #d4cdba;
+
+    /* Marca — verde em 4 tons */
+    --verde-profundo: #1c4a36;
+    --verde-marca:    #2e7355;
+    --verde-claro:    #6ea892;
+    --verde-palido:   #e6efe9;
+
+    /* Acento quente */
+    --gold-soft: #f3e7d0;
+
+    /* Família dos artigos — 6 principais */
+    --art-roxo:    #9c6dcb;
+    --art-azul:    #5d9bd8;
+    --art-ambar:   #e8b53a;
+    --art-magenta: #c46aac;
+    --art-coral:   #ed8366;
+    --art-teal:    #5ea9b2;
+
+    /* Atribuição categoria → cor da família (decisão de conteúdo) */
+    --cat-ferramentas:    var(--art-azul);
+    --cat-gestao-moodle:  var(--art-teal);
+    --cat-pedagogia:      var(--art-coral);
+    --cat-acessibilidade: var(--art-roxo);
+    --cat-conduta:        var(--art-ambar);
+    --cat-identidade:     var(--art-magenta);
+
+    /* Tipografia */
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    /* Radii */
+    --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-xl: 24px;
+
+    /* Elevation */
+    --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
+    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
+    --shadow-lg: 0 24px 48px -12px rgba(20,17,13,.12);
+
+    /* Escala tipográfica (controlada via --font-scale para A-/A+) */
+    --font-scale: 1;
+  }
+
+  [data-theme="dark"] {
+    --bg: #0e0c0a;
+    --bg-2: #16130f;
+    --bg-3: #1e1a14;
+    --paper: #1a1612;
+    --ink: #f4f1ea;
+    --ink-2: #c9c2b3;
+    --ink-3: #8a8273;
+    --line: #2a251e;
+    --line-2: #3a342a;
+    --verde-profundo: #2e7355;
+    --verde-marca:    #6cb89a;
+    --verde-claro:    #9ed1bd;
+    --verde-palido:   #1f3329;
+    --gold-soft:      #3d3424;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.25);
+    --shadow-lg: 0 24px 48px -12px rgba(0,0,0,.4);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: calc(16px * var(--font-scale)); }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--sans); font-size: 1rem; line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 2px solid var(--verde-marca); outline-offset: 3px; border-radius: 4px; }
+  img, svg { max-width: 100%; display: block; }
+
+  .skip {
+    position: absolute; left: -9999px; top: 8px;
+    background: var(--verde-marca); color: #fff;
+    padding: 8px 12px; border-radius: var(--r-sm); z-index: 100; font-weight: 600;
+  }
+  .skip:focus { left: 8px; }
+
+  /* ============================================================
+     HEADER — verde-profundo (Decisão DS)
+     ============================================================ */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--verde-profundo);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .header-inner {
+    max-width: 1320px; margin: 0 auto; padding: 14px 32px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; color: #ffffff; }
+  .brand-logo { width: 36px; height: 36px; display: grid; place-items: center; }
+  .brand-logo svg { width: 100%; height: 100%; color: #fff; }
+  .brand-text { font-size: 1.05rem; letter-spacing: -.01em; color: #fff; font-weight: 600; }
+
+  .nav { display: flex; gap: 6px; margin-left: auto; }
+  .nav a {
+    color: rgba(255,255,255,0.88); font-size: .92rem; font-weight: 500;
+    padding: 8px 14px; border-radius: var(--r-md);
+  }
+  .nav a:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+  .header-search { position: relative; max-width: 280px; flex: 0 0 280px; }
+  .header-search input {
+    width: 100%; padding: 9px 12px 9px 36px; font: inherit; font-size: .88rem;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); color: #fff;
+    border-radius: var(--r-md);
+  }
+  .header-search input::placeholder { color: rgba(255,255,255,0.55); }
+  .header-search svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.6); }
+
+  .header-actions { display: flex; gap: 6px; }
+  .icon-btn {
+    min-width: 36px; height: 36px; padding: 0 10px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    background: transparent; border: 1px solid rgba(255,255,255,0.22); border-radius: var(--r-md);
+    color: rgba(255,255,255,0.85); cursor: pointer; font: inherit; font-size: .82rem; font-weight: 600;
+  }
+  .icon-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
+  .icon-btn svg { width: 16px; height: 16px; }
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  .hero {
+    position: relative;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 0%, var(--verde-palido) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 95% 10%, var(--gold-soft) 0%, transparent 55%),
+      var(--bg-2);
+    border-bottom: 1px solid var(--line);
+    padding: 72px 32px 56px;
+  }
+  .hero-inner {
+    max-width: 1320px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: end;
+  }
+  .hero-left { max-width: 680px; }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    line-height: 1.05; letter-spacing: -.015em;
+    font-weight: 700; margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .hero h1 em { font-style: normal; color: var(--verde-marca); }
+  .hero-sub {
+    font-size: 1.18rem; color: var(--ink-2); line-height: 1.5;
+    max-width: 560px; margin: 0 0 28px; font-weight: 400;
+  }
+  .hero-search {
+    display: flex; align-items: center; gap: 0;
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: var(--r-lg); padding: 5px; max-width: 560px;
+  }
+  .hero-search:focus-within { border-color: var(--verde-marca); box-shadow: 0 0 0 3px var(--verde-palido); }
+  .hero-search svg { margin: 0 12px; color: var(--ink-3); flex-shrink: 0; }
+  .hero-search input {
+    flex: 1; border: none; background: transparent; color: var(--ink);
+    padding: 13px 0; font: inherit; font-size: .98rem;
+  }
+  .hero-search input:focus { outline: none; }
+  .hero-search input::placeholder { color: var(--ink-3); }
+  .hero-search button {
+    background: var(--verde-marca); color: #fff; border: none;
+    padding: 10px 20px; font: inherit; font-weight: 600; font-size: .92rem;
+    border-radius: var(--r-md); cursor: pointer; white-space: nowrap;
+  }
+  .hero-search button:hover { background: var(--verde-profundo); }
+
+  .hero-right { display: flex; flex-direction: column; gap: 0; align-items: flex-end; }
+  .filter-label {
+    font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-3); margin-bottom: 12px;
+  }
+  .filter-tags { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+  .filter-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 18px; border-radius: 99px;
+    background: var(--paper); border: 1px solid var(--line);
+    font-size: .9rem; font-weight: 600; color: var(--ink-2);
+    cursor: pointer; transition: all .15s;
+    white-space: nowrap;
+  }
+  .filter-tag:hover { border-color: var(--verde-marca); color: var(--verde-marca); background: var(--verde-palido); }
+  .filter-tag.active { background: var(--verde-marca); border-color: var(--verde-marca); color: #fff; }
+  .filter-tag .tag-count {
+    font-size: .72rem; font-weight: 700; opacity: .6;
+    background: rgba(0,0,0,.06); padding: 2px 7px; border-radius: 99px;
+  }
+  .filter-tag.active .tag-count { background: rgba(255,255,255,.2); opacity: 1; }
+
+  @media (max-width: 1080px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+    .hero-right { align-items: flex-start; }
+    .filter-tags { flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
+  }
+
+  /* ============================================================
+     CONTENT
+     ============================================================ */
+  .content-section { padding: 56px 32px 72px; }
+  .content-inner { max-width: 1320px; margin: 0 auto; }
+  .content-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; gap: 16px;
+  }
+  .content-head h2 {
+    font-size: 1.8rem; font-weight: 700; margin: 0;
+    letter-spacing: -.01em; color: var(--ink); line-height: 1.2;
+  }
+  .content-head .see-all {
+    font-size: .92rem; font-weight: 600; color: var(--verde-marca);
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .content-head .see-all:hover { text-decoration: underline; }
+
+  .content-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 40px;
+    align-items: start;
+  }
+  @media (max-width: 960px) {
+    .content-layout { grid-template-columns: 1fr; gap: 32px; }
+    .filter-sidebar { position: static !important; order: -1; }
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 1200px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px)  { .card-grid { grid-template-columns: 1fr; } }
+
+  /* ============================================================
+     CARD — cor = categoria (faixa INFERIOR), ícone = grupo
+     ============================================================ */
+  .card {
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: var(--r-lg); overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;    /* card-illust vai pro fim visual */
+    transition: opacity .2s ease, transform .2s ease, border-color .15s, box-shadow .15s;
+  }
+  .card:hover {
+    border-color: var(--verde-claro);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Faixa horizontal inferior com cor da categoria, ícone do grupo
+     e nome da categoria (via ::after, sem mexer no HTML) */
+  .card-illust {
+    aspect-ratio: unset;
+    height: 56px;
+    display: flex; flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    padding: 0 20px;
+    position: relative; overflow: hidden;
+    color: #fff;
+  }
+  .card-illust img,
+  .card-illust > svg {
+    width: 28px; height: 28px; max-width: 28px;
+    opacity: 1;
+    filter: none;
+    flex-shrink: 0;
+  }
+  .card-illust > svg { color: #fff; }
+  .card-illust::after {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: .88rem;
+    letter-spacing: -.005em;
+    color: #fff;
+  }
+  /* Nome da categoria injetado por CSS — sem editar markup */
+  .card[data-category="ferramentas"]    .card-illust::after { content: "Ferramentas e Recursos"; }
+  .card[data-category="gestao-moodle"]  .card-illust::after { content: "Gestão e Operação do Moodle"; }
+  .card[data-category="pedagogia"]      .card-illust::after { content: "Pedagogia e Planejamento"; }
+  .card[data-category="acessibilidade"] .card-illust::after { content: "Acessibilidade"; }
+  .card[data-category="conduta"]        .card-illust::after { content: "Conduta e Conformidade"; }
+  .card[data-category="identidade"]     .card-illust::after { content: "Identidade"; }
+
+  /* Cor de fundo do card top vinda da categoria */
+  .card[data-category="ferramentas"]    .card-illust { background: var(--cat-ferramentas); }
+  .card[data-category="gestao-moodle"]  .card-illust { background: var(--cat-gestao-moodle); }
+  .card[data-category="pedagogia"]      .card-illust { background: var(--cat-pedagogia); }
+  .card[data-category="acessibilidade"] .card-illust { background: var(--cat-acessibilidade); }
+  .card[data-category="conduta"]        .card-illust { background: var(--cat-conduta); }
+  .card[data-category="identidade"]     .card-illust { background: var(--cat-identidade); }
+
+  .card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .card-kicker {
+    /* Categoria agora vive na faixa colorida inferior; kicker fica oculto */
+    display: none;
+  }
+  .card h3 {
+    margin: 0; font-size: 1.18rem; font-weight: 700; line-height: 1.3;
+    color: var(--ink); letter-spacing: -.005em;
+  }
+  .card-desc {
+    font-size: .92rem; color: var(--ink-2); line-height: 1.55;
+    margin: 0;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .card-meta {
+    margin-top: auto; padding-top: 12px;
+    display: flex; gap: 10px; font-size: .8rem; color: var(--ink-3);
+    align-items: center;
+  }
+
+  /* Badge de tipo — fundo neutro (DS §components/badge-tipo) */
+  .badge-tipo {
+    padding: 4px 12px; border-radius: 99px; font-weight: 600;
+    font-size: .72rem; letter-spacing: .02em;
+    background: var(--bg-2); color: var(--ink-2);
+  }
+
+  /* ============================================================
+     SIDEBAR FILTER
+     ============================================================ */
+  .filter-sidebar {
+    background: transparent; border: none; padding: 0;
+    display: flex; flex-direction: column; gap: 18px;
+    position: sticky; top: 88px;
+  }
+  .sidebar-title {
+    font-size: 1.02rem; font-weight: 700; color: var(--ink);
+    margin: 0; padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+    letter-spacing: -.01em;
+  }
+
+  .filter-group:not(:last-of-type) {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 16px;
+  }
+  .filter-group-header {
+    display: flex; justify-content: space-between; align-items: center;
+    width: 100%; background: transparent; border: none;
+    padding: 6px 0 10px;
+    font-family: var(--sans); font-size: .88rem; font-weight: 700;
+    color: var(--ink); cursor: pointer; text-align: left;
+  }
+  .filter-group-header:hover { color: var(--verde-marca); }
+  .filter-group-header .chevron {
+    transition: transform .25s ease; color: var(--ink-3);
+    width: 14px; height: 14px;
+  }
+  .filter-group.active .filter-group-header .chevron { transform: rotate(180deg); }
+  .filter-group-content { display: none; padding-top: 4px; }
+  .filter-group.active .filter-group-content { display: block; }
+
+  .sidebar-select {
+    width: 100%; padding: 9px 12px;
+    border-radius: var(--r-sm);
+    border: 1px solid var(--line-2);
+    background: var(--paper); color: var(--ink);
+    font-family: var(--sans); font-size: .85rem; font-weight: 500;
+    cursor: pointer; outline: none; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238a8273' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 10px center; background-size: 14px;
+    padding-right: 30px;
+  }
+  .sidebar-select:focus { border-color: var(--verde-marca); box-shadow: 0 0 0 3px var(--verde-palido); }
+
+  .sidebar-checkboxes { display: flex; flex-direction: column; gap: 10px; }
+  .sidebar-cb-label {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: .9rem; font-weight: 500; color: var(--ink-2);
+    cursor: pointer; user-select: none; transition: color .12s;
+  }
+  .sidebar-cb-label:hover { color: var(--ink); }
+  .sidebar-cb-label input[type="checkbox"] {
+    appearance: none; -webkit-appearance: none;
+    width: 16px; height: 16px;
+    border: 1.4px solid var(--line-2); border-radius: 4px;
+    background: var(--paper); cursor: pointer;
+    display: grid; place-content: center;
+    transition: border-color .15s, background-color .15s;
+    flex-shrink: 0;
+  }
+  .sidebar-cb-label input[type="checkbox"]::before {
+    content: ""; width: 9px; height: 9px;
+    transform: scale(0); transition: transform .12s ease-in-out;
+    background-color: var(--verde-marca);
+    clip-path: polygon(14% 44%, 0 58%, 38% 96%, 100% 23%, 86% 9%, 38% 68%);
+  }
+  .sidebar-cb-label input[type="checkbox"]:checked {
+    background-color: var(--verde-palido);
+    border-color: var(--verde-marca);
+  }
+  .sidebar-cb-label input[type="checkbox"]:checked::before { transform: scale(1); }
+
+  /* Topic groups */
+  .topic-groups { display: flex; flex-direction: column; gap: 16px; }
+  .topic-group .sidebar-checkboxes { gap: 8px; }
+  .topic-group-title {
+    font-size: .7rem; font-weight: 700; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink-3);
+    margin: 0 0 8px;
+  }
+
+  .sidebar-stats {
+    font-size: .82rem; color: var(--ink-3); font-weight: 500;
+    padding-top: 14px; border-top: 1px dashed var(--line);
+  }
+  .sidebar-stats strong { color: var(--verde-marca); font-weight: 700; }
+
+  .show-more-wrap { text-align: center; margin-top: 40px; }
+  .show-more {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px; border-radius: 99px;
+    background: transparent; border: 1px solid var(--line-2);
+    color: var(--ink-2); font: inherit; font-size: .9rem; font-weight: 600;
+    cursor: pointer; transition: all .15s;
+  }
+  .show-more:hover { border-color: var(--verde-marca); color: var(--verde-marca); background: var(--verde-palido); }
+
+  /* ============================================================
+     FOOTER — verde-profundo
+     ============================================================ */
+  .site-footer {
+    background: var(--verde-profundo); color: rgba(255,255,255,0.78);
+    padding: 56px 32px 32px;
+  }
+  .footer-inner {
+    max-width: 1320px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px;
+  }
+  .footer-inner h5 {
+    font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+    color: #fff; margin: 0 0 16px; font-weight: 700;
+  }
+  .footer-inner a {
+    display: block; padding: 4px 0; font-size: .9rem;
+    color: rgba(255,255,255,0.78);
+  }
+  .footer-inner a:hover { color: #fff; }
+  .footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .footer-brand-mark { width: 32px; height: 32px; display: grid; place-items: center; }
+  .footer-brand-mark svg { width: 100%; height: 100%; color: #fff; }
+  .footer-brand-text { font-size: .9rem; color: #fff; font-weight: 600; }
+  .footer-desc { font-size: .88rem; color: rgba(255,255,255,0.78); line-height: 1.55; margin: 0 0 12px; }
+  .footer-license { font-size: .8rem; color: rgba(255,255,255,0.55); line-height: 1.4; }
+  .footer-bottom {
+    max-width: 1320px; margin: 28px auto 0; padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,.12);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    font-size: .8rem; color: rgba(255,255,255,0.55);
+  }
+
+  @media (max-width: 768px) {
+    .header-search { display: none; }
+    .nav { display: none; }
+    .hero { padding: 48px 20px 40px; }
+    .hero h1 { font-size: 2.2rem; }
+    .content-section { padding: 32px 20px 48px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .footer-inner { grid-template-columns: 1fr; }
+    .header-inner { padding: 12px 16px; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="home-proposta-v4.html" class="brand">
+      <span class="brand-logo" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 8 L8 32 L20 36 L20 12 Z"/>
+          <path d="M32 8 L32 32 L20 36 L20 12 Z"/>
+          <path d="M8 8 L20 12 L32 8"/>
+        </svg>
+      </span>
+      <span class="brand-text">Base de Conhecimento</span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="exploracao-pagina-percurso.html">Percursos</a>
+      <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
+      <a href="prototipo-artigo.html">Todos os artigos</a>
+    </nav>
+    <form class="header-search" role="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar" />
+    </form>
+    <div class="header-actions">
+      <button class="icon-btn" id="btn-font-dec" aria-label="Diminuir fonte" title="Diminuir fonte">A−</button>
+      <button class="icon-btn" id="btn-font-inc" aria-label="Aumentar fonte" title="Aumentar fonte">A+</button>
+      <button class="icon-btn" id="btn-theme" aria-label="Alternar modo escuro" aria-pressed="false" title="Modo escuro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <h1 id="hero-title">Aprenda.<br>Consulte.<br><em>Ensine melhor.</em></h1>
+        <p class="hero-sub">Tutoriais, referências e trilhas práticas sobre Moodle, acessibilidade, IA na educação e padrão visual — produzidos pelo time do CEFOR/Ifes.</p>
+
+        <form class="hero-search" role="search" action="/buscar" method="get">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input type="search" name="q" placeholder="Questionário, Livro de Notas, H5P, IA Generativa…" aria-label="Buscar na base de conhecimento" />
+          <button type="submit">Buscar</button>
+        </form>
+      </div>
+
+      <div class="hero-right" role="navigation" aria-label="Filtrar por categoria">
+        <p class="filter-label">Explorar por categoria</p>
+        <div class="filter-tags">
+          <a class="filter-tag" href="#" data-cat="ferramentas">Ferramentas e Recursos <span class="tag-count">36</span></a>
+          <a class="filter-tag" href="#" data-cat="gestao-moodle">Gestão e Operação do Moodle <span class="tag-count">48</span></a>
+          <a class="filter-tag" href="#" data-cat="pedagogia">Pedagogia e Planejamento <span class="tag-count">18</span></a>
+          <a class="filter-tag" href="#" data-cat="acessibilidade">Acessibilidade <span class="tag-count">12</span></a>
+          <a class="filter-tag" href="#" data-cat="conduta">Conduta e Conformidade <span class="tag-count">9</span></a>
+          <a class="filter-tag" href="#" data-cat="identidade">Identidade <span class="tag-count">8</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="content-inner">
+      <div class="content-head">
+        <h2>Todos os artigos</h2>
+        <a href="#" class="see-all">Ver catálogo completo →</a>
+      </div>
+
+      <div class="content-layout">
+
+        <!-- MAIN GRID -->
+        <div class="content-main">
+          <div class="card-grid">
+
+            <!-- Card 1 — Gestão Moodle (teal) · Atividades e avaliação (círculo) -->
+            <a class="card" href="#" data-category="gestao-moodle" data-type="tutorial" data-topics="livro-notas,config-curso" data-group="atividades">
+              <div class="card-illust">
+                <img src="../../assets/icone_circulo_branco.png" alt="" />
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Gestão e Operação do Moodle</span>
+                <h3>Configurando o livro de notas do Moodle</h3>
+                <p class="card-desc">Passo a passo para estruturar categorias, pesos e cálculos de notas. Do zero ao relatório final.</p>
+                <div class="card-meta">
+                  <span class="badge-tipo">Tutorial</span>
+                  <span>10 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 2 — Ferramentas (azul) · Recursos Moodle (hexágono) -->
+            <a class="card" href="#" data-category="ferramentas" data-type="referencia" data-topics="h5p,video" data-group="recursos">
+              <div class="card-illust">
+                <img src="../../assets/icone_hexagono_branco.png" alt="" />
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Ferramentas e Recursos</span>
+                <h3>H5P: tipos de conteúdo interativo e quando usar cada um</h3>
+                <p class="card-desc">Guia de referência dos 20+ tipos de conteúdo H5P com exemplos reais de cursos do CEFOR.</p>
+                <div class="card-meta">
+                  <span class="badge-tipo">Referência</span>
+                  <span>14 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 3 — Acessibilidade (roxo) · Atividades (círculo) — tópico primário: Questionário -->
+            <a class="card" href="#" data-category="acessibilidade" data-type="solucao" data-topics="questionario,inclusao-design-universal" data-group="atividades">
+              <div class="card-illust">
+                <img src="../../assets/icone_circulo_branco.png" alt="" />
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Acessibilidade</span>
+                <h3>Como conceder tempo ampliado em um questionário</h3>
+                <p class="card-desc">Passo a passo para configurar extensão de tempo individual para estudantes com necessidades específicas.</p>
+                <div class="card-meta">
+                  <span class="badge-tipo">Solução de Problema</span>
+                  <span>6 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 4 — Pedagogia (coral) · Pedagogia (placeholder: árvore binária) -->
+            <a class="card" href="#" data-category="pedagogia" data-type="conceitual" data-topics="planejamento-design-educacional" data-group="pedagogia">
+              <div class="card-illust">
+                <!-- Placeholder SVG inline — substituir por icone_pedagogia_branco.png quando a Juliana entregar -->
+                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="50" y1="12" x2="50" y2="26"/>
+                  <line x1="22" y1="40" x2="78" y2="40"/>
+                  <line x1="50" y1="26" x2="50" y2="40"/>
+                  <line x1="22" y1="40" x2="22" y2="54"/>
+                  <line x1="78" y1="40" x2="78" y2="54"/>
+                  <line x1="10" y1="68" x2="34" y2="68"/>
+                  <line x1="66" y1="68" x2="90" y2="68"/>
+                  <line x1="22" y1="54" x2="22" y2="68"/>
+                  <line x1="78" y1="54" x2="78" y2="68"/>
+                  <line x1="10" y1="68" x2="10" y2="78"/>
+                  <line x1="34" y1="68" x2="34" y2="78"/>
+                  <line x1="66" y1="68" x2="66" y2="78"/>
+                  <line x1="90" y1="68" x2="90" y2="78"/>
+                  <circle cx="10" cy="86" r="6"/>
+                  <circle cx="34" cy="86" r="6"/>
+                  <circle cx="66" cy="86" r="6"/>
+                  <circle cx="90" cy="86" r="6"/>
+                </svg>
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Pedagogia e Planejamento</span>
+                <h3>O que é design educacional e por que ele importa</h3>
+                <p class="card-desc">Conceitos fundamentais do design educacional aplicados ao contexto do ensino a distância no Ifes.</p>
+                <div class="card-meta">
+                  <span class="badge-tipo">Conceitual</span>
+                  <span>8 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 5 — Ferramentas (azul) · Atividades (círculo) -->
+            <a class="card" href="#" data-category="ferramentas" data-type="tutorial" data-topics="questionario,banco-questoes" data-group="atividades">
+              <div class="card-illust">
+                <img src="../../assets/icone_circulo_branco.png" alt="" />
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Ferramentas e Recursos</span>
+                <h3>Criando questionários no Moodle: passo a passo</h3>
+                <p class="card-desc">Do banco de questões ao questionário publicado, incluindo tentativas, prazos e feedback automático.</p>
+                <div class="card-meta">
+                  <span class="badge-tipo">Tutorial</span>
+                  <span>12 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 6 — Conduta (ambar) · Conduta (placeholder: pentágono nested) -->
+            <a class="card" href="#" data-category="conduta" data-type="referencia" data-topics="direitos-autorais-seguranca" data-group="conduta">
+              <div class="card-illust">
+                <!-- Placeholder SVG inline — substituir por icone_conduta_branco.png -->
+                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="50,8 92,38 76,88 24,88 8,38"/>
+                  <polygon points="50,28 76,46 67,76 33,76 24,46"/>
+                  <line x1="33" y1="61" x2="67" y2="61"/>
+                </svg>
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Conduta e Conformidade</span>
+                <h3>Direitos autorais no Moodle: o que pode e o que não pode</h3>
+                <p class="card-desc">Guia jurídico simplificado sobre uso de imagens, textos e vídeos em materiais de curso do Ifes.</p>
+                <div class="card-meta">
+                  <span class="badge-tipo">Referência</span>
+                  <span>9 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 7 — Ferramentas (azul) · IA (losango) -->
+            <a class="card" href="#" data-category="ferramentas" data-type="recurso" data-topics="gpt-customizado,ia-generativa" data-group="ia">
+              <div class="card-illust">
+                <img src="../../assets/icones_losango_branco.png" alt="" />
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Ferramentas e Recursos</span>
+                <h3>GPTs customizados: criando assistentes para atividades</h3>
+                <p class="card-desc">Como criar GPTs personalizados para gerar exercícios, dar feedback e apoiar o planejamento de aulas.</p>
+                <div class="card-meta">
+                  <span class="badge-tipo">Recurso</span>
+                  <span>15 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 8 — Gestão Moodle (teal) · Gestão do AVA (quadrado) -->
+            <a class="card" href="#" data-category="gestao-moodle" data-type="tutorial" data-topics="backup,config-curso" data-group="gestao-ava">
+              <div class="card-illust">
+                <img src="../../assets/icone_quadrado_branco.png" alt="" />
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Gestão e Operação do Moodle</span>
+                <h3>Backup e restauração de cursos no Moodle</h3>
+                <p class="card-desc">Como fazer backup seguro, restaurar em outra disciplina e transferir conteúdo entre semestres.</p>
+                <div class="card-meta">
+                  <span class="badge-tipo">Tutorial</span>
+                  <span>8 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 9 — Acessibilidade (roxo) · Acessibilidade (triângulo) -->
+            <a class="card" href="#" data-category="acessibilidade" data-type="referencia" data-topics="audiodescricao,video" data-group="acessibilidade">
+              <div class="card-illust">
+                <img src="../../assets/icone_triangulo_branco.png" alt="" />
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Acessibilidade</span>
+                <h3>Audiodescrição em vídeos educacionais: quando e como</h3>
+                <p class="card-desc">Orientações práticas para produzir ou contratar audiodescrição em materiais de videoaula.</p>
+                <div class="card-meta">
+                  <span class="badge-tipo">Referência</span>
+                  <span>11 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 10 — Identidade (magenta) · Identidade (placeholder: alvo concêntrico) -->
+            <a class="card" href="#" data-category="identidade" data-type="conceitual" data-topics="padrao-visual" data-group="identidade">
+              <div class="card-illust">
+                <!-- Placeholder SVG inline — substituir por icone_identidade_branco.png -->
+                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="50" cy="50" r="35"/>
+                  <circle cx="50" cy="50" r="20"/>
+                  <circle cx="50" cy="50" r="8" fill="currentColor" stroke="none"/>
+                </svg>
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Identidade</span>
+                <h3>Padrão visual do CEFOR: cores, tipografia e aplicação</h3>
+                <p class="card-desc">Visão geral do sistema de identidade visual aplicado a materiais didáticos e MOOC.</p>
+                <div class="card-meta">
+                  <span class="badge-tipo">Conceitual</span>
+                  <span>7 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 11 — Pedagogia (coral) · Pedagogia (placeholder árvore) -->
+            <a class="card" href="#" data-category="pedagogia" data-type="tutorial" data-topics="planejamento-design-educacional" data-group="pedagogia">
+              <div class="card-illust">
+                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="50" y1="12" x2="50" y2="26"/>
+                  <line x1="22" y1="40" x2="78" y2="40"/>
+                  <line x1="50" y1="26" x2="50" y2="40"/>
+                  <line x1="22" y1="40" x2="22" y2="54"/>
+                  <line x1="78" y1="40" x2="78" y2="54"/>
+                  <line x1="10" y1="68" x2="34" y2="68"/>
+                  <line x1="66" y1="68" x2="90" y2="68"/>
+                  <line x1="22" y1="54" x2="22" y2="68"/>
+                  <line x1="78" y1="54" x2="78" y2="68"/>
+                  <line x1="10" y1="68" x2="10" y2="78"/>
+                  <line x1="34" y1="68" x2="34" y2="78"/>
+                  <line x1="66" y1="68" x2="66" y2="78"/>
+                  <line x1="90" y1="68" x2="90" y2="78"/>
+                  <circle cx="10" cy="86" r="6"/>
+                  <circle cx="34" cy="86" r="6"/>
+                  <circle cx="66" cy="86" r="6"/>
+                  <circle cx="90" cy="86" r="6"/>
+                </svg>
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Pedagogia e Planejamento</span>
+                <h3>Planejando uma disciplina EaD do zero</h3>
+                <p class="card-desc">Roteiro prático para estruturar objetivos, sequência didática e avaliação numa disciplina nova.</p>
+                <div class="card-meta">
+                  <span class="badge-tipo">Tutorial</span>
+                  <span>13 min</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 12 — Gestão Moodle (teal) · Recursos Moodle (hexágono) -->
+            <a class="card" href="#" data-category="gestao-moodle" data-type="tutorial" data-topics="webconferencia" data-group="recursos">
+              <div class="card-illust">
+                <img src="../../assets/icone_hexagono_branco.png" alt="" />
+              </div>
+              <div class="card-body">
+                <span class="card-kicker">Gestão e Operação do Moodle</span>
+                <h3>Webconferência no Moodle: configurando salas BBB</h3>
+                <p class="card-desc">Setup completo de salas BigBlueButton dentro do Moodle, com permissões e gravação.</p>
+                <div class="card-meta">
+                  <span class="badge-tipo">Tutorial</span>
+                  <span>9 min</span>
+                </div>
+              </div>
+            </a>
+
+          </div>
+
+          <div class="show-more-wrap">
+            <button class="show-more">
+              Mostrar mais artigos
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="filter-sidebar" aria-label="Filtrar e ordenar">
+          <h2 class="sidebar-title">Filtrar e ordenar</h2>
+
+          <div class="filter-group active">
+            <button class="filter-group-header" type="button" aria-expanded="true">
+              <span>Ordenar por</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-group-content">
+              <select id="sort-select" class="sidebar-select">
+                <option value="recent">Mais recentes</option>
+                <option value="az">Título (A-Z)</option>
+                <option value="time">Tempo de leitura</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-group active">
+            <button class="filter-group-header" type="button" aria-expanded="true">
+              <span>Tipo de artigo</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-group-content">
+              <div class="sidebar-checkboxes" id="type-checkboxes">
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="tutorial" checked> Tutorial</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="referencia" checked> Referência</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="conceitual" checked> Conceitual</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="solucao" checked> Solução de Problema</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="recurso" checked> Recurso</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group active">
+            <button class="filter-group-header" type="button" aria-expanded="true">
+              <span>Categoria</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-group-content">
+              <div class="sidebar-checkboxes" id="category-checkboxes">
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="ferramentas" checked> Ferramentas e Recursos</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="gestao-moodle" checked> Gestão e Operação do Moodle</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="pedagogia" checked> Pedagogia e Planejamento</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="acessibilidade" checked> Acessibilidade</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="conduta" checked> Conduta e Conformidade</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="identidade" checked> Identidade</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <button class="filter-group-header" type="button" aria-expanded="false">
+              <span>Tópico</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-group-content">
+              <div class="topic-groups" id="topic-checkboxes">
+
+                <div class="topic-group">
+                  <p class="topic-group-title">Atividades e avaliação Moodle</p>
+                  <div class="sidebar-checkboxes">
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="questionario"> Questionário</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="banco-questoes"> Banco de Questões</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="tarefa"> Tarefa</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="forum"> Fórum</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="livro-notas"> Livro de Notas</label>
+                  </div>
+                </div>
+
+                <div class="topic-group">
+                  <p class="topic-group-title">Recursos Moodle</p>
+                  <div class="sidebar-checkboxes">
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="h5p"> H5P</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="rotulo"> Rótulo</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="webconferencia"> Webconferência</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="video"> Vídeo</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="audio-podcast"> Áudio e Podcast</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="livro-digital"> Livro Digital</label>
+                  </div>
+                </div>
+
+                <div class="topic-group">
+                  <p class="topic-group-title">Gestão do AVA</p>
+                  <div class="sidebar-checkboxes">
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="config-curso"> Configuração de Curso</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="matricula"> Matrícula e Inscrição</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="backup"> Backup e Restauração</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="moodle-codes"> Moodle Codes</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="sala-virtual"> Sala Virtual</label>
+                  </div>
+                </div>
+
+                <div class="topic-group">
+                  <p class="topic-group-title">Inteligência Artificial</p>
+                  <div class="sidebar-checkboxes">
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="ia-generativa"> IA Generativa</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="gpt-customizado"> GPT Customizado</label>
+                  </div>
+                </div>
+
+                <div class="topic-group">
+                  <p class="topic-group-title">Acessibilidade</p>
+                  <div class="sidebar-checkboxes">
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="libras"> Libras</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="audiodescricao"> Audiodescrição</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="inclusao-design-universal"> Inclusão e Desenho Universal</label>
+                  </div>
+                </div>
+
+                <div class="topic-group">
+                  <p class="topic-group-title">Pedagogia</p>
+                  <div class="sidebar-checkboxes">
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="planejamento-design-educacional"> Planejamento e Design Educacional</label>
+                  </div>
+                </div>
+
+                <div class="topic-group">
+                  <p class="topic-group-title">Identidade institucional</p>
+                  <div class="sidebar-checkboxes">
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="padrao-visual"> Padrão Visual</label>
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="mooc"> MOOC</label>
+                  </div>
+                </div>
+
+                <div class="topic-group">
+                  <p class="topic-group-title">Conduta</p>
+                  <div class="sidebar-checkboxes">
+                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="direitos-autorais-seguranca"> Direitos Autorais e Segurança</label>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-stats" id="filter-stats">
+            Mostrando <strong>12</strong> artigos
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <span class="footer-brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 8 L8 32 L20 36 L20 12 Z"/>
+            <path d="M32 8 L32 32 L20 36 L20 12 Z"/>
+            <path d="M8 8 L20 12 L32 8"/>
+          </svg>
+        </span>
+        <span class="footer-brand-text">Base de Conhecimento · CEFOR/Ifes</span>
+      </div>
+      <p class="footer-desc">
+        Produzida pelo Centro de Referência em Formação e em EaD do Instituto Federal do Espírito Santo.
+      </p>
+      <p class="footer-license">Conteúdo sob licença Creative Commons BY-NC-SA 4.0, salvo quando indicado.</p>
+    </div>
+    <div>
+      <h5>Navegar</h5>
+      <a href="exploracao-pagina-percurso.html">Percursos</a>
+      <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
+      <a href="prototipo-artigo.html">Todos os artigos</a>
+      <a href="#">Categorias</a>
+      <a href="#">Tópicos</a>
+    </div>
+    <div>
+      <h5>Sobre</h5>
+      <a href="#">O CEFOR</a>
+      <a href="#">Equipe editorial</a>
+      <a href="#">Como contribuir</a>
+      <a href="#">Acessibilidade do site</a>
+    </div>
+    <div>
+      <h5>Recursos</h5>
+      <a href="https://cefor.ifes.edu.br" target="_blank" rel="noopener">cefor.ifes.edu.br ↗</a>
+      <a href="#">ReLiCefor</a>
+      <a href="#">MOOC</a>
+      <a href="#">Feed RSS</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 CEFOR · Instituto Federal do Espírito Santo</span>
+    <span>Proposta visual v4 · Tokens design.md beta</span>
+  </div>
+</footer>
+
+<script>
+  const html = document.documentElement;
+  const btnTheme = document.getElementById('btn-theme');
+  const btnInc = document.getElementById('btn-font-inc');
+  const btnDec = document.getElementById('btn-font-dec');
+
+  // Tema
+  function setTheme(dark) {
+    if (dark) {
+      html.setAttribute('data-theme', 'dark');
+      btnTheme && btnTheme.setAttribute('aria-pressed', 'true');
+    } else {
+      html.removeAttribute('data-theme');
+      btnTheme && btnTheme.setAttribute('aria-pressed', 'false');
+    }
+  }
+  if (localStorage.getItem('cefor-theme') === 'dark') setTheme(true);
+  if (btnTheme) {
+    btnTheme.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      setTheme(!isDark);
+      localStorage.setItem('cefor-theme', isDark ? 'light' : 'dark');
+    });
+  }
+
+  // Escala de fonte (A- / A+)
+  function setFontScale(v) {
+    const clamped = Math.max(0.8, Math.min(1.4, v));
+    html.style.setProperty('--font-scale', clamped);
+    localStorage.setItem('cefor-font-scale', clamped);
+  }
+  const savedScale = parseFloat(localStorage.getItem('cefor-font-scale'));
+  if (!isNaN(savedScale)) setFontScale(savedScale);
+  btnInc && btnInc.addEventListener('click', () => {
+    const cur = parseFloat(getComputedStyle(html).getPropertyValue('--font-scale')) || 1;
+    setFontScale(cur + 0.1);
+  });
+  btnDec && btnDec.addEventListener('click', () => {
+    const cur = parseFloat(getComputedStyle(html).getPropertyValue('--font-scale')) || 1;
+    setFontScale(cur - 0.1);
+  });
+
+  // Acordeões
+  document.querySelectorAll('.filter-group-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const group = header.parentElement;
+      const expanded = group.classList.contains('active');
+      group.classList.toggle('active');
+      header.setAttribute('aria-expanded', !expanded);
+    });
+  });
+
+  // Filtros
+  const cards = document.querySelectorAll('.card-grid .card');
+  const catCheckboxes = document.querySelectorAll('#category-checkboxes input[type="checkbox"]');
+  const typeCheckboxes = document.querySelectorAll('#type-checkboxes input[type="checkbox"]');
+  const topicCheckboxes = document.querySelectorAll('#topic-checkboxes input[type="checkbox"]');
+  const statsNum = document.querySelector('#filter-stats strong');
+  const sortSelect = document.getElementById('sort-select');
+  const cardGrid = document.querySelector('.card-grid');
+
+  cards.forEach((c, i) => c.setAttribute('data-index', i));
+
+  function sortArticles() {
+    if (!sortSelect || !cardGrid) return;
+    const sortBy = sortSelect.value;
+    const arr = Array.from(cards);
+    if (sortBy === 'az') {
+      arr.sort((a, b) => a.querySelector('h3').textContent.trim().localeCompare(b.querySelector('h3').textContent.trim(), 'pt-BR'));
+    } else if (sortBy === 'time') {
+      arr.sort((a, b) => (parseInt(a.querySelector('.card-meta span:last-child').textContent) || 0) - (parseInt(b.querySelector('.card-meta span:last-child').textContent) || 0));
+    } else {
+      arr.sort((a, b) => parseInt(a.dataset.index) - parseInt(b.dataset.index));
+    }
+    arr.forEach(c => cardGrid.appendChild(c));
+  }
+
+  function filterArticles() {
+    const activeCats = Array.from(catCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+    const activeTypes = Array.from(typeCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+    const activeTopics = Array.from(topicCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+    let visible = 0;
+    cards.forEach(card => {
+      const cardTopics = (card.dataset.topics || '').split(',').map(s => s.trim()).filter(Boolean);
+      const catMatch = activeCats.length === 0 || activeCats.includes(card.dataset.category);
+      const typeMatch = activeTypes.length === 0 || activeTypes.includes(card.dataset.type);
+      const topicMatch = activeTopics.length === 0 || cardTopics.some(t => activeTopics.includes(t));
+      if (catMatch && typeMatch && topicMatch) {
+        card.style.display = 'flex';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    if (statsNum) statsNum.textContent = visible;
+  }
+
+  catCheckboxes.forEach(cb => cb.addEventListener('change', filterArticles));
+  typeCheckboxes.forEach(cb => cb.addEventListener('change', filterArticles));
+  topicCheckboxes.forEach(cb => cb.addEventListener('change', filterArticles));
+  if (sortSelect) sortSelect.addEventListener('change', sortArticles);
+
+  // Hero tags
+  document.querySelectorAll('.filter-tag').forEach(tag => {
+    tag.addEventListener('click', (e) => {
+      e.preventDefault();
+      const cat = tag.getAttribute('data-cat');
+      if (!cat) return;
+      document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+      tag.classList.add('active');
+      catCheckboxes.forEach(cb => { cb.checked = (cb.value === cat); });
+      filterArticles();
+      const cs = document.querySelector('.content-section');
+      if (cs) cs.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
