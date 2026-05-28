@@ -90,6 +90,7 @@ Substitui as 82 tags livres da base antiga. **Sem auto-criação, sem digitaçã
 - Sinônimos rejeitados explicitamente em `vocabulario-controlado.json` → `topicos_controlados`. Ex.: "Prova" é sinônimo popular de *Questionário*, não é tópico.
 - Adição/remoção de tópico exige decisão formal (Elton + Rute) + atualização sincronizada deste documento, do `contentsystem.md` §B.3 e do `vocabulario-controlado.json`.
 - Tópicos órfãos (sem nenhum artigo) entram em revisão no ciclo mensal de ContentOps.
+- Os Grupos da tabela serão utilizados para identificação da iconografia a ser utilizada para o artigo ("o artigo x faz parte do grupo y"). 
 
 > Definições, sinônimos aceitos e rejeitados, e termo popular: ver `output/vocabulario-controlado.json` (campo `topicos_controlados`). Refinamento pedagógico fino pendente com Rute (status `a_validar` — não bloqueia operação).
 
