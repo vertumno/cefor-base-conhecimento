@@ -84,7 +84,7 @@ O catálogo de 24 elementos foi montado a partir de pesquisa em fontes editoriai
 
 **Aprovado como está.**
 
-**Quando usar:** citação de terceiros (Rute, professores entrevistados, documentos oficiais). Distinto do **Pull quote (#13)** — este cita o autor; o 13 destaca trecho do próprio artigo.
+**Quando usar:** citação de terceiros (Ruti, professores entrevistados, documentos oficiais). Distinto do **Pull quote (#13)** — este cita o autor; o 13 destaca trecho do próprio artigo.
 
 ---
 
@@ -255,7 +255,7 @@ Disciplina: máximo 1–2 highlights por seção. Borda assimétrica simulando t
 | Implementar ajustes do #1 (sem título, ícone sutil de copiar) no protótipo | Antes de levar para o `design.md` |
 | Definir as 3 variantes do #8 (arquivo único, lista, kit zip) no protótipo | Antes de levar para o `design.md` |
 | Fechar lista canônica de **tipos de callout** (Decisão 5 — ainda em aberto), incluindo o "Erro comum" (#23) como um dos tipos | Implementação do bloco `Callout` em Gutenberg |
-| Validação com Marcos (e Juliana/Rute, se relevante) | Antes de virar Decisão 33 formal |
+| Validação com Marcos (e Juliana/Ruti, se relevante) | Antes de virar Decisão 33 formal |
 
 ---
 

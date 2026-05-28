@@ -22,7 +22,7 @@ Reescrever os artigos existentes e produzir novos seguindo o Content System comp
 ### Etapa 4.2 -- Producao e Reescrita
 3. Para cada artigo: gerar rascunho via prompt template + Vocabulario Controlado
 4. Juliana revisa: estrutura, precisao, tom, completude
-5. Rute revisa: adequacao pedagogica, clareza, publico
+5. Ruti revisa: adequacao pedagogica, clareza, publico
 6. Elton revisa: precisao tecnica, conformidade, metadados
 7. Aplicar Rubrica -- score >= 3.5? Se nao, volta ao passo 4
 8. Publicar com metadados completos + marcacao IA quando aplicavel

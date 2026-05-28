@@ -148,7 +148,7 @@ A regra-mãe: **cada eixo responde a uma única pergunta**. Se dois eixos respon
 
 Substitui os 82 temas atuais (62% cauda longa) por uma lista enxuta consolidada. **Casing único definido na lista.**
 
-**Lista candidata inicial (a refinar com a Rute na Camada 3 do Content System):**
+**Lista candidata inicial (a refinar com a Ruti na Camada 3 do Content System):**
 
 | Grupo | Tópicos |
 |---|---|
@@ -174,7 +174,7 @@ Substitui os 82 temas atuais (62% cauda longa) por uma lista enxuta consolidada.
 
 **Critério rígido de adesão** (para evitar o problema atual onde 42% não têm trilha e ela vira decoração):
 - Tem sequência didática real (começo → meio → fim)
-- Validada pela Rute como percurso pedagógico
+- Validada pela Ruti como percurso pedagógico
 - Ao menos 5 artigos completos
 - Cada artigo aparece em **no máximo 1 trilha**
 - Trilha que não atinge o mínimo é dissolvida, e seus artigos voltam a viver apenas pela categoria + tópicos
@@ -448,7 +448,7 @@ A Decisão 13 ampliou significativamente o que cabe dentro do artigo. **Cada ite
 
 ### 6.3 Próximas ações sugeridas
 
-1. **Revisão da equipe** (Elton + Marcos + Rute + Juliana) sobre os 4 eixos e a seção da interface do artigo. Ajustar até consenso.
+1. **Revisão da equipe** (Elton + Marcos + Ruti + Juliana) sobre os 4 eixos e a seção da interface do artigo. Ajustar até consenso.
 2. **Mapeamento dos 131 artigos** nos novos eixos (categoria + tipo + tópicos + trilha). Isso:
    - Valida a proposta na prática (se algum artigo "não couber", revisamos os eixos)
    - Vira insumo direto da **triagem da Fase 4.1** (artigos antigos passam pela Rubrica para decidir reescrita/descarte/migração)
@@ -463,4 +463,4 @@ A Decisão 13 ampliou significativamente o que cabe dentro do artigo. **Cada ite
 
 *Draft criado em: 2026-05-13*
 *Fonte canônica: este arquivo*
-*Status: aguardando revisão de Elton + Marcos + Rute + Juliana*
+*Status: aguardando revisão de Elton + Marcos + Ruti + Juliana*

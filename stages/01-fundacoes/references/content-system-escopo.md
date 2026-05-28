@@ -86,7 +86,7 @@ Assim como o Design System começa com princípios de design, o Content System c
 | Um espaço de opinião pessoal | Tom institucional, mesmo quando assinado por autor |
 | Uma enciclopédia completa | Cobrir o que o público precisa, não tudo que existe |
 
-**Quem define:** Elton + Rute (validação pedagógica)
+**Quem define:** Elton + Ruti (validação pedagógica)
 
 **Relação com pilares:** Transversal — alimenta todos os pilares de conteúdo.
 
@@ -134,7 +134,7 @@ A voz da base é **uma só** (identidade constante). O tom **varia** conforme o 
 | Template/modelo | Facilitador — "use isso como base" | 50% template, 30% instrução, 20% contexto |
 | Boas práticas | Mentor — "aprenda com quem fez" | 30% instrução, 50% exemplo, 20% contexto |
 
-**Quem define:** Rute (orientação pedagógica) + Juliana (execução)
+**Quem define:** Ruti (orientação pedagógica) + Juliana (execução)
 
 **Relação com pilares:** Pilar 3 (Modelo de Conteúdo) e Pilar 10 (Sistema de Autoria).
 
@@ -197,7 +197,7 @@ TERMO PREFERIDO: Questionário
 
 > Quando o vocabulário do Moodle e o vocabulário pedagógico divergem, **usar o termo do Moodle na primeira menção** (é o que aparece na interface) **seguido do termo pedagógico entre parênteses**: "Configure o Questionário (a ferramenta de avaliação com correção automática do Moodle)".
 
-**Quem define:** Rute (termos pedagógicos) + Elton (termos técnicos) + Juliana (termos do dia a dia)
+**Quem define:** Ruti (termos pedagógicos) + Elton (termos técnicos) + Juliana (termos do dia a dia)
 
 **Relação com pilares:** Pilar 3 (Modelo de Conteúdo) e Pilar 4 (Taxonomia).
 
@@ -303,7 +303,7 @@ Equivalente à pattern library do Design System, mas para **estruturas narrativa
 3. **Combine padrões** quando necessário — um tutorial pode usar "Passo a Passo com Checkpoint" + "Antes/Depois" + "FAQ Invertido" no final
 4. **Documente os padrões usados** nos metadados do artigo (facilita auditoria e IA)
 
-**Quem mantém:** Elton (estrutura) + Rute (validação pedagógica)
+**Quem mantém:** Elton (estrutura) + Ruti (validação pedagógica)
 
 **Formato de entrega:** Documento vivo. Novos padrões são adicionados conforme a produção identifica necessidades recorrentes.
 
@@ -433,7 +433,7 @@ Para os ~60 artigos existentes, o scorecard define a decisão:
 | 3.0 – 3.5 | Atualizar e reformatar |
 | > 3.5 | Migrar com ajustes menores |
 
-**Quem avalia:** Rute (dimensões 1, 4, 5) + Juliana (dimensões 2, 3, 6) + Elton (dimensão 7 + score final)
+**Quem avalia:** Ruti (dimensões 1, 4, 5) + Juliana (dimensões 2, 3, 6) + Elton (dimensão 7 + score final)
 
 **Relação com pilares:** Pilar 7 (Ciclo de Vida) e Pilar 10 (Sistema de Autoria).
 
@@ -477,7 +477,7 @@ Métricas objetivas e testáveis para o texto — o equivalente ao contraste WCA
 
 **Teste de leitura em voz alta:** Se o revisor tropeça ao ler em voz alta, a frase está longa ou confusa demais. É o teste mais simples e mais eficaz.
 
-**Quem define:** Rute (padrões pedagógicos) + Elton (automação)
+**Quem define:** Ruti (padrões pedagógicos) + Elton (automação)
 
 **Relação com pilares:** Pilar 3 (Modelo de Conteúdo) e Pilar 6 (Sistema de Leitura).
 
@@ -524,11 +524,11 @@ Não é persona. É um mapa de **como o público pensa, o que acredita saber, e 
 | "Abrir o Moodle" | Acessar o AVA | "Acessar o Moodle" |
 | "Aquele chat" | Mensagens / Chat | "Chat do Moodle (Mensagens)" |
 
-**Quem define:** Rute + Juliana (convivem com o público diariamente)
+**Quem define:** Ruti + Juliana (convivem com o público diariamente)
 
 **Relação com pilares:** Pilar 3 (Modelo de Conteúdo) e Pilar 10 (Sistema de Autoria).
 
-**Como manter atualizado:** Registrar termos novos do público sempre que surgirem em atendimentos, e-mails, reuniões. Juliana e Rute são as "antenas" do vocabulário real.
+**Como manter atualizado:** Registrar termos novos do público sempre que surgirem em atendimentos, e-mails, reuniões. Juliana e Ruti são as "antenas" do vocabulário real.
 
 ---
 
@@ -585,7 +585,7 @@ Publicado
 | Marcar como desatualizado sem propor ação | "Desatualizado" sem prazo de atualização é abandono, não gestão |
 | Depender de "alguém perceber" que está velho | O sistema de gatilhos temporais existe para isso |
 
-**Quem executa:** Juliana (triagem) + Rute (decisão pedagógica de relevância)
+**Quem executa:** Juliana (triagem) + Ruti (decisão pedagógica de relevância)
 
 **Relação com pilares:** Pilar 7 (Ciclo de Vida) e Pilar 8 (Sistema de Estados).
 
@@ -607,7 +607,7 @@ Define a **capacidade operacional real** da equipe e os processos que sustentam 
 | Recurso | Capacidade estimada (a validar) | Premissas |
 |---|---|---|
 | Juliana (produção + IA) | 4-6 artigos/mês (novos ou reescritos) | Considerando outras responsabilidades no CEFOR |
-| Rute (revisão pedagógica) | 6-8 revisões/mês | Disponibilidade parcial (Portugal, outros projetos) |
+| Ruti (revisão pedagógica) | 6-8 revisões/mês | Disponibilidade parcial (Portugal, outros projetos) |
 | IA (geração de rascunho) | Ilimitada em volume, limitada por revisão humana | Gargalo é a revisão, não a geração |
 | Elton (revisão técnica + publicação) | 8-10 publicações/mês | Considerando trabalho técnico paralelo |
 
@@ -646,7 +646,7 @@ Solicitação chega (e-mail, reunião, demanda espontânea)
     └── É planejado?
             → Entra na fila de produção mensal
             → Priorização: impacto no público × esforço de produção
-            → Responsável: Juliana (produção) + Rute (validação)
+            → Responsável: Juliana (produção) + Ruti (validação)
 ```
 
 #### 9.5 Fluxo de produção com IA
@@ -658,7 +658,7 @@ Solicitação chega (e-mail, reunião, demanda espontânea)
     │
 3. Juliana revisa: estrutura, precisão, tom, completude
     │
-4. Rute revisa: adequação pedagógica, clareza, público
+4. Ruti revisa: adequação pedagógica, clareza, público
     │
 5. Elton revisa: precisão técnica, conformidade, metadados
     │

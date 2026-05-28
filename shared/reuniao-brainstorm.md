@@ -12,7 +12,7 @@
 | **Elton Vinicius** | Tech Lead / CGTE | Facilitação, visão técnica, overview da base atual |
 | **Marcos Vinicius F. Accioly** ("Marquito") | Produto/Tech / CGTE | Ideação intensa, gestão de tempo, próximos passos |
 | **Juliana Cristina da S. Cassaro** ("Ju") | Conteudista/Pedagógica | Inventário de artigos, visão de acessibilidade multimodal |
-| **Rutinelli da Penha Fávero** ("Rute") | Gestão/Pedagógica (remota, Portugal) | Visão formativa, percursos, chatbot, certificação |
+| **Rutinelli da Penha Fávero** ("Ruti") | Gestão/Pedagógica (remota, Portugal) | Visão formativa, percursos, chatbot, certificação |
 
 **Motivador urgente:** O servidor atual precisa ser desligado — a base WordPress está tão desatualizada que não recebe mais patches de segurança. A TI já disponibilizou servidor novo. Prazo: **abril/2026**.
 
@@ -64,12 +64,12 @@
 
 ## 4. Mapa de Ideias do Brainstorm
 
-### 4.1 Percurso Formativo por Perfil (Rute)
+### 4.1 Percurso Formativo por Perfil (Ruti)
 - **Conceito:** Ao entrar na base, o usuário se identifica ("Sou mediadora", "Sou professor") e recebe percursos personalizados
 - **Mecanismo:** Perfil → percursos relacionados → artigos → links para Moodle/cursos → formação contínua
 - **Valor:** A base deixa de ser consulta passiva e vira **jornada de aprendizagem**
 
-### 4.2 Chatbot/Tutor com IA Generativa (Rute + Marcos)
+### 4.2 Chatbot/Tutor com IA Generativa (Ruti + Marcos)
 - Evoluir a Sofia (chatbot existente) para tutor com IA generativa
 - Funções: responder perguntas, sugerir percursos, gerar quizzes/avaliações
 - **Restrição conhecida:** Custos de API de IA generativa
@@ -105,13 +105,13 @@
 - Flashcards com áudio para estudo em movimento
 - "Construir coisas" na base, não só ler
 
-### 4.7 Trilhas Menores + Certificação (Rute)
+### 4.7 Trilhas Menores + Certificação (Ruti)
 - Trilhas = micro-percursos dentro de um percurso maior
 - Ex.: "Quero aprender só a aplicar padrão visual no meu curso" → trilhazinha
 - Ao completar trilha → quiz/avaliação gerada por IA → mini-certificado
 - **Sonho declarado**, mas alinhado com a visão de formação em serviço
 
-### 4.8 Gamificação e Premiação (Marcos + Juliana + Rute)
+### 4.8 Gamificação e Premiação (Marcos + Juliana + Ruti)
 - Prêmio anual "Destaque Conhecimento" para maiores contribuidores
 - Plaquinhas/badges (estilo influenciadores)
 - Wallpapers com selo de contribuidor
@@ -167,12 +167,12 @@
 | 5 | Implementar no WordPress novo e experimentar | Elton + Marcos | Abril/2026 |
 | 6 | Importar conteúdo existente para nova base | Elton + Marcos | Abril/2026 |
 | 7 | Organizar tarefas no board CGTE (projeto "Base de Conhecimento 2026") | Marcos | Imediato |
-| 8 | Resgatar documento "Modelo de orientações para produção de artigos" | Rute + Juliana | Imediato |
+| 8 | Resgatar documento "Modelo de orientações para produção de artigos" | Ruti + Juliana | Imediato |
 
 **Referências externas mencionadas:**
 - Planilha de inventário de artigos (Juliana)
 - Documento Google Docs: orientações para artigos (`11_Ef5s6fbAKmXWggRUAaq-SmHWzauqtjysgVObDSjZo`)
-- Texto de padrão de artigos enviado por Rute aos professores
+- Texto de padrão de artigos enviado por Ruti aos professores
 - Board CGTE: tarefas #7685 (atualização artigos), #7804 (interface), #7809 (projeto)
 
 ---
@@ -203,7 +203,7 @@ A equipe sonha com uma **plataforma de aprendizagem social gamificada** mas prec
 
 ### Insights Não-Óbvios
 
-1. **"Cérebro do CEFOR"** (expressão da Rute) — a base não é um site, é a **memória institucional viva**. Essa metáfora pode guiar toda a arquitetura de informação e até o branding.
+1. **"Cérebro do CEFOR"** (expressão da Ruti) — a base não é um site, é a **memória institucional viva**. Essa metáfora pode guiar toda a arquitetura de informação e até o branding.
 
 2. **O maior ativo não são os artigos — são as práticas dos 80+ profissionais** do grupo MTE. A base hoje captura ~0% dessa inteligência tácita. O ROI maior está em criar um fluxo de captura leve (entrevista → texto → áudio → base).
 

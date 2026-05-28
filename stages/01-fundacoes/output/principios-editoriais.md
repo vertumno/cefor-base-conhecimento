@@ -1,7 +1,7 @@
 # Camada 1 — Princípios Editoriais
 
 > **Versão:** 1.0 — DRAFT
-> **Status:** Carece de validação formal com Rute Fávero (orientação pedagógica)
+> **Status:** Carece de validação formal com Ruti Fávero (orientação pedagógica)
 > **Última atualização:** 2026-05-19
 > **Decisões consolidadas:** 1, 14, 15, 17, 18, 21, 22, 25, 26, 27, 29, 30
 > **Camada-irmã:** Camada 4.5 (Padrões de Composição), Camada 3 (Vocabulário Controlado)
@@ -171,14 +171,14 @@ Não são valores genéricos. Cada princípio tem **implicação prática verifi
 **O que significa:**
 - IA gera rascunho. Sempre.
 - Juliana revisa estrutura, precisão técnica, tom.
-- Rute revisa adequação pedagógica.
+- Ruti revisa adequação pedagógica.
 - Elton revisa conformidade técnica.
 - Só então publica.
 - Artigos produzidos com assistência de IA são marcados como tal (compliance legal).
 
 **Implicação prática:** O gargalo real da operação não é geração de conteúdo (IA é rápida). É revisão humana. A Camada 9 (ContentOps) define capacidade real considerando esse gargalo: ~4-6 artigos publicados por mês.
 
-**Decisão de origem:** Camada 9 do escopo original; sem decisão formal específica ainda — a validar com Rute.
+**Decisão de origem:** Camada 9 do escopo original; sem decisão formal específica ainda — a validar com Ruti.
 
 ---
 
@@ -283,8 +283,8 @@ Princípios podem aparentemente entrar em choque. A ordem abaixo resolve isso na
 
 ## 7. O que ainda falta nesta camada
 
-- [ ] **Validação formal com Rute Fávero** — os princípios derivam de decisões registradas, mas a Rute ainda não os reviu como conjunto fechado
-- [ ] **Princípio sobre acessibilidade?** — pode ser um décimo princípio explícito ("acessibilidade é design, não correção") ou ficar absorvido pelo Princípio 5. Avaliar com Rute.
+- [ ] **Validação formal com Ruti Fávero** — os princípios derivam de decisões registradas, mas a Ruti ainda não os reviu como conjunto fechado
+- [ ] **Princípio sobre acessibilidade?** — pode ser um décimo princípio explícito ("acessibilidade é design, não correção") ou ficar absorvido pelo Princípio 5. Avaliar com Ruti.
 - [ ] **Casos de uso aplicados** — esta versão tem 4 casos. Conforme a operação rodar, novos casos vão alimentar a seção 5.
 
 ---
