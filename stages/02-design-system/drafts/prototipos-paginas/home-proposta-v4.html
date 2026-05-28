@@ -267,13 +267,12 @@
   @media (max-width: 600px)  { .card-grid { grid-template-columns: 1fr; } }
 
   /* ============================================================
-     CARD — cor = categoria (faixa INFERIOR), ícone = grupo
+     CARD — cor = categoria, ícone = grupo de tópico
      ============================================================ */
   .card {
     background: var(--paper); border: 1px solid var(--line);
     border-radius: var(--r-lg); overflow: hidden;
-    display: flex;
-    flex-direction: column-reverse;    /* card-illust vai pro fim visual */
+    display: flex; flex-direction: column;
     transition: opacity .2s ease, transform .2s ease, border-color .15s, box-shadow .15s;
   }
   .card:hover {
@@ -282,40 +281,18 @@
     box-shadow: var(--shadow-md);
   }
 
-  /* Faixa horizontal inferior com cor da categoria, ícone do grupo
-     e nome da categoria (via ::after, sem mexer no HTML) */
   .card-illust {
-    aspect-ratio: unset;
-    height: 56px;
-    display: flex; flex-direction: row;
-    align-items: center;
-    gap: 14px;
-    padding: 0 20px;
+    aspect-ratio: 16 / 7;
+    display: grid; place-items: center;
     position: relative; overflow: hidden;
-    color: #fff;
   }
   .card-illust img,
   .card-illust > svg {
-    width: 28px; height: 28px; max-width: 28px;
-    opacity: 1;
-    filter: none;
-    flex-shrink: 0;
+    width: 28%; height: auto; max-width: 90px;
+    opacity: .95;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,.08));
   }
   .card-illust > svg { color: #fff; }
-  .card-illust::after {
-    font-family: var(--sans);
-    font-weight: 700;
-    font-size: .88rem;
-    letter-spacing: -.005em;
-    color: #fff;
-  }
-  /* Nome da categoria injetado por CSS — sem editar markup */
-  .card[data-category="ferramentas"]    .card-illust::after { content: "Ferramentas e Recursos"; }
-  .card[data-category="gestao-moodle"]  .card-illust::after { content: "Gestão e Operação do Moodle"; }
-  .card[data-category="pedagogia"]      .card-illust::after { content: "Pedagogia e Planejamento"; }
-  .card[data-category="acessibilidade"] .card-illust::after { content: "Acessibilidade"; }
-  .card[data-category="conduta"]        .card-illust::after { content: "Conduta e Conformidade"; }
-  .card[data-category="identidade"]     .card-illust::after { content: "Identidade"; }
 
   /* Cor de fundo do card top vinda da categoria */
   .card[data-category="ferramentas"]    .card-illust { background: var(--cat-ferramentas); }
@@ -327,8 +304,8 @@
 
   .card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
   .card-kicker {
-    /* Categoria agora vive na faixa colorida inferior; kicker fica oculto */
-    display: none;
+    font-size: .72rem; font-weight: 700; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink-3);
   }
   .card h3 {
     margin: 0; font-size: 1.18rem; font-weight: 700; line-height: 1.3;
@@ -626,29 +603,10 @@
               </div>
             </a>
 
-            <!-- Card 4 — Pedagogia (coral) · Pedagogia (placeholder: árvore binária) -->
+            <!-- Card 4 — Pedagogia (coral) · Pedagogia (trapézio) -->
             <a class="card" href="#" data-category="pedagogia" data-type="conceitual" data-topics="planejamento-design-educacional" data-group="pedagogia">
               <div class="card-illust">
-                <!-- Placeholder SVG inline — substituir por icone_pedagogia_branco.png quando a Juliana entregar -->
-                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="50" y1="12" x2="50" y2="26"/>
-                  <line x1="22" y1="40" x2="78" y2="40"/>
-                  <line x1="50" y1="26" x2="50" y2="40"/>
-                  <line x1="22" y1="40" x2="22" y2="54"/>
-                  <line x1="78" y1="40" x2="78" y2="54"/>
-                  <line x1="10" y1="68" x2="34" y2="68"/>
-                  <line x1="66" y1="68" x2="90" y2="68"/>
-                  <line x1="22" y1="54" x2="22" y2="68"/>
-                  <line x1="78" y1="54" x2="78" y2="68"/>
-                  <line x1="10" y1="68" x2="10" y2="78"/>
-                  <line x1="34" y1="68" x2="34" y2="78"/>
-                  <line x1="66" y1="68" x2="66" y2="78"/>
-                  <line x1="90" y1="68" x2="90" y2="78"/>
-                  <circle cx="10" cy="86" r="6"/>
-                  <circle cx="34" cy="86" r="6"/>
-                  <circle cx="66" cy="86" r="6"/>
-                  <circle cx="90" cy="86" r="6"/>
-                </svg>
+                <img src="../../assets/icone_trapezio_branco.png" alt="" />
               </div>
               <div class="card-body">
                 <span class="card-kicker">Pedagogia e Planejamento</span>
@@ -677,15 +635,10 @@
               </div>
             </a>
 
-            <!-- Card 6 — Conduta (ambar) · Conduta (placeholder: pentágono nested) -->
+            <!-- Card 6 — Conduta (ambar) · Conduta (pentágono) -->
             <a class="card" href="#" data-category="conduta" data-type="referencia" data-topics="direitos-autorais-seguranca" data-group="conduta">
               <div class="card-illust">
-                <!-- Placeholder SVG inline — substituir por icone_conduta_branco.png -->
-                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polygon points="50,8 92,38 76,88 24,88 8,38"/>
-                  <polygon points="50,28 76,46 67,76 33,76 24,46"/>
-                  <line x1="33" y1="61" x2="67" y2="61"/>
-                </svg>
+                <img src="../../assets/icone_pentagono_branco.png" alt="" />
               </div>
               <div class="card-body">
                 <span class="card-kicker">Conduta e Conformidade</span>
@@ -701,7 +654,7 @@
             <!-- Card 7 — Ferramentas (azul) · IA (losango) -->
             <a class="card" href="#" data-category="ferramentas" data-type="recurso" data-topics="gpt-customizado,ia-generativa" data-group="ia">
               <div class="card-illust">
-                <img src="../../assets/icones_losango_branco.png" alt="" />
+                <img src="../../assets/icone_losango_branco.png" alt="" />
               </div>
               <div class="card-body">
                 <span class="card-kicker">Ferramentas e Recursos</span>
@@ -746,15 +699,10 @@
               </div>
             </a>
 
-            <!-- Card 10 — Identidade (magenta) · Identidade (placeholder: alvo concêntrico) -->
+            <!-- Card 10 — Identidade (magenta) · Identidade (triângulo retângulo) -->
             <a class="card" href="#" data-category="identidade" data-type="conceitual" data-topics="padrao-visual" data-group="identidade">
               <div class="card-illust">
-                <!-- Placeholder SVG inline — substituir por icone_identidade_branco.png -->
-                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <circle cx="50" cy="50" r="35"/>
-                  <circle cx="50" cy="50" r="20"/>
-                  <circle cx="50" cy="50" r="8" fill="currentColor" stroke="none"/>
-                </svg>
+                <img src="../../assets/icone_triangulo_retangulo_branco.png" alt="" />
               </div>
               <div class="card-body">
                 <span class="card-kicker">Identidade</span>
@@ -767,28 +715,10 @@
               </div>
             </a>
 
-            <!-- Card 11 — Pedagogia (coral) · Pedagogia (placeholder árvore) -->
+            <!-- Card 11 — Pedagogia (coral) · Pedagogia (trapézio) -->
             <a class="card" href="#" data-category="pedagogia" data-type="tutorial" data-topics="planejamento-design-educacional" data-group="pedagogia">
               <div class="card-illust">
-                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="50" y1="12" x2="50" y2="26"/>
-                  <line x1="22" y1="40" x2="78" y2="40"/>
-                  <line x1="50" y1="26" x2="50" y2="40"/>
-                  <line x1="22" y1="40" x2="22" y2="54"/>
-                  <line x1="78" y1="40" x2="78" y2="54"/>
-                  <line x1="10" y1="68" x2="34" y2="68"/>
-                  <line x1="66" y1="68" x2="90" y2="68"/>
-                  <line x1="22" y1="54" x2="22" y2="68"/>
-                  <line x1="78" y1="54" x2="78" y2="68"/>
-                  <line x1="10" y1="68" x2="10" y2="78"/>
-                  <line x1="34" y1="68" x2="34" y2="78"/>
-                  <line x1="66" y1="68" x2="66" y2="78"/>
-                  <line x1="90" y1="68" x2="90" y2="78"/>
-                  <circle cx="10" cy="86" r="6"/>
-                  <circle cx="34" cy="86" r="6"/>
-                  <circle cx="66" cy="86" r="6"/>
-                  <circle cx="90" cy="86" r="6"/>
-                </svg>
+                <img src="../../assets/icone_trapezio_branco.png" alt="" />
               </div>
               <div class="card-body">
                 <span class="card-kicker">Pedagogia e Planejamento</span>
