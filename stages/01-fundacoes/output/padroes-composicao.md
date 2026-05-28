@@ -400,7 +400,7 @@ Tokens de design já definidos no `prototipo-artigo.html`:
 - [ ] **Padrão "Listagem de trilhas"** — página `/trilhas`, semelhante a 4.7 mas com cor verde
 - [ ] **Padrão "Recomendação de próximo artigo"** — refinamento futuro: quando o leitor chega ao fim de um artigo, o que mostrar como sugestão?
 - [ ] **Padrão "Artigo solto em percurso"** — artigos complementares ainda não têm padrão dedicado dentro de uma trilha (eles aparecem fora dela na página do percurso)
-- [ ] **Validação com Rute e Marquito** — todos os padrões aqui foram derivados de decisões tomadas só com Elton
+- [ ] **Validação com Ruti e Marquito** — todos os padrões aqui foram derivados de decisões tomadas só com Elton
 
 ---
 

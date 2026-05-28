@@ -88,11 +88,11 @@ Substitui as 82 tags livres da base antiga. **Sem auto-criação, sem digitaçã
 - Validação no save (não publica fora desse intervalo).
 - Casing fixo. `Questionário` (não `questionário`, `Questionários`, `Quiz`, `Prova`).
 - Sinônimos rejeitados explicitamente em `vocabulario-controlado.json` → `topicos_controlados`. Ex.: "Prova" é sinônimo popular de *Questionário*, não é tópico.
-- Adição/remoção de tópico exige decisão formal (Elton + Rute) + atualização sincronizada deste documento, do `contentsystem.md` §B.3 e do `vocabulario-controlado.json`.
+- Adição/remoção de tópico exige decisão formal (Elton + Ruti) + atualização sincronizada deste documento, do `contentsystem.md` §B.3 e do `vocabulario-controlado.json`.
 - Tópicos órfãos (sem nenhum artigo) entram em revisão no ciclo mensal de ContentOps.
 - Os Grupos da tabela serão utilizados para identificação da iconografia a ser utilizada para o artigo ("o artigo x faz parte do grupo y"). 
 
-> Definições, sinônimos aceitos e rejeitados, e termo popular: ver `output/vocabulario-controlado.json` (campo `topicos_controlados`). Refinamento pedagógico fino pendente com Rute (status `a_validar` — não bloqueia operação).
+> Definições, sinônimos aceitos e rejeitados, e termo popular: ver `output/vocabulario-controlado.json` (campo `topicos_controlados`). Refinamento pedagógico fino pendente com Ruti (status `a_validar` — não bloqueia operação).
 
 ---
 
@@ -152,7 +152,7 @@ Ambos são agregações tecnicamente; semanticamente são diferentes (Decisão 2
 | **IA para Professores** | Inteligência Artificial | ~8 |
 | **Padrão Visual Cefor** | (novo, a partir de Identidade Cefor) | ~5 |
 
-> Lista de partida do Sprint 3 — validação pedagógica das sequências (ordem + começo/meio/fim) é responsabilidade de Rute + Juliana, antes da Fase 4 (Produção de Conteúdo).
+> Lista de partida do Sprint 3 — validação pedagógica das sequências (ordem + começo/meio/fim) é responsabilidade de Ruti + Juliana, antes da Fase 4 (Produção de Conteúdo).
 
 > Percursos V1: a definir conforme as trilhas amadureçam. Candidato natural: **"Dominando o Moodle"** (Iniciando no Moodle + Avaliação no Moodle + complementares).
 
@@ -290,11 +290,11 @@ Detalhamento em `contentsystem.md` §B.3 e §B.4. Mapeamento:
 |---|---|---|
 | **URLs semânticas** — aprovação formal do padrão proposto em §8 | Implementação WP (Fase 3) · Estratégia SEO/GEO | Elton + Marcos |
 | **Estratégia de Descoberta** (SEO estrutural + GEO + busca interna) — `output/descoberta-seo-geo.md` | Implementação SEO/busca (Fase 3) | Elton + Marcos (Sprint 3) |
-| **Validação pedagógica das Decisões 25–32** (Trilha/Percurso) | Arquitetura Trilha/Percurso vira fonte canônica definitiva | Reunião com Rute + Marquito a marcar |
-| **Validação das 5 trilhas-piloto** (ordem, começo/meio/fim) | Fase 4 (Produção de Conteúdo) | Rute + Juliana |
-| **Refino pedagógico fino dos 25 tópicos** (status `a_validar` no vocabulário) | Linter e busca completos (não bloqueia operação) | Rute |
+| **Validação pedagógica das Decisões 25–32** (Trilha/Percurso) | Arquitetura Trilha/Percurso vira fonte canônica definitiva | Reunião com Ruti + Marquito a marcar |
+| **Validação das 5 trilhas-piloto** (ordem, começo/meio/fim) | Fase 4 (Produção de Conteúdo) | Ruti + Juliana |
+| **Refino pedagógico fino dos 25 tópicos** (status `a_validar` no vocabulário) | Linter e busca completos (não bloqueia operação) | Ruti |
 | **Mapeamento dos 131 artigos antigos** nos novos eixos | Triagem (Fase 4.1) | Elton + Juliana |
-| **Definição dos percursos V1** a partir das trilhas-piloto | Componente "página de percurso" carregar conteúdo real | Elton + Rute (após validação das trilhas) |
+| **Definição dos percursos V1** a partir das trilhas-piloto | Componente "página de percurso" carregar conteúdo real | Elton + Ruti (após validação das trilhas) |
 
 ---
 

@@ -3,12 +3,12 @@
     "documento": "Vocabulário Controlado — Base de Conhecimento CEFOR/Ifes",
     "camada": "3 — Vocabulário Controlado",
     "versao": "1.1",
-    "status": "DRAFT — arquitetura + Eixo 2 (6 categorias) + Eixo 3 (25 tópicos) completos; categorias de termos Moodle/pedagógicos a preencher com Rute e Juliana",
+    "status": "DRAFT — arquitetura + Eixo 2 (6 categorias) + Eixo 3 (25 tópicos) completos; categorias de termos Moodle/pedagógicos a preencher com Ruti e Juliana",
     "data_criacao": "2026-05-19",
     "ultima_atualizacao": "2026-05-21",
     "responsaveis": {
       "termos_estruturais": "Elton Vinicius",
-      "termos_pedagogicos": "Rute Fávero (pendente)",
+      "termos_pedagogicos": "Ruti Fávero (pendente)",
       "termos_tecnicos_moodle": "Elton Vinicius + Juliana Cassaro (pendente)",
       "termos_do_dia_a_dia": "Juliana Cassaro (pendente)"
     },
@@ -159,7 +159,7 @@
       "ordem": 2,
       "descricao": "Os 5 tipos possíveis no Eixo 1 da taxonomia. Cada artigo tem exatamente 1 tipo.",
       "status": "definitivo",
-      "responsavel": "Elton Vinicius + Rute Fávero (validação pedagógica)",
+      "responsavel": "Elton Vinicius + Ruti Fávero (validação pedagógica)",
       "termos": [
         {
           "termo_preferido": "Tutorial",
@@ -233,7 +233,7 @@
       "ordem": 3,
       "descricao": "Os 4 eixos que classificam todo artigo da Base. Cada eixo responde a uma pergunta diferente.",
       "status": "definitivo",
-      "responsavel": "Elton + Marquito + Rute (sessão 2026-05-14)",
+      "responsavel": "Elton + Marquito + Ruti (sessão 2026-05-14)",
       "termos": [
         {
           "termo_preferido": "Tipo",
@@ -266,7 +266,7 @@
           "sinonimos_aceitos": [],
           "sinonimos_rejeitados": ["tag", "etiqueta", "palavra-chave"],
           "definicao": "Eixo 3. Responde: qual assunto específico? Vocabulário controlado fechado (25 termos). Cardinalidade: 2 a 4 por artigo.",
-          "contexto_uso": "Substitui as 82 tags livres do sistema antigo (62% usadas 1x só). A pessoa escolhe entre os 25 tópicos da lista fechada (ver categoria topicos_controlados), não digita livremente. Lista dos 25 decidida em 2026-05-21 (Elton + Claude) a partir das tags reais do inventário; refinamento pedagógico fino fica pendente com Rute.",
+          "contexto_uso": "Substitui as 82 tags livres do sistema antigo (62% usadas 1x só). A pessoa escolhe entre os 25 tópicos da lista fechada (ver categoria topicos_controlados), não digita livremente. Lista dos 25 decidida em 2026-05-21 (Elton + Claude) a partir das tags reais do inventário; refinamento pedagógico fino fica pendente com Ruti.",
           "termo_moodle": null,
           "termo_mec": null,
           "termo_popular": "Tag, etiqueta",
@@ -431,7 +431,7 @@
       "ordem": 4.2,
       "descricao": "Os 25 valores fechados do Eixo 3 (Tópico). Cada artigo recebe de 2 a 4. Substitui as 82 tags livres. Casing fixo, sem auto-criação. Termos com definição técnica completa vivem nas categorias atividades_moodle/recursos_moodle/etc.; aqui ficam como lista de descoberta.",
       "status": "a_validar",
-      "responsavel": "Elton + Marquito (lista 2026-05-21) + Rute (refinamento pedagógico pendente)",
+      "responsavel": "Elton + Marquito (lista 2026-05-21) + Ruti (refinamento pedagógico pendente)",
       "nota": "Lista derivada das tags reais do inventário. 'Prova' (8x) NÃO é tópico — é sinônimo popular de Questionário. 'Ferramenta', 'Atividade', 'Externo' viraram a categoria Ferramentas e Recursos, não tópicos. Tópicos prospectivos (Fórum, Tarefa, Backup, Matrícula) entram apesar de tag fraca, a confirmar no mapeamento dos 131 artigos.",
       "termos": [
         { "termo_preferido": "Questionário", "grupo": "Atividades e Avaliação", "sinonimos_aceitos": ["quiz"], "sinonimos_rejeitados": ["prova", "teste", "avaliação"], "status": "a_validar" },
@@ -466,8 +466,8 @@
       "ordem": 5,
       "descricao": "Termos das atividades disponíveis no Moodle. Aqui é crítico distinguir o termo Moodle (interface) do termo pedagógico (MEC ou prática) do termo popular (como o público fala).",
       "status": "pendente_validacao",
-      "responsavel": "Elton + Juliana Cassaro (termos técnicos) + Rute Fávero (termos pedagógicos)",
-      "nota": "Estrutura criada com termo de exemplo. Lista completa será preenchida em sessão dedicada com Juliana e Rute. Categorias a cobrir: Questionário, Tarefa, Fórum, Wiki, Glossário, H5P, Workshop, Pesquisa, Chat, Banco de questões.",
+      "responsavel": "Elton + Juliana Cassaro (termos técnicos) + Ruti Fávero (termos pedagógicos)",
+      "nota": "Estrutura criada com termo de exemplo. Lista completa será preenchida em sessão dedicada com Juliana e Ruti. Categorias a cobrir: Questionário, Tarefa, Fórum, Wiki, Glossário, H5P, Workshop, Pesquisa, Chat, Banco de questões.",
       "termos": [
         {
           "termo_preferido": "Questionário",
@@ -498,7 +498,7 @@
       "ordem": 7,
       "descricao": "Como se referir aos diferentes papéis institucionais — mediador, professor, tutor, coordenador, estudante.",
       "status": "pendente",
-      "responsavel": "Rute Fávero + Juliana Cassaro",
+      "responsavel": "Ruti Fávero + Juliana Cassaro",
       "nota": "Categoria crítica porque envolve identidade profissional. Precisa de validação pedagógica antes de fechar.",
       "termos": []
     },
@@ -507,8 +507,8 @@
       "ordem": 8,
       "descricao": "Termos pedagógicos — sala virtual, ambiente virtual, AVA, percurso formativo, avaliação somativa/formativa, etc.",
       "status": "pendente",
-      "responsavel": "Rute Fávero",
-      "nota": "Categoria depende fortemente da Rute. Reservada para Sprint 1 quando ela estiver disponível.",
+      "responsavel": "Ruti Fávero",
+      "nota": "Categoria depende fortemente da Ruti. Reservada para Sprint 1 quando ela estiver disponível.",
       "termos": []
     },
 
@@ -525,7 +525,7 @@
       "ordem": 10,
       "descricao": "Como o público realmente fala — a 'tradução' do que professores dizem para o que o sistema chama. Insumo direto para SEO interno e busca semântica.",
       "status": "pendente",
-      "responsavel": "Juliana Cassaro + Rute Fávero (são as 'antenas' do vocabulário real, registrando termos novos que surgem em atendimentos)",
+      "responsavel": "Juliana Cassaro + Ruti Fávero (são as 'antenas' do vocabulário real, registrando termos novos que surgem em atendimentos)",
       "nota": "Exemplos do escopo original: 'minha sala' (curso), 'postar atividade' (adicionar atividade), 'abrir o Moodle' (acessar o AVA), 'aquele chat' (mensagens). Documento vivo — termos novos entram conforme aparecem.",
       "termos": []
     }
@@ -543,9 +543,9 @@
     "categorias_pendentes": ["atividades_moodle", "recursos_moodle", "papeis", "conceitos_pedagogicos", "conceitos_tecnicos", "vocabulario_natural_do_publico"],
     "proximas_acoes": [
       "Mapear os 131 artigos do inventário nos novos eixos (categoria + tópicos) — valida a 6ª categoria e os 25 tópicos na prática",
-      "Refinamento pedagógico fino dos 25 tópicos com Rute (status a_validar → definitivo)",
+      "Refinamento pedagógico fino dos 25 tópicos com Ruti (status a_validar → definitivo)",
       "Sessão dedicada com Juliana para preencher atividades_moodle e recursos_moodle",
-      "Sessão dedicada com Rute para preencher conceitos_pedagogicos e papéis",
+      "Sessão dedicada com Ruti para preencher conceitos_pedagogicos e papéis",
       "Implementação do linter automatizado consumindo este JSON (Fase 3)"
     ]
   },
@@ -560,7 +560,7 @@
     {
       "versao": "1.1",
       "data": "2026-05-21",
-      "mudanca": "Fechado o Eixo 2 com a 6ª categoria 'Gestão e Operação do Moodle' (nova seção categorias_da_base, com slugs e consolidação das categorias antigas). Fechado o Eixo 3 com os 25 tópicos controlados (nova seção topicos_controlados), derivados das tags reais do inventário. Decisão Elton + Claude; refinamento pedagógico pendente com Rute.",
+      "mudanca": "Fechado o Eixo 2 com a 6ª categoria 'Gestão e Operação do Moodle' (nova seção categorias_da_base, com slugs e consolidação das categorias antigas). Fechado o Eixo 3 com os 25 tópicos controlados (nova seção topicos_controlados), derivados das tags reais do inventário. Decisão Elton + Claude; refinamento pedagógico pendente com Ruti.",
       "por": "Elton + Claude"
     }
   ]

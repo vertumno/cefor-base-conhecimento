@@ -21,7 +21,7 @@ Ele tem **duas partes**:
 
 | Parte | O que é | Para quem |
 |---|---|---|
-| **Parte A — Governança Editorial** | As 10+ camadas do Content System: princípios, voz, vocabulário, padrões, qualidade, legibilidade, modelos mentais, depreciação, operação, métricas. Responde *"como o conteúdo é escrito, organizado, avaliado e mantido"*. | Equipe editorial (Elton, Rute, Juliana, Marquito), IA de produção |
+| **Parte A — Governança Editorial** | As 10+ camadas do Content System: princípios, voz, vocabulário, padrões, qualidade, legibilidade, modelos mentais, depreciação, operação, métricas. Responde *"como o conteúdo é escrito, organizado, avaliado e mantido"*. | Equipe editorial (Elton, Ruti, Juliana, Marquito), IA de produção |
 | **Parte B — Spec WordPress** | A tradução acionável da Parte A em configuração técnica: Custom Post Types, Custom Fields, taxonomias, blocos, estados, URLs e checklist de aceitação. Responde *"o que precisa existir no WordPress"*. | Implementação (Fase 3), tema e plugins |
 
 > A Parte B **deriva** da Parte A. Quando uma decisão editorial mudar na Parte A, a Parte B deve ser revisada.
@@ -32,19 +32,19 @@ Ele tem **duas partes**:
 
 | Camada | Nome | Status | Onde está a versão completa |
 |---|---|---|---|
-| 1 | Princípios Editoriais | ✅ Formalizada (DRAFT, pendente Rute) | `output/principios-editoriais.md` |
-| 2 | Voz e Tom | 🟡 DRAFT neste doc — **pendente Rute** | aqui (§A.2) |
+| 1 | Princípios Editoriais | ✅ Formalizada (DRAFT, pendente Ruti) | `output/principios-editoriais.md` |
+| 2 | Voz e Tom | 🟡 DRAFT neste doc — **pendente Ruti** | aqui (§A.2) |
 | 3 | Vocabulário Controlado | 🟡 Parcial (6/12 seções — Eixos 2 e 3 fechados) | `output/vocabulario-controlado.json` |
-| 4 | Biblioteca de Padrões de Conteúdo | 🟡 DRAFT neste doc — **pendente Rute** (callouts) | aqui (§A.4) |
-| 4.5 | Padrões de Composição | ✅ Formalizada (DRAFT, pendente Rute) | `output/padroes-composicao.md` |
-| 5 | Rubrica de Qualidade | 🟡 DRAFT neste doc — **pendente Rute** | aqui (§A.5) |
-| 6 | Padrões de Legibilidade | 🟡 DRAFT neste doc — **pendente Rute** | aqui (§A.6) |
-| 7 | Modelos Mentais do Público | 🟡 DRAFT neste doc — **pendente Rute** | aqui (§A.7) |
+| 4 | Biblioteca de Padrões de Conteúdo | 🟡 DRAFT neste doc — **pendente Ruti** (callouts) | aqui (§A.4) |
+| 4.5 | Padrões de Composição | ✅ Formalizada (DRAFT, pendente Ruti) | `output/padroes-composicao.md` |
+| 5 | Rubrica de Qualidade | 🟡 DRAFT neste doc — **pendente Ruti** | aqui (§A.5) |
+| 6 | Padrões de Legibilidade | 🟡 DRAFT neste doc — **pendente Ruti** | aqui (§A.6) |
+| 7 | Modelos Mentais do Público | 🟡 DRAFT neste doc — **pendente Ruti** | aqui (§A.7) |
 | 8 | Política de Depreciação | 🟡 DRAFT neste doc | aqui (§A.8) |
 | 9 | ContentOps | 🟡 DRAFT neste doc | aqui (§A.9) |
 | 10 | Métricas de Sucesso | 🟡 DRAFT neste doc — opera na Fase 5 | aqui (§A.10) |
 
-> **Legenda de pendência:** as camadas marcadas **"pendente Rute"** derivam de decisões já registradas, mas a orientação pedagógica (Rute Fávero) ainda não validou o conjunto fechado. Não são fonte canônica definitiva até essa validação.
+> **Legenda de pendência:** as camadas marcadas **"pendente Ruti"** derivam de decisões já registradas, mas a orientação pedagógica (Ruti Fávero) ainda não validou o conjunto fechado. Não são fonte canônica definitiva até essa validação.
 
 ---
 
@@ -101,7 +101,7 @@ Em conflito entre dois artefatos, prevalece o de cima:
 
 ---
 
-## A.2 — Voz e Tom (Camada 2) · 🟡 DRAFT — pendente Rute
+## A.2 — Voz e Tom (Camada 2) · 🟡 DRAFT — pendente Ruti
 
 A voz é **uma só** (constante). O tom **varia** conforme o contexto do leitor e o tipo de artigo.
 
@@ -138,7 +138,7 @@ Alinhado aos 5 tipos do Eixo 1 (ver §A.3 e vocabulário):
 | Solução de Problema | Técnico empático — "resolva isso" | 80 / 20 |
 | Recurso | Facilitador — "use isso como base" | 50 template / 30 instrução / 20 contexto |
 
-> **Pendente Rute:** validar a voz e coletar 2-3 exemplos reais de cada tom em artigos do CEFOR. **Pendente decisão de origem formal** — esta camada ainda não tem decisão registrada em `decisoes.md`.
+> **Pendente Ruti:** validar a voz e coletar 2-3 exemplos reais de cada tom em artigos do CEFOR. **Pendente decisão de origem formal** — esta camada ainda não tem decisão registrada em `decisoes.md`.
 
 ---
 
@@ -156,18 +156,18 @@ Alinhado aos 5 tipos do Eixo 1 (ver §A.3 e vocabulário):
 | `tipos_de_artigo` (Tutorial, Referência, Conceitual, Solução de Problema, Recurso) | ✅ Completa |
 | `eixos_da_taxonomia` (Tipo, Categoria, Tópico, Trilha) | ✅ Completa |
 | `componentes_ui_da_base` (Box de trilha, Chip de percurso, Acordeão multi-trilha, Checkpoint, Posição estrutural) | ✅ Completa |
-| `atividades_moodle` | 🟡 1 termo de exemplo (Questionário) — **pendente Juliana + Rute** |
+| `atividades_moodle` | 🟡 1 termo de exemplo (Questionário) — **pendente Juliana + Ruti** |
 | `recursos_moodle` | ⏳ Estrutura criada — **pendente** |
-| `papeis` | ⏳ **pendente Rute + Juliana** (identidade profissional) |
-| `conceitos_pedagogicos` | ⏳ **pendente Rute** |
+| `papeis` | ⏳ **pendente Ruti + Juliana** (identidade profissional) |
+| `conceitos_pedagogicos` | ⏳ **pendente Ruti** |
 | `conceitos_tecnicos` | ⏳ **pendente Elton** |
-| `vocabulario_natural_do_publico` | ⏳ Documento vivo — **pendente Juliana + Rute** |
+| `vocabulario_natural_do_publico` | ⏳ Documento vivo — **pendente Juliana + Ruti** |
 
 **Consumo no WordPress (ver Parte B):** cada termo com `sinonimos_rejeitados` não-vazio vira regra do linter; `sinonimos_aceitos` + `termo_popular` alimentam o índice de busca interna.
 
 ---
 
-## A.4 — Biblioteca de Padrões de Conteúdo (Camada 4) · 🟡 DRAFT — pendente Rute
+## A.4 — Biblioteca de Padrões de Conteúdo (Camada 4) · 🟡 DRAFT — pendente Ruti
 
 Padrões de **estrutura narrativa dentro do artigo** (a Camada 4.5 cuida da composição *entre* artigos). São blocos reutilizáveis que autores (humanos e IA) aplicam conforme o tipo de informação.
 
@@ -219,7 +219,7 @@ Outros componentes multimodais:
 
 1. Identifique o **tipo de artigo** (Eixo 1). 2. Consulte os padrões recomendados para o tipo. 3. Combine padrões quando necessário. 4. (Opcional) registre os padrões usados nos metadados para auditoria/IA.
 
-> **Pendente Rute:** validação pedagógica dos padrões e fechamento dos tipos de callout (Decisão 5).
+> **Pendente Ruti:** validação pedagógica dos padrões e fechamento dos tipos de callout (Decisão 5).
 
 ---
 
@@ -270,7 +270,7 @@ A voz da sequência ("próximo passo", "você está na metade") vive na casca (b
 
 ---
 
-## A.5 — Rubrica de Qualidade (Camada 5) · 🟡 DRAFT — pendente Rute
+## A.5 — Rubrica de Qualidade (Camada 5) · 🟡 DRAFT — pendente Ruti
 
 Transforma "esse artigo é bom" em avaliação objetiva. Usada na revisão de artigos novos, na triagem da base antiga e como meta de qualidade para produção com IA.
 
@@ -286,7 +286,7 @@ Transforma "esse artigo é bom" em avaliação objetiva. Usada na revisão de ar
 | 6 | Conformidade estrutural | 10% | Segue o modelo do tipo de artigo + Checklist de Encadeabilidade? |
 | 7 | Frescor | 5% | Está atualizado com a versão atual do sistema? |
 
-> **Integração com a Camada 4.5:** o Checklist de Encadeabilidade (10 critérios) entra como parte da dimensão **Conformidade estrutural** (ou como dimensão "Atomicidade" dedicada — a decidir com Rute).
+> **Integração com a Camada 4.5:** o Checklist de Encadeabilidade (10 critérios) entra como parte da dimensão **Conformidade estrutural** (ou como dimensão "Atomicidade" dedicada — a decidir com Ruti).
 
 ### A.5.2 — Escala (1 a 5)
 
@@ -310,11 +310,11 @@ Transforma "esse artigo é bom" em avaliação objetiva. Usada na revisão de ar
 | 3.0 – 3.5 | Atualizar e reformatar |
 | > 3.5 | Migrar com ajustes menores |
 
-> **Pendente Rute:** validar dimensões/pesos, decidir se "Atomicidade" vira dimensão própria, e **testar a rubrica em 2-3 artigos reais** (critério de auditoria da Fase 1). Limite editorial de trilhas por artigo (1-3 ideal / 4-5 amarelo / 6+ vermelho) pode ancorar aqui ou na Camada 10.
+> **Pendente Ruti:** validar dimensões/pesos, decidir se "Atomicidade" vira dimensão própria, e **testar a rubrica em 2-3 artigos reais** (critério de auditoria da Fase 1). Limite editorial de trilhas por artigo (1-3 ideal / 4-5 amarelo / 6+ vermelho) pode ancorar aqui ou na Camada 10.
 
 ---
 
-## A.6 — Padrões de Legibilidade (Camada 6) · 🟡 DRAFT — pendente Rute
+## A.6 — Padrões de Legibilidade (Camada 6) · 🟡 DRAFT — pendente Ruti
 
 Métricas objetivas e testáveis — o equivalente ao contraste WCAG, mas para o texto.
 
@@ -341,11 +341,11 @@ Todo artigo tem subtítulo obrigatório: uma frase, **10 a 25 palavras**, delimi
 
 Automática (linter pré-publicação + checklist nos prompts de IA) + manual (teste de leitura em voz alta — se o revisor tropeça, a frase está longa).
 
-> **Pendente Rute:** validar os limites de Flesch e palavras/frase contra artigos reais do CEFOR (podem estar otimistas ou conservadores para o público real).
+> **Pendente Ruti:** validar os limites de Flesch e palavras/frase contra artigos reais do CEFOR (podem estar otimistas ou conservadores para o público real).
 
 ---
 
-## A.7 — Modelos Mentais do Público (Camada 7) · 🟡 DRAFT — pendente Rute
+## A.7 — Modelos Mentais do Público (Camada 7) · 🟡 DRAFT — pendente Ruti
 
 Não é persona. É mapa de **como o público pensa, o que acredita saber e onde tropeça** — insumo direto para tom, estrutura e vocabulário.
 
@@ -374,7 +374,7 @@ Não é persona. É mapa de **como o público pensa, o que acredita saber e onde
 
 Alimenta a categoria `vocabulario_natural_do_publico` (Camada 3) e a busca interna. Ex.: "minha sala" → curso/ambiente virtual; "postar atividade" → adicionar atividade; "abrir o Moodle" → acessar o AVA.
 
-> **Pendente Rute + Juliana:** elas são as "antenas" do vocabulário real. Esta camada é documento vivo — termos novos entram conforme aparecem em atendimentos.
+> **Pendente Ruti + Juliana:** elas são as "antenas" do vocabulário real. Esta camada é documento vivo — termos novos entram conforme aparecem em atendimentos.
 
 ---
 
@@ -423,7 +423,7 @@ Capacidade operacional real e processos que sustentam a produção contínua.
 | Recurso | Capacidade estimada | Premissa |
 |---|---|---|
 | Juliana (produção + IA) | 4-6 artigos/mês | Outras responsabilidades no CEFOR |
-| Rute (revisão pedagógica) | 6-8 revisões/mês | Disponibilidade parcial |
+| Ruti (revisão pedagógica) | 6-8 revisões/mês | Disponibilidade parcial |
 | IA (rascunho) | Ilimitada | Gargalo é a revisão, não a geração |
 | Elton (revisão técnica + publicação) | 8-10 publicações/mês | Trabalho técnico paralelo |
 
@@ -449,7 +449,7 @@ Capacidade operacional real e processos que sustentam a produção contínua.
 1. Juliana seleciona tema + tipo de artigo
 2. Gera rascunho via prompt (Camada 4 + Vocabulário Controlado + Padrões de Composição)
 3. Juliana revisa: estrutura, precisão, tom, completude
-4. Rute revisa: adequação pedagógica, clareza, público
+4. Ruti revisa: adequação pedagógica, clareza, público
 5. Elton revisa: precisão técnica, conformidade, metadados
 6. Scorecard (Camada 5) — score ≥ 3.5? Não → volta ao passo 3
 7. Checklist de Encadeabilidade (Camada 4.5) + linter (Camada 6)
@@ -579,7 +579,7 @@ Múltiplos autores seguem norma ABNT.
 
 `Questionário · Banco de Questões · Tarefa · Fórum · Livro de Notas · H5P · Rótulo · Webconferência · Vídeo · Áudio e Podcast · Livro Digital · Configuração de Curso · Matrícula e Inscrição · Backup e Restauração · Moodle Codes · Sala Virtual · IA Generativa · GPT Customizado · Libras · Audiodescrição · Inclusão e Desenho Universal · Planejamento e Design Educacional · Padrão Visual · MOOC · Direitos Autorais e Segurança`
 
-> Definições e sinônimos em `vocabulario-controlado.json` → `topicos_controlados`. "Prova" é sinônimo popular de *Questionário*, não tópico. Status `a_validar` — refinamento pedagógico fino pendente com Rute.
+> Definições e sinônimos em `vocabulario-controlado.json` → `topicos_controlados`. "Prova" é sinônimo popular de *Questionário*, não tópico. Status `a_validar` — refinamento pedagógico fino pendente com Ruti.
 
 **Regras de validação no editor:**
 - `tipo` e `categoria`: exatamente 1 (campo obrigatório, select único).
@@ -747,14 +747,14 @@ Padrão proposto (a confirmar com Elton + Marquito):
 
 | Pendência | Bloqueia | Responsável |
 |---|---|---|
-| Validação pedagógica das Camadas 1, 2, 4, 5, 6, 7 (e 4.5) | Camadas viram fonte canônica definitiva | Rute |
+| Validação pedagógica das Camadas 1, 2, 4, 5, 6, 7 (e 4.5) | Camadas viram fonte canônica definitiva | Ruti |
 | ~~6ª categoria do Eixo 2~~ ✅ **Decidida (2026-05-21):** Gestão e Operação do Moodle | — | — |
-| ~~Lista dos 25 tópicos do Eixo 3~~ ✅ **Decidida (2026-05-21)** — refinamento fino pendente Rute | — | Rute (refino) |
+| ~~Lista dos 25 tópicos do Eixo 3~~ ✅ **Decidida (2026-05-21)** — refinamento fino pendente Ruti | — | Ruti (refino) |
 | Mapear os 131 artigos antigos nos novos eixos | Valida categorias/tópicos na prática + insumo da triagem (Fase 4.1) | Elton + Juliana |
 | Tipos de callout (Decisão 5) | Bloco `Callout` no WP | Camada 4 + DS (Fase 2) |
 | URLs semânticas + SEO/GEO + busca | `output/taxonomia.md`, `output/descoberta-seo-geo.md` | Sprint 3 |
-| Preenchimento das 6 categorias pendentes do Vocabulário | Linter + busca completos | Juliana + Rute + Elton |
-| Validação das Decisões 25-32 com Rute e Marquito | Arquitetura Trilha/Percurso definitiva | Reunião a marcar |
+| Preenchimento das 6 categorias pendentes do Vocabulário | Linter + busca completos | Juliana + Ruti + Elton |
+| Validação das Decisões 25-32 com Ruti e Marquito | Arquitetura Trilha/Percurso definitiva | Reunião a marcar |
 
 ---
 

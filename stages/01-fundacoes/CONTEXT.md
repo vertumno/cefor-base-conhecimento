@@ -15,18 +15,18 @@ Definir as regras do jogo antes de tocar em visual ou codigo. Esta e a fase mais
 
 ## Process
 
-### Sprint 1: Camadas 1-3 do Content System (Elton + Rute + Juliana)
+### Sprint 1: Camadas 1-3 do Content System (Elton + Ruti + Juliana)
 
 1. **Principios Editoriais** (Camada 1) -- Validar os principios candidatos do escopo. Definir escopo positivo e negativo da base.
-2. **Matriz de Voz e Tom** (Camada 2) -- Validar tabelas de voz/tom do escopo com Rute. Coletar exemplos concretos de cada tom.
+2. **Matriz de Voz e Tom** (Camada 2) -- Validar tabelas de voz/tom do escopo com Ruti. Coletar exemplos concretos de cada tom.
 3. **Vocabulario Controlado** (Camada 3) -- Construir planilha/JSON com termos preferidos, sinonimos, mapeamento CEFOR-Moodle-MEC.
 
-### Sprint 2: Camadas 4-7 (Elton + Rute + Juliana)
+### Sprint 2: Camadas 4-7 (Elton + Ruti + Juliana)
 
 4. **Biblioteca de Padroes** (Camada 4) -- Validar os 7 padroes do escopo. Adicionar novos se necessario.
 5. **Rubrica de Qualidade** (Camada 5) -- Validar as 7 dimensoes e pesos. Testar com 2-3 artigos existentes.
 6. **Padroes de Legibilidade** (Camada 6) -- Validar limites de Flesch, palavras/frase. Testar com artigos.
-7. **Modelos Mentais** (Camada 7) -- Validar perfis mentais com Rute e Juliana. Atualizar vocabulario natural.
+7. **Modelos Mentais** (Camada 7) -- Validar perfis mentais com Ruti e Juliana. Atualizar vocabulario natural.
 
 ### Sprint 3: Taxonomia + Descoberta (Elton + Marcos)
 
@@ -47,7 +47,7 @@ Definir as regras do jogo antes de tocar em visual ou codigo. Esta e a fase mais
 
 | After Step | Agent Presents | Human Decides |
 |---|---|---|
-| Sprint 1 (step 3) | Principios + Voz/Tom + Vocabulario Controlado draft | Rute valida adequacao pedagogica |
+| Sprint 1 (step 3) | Principios + Voz/Tom + Vocabulario Controlado draft | Ruti valida adequacao pedagogica |
 | Sprint 2 (step 7) | Rubrica testada em artigos reais + Modelos Mentais | Equipe valida antes de seguir para Taxonomia |
 | Sprint 3 (step 12) | Estrutura de categorias + URLs + estrategia SEO | Elton + Marcos aprovam arquitetura tecnica |
 
@@ -60,7 +60,7 @@ Definir as regras do jogo antes de tocar em visual ou codigo. Esta e a fase mais
 | Rubrica testada em artigos reais | Pelo menos 3 artigos existentes avaliados |
 | Categorias alinhadas com Vocabulario | Termos de categoria existem no Vocabulario Controlado |
 | URLs semanticas definidas | Padrao documentado com exemplos |
-| Rute validou camadas 1-7 | Aprovacao explicita registrada |
+| Ruti validou camadas 1-7 | Aprovacao explicita registrada |
 
 ## Outputs
 

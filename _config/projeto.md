@@ -21,7 +21,7 @@ Duas funcoes em uma so base:
 | **Elton** | Tech Lead, Dev, Designer | Responsavel pelo projeto, decisoes tecnicas, design, implementacao |
 | **Marcos** | Dev, Chefe do Elton | Desenvolvimento, aprovacao final junto com Elton |
 | **Juliana** | Designer, Conteudista | Design visual, pesquisa, producao e reescrita de conteudo |
-| **Rute** | Consultora pedagogica | Orientacao editorial, padroes pedagogicos, revisao de qualidade |
+| **Ruti** | Consultora pedagogica | Orientacao editorial, padroes pedagogicos, revisao de qualidade |
 
 ## Premissas
 

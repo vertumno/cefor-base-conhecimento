@@ -2,14 +2,14 @@
 
 > **Versão:** 3.3 — FASE 1 EM ANDAMENTO
 > **Última atualização:** 2026-05-19 (refinamento da arquitetura Trilha/Percurso — decisões 25-32)
-> **Decididas por:** Elton + Juliana (sessões 2026-05-08 e 2026-05-13) + Elton + Marquito + Juliana + Rute (2026-05-14) + Elton (sessão de refinamento 2026-05-19)
+> **Decididas por:** Elton + Juliana (sessões 2026-05-08 e 2026-05-13) + Elton + Marquito + Juliana + Ruti (2026-05-14) + Elton (sessão de refinamento 2026-05-19)
 > **Fonte canônica das resoluções Fase 0:** `_config/decisoes-cefor-2026-05-13.json`
 > **Fonte canônica das resoluções Fase 1:** `stages/01-fundacoes/reunioes/revisao-taxonomia-2026-05-14.json`
 > **Fontes cruzadas:**
-> - 🟢 Reunião de brainstorm (01/04/2026) — Elton, Marquito, Rute, Juliana
+> - 🟢 Reunião de brainstorm (01/04/2026) — Elton, Marquito, Ruti, Juliana
 > - 🔵 Pesquisa de benchmarking — Juliana (7 sites analisados com 5 óculos)
 > - 🟠 Relatório comparativo — Claude (análise consolidada de 7 sites)
-> - 🟣 Reunião de validação (14/05/2026) — Elton, Marquito, Juliana, Rute
+> - 🟣 Reunião de validação (14/05/2026) — Elton, Marquito, Juliana, Ruti
 
 ---
 
@@ -67,7 +67,7 @@ A função de formação **estruturada** (trilhas longas com início/meio/fim ob
 
 **O que decidir:** Para quem é a base e como segmentar a experiência?
 
-🟢 **Reunião:** Público definido como profissionais de EaD/tecnologias educacionais do IFES. Rute propôs **percursos por perfil** ("Sou mediadora", "Sou professor") como prioridade de experiência. Consenso unânime.
+🟢 **Reunião:** Público definido como profissionais de EaD/tecnologias educacionais do IFES. Ruti propôs **percursos por perfil** ("Sou mediadora", "Sou professor") como prioridade de experiência. Consenso unânime.
 
 🟠 **Relatório:** A lacuna mais clara é que os 7 sites analisados são **monoaudiência**. O CEFOR atende servidores, professores, técnicos, estudantes e público externo de MOOCs simultaneamente. *"Categorização clara por perfil na entrada já diferencia."*
 
@@ -266,7 +266,7 @@ Modo escuro entra na V1 conforme recomendado: implementação via CSS custom pro
 
 **O que decidir:** Implementar trilhas/percursos com navegação previous/next e progresso na V1?
 
-🟢 **Reunião:** Percursos por perfil são **consenso e prioridade**. Rute propôs trilhas menores + certificação (declarado como "sonho"). Marcos conectou com formação em serviço. A base atual já tem 12 percursos temáticos.
+🟢 **Reunião:** Percursos por perfil são **consenso e prioridade**. Ruti propôs trilhas menores + certificação (declarado como "sonho"). Marcos conectou com formação em serviço. A base atual já tem 12 percursos temáticos.
 
 🟠 **Relatório:** Classificado como **Prioridade 4**. *"Transforma artigos isolados em jornadas estruturadas."* Trilhas sugeridas: "Comece a ensinar a distância no IFES", "Domine o Moodle", "Crie seu primeiro MOOC".
 
@@ -529,12 +529,12 @@ Confirmado:
 
 | Funcionalidade | Horizonte | Origem |
 |---|---|---|
-| Chatbot/Tutor IA (evolução Sofia) | V2 | Rute + Marcos |
-| Gamificação (badges, ranking, prêmio anual) | V3 | Marcos + Juliana + Rute |
+| Chatbot/Tutor IA (evolução Sofia) | V2 | Ruti + Marcos |
+| Gamificação (badges, ranking, prêmio anual) | V3 | Marcos + Juliana + Ruti |
 | Contribuição wiki de professores | V2 (S2 2026) | Marcos |
 | Flashcards + áudio para estudo mobile | V2 | Marcos |
 | Ferramentas interativas embutidas | V2 | Marcos |
-| Trilhas com certificação | V2/V3 | Rute |
+| Trilhas com certificação | V2/V3 | Ruti |
 | Integração profunda com Moodle (LTI/embed) | V2 | Juliana + Marcos |
 | Login de usuário com perfil | V2 | — |
 | Tracking de progresso em trilhas | V2 | — |
@@ -564,7 +564,7 @@ Adendo formal após revisão da masthead do `prototipo-artigo.html`. Componentes
 
 ## Decisões da Fase 1 — Reunião de validação (2026-05-14)
 
-> Participantes: Elton Vinicius, Marquito (Marcos Vinícius Forecchi Accioly), Juliana Cristina da Silva Cassaro, Rute (Rutinelli Fávero)
+> Participantes: Elton Vinicius, Marquito (Marcos Vinícius Forecchi Accioly), Juliana Cristina da Silva Cassaro, Ruti (Rutinelli Fávero)
 > Artefatos validados: `stages/02-design-system/drafts/prototipos-paginas/proposta-revisao-interativa.html` e `stages/02-design-system/drafts/prototipos-paginas/prototipo-artigo.html`
 > Fonte canônica: `stages/01-fundacoes/reunioes/revisao-taxonomia-2026-05-14.json`
 
@@ -598,7 +598,7 @@ Adendo formal após revisão da masthead do `prototipo-artigo.html`. Componentes
 
 **O que decidir:** O modelo atual de percursos (que virou categoria de organização, perdendo o sentido de jornada) precisa ser reestruturado. Como?
 
-🟣 **Reunião:** Marquito identificou o problema central: percursos deixaram de ser jornadas e viraram categorias de agrupamento. Rute propôs a hierarquia Percurso > Trilha. A equipe construiu juntos a nova semântica:
+🟣 **Reunião:** Marquito identificou o problema central: percursos deixaram de ser jornadas e viraram categorias de agrupamento. Ruti propôs a hierarquia Percurso > Trilha. A equipe construiu juntos a nova semântica:
 - **Trilha** = caminho atômico de conhecimento com começo, meio e fim reais. É composto por artigos. É pequena, focada num objetivo ferramental específico.
 - **Percurso** = conjunto de trilhas (e/ou artigos soltos) que forma um caminho formativo maior, com objetivo pedagógico. É o equivalente a um "curso" dentro da base.
 
@@ -634,7 +634,7 @@ Analogia validada por Marquito: *"É como um parque nacional — o percurso é o
 - A interface precisará representar os três níveis: artigo, trilha, percurso.
 
 > **O que NÃO entra na V1 (referência cruzada com Decisão 15):**
-> A arquitetura Trilha/Percurso aqui aprovada é puramente **editorial/curatorial** — sem login, sem tracking de progresso por usuário, sem quiz/avaliação ao final, sem certificado/badge de conclusão. Esses itens foram propostos no brainstorm (Rute, Juliana, Marcos, Elton — ver `shared/reuniao-brainstorm.md` §4.7 e §4.8) e estão **explicitamente diferidos** na Decisão 15: tracking de progresso e mini-certificado para V2, gamificação (badges, ranking, prêmio anual) para V3. Reabrir esses temas exige reavaliação formal de escopo.
+> A arquitetura Trilha/Percurso aqui aprovada é puramente **editorial/curatorial** — sem login, sem tracking de progresso por usuário, sem quiz/avaliação ao final, sem certificado/badge de conclusão. Esses itens foram propostos no brainstorm (Ruti, Juliana, Marcos, Elton — ver `shared/reuniao-brainstorm.md` §4.7 e §4.8) e estão **explicitamente diferidos** na Decisão 15: tracking de progresso e mini-certificado para V2, gamificação (badges, ranking, prêmio anual) para V3. Reabrir esses temas exige reavaliação formal de escopo.
 
 ---
 
@@ -642,7 +642,7 @@ Analogia validada por Marquito: *"É como um parque nacional — o percurso é o
 
 **O que decidir:** Qual a ordem de exibição dos blocos de formato alternativo no topo do artigo?
 
-🟣 **Reunião:** Rute pediu explicitamente que **Libras apareça sempre em primeiro lugar**, antes do áudio. Justificativa: é uma bandeira de acessibilidade importante para o setor, vale a pena deixar em destaque mesmo que tecnicamente o áudio seja mais "primário". O texto completo em Libras e o áudio são os formatos de conteúdo completo; os demais (podcast, infográfico) são sínteses.
+🟣 **Reunião:** Ruti pediu explicitamente que **Libras apareça sempre em primeiro lugar**, antes do áudio. Justificativa: é uma bandeira de acessibilidade importante para o setor, vale a pena deixar em destaque mesmo que tecnicamente o áudio seja mais "primário". O texto completo em Libras e o áudio são os formatos de conteúdo completo; os demais (podcast, infográfico) são sínteses.
 
 **Resolução da equipe (2026-05-14):** ✅ **APROVADO**
 
@@ -685,7 +685,7 @@ Base de Conhecimento CEFOR/Ifes, 2026. Revisado em 12 mai. 2026.
 
 **O que decidir:** O prazo de depreciação (originalmente proposto em 6 meses) e a visibilidade do badge de depreciação devem ser revistos?
 
-🟣 **Reunião:** Rute sugeriu 12 meses (mais adequado ao ritmo real de atualização de conteúdo educacional). Elton havia removido o badge público no protótipo por achar que geraria ruído; Rute concordou que não deve ser público, mas o controle interno é valioso.
+🟣 **Reunião:** Ruti sugeriu 12 meses (mais adequado ao ritmo real de atualização de conteúdo educacional). Elton havia removido o badge público no protótipo por achar que geraria ruído; Ruti concordou que não deve ser público, mas o controle interno é valioso.
 
 **Resolução da equipe (2026-05-14):** 🔧 **AJUSTADO**
 
@@ -965,7 +965,7 @@ Quando uma trilha pertence a um percurso, aparece um chip dourado no topo do aco
 | Tema | Pergunta em aberto | Onde será fechado |
 |---|---|---|
 | **Limite editorial de trilhas por artigo** | A partir de quantas trilhas um artigo vira "ruído"? | Camada 5 (Rubrica) ou Camada 10 (Métricas) — proposta inicial: 1-3 ideal, 4-5 amarelo, 6+ vermelho |
-| **Validação com Rute e Marquito** | As Decisões 25-32 foram tomadas em sessão entre Elton e Claude. Precisam de validação formal da equipe pedagógica antes de virar fonte canônica definitiva. | Reunião de validação a marcar |
+| **Validação com Ruti e Marquito** | As Decisões 25-32 foram tomadas em sessão entre Elton e Claude. Precisam de validação formal da equipe pedagógica antes de virar fonte canônica definitiva. | Reunião de validação a marcar |
 
 ---
 
@@ -1029,18 +1029,18 @@ A **Fase 0 está oficialmente concluída**. A **Fase 1 — Fundações** está e
 - ✅ Apresentação de múltiplas trilhas: **acordeão** escolhido (Decisão 30 — referência `drafts/exploracao-multiplas-trilhas.html`)
 - ✅ Apresentação visual do percurso: dourado como cor reservada, 3 superfícies (Decisão 31 — referência `drafts/exploracao-pagina-percurso.html`)
 - ✅ Prev/next no rodapé do artigo: **removido** (Decisão 32 — navegação fica exclusivamente no acordeão)
-- ⏳ Validação das Decisões 25-32 com Rute e Marquito (foram tomadas em sessão Elton + Claude)
+- ⏳ Validação das Decisões 25-32 com Ruti e Marquito (foram tomadas em sessão Elton + Claude)
 
 ### O que falta na Fase 1 (sprints pendentes)
 
 | Sprint | Entregas | Com quem |
 |---|---|---|
-| Sprint 1 | Camadas 1-3 do Content System (Princípios, Voz/Tom, Vocabulário Controlado) | Elton + Rute + Juliana |
-| Sprint 2 | Camadas 4-7 (Padrões, Rubrica de Qualidade, Legibilidade, Modelos Mentais) | Elton + Rute + Juliana |
+| Sprint 1 | Camadas 1-3 do Content System (Princípios, Voz/Tom, Vocabulário Controlado) | Elton + Ruti + Juliana |
+| Sprint 2 | Camadas 4-7 (Padrões, Rubrica de Qualidade, Legibilidade, Modelos Mentais) | Elton + Ruti + Juliana |
 | Sprint 3 | Taxonomia formal + URLs semânticas + Estratégia de busca | Elton + Marquito |
 | Sprint 4 | Camadas 8-10 (Depreciação, ContentOps, Métricas) + Revisão final | Elton + Marquito |
 
-> **Nota:** Rute quer participar ativamente das Camadas 1-7 (especialmente Rubrica de Qualidade e Modelos Mentais). Ela está pesquisando qualidade de conteúdo educacional e vê sinergia direta com o que foi mostrado.
+> **Nota:** Ruti quer participar ativamente das Camadas 1-7 (especialmente Rubrica de Qualidade e Modelos Mentais). Ela está pesquisando qualidade de conteúdo educacional e vê sinergia direta com o que foi mostrado.
 
 ### Refinamentos pendentes no protótipo (prioridade antes da Fase 2)
 
@@ -1066,5 +1066,5 @@ A **Fase 0 está oficialmente concluída**. A **Fase 1 — Fundações** está e
 
 *Documento criado em: 2026-05-07*
 *Sessões de decisão: 2026-05-08 · 2026-05-13 · 2026-05-14 · 2026-05-19*
-*Participantes: Elton Vinicius, Juliana Cassaro, Marcos Vinícius Forecchi Accioly (Marquito), Rutinelli Fávero (Rute)*
+*Participantes: Elton Vinicius, Juliana Cassaro, Marcos Vinícius Forecchi Accioly (Marquito), Rutinelli Fávero (Ruti)*
 *Projeto: Base de Conhecimento CEFOR/Ifes — Reformulação*
