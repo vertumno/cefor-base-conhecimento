@@ -16,6 +16,13 @@ __MACOSX/
 *.bak
 *.log
 
+# Python
+__pycache__/
+*.pyc
+
+# Dumps de banco (transitórios, específicos da máquina local)
+*.sql
+
 # Arquivos grandes / binários (preferir Git LFS ou armazenamento externo)
 *.zip
 *.rar
