@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Página de Trilha v4 · Base CEFOR/Ifes</title>
+<meta name="description" content="Página de trilha v4 — hero em faixa verde com painel de stats e chip de trilha (referência: página de percurso v3), corpo mantido da trilha v3 (timeline + relacionadas). Tokens design.md beta." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     PÁGINA DE TRILHA v4 — Tokens oficiais (design.md beta)
+     Hero estilo percurso v3 (faixa verde + stats + chip).
+     Corpo mantido da trilha v3.
+     ============================================================ */
+
+  :root {
+    /* Surfaces */
+    --bg: #ffffff;
+    --bg-2: #f7f5f1;
+    --bg-3: #efeae0;
+    --paper: #ffffff;
+
+    /* Ink */
+    --ink: #14110d;
+    --ink-2: #4a4439;
+    --ink-3: #8a8273;
+
+    /* Lines */
+    --line: #e7e3d8;
+    --line-2: #d4cdba;
+
+    /* Marca — verde em 4 tons */
+    --verde-profundo: #1c4a36;
+    --verde-marca:    #2e7355;
+    --verde-claro:    #6ea892;
+    --verde-palido:   #e6efe9;
+
+    /* Acento quente */
+    --gold-soft: #f3e7d0;
+
+    /* Família dos artigos — 6 principais */
+    --art-roxo:    #9c6dcb;
+    --art-azul:    #5d9bd8;
+    --art-ambar:   #e8b53a;
+    --art-magenta: #c46aac;
+    --art-coral:   #ed8366;
+    --art-teal:    #5ea9b2;
+
+    /* Atribuição categoria → cor da família (sistema-cards-catalogo.md) */
+    --cat-ferramentas:    var(--art-azul);
+    --cat-gestao-moodle:  var(--art-teal);
+    --cat-pedagogia:      var(--art-coral);
+    --cat-acessibilidade: var(--art-roxo);
+    --cat-conduta:        var(--art-ambar);
+    --cat-identidade:     var(--art-magenta);
+
+    /* Tipografia */
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    /* Radii */
+    --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-xl: 24px;
+
+    /* Elevation */
+    --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
+    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
+    --shadow-lg: 0 24px 48px -12px rgba(20,17,13,.12);
+
+    --font-scale: 1;
+  }
+
+  [data-theme="dark"] {
+    --bg: #0e0c0a;
+    --bg-2: #16130f;
+    --bg-3: #1e1a14;
+    --paper: #1a1612;
+    --ink: #f4f1ea;
+    --ink-2: #c9c2b3;
+    --ink-3: #8a8273;
+    --line: #2a251e;
+    --line-2: #3a342a;
+    --verde-profundo: #2e7355;
+    --verde-marca:    #6cb89a;
+    --verde-claro:    #9ed1bd;
+    --verde-palido:   #1f3329;
+    --gold-soft:      #3d3424;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.25);
+    --shadow-lg: 0 24px 48px -12px rgba(0,0,0,.4);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: calc(16px * var(--font-scale)); }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--sans); font-size: 1rem; line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 2px solid var(--verde-marca); outline-offset: 3px; border-radius: 4px; }
+  img, svg { max-width: 100%; display: block; }
+
+  .skip {
+    position: absolute; left: -9999px; top: 8px;
+    background: var(--verde-marca); color: #fff;
+    padding: 8px 12px; border-radius: var(--r-sm); z-index: 100; font-weight: 600;
+  }
+  .skip:focus { left: 8px; }
+
+
+
+  /* ============================================================
+     HEADER — verde-profundo (home v4)
+     ============================================================ */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--verde-profundo);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .header-inner {
+    max-width: 1280px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; color: #fff; }
+  .brand-logo { width: 36px; height: 36px; display: grid; place-items: center; }
+  .brand-logo svg { width: 100%; height: 100%; color: #fff; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .brand-text strong { font-size: .95rem; letter-spacing: -.01em; color: #fff; }
+  .brand-text span { font-size: .75rem; color: #a8c3ba; }
+
+  .nav { display: flex; gap: 6px; margin-left: auto; }
+  .nav a {
+    color: rgba(255,255,255,0.85); font-size: .9rem; font-weight: 500;
+    padding: 8px 12px; border-radius: 8px;
+  }
+  .nav a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+  .nav a.active { background: rgba(255,255,255,0.15); color: #fff; }
+
+  .header-search { position: relative; max-width: 280px; flex: 1; }
+  .header-search input {
+    width: 100%; padding: 9px 12px 9px 36px; font: inherit; font-size: .9rem;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: #fff;
+    border-radius: 8px;
+  }
+  .header-search input::placeholder { color: rgba(255,255,255,0.6); }
+  .header-search svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.7); }
+
+  .a11y-toggles { display: flex; gap: 4px; }
+  .icon-btn {
+    width: 36px; height: 36px; display: grid; place-items: center;
+    background: transparent; border: 1px solid rgba(255,255,255,0.25); border-radius: 8px;
+    color: rgba(255,255,255,0.85); cursor: pointer;
+  }
+  .icon-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+  .icon-btn[aria-pressed="true"] { background: #fff; border-color: #fff; color: var(--verde-profundo); }
+
+  @media (max-width: 960px) { .header-search { display: none; } .nav { display: none; } }
+
+  /* ============================================================
+     BREADCRUMB
+     ============================================================ */
+  .breadcrumb { background: var(--bg-2); padding: 14px 32px; border-bottom: 1px solid var(--line); font-size: .82rem; color: var(--ink-3); }
+  .breadcrumb-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .breadcrumb a { color: var(--ink-2); }
+  .breadcrumb a:hover { color: var(--verde-marca); }
+  .breadcrumb .sep { color: var(--ink-3); }
+  .breadcrumb .current { color: var(--ink); font-weight: 600; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+  /* ============================================================
+     HERO — faixa verde com painel de stats e chip de trilha
+     (referência: página de percurso v3)
+     ============================================================ */
+  .hero-trilha { background: var(--verde-palido); color: var(--ink); position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+  /* ícone de trilha gigante, vazado, ao fundo */
+  .hero-bg-icon {
+    position: absolute; left: -50px; top: 50%; transform: translateY(-50%);
+    width: 520px; height: 300px; color: var(--verde-marca); opacity: .10;
+    pointer-events: none; z-index: 0;
+  }
+  @media (max-width: 700px) { .hero-bg-icon { width: 360px; height: 210px; left: -90px; } }
+  .hero-trilha-inner {
+    position: relative; z-index: 1;
+    max-width: 1200px; margin: 0 auto; padding: 40px 32px 44px;
+    display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;
+  }
+  @media (max-width: 860px) { .hero-trilha-inner { grid-template-columns: 1fr; gap: 28px; } }
+  .hero-main { min-width: 0; }
+
+  /* Chip de trilha — pílula verde-marca com ícone de trilha (destaque sobre fundo pálido) */
+  .hero-kicker {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 20px 8px 15px; margin: 0 0 18px;
+    background: var(--verde-profundo); border: 1px solid var(--verde-profundo);
+    border-radius: 99px;
+    font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: #fff;
+  }
+  [data-theme="dark"] .hero-kicker { color: var(--bg); }
+  .hero-kicker svg { width: 20px; height: 20px; }
+
+  .hero-trilha h1 {
+    font-size: 2.8rem; line-height: 1.06; font-weight: 700; letter-spacing: -.02em;
+    margin: 0 0 16px; color: var(--verde-profundo);
+  }
+  @media (max-width: 700px) { .hero-trilha h1 { font-size: 2.1rem; } }
+  .hero-trilha .subtitle {
+    font-size: 1.06rem; line-height: 1.55; margin: 0;
+    color: var(--verde-profundo); max-width: 60ch;
+  }
+
+  /* Painel de stats à direita, com divisória vertical */
+  .hero-stats {
+    border-left: 1px solid var(--line-2);
+    padding-left: 28px; min-width: 190px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  @media (max-width: 860px) {
+    .hero-stats { border-left: 0; border-top: 1px solid var(--line-2); padding-left: 0; padding-top: 24px; }
+  }
+  .hero-stat .label {
+    display: block; font-size: .66rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--verde-marca); margin: 0 0 3px;
+  }
+  .hero-stat .value { font-size: 1.15rem; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .hero-stat a.value-link {
+    font-size: .95rem; font-weight: 600; color: var(--verde-marca); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
+  }
+  .hero-stat a.value-link:hover { color: var(--verde-profundo); }
+  .hero-stat a.value-link svg { width: 14px; height: 14px; }
+
+  /* ============================================================
+     SEÇÕES
+     ============================================================ */
+  .main-stack { padding: 40px 0 56px; }
+  .main-stack > section + section { margin-top: 52px; }
+
+  .section-eyebrow {
+    font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-3); margin: 0 0 20px;
+  }
+
+  /* ============================================================
+     SEQUÊNCIA — timeline vertical conectada
+     ============================================================ */
+  .sequencia-list { list-style: none; margin: 0; padding: 0; }
+  .seq-item {
+    display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.1fr) 210px; gap: 24px;
+    padding: 12px 0; position: relative; align-items: start;
+  }
+
+  .seq-rail { position: relative; display: flex; justify-content: center; padding-top: 2px; }
+  .seq-num {
+    width: 40px; height: 40px; border-radius: 99px;
+    background: var(--verde-profundo); color: #fff;
+    display: grid; place-items: center;
+    font-size: .95rem; font-weight: 700; font-variant-numeric: tabular-nums;
+    position: relative; z-index: 1; flex: none;
+  }
+  [data-theme="dark"] .seq-num { color: var(--bg); }
+  /* linha conectora contínua entre os círculos (atrás dos números) */
+  .seq-item:not(:last-child)::before {
+    content: ''; position: absolute; z-index: 0;
+    left: 22px; transform: translateX(-50%);
+    top: 18px; height: 100%; width: 3px;
+    background: var(--verde-profundo);
+  }
+
+  /* Coluna 1 — TÍTULO (prioridade visual) */
+  .seq-title {
+    font-size: 1.34rem; font-weight: 700; color: var(--ink);
+    line-height: 1.28; display: block; letter-spacing: -.015em; padding-top: 4px;
+  }
+  .seq-item:hover .seq-title { color: var(--verde-marca); }
+
+  /* Coluna 2 — SUBTÍTULO (fonte menor) */
+  .seq-sub {
+    margin: 0; padding-top: 4px;
+    font-size: .88rem; color: var(--ink-2); line-height: 1.5;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+
+  /* Coluna 3 — demais informações (categoria, tipo, tempo) */
+  .seq-info {
+    display: grid; grid-template-columns: auto auto; justify-content: start;
+    align-items: center; gap: 9px 10px;
+    padding-top: 4px; white-space: nowrap;
+  }
+  /* Kicker de categoria — pílula na cor da categoria + ícone do grupo (branco) + nome.
+     Cor = categoria · ícone = grupo (sistema-cards-catalogo.md). DS §kickers: kicker pode
+     adotar a cor --art-* como pílula com texto branco sobre o matiz. */
+  .seq-cat {
+    display: inline-flex; align-items: center; gap: 7px;
+    grid-column: 1 / -1; justify-self: start;
+    padding: 4px 11px 4px 7px;
+    border-radius: 99px; color: #fff;
+    font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  }
+  .seq-cat img { width: 12px; height: 12px; }
+  .seq-cat[data-category="ferramentas"]    { background: var(--cat-ferramentas); }
+  .seq-cat[data-category="gestao-moodle"]  { background: var(--cat-gestao-moodle); }
+  .seq-cat[data-category="pedagogia"]      { background: var(--cat-pedagogia); }
+  .seq-cat[data-category="acessibilidade"] { background: var(--cat-acessibilidade); }
+  .seq-cat[data-category="conduta"]        { background: var(--cat-conduta); }
+  .seq-cat[data-category="identidade"]     { background: var(--cat-identidade); }
+  .seq-time {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: .8rem; color: var(--ink-3); font-variant-numeric: tabular-nums;
+  }
+  .seq-time svg { width: 13px; height: 13px; color: var(--ink-3); }
+
+  /* Badge de tipo — fundo neutro (DS §components/badge-tipo) */
+  .badge-tipo {
+    padding: 4px 12px; border-radius: 99px; font-weight: 600;
+    font-size: .72rem; letter-spacing: .02em;
+    background: var(--bg-2); color: var(--ink-2);
+  }
+
+  @media (max-width: 860px) {
+    .seq-item { grid-template-columns: 44px 1fr; gap: 10px 18px; }
+    .seq-sub  { grid-column: 2; padding-top: 2px; }
+    .seq-info { grid-column: 2; display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding-top: 6px; }
+    .seq-info .seq-cat { grid-column: auto; }
+  }
+  @media (max-width: 700px) {
+    .seq-item { grid-template-columns: 40px 1fr; }
+    .seq-item:not(:last-child)::before { left: 20px; }
+  }
+
+  /* CTA começar */
+  .start-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--verde-marca); color: #fff;
+    padding: 12px 22px; border-radius: var(--r-md);
+    font-weight: 600; margin: 26px 0 0;
+    transition: background .15s, transform .15s;
+  }
+  .start-cta:hover { background: var(--verde-profundo); transform: translateY(-1px); }
+  [data-theme="dark"] .start-cta { color: var(--bg); }
+  .start-cta svg { width: 15px; height: 15px; }
+
+  /* ============================================================
+     TRILHAS RELACIONADAS — cards (padrão catálogo) + carrossel
+     ============================================================ */
+  .related-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+  .related-head .section-eyebrow { margin: 0; }
+  .carousel-nav { display: flex; gap: 8px; }
+  .carousel-btn {
+    width: 40px; height: 40px; border-radius: 99px;
+    border: 1px solid var(--line-2); background: var(--paper);
+    color: var(--ink-2); cursor: pointer; display: grid; place-items: center;
+    transition: all .15s;
+  }
+  .carousel-btn:hover { border-color: var(--verde-marca); color: var(--verde-marca); background: var(--verde-palido); }
+  .carousel-btn svg { width: 18px; height: 18px; }
+
+  .related-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  @media (max-width: 1000px) { .related-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px)  { .related-grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: var(--r-lg); overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform .2s ease, border-color .15s, box-shadow .15s;
+  }
+  .card:hover { border-color: var(--verde-claro); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+  .card-illust { aspect-ratio: 16 / 7; display: grid; place-items: center; position: relative; overflow: hidden; }
+  .card-illust img { width: 28%; height: auto; max-width: 90px; opacity: .95; filter: drop-shadow(0 2px 6px rgba(0,0,0,.08)); }
+  .card[data-category="ferramentas"]    .card-illust { background: var(--cat-ferramentas); }
+  .card[data-category="gestao-moodle"]  .card-illust { background: var(--cat-gestao-moodle); }
+  .card[data-category="pedagogia"]      .card-illust { background: var(--cat-pedagogia); }
+  .card[data-category="acessibilidade"] .card-illust { background: var(--cat-acessibilidade); }
+  .card[data-category="conduta"]        .card-illust { background: var(--cat-conduta); }
+  .card[data-category="identidade"]     .card-illust { background: var(--cat-identidade); }
+
+  .card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .card h3 { margin: 0; font-size: 1.12rem; font-weight: 700; line-height: 1.3; color: var(--ink); letter-spacing: -.005em; }
+  .card-stats { margin-top: auto; padding-top: 12px; display: flex; gap: 28px; }
+  .card-stat { display: flex; flex-direction: column; gap: 3px; }
+  .card-stat .lab { font-size: .64rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+  .card-stat .val { font-size: .98rem; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+  /* ============================================================
+     DETALHE EDITORIAL COLAPSADO
+     ============================================================ */
+  .details-block {
+    margin: 12px 0 0;
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+  .details-block > summary {
+    list-style: none; cursor: pointer; padding: 16px 22px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: .92rem; color: var(--ink-2); font-weight: 600;
+  }
+  .details-block > summary::-webkit-details-marker { display: none; }
+  .details-block > summary:hover { background: var(--bg-2); }
+  .details-block > summary .chev { transition: transform .2s; width: 16px; height: 16px; }
+  .details-block[open] > summary .chev { transform: rotate(180deg); }
+  .details-body { padding: 4px 22px 22px; border-top: 1px solid var(--line); font-size: .92rem; color: var(--ink-2); line-height: 1.6; }
+  .details-body p { margin: 14px 0 0; }
+  .details-body strong { color: var(--ink); font-weight: 700; }
+
+  /* ============================================================
+     FOOTER — verde-profundo (home v4)
+     ============================================================ */
+  .site-footer { background: var(--verde-profundo); color: rgba(255,255,255,0.78); padding: 56px 32px 32px; }
+  .footer-inner { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
+  .footer-inner h5 { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: #fff; margin: 0 0 16px; font-weight: 700; }
+  .footer-inner a { display: block; padding: 4px 0; font-size: .9rem; color: rgba(255,255,255,0.78); }
+  .footer-inner a:hover { color: #fff; }
+  .footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .footer-brand-mark { width: 32px; height: 32px; display: grid; place-items: center; }
+  .footer-brand-mark svg { width: 100%; height: 100%; color: #fff; }
+  .footer-brand-text { font-size: .9rem; color: #fff; font-weight: 600; }
+  .footer-desc { font-size: .88rem; color: rgba(255,255,255,0.78); line-height: 1.55; margin: 0 0 12px; }
+  .footer-license { font-size: .8rem; color: rgba(255,255,255,0.55); line-height: 1.4; }
+  .footer-bottom { max-width: 1320px; margin: 28px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.12); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: .8rem; color: rgba(255,255,255,0.55); }
+
+  @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .footer-inner { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<a href="#conteudo" class="skip">Pular para o conteúdo</a>
+
+
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="home-proposta-v4.html" class="brand">
+      <span class="brand-logo" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 8 L8 32 L20 36 L20 12 Z"/>
+          <path d="M32 8 L32 32 L20 36 L20 12 Z"/>
+          <path d="M8 8 L20 12 L32 8"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <strong>Base de Conhecimento</strong>
+        <span>CEFOR · Ifes</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="exploracao-pagina-percurso-v3.html">Percursos</a>
+      <a href="exploracao-pagina-trilha-v4.html" class="active">Trilhas</a>
+      <a href="home-proposta-v4.html">Todos os artigos</a>
+    </nav>
+    <form class="header-search" role="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar"/>
+    </form>
+    <div class="a11y-toggles">
+      <button class="icon-btn" id="btn-theme" aria-label="Alternar modo escuro" aria-pressed="false">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="breadcrumb" aria-label="Trilha de navegação">
+  <div class="breadcrumb-inner">
+    <a href="home-proposta-v4.html">Início</a>
+    <span class="sep">›</span>
+    <a href="exploracao-pagina-trilha-v4.html">Trilhas</a>
+    <span class="sep">›</span>
+    <span class="current">Avaliação no Moodle</span>
+  </div>
+</nav>
+
+<!-- HERO — faixa verde com painel de stats e chip de trilha -->
+<section class="hero-trilha">
+  <svg class="hero-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
+  <div class="hero-trilha-inner">
+    <div class="hero-main">
+      <span class="hero-kicker">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
+        Trilha
+      </span>
+      <h1>Avaliação no Moodle</h1>
+      <p class="subtitle">
+        Uma sequência de 8 artigos para estruturar avaliação no Moodle do CEFOR —
+        da configuração de atividades ao fechamento de notas.
+      </p>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="label">Artigos</span>
+        <span class="value">8</span>
+      </div>
+      <div class="hero-stat">
+        <span class="label">Tempo de leitura</span>
+        <span class="value">2h30</span>
+      </div>
+      <div class="hero-stat">
+        <span class="label">Compartilhar</span>
+        <a href="#" class="value-link" id="btn-copy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>
+          Copiar link
+        </a>
+      </div>
+      <div class="hero-stat">
+        <span class="label">Sobre</span>
+        <a href="#sobre-trilha" class="value-link">
+          O que é uma trilha
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="container" id="conteudo">
+
+  <div class="main-stack">
+
+    <!-- SEQUÊNCIA DA TRILHA -->
+    <section aria-labelledby="seq-title">
+      <p class="section-eyebrow" id="seq-title">Sequência da trilha</p>
+
+      <ol class="sequencia-list">
+
+        <li class="seq-item">
+          <div class="seq-rail"><span class="seq-num">1</span></div>
+          <a href="prototipo-artigo-v2.html" class="seq-title">Tipos de atividades avaliativas</a>
+          <p class="seq-sub">Panorama das atividades que geram nota no Moodle e quando usar cada uma na sua estratégia de avaliação.</p>
+          <div class="seq-info">
+            <span class="seq-cat" data-category="gestao-moodle"><img src="../../assets/icone_circulo_branco.png" alt="" />Gestão do Moodle</span>
+            <span class="badge-tipo">Solução</span>
+            <span class="seq-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 min</span>
+          </div>
+        </li>
+
+        <li class="seq-item">
+          <div class="seq-rail"><span class="seq-num">2</span></div>
+          <a href="prototipo-artigo-v2.html" class="seq-title">Criando questionário no Moodle</a>
+          <p class="seq-sub">Do banco de questões ao questionário publicado, incluindo tentativas, prazos e feedback automático.</p>
+          <div class="seq-info">
+            <span class="seq-cat" data-category="gestao-moodle"><img src="../../assets/icone_circulo_branco.png" alt="" />Gestão do Moodle</span>
+            <span class="badge-tipo">Tutorial</span>
+            <span class="seq-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 min</span>
+          </div>
+        </li>
+
+        <li class="seq-item">
+          <div class="seq-rail"><span class="seq-num">3</span></div>
+          <a href="prototipo-artigo-v2.html" class="seq-title">Como conceder tempo ampliado em um questionário</a>
+          <p class="seq-sub">Passo a passo para configurar extensão de tempo individual para estudantes com necessidades específicas.</p>
+          <div class="seq-info">
+            <span class="seq-cat" data-category="acessibilidade"><img src="../../assets/icone_triangulo_branco.png" alt="" />Acessibilidade</span>
+            <span class="badge-tipo">Solução</span>
+            <span class="seq-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 min</span>
+          </div>
+        </li>
+
+        <li class="seq-item">
+          <div class="seq-rail"><span class="seq-num">4</span></div>
+          <a href="prototipo-artigo-v2.html" class="seq-title">Configurando o livro de notas: passo a passo</a>
+          <p class="seq-sub">Estruture categorias, pesos e cálculos para que a nota final reflita exatamente sua estratégia avaliativa.</p>
+          <div class="seq-info">
+            <span class="seq-cat" data-category="gestao-moodle"><img src="../../assets/icone_circulo_branco.png" alt="" />Gestão do Moodle</span>
+            <span class="badge-tipo">Tutorial</span>
+            <span class="seq-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 min</span>
+          </div>
+        </li>
+
+        <li class="seq-item">
+          <div class="seq-rail"><span class="seq-num">5</span></div>
+          <a href="prototipo-artigo-v2.html" class="seq-title">Aplicando rubricas em tarefas</a>
+          <p class="seq-sub">Como criar e reaproveitar rubricas para uma correção mais transparente e consistente entre turmas.</p>
+          <div class="seq-info">
+            <span class="seq-cat" data-category="pedagogia"><img src="../../assets/icone_retangulo_branco.png" alt="" />Pedagogia</span>
+            <span class="badge-tipo">Tutorial</span>
+            <span class="seq-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min</span>
+          </div>
+        </li>
+
+        <li class="seq-item">
+          <div class="seq-rail"><span class="seq-num">6</span></div>
+          <a href="prototipo-artigo-v2.html" class="seq-title">Banco de questões: tipos e formatos</a>
+          <p class="seq-sub">Referência dos formatos de questão disponíveis e como importar perguntas a partir de outros sistemas.</p>
+          <div class="seq-info">
+            <span class="seq-cat" data-category="ferramentas"><img src="../../assets/icone_circulo_branco.png" alt="" />Ferramentas</span>
+            <span class="badge-tipo">Referência</span>
+            <span class="seq-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>11 min</span>
+          </div>
+        </li>
+
+        <li class="seq-item">
+          <div class="seq-rail"><span class="seq-num">7</span></div>
+          <a href="prototipo-artigo-v2.html" class="seq-title">Feedback automático em questionários</a>
+          <p class="seq-sub">Configure mensagens condicionais por faixa de nota para orientar o estudante logo após a tentativa.</p>
+          <div class="seq-info">
+            <span class="seq-cat" data-category="ferramentas"><img src="../../assets/icone_circulo_branco.png" alt="" />Ferramentas</span>
+            <span class="badge-tipo">Tutorial</span>
+            <span class="seq-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min</span>
+          </div>
+        </li>
+
+        <li class="seq-item">
+          <div class="seq-rail"><span class="seq-num">8</span></div>
+          <a href="prototipo-artigo-v2.html" class="seq-title">Encerrando a avaliação ao fim do período</a>
+          <p class="seq-sub">Conferência final, ajustes manuais e exportação de notas para o sistema acadêmico sem retrabalho.</p>
+          <div class="seq-info">
+            <span class="seq-cat" data-category="gestao-moodle"><img src="../../assets/icone_circulo_branco.png" alt="" />Gestão do Moodle</span>
+            <span class="badge-tipo">Conceitual</span>
+            <span class="seq-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 min</span>
+          </div>
+        </li>
+
+      </ol>
+
+      <a href="prototipo-artigo-v2.html" class="start-cta">
+        Começar pelo primeiro artigo
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <details class="details-block">
+        <summary>
+          <span>Como esta trilha foi pensada</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="details-body">
+          <p>Cada artigo foi escrito para <strong>funcionar sozinho</strong> — se você caiu aqui por busca, qualquer um dos 8 resolve um problema específico.</p>
+          <p>A ordem é uma sugestão de quem chega sem saber por onde começar. Não há rastreamento de progresso nem certificado: a trilha é um caminho curado de leitura, não um curso formal.</p>
+        </div>
+      </details>
+    </section>
+
+    <!-- TRILHAS RELACIONADAS -->
+    <section aria-labelledby="rel-title">
+      <div class="related-head">
+        <p class="section-eyebrow" id="rel-title">Trilhas relacionadas</p>
+        <div class="carousel-nav" aria-hidden="true">
+          <button class="carousel-btn" type="button" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="carousel-btn" type="button" aria-label="Próxima">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="related-grid">
+
+        <a class="card" href="#" data-category="gestao-moodle">
+          <div class="card-illust"><img src="../../assets/icone_circulo_branco.png" alt="" /></div>
+          <div class="card-body">
+            <h3>Configurando questionários</h3>
+            <div class="card-stats">
+              <span class="card-stat"><span class="lab">Artigos</span><span class="val">8</span></span>
+              <span class="card-stat"><span class="lab">Tempo de leitura</span><span class="val">2h30</span></span>
+            </div>
+          </div>
+        </a>
+
+        <a class="card" href="#" data-category="acessibilidade">
+          <div class="card-illust"><img src="../../assets/icone_triangulo_branco.png" alt="" /></div>
+          <div class="card-body">
+            <h3>Compreendendo a acessibilidade</h3>
+            <div class="card-stats">
+              <span class="card-stat"><span class="lab">Artigos</span><span class="val">6</span></span>
+              <span class="card-stat"><span class="lab">Tempo de leitura</span><span class="val">1h40</span></span>
+            </div>
+          </div>
+        </a>
+
+        <a class="card" href="#" data-category="ferramentas">
+          <div class="card-illust"><img src="../../assets/icone_losango_branco.png" alt="" /></div>
+          <div class="card-body">
+            <h3>Dominando a inteligência artificial</h3>
+            <div class="card-stats">
+              <span class="card-stat"><span class="lab">Artigos</span><span class="val">7</span></span>
+              <span class="card-stat"><span class="lab">Tempo de leitura</span><span class="val">2h10</span></span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<section class="site-footer" id="sobre-trilha">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <span class="footer-brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 8 L8 32 L20 36 L20 12 Z"/>
+            <path d="M32 8 L32 32 L20 36 L20 12 Z"/>
+            <path d="M8 8 L20 12 L32 8"/>
+          </svg>
+        </span>
+        <span class="footer-brand-text">Base de Conhecimento · CEFOR/Ifes</span>
+      </div>
+      <p class="footer-desc">
+        Produzida pelo Centro de Referência em Formação e em EaD do Instituto Federal do Espírito Santo.
+      </p>
+      <p class="footer-license">Conteúdo sob licença Creative Commons BY-NC-SA 4.0, salvo quando indicado.</p>
+    </div>
+    <div>
+      <h5>Navegar</h5>
+      <a href="exploracao-pagina-percurso-v3.html">Percursos</a>
+      <a href="exploracao-pagina-trilha-v4.html">Trilhas</a>
+      <a href="home-proposta-v4.html">Todos os artigos</a>
+      <a href="#">Categorias</a>
+      <a href="#">Tópicos</a>
+    </div>
+    <div>
+      <h5>Sobre</h5>
+      <a href="#">O CEFOR</a>
+      <a href="#">Equipe editorial</a>
+      <a href="#">Como contribuir</a>
+      <a href="#">Acessibilidade do site</a>
+    </div>
+    <div>
+      <h5>Recursos</h5>
+      <a href="https://cefor.ifes.edu.br" target="_blank" rel="noopener">cefor.ifes.edu.br ↗</a>
+      <a href="#">ReLiCefor</a>
+      <a href="#">MOOC</a>
+      <a href="#">Feed RSS</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 CEFOR · Instituto Federal do Espírito Santo</span>
+    <span>Proposta visual v4 · Tokens design.md beta</span>
+  </div>
+</section>
+
+<script>
+  const html = document.documentElement;
+  const btnTheme = document.getElementById('btn-theme');
+  if (btnTheme) {
+    btnTheme.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      if (isDark) { html.removeAttribute('data-theme'); btnTheme.setAttribute('aria-pressed', 'false'); }
+      else { html.setAttribute('data-theme', 'dark'); btnTheme.setAttribute('aria-pressed', 'true'); }
+    });
+  }
+  const btnCopy = document.getElementById('btn-copy');
+  if (btnCopy) {
+    btnCopy.addEventListener('click', (e) => {
+      e.preventDefault();
+      navigator.clipboard?.writeText(window.location.href);
+      const original = btnCopy.lastChild.textContent;
+      btnCopy.lastChild.textContent = ' Link copiado';
+      setTimeout(() => { btnCopy.lastChild.textContent = original; }, 1800);
+    });
+  }
+</script>
+</body>
+</html>

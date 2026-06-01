@@ -6,11 +6,8 @@ Reescrever os artigos existentes e produzir novos seguindo o Content System comp
 
 | Source | File/Location | Section/Scope | Why |
 |---|---|---|---|
-| Rubrica de Qualidade | `../01-fundacoes/output/rubrica-qualidade.md` | Full file | Avaliacao dos artigos |
-| Biblioteca de Padroes | `../01-fundacoes/output/biblioteca-padroes.md` | Full file | Estrutura dos artigos |
-| Voz e Tom | `../01-fundacoes/output/voz-e-tom.md` | Full file | Como escrever |
-| Vocabulario Controlado | `../01-fundacoes/output/vocabulario-controlado.json` | Full file | Termos padronizados |
-| Padroes Legibilidade | `../01-fundacoes/output/padroes-legibilidade.md` | Full file | Limites de legibilidade |
+| Content System (Consolidado) | `../01-fundacoes/output/contentsystem.md` | Seções A.2 (Voz e Tom), A.4 (Padrões), A.5 (Rubrica) e A.6 (Legibilidade) | Diretrizes e regras para produção e avaliação de conteúdo |
+| Vocabulário Controlado | `../01-fundacoes/output/vocabulario-controlado.json` | Full file | Dicionário de termos preferidos, sinônimos aceitos e proibidos |
 | Inventario base antiga | `../../data/base-antiga/` | Full folder | Artigos existentes |
 
 ## Process

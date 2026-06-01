@@ -41,7 +41,7 @@ Definir a linguagem visual completa da base: tokens, componentes, comportamento 
 | **Design System (canonico)** | `output/design.md` | Markdown + frontmatter de tokens (schema google-labs-code/design.md) | ✅ v1.0 (2026-05-21) |
 | Kit Visual (style guide vivo) | `drafts/kit-visual.html` | HTML interativo (toggles claro/escuro/contraste/dislexia) | ✅ fonte dos tokens |
 
-**Tokens** espelham `drafts/kit-visual.html`. **Componentes e regras** rastreiam as Decisoes 1-32 (`_config/decisoes.md`). **Interface de referencia:** `stages/02-design-system/drafts/prototipos-paginas/prototipo-artigo.html` (Decisao 22).
+**Tokens** espelham `drafts/kit-visual.html`. **Componentes e regras** rastreiam as Decisões 1-32 (`_config/decisoes.md`). **Interfaces de referência:** os templates base em `stages/02-design-system/drafts/prototipos-paginas/` (`base-artigo.html`, `base-inicio.html`, `base-percurso.html` e `base-trilha.html`), com `base-artigo.html` como referência principal de página de artigo (Decisão 22).
 
 ### Lacunas em aberto no design.md (travam a Fase 3)
 1. Referendar nomes da escala de espacamento (`--space-xs` a `--space-3xl`).

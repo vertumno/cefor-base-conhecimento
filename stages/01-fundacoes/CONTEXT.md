@@ -6,7 +6,7 @@ Definir as regras do jogo antes de tocar em visual ou codigo. Esta e a fase mais
 
 | Source | File/Location | Section/Scope | Why |
 |---|---|---|---|
-| Decisoes Fase 0 | `../../_config/decisoes.md` | Full file | 15 decisoes aprovadas que orientam todas as definicoes |
+| Decisoes Fase 0 e 1 | `../../_config/decisoes.md` | Full file | 32 decisões aprovadas que orientam todas as definições |
 | Relatorio comparativo | `../00-benchmarking/output/relatorio-comparativo.md` | Secoes 3-5 (Lacunas, Recomendacoes, Prioridades) | Insumos do benchmarking |
 | Pilares do sistema | `../../_config/pilares.md` | Pilares 3, 4, 7, 8, 10, 11 | Escopo dos pilares que esta fase define |
 | Content System escopo | `references/content-system-escopo.md` | Full file | Rascunhos das 10 camadas (ponto de partida) |

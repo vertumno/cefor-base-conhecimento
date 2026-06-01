@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Página de Trilha v4 · Base CEFOR/Ifes</title>
+<title>Avaliação no Moodle · Trilha · Base CEFOR/Ifes</title>
 <meta name="description" content="Página de trilha v4 — hero em faixa verde com painel de stats e chip de trilha (referência: página de percurso v3), corpo mantido da trilha v3 (timeline + relacionadas). Tokens design.md beta." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   /* ============================================================
      PÁGINA DE TRILHA v4 — Tokens oficiais (design.md beta)
@@ -16,6 +16,8 @@
      ============================================================ */
 
   :root {
+    /* layout canonico - unidade estrutural entre paginas */
+    --maxw: 1280px; --maxw-read: 760px; --pad-x: 32px;
     /* Surfaces */
     --bg: #ffffff;
     --bg-2: #f7f5f1;
@@ -109,69 +111,11 @@
   }
   .skip:focus { left: 8px; }
 
-  /* Banner de contexto do protótipo (não faz parte da página) */
-  .doc-header { background: var(--ink); color: var(--bg); padding: 14px 32px; font-size: .82rem; letter-spacing: .02em; }
-  .doc-header strong { font-weight: 700; }
-  .doc-header .pill { display: inline-block; background: var(--verde-marca); color: #fff; padding: 2px 9px; border-radius: 99px; font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-right: 10px; }
 
-  /* ============================================================
-     HEADER — verde-profundo (home v4)
-     ============================================================ */
-  .site-header {
-    position: sticky; top: 0; z-index: 50;
-    background: var(--verde-profundo);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-  .header-inner {
-    max-width: 1280px; margin: 0 auto; padding: 14px 24px;
-    display: flex; align-items: center; gap: 24px;
-  }
-  .brand { display: flex; align-items: center; gap: 12px; color: #fff; }
-  .brand-mark { width: 36px; height: 36px; display: grid; place-items: center; }
-  .brand-mark svg { width: 100%; height: 100%; color: #fff; }
-  .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
-  .brand-text strong { font-size: .95rem; letter-spacing: -.01em; color: #fff; }
-  .brand-text span { font-size: .75rem; color: #a8c3ba; }
 
-  .nav { display: flex; gap: 6px; margin-left: auto; }
-  .nav a {
-    color: rgba(255,255,255,0.85); font-size: .9rem; font-weight: 500;
-    padding: 8px 12px; border-radius: 8px;
-  }
-  .nav a:hover { background: rgba(255,255,255,0.15); color: #fff; }
-  .nav a.active { background: rgba(255,255,255,0.15); color: #fff; }
+  /* Header e breadcrumb: estilos no shell.css compartilhado */
 
-  .header-search { position: relative; max-width: 280px; flex: 1; }
-  .header-search input {
-    width: 100%; padding: 9px 12px 9px 36px; font: inherit; font-size: .9rem;
-    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: #fff;
-    border-radius: 8px;
-  }
-  .header-search input::placeholder { color: rgba(255,255,255,0.6); }
-  .header-search svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.7); }
-
-  .a11y-toggles { display: flex; gap: 4px; }
-  .icon-btn {
-    width: 36px; height: 36px; display: grid; place-items: center;
-    background: transparent; border: 1px solid rgba(255,255,255,0.25); border-radius: 8px;
-    color: rgba(255,255,255,0.85); cursor: pointer;
-  }
-  .icon-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
-  .icon-btn[aria-pressed="true"] { background: #fff; border-color: #fff; color: var(--verde-profundo); }
-
-  @media (max-width: 960px) { .header-search { display: none; } .nav { display: none; } }
-
-  /* ============================================================
-     BREADCRUMB
-     ============================================================ */
-  .breadcrumb { background: var(--bg-2); padding: 14px 32px; border-bottom: 1px solid var(--line); font-size: .82rem; color: var(--ink-3); }
-  .breadcrumb-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .breadcrumb a { color: var(--ink-2); }
-  .breadcrumb a:hover { color: var(--verde-marca); }
-  .breadcrumb .sep { color: var(--ink-3); }
-  .breadcrumb .current { color: var(--ink); font-weight: 600; }
-
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad-x); }
 
   /* ============================================================
      HERO — faixa verde com painel de stats e chip de trilha
@@ -187,7 +131,7 @@
   @media (max-width: 700px) { .hero-bg-icon { width: 360px; height: 210px; left: -90px; } }
   .hero-trilha-inner {
     position: relative; z-index: 1;
-    max-width: 1200px; margin: 0 auto; padding: 40px 32px 44px;
+    max-width: var(--maxw); margin: 0 auto; padding: 40px var(--pad-x) 44px;
     display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;
   }
   @media (max-width: 860px) { .hero-trilha-inner { grid-template-columns: 1fr; gap: 28px; } }
@@ -375,7 +319,11 @@
   }
   .card:hover { border-color: var(--verde-claro); transform: translateY(-2px); box-shadow: var(--shadow-md); }
 
-  .card-illust { aspect-ratio: 16 / 7; display: grid; place-items: center; position: relative; overflow: hidden; }
+  /* Card de TRILHA — skin verde-palido unico (igual a pagina de percurso).
+     Trilha cruza categorias, entao nao recebe cor de categoria. */
+  .card-illust { aspect-ratio: 16 / 7; display: grid; place-items: center; position: relative; overflow: hidden; background: var(--verde-palido); }
+  .card-illust svg { width: 30%; height: auto; max-width: 84px; color: var(--verde-profundo); }
+  [data-theme="dark"] .card-illust svg { color: var(--verde-marca); }
   .card-illust img { width: 28%; height: auto; max-width: 90px; opacity: .95; filter: drop-shadow(0 2px 6px rgba(0,0,0,.08)); }
   .card[data-category="ferramentas"]    .card-illust { background: var(--cat-ferramentas); }
   .card[data-category="gestao-moodle"]  .card-illust { background: var(--cat-gestao-moodle); }
@@ -412,40 +360,22 @@
   .details-body p { margin: 14px 0 0; }
   .details-body strong { color: var(--ink); font-weight: 700; }
 
-  /* ============================================================
-     FOOTER — verde-profundo (home v4)
-     ============================================================ */
-  .site-footer { background: var(--verde-profundo); color: rgba(255,255,255,0.78); padding: 56px 32px 32px; }
-  .footer-inner { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
-  .footer-inner h5 { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: #fff; margin: 0 0 16px; font-weight: 700; }
-  .footer-inner a { display: block; padding: 4px 0; font-size: .9rem; color: rgba(255,255,255,0.78); }
-  .footer-inner a:hover { color: #fff; }
-  .footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-  .footer-brand-mark { width: 32px; height: 32px; display: grid; place-items: center; }
-  .footer-brand-mark svg { width: 100%; height: 100%; color: #fff; }
-  .footer-brand-text { font-size: .9rem; color: #fff; font-weight: 600; }
-  .footer-desc { font-size: .88rem; color: rgba(255,255,255,0.78); line-height: 1.55; margin: 0 0 12px; }
-  .footer-license { font-size: .8rem; color: rgba(255,255,255,0.55); line-height: 1.4; }
-  .footer-bottom { max-width: 1320px; margin: 28px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.12); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: .8rem; color: rgba(255,255,255,0.55); }
-
-  @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 480px) { .footer-inner { grid-template-columns: 1fr; } }
+  /* Footer: estilos no shell.css compartilhado */
+  @media (max-width: 600px) { :root { --pad-x: 20px; } }
 </style>
+<link rel="stylesheet" href="a11y.css">
+<link rel="stylesheet" href="shell.css">
 </head>
 <body>
 
 <a href="#conteudo" class="skip">Pular para o conteúdo</a>
 
-<div class="doc-header">
-  <span class="pill">v4</span>
-  <strong>Página de trilha — hero estilo percurso.</strong>
-  Hero em faixa verde com painel de stats e chip de trilha (ref. percurso v3); corpo mantido da trilha v3. Cores e formas do design.md.
-</div>
+
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="home-proposta-v4.html" class="brand">
-      <span class="brand-mark" aria-hidden="true">
+    <a href="base-inicio.html" class="brand">
+      <span class="brand-logo" aria-hidden="true">
         <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M8 8 L8 32 L20 36 L20 12 Z"/>
           <path d="M32 8 L32 32 L20 36 L20 12 Z"/>
@@ -458,27 +388,23 @@
       </span>
     </a>
     <nav class="nav" aria-label="Navegação principal">
-      <a href="exploracao-pagina-percurso-v3.html">Percursos</a>
-      <a href="exploracao-multiplas-trilhas.html" class="active">Trilhas</a>
-      <a href="home-proposta-v4.html">Todos os artigos</a>
+      <a href="base-percurso.html">Percursos</a>
+      <a href="base-trilha.html" class="active">Trilhas</a>
+      <a href="base-inicio.html">Todos os artigos</a>
     </nav>
     <form class="header-search" role="search">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar"/>
     </form>
-    <div class="a11y-toggles">
-      <button class="icon-btn" id="btn-theme" aria-label="Alternar modo escuro" aria-pressed="false">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-      </button>
-    </div>
+    <!-- Acessibilidade: painel flutuante canônico injetado por a11y.js -->
   </div>
 </header>
 
 <nav class="breadcrumb" aria-label="Trilha de navegação">
   <div class="breadcrumb-inner">
-    <a href="home-proposta-v4.html">Início</a>
+    <a href="base-inicio.html">Início</a>
     <span class="sep">›</span>
-    <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
+    <a href="base-trilha.html">Trilhas</a>
     <span class="sep">›</span>
     <span class="current">Avaliação no Moodle</span>
   </div>
@@ -486,11 +412,11 @@
 
 <!-- HERO — faixa verde com painel de stats e chip de trilha -->
 <section class="hero-trilha">
-  <svg class="hero-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
+  <svg class="hero-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="3"/><rect x="15" y="9" width="6" height="6" rx="0.5"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
   <div class="hero-trilha-inner">
     <div class="hero-main">
       <span class="hero-kicker">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="3"/><rect x="15" y="9" width="6" height="6" rx="0.5"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
         Trilha
       </span>
       <h1>Avaliação no Moodle</h1>
@@ -517,7 +443,7 @@
       </div>
       <div class="hero-stat">
         <span class="label">Sobre</span>
-        <a href="#sobre-trilha" class="value-link">
+        <a href="#" class="value-link">
           O que é uma trilha
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -538,7 +464,7 @@
 
         <li class="seq-item">
           <div class="seq-rail"><span class="seq-num">1</span></div>
-          <a href="#" class="seq-title">Tipos de atividades avaliativas</a>
+          <a href="base-artigo.html" class="seq-title">Tipos de atividades avaliativas</a>
           <p class="seq-sub">Panorama das atividades que geram nota no Moodle e quando usar cada uma na sua estratégia de avaliação.</p>
           <div class="seq-info">
             <span class="seq-cat" data-category="gestao-moodle"><img src="../../assets/icone_circulo_branco.png" alt="" />Gestão do Moodle</span>
@@ -549,7 +475,7 @@
 
         <li class="seq-item">
           <div class="seq-rail"><span class="seq-num">2</span></div>
-          <a href="#" class="seq-title">Criando questionário no Moodle</a>
+          <a href="base-artigo.html" class="seq-title">Criando questionário no Moodle</a>
           <p class="seq-sub">Do banco de questões ao questionário publicado, incluindo tentativas, prazos e feedback automático.</p>
           <div class="seq-info">
             <span class="seq-cat" data-category="gestao-moodle"><img src="../../assets/icone_circulo_branco.png" alt="" />Gestão do Moodle</span>
@@ -560,7 +486,7 @@
 
         <li class="seq-item">
           <div class="seq-rail"><span class="seq-num">3</span></div>
-          <a href="#" class="seq-title">Como conceder tempo ampliado em um questionário</a>
+          <a href="base-artigo.html" class="seq-title">Como conceder tempo ampliado em um questionário</a>
           <p class="seq-sub">Passo a passo para configurar extensão de tempo individual para estudantes com necessidades específicas.</p>
           <div class="seq-info">
             <span class="seq-cat" data-category="acessibilidade"><img src="../../assets/icone_triangulo_branco.png" alt="" />Acessibilidade</span>
@@ -571,7 +497,7 @@
 
         <li class="seq-item">
           <div class="seq-rail"><span class="seq-num">4</span></div>
-          <a href="#" class="seq-title">Configurando o livro de notas: passo a passo</a>
+          <a href="base-artigo.html" class="seq-title">Configurando o livro de notas: passo a passo</a>
           <p class="seq-sub">Estruture categorias, pesos e cálculos para que a nota final reflita exatamente sua estratégia avaliativa.</p>
           <div class="seq-info">
             <span class="seq-cat" data-category="gestao-moodle"><img src="../../assets/icone_circulo_branco.png" alt="" />Gestão do Moodle</span>
@@ -582,7 +508,7 @@
 
         <li class="seq-item">
           <div class="seq-rail"><span class="seq-num">5</span></div>
-          <a href="#" class="seq-title">Aplicando rubricas em tarefas</a>
+          <a href="base-artigo.html" class="seq-title">Aplicando rubricas em tarefas</a>
           <p class="seq-sub">Como criar e reaproveitar rubricas para uma correção mais transparente e consistente entre turmas.</p>
           <div class="seq-info">
             <span class="seq-cat" data-category="pedagogia"><img src="../../assets/icone_retangulo_branco.png" alt="" />Pedagogia</span>
@@ -593,7 +519,7 @@
 
         <li class="seq-item">
           <div class="seq-rail"><span class="seq-num">6</span></div>
-          <a href="#" class="seq-title">Banco de questões: tipos e formatos</a>
+          <a href="base-artigo.html" class="seq-title">Banco de questões: tipos e formatos</a>
           <p class="seq-sub">Referência dos formatos de questão disponíveis e como importar perguntas a partir de outros sistemas.</p>
           <div class="seq-info">
             <span class="seq-cat" data-category="ferramentas"><img src="../../assets/icone_circulo_branco.png" alt="" />Ferramentas</span>
@@ -604,7 +530,7 @@
 
         <li class="seq-item">
           <div class="seq-rail"><span class="seq-num">7</span></div>
-          <a href="#" class="seq-title">Feedback automático em questionários</a>
+          <a href="base-artigo.html" class="seq-title">Feedback automático em questionários</a>
           <p class="seq-sub">Configure mensagens condicionais por faixa de nota para orientar o estudante logo após a tentativa.</p>
           <div class="seq-info">
             <span class="seq-cat" data-category="ferramentas"><img src="../../assets/icone_circulo_branco.png" alt="" />Ferramentas</span>
@@ -615,7 +541,7 @@
 
         <li class="seq-item">
           <div class="seq-rail"><span class="seq-num">8</span></div>
-          <a href="#" class="seq-title">Encerrando a avaliação ao fim do período</a>
+          <a href="base-artigo.html" class="seq-title">Encerrando a avaliação ao fim do período</a>
           <p class="seq-sub">Conferência final, ajustes manuais e exportação de notas para o sistema acadêmico sem retrabalho.</p>
           <div class="seq-info">
             <span class="seq-cat" data-category="gestao-moodle"><img src="../../assets/icone_circulo_branco.png" alt="" />Gestão do Moodle</span>
@@ -626,7 +552,7 @@
 
       </ol>
 
-      <a href="#" class="start-cta">
+      <a href="base-artigo.html" class="start-cta">
         Começar pelo primeiro artigo
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </a>
@@ -659,8 +585,10 @@
 
       <div class="related-grid">
 
-        <a class="card" href="#" data-category="gestao-moodle">
-          <div class="card-illust"><img src="../../assets/icone_circulo_branco.png" alt="" /></div>
+        <a class="card" href="base-trilha.html">
+          <div class="card-illust">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="3"/><rect x="15" y="9" width="6" height="6" rx="0.5"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
+          </div>
           <div class="card-body">
             <h3>Configurando questionários</h3>
             <div class="card-stats">
@@ -670,8 +598,10 @@
           </div>
         </a>
 
-        <a class="card" href="#" data-category="acessibilidade">
-          <div class="card-illust"><img src="../../assets/icone_triangulo_branco.png" alt="" /></div>
+        <a class="card" href="base-trilha.html">
+          <div class="card-illust">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="3"/><rect x="15" y="9" width="6" height="6" rx="0.5"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
+          </div>
           <div class="card-body">
             <h3>Compreendendo a acessibilidade</h3>
             <div class="card-stats">
@@ -681,8 +611,10 @@
           </div>
         </a>
 
-        <a class="card" href="#" data-category="ferramentas">
-          <div class="card-illust"><img src="../../assets/icone_losango_branco.png" alt="" /></div>
+        <a class="card" href="base-trilha.html">
+          <div class="card-illust">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="3"/><rect x="15" y="9" width="6" height="6" rx="0.5"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
+          </div>
           <div class="card-body">
             <h3>Dominando a inteligência artificial</h3>
             <div class="card-stats">
@@ -698,63 +630,10 @@
   </div>
 </main>
 
-<section class="site-footer" id="sobre-trilha">
-  <div class="footer-inner">
-    <div>
-      <div class="footer-brand">
-        <span class="footer-brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 8 L8 32 L20 36 L20 12 Z"/>
-            <path d="M32 8 L32 32 L20 36 L20 12 Z"/>
-            <path d="M8 8 L20 12 L32 8"/>
-          </svg>
-        </span>
-        <span class="footer-brand-text">Base de Conhecimento · CEFOR/Ifes</span>
-      </div>
-      <p class="footer-desc">
-        Produzida pelo Centro de Referência em Formação e em EaD do Instituto Federal do Espírito Santo.
-      </p>
-      <p class="footer-license">Conteúdo sob licença Creative Commons BY-NC-SA 4.0, salvo quando indicado.</p>
-    </div>
-    <div>
-      <h5>Navegar</h5>
-      <a href="exploracao-pagina-percurso-v3.html">Percursos</a>
-      <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
-      <a href="home-proposta-v4.html">Todos os artigos</a>
-      <a href="#">Categorias</a>
-      <a href="#">Tópicos</a>
-    </div>
-    <div>
-      <h5>Sobre</h5>
-      <a href="#">O CEFOR</a>
-      <a href="#">Equipe editorial</a>
-      <a href="#">Como contribuir</a>
-      <a href="#">Acessibilidade do site</a>
-    </div>
-    <div>
-      <h5>Recursos</h5>
-      <a href="https://cefor.ifes.edu.br" target="_blank" rel="noopener">cefor.ifes.edu.br ↗</a>
-      <a href="#">ReLiCefor</a>
-      <a href="#">MOOC</a>
-      <a href="#">Feed RSS</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 CEFOR · Instituto Federal do Espírito Santo</span>
-    <span>Proposta visual v4 · Tokens design.md beta</span>
-  </div>
-</section>
+<!-- Footer canônico injetado por shell.js -->
+
 
 <script>
-  const html = document.documentElement;
-  const btnTheme = document.getElementById('btn-theme');
-  if (btnTheme) {
-    btnTheme.addEventListener('click', () => {
-      const isDark = html.getAttribute('data-theme') === 'dark';
-      if (isDark) { html.removeAttribute('data-theme'); btnTheme.setAttribute('aria-pressed', 'false'); }
-      else { html.setAttribute('data-theme', 'dark'); btnTheme.setAttribute('aria-pressed', 'true'); }
-    });
-  }
   const btnCopy = document.getElementById('btn-copy');
   if (btnCopy) {
     btnCopy.addEventListener('click', (e) => {
@@ -766,5 +645,7 @@
     });
   }
 </script>
+<script src="a11y.js" defer></script>
+<script src="shell.js" defer></script>
 </body>
 </html>

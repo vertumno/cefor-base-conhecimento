@@ -124,7 +124,9 @@
   .brand { display: flex; align-items: center; gap: 12px; color: #ffffff; }
   .brand-logo { width: 36px; height: 36px; display: grid; place-items: center; }
   .brand-logo svg { width: 100%; height: 100%; color: #fff; }
-  .brand-text { font-size: 1.05rem; letter-spacing: -.01em; color: #fff; font-weight: 600; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .brand-text strong { font-size: .95rem; letter-spacing: -.01em; color: #fff; font-weight: 600; }
+  .brand-text span { font-size: .75rem; color: #a8c3ba; }
 
   .nav { display: flex; gap: 6px; margin-left: auto; }
   .nav a {
@@ -132,6 +134,7 @@
     padding: 8px 14px; border-radius: var(--r-md);
   }
   .nav a:hover { background: rgba(255,255,255,0.12); color: #fff; }
+  .nav a.active { background: rgba(255,255,255,0.12); color: #fff; }
 
   .header-search { position: relative; max-width: 280px; flex: 0 0 280px; }
   .header-search input {
@@ -480,7 +483,6 @@
 <body>
 <a class="skip" href="#main">Pular para o conteúdo</a>
 
-<!-- HEADER -->
 <header class="site-header">
   <div class="header-inner">
     <a href="home-proposta-v4.html" class="brand">
@@ -491,12 +493,15 @@
           <path d="M8 8 L20 12 L32 8"/>
         </svg>
       </span>
-      <span class="brand-text">Base de Conhecimento</span>
+      <span class="brand-text">
+        <strong>Base de Conhecimento</strong>
+        <span>CEFOR · Ifes</span>
+      </span>
     </a>
     <nav class="nav" aria-label="Navegação principal">
-      <a href="exploracao-pagina-percurso.html">Percursos</a>
-      <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
-      <a href="prototipo-artigo.html">Todos os artigos</a>
+      <a href="exploracao-pagina-percurso-v3.html">Percursos</a>
+      <a href="exploracao-pagina-trilha-v4.html">Trilhas</a>
+      <a href="home-proposta-v4.html" class="active">Todos os artigos</a>
     </nav>
     <form class="header-search" role="search">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -556,7 +561,7 @@
           <div class="card-grid">
 
             <!-- Card 1 — Gestão Moodle (teal) · Atividades e avaliação (círculo) -->
-            <a class="card" href="#" data-category="gestao-moodle" data-type="tutorial" data-topics="livro-notas,config-curso" data-group="atividades">
+            <a class="card" href="prototipo-artigo-v2.html" data-category="gestao-moodle" data-type="tutorial" data-topics="livro-notas,config-curso" data-group="atividades">
               <div class="card-illust">
                 <img src="../../assets/icone_circulo_branco.png" alt="" />
               </div>
@@ -572,7 +577,7 @@
             </a>
 
             <!-- Card 2 — Ferramentas (azul) · Recursos Moodle (hexágono) -->
-            <a class="card" href="#" data-category="ferramentas" data-type="referencia" data-topics="h5p,video" data-group="recursos">
+            <a class="card" href="prototipo-artigo-v2.html" data-category="ferramentas" data-type="referencia" data-topics="h5p,video" data-group="recursos">
               <div class="card-illust">
                 <img src="../../assets/icone_hexagono_branco.png" alt="" />
               </div>
@@ -588,7 +593,7 @@
             </a>
 
             <!-- Card 3 — Acessibilidade (roxo) · Atividades (círculo) — tópico primário: Questionário -->
-            <a class="card" href="#" data-category="acessibilidade" data-type="solucao" data-topics="questionario,inclusao-design-universal" data-group="atividades">
+            <a class="card" href="prototipo-artigo-v2.html" data-category="acessibilidade" data-type="solucao" data-topics="questionario,inclusao-design-universal" data-group="atividades">
               <div class="card-illust">
                 <img src="../../assets/icone_circulo_branco.png" alt="" />
               </div>
@@ -604,7 +609,7 @@
             </a>
 
             <!-- Card 4 — Pedagogia (coral) · Pedagogia (retângulo) -->
-            <a class="card" href="#" data-category="pedagogia" data-type="conceitual" data-topics="planejamento-design-educacional" data-group="pedagogia">
+            <a class="card" href="prototipo-artigo-v2.html" data-category="pedagogia" data-type="conceitual" data-topics="planejamento-design-educacional" data-group="pedagogia">
               <div class="card-illust">
                 <img src="../../assets/icone_retangulo_branco.png" alt="" />
               </div>
@@ -620,7 +625,7 @@
             </a>
 
             <!-- Card 5 — Ferramentas (azul) · Atividades (círculo) -->
-            <a class="card" href="#" data-category="ferramentas" data-type="tutorial" data-topics="questionario,banco-questoes" data-group="atividades">
+            <a class="card" href="prototipo-artigo-v2.html" data-category="ferramentas" data-type="tutorial" data-topics="questionario,banco-questoes" data-group="atividades">
               <div class="card-illust">
                 <img src="../../assets/icone_circulo_branco.png" alt="" />
               </div>
@@ -636,7 +641,7 @@
             </a>
 
             <!-- Card 6 — Conduta (ambar) · Conduta (pentágono) -->
-            <a class="card" href="#" data-category="conduta" data-type="referencia" data-topics="direitos-autorais-seguranca" data-group="conduta">
+            <a class="card" href="prototipo-artigo-v2.html" data-category="conduta" data-type="referencia" data-topics="direitos-autorais-seguranca" data-group="conduta">
               <div class="card-illust">
                 <img src="../../assets/icone_pentagono_branco.png" alt="" />
               </div>
@@ -652,7 +657,7 @@
             </a>
 
             <!-- Card 7 — Ferramentas (azul) · IA (losango) -->
-            <a class="card" href="#" data-category="ferramentas" data-type="recurso" data-topics="gpt-customizado,ia-generativa" data-group="ia">
+            <a class="card" href="prototipo-artigo-v2.html" data-category="ferramentas" data-type="recurso" data-topics="gpt-customizado,ia-generativa" data-group="ia">
               <div class="card-illust">
                 <img src="../../assets/icone_losango_branco.png" alt="" />
               </div>
@@ -668,7 +673,7 @@
             </a>
 
             <!-- Card 8 — Gestão Moodle (teal) · Gestão do AVA (quadrado) -->
-            <a class="card" href="#" data-category="gestao-moodle" data-type="tutorial" data-topics="backup,config-curso" data-group="gestao-ava">
+            <a class="card" href="prototipo-artigo-v2.html" data-category="gestao-moodle" data-type="tutorial" data-topics="backup,config-curso" data-group="gestao-ava">
               <div class="card-illust">
                 <img src="../../assets/icone_quadrado_branco.png" alt="" />
               </div>
@@ -684,7 +689,7 @@
             </a>
 
             <!-- Card 9 — Acessibilidade (roxo) · Acessibilidade (triângulo) -->
-            <a class="card" href="#" data-category="acessibilidade" data-type="referencia" data-topics="audiodescricao,video" data-group="acessibilidade">
+            <a class="card" href="prototipo-artigo-v2.html" data-category="acessibilidade" data-type="referencia" data-topics="audiodescricao,video" data-group="acessibilidade">
               <div class="card-illust">
                 <img src="../../assets/icone_triangulo_branco.png" alt="" />
               </div>
@@ -700,7 +705,7 @@
             </a>
 
             <!-- Card 10 — Identidade (magenta) · Identidade (triângulo retângulo) -->
-            <a class="card" href="#" data-category="identidade" data-type="conceitual" data-topics="padrao-visual" data-group="identidade">
+            <a class="card" href="prototipo-artigo-v2.html" data-category="identidade" data-type="conceitual" data-topics="padrao-visual" data-group="identidade">
               <div class="card-illust">
                 <img src="../../assets/icone_triangulo_retangulo_branco.png" alt="" />
               </div>
@@ -716,7 +721,7 @@
             </a>
 
             <!-- Card 11 — Pedagogia (coral) · Pedagogia (retângulo) -->
-            <a class="card" href="#" data-category="pedagogia" data-type="tutorial" data-topics="planejamento-design-educacional" data-group="pedagogia">
+            <a class="card" href="prototipo-artigo-v2.html" data-category="pedagogia" data-type="tutorial" data-topics="planejamento-design-educacional" data-group="pedagogia">
               <div class="card-illust">
                 <img src="../../assets/icone_retangulo_branco.png" alt="" />
               </div>
@@ -732,7 +737,7 @@
             </a>
 
             <!-- Card 12 — Gestão Moodle (teal) · Recursos Moodle (hexágono) -->
-            <a class="card" href="#" data-category="gestao-moodle" data-type="tutorial" data-topics="webconferencia" data-group="recursos">
+            <a class="card" href="prototipo-artigo-v2.html" data-category="gestao-moodle" data-type="tutorial" data-topics="webconferencia" data-group="recursos">
               <div class="card-illust">
                 <img src="../../assets/icone_hexagono_branco.png" alt="" />
               </div>
@@ -924,9 +929,9 @@
     </div>
     <div>
       <h5>Navegar</h5>
-      <a href="exploracao-pagina-percurso.html">Percursos</a>
-      <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
-      <a href="prototipo-artigo.html">Todos os artigos</a>
+      <a href="exploracao-pagina-percurso-v3.html">Percursos</a>
+      <a href="exploracao-pagina-trilha-v4.html">Trilhas</a>
+      <a href="home-proposta-v4.html">Todos os artigos</a>
       <a href="#">Categorias</a>
       <a href="#">Tópicos</a>
     </div>

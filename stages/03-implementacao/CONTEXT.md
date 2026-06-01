@@ -6,13 +6,9 @@ Transformar o Design System e as definicoes editoriais em um tema WordPress func
 
 | Source | File/Location | Section/Scope | Why |
 |---|---|---|---|
-| Design Tokens | `../02-design-system/output/design-tokens.md` | Full file | Valores visuais para CSS |
-| Componentes | `../02-design-system/output/componentes.md` | Full file | O que construir |
-| Layouts | `../02-design-system/output/layouts.md` | Full file | Templates de pagina |
-| Acessibilidade | `../02-design-system/output/acessibilidade.md` | Full file | Requisitos por componente |
-| Taxonomia | `../01-fundacoes/output/taxonomia.md` | Full file | Categorias, tags, percursos |
-| ContentOps | `../01-fundacoes/output/contentops.md` | Fluxo de publicacao | Workflow WP |
-| Politica Depreciacao | `../01-fundacoes/output/politica-depreciacao.md` | Estados | Custom post status |
+| Design System | `../02-design-system/output/design.md` | Full file | Tokens visuais, componentes, layouts e regras de acessibilidade |
+| Taxonomia | `../01-fundacoes/output/taxonomia.md` | Full file | Categorias, tópicos, trilhas e percursos aprovados |
+| Content System (Consolidado) | `../01-fundacoes/output/contentsystem.md` | Full file (Partes A e B) | Políticas editoriais, fluxo de publicação (ContentOps), estados de depreciação e especificações acionáveis para WordPress |
 
 ## Process
 

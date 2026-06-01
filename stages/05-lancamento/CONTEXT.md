@@ -6,8 +6,7 @@ Colocar a base no ar, ativar ContentOps e monitoramento de saude.
 
 | Source | File/Location | Section/Scope | Why |
 |---|---|---|---|
-| ContentOps | `../01-fundacoes/output/contentops.md` | Full file | Processos operacionais |
-| Metricas de Sucesso | `../01-fundacoes/output/metricas-sucesso.md` | Full file | O que medir |
+| Content System (Consolidado) | `../01-fundacoes/output/contentsystem.md` | Seções A.8 (Depreciação), A.9 (ContentOps) e A.10 (Métricas) | Processos operacionais, políticas de ciclo de vida e dashboard de métricas de sucesso |
 | Artigos publicados | `../04-conteudo/output/` | Pilotos e artigos finais | Conteudo para lancar |
 | Tema WordPress | `../03-implementacao/output/` | Full folder | Base funcional |
 

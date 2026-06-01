@@ -121,6 +121,7 @@ A semântica dos três níveis (Decisão 18):
 | V1 mostra **apenas posição estrutural** ("Artigo X de Y"). Sem rastreamento de progresso pessoal, sem localStorage | 29 |
 | Apresentação multi-trilha no artigo: **acordeão** (`BoxTrilhaAcordeao`). Posição compacta `X/Y` sempre visível mesmo colapsado. Primeira expandida por padrão. Múltiplas abertas simultaneamente permitidas | 30 |
 | Terminologia: itens de uma **trilha** chamam-se *artigos* ("Artigo 3 de 7") | 18, 29 |
+| **Nomeação:** título = substantivo de **capacidade composta** + qualificador de completude (`de ponta a ponta`, `para todos`) ou jornada (`do X ao Y`). Nunca nome de categoria (domínio) nem de ação única (= artigo). Ver `convencao-titulos.md` §3 (dois testes obrigatórios) | — |
 
 ### 6.2 Regras de Percurso
 
@@ -132,6 +133,7 @@ A semântica dos três níveis (Decisão 18):
 | **Cor reservada: dourado** (`--gold` / `--gold-soft` / `--gold-deep`). Verde IFES fica reservado para trilha. Categoria/Tópico são neutros | 31 |
 | Três superfícies de apresentação: (a) página dedicada `/percursos/{slug}` · (b) chip dourado no topo do acordeão de trilha · (c) listagem `/percursos` (grid com borda dourada de 4px) | 31 |
 | Terminologia: itens de um **percurso** chamam-se *passos* (podem ser trilhas ou artigos) | 18 |
+| **Nomeação:** título = **gerúndio aspiracional** ("Dominando o Moodle") ou identidade profissional. Comunica formação numa área inteira. Ver `convencao-titulos.md` §4 | — |
 
 ### 6.3 Diferença formal entre Categoria e Percurso
 
@@ -142,19 +144,31 @@ A semântica dos três níveis (Decisão 18):
 
 Ambos são agregações tecnicamente; semanticamente são diferentes (Decisão 27).
 
-### 6.4 Trilhas-piloto V1 (5 trilhas)
+### 6.4 Trilhas e Percurso V1
 
-| Trilha | Consolida da base antiga | Artigos estimados |
+> **Fonte canônica:** `trilhas-percursos-mapa.md` (mapa completo: sequências por id de artigo, filtro do que não vira trilha, diagnóstico dos 12 percursos antigos). A lista abaixo é o índice.
+> **Nomeação:** todas as trilhas seguem a `convencao-titulos.md` — nome = capacidade composta, não domínio (categoria) nem ação única (artigo).
+
+Análise refinada sobre os 131 artigos reais (2026-06-01) substituiu as 5 trilhas-piloto estimadas por **9 trilhas firmes + 1 candidata**, cada uma uma tarefa completa de começo a fim:
+
+| Trilha | Categoria | Artigos |
 |---|---|---|
-| **Iniciando no Moodle** | Iniciando no Moodle + parte de Professor Moodle | ~12 |
-| **Avaliação no Moodle** | Tudo sobre prova online + Livro de Notas | ~15 |
-| **Acessibilidade no AVA** | Acessibilidade no AVA | ~7 |
-| **IA para Professores** | Inteligência Artificial | ~8 |
-| **Padrão Visual Cefor** | (novo, a partir de Identidade Cefor) | ~5 |
+| **Da sala vazia ao primeiro dia de aula** | `gestao-moodle` | ~6 |
+| **Avaliação online de ponta a ponta** | `gestao-moodle` | ~10 ⚠️ |
+| **Do Livro de Notas ao Sistema Acadêmico** | `gestao-moodle` | ~5 |
+| **Conteúdo interativo com H5P, do básico ao avançado** | `ferramentas` | ~3 |
+| **Aulas ao vivo por Webconferência** | `ferramentas` | ~4 |
+| **Acompanhamento e gamificação do progresso** | `ferramentas` | ~3 |
+| **Avaliação acessível para todos os estudantes** | `acessibilidade` | ~3 |
+| **Conteúdo em Libras no AVA, do vídeo ao termo técnico** | `acessibilidade` | ~3 |
+| **Avaliações com IA generativa** | `pedagogia` | ~3 |
+| **Administração da sala virtual ao longo do curso** *(candidata)* | `gestao-moodle` | ~6 |
 
-> Lista de partida do Sprint 3 — validação pedagógica das sequências (ordem + começo/meio/fim) é responsabilidade de Rute + Juliana, antes da Fase 4 (Produção de Conteúdo).
+> ⚠️ "Avaliação online de ponta a ponta" está no limite do alerta de 10 (§6.1) — revisar promoção a percurso na V2.
 
-> Percursos V1: a definir conforme as trilhas amadureçam. Candidato natural: **"Dominando o Moodle"** (Iniciando no Moodle + Avaliação no Moodle + complementares).
+> Validação pedagógica das sequências (ordem + começo/meio/fim) é responsabilidade de Rute + Juliana, antes da Fase 4 (Produção de Conteúdo).
+
+**Percurso V1: "Dominando o Moodle"** (cor dourada) — *do zero ao curso avaliado no ar*. Passos: as 3 primeiras trilhas (núcleo Moodle) + complementares (certificados, mapa de atividades), com 3 rotas de entrada por perfil. Demais trilhas ficam autônomas e graduam para percurso temático na V2. Detalhes em `trilhas-percursos-mapa.md` §4.
 
 ---
 
@@ -197,22 +211,30 @@ Evento-Divulgação                            → REMOVIDO (não pertence à ba
 
 Eliminada a cauda longa (62% das tags antigas eram cauda longa de uso ≤2). Casing único. Veja `vocabulario-controlado.json` para mapeamento sinônimo→preferido completo.
 
-### 7.4 Percursos (12 → 5 trilhas + estrutura Percurso)
+### 7.4 Percursos (12 antigos → 9 trilhas-tarefa + 1 percurso V1)
+
+A análise refinada (2026-06-01, `trilhas-percursos-mapa.md`) desmontou os 12 percursos-depósito antigos e remontou por **capacidade de tarefa**, não por domínio:
 
 ```
-Iniciando no Moodle + Professor Moodle       → trilha "Iniciando no Moodle"
-Tudo sobre prova online + Livro de Notas     → trilha "Avaliação no Moodle"
-Acessibilidade no AVA                        → trilha "Acessibilidade no AVA"
-Inteligência Artificial                      → trilha "IA para Professores"
-(novo de Identidade)                         → trilha "Padrão Visual Cefor"
+Iniciando no Moodle (parcial)                → trilha "Da sala vazia ao primeiro dia de aula"
+Tudo sobre prova online + parte de Notas     → trilha "Avaliação online de ponta a ponta"
+Livro de Notas                               → trilha "Do Livro de Notas ao Sistema Acadêmico"
+(H5P, disperso em Professor Moodle)          → trilha "Conteúdo interativo com H5P…"
+(Webconferência, disperso)                   → trilha "Aulas ao vivo por Webconferência"
+Gamificação (5)                              → trilha "Acompanhamento e gamificação do progresso"
+Acessibilidade no AVA (parte)                → trilha "Avaliação acessível para todos os estudantes"
+Acessibilidade no AVA (parte Libras)         → trilha "Conteúdo em Libras no AVA…"
+Inteligência Artificial (parte ferramental)  → trilha "Avaliações com IA generativa"
+Gestão e Config do Moodle (parte)            → trilha "Administração da sala virtual…" (candidata)
 
 Direitos Autorais e Segurança (5)            → REMOVIDO (vira categoria Conduta)
-Ferramentas educacionais (9)                 → REMOVIDO (sobrepõe categoria)
+Ferramentas educacionais (9)                 → REMOVIDO (vira recursos avulsos / categoria)
 Moodle Codes (8)                             → REMOVIDO (vira tópico transversal)
-Gamificação (5)                              → REMOVIDO (volume insuficiente)
-Gestão e Config do Moodle (10)               → REMOVIDO (vira categoria)
 Planejamento e Design Educacional            → REMOVIDO (já 404)
-Professor Moodle                             → REMOVIDO (escopo amplo demais)
+Professor Moodle (44)                        → DESMEMBRADO (era depósito — vira várias trilhas)
+Padrão Visual                                → REMOVIDO como trilha (vira referência da categoria Identidade)
+
+Percurso V1 "Dominando o Moodle" agrega as 3 trilhas do núcleo Moodle.
 ```
 
 > Mapeamento artigo-a-artigo dos 131 artigos antigos é entregável de Fase 4.1 (Triagem por Rubrica) — Juliana + Elton.
@@ -321,3 +343,4 @@ Detalhamento em `contentsystem.md` §B.3 e §B.4. Mapeamento:
 | Versão | Data | Mudança | Por |
 |---|---|---|---|
 | 1.0 | 2026-05-26 | Documento canônico criado. Consolida Decisões 17, 18, 25–32 + fechamento da 6ª categoria e 25 tópicos (2026-05-21). URLs semânticas em §8 como proposta pendente. | Elton + Claude |
+| 1.1 | 2026-06-01 | §6.4 reescrita: 5 trilhas-piloto estimadas → 9 trilhas-tarefa + 1 candidata, a partir da análise dos 131 artigos reais (`trilhas-percursos-mapa.md`). Regra de nomeação adicionada em §6.1/§6.2 (`convencao-titulos.md`). §7.4 atualizada. | Elton + Claude |

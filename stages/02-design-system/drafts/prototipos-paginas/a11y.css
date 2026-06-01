@@ -1,0 +1,107 @@
+/* ============================================================
+   COMPONENTE DE ACESSIBILIDADE — CEFOR/Ifes (canônico, compartilhado)
+   Painel flutuante (padrão gov.br): A−/A+, alto contraste, fonte para
+   dislexia e tema claro/escuro + widget VLibras.
+
+   Como usar numa página:
+     1. Carregar a fonte Lexend no <head> (família "Lexend").
+     2. <link rel="stylesheet" href="a11y.css">  (DEPOIS dos tokens base)
+     3. body { font-size: calc(16px * var(--font-scale)); }  (para A−/A+)
+     4. <script src="a11y.js" defer></script>
+   O HTML do painel e do widget VLibras é injetado por a11y.js.
+   ============================================================ */
+
+/* Token da fonte para dislexia (a fonte Lexend é carregada no <head>) */
+:root { --dyslexic: 'Lexend', 'Inter', system-ui, sans-serif; }
+[data-font="dyslexic"] { --sans: var(--dyslexic); }
+
+/* ------------------------------------------------------------
+   Alto contraste — esquema preto / amarelo / verde-neon.
+   Sobrescreve os tokens de cor usados por todas as páginas.
+   NOTA: o ajuste fino por layout (ex.: heros em faixa) é item
+   separado de QA de acessibilidade.
+   ------------------------------------------------------------ */
+[data-contrast="high"] {
+  --bg: #000000;
+  --bg-2: #0a0a0a;
+  --bg-3: #141414;
+  --paper: #000000;
+  --ink: #ffff00;
+  --ink-2: #ffffff;
+  --ink-3: #d0d0d0;
+  --line: #ffff00;
+  --line-2: #ffffff;
+  --verde-profundo: #000000;
+  --verde-marca: #00e676;
+  --verde-claro: #66ffaa;
+  --verde-palido: #00251a;
+  --accent: #00e676;
+  --accent-2: #66ffaa;
+  --accent-soft: #00251a;
+  --accent-deep: #00e676;
+  --gold: #ffff00;
+  --gold-soft: #1a1a00;
+  --gold-deep: #ffff00;
+  --rose: #ff6b6b;
+  --rose-soft: #2a0000;
+  --sun: #ffaa00;
+  --sun-soft: #2a1a00;
+  --sky: #66ccff;
+  --sky-soft: #001a2a;
+}
+
+/* ------------------------------------------------------------
+   Barra flutuante de acessibilidade (canto superior direito)
+   ------------------------------------------------------------ */
+.a11y-bar {
+  position: fixed; top: 14px; right: 14px; z-index: 150;
+  display: flex; gap: 4px; flex-wrap: wrap;
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: 999px; padding: 4px;
+  box-shadow: var(--shadow-md, 0 4px 12px rgba(20,17,13,.12));
+  max-width: calc(100vw - 28px);
+  font-family: var(--sans, system-ui, sans-serif);
+}
+.a11y-bar button {
+  border: 0; background: transparent; color: var(--ink-2);
+  min-width: 36px; height: 36px; padding: 0 8px;
+  border-radius: 999px; cursor: pointer;
+  font-family: inherit; font-weight: 600; font-size: .9rem;
+  display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+  transition: background .15s, color .15s;
+}
+.a11y-bar button:hover { background: var(--bg-2); color: var(--ink); }
+.a11y-bar button:focus-visible { outline: 2px solid var(--verde-marca); outline-offset: 2px; }
+.a11y-bar button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.a11y-bar button svg { width: 16px; height: 16px; }
+.a11y-bar .a11y-sep { width: 1px; background: var(--line); margin: 6px 2px; align-self: stretch; }
+
+.a11y-bar-controls { display: flex; gap: 4px; align-items: center; }
+.a11y-bar[data-collapsed="true"] .a11y-bar-controls { display: none; }
+.a11y-trigger svg { width: 18px; height: 18px; }
+.a11y-bar[data-collapsed="false"] .a11y-trigger { background: var(--ink); color: var(--bg); }
+
+/* ------------------------------------------------------------
+   Widget VLibras
+   ------------------------------------------------------------ */
+.vlibras-widget {
+  position: fixed; bottom: 20px; right: 20px; z-index: 140;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--verde-marca); color: #ffffff; border: 0; cursor: pointer;
+  box-shadow: var(--shadow-lg, 0 12px 28px -8px rgba(0,0,0,.4));
+  display: flex; align-items: center; justify-content: center;
+}
+.vlibras-widget svg { width: 24px; height: 24px; }
+.vlibras-widget:hover { transform: scale(1.05); }
+.vlibras-widget::after {
+  content: 'VLibras'; position: absolute; right: 64px;
+  background: var(--ink); color: var(--bg);
+  padding: 4px 10px; border-radius: 6px; font-size: .76rem;
+  opacity: 0; pointer-events: none; transition: opacity .2s; white-space: nowrap;
+}
+.vlibras-widget:hover::after { opacity: 1; }
+
+@media (max-width: 540px) {
+  .a11y-bar { top: auto; bottom: 12px; right: 12px; left: 12px; justify-content: center; }
+  .vlibras-widget { bottom: 76px; }
+}

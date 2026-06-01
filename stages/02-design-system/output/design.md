@@ -271,7 +271,7 @@ Três compromissos atravessam todos os tokens:
 2. **Acessibilidade por padrão** (Decisão 10) — WCAG 2.2 AA + e-MAG. Modo escuro, alto contraste e fonte para dislexia são tokens, não retoques. Cumprimento legal de instituição pública federal, não diferencial.
 3. **Tokens como fonte única de verdade** — todo valor visual vive como CSS custom property. Trocar de tema é trocar variáveis, nunca reescrever CSS. É o que torna a Fase 3 (WordPress) barata.
 
-> **Fonte canônica dos tokens:** `stages/02-design-system/drafts/kit-visual.html` (style guide vivo, com modos claro/escuro/contraste demonstráveis). A interface de referência do artigo é `stages/02-design-system/drafts/prototipos-paginas/prototipo-artigo.html` (Decisão 22). Este `design.md` é a destilação normativa dos dois para a implementação.
+> **Fonte canônica dos tokens:** `stages/02-design-system/drafts/kit-visual.html` (style guide vivo, com modos claro/escuro/contraste demonstráveis). As interfaces de referência são os templates base em `stages/02-design-system/drafts/prototipos-paginas/` (`base-artigo.html`, `base-inicio.html`, `base-percurso.html` e `base-trilha.html`), sendo `base-artigo.html` a referência canônica da página de artigo (Decisão 22). Este `design.md` é a destilação normativa dos mesmos para a implementação.
 
 ## Colors
 
@@ -471,4 +471,4 @@ Flutuante na lateral, acessível por teclado: A-/A+ (escala de fonte via `--font
 
 ---
 
-> **Procedência:** Tokens espelham `stages/02-design-system/drafts/kit-visual.html`. Componentes e regras rastreiam as Decisões 1–32 de `_config/decisoes.md` e os Pilares 1, 2, 5, 6, 8, 9 de `_config/pilares.md`. Interface de referência: `stages/02-design-system/drafts/prototipos-paginas/prototipo-artigo.html` (Decisão 22). Versão **beta** — substitui o par verde-IFES/dourado da versão alpha por verde refinado em quatro tons + família calibrada de cores para artigos + `gold-soft` como único acento quente.
+> **Procedência:** Tokens espelham `stages/02-design-system/drafts/kit-visual.html`. Componentes e regras rastreiam as Decisões 1–32 de `_config/decisoes.md` e os Pilares 1, 2, 5, 6, 8, 9 de `_config/pilares.md`. Interfaces de referência: `stages/02-design-system/drafts/prototipos-paginas/` (`base-artigo.html`, `base-inicio.html`, `base-percurso.html`, `base-trilha.html`), com `base-artigo.html` como referência principal (Decisão 22). Versão **beta** — substitui o par verde-IFES/dourado da versão alpha por verde refinado em quatro tons + família calibrada de cores para artigos + `gold-soft` como único acento quente.

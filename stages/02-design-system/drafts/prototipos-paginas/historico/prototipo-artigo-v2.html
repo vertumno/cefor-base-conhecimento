@@ -37,6 +37,11 @@
     --ink-3: #8a8273;
     --line: #e7e3d8;
     --line-2: #d4cdba;
+    /* Marca — verde em quatro tons (design.md) */
+    --verde-profundo: #1c4a36;
+    --verde-marca: #2e7355;
+    --verde-claro: #6ea892;
+    --verde-palido: #e6efe9;
     --accent: #1f5142;
     --accent-2: #2d6a4f;
     --accent-soft: #e3ecdf;
@@ -76,6 +81,10 @@
     --ink-3: #8a8273;
     --line: #2a251e;
     --line-2: #3a342a;
+    --verde-profundo: #2e7355;
+    --verde-marca: #6cb89a;
+    --verde-claro: #9ed1bd;
+    --verde-palido: #1f3329;
     --accent: #6cb89a;
     --accent-2: #87cdb0;
     --accent-soft: #19251f;
@@ -142,24 +151,23 @@
   /* ---------- Header (igual à home) ---------- */
   .site-header {
     position: sticky; top: 0; z-index: 50;
-    background: #1f5142;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--verde-profundo);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
   .site-header a { text-decoration: none; }
-  [data-theme="dark"] .site-header { background: #143a30; }
   .header-inner {
     max-width: 1280px; margin: 0 auto; padding: 14px 24px;
     display: flex; align-items: center; gap: 24px;
   }
   .brand { display: flex; align-items: center; gap: 12px; color: #ffffff; }
   .brand:hover { text-decoration: none; }
-  .brand-mark {
-    width: 36px; height: 36px; border-radius: 8px;
-    background: #ffffff; color: #1f5142;
-    display: grid; place-items: center; font-weight: 800; letter-spacing: -.02em;
-    box-shadow: var(--shadow-sm);
+  .brand-logo {
+    width: 36px; height: 36px;
+    display: grid; place-items: center;
   }
-  [data-theme="dark"] .brand-mark { color: #143a30; }
+  .brand-logo svg {
+    width: 100%; height: 100%; color: #fff;
+  }
   .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
   .brand-text strong { font-size: .95rem; letter-spacing: -.01em; color: #ffffff; }
   .brand-text span { font-size: .75rem; color: #a8c3ba; }
@@ -170,6 +178,7 @@
     padding: 8px 12px; border-radius: 8px;
   }
   .nav a:hover { background: rgba(255, 255, 255, 0.15); text-decoration: none; color: #ffffff; }
+  .nav a.active { background: rgba(255, 255, 255, 0.15); color: #ffffff; }
 
   .header-search { position: relative; max-width: 280px; flex: 1; }
   .header-search input {
@@ -606,18 +615,19 @@
      Cada trilha vira um item; chip dourado de percurso (Decisão 31)
      aparece no topo do acordeão expandido quando aplicável.
      ================================================================ */
-  /* Teste 2026-05-26 — sem background nem borda no box externo. */
+  /* Caixa restaurada (2026-05-29, revertendo o teste 2026-05-26) — moldura do box
+     de trilha de volta; decisões sutis internas (badge de contagem, chip) preservadas. */
   .side-trilha {
-    border: 0;
-    border-radius: 0;
-    overflow: visible;
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    overflow: hidden;
     margin-bottom: 14px;
-    background: transparent;
+    background: var(--paper);
   }
   .side-trilha-head {
-    padding: 0 0 10px;
+    padding: 14px 18px;
     background: transparent;
-    border-bottom: 0;
+    border-bottom: 1px solid var(--line);
   }
   .side-trilha-head-label {
     font-size: .68rem;
@@ -648,7 +658,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 0;
+    padding: 14px 18px;
     background: transparent;
     border: 0;
     cursor: pointer;
@@ -690,7 +700,7 @@
     color: var(--accent);
   }
   .trilha-acc-body {
-    padding: 4px 0 16px;
+    padding: 4px 18px 16px;
     background: transparent;
     border-top: 0;
   }
@@ -782,14 +792,14 @@
     font-weight: 600;
   }
 
-  /* TOC — sem fundo/borda (teste 2026-05-26) */
+  /* TOC — caixa restaurada (2026-05-29, revertendo o teste 2026-05-26 que zerou fundo/borda) */
   .toc-card {
-    background: transparent;
-    border: 0;
-    border-radius: 0;
-    padding: 0;
-    box-shadow: none;
-    margin-bottom: 32px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 22px 24px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 14px;
   }
   .toc-title {
     font-size: .68rem;
@@ -1395,17 +1405,23 @@
      ============================================================ -->
 <header class="site-header">
   <div class="header-inner">
-    <a href="home-proposta.html" class="brand">
-      <span class="brand-mark">C</span>
+    <a href="home-proposta-v4.html" class="brand">
+      <span class="brand-logo" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 8 L8 32 L20 36 L20 12 Z"/>
+          <path d="M32 8 L32 32 L20 36 L20 12 Z"/>
+          <path d="M8 8 L20 12 L32 8"/>
+        </svg>
+      </span>
       <span class="brand-text">
         <strong>Base de Conhecimento</strong>
         <span>CEFOR · Ifes</span>
       </span>
     </a>
     <nav class="nav" aria-label="Navegação principal">
-      <a href="exploracao-pagina-percurso.html">Percursos</a>
-      <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
-      <a href="prototipo-artigo.html">Todos os artigos</a>
+      <a href="exploracao-pagina-percurso-v3.html">Percursos</a>
+      <a href="exploracao-pagina-trilha-v4.html">Trilhas</a>
+      <a href="home-proposta-v4.html">Todos os artigos</a>
     </nav>
     <form class="header-search" role="search" action="/buscar" method="get">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -1450,11 +1466,15 @@
 <!-- ============ BREADCRUMB (faixa full-width, igual exploracao-pagina-percurso.html) ============ -->
 <nav class="breadcrumb" aria-label="Trilha de navegação">
   <div class="breadcrumb-inner">
-    <a href="home-proposta.html">Início</a>
+    <a href="home-proposta-v4.html">Início</a>
     <span class="sep">›</span>
-    <a href="#">Gestão e Operação do Moodle</a>
+    <a href="exploracao-pagina-percurso-v3.html">Percursos</a>
     <span class="sep">›</span>
-    <span class="current">Configurando o livro de notas do Moodle</span>
+    <a href="exploracao-pagina-percurso-v3.html">Dominando o Moodle</a>
+    <span class="sep">›</span>
+    <a href="exploracao-pagina-trilha-v4.html">Configurando Questionário</a>
+    <span class="sep">›</span>
+    <span class="current">Configurando o livro de notas</span>
   </div>
 </nav>
 

@@ -61,8 +61,8 @@ O projeto é sustentado por **3 sistemas interdependentes**. Nenhum funciona bem
 
 | Sistema | Documento de referência | Pilares que cobre |
 |---|---|---|
-| Content System | `docs/content-system-escopo.md` | 3 (Modelo de Conteúdo), 7 (Ciclo de Vida), 10 (Autoria) + inputs para 4, 6, 8, 11 |
-| Design System | `docs/design-system-escopo.md` | 1 (Visual), 2 (Interação), 5 (Acessibilidade), 6 (Leitura), 8 (Estados), 9 (Responsivo) |
+| Content System | `stages/01-fundacoes/references/content-system-escopo.md` | 3 (Modelo de Conteúdo), 7 (Ciclo de Vida), 10 (Autoria) + inputs para 4, 6, 8, 11 |
+| Design System | `stages/01-fundacoes/references/design-system-escopo.md` | 1 (Visual), 2 (Interação), 5 (Acessibilidade), 6 (Leitura), 8 (Estados), 9 (Responsivo) |
 | Taxonomia + Descoberta | A definir na Fase 1 | 4 (Taxonomia), 11 (Descoberta) |
 
 ---
@@ -89,7 +89,7 @@ Fase 5 ─ Lançamento e Operação Contínua
 
 **Objetivo:** Colecionar referências e ideias que alimentem as decisões de todas as fases seguintes.
 
-**Status:** ✅ CONCLUÍDA — 16 decisões registradas em `_config/decisoes.md`
+**Status:** ✅ CONCLUÍDA — 32 decisões registradas em `_config/decisoes.md`
 
 | Entrega | Responsável | Descrição |
 |---|---|---|
@@ -103,19 +103,19 @@ Fase 5 ─ Lançamento e Operação Contínua
 
 ---
 
-## Fase 1 — Fundações 🔄 EM ANDAMENTO
+## Fase 1 — Fundações ✅ CONCLUÍDA
 
 **Objetivo:** Definir as regras do jogo antes de tocar em visual ou código. Sem essa fase, o design fica bonito mas sem alma, e a produção de conteúdo fica inconsistente.
 
 **Esta é a fase mais crítica do projeto. É aqui que se define o que torna a base excelente — não no visual.**
 
-**Status parcial (2026-05-14):**
+**Status: ✅ CONCLUÍDA**
 - ✅ Taxonomia em 4 eixos validada (Tipo, Categoria, Tópico, Trilha) — Decisão 17
 - ✅ Arquitetura Trilha/Percurso definida — Decisão 18
 - ✅ Interface do artigo validada (cabeçalho, multimodal, rodapé) — Decisões 19-24
 - ✅ Protótipo `prototipo-artigo.html` referendado como referência canônica
-- ⏳ Content System (camadas 1-10) — pendente
-- ⏳ URLs semânticas + Estratégia de descoberta — pendente
+- ✅ Content System (camadas 1-10) consolidado em [`stages/01-fundacoes/output/contentsystem.md`](../stages/01-fundacoes/output/contentsystem.md)
+- ✅ URLs semânticas + Estratégia de descoberta formalizadas em [`stages/01-fundacoes/output/taxonomia.md`](../stages/01-fundacoes/output/taxonomia.md)
 
 A Fase 1 é composta por 3 blocos: o **Content System** (10 camadas), a **Taxonomia** e a **Estratégia de Descoberta**.
 
@@ -123,7 +123,7 @@ A Fase 1 é composta por 3 blocos: o **Content System** (10 camadas), a **Taxono
 
 ### Bloco 1 — Content System — 10 camadas
 
-Referência completa: `docs/content-system-escopo.md`
+Referência completa: `stages/01-fundacoes/references/content-system-escopo.md`
 
 As camadas 1 a 7 são interdependentes e devem ser definidas em conjunto.
 
@@ -179,9 +179,11 @@ As camadas 1 a 7 são interdependentes e devem ser definidas em conjunto.
 
 ---
 
-## Fase 2 — Design System
+## Fase 2 — Design System 🔄 EM ANDAMENTO
 
 **Objetivo:** Definir a linguagem visual completa da base — tokens, componentes, comportamento responsivo, acessibilidade, experiência de leitura.
+
+**Status:** 🔄 EM ANDAMENTO. O Design System canônico está consolidado no arquivo único [`stages/02-design-system/output/design.md`](../stages/02-design-system/output/design.md) v1.0 (Beta), e os protótipos interativos estão em `stages/02-design-system/drafts/`.
 
 **Os 6 pilares do Design System são interdependentes e devem ser trabalhados juntos nesta fase.**
 
