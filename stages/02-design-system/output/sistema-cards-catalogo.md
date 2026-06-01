@@ -49,7 +49,7 @@ Os 25 tópicos da [taxonomia.md §5](../../01-fundacoes/output/taxonomia.md) est
 | Gestão do AVA | Configuração de Curso · Matrícula e Inscrição · Backup e Restauração · Moodle Codes · Sala Virtual | Quadrado | [`icone_quadrado_branco.png`](../assets/icone_quadrado_branco.png) |
 | Inteligência Artificial | IA Generativa · GPT Customizado | Losango | [`icone_losango_branco.png`](../assets/icone_losango_branco.png) |
 | Acessibilidade | Libras · Audiodescrição · Inclusão e Desenho Universal | Triângulo | [`icone_triangulo_branco.png`](../assets/icone_triangulo_branco.png) |
-| Pedagogia | Planejamento e Design Educacional | Trapézio | [`icone_trapezio_branco.png`](../assets/icone_trapezio_branco.png) |
+| Pedagogia | Planejamento e Design Educacional | Retângulo | [`icone_retangulo_branco.png`](../assets/icone_retangulo_branco.png) |
 | Identidade institucional | Padrão Visual · MOOC | Triângulo retângulo | [`icone_triangulo_retangulo_branco.png`](../assets/icone_triangulo_retangulo_branco.png) |
 | Conduta | Direitos Autorais e Segurança | Pentágono | [`icone_pentagono_branco.png`](../assets/icone_pentagono_branco.png) |
 
@@ -67,7 +67,7 @@ icone_hexagono_branco.png       icone_hexagono_preto.png
 icone_losango_branco.png        icone_losango_preto.png
 icone_pentagono_branco.png      icone_pentagono_preto.png
 icone_quadrado_branco.png       icone_quadrado_preto.png
-icone_trapezio_branco.png       icone_trapezio_preto.png
+icone_retangulo_branco.png      icone_retangulo_preto.png
 icone_triangulo_branco.png      icone_triangulo_preto.png
 icone_triangulo_retangulo_branco.png  icone_triangulo_retangulo_preto.png
 ```

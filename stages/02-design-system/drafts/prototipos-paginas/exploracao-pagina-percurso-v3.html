@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Exploração v3 · Página de Percurso — Base CEFOR/Ifes</title>
+<meta name="description" content="Nova organização da página de percurso a partir do layout da Juliana (2026-05-27): hero em faixa com painel de stats, trilhas em grid com thumbnail, artigos em timeline e percursos relacionados em faixa." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-2: #f7f5f1;
+    --bg-3: #efeae0;
+    --paper: #ffffff;
+    --ink: #14110d;
+    --ink-2: #4a4439;
+    --ink-3: #8a8273;
+    --line: #e7e3d8;
+    --line-2: #d4cdba;
+    /* Marca — verde em quatro tons (design.md) */
+    --verde-profundo: #1c4a36;
+    --verde-marca: #2e7355;
+    --verde-claro: #6ea892;
+    --verde-palido: #e6efe9;
+    /* header dos protótipos existentes */
+    --accent: #1f5142;
+    --accent-deep: #143a30;
+    --accent-soft: #e3ecdf;
+    --gold-soft: #f3e7d0;
+    /* Família dos artigos (design.md) */
+    --art-roxo: #9c6dcb;
+    --art-azul: #5d9bd8;
+    --art-ambar: #e8b53a;
+    --art-magenta: #c46aac;
+    --art-coral: #ed8366;
+    --art-teal: #5ea9b2;
+    --art-anil: #7b81d7;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 16px;
+    --r-xl: 24px;
+    --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
+    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
+  }
+  [data-theme="dark"] {
+    --bg: #0e0c0a; --bg-2: #16130f; --bg-3: #1e1a14; --paper: #1a1612;
+    --ink: #f4f1ea; --ink-2: #c9c2b3; --ink-3: #8a8273;
+    --line: #2a251e; --line-2: #3a342a;
+    --verde-profundo: #2e7355; --verde-marca: #6cb89a; --verde-claro: #9ed1bd; --verde-palido: #1f3329;
+    --accent: #6cb89a; --accent-deep: #143a30; --accent-soft: #19251f;
+    --gold-soft: #3d3424;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin:0; background: var(--bg-2); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+
+  /* Doc header (frame de exploração) */
+  .doc-header { background: var(--ink); color: var(--bg); padding: 18px 32px; font-size: .82rem; letter-spacing: .04em; }
+  .doc-header strong { font-weight: 700; }
+  .doc-header .pill { display: inline-block; background: var(--accent); color: #fff; padding: 2px 9px; border-radius: 99px; font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-right: 10px; }
+
+  /* ---------- Header (igual à home/v2) ---------- */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: #1f5142;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .site-header a { text-decoration: none; }
+  [data-theme="dark"] .site-header { background: #143a30; }
+  .header-inner {
+    max-width: 1280px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; color: #ffffff; }
+  .brand:hover { text-decoration: none; }
+  .brand-mark {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: #ffffff; color: #1f5142;
+    display: grid; place-items: center; font-weight: 800; letter-spacing: -.02em;
+    box-shadow: var(--shadow-sm);
+  }
+  [data-theme="dark"] .brand-mark { color: #143a30; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .brand-text strong { font-size: .95rem; letter-spacing: -.01em; color: #ffffff; }
+  .brand-text span { font-size: .75rem; color: #a8c3ba; }
+
+  .nav { display: flex; gap: 6px; margin-left: auto; }
+  .nav a {
+    color: rgba(255, 255, 255, 0.85); font-size: .9rem; font-weight: 500;
+    padding: 8px 12px; border-radius: 8px;
+  }
+  .nav a:hover { background: rgba(255, 255, 255, 0.15); text-decoration: none; color: #ffffff; }
+
+  .header-search { position: relative; max-width: 280px; flex: 1; }
+  .header-search input {
+    width: 100%; padding: 9px 12px 9px 36px; font: inherit; font-size: .9rem;
+    background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2); color: #ffffff;
+    border-radius: 8px;
+  }
+  .header-search input::placeholder { color: rgba(255, 255, 255, 0.6); }
+  .header-search svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: rgba(255, 255, 255, 0.7); }
+
+  .a11y-toggles { display: flex; gap: 4px; }
+  .icon-btn {
+    width: 36px; height: 36px; display: grid; place-items: center;
+    background: transparent; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px;
+    color: rgba(255, 255, 255, 0.85); cursor: pointer;
+  }
+  .icon-btn:hover { background: rgba(255, 255, 255, 0.15); color: #ffffff; }
+  .icon-btn[aria-pressed="true"] { background: #ffffff; border-color: #ffffff; color: #1f5142; }
+
+  @media (max-width: 960px) { .header-search { display: none; } .nav { display: none; } }
+
+  .breadcrumb { background: var(--bg-2); padding: 14px 32px; border-bottom: 1px solid var(--line); font-size: .82rem; color: var(--ink-3); }
+  .breadcrumb-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .breadcrumb a { color: var(--ink-2); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--verde-marca); }
+  .breadcrumb .sep { color: var(--ink-3); }
+  .breadcrumb .current { color: var(--ink); font-weight: 600; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+  /* ============================================================
+     HERO — faixa verde escura com painel de stats à direita
+     (layout Juliana 2026-05-27)
+     ============================================================ */
+  .hero-percurso { background: var(--verde-marca); color: #fff; position: relative; overflow: hidden; }
+  [data-theme="dark"] .hero-percurso { background: #102a20; }
+  /* ícone de percurso gigante, vazado, ao fundo (teste) */
+  .hero-bg-icon {
+    position: absolute; left: -60px; top: 50%; transform: translateY(-50%);
+    width: 480px; height: 480px; color: #fff; opacity: .05;
+    pointer-events: none; z-index: 0;
+  }
+  @media (max-width: 700px) { .hero-bg-icon { width: 340px; height: 340px; left: -100px; } }
+  .hero-percurso-inner {
+    position: relative; z-index: 1;
+    max-width: 1200px; margin: 0 auto; padding: 40px 32px 44px;
+    display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;
+  }
+  @media (max-width: 860px) { .hero-percurso-inner { grid-template-columns: 1fr; gap: 28px; } }
+
+  .hero-kicker {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 20px 8px 15px; margin: 0 0 18px;
+    background: #fff; border: 1px solid #fff;
+    border-radius: 99px;
+    font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--verde-marca);
+  }
+  .hero-kicker svg { width: 20px; height: 20px; }
+
+  .hero-percurso h1 {
+    font-size: 2.8rem; line-height: 1.06; font-weight: 700; letter-spacing: -.02em;
+    margin: 0 0 16px; color: #fff;
+  }
+  @media (max-width: 700px) { .hero-percurso h1 { font-size: 2.1rem; } }
+  .hero-percurso .subtitle {
+    font-size: 1.06rem; line-height: 1.55; margin: 0;
+    color: rgba(255,255,255,.82); max-width: 60ch;
+  }
+
+  /* Painel de stats à direita, com divisória vertical */
+  .hero-stats {
+    border-left: 1px solid rgba(255,255,255,.22);
+    padding-left: 28px; min-width: 190px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  @media (max-width: 860px) {
+    .hero-stats { border-left: 0; border-top: 1px solid rgba(255,255,255,.22); padding-left: 0; padding-top: 24px; }
+  }
+  .hero-stat .label {
+    display: block; font-size: .66rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--verde-palido); margin: 0 0 3px;
+  }
+  .hero-stat .value { font-size: 1.15rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+  .hero-stat a.value-link {
+    font-size: .95rem; font-weight: 600; color: #fff; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 7px;
+  }
+  .hero-stat a.value-link:hover { color: var(--verde-claro); }
+  .hero-stat a.value-link svg { width: 14px; height: 14px; }
+
+  /* ============================================================
+     Títulos de seção
+     ============================================================ */
+  .section-eyebrow {
+    font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-3); margin: 0 0 18px;
+  }
+
+  /* ============================================================
+     TRILHAS — grid de cards com thumbnail (padrão card-illust)
+     ============================================================ */
+  .trilhas-section { padding: 44px 0 8px; }
+  .trilhas-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  }
+  @media (max-width: 860px) { .trilhas-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .trilhas-grid { grid-template-columns: 1fr; } }
+
+  .trilha-card {
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg);
+    overflow: hidden; text-decoration: none; color: inherit;
+    display: flex; flex-direction: column;
+    transition: border-color .15s, box-shadow .15s, transform .15s;
+  }
+  .trilha-card:hover { border-color: var(--verde-claro); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+  /* thumbnail = fundo verde-pálido (cor do hero da trilha v4) + ícone de trilha */
+  .trilha-illust {
+    aspect-ratio: 16 / 9; background: var(--verde-palido);
+    display: grid; place-items: center;
+  }
+  .trilha-illust svg { width: 72px; height: 72px; color: var(--verde-profundo); }
+  [data-theme="dark"] .trilha-illust svg { color: var(--verde-marca); }
+
+  .trilha-body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+  .trilha-body h3 { font-size: 1.1rem; font-weight: 700; margin: 0 0 8px; line-height: 1.25; color: var(--ink); }
+  .trilha-card:hover h3 { color: var(--verde-marca); }
+  .trilha-desc { font-size: .86rem; color: var(--ink-2); line-height: 1.5; margin: 0 0 18px; flex: 1; }
+
+  .trilha-meta { display: flex; gap: 32px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .trilha-meta .m-label {
+    display: block; font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ink-3); margin: 0 0 2px;
+  }
+  .trilha-meta .m-value { font-size: 1rem; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+  /* ============================================================
+     ARTIGOS — timeline vertical
+     ============================================================ */
+  .artigos-section { padding: 44px 0 8px; }
+  .artigos-timeline { position: relative; }
+
+  .artigo-row {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 20px; align-items: stretch;
+    padding: 16px 0;
+  }
+  @media (max-width: 760px) { .artigo-row { grid-template-columns: 44px 1fr; gap: 14px; } }
+  .artigo-content { display: flex; flex-direction: column; gap: 6px; padding: 4px 0; }
+
+  /* marcador da timeline */
+  .artigo-marker { position: relative; display: grid; place-items: center; align-self: stretch; }
+  .artigo-marker::before {
+    content: ''; position: absolute; top: 0; bottom: 0; width: 2px;
+    background: var(--verde-claro); opacity: .5;
+  }
+  .artigo-row:first-child .artigo-marker::before { top: 50%; }
+  .artigo-row:last-child .artigo-marker::before { bottom: 50%; }
+  .artigo-dot {
+    position: relative; z-index: 1;
+    width: 28px; height: 28px; border-radius: 99px;
+    background: var(--verde-profundo); border: 4px solid var(--bg-2);
+    box-shadow: 0 0 0 1px var(--verde-claro);
+  }
+  [data-theme="dark"] .artigo-dot { background: var(--verde-marca); }
+
+  .artigo-title { font-size: 1.02rem; font-weight: 700; color: var(--verde-profundo); text-decoration: none; line-height: 1.3; }
+  [data-theme="dark"] .artigo-title { color: var(--verde-marca); }
+  .artigo-title:hover { text-decoration: underline; }
+  .artigo-desc { font-size: .86rem; color: var(--ink-2); line-height: 1.45; margin: 0; }
+
+  .artigo-aside { display: flex; align-items: center; gap: 16px; margin-top: 4px; white-space: nowrap; }
+  /* badge-tipo NEUTRO conforme design.md §components/badge-tipo */
+  .badge-tipo {
+    font-size: .68rem; font-weight: 700; letter-spacing: .04em;
+    padding: 4px 11px; border-radius: 99px;
+    background: var(--bg-2); color: var(--ink-2); border: 1px solid var(--line);
+  }
+  .artigo-tempo { display: inline-flex; align-items: center; gap: 6px; font-size: .8rem; color: var(--ink-3); }
+  .artigo-tempo svg { width: 13px; height: 13px; }
+
+  /* ============================================================
+     PERCURSOS RELACIONADOS — faixa verde full-width
+     ============================================================ */
+  .relacionados { background: var(--verde-marca); color: #fff; margin-top: 56px; padding: 36px 0 44px; }
+  [data-theme="dark"] .relacionados { background: #102a20; }
+  .relacionados .section-eyebrow { color: rgba(255,255,255,.6); }
+  .relacionados-track {
+    display: grid; grid-auto-flow: column; grid-auto-columns: minmax(230px, 1fr);
+    gap: 0; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding-bottom: 6px; -webkit-overflow-scrolling: touch;
+  }
+  .relacionado-card {
+    scroll-snap-align: start; text-decoration: none; color: inherit;
+    padding: 6px 28px; border-left: 1px solid rgba(255,255,255,.18);
+    transition: opacity .15s;
+  }
+  .relacionado-card:first-child { padding-left: 0; border-left: 0; }
+  .relacionado-card:hover { opacity: .82; }
+  .relacionado-icon { width: 26px; height: 26px; color: var(--verde-claro); margin-bottom: 16px; }
+  .relacionado-card h4 { font-size: 1.15rem; font-weight: 700; margin: 0 0 8px; line-height: 1.2; color: #fff; }
+  .relacionado-card .meta { font-size: .82rem; color: var(--verde-claro); font-weight: 500; }
+
+  /* ============================================================
+     Rodapé editorial "o que é um percurso"
+     ============================================================ */
+  .sobre-percurso { background: var(--paper); border-top: 1px solid var(--line); padding: 44px 0; }
+  .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  @media (max-width: 800px) { .sobre-grid { grid-template-columns: 1fr; } }
+  .sobre-block h3 { font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 10px; }
+  .sobre-block p { margin: 0 0 8px; font-size: .9rem; color: var(--ink-2); line-height: 1.55; }
+  .sobre-block .meta-line { font-size: .8rem; color: var(--ink-3); margin-top: 14px; }
+  .sobre-block .meta-line span + span::before { content: '·'; margin: 0 8px; color: var(--line-2); }
+
+  .doc-footer {
+    background: var(--bg-3); padding: 28px 32px; text-align: center;
+    color: var(--ink-3); font-size: .8rem; border-top: 1px solid var(--line);
+  }
+  .doc-footer code { font-family: var(--mono); background: var(--paper); padding: 2px 6px; border-radius: 4px; font-size: .78rem; }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <span class="pill">v3 · Layout Juliana</span>
+  <strong>Página de percurso — nova organização da informação.</strong>
+  Hero com painel de stats, trilhas em grid com thumbnail, artigos em timeline e percursos relacionados em faixa. Cores e formas do design.md.
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="home-proposta-v4.html" class="brand">
+      <span class="brand-mark">C</span>
+      <span class="brand-text">
+        <strong>Base de Conhecimento</strong>
+        <span>CEFOR · Ifes</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="exploracao-pagina-percurso-v3.html">Percursos</a>
+      <a href="exploracao-multiplas-trilhas.html">Trilhas</a>
+      <a href="prototipo-artigo.html">Todos os artigos</a>
+    </nav>
+    <form class="header-search" role="search" action="/buscar" method="get">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar"/>
+    </form>
+    <div class="a11y-toggles">
+      <button class="icon-btn" id="btn-theme" aria-label="Modo escuro" aria-pressed="false">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="breadcrumb" aria-label="Trilha de navegação">
+  <div class="breadcrumb-inner">
+    <a href="home-proposta-v4.html">Início</a>
+    <span class="sep">›</span>
+    <a href="#">Percursos</a>
+    <span class="sep">›</span>
+    <span class="current">Dominando o Moodle</span>
+  </div>
+</nav>
+
+<!-- HERO — faixa verde com painel de stats -->
+<section class="hero-percurso">
+  <svg class="hero-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="6" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="12" r="2.4"/><path d="M7.2 6.8 16.8 11M7.2 17.2 16.8 13"/></svg>
+  <div class="hero-percurso-inner">
+    <div class="hero-main">
+      <span class="hero-kicker">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="12" r="2.4"/><path d="M7.2 6.8 16.8 11M7.2 17.2 16.8 13"/></svg>
+        Percurso
+      </span>
+      <h1>Dominando o Moodle</h1>
+      <p class="subtitle">
+        Trilhas e artigos pela equipe do CEFOR para conduzir uma sala virtual de forma confiante — da avaliação à comunicação com estudantes.
+      </p>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="label">Trilhas</span>
+        <span class="value">3</span>
+      </div>
+      <div class="hero-stat">
+        <span class="label">Artigos</span>
+        <span class="value">34</span>
+      </div>
+      <div class="hero-stat">
+        <span class="label">Tempo de leitura</span>
+        <span class="value">2h30</span>
+      </div>
+      <div class="hero-stat">
+        <span class="label">Compartilhar</span>
+        <a href="#" class="value-link" id="btn-copiar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>
+          Copiar link
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="container">
+
+  <!-- TRILHAS DESTE PERCURSO -->
+  <section class="trilhas-section">
+    <p class="section-eyebrow">Trilhas deste percurso</p>
+    <div class="trilhas-grid">
+
+      <a href="exploracao-pagina-trilha-v2.html" class="trilha-card">
+        <div class="trilha-illust">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
+        </div>
+        <div class="trilha-body">
+          <h3>Configurando Questionário</h3>
+          <p class="trilha-desc">Uma sequência de 8 artigos para estruturar avaliação no Moodle do Cefor — da configuração de atividades ao fechamento de notas.</p>
+          <div class="trilha-meta">
+            <div><span class="m-label">Artigos</span><span class="m-value">8</span></div>
+            <div><span class="m-label">Tempo de leitura</span><span class="m-value">2h30</span></div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="trilha-card">
+        <div class="trilha-illust">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
+        </div>
+        <div class="trilha-body">
+          <h3>Compreendendo a Acessibilidade</h3>
+          <p class="trilha-desc">Uma sequência de 10 artigos para garantir inclusão e desenho universal nos cursos a distância do Cefor.</p>
+          <div class="trilha-meta">
+            <div><span class="m-label">Artigos</span><span class="m-value">10</span></div>
+            <div><span class="m-label">Tempo de leitura</span><span class="m-value">5h</span></div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="trilha-card">
+        <div class="trilha-illust">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
+        </div>
+        <div class="trilha-body">
+          <h3>Dominando a Inteligência Artificial</h3>
+          <p class="trilha-desc">Uma sequência de 5 artigos para te permitir compreender a inteligência artificial aplicada à sala virtual.</p>
+          <div class="trilha-meta">
+            <div><span class="m-label">Artigos</span><span class="m-value">5</span></div>
+            <div><span class="m-label">Tempo de leitura</span><span class="m-value">1h30</span></div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ARTIGOS DESTE PERCURSO -->
+  <section class="artigos-section">
+    <p class="section-eyebrow">Artigos deste percurso</p>
+    <div class="artigos-timeline">
+
+      <div class="artigo-row">
+        <div class="artigo-marker"><span class="artigo-dot"></span></div>
+        <div class="artigo-content">
+          <a href="prototipo-artigo.html" class="artigo-title">Tipos de atividades avaliativas</a>
+          <p class="artigo-desc">Passo a passo para configurar extensão de tempo individual para estudantes com necessidades específicas.</p>
+          <div class="artigo-aside">
+            <span class="badge-tipo">Solução</span>
+            <span class="artigo-tempo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              5 min
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="artigo-row">
+        <div class="artigo-marker"><span class="artigo-dot"></span></div>
+        <div class="artigo-content">
+          <a href="prototipo-artigo.html" class="artigo-title">Criando Questionário no Moodle</a>
+          <p class="artigo-desc">Do banco de questões ao questionário publicado, incluindo tentativas, prazos e feedback automático.</p>
+          <div class="artigo-aside">
+            <span class="badge-tipo">Tutorial</span>
+            <span class="artigo-tempo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              10 min
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="artigo-row">
+        <div class="artigo-marker"><span class="artigo-dot"></span></div>
+        <div class="artigo-content">
+          <a href="prototipo-artigo.html" class="artigo-title">Configurando o livro de notas</a>
+          <p class="artigo-desc">Como organizar categorias, pesos e cálculos para que o livro de notas reflita o plano de ensino do curso.</p>
+          <div class="artigo-aside">
+            <span class="badge-tipo">Referência</span>
+            <span class="artigo-tempo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              8 min
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="artigo-row">
+        <div class="artigo-marker"><span class="artigo-dot"></span></div>
+        <div class="artigo-content">
+          <a href="prototipo-artigo.html" class="artigo-title">O que é o Moodle e por que ele é usado no Ifes</a>
+          <p class="artigo-desc">Visão geral da plataforma e o contexto institucional de adoção na educação a distância do Ifes.</p>
+          <div class="artigo-aside">
+            <span class="badge-tipo">Conceitual</span>
+            <span class="artigo-tempo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              6 min
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- PERCURSOS RELACIONADOS — faixa verde full-width -->
+<section class="relacionados">
+  <div class="container">
+    <p class="section-eyebrow">Percursos relacionados</p>
+    <div class="relacionados-track">
+
+      <a href="#" class="relacionado-card">
+        <svg class="relacionado-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="12" r="2.4"/><path d="M7.2 6.8 16.8 11M7.2 17.2 16.8 13"/></svg>
+        <h4>IA para sala virtual</h4>
+        <div class="meta">3 Trilhas · 28 artigos</div>
+      </a>
+
+      <a href="#" class="relacionado-card">
+        <svg class="relacionado-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="12" r="2.4"/><path d="M7.2 6.8 16.8 11M7.2 17.2 16.8 13"/></svg>
+        <h4>Acessibilidade e inclusão na EaD</h4>
+        <div class="meta">2 Trilhas · 14 artigos</div>
+      </a>
+
+      <a href="#" class="relacionado-card">
+        <svg class="relacionado-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="12" r="2.4"/><path d="M7.2 6.8 16.8 11M7.2 17.2 16.8 13"/></svg>
+        <h4>Coordenação de cursos no Ifes</h4>
+        <div class="meta">3 Trilhas · 19 artigos</div>
+      </a>
+
+      <a href="#" class="relacionado-card">
+        <svg class="relacionado-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="12" r="2.4"/><path d="M7.2 6.8 16.8 11M7.2 17.2 16.8 13"/></svg>
+        <h4>Produção de conteúdo multimídia</h4>
+        <div class="meta">2 Trilhas · 11 artigos</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- RODAPÉ EDITORIAL -->
+<section class="sobre-percurso" id="sobre-percurso">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-block">
+        <h3>Sobre este percurso</h3>
+        <p>
+          Curado pela equipe pedagógica do CEFOR. Reúne conteúdos produzidos por professores,
+          mediadores e técnicos que trabalham diariamente com o Moodle institucional.
+        </p>
+        <p>
+          As trilhas e artigos são atualizados individualmente. O percurso é uma agregação viva:
+          novos artigos podem entrar, ou trilhas podem ser reorganizadas conforme necessidades surgem.
+        </p>
+        <div class="meta-line">
+          <span>Curadoria: Juliana Cassaro · Rute Fávero</span>
+          <span>Criado em 2026-04</span>
+          <span>Última revisão: 2026-05</span>
+        </div>
+      </div>
+      <div class="sobre-block">
+        <h3>O que é um percurso</h3>
+        <p>
+          Um <strong>percurso</strong> é uma agregação curada de trilhas e artigos que dialogam
+          em torno de um tema maior. Não tem ordem fixa — você escolhe por onde entrar.
+        </p>
+        <p>
+          Diferente de uma trilha (que é uma sequência curta com começo, meio e fim), o percurso
+          funciona como um mapa: oferece direções, mas não obriga a um caminho.
+        </p>
+        <p style="margin-top: 14px;">
+          <a href="#" style="color: var(--verde-marca); font-weight: 600; text-decoration: none;">Ler o artigo completo sobre percursos e trilhas →</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="doc-footer">
+  <p>
+    Exploração v3 · nova organização da informação a partir do layout da Juliana (2026-05-27).<br>
+    Versão anterior preservada em <code>exploracao-pagina-percurso-v2.html</code>.<br>
+    Cores, tipografia e formas seguem <code>output/design.md</code> · thumbnails seguem <code>output/sistema-cards-catalogo.md</code> (cor=categoria, ícone=grupo) · badge de tipo neutro (design.md §badge-tipo).
+  </p>
+</footer>
+
+<script>
+  const html = document.documentElement;
+  const btnTheme = document.getElementById('btn-theme');
+  if (btnTheme) {
+    btnTheme.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      if (isDark) { html.removeAttribute('data-theme'); btnTheme.setAttribute('aria-pressed','false'); }
+      else { html.setAttribute('data-theme','dark'); btnTheme.setAttribute('aria-pressed','true'); }
+    });
+  }
+  const btnCopiar = document.getElementById('btn-copiar');
+  if (btnCopiar) {
+    btnCopiar.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (navigator.clipboard) { navigator.clipboard.writeText(window.location.href); }
+    });
+  }
+</script>
+</body>
+</html>
