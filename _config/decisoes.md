@@ -960,6 +960,59 @@ Quando uma trilha pertence a um percurso, aparece um chip dourado no topo do aco
 
 ---
 
+## Decisão 33 — Breadcrumb taxonômico (espelha a URL, não a jornada)
+
+**O que decidir:** O breadcrumb do artigo deve mostrar o caminho de **classificação** (Categoria) ou o caminho de **jornada editorial** (Percurso › Trilha)?
+
+🔵 **Contexto:** O protótipo `base-artigo.html` exibia `Início › Percursos › Dominando o Moodle › Do Livro de Notas… › Configurando o livro de notas` — o caminho de *uma* jornada. Isso conflita com (a) a natureza many-to-many da trilha (Decisões 18, 30 — artigo pode estar em várias trilhas, por isso existe o acordeão); (b) a neutralidade editorial do artigo (Decisão 26); (c) o vínculo **estrutural, não comportamental** — sem referrer (Decisões 28, 29), ou seja, o sistema não sabe por qual jornada o leitor chegou; e (d) não bate com a URL `/{categoria}/{slug}` (taxonomia §8).
+
+**Resolução (2026-06-02):** ✅ **APROVADO** (sessão Elton + Claude) — ⏳ mesma validação pedagógica pendente das Decisões 25-32 (Rute + Marquito)
+
+> **Reconciliação 2026-06-02 com a Decisão 34:** como a categoria saiu da URL do artigo (URL plana), o breadcrumb deixa de "espelhar a string da URL" e passa a **refletir a árvore de classificação** (`Início → Categoria → Artigo`), onde cada ancestral é uma **página real**. A categoria continua no breadcrumb mesmo não estando na URL.
+
+- O breadcrumb **reflete a árvore de classificação** — `Início › {Categoria} › {Título}` — nunca a jornada editorial.
+- Cada ancestral do breadcrumb é uma página navegável: `{Categoria}` linka para a página-índice `/{categoria}/`.
+- Trilha e Percurso continuam comunicados **apenas na casca** (acordeão de trilha na sidebar + páginas dedicadas), nunca no breadcrumb.
+- Regra única e ensinável: *um breadcrumb = um caminho de containment estável e de pai único*. A única camada que satisfaz isso é a **Categoria** (Eixo 2, "onde está?").
+
+**Razões:**
+- **Estabilidade:** pai único e fixo, ao contrário da trilha (0..n pais).
+- **SEO/GEO:** `Schema.org/BreadcrumbList` (Pilar 11) entrega a hierarquia `Início › Categoria › Artigo` ao buscador — compensando a categoria ausente da URL plana (Decisão 34).
+- **Não-fabricação:** não inventa um histórico de navegação que a V1 não rastreia (Decisões 28, 29).
+
+**Impacto:**
+- Corrigir o breadcrumb do `base-artigo.html` (**deferido** — apenas documentado nesta sessão; correção dos protótipos não foi executada).
+- **Restaurar a Categoria visível** no cabeçalho/breadcrumb: o comentário em `base-artigo.html:1315` a removeu do painel de meta supondo que ela vivia no breadcrumb — mas não vivia (o breadcrumb mostrava a trilha). A Categoria ficou ausente das duas pontas.
+- Implica a existência de uma **página-índice de categoria** `/{categoria}/` como destino do segmento intermediário.
+- Fonte canônica da IA: novo documento `stages/01-fundacoes/output/arquitetura-informacao.md`.
+
+---
+
+## Decisão 34 — URL plana do artigo (categoria fora da URL)
+
+**O que decidir:** A URL do artigo inclui a categoria (`/{categoria}/{slug}`, como propunha a taxonomia §8) ou é plana?
+
+🔵 **Contexto:** A `taxonomia.md` §8 propunha `/{categoria}/{slug}` com o princípio "categoria sustenta a URL", e havia rejeitado a variante sem categoria. Elton decidiu (2026-06-02) tirar a categoria da URL. A §8 deixava em aberto justamente o "versionamento de URL ao mudar artigo de categoria" — que a URL plana resolve.
+
+**Resolução (2026-06-02):** ✅ **APROVADO** (direção de Elton) — ⏳ co-aprovação de Marcos + formalização na Sprint 3 (mesma pendência das URLs semânticas)
+
+- URL do artigo é **plana, na raiz:** `/{artigo-slug}` (ex.: `/configurar-livro-de-notas`). **Sem categoria, sem prefixo `/artigos/`.**
+- A **categoria continua existindo** como classificação e navegação — página-índice `/{categoria}/` e breadcrumb (Decisão 33) —, mas **não compõe o permalink**.
+- **Slugs reservados:** como artigo e página-índice de categoria convivem na raiz, os 6 slugs de categoria + `trilhas`, `percursos`, `topicos`, `buscar` (e demais seções de topo) são reservados — nenhum artigo pode usá-los. Validação no save.
+
+**Razões:**
+- **Recategorizar nunca quebra o link** — a categoria não está no permalink. Resolve a pergunta aberta da taxonomia §8.
+- **URL curta.**
+
+**Trade-off assumido:** perde-se o sinal de categoria na URL para SEO/GEO — recuperado em parte pelo `Schema.org/BreadcrumbList` (Decisão 33).
+
+**Impacto:**
+- Atualizar `taxonomia.md` §8 (padrão de URL, princípios, exemplos, pergunta aberta resolvida) e §2/§4 (categoria não "sustenta URL").
+- Atualizar `arquitetura-informacao.md` (sitemap, tabela de URLs, regra de breadcrumb).
+- Implementação WP: post type de artigo com permalink na raiz + guarda de slugs reservados.
+
+---
+
 ## Decisões ainda em aberto — Refinamento 2026-05-19
 
 | Tema | Pergunta em aberto | Onde será fechado |
@@ -1005,6 +1058,8 @@ Quando uma trilha pertence a um percurso, aparece um chip dourado no topo do aco
 | **30** | **Apresentação de múltiplas trilhas: acordeão** *(Fase 1 — 2026-05-19)* | ✅ **Aprovado** | Box "Trilhas deste artigo" usa **acordeão (A.2)**. Posição "X/Y" visível mesmo colapsado. Primeira expandida por padrão. Múltiplas abertas simultaneamente permitidas |
 | **31** | **Apresentação visual do percurso** *(Fase 1 — 2026-05-19)* | ✅ **Aprovado** | **Dourado é cor reservada do percurso.** 3 superfícies: página dedicada (hero + stats + "como percorrer" + cards de trilhas com 5 primeiros artigos) · chip dourado no acordeão de trilha · página `/percursos` (grid com borda dourada). Referência: `drafts/exploracao-pagina-percurso.html` |
 | **32** | **Remoção do prev/next do rodapé do artigo** *(Fase 1 — 2026-05-19)* | ✅ **Aprovado** | Cards `.trilha-nav-card.prev/next` **removidos.** Navegação entre artigos da trilha passa a ser exclusiva do acordeão multi-trilha na sidebar |
+| **33** | **Breadcrumb taxonômico** *(Fase 1 — 2026-06-02)* | ✅ **Aprovado** | Breadcrumb reflete a **árvore de classificação** (`Início › Categoria › Artigo`), cada ancestral é página real; nunca a jornada. Trilha/percurso só na casca. Fonte: `arquitetura-informacao.md` |
+| **34** | **URL plana do artigo** *(Fase 1 — 2026-06-02)* | ✅ **Aprovado** | Categoria **sai da URL**. Artigo = `/{slug}` na raiz (sem categoria, sem `/artigos/`), com slugs reservados. Categoria fica só em breadcrumb + página-índice. Recategorizar não quebra o link |
 
 ---
 

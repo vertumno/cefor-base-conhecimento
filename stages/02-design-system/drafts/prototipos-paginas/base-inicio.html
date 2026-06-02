@@ -123,10 +123,10 @@
       radial-gradient(ellipse 60% 50% at 95% 10%, var(--gold-soft) 0%, transparent 55%),
       var(--bg-2);
     border-bottom: 1px solid var(--line);
-    padding: 72px var(--pad-x) 56px;
+    padding: 72px 0 56px;
   }
   .hero-inner {
-    max-width: var(--maxw); margin: 0 auto;
+    max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad-x);
     display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: end;
   }
   .hero-left { max-width: 680px; }
@@ -161,39 +161,36 @@
   }
   .hero-search button:hover { background: var(--verde-profundo); }
 
-  .hero-right { display: flex; flex-direction: column; gap: 0; align-items: flex-end; }
-  .filter-label {
-    font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--ink-3); margin-bottom: 12px;
+  /* Sugestões de busca — chips clicáveis abaixo do campo */
+  .hero-suggestions {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+    margin-top: 16px; max-width: 560px;
   }
-  .filter-tags { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
-  .filter-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 9px 18px; border-radius: 99px;
+  .hero-suggestions .suggest-label {
+    font-size: .82rem; font-weight: 500; color: var(--ink-3);
+    margin-right: 2px;
+  }
+  .suggest-chip {
+    display: inline-flex; align-items: center;
+    padding: 6px 14px; border-radius: 99px;
     background: var(--paper); border: 1px solid var(--line);
-    font-size: .9rem; font-weight: 600; color: var(--ink-2);
-    cursor: pointer; transition: all .15s;
-    white-space: nowrap;
+    font-size: .85rem; font-weight: 500; color: var(--ink-2);
+    cursor: pointer; transition: all .15s; white-space: nowrap;
   }
-  .filter-tag:hover { border-color: var(--verde-marca); color: var(--verde-marca); background: var(--verde-palido); }
-  .filter-tag.active { background: var(--verde-marca); border-color: var(--verde-marca); color: #fff; }
-  .filter-tag .tag-count {
-    font-size: .72rem; font-weight: 700; opacity: .6;
-    background: rgba(0,0,0,.06); padding: 2px 7px; border-radius: 99px;
+  .suggest-chip:hover {
+    border-color: var(--verde-marca); color: var(--verde-marca);
+    background: var(--verde-palido);
   }
-  .filter-tag.active .tag-count { background: rgba(255,255,255,.2); opacity: 1; }
 
   @media (max-width: 1080px) {
     .hero-inner { grid-template-columns: 1fr; gap: 32px; }
-    .hero-right { align-items: flex-start; }
-    .filter-tags { flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
   }
 
   /* ============================================================
      CONTENT
      ============================================================ */
-  .content-section { padding: 56px var(--pad-x) 72px; }
-  .content-inner { max-width: var(--maxw); margin: 0 auto; }
+  .content-section { padding: 56px 0 72px; }
+  .content-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad-x); }
   .content-head {
     display: flex; align-items: center; justify-content: space-between;
     margin-bottom: 28px; gap: 16px;
@@ -210,8 +207,8 @@
 
   .content-layout {
     display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 40px;
+    grid-template-columns: 1fr 220px;
+    gap: 36px;
     align-items: start;
   }
   @media (max-width: 960px) {
@@ -295,59 +292,59 @@
      ============================================================ */
   .filter-sidebar {
     background: transparent; border: none; padding: 0;
-    display: flex; flex-direction: column; gap: 18px;
+    display: flex; flex-direction: column; gap: 2px;
     position: sticky; top: 88px;
   }
   .sidebar-title {
-    font-size: 1.02rem; font-weight: 700; color: var(--ink);
-    margin: 0; padding-bottom: 12px;
+    font-size: .72rem; font-weight: 700; color: var(--ink-3);
+    margin: 0 0 4px; padding-bottom: 8px;
     border-bottom: 1px solid var(--line);
-    letter-spacing: -.01em;
+    letter-spacing: .12em; text-transform: uppercase;
   }
 
   .filter-group:not(:last-of-type) {
     border-bottom: 1px solid var(--line);
-    padding-bottom: 16px;
   }
   .filter-group-header {
     display: flex; justify-content: space-between; align-items: center;
     width: 100%; background: transparent; border: none;
-    padding: 6px 0 10px;
-    font-family: var(--sans); font-size: .88rem; font-weight: 700;
-    color: var(--ink); cursor: pointer; text-align: left;
+    padding: 11px 0;
+    font-family: var(--sans); font-size: .82rem; font-weight: 600;
+    color: var(--ink-2); cursor: pointer; text-align: left;
   }
   .filter-group-header:hover { color: var(--verde-marca); }
   .filter-group-header .chevron {
     transition: transform .25s ease; color: var(--ink-3);
-    width: 14px; height: 14px;
+    width: 13px; height: 13px;
   }
+  .filter-group.active .filter-group-header { color: var(--ink); }
   .filter-group.active .filter-group-header .chevron { transform: rotate(180deg); }
-  .filter-group-content { display: none; padding-top: 4px; }
+  .filter-group-content { display: none; padding: 2px 0 12px; }
   .filter-group.active .filter-group-content { display: block; }
 
   .sidebar-select {
-    width: 100%; padding: 9px 12px;
+    width: 100%; padding: 7px 10px;
     border-radius: var(--r-sm);
     border: 1px solid var(--line-2);
     background: var(--paper); color: var(--ink);
-    font-family: var(--sans); font-size: .85rem; font-weight: 500;
+    font-family: var(--sans); font-size: .82rem; font-weight: 500;
     cursor: pointer; outline: none; appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238a8273' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-    background-repeat: no-repeat; background-position: right 10px center; background-size: 14px;
-    padding-right: 30px;
+    background-repeat: no-repeat; background-position: right 10px center; background-size: 13px;
+    padding-right: 28px;
   }
   .sidebar-select:focus { border-color: var(--verde-marca); box-shadow: 0 0 0 3px var(--verde-palido); }
 
-  .sidebar-checkboxes { display: flex; flex-direction: column; gap: 10px; }
+  .sidebar-checkboxes { display: flex; flex-direction: column; gap: 7px; }
   .sidebar-cb-label {
-    display: inline-flex; align-items: center; gap: 10px;
-    font-size: .9rem; font-weight: 500; color: var(--ink-2);
+    display: inline-flex; align-items: center; gap: 9px;
+    font-size: .84rem; font-weight: 500; color: var(--ink-2);
     cursor: pointer; user-select: none; transition: color .12s;
   }
   .sidebar-cb-label:hover { color: var(--ink); }
   .sidebar-cb-label input[type="checkbox"] {
     appearance: none; -webkit-appearance: none;
-    width: 16px; height: 16px;
+    width: 15px; height: 15px;
     border: 1.4px solid var(--line-2); border-radius: 4px;
     background: var(--paper); cursor: pointer;
     display: grid; place-content: center;
@@ -376,8 +373,8 @@
   }
 
   .sidebar-stats {
-    font-size: .82rem; color: var(--ink-3); font-weight: 500;
-    padding-top: 14px; border-top: 1px dashed var(--line);
+    font-size: .78rem; color: var(--ink-3); font-weight: 500;
+    margin-top: 8px; padding-top: 12px; border-top: 1px dashed var(--line);
   }
   .sidebar-stats strong { color: var(--verde-marca); font-weight: 700; }
 
@@ -394,9 +391,9 @@
   /* Footer: estilos no shell.css compartilhado */
 
   @media (max-width: 768px) {
-    .hero { padding: 48px 20px 40px; }
+    .hero { padding: 48px 0 40px; }
     .hero h1 { font-size: 2.2rem; }
-    .content-section { padding: 32px 20px 48px; }
+    .content-section { padding: 32px 0 48px; }
   }
   @media (max-width: 600px) { :root { --pad-x: 20px; } }
 </style>
@@ -448,17 +445,14 @@
           <input type="search" name="q" placeholder="Questionário, Livro de Notas, H5P, IA Generativa…" aria-label="Buscar na base de conhecimento" />
           <button type="submit">Buscar</button>
         </form>
-      </div>
 
-      <div class="hero-right" role="navigation" aria-label="Filtrar por categoria">
-        <p class="filter-label">Explorar por categoria</p>
-        <div class="filter-tags">
-          <a class="filter-tag" href="#" data-cat="ferramentas">Ferramentas e Recursos <span class="tag-count">36</span></a>
-          <a class="filter-tag" href="#" data-cat="gestao-moodle">Gestão e Operação do Moodle <span class="tag-count">48</span></a>
-          <a class="filter-tag" href="#" data-cat="pedagogia">Pedagogia e Planejamento <span class="tag-count">18</span></a>
-          <a class="filter-tag" href="#" data-cat="acessibilidade">Acessibilidade <span class="tag-count">12</span></a>
-          <a class="filter-tag" href="#" data-cat="conduta">Conduta e Conformidade <span class="tag-count">9</span></a>
-          <a class="filter-tag" href="#" data-cat="identidade">Identidade <span class="tag-count">8</span></a>
+        <div class="hero-suggestions">
+          <span class="suggest-label">Sugestões:</span>
+          <button type="button" class="suggest-chip" data-q="Questionário">Questionário</button>
+          <button type="button" class="suggest-chip" data-q="Livro de Notas">Livro de Notas</button>
+          <button type="button" class="suggest-chip" data-q="H5P">H5P</button>
+          <button type="button" class="suggest-chip" data-q="Backup">Backup</button>
+          <button type="button" class="suggest-chip" data-q="IA Generativa">IA Generativa</button>
         </div>
       </div>
     </div>
@@ -683,8 +677,8 @@
         <aside class="filter-sidebar" aria-label="Filtrar e ordenar">
           <h2 class="sidebar-title">Filtrar e ordenar</h2>
 
-          <div class="filter-group active">
-            <button class="filter-group-header" type="button" aria-expanded="true">
+          <div class="filter-group">
+            <button class="filter-group-header" type="button" aria-expanded="false">
               <span>Ordenar por</span>
               <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
@@ -697,120 +691,35 @@
             </div>
           </div>
 
-          <div class="filter-group active">
-            <button class="filter-group-header" type="button" aria-expanded="true">
-              <span>Tipo de artigo</span>
-              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="filter-group-content">
-              <div class="sidebar-checkboxes" id="type-checkboxes">
-                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="tutorial" checked> Tutorial</label>
-                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="referencia" checked> Referência</label>
-                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="conceitual" checked> Conceitual</label>
-                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="solucao" checked> Solução de Problema</label>
-                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="recurso" checked> Recurso</label>
-              </div>
-            </div>
-          </div>
-
-          <div class="filter-group active">
-            <button class="filter-group-header" type="button" aria-expanded="true">
+          <div class="filter-group">
+            <button class="filter-group-header" type="button" aria-expanded="false">
               <span>Categoria</span>
               <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="filter-group-content">
               <div class="sidebar-checkboxes" id="category-checkboxes">
-                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="ferramentas" checked> Ferramentas e Recursos</label>
-                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="gestao-moodle" checked> Gestão e Operação do Moodle</label>
-                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="pedagogia" checked> Pedagogia e Planejamento</label>
-                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="acessibilidade" checked> Acessibilidade</label>
-                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="conduta" checked> Conduta e Conformidade</label>
-                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="identidade" checked> Identidade</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="ferramentas"> Ferramentas e Recursos</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="gestao-moodle"> Gestão e Operação do Moodle</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="pedagogia"> Pedagogia e Planejamento</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="acessibilidade"> Acessibilidade</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="conduta"> Conduta e Conformidade</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="identidade"> Identidade</label>
               </div>
             </div>
           </div>
 
           <div class="filter-group">
             <button class="filter-group-header" type="button" aria-expanded="false">
-              <span>Tópico</span>
+              <span>Tipo de artigo</span>
               <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="filter-group-content">
-              <div class="topic-groups" id="topic-checkboxes">
-
-                <div class="topic-group">
-                  <p class="topic-group-title">Atividades e avaliação Moodle</p>
-                  <div class="sidebar-checkboxes">
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="questionario"> Questionário</label>
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="banco-questoes"> Banco de Questões</label>
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="tarefa"> Tarefa</label>
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="forum"> Fórum</label>
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="livro-notas"> Livro de Notas</label>
-                  </div>
-                </div>
-
-                <div class="topic-group">
-                  <p class="topic-group-title">Recursos Moodle</p>
-                  <div class="sidebar-checkboxes">
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="h5p"> H5P</label>
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="rotulo"> Rótulo</label>
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="webconferencia"> Webconferência</label>
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="video"> Vídeo</label>
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="audio-podcast"> Áudio e Podcast</label>
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="livro-digital"> Livro Digital</label>
-                  </div>
-                </div>
-
-                <div class="topic-group">
-                  <p class="topic-group-title">Gestão do AVA</p>
-                  <div class="sidebar-checkboxes">
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="config-curso"> Configuração de Curso</label>
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="matricula"> Matrícula e Inscrição</label>
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="backup"> Backup e Restauração</label>
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="moodle-codes"> Moodle Codes</label>
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="sala-virtual"> Sala Virtual</label>
-                  </div>
-                </div>
-
-                <div class="topic-group">
-                  <p class="topic-group-title">Inteligência Artificial</p>
-                  <div class="sidebar-checkboxes">
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="ia-generativa"> IA Generativa</label>
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="gpt-customizado"> GPT Customizado</label>
-                  </div>
-                </div>
-
-                <div class="topic-group">
-                  <p class="topic-group-title">Acessibilidade</p>
-                  <div class="sidebar-checkboxes">
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="libras"> Libras</label>
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="audiodescricao"> Audiodescrição</label>
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="inclusao-design-universal"> Inclusão e Desenho Universal</label>
-                  </div>
-                </div>
-
-                <div class="topic-group">
-                  <p class="topic-group-title">Pedagogia</p>
-                  <div class="sidebar-checkboxes">
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="planejamento-design-educacional"> Planejamento e Design Educacional</label>
-                  </div>
-                </div>
-
-                <div class="topic-group">
-                  <p class="topic-group-title">Identidade institucional</p>
-                  <div class="sidebar-checkboxes">
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="padrao-visual"> Padrão Visual</label>
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="mooc"> MOOC</label>
-                  </div>
-                </div>
-
-                <div class="topic-group">
-                  <p class="topic-group-title">Conduta</p>
-                  <div class="sidebar-checkboxes">
-                    <label class="sidebar-cb-label"><input type="checkbox" name="topic" value="direitos-autorais-seguranca"> Direitos Autorais e Segurança</label>
-                  </div>
-                </div>
-
+              <div class="sidebar-checkboxes" id="type-checkboxes">
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="tutorial"> Tutorial</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="referencia"> Referência</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="conceitual"> Conceitual</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="solucao"> Solução de Problema</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="recurso"> Recurso</label>
               </div>
             </div>
           </div>
@@ -843,7 +752,6 @@
   const cards = document.querySelectorAll('.card-grid .card');
   const catCheckboxes = document.querySelectorAll('#category-checkboxes input[type="checkbox"]');
   const typeCheckboxes = document.querySelectorAll('#type-checkboxes input[type="checkbox"]');
-  const topicCheckboxes = document.querySelectorAll('#topic-checkboxes input[type="checkbox"]');
   const statsNum = document.querySelector('#filter-stats strong');
   const sortSelect = document.getElementById('sort-select');
   const cardGrid = document.querySelector('.card-grid');
@@ -867,14 +775,11 @@
   function filterArticles() {
     const activeCats = Array.from(catCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
     const activeTypes = Array.from(typeCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
-    const activeTopics = Array.from(topicCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
     let visible = 0;
     cards.forEach(card => {
-      const cardTopics = (card.dataset.topics || '').split(',').map(s => s.trim()).filter(Boolean);
       const catMatch = activeCats.length === 0 || activeCats.includes(card.dataset.category);
       const typeMatch = activeTypes.length === 0 || activeTypes.includes(card.dataset.type);
-      const topicMatch = activeTopics.length === 0 || cardTopics.some(t => activeTopics.includes(t));
-      if (catMatch && typeMatch && topicMatch) {
+      if (catMatch && typeMatch) {
         card.style.display = 'flex';
         visible++;
       } else {
@@ -886,21 +791,17 @@
 
   catCheckboxes.forEach(cb => cb.addEventListener('change', filterArticles));
   typeCheckboxes.forEach(cb => cb.addEventListener('change', filterArticles));
-  topicCheckboxes.forEach(cb => cb.addEventListener('change', filterArticles));
   if (sortSelect) sortSelect.addEventListener('change', sortArticles);
 
-  // Hero tags
-  document.querySelectorAll('.filter-tag').forEach(tag => {
-    tag.addEventListener('click', (e) => {
-      e.preventDefault();
-      const cat = tag.getAttribute('data-cat');
-      if (!cat) return;
-      document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
-      tag.classList.add('active');
-      catCheckboxes.forEach(cb => { cb.checked = (cb.value === cat); });
-      filterArticles();
-      const cs = document.querySelector('.content-section');
-      if (cs) cs.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Sugestões de busca — preenchem o campo e disparam a busca
+  const heroInput = document.querySelector('.hero-search input[type="search"]');
+  document.querySelectorAll('.suggest-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const q = chip.getAttribute('data-q') || chip.textContent.trim();
+      if (heroInput) {
+        heroInput.value = q;
+        heroInput.focus();
+      }
     });
   });
 </script>
