@@ -38,6 +38,8 @@
     --verde-marca:    #2e7355;
     --verde-claro:    #6ea892;
     --verde-palido:   #e6efe9;
+    /* Verde claro legível sobre fundo escuro (cards de percurso) — passa WCAG AA */
+    --verde-on-dark:  #d4ece0;
 
     /* Acento quente */
     --gold-soft: #f3e7d0;
@@ -246,10 +248,9 @@
     position: absolute; right: -34px; bottom: -34px; width: 168px; height: auto;
     opacity: .12; pointer-events: none; filter: none;
   }
-  .percurso-card .pc-icon { width: 30px; height: 30px; color: var(--verde-claro); position: relative; z-index: 1; }
   .percurso-card .pc-kicker {
     font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
-    color: var(--verde-claro); position: relative; z-index: 1;
+    color: var(--verde-on-dark); position: relative; z-index: 1;
   }
   .percurso-card h3 {
     font-size: 1.3rem; font-weight: 700; line-height: 1.2; margin: 0;
@@ -262,12 +263,27 @@
   }
   .percurso-card .pc-meta {
     display: flex; align-items: center; gap: 16px; margin-top: auto; padding-top: 8px;
-    font-size: .82rem; font-weight: 600; color: var(--verde-claro);
+    font-size: .82rem; font-weight: 600; color: var(--verde-on-dark);
     position: relative; z-index: 1;
   }
   .percurso-card .pc-go { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; color: #fff; }
   .percurso-card .pc-go svg { width: 15px; height: 15px; transition: transform .2s; }
   .percurso-card:hover .pc-go svg { transform: translateX(3px); }
+  /* Percurso candidato V2 — ainda não publicado (não navegável) */
+  .percurso-card .pc-soon {
+    position: absolute; top: 16px; right: 16px; z-index: 2;
+    font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--verde-profundo); background: var(--gold-soft);
+    padding: 4px 9px; border-radius: 999px;
+  }
+  .percurso-card.is-soon { opacity: .94; cursor: default; }
+  /* sem affordance de clique: não levanta nem muda no hover */
+  .percurso-card.is-soon:hover { transform: none; box-shadow: none; background: var(--verde-marca); }
+  [data-theme="dark"] .percurso-card.is-soon:hover { background: #102a20; }
+  .percurso-card.is-soon .pc-status {
+    margin-left: auto; display: inline-flex; align-items: center;
+    font-weight: 600; color: var(--verde-on-dark);
+  }
 
   /* ============================================================
      TRILHAS — cards verde-pálido (padrão base-percurso/base-trilha)
@@ -397,7 +413,7 @@
         CEFOR · Ifes
       </span>
       <h1 id="hero-title">Aprenda. Consulte. <em>Ensine melhor.</em></h1>
-      <p class="hero-sub">Tutoriais, referências e trilhas práticas sobre Moodle, acessibilidade, IA na educação e padrão visual — produzidos pelo time do CEFOR/Ifes.</p>
+      <p class="hero-sub">Tutoriais, referências e trilhas práticas sobre Moodle, acessibilidade e IA na educação. Resolva o que você precisa e volte para a sala virtual.</p>
 
       <form class="hero-search" role="search" action="/buscar" method="get">
         <svg class="search-ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -415,9 +431,9 @@
       </div>
 
       <div class="hero-stats-line">
-        <span><strong>6</strong> percursos</span>
+        <span><strong>1</strong> percurso</span>
         <span class="dot" aria-hidden="true"></span>
-        <span><strong>14</strong> trilhas</span>
+        <span><strong>10</strong> trilhas</span>
         <span class="dot" aria-hidden="true"></span>
         <span><strong>130+</strong> artigos</span>
       </div>
@@ -429,7 +445,7 @@
     <div class="container">
       <div class="section-head">
         <div class="titles">
-          <p class="kicker">Comece por aqui</p>
+          <p class="kicker">Jornadas completas</p>
           <h2 id="percursos-title">Percursos</h2>
           <p class="section-lead">Programas temáticos que reúnem trilhas e artigos para você ir do primeiro contato ao domínio de um assunto.</p>
         </div>
@@ -441,40 +457,39 @@
       <div class="percurso-grid">
 
         <a class="percurso-card" href="base-percurso.html">
-          <img class="pc-bg" src="../../assets/icone_percurso_branco.png" alt="" aria-hidden="true">
-          <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><rect x="2.6" y="15.6" width="4.8" height="4.8" rx="0.5"/><path d="M19 9.4 21.6 13.9 16.4 13.9Z"/><path d="M7 7 16.4 11"/><path d="M7 17 16.4 13"/></svg>
+          <img class="pc-bg" src="../../assets/icone_percurso-38.png" alt="" aria-hidden="true">
           <span class="pc-kicker">Percurso</span>
           <h3>Dominando o Moodle</h3>
-          <p>Conduza uma sala virtual de ponta a ponta — da avaliação aos recursos e à comunicação com estudantes.</p>
+          <p>Conduza uma sala virtual de ponta a ponta — da sala vazia ao curso avaliado no ar, passando pelo fechamento de notas.</p>
           <div class="pc-meta">
-            <span>3 trilhas · 34 artigos</span>
+            <span>3 trilhas · 23 artigos</span>
             <span class="pc-go">Começar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
           </div>
         </a>
 
-        <a class="percurso-card" href="base-percurso.html">
-          <img class="pc-bg" src="../../assets/icone_percurso_branco.png" alt="" aria-hidden="true">
-          <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><rect x="2.6" y="15.6" width="4.8" height="4.8" rx="0.5"/><path d="M19 9.4 21.6 13.9 16.4 13.9Z"/><path d="M7 7 16.4 11"/><path d="M7 17 16.4 13"/></svg>
+        <div class="percurso-card is-soon" aria-disabled="true">
+          <img class="pc-bg" src="../../assets/icone_percurso-38.png" alt="" aria-hidden="true">
+          <span class="pc-soon">Em breve · V2</span>
           <span class="pc-kicker">Percurso</span>
-          <h3>IA na educação</h3>
-          <p>Use inteligência artificial para planejar aulas, criar atividades e apoiar a mediação — com responsabilidade.</p>
+          <h3>Conteúdo interativo e multimídia</h3>
+          <p>Crie conteúdo interativo com H5P, conduza aulas ao vivo por webconferência e acompanhe o progresso na sala virtual.</p>
           <div class="pc-meta">
-            <span>3 trilhas · 28 artigos</span>
-            <span class="pc-go">Começar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+            <span>3 trilhas · 10 artigos</span>
+            <span class="pc-status">Em breve</span>
           </div>
-        </a>
+        </div>
 
-        <a class="percurso-card" href="base-percurso.html">
-          <img class="pc-bg" src="../../assets/icone_percurso_branco.png" alt="" aria-hidden="true">
-          <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><rect x="2.6" y="15.6" width="4.8" height="4.8" rx="0.5"/><path d="M19 9.4 21.6 13.9 16.4 13.9Z"/><path d="M7 7 16.4 11"/><path d="M7 17 16.4 13"/></svg>
+        <div class="percurso-card is-soon" aria-disabled="true">
+          <img class="pc-bg" src="../../assets/icone_percurso-38.png" alt="" aria-hidden="true">
+          <span class="pc-soon">Em breve · V2</span>
           <span class="pc-kicker">Percurso</span>
-          <h3>Acessibilidade e inclusão</h3>
-          <p>Garanta desenho universal e recursos acessíveis em todos os materiais dos cursos a distância.</p>
+          <h3>Ensino acessível</h3>
+          <p>Avaliação acessível e conteúdo em Libras no AVA, com desenho universal aplicado aos cursos a distância.</p>
           <div class="pc-meta">
-            <span>2 trilhas · 14 artigos</span>
-            <span class="pc-go">Começar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+            <span>2 trilhas · 6 artigos</span>
+            <span class="pc-status">Em breve</span>
           </div>
-        </a>
+        </div>
 
       </div>
     </div>
@@ -517,11 +532,11 @@
           </div>
           <div class="trilha-body">
             <span class="trilha-kicker">Trilha</span>
-            <h3>Compreendendo a acessibilidade</h3>
-            <p class="trilha-desc">Inclusão e desenho universal aplicados aos cursos a distância, com exemplos práticos.</p>
+            <h3>Avaliação acessível para todos os estudantes</h3>
+            <p class="trilha-desc">Tempo ampliado no questionário, audiodescrição em imagens e cuidados de acessibilidade ao inserir recursos.</p>
             <div class="trilha-meta">
-              <div><span class="m-label">Artigos</span><span class="m-value">10</span></div>
-              <div><span class="m-label">Tempo de leitura</span><span class="m-value">5h</span></div>
+              <div><span class="m-label">Artigos</span><span class="m-value">3</span></div>
+              <div><span class="m-label">Tempo de leitura</span><span class="m-value">50 min</span></div>
             </div>
           </div>
         </a>
@@ -532,11 +547,11 @@
           </div>
           <div class="trilha-body">
             <span class="trilha-kicker">Trilha</span>
-            <h3>Dominando a inteligência artificial</h3>
-            <p class="trilha-desc">Compreenda a IA generativa aplicada à sala virtual e onde ela ajuda no dia a dia.</p>
+            <h3>Avaliações com IA generativa</h3>
+            <p class="trilha-desc">Da Taxonomia de Bloom 2.0 à geração de questionários e rubricas com o GPT, aplicada à sala virtual.</p>
             <div class="trilha-meta">
-              <div><span class="m-label">Artigos</span><span class="m-value">5</span></div>
-              <div><span class="m-label">Tempo de leitura</span><span class="m-value">1h30</span></div>
+              <div><span class="m-label">Artigos</span><span class="m-value">3</span></div>
+              <div><span class="m-label">Tempo de leitura</span><span class="m-value">50 min</span></div>
             </div>
           </div>
         </a>
@@ -550,11 +565,11 @@
     <div class="container">
       <div class="section-head">
         <div class="titles">
-          <p class="kicker">Catálogo</p>
+          <p class="kicker">Artigos</p>
           <h2 id="recentes-title">Adicionados recentemente</h2>
-          <p class="section-lead">As publicações mais recentes da base. Para filtrar por categoria, tipo ou tópico, abra o catálogo completo.</p>
+          <p class="section-lead">As publicações mais recentes da base. Para filtrar por categoria, tipo ou tópico, veja todos os artigos.</p>
         </div>
-        <a href="base-inicio.html" class="see-all">Ver catálogo completo
+        <a href="base-inicio.html" class="see-all">Ver todos os artigos
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
       </div>

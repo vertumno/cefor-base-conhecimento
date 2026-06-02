@@ -261,6 +261,12 @@
   .relacionado-icon { width: 26px; height: 26px; color: var(--verde-claro); margin-bottom: 16px; }
   .relacionado-card h4 { font-size: 1.15rem; font-weight: 700; margin: 0 0 8px; line-height: 1.2; color: #fff; }
   .relacionado-card .meta { font-size: .82rem; color: var(--verde-claro); font-weight: 500; }
+  .relacionado-card .soon {
+    display: inline-block; margin-bottom: 12px;
+    font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--verde-profundo); background: var(--gold-soft);
+    padding: 3px 8px; border-radius: 999px;
+  }
 
   /* Footer: estilos no shell.css compartilhado */
   @media (max-width: 600px) { :root { --pad-x: 20px; } }
@@ -274,7 +280,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="base-inicio.html" class="brand">
+    <a href="base-inicio-v5.html" class="brand">
       <span class="brand-logo" aria-hidden="true">
         <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M8 8 L8 32 L20 36 L20 12 Z"/>
@@ -331,11 +337,11 @@
       </div>
       <div class="hero-stat">
         <span class="label">Artigos</span>
-        <span class="value">34</span>
+        <span class="value">23</span>
       </div>
       <div class="hero-stat">
         <span class="label">Tempo de leitura</span>
-        <span class="value">2h30</span>
+        <span class="value">6h</span>
       </div>
       <div class="hero-stat">
         <span class="label">Compartilhar</span>
@@ -361,11 +367,11 @@
         </div>
         <div class="trilha-body">
           <span class="trilha-kicker">Trilha</span>
-          <h3>Configurando Questionário</h3>
-          <p class="trilha-desc">Uma sequência de 8 artigos para estruturar avaliação no Moodle do Cefor — da configuração de atividades ao fechamento de notas.</p>
+          <h3>Da sala vazia ao primeiro dia de aula</h3>
+          <p class="trilha-desc">Do primeiro contato com o Moodle do Ifes à abertura da sala — criar a sala, definir datas, organizar seções e rodar o checklist de abertura.</p>
           <div class="trilha-meta">
-            <div><span class="m-label">Artigos</span><span class="m-value">8</span></div>
-            <div><span class="m-label">Tempo de leitura</span><span class="m-value">2h30</span></div>
+            <div><span class="m-label">Artigos</span><span class="m-value">6</span></div>
+            <div><span class="m-label">Tempo de leitura</span><span class="m-value">2h</span></div>
           </div>
         </div>
       </a>
@@ -376,11 +382,11 @@
         </div>
         <div class="trilha-body">
           <span class="trilha-kicker">Trilha</span>
-          <h3>Compreendendo a Acessibilidade</h3>
-          <p class="trilha-desc">Uma sequência de 10 artigos para garantir inclusão e desenho universal nos cursos a distância do Cefor.</p>
+          <h3>Avaliação online de ponta a ponta</h3>
+          <p class="trilha-desc">Estruture a avaliação no Moodle — da prova online à proteção de acesso, passando por questionários e banco de questões.</p>
           <div class="trilha-meta">
             <div><span class="m-label">Artigos</span><span class="m-value">10</span></div>
-            <div><span class="m-label">Tempo de leitura</span><span class="m-value">5h</span></div>
+            <div><span class="m-label">Tempo de leitura</span><span class="m-value">2h30</span></div>
           </div>
         </div>
       </a>
@@ -391,8 +397,8 @@
         </div>
         <div class="trilha-body">
           <span class="trilha-kicker">Trilha</span>
-          <h3>Dominando a Inteligência Artificial</h3>
-          <p class="trilha-desc">Uma sequência de 5 artigos para te permitir compreender a inteligência artificial aplicada à sala virtual.</p>
+          <h3>Do Livro de Notas ao Sistema Acadêmico</h3>
+          <p class="trilha-desc">Do Livro de Notas ao fechamento — configurar, calcular médias com recuperação, acompanhar o quadro e exportar notas para o Sistema Acadêmico.</p>
           <div class="trilha-meta">
             <div><span class="m-label">Artigos</span><span class="m-value">5</span></div>
             <div><span class="m-label">Tempo de leitura</span><span class="m-value">1h30</span></div>
@@ -481,26 +487,16 @@
 
       <a href="#" class="relacionado-card">
         <svg class="relacionado-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><rect x="2.6" y="15.6" width="4.8" height="4.8" rx="0.5"/><path d="M19 9.4 21.6 13.9 16.4 13.9Z"/><path d="M7 7 16.4 11"/><path d="M7 17 16.4 13"/></svg>
-        <h4>IA para sala virtual</h4>
-        <div class="meta">3 Trilhas · 28 artigos</div>
+        <span class="soon">Em breve · V2</span>
+        <h4>Conteúdo interativo e multimídia</h4>
+        <div class="meta">3 Trilhas · 10 artigos</div>
       </a>
 
       <a href="#" class="relacionado-card">
         <svg class="relacionado-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><rect x="2.6" y="15.6" width="4.8" height="4.8" rx="0.5"/><path d="M19 9.4 21.6 13.9 16.4 13.9Z"/><path d="M7 7 16.4 11"/><path d="M7 17 16.4 13"/></svg>
-        <h4>Acessibilidade e inclusão na EaD</h4>
-        <div class="meta">2 Trilhas · 14 artigos</div>
-      </a>
-
-      <a href="#" class="relacionado-card">
-        <svg class="relacionado-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><rect x="2.6" y="15.6" width="4.8" height="4.8" rx="0.5"/><path d="M19 9.4 21.6 13.9 16.4 13.9Z"/><path d="M7 7 16.4 11"/><path d="M7 17 16.4 13"/></svg>
-        <h4>Coordenação de cursos no Ifes</h4>
-        <div class="meta">3 Trilhas · 19 artigos</div>
-      </a>
-
-      <a href="#" class="relacionado-card">
-        <svg class="relacionado-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><rect x="2.6" y="15.6" width="4.8" height="4.8" rx="0.5"/><path d="M19 9.4 21.6 13.9 16.4 13.9Z"/><path d="M7 7 16.4 11"/><path d="M7 17 16.4 13"/></svg>
-        <h4>Produção de conteúdo multimídia</h4>
-        <div class="meta">2 Trilhas · 11 artigos</div>
+        <span class="soon">Em breve · V2</span>
+        <h4>Ensino acessível</h4>
+        <div class="meta">2 Trilhas · 6 artigos</div>
       </a>
 
     </div>
