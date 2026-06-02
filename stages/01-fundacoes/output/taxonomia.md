@@ -2,7 +2,7 @@
 
 > **Versão:** 1.0 — fechamento formal da arquitetura taxonômica
 > **Data:** 2026-05-26
-> **Status:** ✅ Aprovado (Decisões 17, 18, 25–32) · ⏳ URLs semânticas pendentes (Sprint 3)
+> **Status:** ✅ Aprovado (Decisões 17, 18, 25–32) · ⏳ URLs semânticas — URL **plana** do artigo (Decisão 34), co-aprovação de Marcos pendente (Sprint 3)
 > **Documento canônico** do Bloco 2 da Fase 1.
 > **Referência cruzada:** `_config/decisoes.md` (Decisões 17–32) · `output/contentsystem.md` §B.3–B.4 · `output/vocabulario-controlado.json` (Eixo 3 — definições)
 
@@ -21,7 +21,7 @@ Definir a arquitetura taxonômica única da nova Base de Conhecimento — substi
 | Eixo | Pergunta | Cardinalidade | Define |
 |---|---|---|---|
 | **1. Tipo** | Como se lê/usa este artigo? | 1 por artigo | Expectativa de leitura, badge no cabeçalho |
-| **2. Categoria** | Em que domínio de conhecimento mora? | 1 por artigo | Agrupamento principal, URL semântica |
+| **2. Categoria** | Em que domínio de conhecimento mora? | 1 por artigo | Agrupamento principal, breadcrumb e página-índice (não compõe a URL do artigo — Decisão 34) |
 | **3. Tópico** | Que assuntos específicos aborda? | 2 a 4 por artigo | Descoberta lateral, relacionados, filtros de busca |
 | **4. Trilha** | Faz parte de uma jornada curada? | 0 ou mais por artigo | Curadoria editorial (sequência didática) |
 
@@ -61,7 +61,7 @@ Definir a arquitetura taxonômica única da nova Base de Conhecimento — substi
 
 **Regras:**
 - Cardinalidade fixa: **1 e somente 1** por artigo.
-- Slug estável (sustenta URL semântica — ver §8).
+- Slug estável (sustenta a página-índice da categoria `/{categoria}/` e o breadcrumb — ver §8). **Não compõe a URL do artigo** (Decisão 34).
 - Lista fechada. Nova categoria exige decisão formal (Elton + Marcos).
 
 ---
@@ -241,39 +241,47 @@ Percurso V1 "Dominando o Moodle" agrega as 3 trilhas do núcleo Moodle.
 
 ---
 
-## 8. URLs semânticas — proposta (⏳ pendente de aprovação Elton + Marcos)
+## 8. URLs semânticas — proposta (⏳ co-aprovação de Marcos pendente — Sprint 3)
+
+> **Atualização 2026-06-02 (Decisão 34):** a **categoria sai da URL do artigo**. URL plana na raiz. A categoria continua sendo o pai de classificação (breadcrumb + página-índice), mas **não compõe o permalink**. Reverte o padrão `/{categoria}/{slug}` proposto até 2026-06-01.
 
 Padrão proposto:
 
 ```
-/{categoria-slug}/{artigo-slug}        Artigo (categoria sustenta URL — estável)
+/{artigo-slug}                         Artigo (URL plana na raiz — NÃO inclui categoria)
+/{categoria-slug}/                     Página-índice da categoria
+/trilhas                               Listagem de trilhas
 /trilhas/{trilha-slug}                 Página de trilha
-/percursos/{percurso-slug}             Página de percurso
 /percursos                             Listagem de percursos
+/percursos/{percurso-slug}             Página de percurso
 /topicos/{topico-slug}                 Página de descoberta por tópico
 /buscar?q=...&tipo=...&categoria=...   Busca com filtros (Decisão 11)
 ```
 
 **Princípios:**
-- **Categoria sustenta URL** (eixo mais estável). Tipo e tópico são metadados, não compõem URL.
+- **Categoria NÃO compõe a URL do artigo** (Decisão 34). Vira metadado/navegação puro — assim como Tipo e Tópico.
+- **URL do artigo é plana, na raiz** — `/{artigo-slug}`. Sem categoria, sem prefixo `/artigos/`.
 - **Slugs em minúsculas + hífen.** Sem acento, sem caractere especial.
-- **Sem prefixo `/artigos/`** — a categoria já posiciona o conteúdo. Reduz profundidade da URL.
-- **Slug do artigo é livre** (gerado a partir do H1, editável). Não inclui tipo, autor ou data.
-- **URLs antigas** redirecionam via 301 para o novo endereço (responsabilidade da Fase 5 — Lançamento).
+- **Slug do artigo é livre** (gerado a partir do H1, editável). Não inclui tipo, categoria, autor ou data.
+- **Slugs reservados:** como artigo e página-índice de categoria convivem na raiz, os **6 slugs de categoria** + `trilhas`, `percursos`, `topicos`, `buscar` (e demais seções de topo) são **reservados** — nenhum artigo pode usá-los. Validação no save.
+- **URLs antigas** redirecionam via 301 para o novo endereço (Fase 5 — Lançamento).
 
 **Exemplos:**
 ```
-/gestao-moodle/configurar-livro-de-notas
-/ferramentas/h5p-conteudo-interativo
-/acessibilidade/tempo-ampliado-no-questionario
-/trilhas/avaliacao-no-moodle
+/configurar-livro-de-notas             (artigo — categoria gestao-moodle, fora da URL)
+/h5p-conteudo-interativo               (artigo — categoria ferramentas)
+/tempo-ampliado-no-questionario        (artigo — categoria acessibilidade)
+/gestao-moodle/                        (página-índice da categoria)
+/trilhas/avaliacao-online-de-ponta-a-ponta
 /percursos/dominando-o-moodle
 /topicos/questionario
 ```
 
-> Variante considerada e rejeitada: `/artigos/{slug}` (sem categoria na URL). Perde sinal semântico para SEO/GEO e desacopla a URL do agrupamento principal.
+**Trade-off assumido (Decisão 34):** perde-se o sinal de categoria na URL para SEO/GEO — recuperado em parte via `Schema.org/BreadcrumbList`, que entrega a hierarquia `Início › Categoria › Artigo` ao buscador mesmo com URL plana. Em troca: URL curta e **recategorizar um artigo nunca quebra o link**.
 
-**Pergunta aberta:** versionamento de URL ao mudar artigo de categoria. Proposta: redirect 301 + alias permanente. **Decidir junto com a Estratégia de Descoberta** (`output/descoberta-seo-geo.md`, ainda não produzido).
+> Variante anterior (até 2026-06-01): `/{categoria}/{slug}`. Trocada pela URL plana na Decisão 34. A variante `/artigos/{slug}` também foi considerada e rejeitada (segmento extra sem ganho — a URL plana já isola via slugs reservados).
+
+> ~~**Pergunta aberta:** versionamento de URL ao mudar artigo de categoria.~~ **Resolvida pela Decisão 34:** como a categoria não está na URL, mudar de categoria não altera o permalink — sem redirect necessário nesse caso.
 
 ---
 
@@ -344,3 +352,4 @@ Detalhamento em `contentsystem.md` §B.3 e §B.4. Mapeamento:
 |---|---|---|---|
 | 1.0 | 2026-05-26 | Documento canônico criado. Consolida Decisões 17, 18, 25–32 + fechamento da 6ª categoria e 25 tópicos (2026-05-21). URLs semânticas em §8 como proposta pendente. | Elton + Claude |
 | 1.1 | 2026-06-01 | §6.4 reescrita: 5 trilhas-piloto estimadas → 9 trilhas-tarefa + 1 candidata, a partir da análise dos 131 artigos reais (`trilhas-percursos-mapa.md`). Regra de nomeação adicionada em §6.1/§6.2 (`convencao-titulos.md`). §7.4 atualizada. | Elton + Claude |
+| 1.2 | 2026-06-02 | §8 reescrita (Decisão 34): **URL plana do artigo** `/{slug}` — categoria sai da URL, vira só breadcrumb + página-índice; slugs reservados; pergunta aberta de recategorização resolvida. §2/§4 ajustadas. Breadcrumb taxonômico formalizado (Decisão 33) — ver `arquitetura-informacao.md`. | Elton + Claude |
