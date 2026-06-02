@@ -76,7 +76,7 @@ Todo título de trilha deve passar nos dois:
 
 - **Núcleo:** gerúndio de domínio ("Dominando…") ou papel profissional ("Professor Moodle completo").
 - **Promessa:** uma **formação** numa área inteira — o professor se torna proficiente.
-- **Tom:** aspiracional, de jornada longa. Cor reservada: **dourado** (Decisão 31).
+- **Tom:** aspiracional, de jornada longa. Cor reservada: **verde escuro** (`--verde-profundo`; Decisão 31, revisada 2026-06-02 — dourado abandonado).
 
 > Dominando o Moodle
 > Tornando-se autor de cursos abertos (MOOC)

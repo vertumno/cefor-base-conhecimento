@@ -55,7 +55,7 @@
    ------------------------------------------------------------ */
 .a11y-bar {
   position: fixed; top: 14px; right: 14px; z-index: 150;
-  display: flex; gap: 4px; flex-wrap: wrap;
+  display: flex; flex-direction: row-reverse; gap: 4px; flex-wrap: wrap;
   background: var(--paper); border: 1px solid var(--line);
   border-radius: 999px; padding: 4px;
   box-shadow: var(--shadow-md, 0 4px 12px rgba(20,17,13,.12));
@@ -102,6 +102,6 @@
 .vlibras-widget:hover::after { opacity: 1; }
 
 @media (max-width: 540px) {
-  .a11y-bar { top: auto; bottom: 12px; right: 12px; left: 12px; justify-content: center; }
+  .a11y-bar { top: auto; bottom: 12px; right: 12px; left: auto; }
   .vlibras-widget { bottom: 76px; }
 }

@@ -24,109 +24,30 @@
          (Princípio 2; Checklist de Encadeabilidade critérios 3-4)
        · Bloco de saída: "O que você sabe fazer agora" + próximos
          caminhos plurais (Checklist critérios 5-6)
+     Atualizações 2026-06-02 (acessibilidade e impressão):
+       · prefers-reduced-motion: zera animações/transições + scroll
+         instantâneo (CSS @media + guarda matchMedia no JS)
+       · @media print: esconde a casca, revela audiodescrições,
+         expõe URLs de links externos, evita quebras em blocos
+       · Mobile: reset dos grid-* inline — conteúdo antes da sidebar
      Snapshot da versão anterior: prototipo-artigo-2026-05-13.html
      ============================================================ */
 
   :root {
-    /* layout canonico - unidade estrutural entre paginas */
-    --maxw: 1280px; --maxw-read: 760px; --pad-x: 32px;
-    --bg: #ffffff;
-    --bg-2: #f7f5f1;
-    --bg-3: #efeae0;
-    --paper: #ffffff;
-    --ink: #14110d;
-    --ink-2: #4a4439;
-    --ink-3: #8a8273;
-    --line: #e7e3d8;
-    --line-2: #d4cdba;
-    /* Marca — verde em quatro tons (design.md) */
-    --verde-profundo: #1c4a36;
-    --verde-marca: #2e7355;
-    --verde-claro: #6ea892;
-    --verde-palido: #e6efe9;
-    --accent: #1f5142;
-    --accent-2: #2d6a4f;
-    --accent-soft: #e3ecdf;
-    --gold: #b08544;
-    --gold-soft: #f3e7d0;
-    --gold-deep: #8c6a36;
-    --rose: #b3433a;
-    --rose-soft: #f4dcd7;
-    --sun: #c98a1e;
-    --sun-soft: #f7e6c4;
-    --sky: #2c5e8f;
-    --sky-soft: #d9e7f3;
-    --sans: 'Inter', system-ui, -apple-system, sans-serif;
-    --mono: 'JetBrains Mono', ui-monospace, monospace;
-    --r-sm: 6px;
-    --r-md: 10px;
-    --r-lg: 16px;
-    --r-xl: 24px;
-    --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
-    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
-    --shadow-lg: 0 24px 48px -12px rgba(20,17,13,.12);
-    --font-scale: 1;
     /* Cor da categoria deste artigo (v2 2026-05-29) —
        Gestão e Operação do Moodle → --art-teal (sistema-cards-catalogo.md) */
     --cat-color: #5ea9b2;
     --cat-color-soft: rgba(94,169,178,.10);
+    /* ── Faixa de leitura (eixo único compartilhado) ──────────────────
+       Mude --measure aqui e .shell, .masthead-inner, .prose, .article-actions
+       e .libras-accordion acompanham. Não repita estes valores em outro lugar. */
+    --measure: 660px;   /* largura da coluna de texto (~70–75 caracteres) */
+    --rail: 300px;      /* largura da sidebar/TOC */
+    --band-gap: 72px;   /* gutter entre texto e sidebar */
+    --reading-band: calc(var(--measure) + var(--band-gap) + var(--rail));
   }
 
-  [data-theme="dark"] {
-    --bg: #0e0c0a;
-    --bg-2: #16130f;
-    --bg-3: #1e1a14;
-    --paper: #1a1612;
-    --ink: #f4f1ea;
-    --ink-2: #c9c2b3;
-    --ink-3: #8a8273;
-    --line: #2a251e;
-    --line-2: #3a342a;
-    --verde-profundo: #2e7355;
-    --verde-marca: #6cb89a;
-    --verde-claro: #9ed1bd;
-    --verde-palido: #1f3329;
-    --accent: #6cb89a;
-    --accent-2: #87cdb0;
-    --accent-soft: #19251f;
-    --gold-soft: #2e2516;
-    --gold-deep: #d9a955;
-    --rose-soft: #2e1a17;
-    --sun-soft: #2e2310;
-    --sky-soft: #16222e;
-  }
-
-  /* Alto contraste e fonte para dislexia: tokens em a11y.css */
-
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--sans);
-    font-size: calc(16px * var(--font-scale));
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-    transition: background .3s, color .3s, font-size .2s;
-  }
-
-  .skip-link {
-    position: absolute;
-    top: -100px; left: 8px;
-    background: var(--accent);
-    color: white;
-    padding: 10px 18px;
-    border-radius: var(--r-md);
-    text-decoration: none;
-    font-weight: 600;
-    z-index: 1000;
-    transition: top .2s;
-  }
-  .skip-link:focus { top: 8px; }
-
-  /* Header: estilos no shell.css compartilhado */
-
+  /* Estilos estruturais, resets, skip links e tokens herdados do shell.css */
 
   /* Barra de progresso */
   .progress-rail {
@@ -167,12 +88,20 @@
     padding: 0 var(--pad-x);
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 220px;
-    gap: 56px;
+    /* Mesma geometria do .shell para que a régua do meta caia sobre o card do TOC
+       e o título alinhe à esquerda com o texto (faixa de leitura centralizada). */
+    grid-template-columns: minmax(0, var(--measure)) var(--rail);
+    gap: var(--band-gap);
+    justify-content: center;
     align-items: start;
   }
   @media (max-width: 900px) {
     .masthead-inner { grid-template-columns: 1fr; gap: 24px; }
+    .cat-emblem-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--r-lg);
+    }
   }
 
   .masthead-content { min-width: 0; }
@@ -329,7 +258,9 @@
 
   /* ================ TOOLBAR DO ARTIGO — multimodal ================ */
   .article-actions {
-    max-width: var(--maxw);
+    /* Alinha à faixa de leitura: borda esquerda dos botões = borda esquerda do
+       texto/título; borda direita = borda direita da sidebar. */
+    max-width: calc(var(--reading-band) + 2 * var(--pad-x));
     margin: 0 auto;
     padding: 20px var(--pad-x) 0;
     display: flex;
@@ -355,7 +286,19 @@
   }
   .action-btn:hover { border-color: var(--ink-3); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
   .action-btn[aria-pressed="true"] { background: var(--accent); color: white; border-color: var(--accent); }
-  .action-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+  .action-btn svg,
+  .action-btn img { width: 16px; height: 16px; flex-shrink: 0; }
+  #librasBtn .icon-libras-active {
+    display: none;
+  }
+  [data-theme="dark"] #librasBtn .icon-libras-default,
+  #librasBtn[aria-pressed="true"] .icon-libras-default {
+    display: none;
+  }
+  [data-theme="dark"] #librasBtn .icon-libras-active,
+  #librasBtn[aria-pressed="true"] .icon-libras-active {
+    display: inline-block;
+  }
   .action-btn .duration {
     margin-left: 4px;
     font-size: .72rem;
@@ -367,7 +310,7 @@
 
   /* Libras accordion */
   .libras-accordion {
-    max-width: var(--maxw);
+    max-width: calc(var(--reading-band) + 2 * var(--pad-x));
     margin: 16px auto 0;
     padding: 0 var(--pad-x);
   }
@@ -428,13 +371,21 @@
     margin: 0 auto;
     padding: 40px var(--pad-x) 80px;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 300px;
-    gap: 64px;
+    /* Faixa de leitura centralizada: a coluna do texto tem a largura exata da medida
+       (--measure), não estica. A sobra de largura vira margem simétrica nas bordas via
+       justify-content:center — em vez de virar um "buraco" entre texto e sidebar. */
+    grid-template-columns: minmax(0, var(--measure)) var(--rail);
+    gap: var(--band-gap);
+    justify-content: center;
     align-items: flex-start;
   }
   @media (max-width: 980px) {
     .shell { grid-template-columns: 1fr; gap: 32px; }
-    .sidebar { position: static !important; }
+    /* Reset dos grid-* inline (aside usa grid-column:2; article fixa grid-row:1):
+       no mobile o conteúdo deve vir PRIMEIRO e a sidebar (índice + trilha) depois,
+       senão o leitor rola por todo o índice antes de chegar ao texto. */
+    article.prose { grid-column: 1 !important; grid-row: 1 !important; }
+    .sidebar { position: static !important; grid-column: 1 !important; grid-row: 2 !important; }
     .article-actions { padding-top: 16px; }
   }
 
@@ -550,43 +501,52 @@
   }
   .trilha-acc-body[hidden] { display: none; }
 
-  /* Chip de percurso (Decisão 31) — versão sutil 2026-05-26: sem pill,
-     padrão "label · nome" alinhado com a estética dos meta-blocks.
-     Cor dourada preservada como identidade do percurso. */
+  /* Chip de percurso (Decisão 31, revisada 2026-06-02) — identidade VERDE ESCURO.
+     Pílula sólida em --verde-profundo (espelha o hero da página de percurso),
+     contrastando com a trilha (verde claro, em texto) e com os artigos (neutros).
+     O dourado da Decisão 31 original foi abandonado; a diferenciação de nível agora
+     é claro→escuro dentro da própria família verde + o preenchimento sólido. */
   .trilha-percurso-chip {
     display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 4px 8px;
-    margin: 2px 0 14px;
-    font-size: .76rem;
-    line-height: 1.4;
-    color: var(--gold-deep);
+    align-items: center;
+    gap: 10px;
+    margin: 2px 0 16px;
+    padding: 10px 13px;
+    background: var(--verde-profundo);
+    border-radius: var(--r-sm);
     text-decoration: none;
-    transition: color .15s;
+    line-height: 1.3;
+    transition: filter .15s;
   }
-  .trilha-percurso-chip:hover { color: var(--gold); }
+  .trilha-percurso-chip:hover { filter: brightness(1.08); }
   .trilha-percurso-chip:hover .chip-name {
     text-decoration: underline;
     text-underline-offset: 3px;
   }
   .trilha-percurso-chip svg {
-    width: 12px;
-    height: 12px;
-    color: var(--gold);
+    width: 15px;
+    height: 15px;
+    color: var(--verde-claro);
     flex-shrink: 0;
-    align-self: center;
+  }
+  .trilha-percurso-chip .chip-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
   }
   .trilha-percurso-chip .chip-label {
-    font-size: .62rem;
+    font-size: .6rem;
     font-weight: 800;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--ink-3);
+    color: var(--verde-claro);
   }
   .trilha-percurso-chip .chip-name {
-    font-weight: 600;
-    color: var(--gold-deep);
+    font-size: .82rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.25;
   }
 
   /* Barra de progresso estrutural (Decisão 29 — posição, não progresso pessoal) */
@@ -685,7 +645,8 @@
     font-size: 1.04rem;
     line-height: 1.7;
     color: var(--ink-2);
-    max-width: var(--maxw-read);
+    /* Medida casada com a coluna do .shell (~70–75 caracteres). */
+    max-width: var(--measure);
   }
   article.prose h2 {
     font-family: var(--sans);
@@ -708,12 +669,6 @@
     scroll-margin-top: 90px;
   }
   article.prose p { margin: 0 0 18px; }
-  article.prose p:first-of-type {
-    font-size: 1.14rem;
-    line-height: 1.6;
-    color: var(--ink);
-    font-weight: 400;
-  }
   article.prose strong { font-weight: 600; color: var(--ink); }
   article.prose em { font-style: italic; }
   article.prose a {
@@ -796,7 +751,7 @@
     white-space: pre-wrap;
   }
   .code-prompt-content .code-comment {
-    color: var(--ink-3);
+    color: #615a4e;
     font-style: italic;
   }
   .code-prompt-content .code-variable {
@@ -1013,42 +968,54 @@
      - entry-block / outcome-block: deferidos para reavaliar na V3. */
 
   /* ================ FOOTER DO ARTIGO ================ */
+  /* Reorganizado 2026-06-02: um único bloco de encerramento (autora · compartilhar ·
+     tópicos) sob uma hairline, seguido dos artigos relacionados. Substitui a pilha de
+     três divisórias do layout anterior (autor / tópicos / relacionados). */
   .article-foot { max-width: var(--maxw-read); margin-top: 64px; }
 
-  /* Tópicos + Compartilhar */
-  .topics-row {
-    margin: 0 0 48px;
+  /* ---- Bloco de encerramento ---- */
+  .foot-meta {
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+    margin-bottom: 44px;
   }
-  .topics-row-header {
+  .foot-meta-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
+    gap: 16px 24px;
+    flex-wrap: wrap;
+    margin-bottom: 26px;
   }
+
+  /* Tópicos */
+  .topics-row { margin: 0; }
   .topics-label {
+    display: block;
     font-size: .68rem;
     font-weight: 700;
     letter-spacing: .14em;
     text-transform: uppercase;
     color: var(--ink-3);
+    margin-bottom: 12px;
   }
   .topics-chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 8px;
   }
   .topic-chip {
     background: var(--bg-2);
     border: 1px solid var(--line);
     color: var(--ink-2);
-    padding: 5px 12px;
+    padding: 6px 14px;
     border-radius: 99px;
     text-decoration: none;
     font-size: .82rem;
     font-family: var(--sans);
     transition: all .15s;
   }
-  .topic-chip:hover { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+  .topic-chip:hover { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
 
   /* Botão compartilhar — inline com tópicos */
   .share-wrap { position: relative; }
@@ -1104,24 +1071,28 @@
   .share-menu button:hover { background: var(--bg-2); color: var(--accent); }
   .share-menu button:hover svg { color: var(--accent); }
 
-  /* Artigos relacionados */
+  /* ================ ARTIGOS RELACIONADOS ================ */
+  /* Mini-cards que herdam a gramática dos cards do catálogo (cor = categoria):
+     barra superior + dot na cor da família, badge de tipo neutro e tempo de leitura.
+     Reforça a continuidade card → artigo (sistema-cards-catalogo.md). */
   .related {
     margin: 0;
-    padding-top: 40px;
+    padding-top: 44px;
     border-top: 1px solid var(--line);
   }
+  .related-head { margin-bottom: 22px; }
   .related h3 {
     font-family: var(--sans);
     font-weight: 700;
     font-size: 1.4rem;
-    margin: 0 0 6px;
+    margin: 0 0 4px;
     color: var(--ink);
     letter-spacing: -.018em;
   }
   .related-sub {
     color: var(--ink-3);
     font-size: .92rem;
-    margin: 0 0 22px;
+    margin: 0;
   }
   .related-grid {
     display: grid;
@@ -1129,63 +1100,113 @@
     gap: 16px;
   }
   @media (max-width: 760px) { .related-grid { grid-template-columns: 1fr; } }
+
   .related-card {
+    --rc-color: var(--accent);
+    position: relative;
     background: var(--paper);
     border: 1px solid var(--line);
     border-radius: var(--r-lg);
-    padding: 20px;
+    padding: 22px 20px 18px;
+    overflow: hidden;
     text-decoration: none;
     color: var(--ink);
-    transition: transform .15s, box-shadow .15s, border-color .15s;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
+    transition: transform .15s, box-shadow .15s, border-color .15s;
+  }
+  .related-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: var(--rc-color);
   }
   .related-card:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
-    border-color: var(--ink-3);
+    border-color: var(--rc-color);
   }
-  .related-card .r-tipo {
+  /* Atribuição categoria → cor da família (espelha o catálogo) */
+  .related-card[data-category="ferramentas"]    { --rc-color: var(--cat-ferramentas); }
+  .related-card[data-category="gestao-moodle"]  { --rc-color: var(--cat-gestao-moodle); }
+  .related-card[data-category="pedagogia"]      { --rc-color: var(--cat-pedagogia); }
+  .related-card[data-category="acessibilidade"] { --rc-color: var(--cat-acessibilidade); }
+  .related-card[data-category="conduta"]        { --rc-color: var(--cat-conduta); }
+  .related-card[data-category="identidade"]     { --rc-color: var(--cat-identidade); }
+
+  .related-card .r-cat {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-size: .68rem;
     font-weight: 700;
-    letter-spacing: .12em;
+    letter-spacing: .1em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--ink-3);
+    line-height: 1.3;
+  }
+  .related-card .r-dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--rc-color);
+    flex-shrink: 0;
   }
   .related-card h4 {
     font-family: var(--sans);
     font-weight: 700;
-    font-size: 1rem;
-    line-height: 1.3;
+    font-size: 1.04rem;
+    line-height: 1.32;
     margin: 0;
     color: var(--ink);
+    letter-spacing: -.01em;
+    transition: color .15s;
   }
+  .related-card:hover h4 { color: var(--accent); }
   .related-card .r-meta {
+    margin-top: auto;
+    padding-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: .78rem;
     color: var(--ink-3);
-    margin-top: auto;
-    padding-top: 10px;
   }
+  .related-card .r-badge {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .02em;
+    padding: 3px 10px;
+    border-radius: 99px;
+  }
+  .related-card .r-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-variant-numeric: tabular-nums;
+  }
+  .related-card .r-time svg { width: 13px; height: 13px; flex-shrink: 0; }
 
-  /* Autor no fim do artigo */
+  /* Autor — dentro do bloco de encerramento (sem divisória própria) */
   .article-author {
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 20px 0;
-    border-top: 1px solid var(--line);
-    margin-bottom: 32px;
   }
   .article-author .author-avatar {
-    width: 44px; height: 44px;
+    width: 48px; height: 48px;
     border-radius: 50%;
     background: var(--accent);
     color: white;
     display: flex; align-items: center; justify-content: center;
-    font-size: .88rem;
+    font-size: .92rem;
     font-weight: 700;
     flex-shrink: 0;
+    box-shadow: 0 0 0 4px var(--accent-soft);
   }
   .article-author .author-details {
     display: flex;
@@ -1193,14 +1214,14 @@
     gap: 2px;
   }
   .author-byline-label {
-    font-size: .68rem;
+    font-size: .64rem;
     font-weight: 700;
     letter-spacing: .12em;
     text-transform: uppercase;
     color: var(--ink-3);
   }
   .author-name-sm {
-    font-size: .96rem;
+    font-size: .98rem;
     font-weight: 600;
     color: var(--ink);
   }
@@ -1223,6 +1244,62 @@
   /* Responsividade de header/a11y: nos componentes shell.css e a11y.css */
   /* Footer: estilos no shell.css compartilhado */
   @media (max-width: 600px) { :root { --pad-x: 20px; } }
+
+  /* ================ MOVIMENTO REDUZIDO ================
+     Respeita prefers-reduced-motion: zera animações/transições e troca o
+     scroll suave por instantâneo (vestibular). O scrollIntoView do JS é
+     guardado por matchMedia no script. */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto !important; }
+    *, *::before, *::after {
+      animation-duration: .001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .001ms !important;
+      scroll-behavior: auto !important;
+    }
+    .progress-fill { transition: none !important; }
+  }
+
+  /* ================ IMPRESSÃO ================
+     Tutorial é um conteúdo que professores imprimem/salvam em PDF.
+     Esconde a "casca" (header, toolbar, sidebar, share, progress), revela as
+     audiodescrições ocultas e expõe a URL de links externos. */
+  @media print {
+    .proto-banner,
+    .progress-rail,
+    .site-header,
+    .breadcrumb,
+    .article-actions,
+    .libras-accordion,
+    .sidebar,
+    .cat-emblem,
+    .share-wrap,
+    .meta-share,
+    .site-footer,
+    .skip-link,
+    .a11y-bar, .a11y-panel,
+    .vlibras-widget, [vw] { display: none !important; }
+
+    html, body { background: #fff !important; color: #000 !important; }
+    .masthead { padding: 0 0 16px; border-bottom: 1px solid #000; }
+    .masthead::before { display: none !important; }
+    .masthead-inner { display: block; padding: 0; }
+    .masthead-meta { flex-direction: row; flex-wrap: wrap; gap: 8px 24px; border: 0; padding: 8px 0 0; margin-top: 8px; }
+
+    .shell { display: block !important; max-width: none; padding: 16px 0 0; }
+    article.prose { max-width: none !important; grid-column: 1 !important; font-size: 11.5pt; line-height: 1.55; color: #000; }
+    article.prose h1, article.prose h2, article.prose h3 { color: #000; }
+
+    /* Mostrar audiodescrições e descrições normalmente ocultas */
+    .figure-audiodesc[hidden], .infographic-audiodesc[hidden] { display: block !important; }
+
+    /* Expor URLs de links externos (ignora âncoras internas e placeholders #) */
+    article.prose a[href^="http"]::after { content: " <" attr(href) ">"; font-size: .85em; color: #333; word-break: break-all; }
+
+    /* Evitar quebras de página no meio de blocos */
+    article.prose h2, article.prose h3 { break-after: avoid; }
+    .callout, .figure, .code-prompt-block, .pullquote, .infographic, .related-card, .article-author { break-inside: avoid; }
+  }
 </style>
 <link rel="stylesheet" href="a11y.css">
 <link rel="stylesheet" href="shell.css">
@@ -1276,17 +1353,16 @@
 <!-- (removido daqui o painel inline antigo; agora canônico em a11y.css/js) -->
 
 <!-- ============ BREADCRUMB (faixa full-width, igual exploracao-pagina-percurso.html) ============ -->
-<nav class="breadcrumb" aria-label="Trilha de navegação">
+<!-- Breadcrumb taxonômico (Decisão 33): reflete a árvore de classificação Início › Categoria › Artigo,
+     nunca a jornada (percurso/trilha vivem na sidebar, em acordeão). O segmento de categoria linka
+     para a página-índice /{categoria}/ — aqui /gestao-moodle/ (Decisão 34: categoria fora da URL do artigo). -->
+<nav class="breadcrumb" aria-label="Você está aqui">
   <div class="breadcrumb-inner">
     <a href="base-inicio.html">Início</a>
     <span class="sep">›</span>
-    <a href="base-percurso.html">Percursos</a>
+    <a href="#categoria-gestao-moodle">Gestão e Operação do Moodle</a>
     <span class="sep">›</span>
-    <a href="base-percurso.html">Dominando o Moodle</a>
-    <span class="sep">›</span>
-    <a href="base-trilha.html">Do Livro de Notas ao Sistema Acadêmico</a>
-    <span class="sep">›</span>
-    <span class="current">Configurando o livro de notas</span>
+    <span class="current" aria-current="page">Configurando o livro de notas</span>
   </div>
 </nav>
 
@@ -1312,12 +1388,9 @@
     </div>
 
     <!-- Meta lateral (direita) — Tipo, Tempo de leitura, Compartilhar.
-         Categoria removida em 2026-05-26 — já vive no breadcrumb. -->
+         Categoria NÃO entra aqui: vive no breadcrumb (Decisão 33). Removida de fato em 2026-06-02
+         para não duplicar — o emblema de categoria (cor + ícone do grupo) permanece no masthead-content. -->
     <aside class="masthead-meta" aria-label="Informações do artigo">
-      <div class="meta-block">
-        <span class="meta-label">Categoria</span>
-        <span class="meta-value">Gestão e Operação do Moodle</span>
-      </div>
       <div class="meta-block">
         <span class="meta-label">Tipo</span>
         <span class="meta-value">Tutorial</span>
@@ -1346,7 +1419,8 @@
 <div class="article-actions" role="toolbar" aria-label="Formatos do artigo">
   <!-- Ordem obrigatória dos blocos multimodais (Decisão 19): 1. Libras · 2. Ouvir · 3. Outros formatos -->
   <button class="action-btn" id="librasBtn" aria-pressed="false" aria-controls="librasPanel">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="4" r="1"/><path d="m18 19 1-7-5.87.94"/><path d="m5 8 1 7 5.87-.94"/><path d="M12.93 17.52L9.5 21l-1-4"/><path d="m7 13 1.5 6 3.5-2"/></svg>
+    <img src="../../assets/icon_libras/icon_libras_azul.png" class="icon-libras-default" alt="" aria-hidden="true" />
+    <img src="../../assets/icon_libras/icon_libras_branco.png" class="icon-libras-active" alt="" aria-hidden="true" />
     Tradução em Libras
   </button>
   <button class="action-btn" id="audioBtn" aria-pressed="false">
@@ -1400,7 +1474,7 @@
     <div class="side-trilha">
       <div class="side-trilha-head">
         <span class="side-trilha-head-label">
-          <span>Trilhas deste artigo</span>
+          <span>Trilha deste artigo</span>
           <span class="side-trilha-count">1</span>
         </span>
       </div>
@@ -1416,8 +1490,10 @@
         <div class="trilha-acc-body" id="trilhaBody-1">
           <a href="#" class="trilha-percurso-chip">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><rect x="2.6" y="15.6" width="4.8" height="4.8" rx="0.5"/><path d="M19 9.4 21.6 13.9 16.4 13.9Z"/><path d="M7 7 16.4 11"/><path d="M7 17 16.4 13"/></svg>
-            <span class="chip-label">Percurso</span>
-            <span class="chip-name">Dominando o Moodle</span>
+            <span class="chip-text">
+              <span class="chip-label">Percurso</span>
+              <span class="chip-name">Dominando o Moodle</span>
+            </span>
           </a>
           <div class="side-trilha-progress">
             <div class="side-trilha-bar">
@@ -1607,20 +1683,17 @@
     <!-- ============ FOOTER DO ARTIGO ============ -->
     <div class="article-foot">
 
-      <!-- Autor -->
-      <div class="article-author">
-        <div class="author-avatar" aria-hidden="true">JC</div>
-        <div class="author-details">
-          <span class="author-byline-label">Autora</span>
-          <span class="author-name-sm">Juliana Cassaro</span>
-          <span class="author-role-sm">Designer e conteudista · CGTE/CEFOR/Ifes</span>
-        </div>
-      </div>
-
-      <!-- Tópicos + Compartilhar -->
-      <div class="topics-row">
-        <div class="topics-row-header">
-          <span class="topics-label">Tópicos</span>
+      <!-- Encerramento: autora · compartilhar · tópicos -->
+      <section class="foot-meta">
+        <div class="foot-meta-top">
+          <div class="article-author">
+            <div class="author-avatar" aria-hidden="true">JC</div>
+            <div class="author-details">
+              <span class="author-byline-label">Escrito por</span>
+              <span class="author-name-sm">Juliana Cassaro</span>
+              <span class="author-role-sm">Designer e conteudista · CGTE/CEFOR/Ifes</span>
+            </div>
+          </div>
           <div class="share-wrap">
             <button class="share-btn" id="shareBtn" data-share-trigger aria-haspopup="true" aria-expanded="false" aria-label="Compartilhar" title="Compartilhar">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
@@ -1650,33 +1723,47 @@
             </div>
           </div>
         </div>
-        <div class="topics-chips">
-          <a href="#" class="topic-chip">Notas</a>
-          <a href="#" class="topic-chip">Livro de Notas</a>
-          <a href="#" class="topic-chip">Configuração de Curso</a>
-          <a href="#" class="topic-chip">Avaliação</a>
+        <div class="topics-row">
+          <span class="topics-label">Tópicos</span>
+          <div class="topics-chips">
+            <a href="#" class="topic-chip">Notas</a>
+            <a href="#" class="topic-chip">Livro de Notas</a>
+            <a href="#" class="topic-chip">Configuração de Curso</a>
+            <a href="#" class="topic-chip">Avaliação</a>
+          </div>
         </div>
-      </div>
+      </section>
 
       <!-- Artigos relacionados -->
       <section class="related" aria-labelledby="relatedTitle">
-        <h3 id="relatedTitle">Artigos relacionados</h3>
-        <p class="related-sub">Conteúdos sugeridos com base nos tópicos e na categoria.</p>
+        <div class="related-head">
+          <h3 id="relatedTitle">Artigos relacionados</h3>
+          <p class="related-sub">Conteúdos sugeridos com base nos tópicos e na categoria.</p>
+        </div>
         <div class="related-grid">
-          <a class="related-card" href="#">
-            <span class="r-tipo">Tutorial</span>
+          <a class="related-card" data-category="gestao-moodle" href="#">
+            <span class="r-cat"><span class="r-dot" aria-hidden="true"></span>Gestão e Operação do Moodle</span>
             <h4>Configurando rubricas em atividades de envio</h4>
-            <span class="r-meta">6 min · Moodle (AVA)</span>
+            <span class="r-meta">
+              <span class="r-badge">Tutorial</span>
+              <span class="r-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 min</span>
+            </span>
           </a>
-          <a class="related-card" href="#">
-            <span class="r-tipo">Conceitual</span>
+          <a class="related-card" data-category="pedagogia" href="#">
+            <span class="r-cat"><span class="r-dot" aria-hidden="true"></span>Pedagogia e Planejamento</span>
             <h4>Boas práticas no design de avaliações online</h4>
-            <span class="r-meta">12 min · Pedagogia e Planejamento</span>
+            <span class="r-meta">
+              <span class="r-badge">Conceitual</span>
+              <span class="r-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>12 min</span>
+            </span>
           </a>
-          <a class="related-card" href="#">
-            <span class="r-tipo">Referência</span>
+          <a class="related-card" data-category="gestao-moodle" href="#">
+            <span class="r-cat"><span class="r-dot" aria-hidden="true"></span>Gestão e Operação do Moodle</span>
             <h4>Fórmulas suportadas no gradebook do Moodle</h4>
-            <span class="r-meta">4 min · Moodle (AVA)</span>
+            <span class="r-meta">
+              <span class="r-badge">Referência</span>
+              <span class="r-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4 min</span>
+            </span>
           </a>
         </div>
       </section>
@@ -1689,6 +1776,10 @@
 <!-- Footer canônico injetado por shell.js -->
 
 <script>
+  // Preferência de movimento reduzido — usada para desligar o scroll suave por JS
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const scrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
+
   // Barra de progresso
   const progressFill = document.getElementById('progressFill');
   function updateProgress() {
@@ -1700,22 +1791,34 @@
   window.addEventListener('scroll', updateProgress, { passive: true });
   updateProgress();
 
-  // Scrollspy do índice
-  const tocLinks = document.querySelectorAll('#toc a');
-  const sections = Array.from(tocLinks)
-    .map(a => document.querySelector(a.getAttribute('href')))
-    .filter(Boolean);
-  function spy() {
-    const y = window.scrollY + 140;
-    let current = sections[0];
-    for (const s of sections) { if (s.offsetTop <= y) current = s; }
-    if (!current) return;
-    tocLinks.forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
-    });
-  }
-  window.addEventListener('scroll', spy, { passive: true });
-  spy();
+  // Scrollspy do índice via IntersectionObserver (Alta Performance)
+  (function initModernScrollspy() {
+    const tocLinks = document.querySelectorAll('#toc a');
+    const sections = Array.from(tocLinks)
+      .map(a => document.querySelector(a.getAttribute('href')))
+      .filter(Boolean);
+
+    if (!sections.length || !('IntersectionObserver' in window)) return;
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-10% 0px -60% 0px', // Ativa quando o título entra no terço superior da tela
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          tocLinks.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(s => observer.observe(s));
+  })();
 
   // Acessibilidade (tema, contraste, dislexia, A−/A+) — agora no
   // componente canônico compartilhado a11y.js (painel flutuante).
@@ -1727,7 +1830,7 @@
     const open = librasBtn.getAttribute('aria-pressed') === 'true';
     librasBtn.setAttribute('aria-pressed', String(!open));
     librasPanel.classList.toggle('open', !open);
-    if (!open) setTimeout(() => librasPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+    if (!open) setTimeout(() => librasPanel.scrollIntoView({ behavior: scrollBehavior, block: 'nearest' }), 50);
   });
 
   // Áudio (mock)
@@ -1943,6 +2046,7 @@
     const observer = new IntersectionObserver((entries) => {
       const e = entries[0];
       if (e.isIntersecting) return; // ainda vendo o cabeçalho — não fazer nada
+      if (window.innerWidth > 980) return; // Não auto-colapsar em telas desktop (mantém contexto sticky)
       if (autoCollapsed || userInteracted || isInsideTrilha) return;
       collapseAllExpanded();
       autoCollapsed = true;

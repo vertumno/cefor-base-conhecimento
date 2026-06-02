@@ -15,101 +15,7 @@
      Corpo mantido da trilha v3.
      ============================================================ */
 
-  :root {
-    /* layout canonico - unidade estrutural entre paginas */
-    --maxw: 1280px; --maxw-read: 760px; --pad-x: 32px;
-    /* Surfaces */
-    --bg: #ffffff;
-    --bg-2: #f7f5f1;
-    --bg-3: #efeae0;
-    --paper: #ffffff;
-
-    /* Ink */
-    --ink: #14110d;
-    --ink-2: #4a4439;
-    --ink-3: #8a8273;
-
-    /* Lines */
-    --line: #e7e3d8;
-    --line-2: #d4cdba;
-
-    /* Marca — verde em 4 tons */
-    --verde-profundo: #1c4a36;
-    --verde-marca:    #2e7355;
-    --verde-claro:    #6ea892;
-    --verde-palido:   #e6efe9;
-
-    /* Acento quente */
-    --gold-soft: #f3e7d0;
-
-    /* Família dos artigos — 6 principais */
-    --art-roxo:    #9c6dcb;
-    --art-azul:    #5d9bd8;
-    --art-ambar:   #e8b53a;
-    --art-magenta: #c46aac;
-    --art-coral:   #ed8366;
-    --art-teal:    #5ea9b2;
-
-    /* Atribuição categoria → cor da família (sistema-cards-catalogo.md) */
-    --cat-ferramentas:    var(--art-azul);
-    --cat-gestao-moodle:  var(--art-teal);
-    --cat-pedagogia:      var(--art-coral);
-    --cat-acessibilidade: var(--art-roxo);
-    --cat-conduta:        var(--art-ambar);
-    --cat-identidade:     var(--art-magenta);
-
-    /* Tipografia */
-    --sans: 'Inter', system-ui, -apple-system, sans-serif;
-    --mono: 'JetBrains Mono', ui-monospace, monospace;
-
-    /* Radii */
-    --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-xl: 24px;
-
-    /* Elevation */
-    --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
-    --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
-    --shadow-lg: 0 24px 48px -12px rgba(20,17,13,.12);
-
-    --font-scale: 1;
-  }
-
-  [data-theme="dark"] {
-    --bg: #0e0c0a;
-    --bg-2: #16130f;
-    --bg-3: #1e1a14;
-    --paper: #1a1612;
-    --ink: #f4f1ea;
-    --ink-2: #c9c2b3;
-    --ink-3: #8a8273;
-    --line: #2a251e;
-    --line-2: #3a342a;
-    --verde-profundo: #2e7355;
-    --verde-marca:    #6cb89a;
-    --verde-claro:    #9ed1bd;
-    --verde-palido:   #1f3329;
-    --gold-soft:      #3d3424;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
-    --shadow-md: 0 4px 16px rgba(0,0,0,.25);
-    --shadow-lg: 0 24px 48px -12px rgba(0,0,0,.4);
-  }
-
-  *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; font-size: calc(16px * var(--font-scale)); }
-  body {
-    margin: 0; background: var(--bg); color: var(--ink);
-    font-family: var(--sans); font-size: 1rem; line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-  }
-  a { color: inherit; text-decoration: none; }
-  :focus-visible { outline: 2px solid var(--verde-marca); outline-offset: 3px; border-radius: 4px; }
-  img, svg { max-width: 100%; display: block; }
-
-  .skip {
-    position: absolute; left: -9999px; top: 8px;
-    background: var(--verde-marca); color: #fff;
-    padding: 8px 12px; border-radius: var(--r-sm); z-index: 100; font-weight: 600;
-  }
-  .skip:focus { left: 8px; }
+  /* Estilos estruturais, resets e tokens movidos para o shell.css compartilhado */
 
 
 
@@ -296,11 +202,7 @@
   .carousel-btn:hover { border-color: var(--verde-marca); color: var(--verde-marca); background: var(--verde-palido); }
   .carousel-btn svg { width: 18px; height: 18px; }
 
-  .related-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-  }
-  @media (max-width: 1000px) { .related-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 640px)  { .related-grid { grid-template-columns: 1fr; } }
+  /* .related-grid herdado do shell.css */
 
   .card {
     background: var(--paper); border: 1px solid var(--line);
@@ -452,7 +354,7 @@
 
     <!-- SEQUÊNCIA DA TRILHA -->
     <section aria-labelledby="seq-title">
-      <p class="section-eyebrow" id="seq-title">Sequência da trilha</p>
+      <p class="section-eyebrow" id="seq-title">Artigos desta trilha</p>
 
       <ol class="sequencia-list">
 

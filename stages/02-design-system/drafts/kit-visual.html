@@ -319,7 +319,7 @@
     letter-spacing: .14em; text-transform: uppercase;
   }
   .kicker.trilha { background: var(--accent-soft); color: var(--accent-deep); }
-  .kicker.percurso { background: var(--gold-soft); color: var(--gold-deep); }
+  .kicker.percurso { background: var(--verde-profundo); color: #fff; }
   .kicker svg { width: 14px; height: 14px; }
 
   /* Badges */
@@ -337,12 +337,13 @@
   /* Chip de percurso */
   .percurso-chip {
     display: inline-flex; align-items: center; gap: 8px;
-    background: var(--gold-soft); color: var(--gold-deep);
+    background: var(--verde-profundo); color: #fff;
     padding: 6px 12px 6px 10px;
     border-radius: 99px;
     font-size: .78rem; font-weight: 600;
     text-decoration: none;
   }
+  .percurso-chip svg { color: var(--verde-claro); }
   .percurso-chip svg { width: 12px; height: 12px; }
   .percurso-chip strong { font-weight: 700; }
 
@@ -539,8 +540,8 @@
     content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
   }
   .card.trilha-card::before { background: var(--accent); }
-  .card.percurso-card::before { background: var(--gold); }
-  .card.percurso-card:hover { border-color: var(--gold); }
+  .card.percurso-card::before { background: var(--verde-profundo); }
+  .card.percurso-card:hover { border-color: var(--verde-profundo); }
   .card h4 { font-size: 1.1rem; font-weight: 700; margin: 8px 0 6px; line-height: 1.25; }
   .card p { font-size: .86rem; color: var(--ink-2); margin: 0 0 12px; line-height: 1.45; }
   .card-foot { font-size: .74rem; color: var(--ink-3); padding-top: 10px; border-top: 1px dashed var(--line); }
@@ -621,7 +622,7 @@
     <!-- ====================== CORES ====================== -->
     <section class="sg-section" id="cores">
       <h2>Cores</h2>
-      <p class="sg-lead">Paleta inspirada em papel — fundo branco quente, tinta quase-preta, verde IFES como acento institucional e dourado reservado ao percurso. Todos os valores vivem como tokens CSS. Alterne os modos na barra acima para ver os tokens reagirem.</p>
+      <p class="sg-lead">Paleta inspirada em papel — fundo branco quente, tinta quase-preta e a família verde como acento institucional: verde claro reservado à trilha, verde escuro ao percurso (o dourado, antes reservado ao percurso, foi rebaixado a acento decorativo em 2026-06-02). Todos os valores vivem como tokens CSS. Alterne os modos na barra acima para ver os tokens reagirem.</p>
 
       <div class="sg-sub">Superfícies</div>
       <div class="swatch-grid">
@@ -644,7 +645,7 @@
         <div class="swatch"><div class="swatch-chip" style="background:var(--line-2)"></div><div class="swatch-meta"><div class="swatch-name">Linha 2</div><div class="swatch-var">--line-2</div><div class="swatch-hex">#d4cdba</div><div class="swatch-use">Bordas de ênfase</div></div></div>
       </div>
 
-      <div class="sg-sub">Verde IFES — acento institucional (cor da trilha)</div>
+      <div class="sg-sub">Verde IFES — acento institucional (verde claro = cor da trilha)</div>
       <div class="swatch-grid">
         <div class="swatch"><div class="swatch-chip" style="background:var(--accent)"></div><div class="swatch-meta"><div class="swatch-name">Accent</div><div class="swatch-var">--accent</div><div class="swatch-hex">#1f5142</div><div class="swatch-use">Links, botões, identidade da trilha</div></div></div>
         <div class="swatch"><div class="swatch-chip" style="background:var(--accent-2)"></div><div class="swatch-meta"><div class="swatch-name">Accent 2</div><div class="swatch-var">--accent-2</div><div class="swatch-hex">#2d6a4f</div><div class="swatch-use">Hover de verde</div></div></div>
@@ -652,10 +653,17 @@
         <div class="swatch"><div class="swatch-chip" style="background:var(--accent-deep)"></div><div class="swatch-meta"><div class="swatch-name">Accent deep</div><div class="swatch-var">--accent-deep</div><div class="swatch-hex">#143a30</div><div class="swatch-use">Texto sobre fundo verde claro</div></div></div>
       </div>
 
-      <div class="sg-sub">Dourado — reservado ao percurso</div>
+      <div class="sg-sub">Verde escuro — reservado ao percurso</div>
       <div class="swatch-grid">
-        <div class="swatch"><div class="swatch-chip" style="background:var(--gold)"></div><div class="swatch-meta"><div class="swatch-name">Gold</div><div class="swatch-var">--gold</div><div class="swatch-hex">#b08544</div><div class="swatch-use">Borda/acento de percurso</div></div></div>
-        <div class="swatch"><div class="swatch-chip" style="background:var(--gold-soft)"></div><div class="swatch-meta"><div class="swatch-name">Gold soft</div><div class="swatch-var">--gold-soft</div><div class="swatch-hex">#f3e7d0</div><div class="swatch-use">Fundo de chip de percurso</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--verde-profundo)"></div><div class="swatch-meta"><div class="swatch-name">Verde profundo</div><div class="swatch-var">--verde-profundo</div><div class="swatch-hex">#1c4a36</div><div class="swatch-use">Chip/pílula e borda de percurso</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--verde-marca)"></div><div class="swatch-meta"><div class="swatch-name">Verde marca</div><div class="swatch-var">--verde-marca</div><div class="swatch-hex">#2e7355</div><div class="swatch-use">Hero da página de percurso</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--verde-claro)"></div><div class="swatch-meta"><div class="swatch-name">Verde claro</div><div class="swatch-var">--verde-claro</div><div class="swatch-hex">#6ea892</div><div class="swatch-use">Rótulo/ícone sobre verde escuro</div></div></div>
+      </div>
+
+      <div class="sg-sub">Dourado — apenas acento decorativo (não é mais identidade do percurso)</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-chip" style="background:var(--gold)"></div><div class="swatch-meta"><div class="swatch-name">Gold</div><div class="swatch-var">--gold</div><div class="swatch-hex">#b08544</div><div class="swatch-use">Acento decorativo pontual</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:var(--gold-soft)"></div><div class="swatch-meta"><div class="swatch-name">Gold soft</div><div class="swatch-var">--gold-soft</div><div class="swatch-hex">#f3e7d0</div><div class="swatch-use">Gradiente da barra de progresso, badge "Em breve"</div></div></div>
         <div class="swatch"><div class="swatch-chip" style="background:var(--gold-deep)"></div><div class="swatch-meta"><div class="swatch-name">Gold deep</div><div class="swatch-var">--gold-deep</div><div class="swatch-hex">#8c6a36</div><div class="swatch-use">Texto sobre fundo dourado claro</div></div></div>
       </div>
 
@@ -666,7 +674,7 @@
         <div class="swatch"><div class="swatch-chip" style="background:var(--rose)"></div><div class="swatch-meta"><div class="swatch-name">Rose</div><div class="swatch-var">--rose</div><div class="swatch-hex">#b3433a</div><div class="swatch-use">Cuidado / risco</div></div></div>
         <div class="swatch"><div class="swatch-chip" style="background:var(--violet)"></div><div class="swatch-meta"><div class="swatch-name">Violet</div><div class="swatch-var">--violet</div><div class="swatch-hex">#7a5a9b</div><div class="swatch-use">Acessibilidade (cor reservada)</div></div></div>
       </div>
-      <div class="sg-note"><strong>Roxo = acessibilidade.</strong> Cor reservada ao callout de acessibilidade (Decisão 5). Não conflita com verde (trilha/ação), dourado (percurso) nem com as 3 cores de severidade. Comunica a bandeira de inclusão do CEFOR sem depender da escrita do autor.</div>
+      <div class="sg-note"><strong>Roxo = acessibilidade.</strong> Cor reservada ao callout de acessibilidade (Decisão 5). Não conflita com verde claro (trilha/ação), verde escuro (percurso) nem com as 3 cores de severidade. Comunica a bandeira de inclusão do CEFOR sem depender da escrita do autor.</div>
     </section>
 
     <!-- ====================== IDENTIDADE CROMÁTICA ====================== -->
@@ -675,7 +683,7 @@
       <p class="sg-lead">Regra de leitura de cor da Base — cada camada de organização tem (ou não tem) uma cor reservada. Isso permite que o leitor saiba, só pela cor, em que nível está.</p>
       <div class="demo-stack" style="max-width:760px">
         <div class="callout dica"><p class="callout-title">Verde IFES = Trilha + identidade do produto</p><p>Links, botões, foco, box de trilha, kicker de trilha. É a cor de ação e de pertencimento institucional.</p></div>
-        <div class="callout" style="background:var(--gold-soft);border-color:var(--gold)"><p class="callout-title" style="color:var(--gold-deep)">Dourado = Percurso (e somente percurso)</p><p>Chip de percurso, borda de card de percurso, kicker de percurso. Nunca usar dourado para outra coisa — é a assinatura visual da camada de curadoria maior.</p></div>
+        <div class="callout" style="background:var(--accent-soft);border-color:var(--verde-profundo)"><p class="callout-title" style="color:var(--verde-profundo)">Verde escuro = Percurso (e somente percurso)</p><p>Chip de percurso, borda de card de percurso, kicker de percurso. A trilha usa verde claro; o percurso, verde escuro — a hierarquia de nível é claro → escuro dentro da própria família verde. <em>O dourado, antes reservado ao percurso, foi rebaixado a acento decorativo em 2026-06-02.</em></p></div>
         <div class="callout" style="background:var(--bg-2);border-color:var(--line-2)"><p class="callout-title">Neutro = Categoria e Tópico</p><p>Categoria e tópico classificam, não narram. Por isso ficam em tons neutros (tinta/linha), sem cor própria — não competem com trilha e percurso.</p></div>
       </div>
     </section>
@@ -774,7 +782,7 @@
     <!-- ====================== CHIP DE PERCURSO ====================== -->
     <section class="sg-section" id="chip-percurso">
       <h2>Chip de percurso</h2>
-      <p class="sg-lead">Sinaliza que uma trilha faz parte de um percurso. Dourado, com ícone de livro aberto. Aparece no topo do box de trilha expandido.</p>
+      <p class="sg-lead">Sinaliza que uma trilha faz parte de um percurso. Pílula sólida em verde escuro (`--verde-profundo`) com texto branco e ícone. Aparece no topo do box de trilha expandido.</p>
       <a href="#" class="percurso-chip">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 3 6 21"/><polyline points="18 3 18 21"/><line x1="6" y1="8" x2="18" y2="8"/><line x1="6" y1="16" x2="18" y2="16"/></svg>
         Faz parte do percurso <strong>Dominando o Moodle</strong>
@@ -912,7 +920,7 @@
     <!-- ====================== CARDS ====================== -->
     <section class="sg-section" id="cards">
       <h2>Cards</h2>
-      <p class="sg-lead">Previews para listagens. Artigo (neutro), trilha (borda verde), percurso (borda dourada).</p>
+      <p class="sg-lead">Previews para listagens. Artigo (neutro), trilha (borda verde clara), percurso (borda verde escura).</p>
       <div class="demo-grid" style="align-items:stretch">
         <a href="#" class="card">
           <span class="badge tipo">Tutorial</span>

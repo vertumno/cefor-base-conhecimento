@@ -8,6 +8,171 @@
    em cada página (navegação primária não deve depender de JS).
    ============================================================ */
 
+/* ============================================================
+   DESIGN SYSTEM TOKENS & GLOBALS (Centralizado)
+   ============================================================ */
+:root {
+  /* Layout estrutural */
+  --maxw: 1280px;
+  --maxw-read: 760px;
+  --pad-x: 32px;
+
+  /* Surfaces */
+  --bg: #ffffff;
+  --bg-2: #f7f5f1;
+  --bg-3: #efeae0;
+  --paper: #ffffff;
+
+  /* Ink */
+  --ink: #14110d;
+  --ink-2: #4a4439;
+  --ink-3: #8a8273;
+
+  /* Lines */
+  --line: #e7e3d8;
+  --line-2: #d4cdba;
+
+  /* Marca — verde em 4 tons */
+  --verde-profundo: #1c4a36;
+  --verde-marca:    #2e7355;
+  --verde-claro:    #6ea892;
+  --verde-palido:   #e6efe9;
+  --verde-on-dark:  #d4ece0;
+
+  /* Acento quente */
+  --gold-soft: #f3e7d0;
+
+  /* Família dos artigos — 7 principais */
+  --art-roxo:    #9c6dcb;
+  --art-azul:    #5d9bd8;
+  --art-ambar:   #e8b53a;
+  --art-magenta: #c46aac;
+  --art-coral:   #ed8366;
+  --art-teal:    #5ea9b2;
+  --art-anil:    #7b81d7;
+
+  /* Atribuição categoria → cor da família */
+  --cat-ferramentas:    var(--art-azul);
+  --cat-gestao-moodle:  var(--art-teal);
+  --cat-pedagogia:      var(--art-coral);
+  --cat-acessibilidade: var(--art-roxo);
+  --cat-conduta:        var(--art-ambar);
+  --cat-identidade:     var(--art-magenta);
+
+  /* Acentos de protótipos */
+  --accent:       #1f5142;
+  --accent-2:     #2d6a4f;
+  --accent-deep:  #143a30;
+  --accent-soft:  #e3ecdf;
+  --gold:         #b08544;
+  --gold-deep:    #8c6a36;
+  --rose:         #b3433a;
+  --rose-soft:    #f4dcd7;
+  --sun:          #c98a1e;
+  --sun-soft:     #f7e6c4;
+  --sky:          #2c5e8f;
+  --sky-soft:     #d9e7f3;
+
+  /* Tipografia */
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Radii */
+  --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-xl: 24px;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgba(20,17,13,.04);
+  --shadow-md: 0 4px 12px rgba(20,17,13,.06), 0 2px 4px rgba(20,17,13,.04);
+  --shadow-lg: 0 24px 48px -12px rgba(20,17,13,.12);
+
+  --font-scale: 1;
+}
+
+[data-theme="dark"] {
+  --bg: #0e0c0a;
+  --bg-2: #16130f;
+  --bg-3: #1e1a14;
+  --paper: #1a1612;
+  --ink: #f4f1ea;
+  --ink-2: #c9c2b3;
+  --ink-3: #8a8273;
+  --line: #2a251e;
+  --line-2: #3a342a;
+  --verde-profundo: #2e7355;
+  --verde-marca:    #6cb89a;
+  --verde-claro:    #9ed1bd;
+  --verde-palido:   #1f3329;
+  --accent:         #6cb89a;
+  --accent-2:       #87cdb0;
+  --accent-deep:    #143a30;
+  --accent-soft:    #19251f;
+  --gold-soft:      #3d3424;
+  --gold-deep:      #d9a955;
+  --rose-soft:      #2e1a17;
+  --sun-soft:       #2e2310;
+  --sky-soft:       #16222e;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.25);
+  --shadow-lg: 0 24px 48px -12px rgba(0,0,0,.4);
+}
+
+/* ---------- RESET & GLOBAL STYLES ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: calc(16px * var(--font-scale)); }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--sans); font-size: 1rem; line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--verde-marca); outline-offset: 3px; border-radius: 4px; }
+img, svg { max-width: 100%; display: block; }
+
+/* Skip Links de Acessibilidade */
+.skip, .skip-link {
+  position: absolute; left: -9999px; top: 8px;
+  background: var(--verde-marca); color: #fff;
+  padding: 8px 12px; border-radius: var(--r-sm); z-index: 100; font-weight: 600;
+  transition: none;
+}
+.skip:focus, .skip-link:focus { left: 8px; }
+
+/* ---------- DESIGN SYSTEM GRIDS & RESPONSIVENESS ---------- */
+.card-grid, .trilha-grid, .trilhas-grid, .percurso-grid, .related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.card-grid, .related-grid { gap: 24px; }
+.trilha-grid, .trilhas-grid, .percurso-grid { gap: 22px; }
+
+@media (max-width: 920px) {
+  .card-grid, .trilha-grid, .trilhas-grid, .percurso-grid, .related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .card-grid, .trilha-grid, .trilhas-grid, .percurso-grid, .related-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Grid dentro da área principal (ao lado da sidebar de filtros) */
+.content-main .card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 920px) {
+  .content-main .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .content-main .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- HEADER ---------- */
 .site-header {
   position: sticky; top: 0; z-index: 50;

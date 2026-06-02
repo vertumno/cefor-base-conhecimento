@@ -886,20 +886,22 @@ Estrutura confirmada do rodapé:
 
 **Resolução (2026-05-19):** ✅ **APROVADO — Modelo de 3 superfícies**
 
-**Referência canônica:** `stages/02-design-system/drafts/prototipos-paginas/exploracao-pagina-percurso.html`
+**Referência canônica:** `stages/02-design-system/drafts/prototipos-paginas/base-percurso.html`
+
+> **⚠️ Revisão 2026-06-02 — Dourado abandonado.** A cor reservada do percurso deixa de ser o dourado e passa a ser o **verde escuro** (`--verde-profundo`), mantendo o percurso dentro da própria família verde da marca. A diferenciação de nível agora é **claro → escuro**: trilha em verde claro (`--accent` / `--verde-claro`), percurso em verde escuro (`--verde-profundo` / `--verde-marca`). Categoria/Tópico seguem neutros. Motivo: o dourado destoava da identidade cromática e, na versão "sutil" do chip, acabou virando verde igual ao da trilha — gerando confusão de níveis. O verde escuro resolve a hierarquia sem introduzir uma cor estranha à marca. Os tokens `--gold*` permanecem **apenas** para usos decorativos pontuais (gradiente da barra de progresso, filetes de pullquote), nunca como identidade do percurso. As menções a "dourado" abaixo devem ser lidas como **verde escuro**.
 
 ### Hierarquia de cores
 
 | Camada | Cor reservada | Aplicação |
 |---|---|---|
-| **Percurso** | **Dourado** (`--gold` / `--gold-soft` / `--gold-deep`) | Kicker em pílula, chip de atribuição, borda lateral de cards |
-| **Trilha** | **Verde IFES** (`--accent` / `--accent-soft`) | Border/hover do box de trilha, links em hover, barra de progresso |
+| **Percurso** | **Verde escuro** (`--verde-profundo` / `--verde-marca`) | Kicker/chip em pílula sólida, hero da página, borda lateral de cards |
+| **Trilha** | **Verde claro** (`--accent` / `--verde-claro` / `--accent-soft`) | Border/hover do box de trilha, links em hover, barra de progresso |
 | **Categoria / Tópico** | Neutro (`--ink-2` / `--ink-3`) | Sem cor própria — são classificação, não curadoria |
 
 ### Superfície 1 — Página dedicada do percurso
 
 Estrutura obrigatória:
-1. **Hero narrativo:** kicker "Percurso" (pílula dourada com ícone) → H1 → subtítulo (1 linha) → 2-3 parágrafos de descrição pedagógica
+1. **Hero narrativo:** kicker "Percurso" (pílula em verde escuro com ícone) → H1 → subtítulo (1 linha) → 2-3 parágrafos de descrição pedagógica
 2. **Stats card lateral:** N trilhas · M artigos · K complementares · ~Xh leitura. **Sem progresso pessoal.** Texto de rodapé explicita "Sem ordem obrigatória, sem certificado, sem rastreamento"
 3. **"Para quem é este percurso"** + **"O que você vai dominar"** (duas colunas pedagógicas)
 4. **"Como percorrer este conjunto"** — bloco em verde claro com **3 sugestões de ponto de partida por perfil** (resolve a ausência de ordem fixa sem forçá-la)
@@ -914,24 +916,24 @@ Decisões propositais:
 
 ### Superfície 2 — Chip de percurso dentro do box de trilha
 
-Quando uma trilha pertence a um percurso, aparece um chip dourado no topo do acordeão expandido (Decisão 30):
+Quando uma trilha pertence a um percurso, aparece um chip em verde escuro no topo do acordeão expandido (Decisão 30):
 
 > 📖 Faz parte do percurso **Dominando o Moodle**
 
 - Posição: topo do conteúdo expandido do item do acordeão, antes da barra de progresso
-- Cor: `--gold-soft` de fundo, `--gold-deep` de texto, ícone de "livro aberto"
+- Cor: pílula sólida em `--verde-profundo`, texto branco, rótulo/ícone em `--verde-claro` (preenchimento sólido contrasta com a trilha, que fica em verde claro só no texto)
 - Comportamento: clicável, leva à página dedicada do percurso
 - Razão para ali: é onde o leitor está pensando "onde estou?". Atribui a trilha ao percurso sem ocupar espaço quando o acordeão está colapsado
 
 ### Superfície 3 — Página de listagem `/percursos`
 
 - Grid de 3 colunas (responsivo)
-- Cada card: borda lateral dourada de 4px, kicker mini dourado ("Percurso"), H4 do nome, descrição curta (1-2 linhas), footer com `N trilhas · M artigos · ~Xh`
+- Cada card: borda lateral verde escura de 4px, kicker mini em verde escuro ("Percurso"), H4 do nome, descrição curta (1-2 linhas), footer com `N trilhas · M artigos · ~Xh`
 - Diferenciação visual clara entre percursos e listagens de artigos/categorias (que ficam sóbrias)
 
 **Impacto:**
 - Documentar todas as 3 superfícies na Camada 4.5 (Padrões de Composição)
-- Implementar dourado como cor reservada no design tokens da Fase 2
+- Implementar o **verde escuro** (`--verde-profundo`) como cor reservada do percurso no design tokens da Fase 2 (o dourado foi descartado para essa função — ver revisão 2026-06-02 acima)
 - Adicionar chip de percurso no `prototipo-artigo.html` (referência canônica)
 
 ---
@@ -1013,6 +1015,39 @@ Quando uma trilha pertence a um percurso, aparece um chip dourado no topo do aco
 
 ---
 
+## Decisão 35 — Faixa de leitura centralizada (layout do artigo)
+
+**O que decidir:** O layout do artigo usa uma coluna de texto **elástica** (`1fr`, que estica além da medida de leitura) ou uma **faixa de largura fixa centralizada**?
+
+🔵 **Contexto:** O `base-artigo.html` usava `grid-template-columns: minmax(0,1fr) 300px`, dando à coluna do texto ~852px enquanto o texto era travado em `max-width: 700px` e alinhado à esquerda. Sobravam ~152px de vazio morto *dentro* da coluna, somados ao gap de 64px → um "buraco" de ~216px entre o fim do texto e a sidebar. O cabeçalho usava grade diferente (`1fr / 220px / gap 56`), deixando a régua do meta ~80px fora do eixo do índice abaixo. Resultado: desalinhamento entre título e corpo + vão visual desconfortável.
+
+**Resolução (2026-06-02):** ✅ **APROVADO** (direção de Elton) — refinamento de implementação do DS (Fase 2).
+
+- O artigo passa a usar uma **faixa de leitura centralizada**: texto + sidebar formam um bloco único de largura fixa, centralizado via `justify-content: center`. A sobra de largura vira **margem simétrica** nas bordas — não um vão entre as colunas.
+- Medidas em tokens CSS de eixo único (mude `--measure` e tudo acompanha):
+
+  | Token | Valor | Papel |
+  |---|---|---|
+  | `--measure` | `660px` | coluna de texto (~70–75 caracteres) |
+  | `--rail` | `300px` | sidebar / índice |
+  | `--band-gap` | `72px` | gutter entre texto e sidebar |
+
+- Cabeçalho (`.masthead-inner`), corpo (`.shell`), barra de ações (`.article-actions`) e painel de Libras (`.libras-accordion`) compartilham **o mesmo eixo** — alinhados à esquerda na borda do texto/título e à direita na borda da sidebar.
+- A medida de leitura caiu de **700px → 660px** (mais perto da faixa ideal de 65–75 caracteres).
+
+**Razões:**
+- **Elimina o vão** entre texto e sidebar sem precisar engordar nem "puxar" a sidebar (o que desequilibraria a direita).
+- **Alinha** cabeçalho e corpo no mesmo eixo vertical (régua do meta sobre o card do índice).
+- **Leiturabilidade preservada:** a coluna nunca estica além da medida confortável.
+
+**Impacto:**
+- `base-artigo.html` atualizado (tokens `--measure`/`--rail`/`--band-gap`/`--reading-band`; `.shell`, `.masthead-inner`, `.prose`, `.article-actions`, `.libras-accordion`).
+- `output/design.md` §Layout atualizado com as medidas e o padrão.
+- **Não será propagado** aos demais protótipos de página (`base-trilha`, `base-percurso`, `base-inicio-v5`) — decisão de Elton (2026-06-02). A faixa de leitura aplica-se especificamente ao layout do artigo; o tema WordPress (Fase 3) é o ponto de consolidação dos tokens.
+- Fase 3 (WordPress): replicar os tokens da faixa no tema.
+
+---
+
 ## Decisões ainda em aberto — Refinamento 2026-05-19
 
 | Tema | Pergunta em aberto | Onde será fechado |
@@ -1056,10 +1091,11 @@ Quando uma trilha pertence a um percurso, aparece um chip dourado no topo do aco
 | **28** | **Box de trilha sempre visível** *(Fase 1 — 2026-05-19)* | ✅ **Aprovado** | Vínculo **estrutural** (CMS), não comportamental (referrer). Aparece sempre que o artigo pertence a uma trilha |
 | **29** | **V1 sem rastreamento de progresso pessoal** *(Fase 1 — 2026-05-19)* | ✅ **Aprovado** | Mostrar apenas **posição estrutural** ("Artigo X de Y"). Sem localStorage. Progresso pessoal fica para V2 com login |
 | **30** | **Apresentação de múltiplas trilhas: acordeão** *(Fase 1 — 2026-05-19)* | ✅ **Aprovado** | Box "Trilhas deste artigo" usa **acordeão (A.2)**. Posição "X/Y" visível mesmo colapsado. Primeira expandida por padrão. Múltiplas abertas simultaneamente permitidas |
-| **31** | **Apresentação visual do percurso** *(Fase 1 — 2026-05-19)* | ✅ **Aprovado** | **Dourado é cor reservada do percurso.** 3 superfícies: página dedicada (hero + stats + "como percorrer" + cards de trilhas com 5 primeiros artigos) · chip dourado no acordeão de trilha · página `/percursos` (grid com borda dourada). Referência: `drafts/exploracao-pagina-percurso.html` |
+| **31** | **Apresentação visual do percurso** *(Fase 1 — 2026-05-19; cor revisada 2026-06-02)* | ✅ **Aprovado** | **Verde escuro (`--verde-profundo`) é a cor reservada do percurso** — dourado abandonado em 2026-06-02. 3 superfícies: página dedicada (hero + stats + "como percorrer" + cards de trilhas com 5 primeiros artigos) · chip em verde escuro no acordeão de trilha · página `/percursos` (grid com borda verde escura). Referência: `drafts/prototipos-paginas/base-percurso.html` |
 | **32** | **Remoção do prev/next do rodapé do artigo** *(Fase 1 — 2026-05-19)* | ✅ **Aprovado** | Cards `.trilha-nav-card.prev/next` **removidos.** Navegação entre artigos da trilha passa a ser exclusiva do acordeão multi-trilha na sidebar |
 | **33** | **Breadcrumb taxonômico** *(Fase 1 — 2026-06-02)* | ✅ **Aprovado** | Breadcrumb reflete a **árvore de classificação** (`Início › Categoria › Artigo`), cada ancestral é página real; nunca a jornada. Trilha/percurso só na casca. Fonte: `arquitetura-informacao.md` |
 | **34** | **URL plana do artigo** *(Fase 1 — 2026-06-02)* | ✅ **Aprovado** | Categoria **sai da URL**. Artigo = `/{slug}` na raiz (sem categoria, sem `/artigos/`), com slugs reservados. Categoria fica só em breadcrumb + página-índice. Recategorizar não quebra o link |
+| **35** | **Faixa de leitura centralizada** *(Fase 2 — 2026-06-02)* | ✅ **Aprovado** | Texto + sidebar = bloco fixo centralizado; sobra vira margem simétrica (sem vão). Tokens `--measure: 660px` / `--rail: 300px` / `--band-gap: 72px`, eixo único para cabeçalho, corpo, ações e Libras. Medida 700 → 660px |
 
 ---
 
@@ -1082,7 +1118,7 @@ A **Fase 0 está oficialmente concluída**. A **Fase 1 — Fundações** está e
 - ✅ Box de trilha sempre visível por vínculo estrutural (Decisão 28)
 - ✅ V1 sem rastreamento pessoal — apenas posição estrutural (Decisão 29)
 - ✅ Apresentação de múltiplas trilhas: **acordeão** escolhido (Decisão 30 — referência `drafts/exploracao-multiplas-trilhas.html`)
-- ✅ Apresentação visual do percurso: dourado como cor reservada, 3 superfícies (Decisão 31 — referência `drafts/exploracao-pagina-percurso.html`)
+- ✅ Apresentação visual do percurso: verde escuro (`--verde-profundo`) como cor reservada — dourado abandonado em 2026-06-02 —, 3 superfícies (Decisão 31 — referência `drafts/prototipos-paginas/base-percurso.html`)
 - ✅ Prev/next no rodapé do artigo: **removido** (Decisão 32 — navegação fica exclusivamente no acordeão)
 - ⏳ Validação das Decisões 25-32 com Rute e Marquito (foram tomadas em sessão Elton + Claude)
 

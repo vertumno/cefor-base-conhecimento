@@ -98,7 +98,7 @@ As decisões de layout e interações visuais estão materializadas nos template
 * **[base-artigo.html](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/base-artigo.html):** Interface do artigo estruturada (título, subtítulo, bloco multimodal, sidebar sticky e rodapé ABNT).
 * **[base-inicio.html](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/base-inicio.html):** Mosaico integrado de busca indexada, catalogação e destaque de percursos.
 * **[base-trilha.html](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/base-trilha.html):** Fluxo sequencial e visual atômico de uma jornada de aprendizado.
-* **[base-percurso.html](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/base-percurso.html):** Hub educacional premium unificando trilhas pedagógicas com a identidade cromática dourada reservada.
+* **[base-percurso.html](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/base-percurso.html):** Hub educacional premium unificando trilhas pedagógicas com a identidade cromática verde escura reservada ao percurso.
 
 *Nota: Os arquivos anteriores de pesquisa visual foram catalogados de forma organizada no subdiretório [`historico/`](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/historico/).*
 

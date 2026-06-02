@@ -338,7 +338,17 @@ O **subtítulo** é tipograficamente distinto de propósito: mesma família, pes
 
 ## Layout
 
-O grid central é a **coluna de leitura** flanqueada por uma sidebar de navegação contextual. A largura da coluna de texto segue a recomendação de leitura técnica (~65–72ch). Espaçamento na escala de 4px — `md (16px)` é o ritmo interno de componentes, `lg (24px)` o gutter entre blocos, `2xl (48px)`/`3xl (64px)` separam seções maiores.
+O grid central é a **faixa de leitura**: a coluna de texto e a sidebar de navegação contextual formam um **bloco único centralizado** na página — a sobra de largura vira margem simétrica nas bordas, **nunca** um vão entre texto e sidebar (Decisão 35). A coluna de texto segue a recomendação de leitura técnica (~65–72ch). Espaçamento na escala de 4px — `md (16px)` é o ritmo interno de componentes, `lg (24px)` o gutter entre blocos, `2xl (48px)`/`3xl (64px)` separam seções maiores.
+
+**Medidas da faixa de leitura** — tokens CSS de um eixo único, compartilhados por cabeçalho, corpo, barra de ações e painel de Libras. Mude `--measure` e todos acompanham:
+
+| Token | Valor | Papel |
+|---|---|---|
+| `--measure` | `660px` | largura da coluna de texto (~70–75 caracteres) |
+| `--rail` | `300px` | largura da sidebar / índice |
+| `--band-gap` | `72px` | gutter entre texto e sidebar |
+
+A faixa é `--measure + --band-gap + --rail`, com `justify-content: center` no grid. Cabeçalho (`.masthead-inner`), corpo (`.shell`), barra de ações (`.article-actions`) e painel de Libras compartilham o **mesmo eixo** — alinhados à esquerda na borda do texto/título e à direita na borda da sidebar. Referência canônica: `base-artigo.html`.
 
 **Sidebar do artigo** abriga, sempre presentes quando aplicáveis:
 - **Índice "Neste artigo"** com scroll-tracking *sticky* — sempre visível, seção atual destacada (Decisão 4). Obrigatório em artigos com 4+ seções.
@@ -348,7 +358,7 @@ O grid central é a **coluna de leitura** flanqueada por uma sidebar de navegaç
 
 | Breakpoint | Comportamento |
 |---|---|
-| `mobile` ≤ 600px | Sidebar colapsa; índice vira drawer/acordeão recolhível; barra de ações vira rodapé fixo ou menu; tabelas com scroll horizontal; código com scroll-x |
+| `mobile` ≤ 600px | Sidebar colapsa; **conteúdo do artigo precede a sidebar** na ordem de leitura (índice/trilha vêm *depois* do texto, nunca antes — o leitor não deve rolar o índice inteiro para alcançar o conteúdo); índice vira drawer/acordeão recolhível; barra de ações vira rodapé fixo ou menu; tabelas com scroll horizontal; código com scroll-x |
 | `tablet` ≤ 860px | Sidebar pode recolher; grid de cards cai para 1–2 colunas |
 | `desktop` ≥ 1024px | Layout pleno: coluna de leitura + sidebar sticky |
 
@@ -375,6 +385,20 @@ Quatro raios, escalando com o tamanho do elemento, mais a pílula:
 - `full 99px` — pílulas: kicker, badge, chip, toggles, botões de ação circulares
 
 Ícones são lineares (stroke), `stroke-width` ~2–2.4, `stroke-linecap/linejoin: round`, herdando `currentColor`. **Sem emoji na UI institucional** (Decisão 12) — feedback e ações usam ícone + texto, nunca carinhas.
+
+## Movimento e impressão
+
+Dois comportamentos transversais, válidos em todos os templates (referência: `base-artigo.html`).
+
+### Movimento reduzido (`prefers-reduced-motion`)
+Acessibilidade — WCAG 2.2 (2.3.3 Animação a partir de interações) + e-MAG. Quando o usuário sinaliza preferência por menos movimento no sistema operacional, a interface **zera animações e transições** e troca rolagem suave por instantânea: `scroll-behavior: auto`, `transition`/`animation` reduzidas a ~0, e os scrolls programáticos (`scrollIntoView`, âncoras do índice, abertura do acordeão de Libras) saltam sem animar. A barra de progresso de leitura para de animar a largura. Implementado por `@media (prefers-reduced-motion: reduce)` no CSS + guarda `matchMedia` no JS (a preferência precisa valer também para o scroll disparado por script).
+
+### Impressão (`@media print`)
+Tutoriais são feitos para serem impressos / salvos em PDF (formação em serviço). A folha de impressão:
+- **Esconde a casca**: header, breadcrumb, barra de ações multimodal, acordeão de Libras, sidebar (índice + trilha), emblema de categoria, ações de compartilhar, rodapé, widget de acessibilidade e VLibras.
+- **Revela o que é informativo**: audiodescrições de figura/infográfico normalmente colapsadas passam a imprimir (a informação não pode depender de interação no papel).
+- **Preserva referências**: a URL de links externos é exposta após o texto do link (`a[href^="http"]::after`).
+- **Protege a leitura**: texto preto sobre branco, coluna em largura plena, e `break-inside: avoid` em callouts, figuras, blocos de código, pullquote, cards de relacionados e bio do autor.
 
 ## Components
 
@@ -454,8 +478,11 @@ Flutuante na lateral, acessível por teclado: A-/A+ (escala de fonte via `--font
 - Separe cards por **respiro e tipografia**; reserve sombra para o hover.
 - Diga "**Artigo** X de Y" dentro de trilha; "passo" só para itens de percurso.
 - Garanta foco de teclado visível, contraste AA e audiodescrição visível em imagens informativas.
-- Mantenha a coluna de leitura em ~65–72ch e o corpo a 16px / line-height 1.65.
+- Mantenha a coluna de leitura em ~65–72ch (`--measure: 660px`) e o corpo a 16px / line-height 1.65; texto e sidebar formam uma faixa centralizada, com a sobra nas margens (Decisão 35).
 - Para texto sobre cor de artigo, use branco a partir de peso 600 ou tamanho ≥18px. Para texto preto sobre cor, prefira o matiz só como contorno/barra.
+- Respeite `prefers-reduced-motion`: ao detectar a preferência, desligue transições/animações e troque rolagens suaves por instantâneas — inclusive as disparadas por JS.
+- Forneça folha de `@media print` em páginas de conteúdo: esconda a casca, revele audiodescrições e exponha URLs de links externos.
+- No empilhamento mobile, coloque o **conteúdo antes da sidebar** (índice/trilha após o texto) e resete `grid-column`/`grid-row` inline que assumam o layout de duas colunas.
 
 **Não faça**
 - Não use **cor da família dos artigos para UI funcional** (botão, link, foco, ícone de sistema) — isso é território exclusivo do verde institucional. Cor de artigo é decorativa, não acionável.
@@ -468,6 +495,8 @@ Flutuante na lateral, acessível por teclado: A-/A+ (escala de fonte via `--font
 - Não mostre progresso *pessoal* nem use localStorage na V1 — só posição estrutural (Decisão 29).
 - Não delimite cards com contorno forte ou sombra pesada (Decisão 7).
 - Não use bege/cinza no fundo geral — o fundo é branco quente (Decisão 7).
+- Não anime quando o usuário pediu movimento reduzido, nem deixe a casca (header, sidebar, barra de ações) sair na impressão.
+- Não deixe o índice/trilha empilhar **acima** do texto no mobile — o conteúdo vem primeiro.
 
 ---
 

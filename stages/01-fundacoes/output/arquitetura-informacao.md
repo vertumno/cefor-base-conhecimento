@@ -155,24 +155,23 @@ A camada de jornada tem suas próprias superfícies — fortes e corretas para o
 |---|---|---|
 | **Acordeão "Trilhas deste artigo"** | Sidebar do artigo, sempre visível quando aplicável; posição `X/Y` mesmo colapsado; múltiplas trilhas listadas | 28, 29, 30 |
 | **Página de Trilha** | `/trilhas/{slug}` — lista ordenada dos artigos | 18 |
-| **Página de Percurso** | `/percursos/{slug}` — dourado, hero + "como percorrer" + 3 rotas de entrada por perfil | 27, 31 |
-| **Chip dourado de percurso** | No topo do acordeão de trilha, quando a trilha integra um percurso | 31 |
+| **Página de Percurso** | `/percursos/{slug}` — verde escuro, hero + "como percorrer" + 3 rotas de entrada por perfil | 27, 31 |
+| **Chip de percurso (verde escuro)** | No topo do acordeão de trilha, quando a trilha integra um percurso | 31 |
 
 Breadcrumb e acordeão são **complementares**: o breadcrumb responde "onde estou na classificação"; o acordeão responde "de que jornadas isto faz parte". Cada um na sua camada.
 
 ---
 
-## 8. Inconsistências atuais nos protótipos (a corrigir — deferido)
+## 8. Estado dos protótipos
 
-Registradas aqui para rastreio; a correção dos protótipos **não foi executada** nesta sessão (escopo = documentar).
-
-| Arquivo | Inconsistência | Correção esperada |
+| Arquivo | Item | Estado |
 |---|---|---|
-| `base-artigo.html:1279-1290` | Breadcrumb mostra `Início › Percursos › Trilha › Artigo` (jornada) | Trocar por `Início › {Categoria} › {Título}` |
-| `base-artigo.html:1315` | Comentário "Categoria removida — já vive no breadcrumb", mas o breadcrumb não a continha | Restaurar a Categoria no breadcrumb (ela passa a viver lá de fato) |
-| `base-trilha.html:398-405` | `Início › Trilhas › {Nome}` | ✅ já correto |
-| `base-percurso.html:310-317` | `Início › Percursos › {Nome}` | ✅ já correto |
-| `shell.css` / `base-artigo.html` | `aria-label="Trilha de navegação"` | Rever para `aria-label="Você está aqui"` (evita colisão com o conceito Trilha) |
+| `base-artigo.html` (breadcrumb) | Mostrava `Início › Percursos › Trilha › Artigo` (jornada) | ✅ **Corrigido 2026-06-02** → `Início › {Categoria} › {Título}`, com `aria-current="page"` |
+| `base-artigo.html` (masthead-meta) | Categoria duplicada no painel de meta | ✅ **Corrigido 2026-06-02** → removida do meta (vive no breadcrumb); emblema de categoria mantido |
+| `base-artigo.html` (a11y) | `aria-label="Trilha de navegação"` | ✅ **Corrigido 2026-06-02** → `aria-label="Você está aqui"` |
+| `base-trilha.html:398-405` | `Início › Trilhas › {Nome}` | ✅ já correto (mas `aria-label` ainda "Trilha de navegação" — ⏳ rever) |
+| `base-percurso.html:310-317` | `Início › Percursos › {Nome}` | ✅ já correto (mas `aria-label` ainda "Trilha de navegação" — ⏳ rever) |
+| Página-índice de categoria `/{categoria}/` | Destino do segmento de categoria no breadcrumb (hoje link placeholder `#categoria-…`) | ⏳ a construir (Fase 2) |
 
 ---
 
@@ -199,7 +198,7 @@ Registradas aqui para rastreio; a correção dos protótipos **não foi executad
 | 27 | Percurso é agregação (narra, não classifica) | §2, §7 |
 | 28, 29 | Vínculo estrutural sem referrer; V1 sem progresso pessoal | §6, §7 |
 | 30 | Acordeão multi-trilha | §2, §7 |
-| 31 | Superfícies do percurso (dourado) | §7 |
+| 31 | Superfícies do percurso (verde escuro — dourado abandonado 2026-06-02) | §7 |
 | **33** | **Breadcrumb reflete a árvore de classificação** | §5, §6 |
 | **34** | **URL plana do artigo (categoria fora da URL)** | §2, §3, §4, §5 |
 

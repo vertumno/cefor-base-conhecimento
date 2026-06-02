@@ -254,18 +254,18 @@ A voz da sequência ("próximo passo", "você está na metade") vive na casca (b
 |---|---|
 | **4.1 Artigo encadeável** | Estrutura mínima: Cabeçalho → Entrada (pré-req + objetivo) → Miolo → Saída (o que sabe + próximos passos plurais) → Rodapé |
 | **4.2 Box de trilha multi-trilha** | Acordeão na sidebar; aparece sempre que o artigo pertence a ≥1 trilha; "Artigo X de Y" estrutural |
-| **4.3 Chip de atribuição a percurso** | Chip dourado no topo da trilha expandida, leva à página do percurso |
+| **4.3 Chip de atribuição a percurso** | Chip em verde escuro no topo da trilha expandida, leva à página do percurso |
 | **4.4 Página de trilha** | Hero verde + stats com CTA "Começar pelo primeiro" + lista ordenada de artigos + resultado esperado |
 | **4.4.1 Item de artigo na lista da trilha** | Número em círculo, card com tipo/tempo, stream vertical, checkpoints opcionais |
-| **4.5 Página de percurso** | Hero dourado + stats sem progresso + "como percorrer" (3 rotas por perfil) + cards de trilha |
-| **4.6 Card de trilha em percurso** | Borda verde, mostra os 5 primeiros artigos |
-| **4.7 Card de percurso em listagem** | Borda dourada de 4px em `/percursos` |
+| **4.5 Página de percurso** | Hero verde escuro + stats sem progresso + "como percorrer" (3 rotas por perfil) + cards de trilha |
+| **4.6 Card de trilha em percurso** | Borda verde claro, mostra os 5 primeiros artigos |
+| **4.7 Card de percurso em listagem** | Borda verde escura de 4px em `/percursos` |
 
 ### Cardinalidade e cores reservadas
 
-- **Trilha:** mín 3 artigos, sem máximo (alerta de saúde >10). **Verde IFES** (`--accent`).
+- **Trilha:** mín 3 artigos, sem máximo (alerta de saúde >10). **Verde claro** (`--accent`).
 - **Artigo em trilhas:** 0 a N (alerta amarelo em 4-5, vermelho em ≥6).
-- **Percurso:** agregação de trilhas + artigos soltos; sem ordem fixa. **Dourado** (`--gold`).
+- **Percurso:** agregação de trilhas + artigos soltos; sem ordem fixa. **Verde escuro** (`--verde-profundo`) — dourado abandonado em 2026-06-02.
 - **Categoria/Tópico:** neutros — classificam, não narram.
 
 ---
@@ -662,14 +662,14 @@ Múltiplos autores seguem norma ABNT.
 
 | Componente | Padrão 4.5 | Cor |
 |---|---|---|
-| `BoxTrilhaAcordeao` (sidebar) | 4.2 | Verde IFES |
-| `ChipPercurso` | 4.3 | Dourado |
-| Página de trilha (`/trilhas/{slug}`) | 4.4 / 4.4.1 | Verde |
-| Página de percurso (`/percursos/{slug}`) | 4.5 | Dourado |
-| Card de trilha em percurso | 4.6 | Borda verde |
-| Listagem `/percursos` | 4.7 | Borda dourada 4px |
+| `BoxTrilhaAcordeao` (sidebar) | 4.2 | Verde claro (`--accent`) |
+| `ChipPercurso` | 4.3 | Verde escuro (`--verde-profundo`) |
+| Página de trilha (`/trilhas/{slug}`) | 4.4 / 4.4.1 | Verde claro |
+| Página de percurso (`/percursos/{slug}`) | 4.5 | Verde escuro |
+| Card de trilha em percurso | 4.6 | Borda verde claro |
+| Listagem `/percursos` | 4.7 | Borda verde escura 4px |
 
-> Tokens já definidos no `prototipo-artigo.html`: `--gold #b08544`, `--gold-soft #f3e7d0`, `--gold-deep #8c6a36`, `--accent #1f5142` (verde IFES), `--accent-soft #e3ecdf`. Detalhamento dos tokens visuais é responsabilidade do Design System (Fase 2).
+> Tokens de cor: percurso = **verde escuro** `--verde-profundo #1c4a36` / `--verde-marca #2e7355`; trilha = **verde claro** `--accent #1f5142` / `--verde-claro #6ea892` / `--accent-soft #e3ecdf`. O dourado (`--gold*`) foi abandonado como identidade do percurso em 2026-06-02 (permanece só para usos decorativos pontuais). Detalhamento dos tokens visuais é responsabilidade do Design System (Fase 2).
 
 ---
 

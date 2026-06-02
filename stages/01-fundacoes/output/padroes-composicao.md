@@ -151,14 +151,14 @@ Sinaliza, dentro do box de trilha, que aquela trilha faz parte de um percurso.
 |---|---|
 | **Quando usar** | Toda trilha que pertence a pelo menos um percurso |
 | **Posição** | Topo do conteúdo expandido do item da trilha (acima da barra de progresso) |
-| **Cor** | Fundo `--gold-soft`, texto `--gold-deep`, ícone de "livro aberto" |
+| **Cor** | Pílula sólida em `--verde-profundo` (verde escuro), texto branco, rótulo/ícone em `--verde-claro` — dourado abandonado em 2026-06-02 |
 | **Comportamento** | Clicável; leva à página dedicada do percurso |
 | **Texto-padrão** | "Faz parte do percurso **{Nome do Percurso}**" |
 
 **Quando a trilha pertence a múltiplos percursos** (raro, mas possível): mostrar chips empilhados em ordem editorial. Mais de 3 percursos é sinal de alerta — provavelmente a trilha foi mal classificada.
 
 **Decisão de origem:** Decisão 31
-**Referência:** `drafts/exploracao-pagina-percurso.html` (Parte 2, mini-demo), `prototipo-artigo.html` (chip aplicado)
+**Referência:** `drafts/prototipos-paginas/base-percurso.html`, `drafts/prototipos-paginas/base-artigo.html` (chip aplicado)
 
 ---
 
@@ -172,11 +172,11 @@ Sinaliza, dentro do box de trilha, que aquela trilha faz parte de um percurso.
 **Estrutura obrigatória** (na ordem):
 
 1. **Hero narrativo**
-   - Kicker "Trilha" em pílula **verde** (`--accent-soft`) com ícone — diferencia visualmente do kicker dourado do percurso
+   - Kicker "Trilha" em pílula **verde claro** (`--accent-soft`) com ícone — diferencia visualmente do kicker em verde escuro do percurso
    - H1 do nome da trilha
    - Subtítulo de uma linha
    - 2-3 parágrafos de descrição pedagógica explicando o que a trilha cobre, para quem é e por que a ordem dos artigos importa
-   - **Chip dourado de percurso** (Padrão 4.3) se a trilha pertencer a um ou mais percursos
+   - **Chip de percurso em verde escuro** (Padrão 4.3) se a trilha pertencer a um ou mais percursos
 2. **Stats card** (lateral no desktop)
    - N artigos em sequência, ~Xh leitura, N pré-requisitos, N percursos vinculados
    - **CTA "Começar pelo primeiro artigo"** — único caso em todas as superfícies onde um CTA "começar" faz sentido, porque na trilha a ordem importa
@@ -193,14 +193,14 @@ Sinaliza, dentro do box de trilha, que aquela trilha faz parte de um percurso.
 8. **Trilhas relacionadas** — grid de 3 cards (mesmo percurso ou outros)
 9. **Sobre esta trilha** (rodapé editorial)
    - Curadoria, datas, política de revisão
-   - Box destacado dourado: "Pertence ao percurso X" com link
+   - Box destacado em verde escuro: "Pertence ao percurso X" com link
 
 **Decisões propositais:**
 
 - **CTA "Começar pelo primeiro artigo" existe** (diferente da página de percurso, que não tem). Justificativa: na trilha a ordem importa; no percurso, não.
 - **Sem barra de progresso na página da trilha** — só posição estrutural de cada artigo (Decisão 29).
-- **Verde IFES é a cor reservada da trilha** — kicker, stats border, CTA, hover dos cards.
-- **Dourado aparece apenas no chip de percurso e no box de pertencimento** — sinaliza atribuição, não identidade da trilha.
+- **Verde claro (`--accent`) é a cor reservada da trilha** — kicker, stats border, CTA, hover dos cards.
+- **Verde escuro (`--verde-profundo`) aparece apenas no chip de percurso e no box de pertencimento** — sinaliza atribuição ao percurso, não identidade da trilha. (Antes era dourado; abandonado em 2026-06-02.)
 
 ### 4.4.1 — Item de artigo na lista da trilha
 
@@ -226,7 +226,7 @@ Cada artigo na lista numerada da página de trilha tem:
 **Estrutura obrigatória** (na ordem):
 
 1. **Hero narrativo**
-   - Kicker "Percurso" em pílula dourada com ícone
+   - Kicker "Percurso" em pílula verde escura com ícone
    - H1 do nome do percurso
    - Subtítulo (uma linha)
    - 2-3 parágrafos de descrição pedagógica explicando por que esse conjunto faz sentido
@@ -285,10 +285,10 @@ Card que aparece na página de listagem `/percursos`.
 | Atributo | Valor |
 |---|---|
 | **Estrutura** | Kicker mini "Percurso" → H4 do nome → descrição (1-2 linhas) → footer com `N trilhas · M artigos · ~Xh` |
-| **Acento visual** | Borda lateral **dourada** (`--gold`) de 4px à esquerda — diferencia de cards de artigo/categoria |
-| **Hover** | Border-color → dourada, translate-y -2px, sombra média |
+| **Acento visual** | Borda lateral **verde escura** (`--verde-profundo`) de 4px à esquerda — diferencia de cards de artigo/categoria |
+| **Hover** | Border-color → verde escura, translate-y -2px, sombra média |
 
-**Por que dourado:** cor reservada do percurso (Decisão 31). Sinaliza visualmente que é uma camada acima — categoria/tópico ficam neutros.
+**Por que verde escuro:** cor reservada do percurso (Decisão 31, revisada 2026-06-02 — antes era dourado). Sinaliza visualmente que é uma camada acima — categoria/tópico ficam neutros. A trilha usa verde claro; o percurso, verde escuro (claro → escuro = a hierarquia).
 
 **Decisão de origem:** Decisão 31
 **Referência:** `drafts/exploracao-pagina-percurso.html` (Parte 3)
@@ -372,25 +372,26 @@ A Fase 2 precisa implementar como componentes reutilizáveis:
 
 | Componente DS | Padrão de origem | Cor/identidade |
 |---|---|---|
-| `BoxTrilhaAcordeao` | 4.2 | Verde IFES (`--accent`) |
-| `ChipPercurso` | 4.3 | Dourado (`--gold-soft` + `--gold-deep`) |
-| `PaginaTrilhaHero` | 4.4 | Kicker em pílula verde |
-| `StatsCardTrilha` | 4.4 | Border-left verde nos stats |
+| `BoxTrilhaAcordeao` | 4.2 | Verde claro (`--accent`) |
+| `ChipPercurso` | 4.3 | Verde escuro (`--verde-profundo`, pílula sólida) |
+| `PaginaTrilhaHero` | 4.4 | Kicker em pílula verde claro |
+| `StatsCardTrilha` | 4.4 | Border-left verde claro nos stats |
 | `ListaArtigosTrilha` | 4.4.1 | Stream vertical com números em círculo |
 | `CheckpointIntermediario` | 4.4.1 | Bloco em `--accent-soft` |
 | `ResultadoEsperadoTrilha` | 4.4 | Border `--accent` 2px |
-| `PaginaPercursoHero` | 4.5 | Kicker em pílula dourada |
-| `StatsCardComposicao` | 4.5 | Border-left dourado nos stats |
+| `PaginaPercursoHero` | 4.5 | Kicker em pílula verde escura |
+| `StatsCardComposicao` | 4.5 | Border-left verde escuro nos stats |
 | `BlocoComoPercorrer` | 4.5 | Fundo `--accent-soft` |
-| `CardTrilhaEmPercurso` | 4.6 | Border-left verde |
-| `CardPercursoListagem` | 4.7 | Border-left dourado |
+| `CardTrilhaEmPercurso` | 4.6 | Border-left verde claro |
+| `CardPercursoListagem` | 4.7 | Border-left verde escuro |
 
-Tokens de design já definidos no `prototipo-artigo.html`:
-- `--gold` `#b08544` (cor principal do percurso)
-- `--gold-soft` `#f3e7d0` (fundo de chips/pílulas)
-- `--gold-deep` `#8c6a36` (texto em fundos suaves)
-- `--accent` `#1f5142` (verde IFES — trilha)
+Tokens de design (cor — dourado abandonado como identidade do percurso em 2026-06-02):
+- `--verde-profundo` `#1c4a36` (cor principal do percurso — verde escuro)
+- `--verde-marca` `#2e7355` (verde de marca — heros de percurso)
+- `--verde-claro` `#6ea892` (rótulo/ícone sobre verde escuro)
+- `--accent` `#1f5142` (verde claro — trilha)
 - `--accent-soft` `#e3ecdf` (fundo verde claro)
+- `--gold*` permanece apenas para usos decorativos pontuais (gradiente da barra de progresso, filetes de pullquote), nunca como identidade do percurso
 
 ---
 

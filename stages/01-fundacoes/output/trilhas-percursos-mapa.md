@@ -132,7 +132,7 @@ Conteúdo que vive como **referência da categoria** ou **descoberta por tópico
 ## 4. Percurso V1
 
 ### Dominando o Moodle
-`cor: dourado` (Decisão 31) · gerúndio aspiracional — *do zero ao curso avaliado no ar*
+`cor: verde escuro` (`--verde-profundo`; Decisão 31, revisada 2026-06-02 — dourado abandonado) · gerúndio aspiracional — *do zero ao curso avaliado no ar*
 
 - **Passos (trilhas):** T1 → T2 → T3 (+ T10 se confirmada)
 - **Artigos complementares soltos:** Criação de certificados no Moodle (93) · O que é mapa de atividades e como preencher (130)

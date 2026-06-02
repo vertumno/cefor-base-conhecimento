@@ -130,8 +130,8 @@ A semântica dos três níveis (Decisão 18):
 | Percurso é **apenas agregação curada**. Sem certificado, badge, rastreamento ou marca de "completou" | 27 |
 | Percurso **não tem ordem linear obrigatória** — o leitor escolhe por qual trilha começar. A página dedicada sugere **3 rotas de entrada por perfil** | 18, 27, 31 |
 | Pode conter **trilhas + artigos soltos complementares** | 18, 27 |
-| **Cor reservada: dourado** (`--gold` / `--gold-soft` / `--gold-deep`). Verde IFES fica reservado para trilha. Categoria/Tópico são neutros | 31 |
-| Três superfícies de apresentação: (a) página dedicada `/percursos/{slug}` · (b) chip dourado no topo do acordeão de trilha · (c) listagem `/percursos` (grid com borda dourada de 4px) | 31 |
+| **Cor reservada: verde escuro** (`--verde-profundo` / `--verde-marca`) — dourado abandonado em 2026-06-02. Verde claro (`--accent`) fica reservado para trilha. Categoria/Tópico são neutros | 31 |
+| Três superfícies de apresentação: (a) página dedicada `/percursos/{slug}` · (b) chip em verde escuro no topo do acordeão de trilha · (c) listagem `/percursos` (grid com borda verde escura de 4px) | 31 |
 | Terminologia: itens de um **percurso** chamam-se *passos* (podem ser trilhas ou artigos) | 18 |
 | **Nomeação:** título = **gerúndio aspiracional** ("Dominando o Moodle") ou identidade profissional. Comunica formação numa área inteira. Ver `convencao-titulos.md` §4 | — |
 
@@ -168,7 +168,7 @@ Análise refinada sobre os 131 artigos reais (2026-06-01) substituiu as 5 trilha
 
 > Validação pedagógica das sequências (ordem + começo/meio/fim) é responsabilidade de Rute + Juliana, antes da Fase 4 (Produção de Conteúdo).
 
-**Percurso V1: "Dominando o Moodle"** (cor dourada) — *do zero ao curso avaliado no ar*. Passos: as 3 primeiras trilhas (núcleo Moodle) + complementares (certificados, mapa de atividades), com 3 rotas de entrada por perfil. Demais trilhas ficam autônomas e graduam para percurso temático na V2. Detalhes em `trilhas-percursos-mapa.md` §4.
+**Percurso V1: "Dominando o Moodle"** (cor verde escura) — *do zero ao curso avaliado no ar*. Passos: as 3 primeiras trilhas (núcleo Moodle) + complementares (certificados, mapa de atividades), com 3 rotas de entrada por perfil. Demais trilhas ficam autônomas e graduam para percurso temático na V2. Detalhes em `trilhas-percursos-mapa.md` §4.
 
 ---
 
@@ -340,7 +340,7 @@ Detalhamento em `contentsystem.md` §B.3 e §B.4. Mapeamento:
 | 28 | Box de trilha sempre visível (vínculo estrutural) | §6.1 |
 | 29 | V1 sem rastreamento de progresso pessoal | §6.1 |
 | 30 | Apresentação multi-trilha por acordeão | §6.1 |
-| 31 | Apresentação visual do percurso (3 superfícies, cor dourada) | §6.2 |
+| 31 | Apresentação visual do percurso (3 superfícies, cor verde escura — dourado abandonado 2026-06-02) | §6.2 |
 | 32 | Remoção do prev/next no rodapé do artigo | §6.1 (consequência: navegação exclusiva pelo acordeão) |
 | Fechamento 2026-05-21 | 6ª categoria (Gestão e Operação do Moodle) + 25 tópicos | §4, §5 |
 
