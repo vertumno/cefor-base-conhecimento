@@ -9,8 +9,8 @@ Definir a linguagem visual completa da base: tokens, componentes, comportamento 
 | Pilares do sistema | `../../_config/pilares.md` | Pilares 1, 2, 5, 6, 8, 9 | Escopo dos pilares de design |
 | Design System escopo | `../01-fundacoes/references/design-system-escopo.md` | Full file | Camadas, componentes, padroes |
 | Decisoes visuais | `../../_config/decisoes.md` | Decisoes 6-8 (tipografia, fundo, modo escuro) | Direcoes visuais aprovadas |
-| Biblioteca de Padroes | `../01-fundacoes/output/biblioteca-padroes.md` | Full file | Quais componentes o CS exige |
-| Modelos Mentais | `../01-fundacoes/output/modelos-mentais.md` | Momentos de busca | Informam UX |
+| Biblioteca de Padroes | `../01-fundacoes/output/contentsystem.md` | §A.4 (Biblioteca de Padrões de Conteúdo) | Quais componentes o CS exige |
+| Modelos Mentais | `../01-fundacoes/output/contentsystem.md` | §A.7 (Modelos Mentais do Público) | Informam UX |
 | Relatorio comparativo | `../00-benchmarking/output/relatorio-comparativo.md` | Secao 4 (Recomendacoes por Oculos) | Referencias visuais |
 
 ## Process

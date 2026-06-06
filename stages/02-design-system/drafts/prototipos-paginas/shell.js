@@ -14,9 +14,7 @@
         '<div>' +
           '<div class="footer-brand">' +
             '<span class="footer-brand-mark" aria-hidden="true">' +
-              '<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-                '<path d="M8 8 L8 32 L20 36 L20 12 Z"/><path d="M32 8 L32 32 L20 36 L20 12 Z"/><path d="M8 8 L20 12 L32 8"/>' +
-              '</svg>' +
+              '<img src="../../assets/logo/ID_base_branca.png" alt="" />' +
             '</span>' +
             '<span class="footer-brand-text">Base de Conhecimento · CEFOR/Ifes</span>' +
           '</div>' +

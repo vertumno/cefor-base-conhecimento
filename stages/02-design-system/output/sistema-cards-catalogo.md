@@ -44,14 +44,14 @@ Os 25 tópicos da [taxonomia.md §5](../../01-fundacoes/output/taxonomia.md) est
 
 | Grupo | Tópicos | Forma | Asset (branco) |
 |---|---|---|---|
-| Atividades e avaliação Moodle | Questionário · Banco de Questões · Tarefa · Fórum · Livro de Notas | Círculo | [`icone_circulo_branco.png`](../assets/icone_circulo_branco.png) |
-| Recursos Moodle | H5P · Rótulo · Webconferência · Vídeo · Áudio e Podcast · Livro Digital | Hexágono | [`icone_hexagono_branco.png`](../assets/icone_hexagono_branco.png) |
-| Gestão do AVA | Configuração de Curso · Matrícula e Inscrição · Backup e Restauração · Moodle Codes · Sala Virtual | Quadrado | [`icone_quadrado_branco.png`](../assets/icone_quadrado_branco.png) |
-| Inteligência Artificial | IA Generativa · GPT Customizado | Losango | [`icone_losango_branco.png`](../assets/icone_losango_branco.png) |
-| Acessibilidade | Libras · Audiodescrição · Inclusão e Desenho Universal | Triângulo | [`icone_triangulo_branco.png`](../assets/icone_triangulo_branco.png) |
-| Pedagogia | Planejamento e Design Educacional | Retângulo | [`icone_retangulo_branco.png`](../assets/icone_retangulo_branco.png) |
-| Identidade institucional | Padrão Visual · MOOC | Triângulo retângulo | [`icone_triangulo_retangulo_branco.png`](../assets/icone_triangulo_retangulo_branco.png) |
-| Conduta | Direitos Autorais e Segurança | Pentágono | [`icone_pentagono_branco.png`](../assets/icone_pentagono_branco.png) |
+| Atividades e avaliação Moodle | Questionário · Banco de Questões · Tarefa · Fórum · Livro de Notas | Círculo | [`icone_circulo_branco.png`](../assets/icones_artigos/icone_circulo_branco.png) |
+| Recursos Moodle | H5P · Rótulo · Webconferência · Vídeo · Áudio e Podcast · Livro Digital | Hexágono | [`icone_hexagono_branco.png`](../assets/icones_artigos/icone_hexagono_branco.png) |
+| Gestão do AVA | Configuração de Curso · Matrícula e Inscrição · Backup e Restauração · Moodle Codes · Sala Virtual | Quadrado | [`icone_quadrado_branco.png`](../assets/icones_artigos/icone_quadrado_branco.png) |
+| Inteligência Artificial | IA Generativa · GPT Customizado | Losango | [`icone_losango_branco.png`](../assets/icones_artigos/icone_losango_branco.png) |
+| Acessibilidade | Libras · Audiodescrição · Inclusão e Desenho Universal | Triângulo | [`icone_triangulo_branco.png`](../assets/icones_artigos/icone_triangulo_branco.png) |
+| Pedagogia | Planejamento e Design Educacional | Retângulo | [`icone_retangulo_branco.png`](../assets/icones_artigos/icone_retangulo_branco.png) |
+| Identidade institucional | Padrão Visual · MOOC | Triângulo retângulo | [`icone_triangulo_retangulo_branco.png`](../assets/icones_artigos/icone_triangulo_retangulo_branco.png) |
+| Conduta | Direitos Autorais e Segurança | Pentágono | [`icone_pentagono_branco.png`](../assets/icones_artigos/icone_pentagono_branco.png) |
 
 **Regra de seleção do grupo num artigo com múltiplos tópicos** (2–4 tópicos por artigo, conforme regra da taxonomia §5): usar o grupo do **tópico primário** (primeiro listado).
 
@@ -59,7 +59,7 @@ Os 25 tópicos da [taxonomia.md §5](../../01-fundacoes/output/taxonomia.md) est
 
 ## Inventário de assets
 
-Todos os ícones em duas variantes (branco / preto), 16 arquivos no total em [`stages/02-design-system/assets/`](../assets/):
+Todos os ícones em duas variantes (branco / preto), 16 arquivos no total em [`stages/02-design-system/assets/icones_artigos/`](../assets/icones_artigos/):
 
 ```
 icone_circulo_branco.png        icone_circulo_preto.png
@@ -71,6 +71,8 @@ icone_retangulo_branco.png      icone_retangulo_preto.png
 icone_triangulo_branco.png      icone_triangulo_preto.png
 icone_triangulo_retangulo_branco.png  icone_triangulo_retangulo_preto.png
 ```
+
+> **Nota de organização (2026-06-06):** os ícones de artigo foram movidos para a subpasta `assets/icones_artigos/`. Os ícones de trilha (`assets/icones_trilha/`), percurso (`assets/icones_percursos/`) e Libras (`assets/icon_libras/`) têm sistemas próprios — ver [`sistema-icones.md`](sistema-icones.md).
 
 **Convenção de uso:**
 - **Branco** sobre fundo colorido (cards do catálogo no light mode)
