@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Percursos · Base de Conhecimento CEFOR/Ifes</title>
-<meta name="description" content="Listagem de percursos (/percursos). Hero verde sólido explicando o que é um percurso; grid de percursos com 1 ativo (Dominando o Moodle) e candidatos da V2. Tokens design.md." />
+<meta name="description" content="Listagem de percursos (/percursos). Hero verde sólido explicando o que é um percurso; grid de percursos com o percurso Dominando o Moodle e outros em breve. Tokens design.md." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
   /* ============================================================
      LISTAGEM DE PERCURSOS — Tokens oficiais (design.md)
      Hero estilo percurso (verde sólido) + grid de cards de percurso
-     (cor reservada do percurso — Decisão 31). 1 ativo + candidatos V2.
+     (cor reservada do percurso — Decisão 31).
      ============================================================ */
   .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad-x); }
 
@@ -101,13 +101,7 @@
   .percurso-card.is-soon .pc-meta .m-value { color: var(--ink-2); }
   .percurso-card.is-soon .pc-status { margin-left: auto; display: inline-flex; align-items: center; font-size: .88rem; font-weight: 600; color: var(--ink-3); }
 
-  /* ---------- Aviso V2 ---------- */
-  .v2-note {
-    margin-top: 44px; padding: 18px 22px; border-radius: var(--r-md);
-    background: var(--bg-2); border: 1px solid var(--line); border-left: 3px solid var(--verde-claro);
-    font-size: .92rem; color: var(--ink-2); line-height: 1.55;
-  }
-  .v2-note strong { color: var(--ink); font-weight: 700; }
+
 
   @media (max-width: 600px) { :root { --pad-x: 20px; } }
 </style>
@@ -184,7 +178,7 @@
       <div class="section-lead-block">
         <p class="kicker">Disponível agora</p>
         <h2>Comece pelo percurso publicado</h2>
-        <p>O percurso V1 reúne o núcleo de operação do Moodle. Os demais entram à medida que as trilhas que os compõem ganham volume.</p>
+        <p>Este percurso reúne o núcleo de operação do Moodle. Os demais entrarão à medida que novos conteúdos forem adicionados.</p>
       </div>
 
       <div class="percurso-grid">
@@ -205,7 +199,7 @@
           </div>
         </a>
 
-        <!-- EM BREVE — V2 -->
+        <!-- EM BREVE -->
         <div class="percurso-card is-soon" aria-disabled="true">
           <img class="pc-bg" src="../../assets/icones_percursos/icone_percurso-2.png" alt="" aria-hidden="true">
           <span class="pc-soon">Em breve</span>
@@ -239,11 +233,6 @@
         </div>
 
       </div>
-
-      <p class="v2-note">
-        <strong>Por que só um percurso?</strong> Um percurso só nasce quando há ≥2 trilhas que formam uma formação real
-        (Decisão 27). As demais trilhas ficam <strong>autônomas e em destaque</strong> até graduarem para percurso temático na V2.
-      </p>
 
     </div>
   </section>
