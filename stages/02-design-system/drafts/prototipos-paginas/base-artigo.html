@@ -1301,7 +1301,7 @@
     <nav class="nav" aria-label="Navegação principal">
       <a href="base-percursos.html">Percursos</a>
       <a href="base-trilhas.html">Trilhas</a>
-      <a href="base-inicio.html">Todos os artigos</a>
+      <a href="base-artigos.html">Todos os artigos</a>
     </nav>
     <form class="header-search" role="search" action="/buscar" method="get">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -1417,7 +1417,7 @@
     </div>
     <div class="lp-body">
       <div class="libras-video" role="img" aria-label="Vídeo da tradução do artigo em Libras">
-        <span>Tradução em Libras — Configurando o livro de notas</span>
+        <span>Tradução em Libras: Configurando o livro de notas</span>
       </div>
     </div>
   </div>
@@ -1488,10 +1488,10 @@
 
     <h2 id="contexto">Antes de começar</h2>
     <p>
-      O livro de notas do Moodle — também chamado de <em>gradebook</em> — é a estrutura central que organiza, calcula e exibe as avaliações de um curso. Ele não é apenas um lugar onde as notas aparecem: é um sistema de regras que determina como cada atividade contribui para a nota final do estudante, seguindo o peso que você definiu no plano de ensino. Por isso, configurar o gradebook antes de criar as atividades não é um capricho metodológico — é uma decisão prática que protege o cálculo final e evita retrabalho nas semanas mais críticas do curso.
+      O livro de notas do Moodle (também chamado de <em>gradebook</em>) é a estrutura central que organiza, calcula e exibe as avaliações de um curso. Ele não é apenas um lugar onde as notas aparecem: é um sistema de regras que determina como cada atividade contribui para a nota final do estudante, seguindo o peso que você definiu no plano de ensino. Por isso, configurar o gradebook antes de criar as atividades não é um capricho metodológico, é uma decisão prática que protege o cálculo final e evita retrabalho nas semanas mais críticas do curso.
     </p>
     <p>
-      A estrutura básica do livro de notas é composta por <strong>categorias</strong> e <strong>itens de nota</strong>. As categorias agrupam atividades semelhantes e recebem um peso relativo na nota final. Os itens de nota são as atividades propriamente ditas — questionários, tarefas, fóruns — que ficam dentro de cada categoria. O cálculo final percorre essa hierarquia: soma os itens de cada categoria, aplica o peso dela e então combina todas as categorias para chegar ao total do curso.
+      A estrutura básica do livro de notas é composta por <strong>categorias</strong> e <strong>itens de nota</strong>. As categorias agrupam atividades semelhantes e recebem um peso relativo na nota final. Os itens de nota são as atividades propriamente ditas (questionários, tarefas, fóruns) que ficam dentro de cada categoria. O cálculo final percorre essa hierarquia: soma os itens de cada categoria, aplica o peso dela e então combina todas as categorias para chegar ao total do curso.
     </p>
     <p>
       Este tutorial assume que você já tem permissão de <code>professor</code> ou <code>editor</code> no curso. As telas podem variar levemente conforme o tema instalado, mas a lógica de navegação é idêntica. Ao final deste guia, você terá o gradebook configurado com categorias, pesos balanceados e uma verificação completa antes da publicação.
@@ -1504,24 +1504,24 @@
 
     <h2 id="categorias">Criar categorias de nota</h2>
     <p>
-      Categorias são os agrupadores da sua estrutura de avaliação. Elas respondem à pergunta: "que tipo de atividade é essa e que papel ela tem na nota final?" Um curso bem estruturado costuma ter entre três e cinco categorias — por exemplo, <em>Avaliações diagnósticas</em>, <em>Avaliações formativas</em> e <em>Avaliações somativas</em>. Categorias com peso zero também existem: servem para agrupar atividades de participação sem impacto na nota, mas que o professor quer acompanhar separadamente.
+      Categorias são os agrupadores da sua estrutura de avaliação. Elas respondem à pergunta: "que tipo de atividade é essa e que papel ela tem na nota final?" Um curso bem estruturado costuma ter entre três e cinco categorias: por exemplo, <em>Avaliações diagnósticas</em>, <em>Avaliações formativas</em> e <em>Avaliações somativas</em>. Categorias com peso zero também existem: servem para agrupar atividades de participação sem impacto na nota, mas que o professor quer acompanhar separadamente.
     </p>
     <p>
-      O momento de criar as categorias importa. Se você criar as atividades antes de montar a estrutura, cada nova atividade cairá em "Curso" — a categoria raiz padrão do Moodle — e você precisará reorganizá-las depois, uma por uma. Criar categorias primeiro significa que, ao adicionar uma atividade, você já escolhe a categoria correta no ato da criação. O fluxo é mais limpo e o risco de erro é menor.
+      O momento de criar as categorias importa. Se você criar as atividades antes de montar a estrutura, cada nova atividade cairá em "Curso" (a categoria raiz padrão do Moodle) e você precisará reorganizá-las depois, uma por uma. Criar categorias primeiro significa que, ao adicionar uma atividade, você já escolhe a categoria correta no ato da criação. O fluxo é mais limpo e o risco de erro é menor.
     </p>
     <ol>
       <li>Acesse <em>Notas → Configurações do livro de notas</em> no menu lateral do curso.</li>
       <li>Clique em <strong>Adicionar categoria</strong> na parte inferior da página.</li>
-      <li>Defina o nome da categoria — por exemplo, "Avaliações formativas" — e escolha o cálculo agregado. Para a maioria dos casos, <em>Média ponderada de notas</em> é a opção adequada.</li>
+      <li>Defina o nome da categoria (por exemplo, "Avaliações formativas") e escolha o cálculo agregado. Para a maioria dos casos, <em>Média ponderada de notas</em> é a opção adequada.</li>
       <li>Salve e repita para cada agrupamento previsto no plano de ensino. Não é necessário adicionar as atividades ainda.</li>
     </ol>
     <p>
-      Ao terminar, você verá a lista de categorias na árvore do livro de notas. Neste ponto, o Moodle pode exibir alertas indicando que os pesos ainda somam zero ou não fecham 100 — isso é esperado. O próximo passo é exatamente definir esses pesos.
+      Ao terminar, você verá a lista de categorias na árvore do livro de notas. Neste ponto, o Moodle pode exibir alertas indicando que os pesos ainda somam zero ou não fecham 100, o que é esperado. O próximo passo é exatamente definir esses pesos.
     </p>
 
     <figure class="figure">
       <div class="figure-img" role="img" aria-label="Captura de tela mostrando o painel de configuração de categorias do livro de notas">
-        [Captura de tela — Painel de categorias]
+        [Captura de tela: Painel de categorias]
       </div>
       <p class="figure-caption">Figura 1 · Árvore de categorias do livro de notas após a criação das três categorias principais (Moodle 4.x).</p>
       <div class="ad-toggle-wrap">
@@ -1537,10 +1537,10 @@
 
     <h3 id="pesos">Pesos por categoria</h3>
     <p>
-      Quando o cálculo agregado for <em>média ponderada</em>, cada categoria precisa de um peso. O peso expressa a proporção daquela categoria na nota final do curso: uma categoria com peso 60 representa 60% da nota, enquanto uma com peso 40 representa os outros 40%. A soma dos pesos das categorias de primeiro nível deve sempre fechar em 100 — o Moodle sinaliza em vermelho qualquer desbalanceamento, mas não impede a publicação.
+      Quando o cálculo agregado for <em>média ponderada</em>, cada categoria precisa de um peso. O peso expressa a proporção daquela categoria na nota final do curso: uma categoria com peso 60 representa 60% da nota, enquanto uma com peso 40 representa os outros 40%. A soma dos pesos das categorias de primeiro nível deve sempre fechar em 100, e o Moodle sinaliza em vermelho qualquer desbalanceamento, mas não impede a publicação.
     </p>
     <p>
-      Categorias aninhadas — subcategorias dentro de categorias — também recebem pesos, mas calculados dentro do escopo da categoria-pai. Por exemplo, se <em>Avaliações somativas</em> tem peso 60 e dentro dela você criou duas subcategorias de peso 50 cada, o resultado final é que cada subcategoria representa 30% do total do curso (50% de 60%). Esse encadeamento é poderoso, mas exige atenção redobrada: um erro de peso em um nível intermediário afeta silenciosamente o cálculo de tudo que está abaixo dele.
+      Categorias aninhadas (subcategorias dentro de categorias) também recebem pesos, mas calculados dentro do escopo da categoria-pai. Por exemplo, se <em>Avaliações somativas</em> tem peso 60 e dentro dela você criou duas subcategorias de peso 50 cada, o resultado final é que cada subcategoria representa 30% do total do curso (50% de 60%). Esse encadeamento é poderoso, mas exige atenção redobrada: um erro de peso em um nível intermediário afeta silenciosamente o cálculo de tudo que está abaixo dele.
     </p>
     <p>
       O Moodle não impede que você publique o curso com pesos incorretos. Ele apenas alerta. Por isso, valide o cálculo manualmente antes de prosseguir: some todos os pesos das categorias de primeiro nível e confirme que chegam a 100. Se o gradebook usa subcategorias, faça o mesmo em cada nível da hierarquia.
@@ -1552,29 +1552,29 @@
 
     <h2 id="formulas">Aplicar fórmulas</h2>
     <p>
-      Fórmulas permitem cálculos mais complexos do que a média ponderada simples. No Moodle, elas usam a sintaxe <code>=função(referências)</code>, onde as referências são apelidos dos itens de nota — identificadores únicos que você atribui a cada atividade na tela de edição do item. A fórmula fica vinculada ao item que a recebe, e o Moodle recalcula o valor automaticamente toda vez que uma nota-base é alterada.
+      Fórmulas permitem cálculos mais complexos do que a média ponderada simples. No Moodle, elas usam a sintaxe <code>=função(referências)</code>, onde as referências são apelidos dos itens de nota, identificadores únicos que você atribui a cada atividade na tela de edição do item. A fórmula fica vinculada ao item que a recebe, e o Moodle recalcula o valor automaticamente toda vez que uma nota-base é alterada.
     </p>
     <p>
-      A decisão de usar fórmulas deve ser cuidadosa. Cada fórmula cria uma dependência entre atividades: se um item referenciado for excluído ou renomeado, a fórmula pode quebrar silenciosamente, retornando zero ou um valor inesperado sem avisar o professor. Por isso, use fórmulas apenas quando o cálculo realmente não puder ser feito com as opções de agregação padrão — a média ponderada resolve a maioria dos cenários sem esse risco.
+      A decisão de usar fórmulas deve ser cuidadosa. Cada fórmula cria uma dependência entre atividades: se um item referenciado for excluído ou renomeado, a fórmula pode quebrar silenciosamente, retornando zero ou um valor inesperado sem avisar o professor. Por isso, use fórmulas apenas quando o cálculo realmente não puder ser feito com as opções de agregação padrão, pois a média ponderada resolve a maioria dos cenários sem esse risco.
     </p>
     <p>
-      Quando as fórmulas são inevitáveis, documente-as. Um comentário interno na descrição do item de nota, registrando qual fórmula está ativa e o que ela calcula, pode salvar horas de diagnóstico no futuro — especialmente quando outro professor assumir o curso ou quando o ambiente for atualizado para uma nova versão do Moodle.
+      Quando as fórmulas são inevitáveis, documente-as. Um comentário interno na descrição do item de nota, registrando qual fórmula está ativa e o que ela calcula, pode salvar horas de diagnóstico no futuro, especialmente quando outro professor assumir o curso ou quando o ambiente for atualizado para uma nova versão do Moodle.
     </p>
 
     <div class="callout atencao">
       <span class="c-label">Atenção</span>
-      Sempre que renomear um item de nota referenciado em fórmula, revise a fórmula manualmente. O Moodle não atualiza referências automaticamente em todos os contextos — em alguns casos, o apelido antigo permanece na fórmula e o cálculo passa a retornar zero sem nenhum aviso visível na interface.
+      Sempre que renomear um item de nota referenciado em fórmula, revise a fórmula manualmente. O Moodle não atualiza referências automaticamente em todos os contextos; em alguns casos, o apelido antigo permanece na fórmula e o cálculo passa a retornar zero sem nenhum aviso visível na interface.
     </div>
 
     <p>Três fórmulas frequentes no contexto do CEFOR:</p>
     <ul>
-      <li><code>=min(...)</code> — descarta a menor nota de um conjunto, útil em séries de exercícios onde o estudante tem mais tentativas do que vale a nota.</li>
-      <li><code>=median(...)</code> — usa a mediana em vez da média, reduzindo o impacto de outliers em avaliações por pares com muitos avaliadores.</li>
-      <li><code>=sum(...) * 1.1</code> — aplica bônus de 10% sobre um conjunto de atividades extras, sem ultrapassar a nota máxima do item.</li>
+      <li><code>=min(...)</code>: descarta a menor nota de um conjunto, útil em séries de exercícios onde o estudante tem mais tentativas do que vale a nota.</li>
+      <li><code>=median(...)</code>: usa a mediana em vez da média, reduzindo o impacto de outliers em avaliações por pares com muitos avaliadores.</li>
+      <li><code>=sum(...) * 1.1</code>: aplica bônus de 10% sobre um conjunto de atividades extras, sem ultrapassar a nota máxima do item.</li>
     </ul>
 
     <p>
-      A escrita completa de uma fórmula que <strong>descarta a menor nota entre quatro exercícios</strong> — somando as quatro e subtraindo a menor — fica assim no campo de fórmula do item de nota. Os apelidos <code>ex1</code> a <code>ex4</code> são os <em>idnumbers</em> que você atribuiu aos itens de nota dos exercícios:
+      A escrita completa de uma fórmula que <strong>descarta a menor nota entre quatro exercícios</strong> (somando as quatro e subtraindo a menor) fica assim no campo de fórmula do item de nota. Os apelidos <code>ex1</code> a <code>ex4</code> são os <em>idnumbers</em> que você atribuiu aos itens de nota dos exercícios:
     </p>
 
     <div class="code-prompt-block">
@@ -1587,18 +1587,18 @@
     </div>
 
     <p>
-      Os termos em destaque dourado são <em>variáveis</em> da fórmula — referenciam os <em>idnumbers</em> que você definiu ao criar cada exercício no Livro de Notas. Se renomear qualquer um, lembre de atualizar aqui também (ver alerta acima).
+      Os termos em destaque dourado são <em>variáveis</em> da fórmula que referenciam os <em>idnumbers</em> que você definiu ao criar cada exercício no Livro de Notas. Se renomear qualquer um, lembre de atualizar aqui também (ver alerta acima).
     </p>
 
     <h2 id="revisao">Revisão final</h2>
     <p>
-      Antes de tornar o livro de notas visível para os estudantes, há uma verificação que poucos professores fazem — e que já evitou revisões formais de notas no Ifes: ativar o modo <strong>"Ver como estudante"</strong> e percorrer o gradebook inteiro como se você fosse o aluno. Esse modo mostra exatamente o que o estudante vai ver: quais atividades aparecem, com quais rótulos, em que ordem, e qual nota parcial está sendo calculada em cada categoria.
+      Antes de tornar o livro de notas visível para os estudantes, há uma verificação que poucos professores fazem, e que já evitou revisões formais de notas no Ifes: ativar o modo <strong>"Ver como estudante"</strong> e percorrer o gradebook inteiro como se você fosse o aluno. Esse modo mostra exatamente o que o estudante vai ver: quais atividades aparecem, com quais rótulos, em que ordem, e qual nota parcial está sendo calculada em cada categoria.
     </p>
     <p>
-      O principal valor do teste é revelar discrepâncias entre o que o professor configurou e o que o estudante interpreta. Um nome de categoria genérico — "Categoria 1" — pode ser informativo para quem criou a estrutura, mas é completamente opaco para o estudante que precisa entender de onde vem a sua nota. Da mesma forma, uma atividade ainda não realizada que aparece como "0" em vez de "—" pode fazer o aluno acreditar que falhou numa avaliação que nem aconteceu ainda.
+      O principal valor do teste é revelar discrepâncias entre o que o professor configurou e o que o estudante interpreta. Um nome de categoria genérico ("Categoria 1") pode ser informativo para quem criou a estrutura, mas é completamente opaco para o estudante que precisa entender de onde vem a sua nota. Da mesma forma, uma atividade ainda não realizada que aparece como "0" em vez de "—" pode fazer o aluno acreditar que falhou numa avaliação que nem aconteceu ainda.
     </p>
     <p>
-      Além do teste visual, valide o cálculo total manualmente com pelo menos um perfil de nota hipotético. Escolha uma distribuição simples — por exemplo, nota máxima em todas as categorias — e calcule à mão o resultado esperado. Compare com o que o Moodle exibe. Se os números coincidem, o gradebook está correto. Se houver diferença, o problema quase sempre está nos pesos ou numa fórmula com referência quebrada.
+      Além do teste visual, valide o cálculo total manualmente com pelo menos um perfil de nota hipotético. Escolha uma distribuição simples (por exemplo, nota máxima em todas as categorias) e calcule à mão o resultado esperado. Compare com o que o Moodle exibe. Se os números coincidem, o gradebook está correto. Se houver diferença, o problema quase sempre está nos pesos ou numa fórmula com referência quebrada.
     </p>
 
     <p>Durante o teste, verifique especialmente:</p>
@@ -1611,7 +1611,7 @@
 
     <div class="callout critico">
       <span class="c-label">Crítico</span>
-      Nunca lance notas reais em ambiente de produção antes de validar o cálculo total. Erros de ponderação publicados já foram, no passado, causa de revisão formal de notas no Ifes — um processo que mobiliza coordenação, CGAE e, em alguns casos, a reitoria para corrigir notas já divulgadas para os estudantes.
+      Nunca lance notas reais em ambiente de produção antes de validar o cálculo total. Erros de ponderação publicados já foram, no passado, causa de revisão formal de notas no Ifes, um processo que mobiliza coordenação, CGAE e, em alguns casos, a reitoria para corrigir notas já divulgadas para os estudantes.
     </div>
 
     <h2 id="resumo">Em resumo</h2>
@@ -1619,24 +1619,24 @@
       O processo de configuração do gradebook segue uma sequência clara que não pode ser invertida sem custo: primeiro a estrutura de categorias, depois os pesos, depois as fórmulas quando necessárias, e só então a verificação. Fazer nessa ordem garante que cada atividade criada após a configuração já encontre o lugar certo no livro de notas, sem necessidade de reorganização posterior.
     </p>
     <p>
-      A etapa de verificação no modo "Ver como estudante" é a mais frequentemente pulada — e a que mais protege contra erros que chegam ao estudante. O Moodle não impede que você publique um gradebook com erros; ele alerta quando pode, mas não bloqueia. A responsabilidade de verificar é do professor, e o custo de um erro após a publicação é sempre maior do que o de uma verificação preventiva antes dela.
+      A etapa de verificação no modo "Ver como estudante" é a mais frequentemente pulada, e a que mais protege contra erros que chegam ao estudante. O Moodle não impede que você publique um gradebook com erros; ele alerta quando pode, mas não bloqueia. A responsabilidade de verificar é do professor, e o custo de um erro após a publicação é sempre maior do que o de uma verificação preventiva antes dela.
     </p>
     <p>
-      Se algum detalhe da configuração gerar dúvida — especialmente sobre o encadeamento de pesos em hierarquias com subcategorias ou sobre o comportamento de fórmulas específicas — o artigo <a href="#">Fórmulas suportadas no gradebook do Moodle</a> traz a referência completa de todas as funções disponíveis, com exemplos aplicados ao contexto do Ifes.
+      Se algum detalhe da configuração gerar dúvida (especialmente sobre o encadeamento de pesos em hierarquias com subcategorias ou sobre o comportamento de fórmulas específicas), o artigo <a href="#">Fórmulas suportadas no gradebook do Moodle</a> traz a referência completa de todas as funções disponíveis, com exemplos aplicados ao contexto do Ifes.
     </p>
 
     <h2 id="publicacao">Publicar para estudantes</h2>
     <p>
-      Com o gradebook validado, o passo final é torná-lo visível. No Moodle, o livro de notas pode estar oculto para os estudantes mesmo que o curso esteja publicado — esse é o comportamento padrão em cursos novos. Para publicá-lo, acesse <em>Configurações → Aparência → Mostrar livro de notas aos estudantes</em> e altere para <em>Sim</em>. A partir desse momento, cada estudante poderá ver sua própria nota em cada categoria, sem ver as notas dos colegas.
+      Com o gradebook validado, o passo final é torná-lo visível. No Moodle, o livro de notas pode estar oculto para os estudantes mesmo que o curso esteja publicado: esse é o comportamento padrão em cursos novos. Para publicá-lo, acesse <em>Configurações → Aparência → Mostrar livro de notas aos estudantes</em> e altere para <em>Sim</em>. A partir desse momento, cada estudante poderá ver sua própria nota em cada categoria, sem ver as notas dos colegas.
     </p>
     <p>
       Só publicar não é suficiente. Os estudantes precisam saber que o livro de notas está disponível, como acessá-lo e o que esperar encontrar lá. Um comunicado no fórum de avisos do curso, na semana anterior ao primeiro fechamento parcial, é o mínimo. Explique a estrutura de categorias, os pesos de cada uma e o que acontece com atividades não realizadas no período. Quanto mais claro for o comunicado, menor o volume de dúvidas no atendimento.
     </p>
     <p>
-      Um ponto que gera muita dúvida nos estudantes: o livro de notas exibe a nota <em>parcial acumulada</em>, não a nota final do curso. Isso significa que, nas primeiras semanas, o aluno vai ver uma nota que parece baixa — simplesmente porque a maioria das atividades ainda não foi realizada. Incluir no comunicado uma explicação de como interpretar a nota parcial evita uma enxurrada de mensagens ansiosas nas primeiras semanas do período letivo.
+      Um ponto que gera muita dúvida nos estudantes: o livro de notas exibe a nota <em>parcial acumulada</em>, não a nota final do curso. Isso significa que, nas primeiras semanas, o aluno vai ver uma nota que parece baixa, simplesmente porque a maioria das atividades ainda não foi realizada. Incluir no comunicado uma explicação de como interpretar a nota parcial evita uma enxurrada de mensagens ansiosas nas primeiras semanas do período letivo.
     </p>
     <p>
-      Após a publicação, reserve um momento na semana seguinte para verificar se há estudantes com anomalias visíveis no gradebook — notas claramente fora do padrão da turma, zeros em atividades que todos realizaram, ou categorias com valor nulo sem razão aparente. Esses casos raramente são erros do estudante: quase sempre indicam um item de nota mal configurado ou uma fórmula que não está capturando a referência correta.
+      Após a publicação, reserve um momento na semana seguinte para verificar se há estudantes com anomalias visíveis no gradebook: notas claramente fora do padrão da turma, zeros em atividades que todos realizaram, ou categorias com valor nulo sem razão aparente. Esses casos raramente são erros do estudante: quase sempre indicam um item de nota mal configurado ou uma fórmula que não está capturando a referência correta.
     </p>
 
     <div class="callout dica">
@@ -1860,7 +1860,7 @@
         break;
       case 'instagram':
         navigator.clipboard?.writeText(shareUrl);
-        alert('O Instagram não permite compartilhar links diretamente. O link foi copiado — cole no seu story ou na bio.');
+        alert('O Instagram não permite compartilhar links diretamente. O link foi copiado: cole no seu story ou na bio.');
         break;
       case 'copy-link':
         navigator.clipboard?.writeText(shareUrl);

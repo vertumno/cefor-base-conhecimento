@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Todos os artigos · Base de Conhecimento CEFOR/Ifes</title>
+<meta name="description" content="Catálogo completo de artigos (/artigos). Hero neutro + grid de todos os artigos com filtros por categoria, tipo e ordenação. Tokens design.md." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     CATÁLOGO DE ARTIGOS — Tokens oficiais (design.md)
+     Hero neutro (artigo = cor da categoria, sem cor reservada de
+     percurso/trilha) + grid completo com sidebar de filtros.
+     ============================================================ */
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad-x); }
+
+  /* ---------- HERO — neutro ---------- */
+  .hero-lista { background: var(--bg-2); color: var(--ink); position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+  .hero-bg-icon {
+    position: absolute; right: -40px; top: 50%; transform: translateY(-50%);
+    width: 380px; height: 300px; object-fit: contain; opacity: .06;
+    pointer-events: none; z-index: 0;
+  }
+  [data-theme="dark"] .hero-bg-icon { filter: invert(1); opacity: .06; }
+  @media (max-width: 700px) { .hero-bg-icon { width: 280px; height: 220px; right: -70px; } }
+  .hero-lista-inner {
+    position: relative; z-index: 1;
+    max-width: var(--maxw); margin: 0 auto; padding: 44px var(--pad-x) 44px;
+    display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;
+  }
+  @media (max-width: 860px) { .hero-lista-inner { grid-template-columns: 1fr; gap: 24px; } }
+  .hero-lista-main { min-width: 0; }
+  .hero-kicker {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 20px 8px 15px; margin: 0 0 18px;
+    background: var(--paper); border: 1px solid var(--line-2); border-radius: 99px;
+    font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2);
+  }
+  .hero-kicker svg { width: 20px; height: 20px; }
+  .hero-lista h1 { font-size: 2.6rem; line-height: 1.06; font-weight: 700; letter-spacing: -.02em; margin: 0 0 14px; color: var(--ink); }
+  @media (max-width: 700px) { .hero-lista h1 { font-size: 2.05rem; } }
+  .hero-lista .subtitle { font-size: 1.06rem; line-height: 1.55; margin: 0; color: var(--ink-2); max-width: 62ch; }
+  .hero-lista-stats {
+    border-left: 1px solid var(--line-2); padding-left: 28px; min-width: 150px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  @media (max-width: 860px) {
+    .hero-lista-stats { border-left: 0; border-top: 1px solid var(--line-2); padding-left: 0; padding-top: 22px; flex-direction: row; gap: 40px; }
+  }
+  .hero-lista-stat .label { display: block; font-size: .66rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 3px; }
+  .hero-lista-stat .value { font-size: 1.35rem; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+  /* ---------- CORPO — grid + sidebar de filtros ---------- */
+  .section { padding: 44px 0 64px; }
+  .content-layout { display: grid; grid-template-columns: 1fr 220px; gap: 36px; align-items: start; }
+  @media (max-width: 960px) {
+    .content-layout { grid-template-columns: 1fr; gap: 28px; }
+    .filter-sidebar { position: static !important; order: -1; }
+  }
+  .filter-sidebar { display: flex; flex-direction: column; gap: 2px; position: sticky; top: 88px; }
+  .sidebar-title {
+    font-size: .72rem; font-weight: 700; color: var(--ink-3); margin: 0 0 4px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--line); letter-spacing: .12em; text-transform: uppercase;
+  }
+  .filter-group:not(:last-of-type) { border-bottom: 1px solid var(--line); }
+  .filter-group-header {
+    display: flex; justify-content: space-between; align-items: center; width: 100%;
+    background: transparent; border: none; padding: 11px 0;
+    font-family: var(--sans); font-size: .82rem; font-weight: 600; color: var(--ink-2); cursor: pointer; text-align: left;
+  }
+  .filter-group-header:hover { color: var(--verde-marca); }
+  .filter-group-header .chevron { transition: transform .25s ease; color: var(--ink-3); width: 13px; height: 13px; }
+  .filter-group.active .filter-group-header { color: var(--ink); }
+  .filter-group.active .filter-group-header .chevron { transform: rotate(180deg); }
+  .filter-group-content { display: none; padding: 2px 0 12px; }
+  .filter-group.active .filter-group-content { display: block; }
+  .sidebar-select {
+    width: 100%; padding: 7px 10px; border-radius: var(--r-sm);
+    border: 1px solid var(--line-2); background: var(--paper); color: var(--ink);
+    font-family: var(--sans); font-size: .82rem; font-weight: 500; cursor: pointer; outline: none; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238a8273' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 10px center; background-size: 13px; padding-right: 28px;
+  }
+  .sidebar-select:focus { border-color: var(--verde-marca); box-shadow: 0 0 0 3px var(--verde-palido); }
+  .sidebar-checkboxes { display: flex; flex-direction: column; gap: 7px; }
+  .sidebar-cb-label {
+    display: inline-flex; align-items: center; gap: 9px; font-size: .84rem; font-weight: 500; color: var(--ink-2);
+    cursor: pointer; user-select: none; transition: color .12s;
+  }
+  .sidebar-cb-label:hover { color: var(--ink); }
+  .sidebar-cb-label input[type="checkbox"] {
+    appearance: none; -webkit-appearance: none; width: 15px; height: 15px;
+    border: 1.4px solid var(--line-2); border-radius: 4px; background: var(--paper);
+    cursor: pointer; display: grid; place-content: center; transition: border-color .15s, background-color .15s; flex-shrink: 0;
+  }
+  .sidebar-cb-label input[type="checkbox"]::before {
+    content: ""; width: 9px; height: 9px; transform: scale(0); transition: transform .12s ease-in-out;
+    background-color: var(--verde-marca); clip-path: polygon(14% 44%, 0 58%, 38% 96%, 100% 23%, 86% 9%, 38% 68%);
+  }
+  .sidebar-cb-label input[type="checkbox"]:checked { background-color: var(--verde-palido); border-color: var(--verde-marca); }
+  .sidebar-cb-label input[type="checkbox"]:checked::before { transform: scale(1); }
+  .sidebar-stats { font-size: .78rem; color: var(--ink-3); font-weight: 500; margin-top: 8px; padding-top: 12px; border-top: 1px dashed var(--line); }
+  .sidebar-stats strong { color: var(--verde-marca); font-weight: 700; }
+
+  /* ---------- Card de artigo (cor = categoria, ícone = tópico) ---------- */
+  .card {
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: var(--r-lg); overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform .2s ease, border-color .15s, box-shadow .15s;
+  }
+  .card:hover { border-color: var(--verde-claro); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .card-illust { aspect-ratio: 16 / 7; display: grid; place-items: center; position: relative; overflow: hidden; }
+  .card-illust img, .card-illust > svg {
+    width: 28%; height: auto; max-width: 90px; opacity: .95;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,.08));
+  }
+  .card-illust > svg { color: #fff; }
+  .card[data-category="ferramentas"]    .card-illust { background: var(--cat-ferramentas); }
+  .card[data-category="gestao-moodle"]  .card-illust { background: var(--cat-gestao-moodle); }
+  .card[data-category="pedagogia"]      .card-illust { background: var(--cat-pedagogia); }
+  .card[data-category="acessibilidade"] .card-illust { background: var(--cat-acessibilidade); }
+  .card[data-category="conduta"]        .card-illust { background: var(--cat-conduta); }
+  .card[data-category="identidade"]     .card-illust { background: var(--cat-identidade); }
+  .card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .card-kicker { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+  .card h3 { margin: 0; font-size: 1.18rem; font-weight: 700; line-height: 1.3; color: var(--ink); letter-spacing: -.005em; }
+  .card-desc { font-size: .92rem; color: var(--ink-2); line-height: 1.55; margin: 0;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .card-meta { margin-top: auto; padding-top: 12px; display: flex; gap: 10px; font-size: .8rem; color: var(--ink-3); align-items: center; }
+  .badge-tipo { padding: 4px 12px; border-radius: 99px; font-weight: 600; font-size: .72rem; letter-spacing: .02em; background: var(--bg-2); color: var(--ink-2); }
+
+  .show-more-wrap { text-align: center; margin-top: 40px; }
+  .show-more {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px; border-radius: 99px;
+    background: transparent; border: 1px solid var(--line-2);
+    color: var(--ink-2); font: inherit; font-size: .9rem; font-weight: 600;
+    cursor: pointer; transition: all .15s;
+  }
+  .show-more:hover { border-color: var(--verde-marca); color: var(--verde-marca); background: var(--verde-palido); }
+
+  .empty-state { display: none; padding: 48px 0; text-align: center; color: var(--ink-3); font-size: .95rem; }
+
+  @media (max-width: 600px) { :root { --pad-x: 20px; } }
+</style>
+<link rel="stylesheet" href="a11y.css">
+<link rel="stylesheet" href="shell.css">
+</head>
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="base-inicio.html" class="brand">
+      <span class="brand-logo" aria-hidden="true">
+        <img src="../../assets/logo/ID_base_branca.png" alt="" />
+      </span>
+      <span class="brand-text">
+        <strong>Base de Conhecimento</strong>
+        <span>CEFOR · Ifes</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="base-percursos.html">Percursos</a>
+      <a href="base-trilhas.html">Trilhas</a>
+      <a href="base-artigos.html" class="active">Todos os artigos</a>
+    </nav>
+    <form class="header-search" role="search" action="base-busca.html" method="get">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar" />
+    </form>
+    <!-- Acessibilidade: painel flutuante canônico injetado por a11y.js -->
+  </div>
+</header>
+
+<nav class="breadcrumb" aria-label="Você está aqui">
+  <div class="breadcrumb-inner">
+    <a href="base-inicio.html">Início</a>
+    <span class="sep">›</span>
+    <span class="current">Todos os artigos</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-lista" aria-labelledby="lista-title">
+  <img class="hero-bg-icon" src="../../assets/icones_artigos/icone_hexagono_preto.png" alt="" aria-hidden="true">
+  <div class="hero-lista-inner">
+    <div class="hero-lista-main">
+      <span class="hero-kicker">Todos os artigos</span>
+      <h1 id="lista-title">Toda a base, em um só lugar</h1>
+      <p class="subtitle">
+        Tutoriais, referências, conceitos e soluções de problema. Use os filtros ao lado para refinar
+        por categoria, tipo de artigo ou ordenação, ou busque direto pelo que você precisa.
+      </p>
+    </div>
+    <div class="hero-lista-stats">
+      <div class="hero-lista-stat">
+        <span class="label">Artigos</span>
+        <span class="value">130+</span>
+      </div>
+      <div class="hero-lista-stat">
+        <span class="label">Categorias</span>
+        <span class="value">6</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="main">
+  <section class="section" aria-label="Catálogo de artigos">
+    <div class="container">
+      <div class="content-layout">
+
+        <!-- MAIN GRID -->
+        <div class="content-main">
+          <div class="card-grid">
+
+            <!-- Card 1 — Gestão Moodle (teal) · Atividades e avaliação (círculo) -->
+            <a class="card" href="base-artigo.html" data-category="gestao-moodle" data-type="tutorial" data-topics="livro-notas,config-curso" data-group="atividades">
+              <div class="card-illust"><img src="../../assets/icones_artigos/icone_circulo_branco.png" alt="" /></div>
+              <div class="card-body">
+                <span class="card-kicker">Gestão e Operação do Moodle</span>
+                <h3>Configurando o livro de notas do Moodle</h3>
+                <p class="card-desc">Passo a passo para estruturar categorias, pesos e cálculos de notas. Do zero ao relatório final.</p>
+                <div class="card-meta"><span class="badge-tipo">Tutorial</span><span>10 min</span></div>
+              </div>
+            </a>
+
+            <!-- Card 2 — Ferramentas (azul) · Recursos Moodle (hexágono) -->
+            <a class="card" href="base-artigo.html" data-category="ferramentas" data-type="referencia" data-topics="h5p,video" data-group="recursos">
+              <div class="card-illust"><img src="../../assets/icones_artigos/icone_hexagono_branco.png" alt="" /></div>
+              <div class="card-body">
+                <span class="card-kicker">Ferramentas e Recursos</span>
+                <h3>H5P: tipos de conteúdo interativo e quando usar cada um</h3>
+                <p class="card-desc">Guia de referência dos 20+ tipos de conteúdo H5P com exemplos reais de cursos do CEFOR.</p>
+                <div class="card-meta"><span class="badge-tipo">Referência</span><span>14 min</span></div>
+              </div>
+            </a>
+
+            <!-- Card 3 — Acessibilidade (roxo) · Atividades (círculo) -->
+            <a class="card" href="base-artigo.html" data-category="acessibilidade" data-type="solucao" data-topics="questionario,inclusao-design-universal" data-group="atividades">
+              <div class="card-illust"><img src="../../assets/icones_artigos/icone_circulo_branco.png" alt="" /></div>
+              <div class="card-body">
+                <span class="card-kicker">Acessibilidade</span>
+                <h3>Como conceder tempo ampliado em um questionário</h3>
+                <p class="card-desc">Passo a passo para configurar extensão de tempo individual para estudantes com necessidades específicas.</p>
+                <div class="card-meta"><span class="badge-tipo">Solução de Problema</span><span>6 min</span></div>
+              </div>
+            </a>
+
+            <!-- Card 4 — Pedagogia (coral) · Pedagogia (retângulo) -->
+            <a class="card" href="base-artigo.html" data-category="pedagogia" data-type="conceitual" data-topics="planejamento-design-educacional" data-group="pedagogia">
+              <div class="card-illust"><img src="../../assets/icones_artigos/icone_retangulo_branco.png" alt="" /></div>
+              <div class="card-body">
+                <span class="card-kicker">Pedagogia e Planejamento</span>
+                <h3>O que é design educacional e por que ele importa</h3>
+                <p class="card-desc">Conceitos fundamentais do design educacional aplicados ao contexto do ensino a distância no Ifes.</p>
+                <div class="card-meta"><span class="badge-tipo">Conceitual</span><span>8 min</span></div>
+              </div>
+            </a>
+
+            <!-- Card 5 — Ferramentas (azul) · Atividades (círculo) -->
+            <a class="card" href="base-artigo.html" data-category="ferramentas" data-type="tutorial" data-topics="questionario,banco-questoes" data-group="atividades">
+              <div class="card-illust"><img src="../../assets/icones_artigos/icone_circulo_branco.png" alt="" /></div>
+              <div class="card-body">
+                <span class="card-kicker">Ferramentas e Recursos</span>
+                <h3>Criando questionários no Moodle: passo a passo</h3>
+                <p class="card-desc">Do banco de questões ao questionário publicado, incluindo tentativas, prazos e feedback automático.</p>
+                <div class="card-meta"><span class="badge-tipo">Tutorial</span><span>12 min</span></div>
+              </div>
+            </a>
+
+            <!-- Card 6 — Conduta (ambar) · Conduta (pentágono) -->
+            <a class="card" href="base-artigo.html" data-category="conduta" data-type="referencia" data-topics="direitos-autorais-seguranca" data-group="conduta">
+              <div class="card-illust"><img src="../../assets/icones_artigos/icone_pentagono_branco.png" alt="" /></div>
+              <div class="card-body">
+                <span class="card-kicker">Conduta e Conformidade</span>
+                <h3>Direitos autorais no Moodle: o que pode e o que não pode</h3>
+                <p class="card-desc">Guia jurídico simplificado sobre uso de imagens, textos e vídeos em materiais de curso do Ifes.</p>
+                <div class="card-meta"><span class="badge-tipo">Referência</span><span>9 min</span></div>
+              </div>
+            </a>
+
+            <!-- Card 7 — Ferramentas (azul) · IA (losango) -->
+            <a class="card" href="base-artigo.html" data-category="ferramentas" data-type="recurso" data-topics="gpt-customizado,ia-generativa" data-group="ia">
+              <div class="card-illust"><img src="../../assets/icones_artigos/icone_losango_branco.png" alt="" /></div>
+              <div class="card-body">
+                <span class="card-kicker">Ferramentas e Recursos</span>
+                <h3>GPTs customizados: criando assistentes para atividades</h3>
+                <p class="card-desc">Como criar GPTs personalizados para gerar exercícios, dar feedback e apoiar o planejamento de aulas.</p>
+                <div class="card-meta"><span class="badge-tipo">Recurso</span><span>15 min</span></div>
+              </div>
+            </a>
+
+            <!-- Card 8 — Gestão Moodle (teal) · Gestão do AVA (quadrado) -->
+            <a class="card" href="base-artigo.html" data-category="gestao-moodle" data-type="tutorial" data-topics="backup,config-curso" data-group="gestao-ava">
+              <div class="card-illust"><img src="../../assets/icones_artigos/icone_quadrado_branco.png" alt="" /></div>
+              <div class="card-body">
+                <span class="card-kicker">Gestão e Operação do Moodle</span>
+                <h3>Backup e restauração de cursos no Moodle</h3>
+                <p class="card-desc">Como fazer backup seguro, restaurar em outra disciplina e transferir conteúdo entre semestres.</p>
+                <div class="card-meta"><span class="badge-tipo">Tutorial</span><span>8 min</span></div>
+              </div>
+            </a>
+
+            <!-- Card 9 — Acessibilidade (roxo) · Acessibilidade (triângulo) -->
+            <a class="card" href="base-artigo.html" data-category="acessibilidade" data-type="referencia" data-topics="audiodescricao,video" data-group="acessibilidade">
+              <div class="card-illust"><img src="../../assets/icones_artigos/icone_triangulo_branco.png" alt="" /></div>
+              <div class="card-body">
+                <span class="card-kicker">Acessibilidade</span>
+                <h3>Audiodescrição em vídeos educacionais: quando e como</h3>
+                <p class="card-desc">Orientações práticas para produzir ou contratar audiodescrição em materiais de videoaula.</p>
+                <div class="card-meta"><span class="badge-tipo">Referência</span><span>11 min</span></div>
+              </div>
+            </a>
+
+            <!-- Card 10 — Identidade (magenta) · Identidade (triângulo retângulo) -->
+            <a class="card" href="base-artigo.html" data-category="identidade" data-type="conceitual" data-topics="padrao-visual" data-group="identidade">
+              <div class="card-illust"><img src="../../assets/icones_artigos/icone_triangulo_retangulo_branco.png" alt="" /></div>
+              <div class="card-body">
+                <span class="card-kicker">Identidade</span>
+                <h3>Padrão visual do CEFOR: cores, tipografia e aplicação</h3>
+                <p class="card-desc">Visão geral do sistema de identidade visual aplicado a materiais didáticos e MOOC.</p>
+                <div class="card-meta"><span class="badge-tipo">Conceitual</span><span>7 min</span></div>
+              </div>
+            </a>
+
+            <!-- Card 11 — Pedagogia (coral) · Pedagogia (retângulo) -->
+            <a class="card" href="base-artigo.html" data-category="pedagogia" data-type="tutorial" data-topics="planejamento-design-educacional" data-group="pedagogia">
+              <div class="card-illust"><img src="../../assets/icones_artigos/icone_retangulo_branco.png" alt="" /></div>
+              <div class="card-body">
+                <span class="card-kicker">Pedagogia e Planejamento</span>
+                <h3>Planejando uma disciplina EaD do zero</h3>
+                <p class="card-desc">Roteiro prático para estruturar objetivos, sequência didática e avaliação numa disciplina nova.</p>
+                <div class="card-meta"><span class="badge-tipo">Tutorial</span><span>13 min</span></div>
+              </div>
+            </a>
+
+            <!-- Card 12 — Gestão Moodle (teal) · Recursos Moodle (hexágono) -->
+            <a class="card" href="base-artigo.html" data-category="gestao-moodle" data-type="tutorial" data-topics="webconferencia" data-group="recursos">
+              <div class="card-illust"><img src="../../assets/icones_artigos/icone_hexagono_branco.png" alt="" /></div>
+              <div class="card-body">
+                <span class="card-kicker">Gestão e Operação do Moodle</span>
+                <h3>Webconferência no Moodle: configurando salas BBB</h3>
+                <p class="card-desc">Setup completo de salas BigBlueButton dentro do Moodle, com permissões e gravação.</p>
+                <div class="card-meta"><span class="badge-tipo">Tutorial</span><span>9 min</span></div>
+              </div>
+            </a>
+
+          </div>
+
+          <p class="empty-state" id="empty-state">Nenhum artigo corresponde aos filtros selecionados.</p>
+
+          <div class="show-more-wrap">
+            <button class="show-more">
+              Mostrar mais artigos
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="filter-sidebar" aria-label="Filtrar e ordenar">
+          <h2 class="sidebar-title">Filtrar e ordenar</h2>
+
+          <div class="filter-group">
+            <button class="filter-group-header" type="button" aria-expanded="false">
+              <span>Ordenar por</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-group-content">
+              <select id="sort-select" class="sidebar-select">
+                <option value="recent">Mais recentes</option>
+                <option value="az">Título (A-Z)</option>
+                <option value="time">Tempo de leitura</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <button class="filter-group-header" type="button" aria-expanded="false">
+              <span>Categoria</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-group-content">
+              <div class="sidebar-checkboxes" id="category-checkboxes">
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="ferramentas"> Ferramentas e Recursos</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="gestao-moodle"> Gestão e Operação do Moodle</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="pedagogia"> Pedagogia e Planejamento</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="acessibilidade"> Acessibilidade</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="conduta"> Conduta e Conformidade</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="identidade"> Identidade</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <button class="filter-group-header" type="button" aria-expanded="false">
+              <span>Tipo de artigo</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-group-content">
+              <div class="sidebar-checkboxes" id="type-checkboxes">
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="tutorial"> Tutorial</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="referencia"> Referência</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="conceitual"> Conceitual</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="solucao"> Solução de Problema</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="recurso"> Recurso</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-stats" id="filter-stats">
+            Mostrando <strong>12</strong> artigos
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer canônico injetado por shell.js -->
+
+<script>
+  // Catálogo — acordeões da sidebar
+  document.querySelectorAll('.filter-group-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const group = header.parentElement;
+      const expanded = group.classList.contains('active');
+      group.classList.toggle('active');
+      header.setAttribute('aria-expanded', !expanded);
+    });
+  });
+
+  // Catálogo — filtros e ordenação
+  const cards = document.querySelectorAll('.card-grid .card');
+  const catCheckboxes = document.querySelectorAll('#category-checkboxes input[type="checkbox"]');
+  const typeCheckboxes = document.querySelectorAll('#type-checkboxes input[type="checkbox"]');
+  const statsNum = document.querySelector('#filter-stats strong');
+  const sortSelect = document.getElementById('sort-select');
+  const cardGrid = document.querySelector('.card-grid');
+  const emptyState = document.getElementById('empty-state');
+
+  cards.forEach((c, i) => c.setAttribute('data-index', i));
+
+  function sortArticles() {
+    if (!sortSelect || !cardGrid) return;
+    const sortBy = sortSelect.value;
+    const arr = Array.from(cards);
+    if (sortBy === 'az') {
+      arr.sort((a, b) => a.querySelector('h3').textContent.trim().localeCompare(b.querySelector('h3').textContent.trim(), 'pt-BR'));
+    } else if (sortBy === 'time') {
+      arr.sort((a, b) => (parseInt(a.querySelector('.card-meta span:last-child').textContent) || 0) - (parseInt(b.querySelector('.card-meta span:last-child').textContent) || 0));
+    } else {
+      arr.sort((a, b) => parseInt(a.dataset.index) - parseInt(b.dataset.index));
+    }
+    arr.forEach(c => cardGrid.appendChild(c));
+  }
+
+  function filterArticles() {
+    const activeCats = Array.from(catCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+    const activeTypes = Array.from(typeCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+    let visible = 0;
+    cards.forEach(card => {
+      const catMatch = activeCats.length === 0 || activeCats.includes(card.dataset.category);
+      const typeMatch = activeTypes.length === 0 || activeTypes.includes(card.dataset.type);
+      if (catMatch && typeMatch) { card.style.display = 'flex'; visible++; }
+      else { card.style.display = 'none'; }
+    });
+    if (statsNum) statsNum.textContent = visible;
+    if (emptyState) emptyState.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  catCheckboxes.forEach(cb => cb.addEventListener('change', filterArticles));
+  typeCheckboxes.forEach(cb => cb.addEventListener('change', filterArticles));
+  if (sortSelect) sortSelect.addEventListener('change', sortArticles);
+</script>
+<script src="a11y.js" defer></script>
+<script src="shell.js" defer></script>
+</body>
+</html>

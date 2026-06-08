@@ -25,7 +25,7 @@
           '<h5>Navegar</h5>' +
           '<a href="base-percursos.html">Percursos</a>' +
           '<a href="base-trilhas.html">Trilhas</a>' +
-          '<a href="base-inicio.html">Todos os artigos</a>' +
+          '<a href="base-artigos.html">Todos os artigos</a>' +
           '<a href="base-categoria.html">Categorias</a>' +
           '<a href="base-topico.html">Tópicos</a>' +
         '</div>' +
