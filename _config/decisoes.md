@@ -884,11 +884,13 @@ Estrutura confirmada do rodapé:
 
 🔵 **Contexto:** A Decisão 27 estabeleceu que percurso é apenas agregação (sem certificado/progresso). Faltava definir a expressão visual: hierarquia visual entre percurso, trilha e artigo; cor/identidade própria; estrutura da página de percurso; presença do percurso dentro de artigos.
 
-**Resolução (2026-05-19):** ✅ **APROVADO — Modelo de 3 superfícies**
+**Resolução (2026-05-19):** ✅ **APROVADO — Modelo de superfícies** (3 originais → **4** após a revisão de 2026-06-08)
 
 **Referência canônica:** `stages/02-design-system/drafts/prototipos-paginas/base-percurso.html`
 
 > **⚠️ Revisão 2026-06-02 — Dourado abandonado.** A cor reservada do percurso deixa de ser o dourado e passa a ser o **verde escuro** (`--verde-profundo`), mantendo o percurso dentro da própria família verde da marca. A diferenciação de nível agora é **claro → escuro**: trilha em verde claro (`--accent` / `--verde-claro`), percurso em verde escuro (`--verde-profundo` / `--verde-marca`). Categoria/Tópico seguem neutros. Motivo: o dourado destoava da identidade cromática e, na versão "sutil" do chip, acabou virando verde igual ao da trilha — gerando confusão de níveis. O verde escuro resolve a hierarquia sem introduzir uma cor estranha à marca. Os tokens `--gold*` permanecem **apenas** para usos decorativos pontuais (gradiente da barra de progresso, filetes de pullquote), nunca como identidade do percurso. As menções a "dourado" abaixo devem ser lidas como **verde escuro**.
+
+> **⚠️ Revisão 2026-06-08 — Vínculo de percurso sai do acordeão, vai para o painel de meta/stats.** A **Superfície 2 original** (chip de percurso *dentro* do box de trilha, no acordeão do artigo) foi **removida** (HTML + CSS). O vínculo "Faz parte do percurso" passa a viver no **painel de informações** de cada superfície: no **meta do artigo** (`base-artigo.html`, junto de Tipo/Tempo/Compartilhar) e no **painel de stats do hero da página de trilha** (`base-trilha.html`, junto de Artigos/Tempo). Mantém a cor reservada (verde-profundo) e o link para a página do percurso. Motivo (Elton, 2026-06-08): o acordeão deve focar só na sequência de artigos da trilha; o pertencimento ao percurso é metadado e fica mais legível e consistente no painel de meta/stats, sem duplicar a informação. O modelo passa de **3 para 4 superfícies** — ver Superfícies 2–4 reescritas abaixo.
 
 ### Hierarquia de cores
 
@@ -914,27 +916,40 @@ Decisões propositais:
 - **Não há barra de progresso da página de percurso** — só composição estática
 - **Cards de trilha mostram 5 artigos.** Se a trilha tem ≤ 5 artigos, mostra todos sem indicador "+N". Se tem mais, mostra 5 + "+N artigos"
 
-### Superfície 2 — Chip de percurso dentro do box de trilha
+### Superfície 2 — Vínculo de percurso no painel de meta do artigo *(revisada 2026-06-08)*
 
-Quando uma trilha pertence a um percurso, aparece um chip em verde escuro no topo do acordeão expandido (Decisão 30):
+Quando o artigo integra trilha(s) de um percurso, o painel de meta (`.masthead-meta` de `base-artigo.html`) ganha uma entrada, ao lado de Tipo/Tempo/Compartilhar:
 
-> 📖 Faz parte do percurso **Dominando o Moodle**
+> **FAZ PARTE DO PERCURSO**
+> 📖 Dominando o Moodle ›
 
-- Posição: topo do conteúdo expandido do item do acordeão, antes da barra de progresso
-- Cor: pílula sólida em `--verde-profundo`, texto branco, rótulo/ícone em `--verde-claro` (preenchimento sólido contrasta com a trilha, que fica em verde claro só no texto)
+- Posição: `.meta-block.meta-percurso`, entre "Tempo de leitura" e "Compartilhar"
+- Cor: rótulo e link em `--verde-profundo` (cor reservada), com ícone de percurso + chevron; hover em `--verde-marca`; modo escuro em `--verde-claro`
 - Comportamento: clicável, leva à página dedicada do percurso
-- Razão para ali: é onde o leitor está pensando "onde estou?". Atribui a trilha ao percurso sem ocupar espaço quando o acordeão está colapsado
+- Condicional: só renderiza quando há vínculo. Artigos sem percurso não exibem a entrada
+- **Substitui** o antigo chip dentro do acordeão (removido em 2026-06-08) — o acordeão volta a focar só na sequência de artigos da trilha (cabeçalho → barra de progresso estrutural → lista numerada)
 
-### Superfície 3 — Página de listagem `/percursos`
+### Superfície 3 — Vínculo de percurso no painel de stats da página de trilha *(novo 2026-06-08)*
+
+A página da trilha (`base-trilha.html`) recebe a mesma entrada no painel de stats do hero, ao lado de Artigos/Tempo de leitura:
+
+> **FAZ PARTE DO PERCURSO**
+> 📖 Dominando o Moodle ›
+
+- Posição: `.hero-stat.hero-stat--percurso`, entre "Tempo de leitura" e "Compartilhar"
+- Cor: idêntica à do artigo — `--verde-profundo`, com ícone + chevron; modo escuro em `--verde-claro`
+- Condicional: só aparece quando a trilha integra ≥1 percurso. Trilhas autônomas (T4–T9) não exibem
+
+### Superfície 4 — Página de listagem `/percursos`
 
 - Grid de 3 colunas (responsivo)
-- Cada card: borda lateral verde escura de 4px, kicker mini em verde escuro ("Percurso"), H4 do nome, descrição curta (1-2 linhas), footer com `N trilhas · M artigos · ~Xh`
+- Cada card: borda lateral verde escura de 4px, kicker mini em verde escuro ("Percurso"), H4 do nome, descrição curta (1-2 linhas), footer com `N trilhas · M artigos · ~Xh`. Candidatos da V2 ("Em breve") usam estilo neutro/inativo, sem o verde reservado
 - Diferenciação visual clara entre percursos e listagens de artigos/categorias (que ficam sóbrias)
 
 **Impacto:**
-- Documentar todas as 3 superfícies na Camada 4.5 (Padrões de Composição)
+- Documentar as **4 superfícies** na Camada 4.5 (Padrões de Composição)
 - Implementar o **verde escuro** (`--verde-profundo`) como cor reservada do percurso no design tokens da Fase 2 (o dourado foi descartado para essa função — ver revisão 2026-06-02 acima)
-- Adicionar chip de percurso no `prototipo-artigo.html` (referência canônica)
+- Vínculo de percurso implementado no meta do artigo (`base-artigo.html`) e no stats da trilha (`base-trilha.html`); listagem `/percursos` em `base-percursos.html` — todos 2026-06-08
 
 ---
 
@@ -1091,7 +1106,7 @@ Quando uma trilha pertence a um percurso, aparece um chip em verde escuro no top
 | **28** | **Box de trilha sempre visível** *(Fase 1 — 2026-05-19)* | ✅ **Aprovado** | Vínculo **estrutural** (CMS), não comportamental (referrer). Aparece sempre que o artigo pertence a uma trilha |
 | **29** | **V1 sem rastreamento de progresso pessoal** *(Fase 1 — 2026-05-19)* | ✅ **Aprovado** | Mostrar apenas **posição estrutural** ("Artigo X de Y"). Sem localStorage. Progresso pessoal fica para V2 com login |
 | **30** | **Apresentação de múltiplas trilhas: acordeão** *(Fase 1 — 2026-05-19)* | ✅ **Aprovado** | Box "Trilhas deste artigo" usa **acordeão (A.2)**. Posição "X/Y" visível mesmo colapsado. Primeira expandida por padrão. Múltiplas abertas simultaneamente permitidas |
-| **31** | **Apresentação visual do percurso** *(Fase 1 — 2026-05-19; cor revisada 2026-06-02)* | ✅ **Aprovado** | **Verde escuro (`--verde-profundo`) é a cor reservada do percurso** — dourado abandonado em 2026-06-02. 3 superfícies: página dedicada (hero + stats + "como percorrer" + cards de trilhas com 5 primeiros artigos) · chip em verde escuro no acordeão de trilha · página `/percursos` (grid com borda verde escura). Referência: `drafts/prototipos-paginas/base-percurso.html` |
+| **31** | **Apresentação visual do percurso** *(Fase 1 — 2026-05-19; cor revisada 2026-06-02; superfícies revisadas 2026-06-08)* | ✅ **Aprovado** | **Verde escuro (`--verde-profundo`) é a cor reservada do percurso** — dourado abandonado em 2026-06-02. **4 superfícies:** página dedicada (hero + stats + "como percorrer" + cards de trilhas) · vínculo "Faz parte do percurso" no **meta do artigo** · idem no **stats da página de trilha** · listagem `/percursos` (grid com borda verde escura). O chip dentro do acordeão de trilha foi **removido em 2026-06-08** — o vínculo migrou para meta/stats. Referências: `base-percurso.html`, `base-percursos.html`, `base-artigo.html`, `base-trilha.html` |
 | **32** | **Remoção do prev/next do rodapé do artigo** *(Fase 1 — 2026-05-19)* | ✅ **Aprovado** | Cards `.trilha-nav-card.prev/next` **removidos.** Navegação entre artigos da trilha passa a ser exclusiva do acordeão multi-trilha na sidebar |
 | **33** | **Breadcrumb taxonômico** *(Fase 1 — 2026-06-02)* | ✅ **Aprovado** | Breadcrumb reflete a **árvore de classificação** (`Início › Categoria › Artigo`), cada ancestral é página real; nunca a jornada. Trilha/percurso só na casca. Fonte: `arquitetura-informacao.md` |
 | **34** | **URL plana do artigo** *(Fase 1 — 2026-06-02)* | ✅ **Aprovado** | Categoria **sai da URL**. Artigo = `/{slug}` na raiz (sem categoria, sem `/artigos/`), com slugs reservados. Categoria fica só em breadcrumb + página-índice. Recategorizar não quebra o link |
@@ -1118,7 +1133,7 @@ A **Fase 0 está oficialmente concluída**. A **Fase 1 — Fundações** está e
 - ✅ Box de trilha sempre visível por vínculo estrutural (Decisão 28)
 - ✅ V1 sem rastreamento pessoal — apenas posição estrutural (Decisão 29)
 - ✅ Apresentação de múltiplas trilhas: **acordeão** escolhido (Decisão 30 — referência `drafts/exploracao-multiplas-trilhas.html`)
-- ✅ Apresentação visual do percurso: verde escuro (`--verde-profundo`) como cor reservada — dourado abandonado em 2026-06-02 —, 3 superfícies (Decisão 31 — referência `drafts/prototipos-paginas/base-percurso.html`)
+- ✅ Apresentação visual do percurso: verde escuro (`--verde-profundo`) como cor reservada — dourado abandonado em 2026-06-02 —, **4 superfícies** após revisão de 2026-06-08 (página dedicada · meta do artigo · stats da trilha · listagem `/percursos`); chip do acordeão removido (Decisão 31 — referências `base-percurso.html`, `base-percursos.html`, `base-artigo.html`, `base-trilha.html`)
 - ✅ Prev/next no rodapé do artigo: **removido** (Decisão 32 — navegação fica exclusivamente no acordeão)
 - ⏳ Validação das Decisões 25-32 com Rute e Marquito (foram tomadas em sessão Elton + Claude)
 

@@ -23,11 +23,11 @@
         '</div>' +
         '<div>' +
           '<h5>Navegar</h5>' +
-          '<a href="base-percurso.html">Percursos</a>' +
-          '<a href="base-trilha.html">Trilhas</a>' +
+          '<a href="base-percursos.html">Percursos</a>' +
+          '<a href="base-trilhas.html">Trilhas</a>' +
           '<a href="base-inicio.html">Todos os artigos</a>' +
-          '<a href="#">Categorias</a>' +
-          '<a href="#">Tópicos</a>' +
+          '<a href="base-categoria.html">Categorias</a>' +
+          '<a href="base-topico.html">Tópicos</a>' +
         '</div>' +
         '<div>' +
           '<h5>Sobre</h5>' +

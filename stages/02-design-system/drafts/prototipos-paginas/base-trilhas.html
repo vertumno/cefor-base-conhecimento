@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trilhas · Base de Conhecimento CEFOR/Ifes</title>
+<meta name="description" content="Listagem de trilhas (/trilhas). Hero verde-pálido explicando o que é uma trilha; grid único das trilhas com filtro por categoria. Tokens design.md." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     LISTAGEM DE TRILHAS — Tokens oficiais (design.md)
+     Hero estilo trilha (verde-pálido) + grid único com filtro
+     por categoria (decisão Elton 2026-06-07).
+     ============================================================ */
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad-x); }
+
+  /* ---------- HERO — faixa verde-pálido ---------- */
+  .hero-lista { background: var(--verde-palido); color: var(--ink); position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+  .hero-bg-icon {
+    position: absolute; right: -50px; top: 50%; transform: translateY(-50%);
+    width: 460px; height: 280px; object-fit: contain; opacity: .10;
+    pointer-events: none; z-index: 0;
+  }
+  @media (max-width: 700px) { .hero-bg-icon { width: 320px; height: 200px; right: -80px; } }
+  .hero-lista-inner {
+    position: relative; z-index: 1;
+    max-width: var(--maxw); margin: 0 auto; padding: 44px var(--pad-x) 44px;
+    display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;
+  }
+  @media (max-width: 860px) { .hero-lista-inner { grid-template-columns: 1fr; gap: 24px; } }
+  .hero-lista-main { min-width: 0; }
+  .hero-kicker {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 20px 8px 15px; margin: 0 0 18px;
+    background: var(--verde-profundo); border-radius: 99px;
+    font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #fff;
+  }
+  [data-theme="dark"] .hero-kicker { color: var(--bg); }
+  .hero-kicker svg { width: 20px; height: 20px; }
+  .hero-lista h1 { font-size: 2.6rem; line-height: 1.06; font-weight: 700; letter-spacing: -.02em; margin: 0 0 14px; color: var(--verde-profundo); }
+  @media (max-width: 700px) { .hero-lista h1 { font-size: 2.05rem; } }
+  .hero-lista .subtitle { font-size: 1.06rem; line-height: 1.55; margin: 0; color: var(--verde-profundo); max-width: 62ch; }
+  .hero-lista-stats {
+    border-left: 1px solid var(--line-2); padding-left: 28px; min-width: 150px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  @media (max-width: 860px) {
+    .hero-lista-stats { border-left: 0; border-top: 1px solid var(--line-2); padding-left: 0; padding-top: 22px; flex-direction: row; gap: 40px; }
+  }
+  .hero-lista-stat .label { display: block; font-size: .66rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--verde-marca); margin: 0 0 3px; }
+  .hero-lista-stat .value { font-size: 1.35rem; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+  /* ---------- CORPO — grid + sidebar de filtros ---------- */
+  .section { padding: 44px 0 64px; }
+  .content-layout { display: grid; grid-template-columns: 1fr 220px; gap: 36px; align-items: start; }
+  @media (max-width: 960px) {
+    .content-layout { grid-template-columns: 1fr; gap: 28px; }
+    .filter-sidebar { position: static !important; order: -1; }
+  }
+  .filter-sidebar { display: flex; flex-direction: column; gap: 2px; position: sticky; top: 88px; }
+  .sidebar-title {
+    font-size: .72rem; font-weight: 700; color: var(--ink-3); margin: 0 0 4px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--line); letter-spacing: .12em; text-transform: uppercase;
+  }
+  .filter-group:not(:last-of-type) { border-bottom: 1px solid var(--line); }
+  .filter-group-header {
+    display: flex; justify-content: space-between; align-items: center; width: 100%;
+    background: transparent; border: none; padding: 11px 0;
+    font-family: var(--sans); font-size: .82rem; font-weight: 600; color: var(--ink-2); cursor: pointer; text-align: left;
+  }
+  .filter-group-header:hover { color: var(--verde-marca); }
+  .filter-group-header .chevron { transition: transform .25s ease; color: var(--ink-3); width: 13px; height: 13px; }
+  .filter-group.active .filter-group-header { color: var(--ink); }
+  .filter-group.active .filter-group-header .chevron { transform: rotate(180deg); }
+  .filter-group-content { display: none; padding: 2px 0 12px; }
+  .filter-group.active .filter-group-content { display: block; }
+  .sidebar-select {
+    width: 100%; padding: 7px 10px; border-radius: var(--r-sm);
+    border: 1px solid var(--line-2); background: var(--paper); color: var(--ink);
+    font-family: var(--sans); font-size: .82rem; font-weight: 500; cursor: pointer; outline: none; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238a8273' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 10px center; background-size: 13px; padding-right: 28px;
+  }
+  .sidebar-select:focus { border-color: var(--verde-marca); box-shadow: 0 0 0 3px var(--verde-palido); }
+  .sidebar-checkboxes { display: flex; flex-direction: column; gap: 7px; }
+  .sidebar-cb-label {
+    display: inline-flex; align-items: center; gap: 9px; font-size: .84rem; font-weight: 500; color: var(--ink-2);
+    cursor: pointer; user-select: none; transition: color .12s;
+  }
+  .sidebar-cb-label:hover { color: var(--ink); }
+  .sidebar-cb-label input[type="checkbox"] {
+    appearance: none; -webkit-appearance: none; width: 15px; height: 15px;
+    border: 1.4px solid var(--line-2); border-radius: 4px; background: var(--paper);
+    cursor: pointer; display: grid; place-content: center; transition: border-color .15s, background-color .15s; flex-shrink: 0;
+  }
+  .sidebar-cb-label input[type="checkbox"]::before {
+    content: ""; width: 9px; height: 9px; transform: scale(0); transition: transform .12s ease-in-out;
+    background-color: var(--verde-marca); clip-path: polygon(14% 44%, 0 58%, 38% 96%, 100% 23%, 86% 9%, 38% 68%);
+  }
+  .sidebar-cb-label input[type="checkbox"]:checked { background-color: var(--verde-palido); border-color: var(--verde-marca); }
+  .sidebar-cb-label input[type="checkbox"]:checked::before { transform: scale(1); }
+  .sidebar-stats { font-size: .78rem; color: var(--ink-3); font-weight: 500; margin-top: 8px; padding-top: 12px; border-top: 1px dashed var(--line); }
+  .sidebar-stats strong { color: var(--verde-marca); font-weight: 700; }
+
+  /* ---------- Card de trilha (verde-pálido único — trilha cruza categorias) ---------- */
+  .trilha-card {
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg);
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: transform .2s ease, border-color .15s, box-shadow .15s;
+  }
+  .trilha-card:hover { border-color: var(--verde-claro); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .trilha-illust { aspect-ratio: 16 / 7; background: var(--verde-palido); display: grid; place-items: center; position: relative; overflow: hidden; }
+  .trilha-illust img { width: 62%; height: auto; max-width: 180px; opacity: .95; filter: drop-shadow(0 2px 6px rgba(0,0,0,.08)); }
+  .trilha-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .trilha-kicker { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); display: flex; align-items: center; gap: 8px; }
+  .trilha-cat { font-weight: 600; color: var(--verde-marca); }
+  .trilha-body h3 { font-size: 1.12rem; font-weight: 700; margin: 0; line-height: 1.3; color: var(--ink); letter-spacing: -.005em; }
+  .trilha-card:hover h3 { color: var(--verde-marca); }
+  .trilha-desc { font-size: .92rem; color: var(--ink-2); line-height: 1.55; margin: 0;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .trilha-meta { margin-top: auto; padding-top: 12px; display: flex; gap: 28px; }
+  .trilha-meta .m-label { display: block; font-size: .64rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 3px; }
+  .trilha-meta .m-value { font-size: .98rem; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+  .empty-state { display: none; padding: 48px 0; text-align: center; color: var(--ink-3); font-size: .95rem; }
+
+  @media (max-width: 600px) { :root { --pad-x: 20px; } }
+</style>
+<link rel="stylesheet" href="a11y.css">
+<link rel="stylesheet" href="shell.css">
+</head>
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="base-inicio.html" class="brand">
+      <span class="brand-logo" aria-hidden="true">
+        <img src="../../assets/logo/ID_base_branca.png" alt="" />
+      </span>
+      <span class="brand-text">
+        <strong>Base de Conhecimento</strong>
+        <span>CEFOR · Ifes</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="base-percursos.html">Percursos</a>
+      <a href="base-trilhas.html" class="active">Trilhas</a>
+      <a href="base-inicio.html">Todos os artigos</a>
+    </nav>
+    <form class="header-search" role="search" action="base-busca.html" method="get">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar" />
+    </form>
+    <!-- Acessibilidade: painel flutuante canônico injetado por a11y.js -->
+  </div>
+</header>
+
+<nav class="breadcrumb" aria-label="Você está aqui">
+  <div class="breadcrumb-inner">
+    <a href="base-inicio.html">Início</a>
+    <span class="sep">›</span>
+    <span class="current">Trilhas</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-lista" aria-labelledby="lista-title">
+  <img class="hero-bg-icon" src="../../assets/icones_trilha/icone_trilha_circulo_tringulo.png" alt="" aria-hidden="true">
+  <div class="hero-lista-inner">
+    <div class="hero-lista-main">
+      <span class="hero-kicker">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="3"/><rect x="15" y="9" width="6" height="6" rx="0.5"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
+        Trilhas
+      </span>
+      <h1 id="lista-title">Sequências guiadas para cada tarefa</h1>
+      <p class="subtitle">
+        Uma trilha reúne artigos na ordem certa para você resolver um objetivo do começo ao fim —
+        com começo, meio e fim reais. Cada artigo também funciona sozinho.
+      </p>
+    </div>
+    <div class="hero-lista-stats">
+      <div class="hero-lista-stat">
+        <span class="label">Trilhas</span>
+        <span class="value" id="stat-total">10</span>
+      </div>
+      <div class="hero-lista-stat">
+        <span class="label">Categorias</span>
+        <span class="value">4</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="main">
+  <section class="section">
+    <div class="container">
+      <div class="content-layout">
+
+        <!-- GRID DE TRILHAS -->
+        <div class="content-main">
+          <div class="trilha-grid">
+
+            <a class="trilha-card" href="base-trilha.html" data-category="gestao-moodle" data-articles="6" data-time="120">
+              <div class="trilha-illust"><img src="../../assets/icones_trilha/icone_trilha_circulo_quadrado.png" alt="" aria-hidden="true"></div>
+              <div class="trilha-body">
+                <span class="trilha-kicker">Trilha · <span class="trilha-cat">Gestão do Moodle</span></span>
+                <h3>Da sala vazia ao primeiro dia de aula</h3>
+                <p class="trilha-desc">Do primeiro contato com o Moodle do Ifes à abertura da sala — criar a sala, definir datas, organizar seções e rodar o checklist de abertura.</p>
+                <div class="trilha-meta">
+                  <div><span class="m-label">Artigos</span><span class="m-value">6</span></div>
+                  <div><span class="m-label">Tempo de leitura</span><span class="m-value">2h</span></div>
+                </div>
+              </div>
+            </a>
+
+            <a class="trilha-card" href="base-trilha.html" data-category="gestao-moodle" data-articles="10" data-time="150">
+              <div class="trilha-illust"><img src="../../assets/icones_trilha/icone_trilha_circulo_tringulo.png" alt="" aria-hidden="true"></div>
+              <div class="trilha-body">
+                <span class="trilha-kicker">Trilha · <span class="trilha-cat">Gestão do Moodle</span></span>
+                <h3>Avaliação online de ponta a ponta</h3>
+                <p class="trilha-desc">Estruture a avaliação no Moodle — da prova online à proteção de acesso, passando por questionários e banco de questões.</p>
+                <div class="trilha-meta">
+                  <div><span class="m-label">Artigos</span><span class="m-value">10</span></div>
+                  <div><span class="m-label">Tempo de leitura</span><span class="m-value">2h30</span></div>
+                </div>
+              </div>
+            </a>
+
+            <a class="trilha-card" href="base-trilha.html" data-category="gestao-moodle" data-articles="5" data-time="90">
+              <div class="trilha-illust"><img src="../../assets/icones_trilha/icone_trilha_circulo_retangulo.png" alt="" aria-hidden="true"></div>
+              <div class="trilha-body">
+                <span class="trilha-kicker">Trilha · <span class="trilha-cat">Gestão do Moodle</span></span>
+                <h3>Do Livro de Notas ao Sistema Acadêmico</h3>
+                <p class="trilha-desc">Do Livro de Notas ao fechamento — configurar, calcular médias com recuperação e exportar notas para o Sistema Acadêmico.</p>
+                <div class="trilha-meta">
+                  <div><span class="m-label">Artigos</span><span class="m-value">5</span></div>
+                  <div><span class="m-label">Tempo de leitura</span><span class="m-value">1h30</span></div>
+                </div>
+              </div>
+            </a>
+
+            <a class="trilha-card" href="base-trilha.html" data-category="ferramentas" data-articles="3" data-time="50">
+              <div class="trilha-illust"><img src="../../assets/icones_trilha/icone_trilha_hexagono_losango.png" alt="" aria-hidden="true"></div>
+              <div class="trilha-body">
+                <span class="trilha-kicker">Trilha · <span class="trilha-cat">Ferramentas</span></span>
+                <h3>Conteúdo interativo com H5P, do básico ao avançado</h3>
+                <p class="trilha-desc">Do potencial do H5P à montagem de um conteúdo interativo na sala virtual, passo a passo no AVA.</p>
+                <div class="trilha-meta">
+                  <div><span class="m-label">Artigos</span><span class="m-value">3</span></div>
+                  <div><span class="m-label">Tempo de leitura</span><span class="m-value">50 min</span></div>
+                </div>
+              </div>
+            </a>
+
+            <a class="trilha-card" href="base-trilha.html" data-category="ferramentas" data-articles="4" data-time="60">
+              <div class="trilha-illust"><img src="../../assets/icones_trilha/icone_trilha_hexagono_circulo.png" alt="" aria-hidden="true"></div>
+              <div class="trilha-body">
+                <span class="trilha-kicker">Trilha · <span class="trilha-cat">Ferramentas</span></span>
+                <h3>Aulas ao vivo por Webconferência</h3>
+                <p class="trilha-desc">Prepare, conduza e transmita uma aula ao vivo — da webconferência integrada ao Moodle à transmissão no YouTube.</p>
+                <div class="trilha-meta">
+                  <div><span class="m-label">Artigos</span><span class="m-value">4</span></div>
+                  <div><span class="m-label">Tempo de leitura</span><span class="m-value">1h</span></div>
+                </div>
+              </div>
+            </a>
+
+            <a class="trilha-card" href="base-trilha.html" data-category="ferramentas" data-articles="3" data-time="40">
+              <div class="trilha-illust"><img src="../../assets/icones_trilha/icone_trilha_circulo_hexagono.png" alt="" aria-hidden="true"></div>
+              <div class="trilha-body">
+                <span class="trilha-kicker">Trilha · <span class="trilha-cat">Ferramentas</span></span>
+                <h3>Acompanhamento e gamificação do progresso</h3>
+                <p class="trilha-desc">Configure a conclusão de atividades, a barra de progresso e o LevelUp para acompanhar e engajar a turma.</p>
+                <div class="trilha-meta">
+                  <div><span class="m-label">Artigos</span><span class="m-value">3</span></div>
+                  <div><span class="m-label">Tempo de leitura</span><span class="m-value">40 min</span></div>
+                </div>
+              </div>
+            </a>
+
+            <a class="trilha-card" href="base-trilha.html" data-category="acessibilidade" data-articles="3" data-time="50">
+              <div class="trilha-illust"><img src="../../assets/icones_trilha/icone_trilha_circulo_triangulo_retangulo.png" alt="" aria-hidden="true"></div>
+              <div class="trilha-body">
+                <span class="trilha-kicker">Trilha · <span class="trilha-cat">Acessibilidade</span></span>
+                <h3>Avaliação acessível para todos os estudantes</h3>
+                <p class="trilha-desc">Cuidados de acessibilidade ao inserir recursos, tempo ampliado no questionário e audiodescrição em imagens.</p>
+                <div class="trilha-meta">
+                  <div><span class="m-label">Artigos</span><span class="m-value">3</span></div>
+                  <div><span class="m-label">Tempo de leitura</span><span class="m-value">50 min</span></div>
+                </div>
+              </div>
+            </a>
+
+            <a class="trilha-card" href="base-trilha.html" data-category="acessibilidade" data-articles="3" data-time="45">
+              <div class="trilha-illust"><img src="../../assets/icones_trilha/icone_trilha_losango_circulo.png" alt="" aria-hidden="true"></div>
+              <div class="trilha-body">
+                <span class="trilha-kicker">Trilha · <span class="trilha-cat">Acessibilidade</span></span>
+                <h3>Conteúdo em Libras no AVA, do vídeo ao termo técnico</h3>
+                <p class="trilha-desc">Inserir vídeo em Libras no AVA, ativar a visualização VLibras e usar o videobook de termos da EaD em Libras.</p>
+                <div class="trilha-meta">
+                  <div><span class="m-label">Artigos</span><span class="m-value">3</span></div>
+                  <div><span class="m-label">Tempo de leitura</span><span class="m-value">45 min</span></div>
+                </div>
+              </div>
+            </a>
+
+            <a class="trilha-card" href="base-trilha.html" data-category="pedagogia" data-articles="3" data-time="50">
+              <div class="trilha-illust"><img src="../../assets/icones_trilha/icone_trilha_circulo_losango.png" alt="" aria-hidden="true"></div>
+              <div class="trilha-body">
+                <span class="trilha-kicker">Trilha · <span class="trilha-cat">Pedagogia</span></span>
+                <h3>Avaliações com IA generativa</h3>
+                <p class="trilha-desc">Da Taxonomia de Bloom 2.0 à geração de questionários e rubricas com o GPT, aplicada à sala virtual.</p>
+                <div class="trilha-meta">
+                  <div><span class="m-label">Artigos</span><span class="m-value">3</span></div>
+                  <div><span class="m-label">Tempo de leitura</span><span class="m-value">50 min</span></div>
+                </div>
+              </div>
+            </a>
+
+            <a class="trilha-card" href="base-trilha.html" data-category="gestao-moodle" data-articles="6" data-time="120">
+              <div class="trilha-illust"><img src="../../assets/icones_trilha/icone_trilha_circulo_pentagono.png" alt="" aria-hidden="true"></div>
+              <div class="trilha-body">
+                <span class="trilha-kicker">Trilha · <span class="trilha-cat">Gestão do Moodle</span></span>
+                <h3>Administração da sala virtual ao longo do curso</h3>
+                <p class="trilha-desc">Backup e restauração, acesso de usuários e visitantes, e atividades com acesso restrito durante a oferta.</p>
+                <div class="trilha-meta">
+                  <div><span class="m-label">Artigos</span><span class="m-value">6</span></div>
+                  <div><span class="m-label">Tempo de leitura</span><span class="m-value">2h</span></div>
+                </div>
+              </div>
+            </a>
+
+          </div>
+
+          <p class="empty-state" id="empty-state">Nenhuma trilha nesta categoria.</p>
+        </div>
+
+        <!-- SIDEBAR DE FILTROS -->
+        <aside class="filter-sidebar" aria-label="Filtrar e ordenar">
+          <h2 class="sidebar-title">Filtrar e ordenar</h2>
+
+          <div class="filter-group">
+            <button class="filter-group-header" type="button" aria-expanded="false">
+              <span>Ordenar por</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-group-content">
+              <select id="sort-select" class="sidebar-select">
+                <option value="recent">Mais recentes</option>
+                <option value="az">Título (A-Z)</option>
+                <option value="articles">Número de artigos</option>
+                <option value="time">Tempo de leitura</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <button class="filter-group-header" type="button" aria-expanded="false">
+              <span>Categoria</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-group-content">
+              <div class="sidebar-checkboxes" id="category-checkboxes">
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="gestao-moodle"> Gestão e Operação do Moodle</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="ferramentas"> Ferramentas e Recursos</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="acessibilidade"> Acessibilidade</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="pedagogia"> Pedagogia e Planejamento</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-stats" id="filter-stats">
+            Mostrando <strong>10</strong> trilhas
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer canônico injetado por shell.js -->
+
+<script>
+  document.querySelectorAll('.filter-group-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const group = header.parentElement;
+      const expanded = group.classList.contains('active');
+      group.classList.toggle('active');
+      header.setAttribute('aria-expanded', String(!expanded));
+    });
+  });
+
+  const cards = Array.from(document.querySelectorAll('.trilha-grid .trilha-card'));
+  const catCheckboxes = document.querySelectorAll('#category-checkboxes input[type="checkbox"]');
+  const statsNum = document.querySelector('#filter-stats strong');
+  const sortSelect = document.getElementById('sort-select');
+  const grid = document.querySelector('.trilha-grid');
+  const emptyState = document.getElementById('empty-state');
+
+  cards.forEach((c, i) => c.setAttribute('data-index', i));
+
+  function sortTrilhas() {
+    if (!sortSelect || !grid) return;
+    const by = sortSelect.value;
+    const arr = cards.slice();
+    if (by === 'az') {
+      arr.sort((a, b) => a.querySelector('h3').textContent.trim().localeCompare(b.querySelector('h3').textContent.trim(), 'pt-BR'));
+    } else if (by === 'articles') {
+      arr.sort((a, b) => (parseInt(b.dataset.articles) || 0) - (parseInt(a.dataset.articles) || 0));
+    } else if (by === 'time') {
+      arr.sort((a, b) => (parseInt(a.dataset.time) || 0) - (parseInt(b.dataset.time) || 0));
+    } else {
+      arr.sort((a, b) => parseInt(a.dataset.index) - parseInt(b.dataset.index));
+    }
+    arr.forEach(c => grid.appendChild(c));
+  }
+
+  function filterTrilhas() {
+    const activeCats = Array.from(catCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+    let visible = 0;
+    cards.forEach(card => {
+      const match = activeCats.length === 0 || activeCats.includes(card.dataset.category);
+      if (match) { card.style.display = 'flex'; visible++; }
+      else { card.style.display = 'none'; }
+    });
+    if (statsNum) statsNum.textContent = visible;
+    if (emptyState) emptyState.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  catCheckboxes.forEach(cb => cb.addEventListener('change', filterTrilhas));
+  if (sortSelect) sortSelect.addEventListener('change', sortTrilhas);
+</script>
+<script src="a11y.js" defer></script>
+<script src="shell.js" defer></script>
+</body>
+</html>

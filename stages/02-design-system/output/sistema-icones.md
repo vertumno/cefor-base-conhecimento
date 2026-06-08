@@ -66,7 +66,7 @@ Exemplos: `icone_trilha_circulo_hexagono.png`, `icone_trilha_quadrado_circulo.pn
 A combinação de duas formas expressa visualmente que a trilha é uma entidade **composta** (uma jornada que reúne artigos de naturezas distintas), diferenciando-a do ícone de forma única do artigo.
 
 - **Variante:** apenas uma (outline preto/escuro). Não há par branco/preto como na família de artigos.
-- **Uso nos protótipos:** fundo do hero da página de trilha (`.hero-bg-icon`), card de trilha em listagens (`base-percurso.html`, `base-inicio-v5.html`, "outras trilhas" em `base-trilha.html`).
+- **Uso nos protótipos:** fundo do hero da página de trilha (`.hero-bg-icon`), card de trilha em listagens (`base-percurso.html`, `base-inicio.html`, "outras trilhas" em `base-trilha.html`).
 
 ### 3.2 Inventário
 

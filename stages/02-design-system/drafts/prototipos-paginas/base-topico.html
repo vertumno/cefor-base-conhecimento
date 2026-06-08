@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Questionário · Tópico · Base CEFOR/Ifes</title>
+<meta name="description" content="Página de descoberta por tópico (/topicos/{slug}). Tópico é transversal (cruza categorias) — faixa neutra, sem cor própria (taxonomia §6.3). Artigos do tópico em qualquer categoria + trilhas relacionadas. Tokens design.md." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     PÁGINA DE TÓPICO (DESCOBERTA) — Tokens oficiais (design.md)
+     Tópico é transversal: faixa NEUTRA, sem cor própria (§6.3).
+     A cor vive nos cards (cada artigo carrega a cor da sua categoria).
+     ============================================================ */
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad-x); }
+
+  /* ---------- HERO — faixa clara neutra, chip neutro ---------- */
+  .hero-top { background: var(--bg-2); border-bottom: 1px solid var(--line); }
+  .hero-top-inner {
+    max-width: var(--maxw); margin: 0 auto; padding: 44px var(--pad-x) 44px;
+    display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;
+  }
+  @media (max-width: 860px) { .hero-top-inner { grid-template-columns: 1fr; gap: 26px; } }
+  .hero-top-main { min-width: 0; }
+  .top-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 7px 16px 7px 13px; margin: 0 0 16px;
+    border-radius: 99px; background: var(--bg-3); color: var(--ink-2);
+    font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  }
+  .top-chip svg { width: 15px; height: 15px; color: var(--ink-3); }
+  .hero-top h1 { font-size: 2.6rem; line-height: 1.08; font-weight: 700; letter-spacing: -.02em; margin: 0 0 14px; color: var(--ink); }
+  @media (max-width: 700px) { .hero-top h1 { font-size: 2.05rem; } }
+  .hero-top .subtitle { font-size: 1.06rem; line-height: 1.55; margin: 0; color: var(--ink-2); max-width: 62ch; }
+  .hero-top-stats {
+    border-left: 1px solid var(--line-2); padding-left: 28px; min-width: 150px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  @media (max-width: 860px) {
+    .hero-top-stats { border-left: 0; border-top: 1px solid var(--line-2); padding-left: 0; padding-top: 22px; flex-direction: row; gap: 40px; }
+  }
+  .hero-top-stat .label { display: block; font-size: .66rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 3px; }
+  .hero-top-stat .value { font-size: 1.35rem; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+  /* ---------- Seções ---------- */
+  .main-stack { padding: 44px 0 64px; }
+  .main-stack > section + section { margin-top: 56px; }
+  .section-eyebrow { font-size: 1.05rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 6px; }
+  .section-sub { font-size: .95rem; color: var(--ink-2); margin: 0 0 22px; line-height: 1.5; }
+
+  /* ---------- Cards de artigo (cor = categoria, ícone = grupo) ---------- */
+  .card {
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden;
+    display: flex; flex-direction: column; transition: transform .2s ease, border-color .15s, box-shadow .15s;
+  }
+  .card:hover { border-color: var(--verde-claro); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .card-illust { aspect-ratio: 16 / 7; display: grid; place-items: center; position: relative; overflow: hidden; }
+  .card-illust img { width: 28%; height: auto; max-width: 90px; opacity: .95; filter: drop-shadow(0 2px 6px rgba(0,0,0,.08)); }
+  .card[data-category="ferramentas"]    .card-illust { background: var(--cat-ferramentas); }
+  .card[data-category="gestao-moodle"]  .card-illust { background: var(--cat-gestao-moodle); }
+  .card[data-category="pedagogia"]      .card-illust { background: var(--cat-pedagogia); }
+  .card[data-category="acessibilidade"] .card-illust { background: var(--cat-acessibilidade); }
+  .card[data-category="conduta"]        .card-illust { background: var(--cat-conduta); }
+  .card[data-category="identidade"]     .card-illust { background: var(--cat-identidade); }
+  .card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .card-kicker { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+  .card h3 { margin: 0; font-size: 1.18rem; font-weight: 700; line-height: 1.3; color: var(--ink); letter-spacing: -.005em; }
+  .card-desc { font-size: .92rem; color: var(--ink-2); line-height: 1.55; margin: 0;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .card-meta { margin-top: auto; padding-top: 12px; display: flex; gap: 10px; font-size: .8rem; color: var(--ink-3); align-items: center; }
+  .badge-tipo { padding: 4px 12px; border-radius: 99px; font-weight: 600; font-size: .72rem; letter-spacing: .02em; background: var(--bg-2); color: var(--ink-2); }
+
+  /* ---------- Trilhas relacionadas (verde-pálido único) ---------- */
+  .trilha-card {
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden;
+    display: flex; flex-direction: column; transition: transform .2s ease, border-color .15s, box-shadow .15s;
+  }
+  .trilha-card:hover { border-color: var(--verde-claro); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .trilha-illust { aspect-ratio: 16 / 7; background: var(--verde-palido); display: grid; place-items: center; position: relative; overflow: hidden; }
+  .trilha-illust img { width: 62%; height: auto; max-width: 180px; opacity: .95; filter: drop-shadow(0 2px 6px rgba(0,0,0,.08)); }
+  .trilha-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .trilha-kicker { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+  .trilha-body h3 { font-size: 1.12rem; font-weight: 700; margin: 0; line-height: 1.3; color: var(--ink); letter-spacing: -.005em; }
+  .trilha-card:hover h3 { color: var(--verde-marca); }
+  .trilha-desc { font-size: .92rem; color: var(--ink-2); line-height: 1.55; margin: 0;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .trilha-meta { margin-top: auto; padding-top: 12px; display: flex; gap: 28px; }
+  .trilha-meta .m-label { display: block; font-size: .64rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 3px; }
+  .trilha-meta .m-value { font-size: .98rem; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+  @media (max-width: 600px) { :root { --pad-x: 20px; } }
+</style>
+<link rel="stylesheet" href="a11y.css">
+<link rel="stylesheet" href="shell.css">
+</head>
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="base-inicio.html" class="brand">
+      <span class="brand-logo" aria-hidden="true">
+        <img src="../../assets/logo/ID_base_branca.png" alt="" />
+      </span>
+      <span class="brand-text">
+        <strong>Base de Conhecimento</strong>
+        <span>CEFOR · Ifes</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="base-percursos.html">Percursos</a>
+      <a href="base-trilhas.html">Trilhas</a>
+      <a href="base-inicio.html">Todos os artigos</a>
+    </nav>
+    <form class="header-search" role="search" action="base-busca.html" method="get">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar" />
+    </form>
+    <!-- Acessibilidade: painel flutuante canônico injetado por a11y.js -->
+  </div>
+</header>
+
+<nav class="breadcrumb" aria-label="Você está aqui">
+  <div class="breadcrumb-inner">
+    <a href="base-inicio.html">Início</a>
+    <span class="sep">›</span>
+    <span>Tópicos</span>
+    <span class="sep">›</span>
+    <span class="current">Questionário</span>
+  </div>
+</nav>
+
+<!-- HERO — neutro (tópico é transversal) -->
+<section class="hero-top" aria-labelledby="top-title">
+  <div class="hero-top-inner">
+    <div class="hero-top-main">
+      <span class="top-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 13.42 20.58a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        Tópico
+      </span>
+      <h1 id="top-title">Questionário</h1>
+      <p class="subtitle">
+        Tudo sobre a atividade Questionário do Moodle — criação, tipos de questão, banco de questões,
+        tempo ampliado e geração com IA. Reúne artigos de várias categorias.
+      </p>
+    </div>
+    <div class="hero-top-stats">
+      <div class="hero-top-stat">
+        <span class="label">Artigos</span>
+        <span class="value">7</span>
+      </div>
+      <div class="hero-top-stat">
+        <span class="label">Em trilhas</span>
+        <span class="value">3</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="container" id="main">
+  <div class="main-stack">
+
+    <!-- ARTIGOS DO TÓPICO (cross-categoria) -->
+    <section aria-labelledby="art-title">
+      <p class="section-eyebrow" id="art-title">Artigos sobre Questionário</p>
+      <p class="section-sub">O tópico cruza categorias: cada card mantém a cor da sua categoria de origem.</p>
+      <div class="card-grid">
+
+        <a class="card" href="base-artigo.html" data-category="gestao-moodle">
+          <div class="card-illust"><img src="../../assets/icones_artigos/icone_circulo_branco.png" alt="" /></div>
+          <div class="card-body">
+            <span class="card-kicker">Gestão e Operação do Moodle</span>
+            <h3>Criar e configurar o questionário</h3>
+            <p class="card-desc">Do banco de questões ao questionário publicado, incluindo tentativas, prazos e feedback automático.</p>
+            <div class="card-meta"><span class="badge-tipo">Tutorial</span><span>10 min</span></div>
+          </div>
+        </a>
+
+        <a class="card" href="base-artigo.html" data-category="gestao-moodle">
+          <div class="card-illust"><img src="../../assets/icones_artigos/icone_circulo_branco.png" alt="" /></div>
+          <div class="card-body">
+            <span class="card-kicker">Gestão e Operação do Moodle</span>
+            <h3>Elaborar as questões e conhecer os tipos</h3>
+            <p class="card-desc">Referência dos formatos de questão disponíveis — múltipla escolha, dissertativa, associação e mais.</p>
+            <div class="card-meta"><span class="badge-tipo">Referência</span><span>11 min</span></div>
+          </div>
+        </a>
+
+        <a class="card" href="base-artigo.html" data-category="ferramentas">
+          <div class="card-illust"><img src="../../assets/icones_artigos/icone_circulo_branco.png" alt="" /></div>
+          <div class="card-body">
+            <span class="card-kicker">Ferramentas e Recursos</span>
+            <h3>Montar o banco de questões com sorteio automático</h3>
+            <p class="card-desc">Organize categorias de questões e configure o sorteio para gerar provas diferentes a cada tentativa.</p>
+            <div class="card-meta"><span class="badge-tipo">Tutorial</span><span>9 min</span></div>
+          </div>
+        </a>
+
+        <a class="card" href="base-artigo.html" data-category="acessibilidade">
+          <div class="card-illust"><img src="../../assets/icones_artigos/icone_circulo_branco.png" alt="" /></div>
+          <div class="card-body">
+            <span class="card-kicker">Acessibilidade</span>
+            <h3>Conceder tempo ampliado em um questionário</h3>
+            <p class="card-desc">Passo a passo para configurar extensão de tempo individual para estudantes com necessidades específicas.</p>
+            <div class="card-meta"><span class="badge-tipo">Solução de Problema</span><span>5 min</span></div>
+          </div>
+        </a>
+
+        <a class="card" href="base-artigo.html" data-category="ferramentas">
+          <div class="card-illust"><img src="../../assets/icones_artigos/icone_circulo_branco.png" alt="" /></div>
+          <div class="card-body">
+            <span class="card-kicker">Ferramentas e Recursos</span>
+            <h3>Feedback automático em questionários</h3>
+            <p class="card-desc">Configure mensagens condicionais por faixa de nota para orientar o estudante logo após a tentativa.</p>
+            <div class="card-meta"><span class="badge-tipo">Tutorial</span><span>7 min</span></div>
+          </div>
+        </a>
+
+        <a class="card" href="base-artigo.html" data-category="pedagogia">
+          <div class="card-illust"><img src="../../assets/icones_artigos/icone_losango_branco.png" alt="" /></div>
+          <div class="card-body">
+            <span class="card-kicker">Pedagogia e Planejamento</span>
+            <h3>Gerar questionários com o GPT</h3>
+            <p class="card-desc">Use IA generativa para criar questões alinhadas à Taxonomia de Bloom e revisá-las antes de publicar.</p>
+            <div class="card-meta"><span class="badge-tipo">Recurso</span><span>12 min</span></div>
+          </div>
+        </a>
+
+        <a class="card" href="base-artigo.html" data-category="gestao-moodle">
+          <div class="card-illust"><img src="../../assets/icones_artigos/icone_circulo_branco.png" alt="" /></div>
+          <div class="card-body">
+            <span class="card-kicker">Gestão e Operação do Moodle</span>
+            <h3>Proteger o acesso: senha, IP e Safe Exam Browser</h3>
+            <p class="card-desc">Restrinja o acesso à prova online com senha, faixa de IP e o navegador seguro para reduzir fraudes.</p>
+            <div class="card-meta"><span class="badge-tipo">Referência</span><span>8 min</span></div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- TRILHAS QUE PASSAM POR ESTE TÓPICO -->
+    <section aria-labelledby="tr-title">
+      <p class="section-eyebrow" id="tr-title">Trilhas que passam por aqui</p>
+      <p class="section-sub">Sequências guiadas que incluem artigos sobre Questionário.</p>
+      <div class="trilha-grid">
+
+        <a class="trilha-card" href="base-trilha.html">
+          <div class="trilha-illust"><img src="../../assets/icones_trilha/icone_trilha_circulo_tringulo.png" alt="" aria-hidden="true"></div>
+          <div class="trilha-body">
+            <span class="trilha-kicker">Trilha</span>
+            <h3>Avaliação online de ponta a ponta</h3>
+            <p class="trilha-desc">Da prova online à proteção de acesso, passando por questionários e banco de questões.</p>
+            <div class="trilha-meta">
+              <div><span class="m-label">Artigos</span><span class="m-value">10</span></div>
+              <div><span class="m-label">Tempo de leitura</span><span class="m-value">2h30</span></div>
+            </div>
+          </div>
+        </a>
+
+        <a class="trilha-card" href="base-trilha.html">
+          <div class="trilha-illust"><img src="../../assets/icones_trilha/icone_trilha_circulo_triangulo_retangulo.png" alt="" aria-hidden="true"></div>
+          <div class="trilha-body">
+            <span class="trilha-kicker">Trilha</span>
+            <h3>Avaliação acessível para todos os estudantes</h3>
+            <p class="trilha-desc">Tempo ampliado no questionário, audiodescrição em imagens e cuidados ao inserir recursos.</p>
+            <div class="trilha-meta">
+              <div><span class="m-label">Artigos</span><span class="m-value">3</span></div>
+              <div><span class="m-label">Tempo de leitura</span><span class="m-value">50 min</span></div>
+            </div>
+          </div>
+        </a>
+
+        <a class="trilha-card" href="base-trilha.html">
+          <div class="trilha-illust"><img src="../../assets/icones_trilha/icone_trilha_circulo_losango.png" alt="" aria-hidden="true"></div>
+          <div class="trilha-body">
+            <span class="trilha-kicker">Trilha</span>
+            <h3>Avaliações com IA generativa</h3>
+            <p class="trilha-desc">Da Taxonomia de Bloom 2.0 à geração de questionários e rubricas com o GPT.</p>
+            <div class="trilha-meta">
+              <div><span class="m-label">Artigos</span><span class="m-value">3</span></div>
+              <div><span class="m-label">Tempo de leitura</span><span class="m-value">50 min</span></div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- Footer canônico injetado por shell.js -->
+
+<script src="a11y.js" defer></script>
+<script src="shell.js" defer></script>
+</body>
+</html>

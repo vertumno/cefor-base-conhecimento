@@ -141,7 +141,7 @@ Conteúdo que vive como **referência da categoria** ou **descoberta por tópico
   - "Vou aplicar uma prova" → **T2**
   - "Preciso fechar as notas" → **T3**
 
-> As demais trilhas (T4–T9) ficam **autônomas e em destaque**. Graduam para percurso temático na V2 quando houver volume e ≥2 trilhas que formem uma formação real (candidatos: "Conteúdo interativo e multimídia" = T4+T5+T6; "Ensino acessível" = T7+T8).
+> As demais trilhas (T4–T9) ficam **autônomas e em destaque**. Graduam para percurso temático na V2 quando houver volume e ≥2 trilhas que formem uma formação real (candidatos, nomeados pelo gerúndio aspiracional da `convencao-titulos.md` §4: "Enriquecendo aulas com mídia" = T4+T5+T6; "Tornando o ensino acessível" = T7+T8).
 
 ---
 
@@ -158,3 +158,4 @@ Conteúdo que vive como **referência da categoria** ou **descoberta por tópico
 | Versão | Data | Mudança | Por |
 |---|---|---|---|
 | 1.0 | 2026-06-01 | Proposta criada a partir da análise dos 131 artigos. 9 trilhas firmes + 1 candidata, nomeadas pela `convencao-titulos.md`. Percurso V1 "Dominando o Moodle". Substitui as 5 trilhas-piloto estimadas de `taxonomia.md` §6.4. | Elton + Claude |
+| 1.1 | 2026-06-07 | Candidatos a percurso V2 renomeados para o padrão de gerúndio aspiracional (§4): "Conteúdo interativo e multimídia" → **Enriquecendo aulas com mídia**; "Ensino acessível" → **Tornando o ensino acessível**. Sincroniza com os protótipos da Fase 2 (home, listagem e página de percurso). | Elton + Claude |

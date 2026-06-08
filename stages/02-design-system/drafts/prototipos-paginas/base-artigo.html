@@ -194,6 +194,21 @@
     font-weight: 500;
     line-height: 1.35;
   }
+
+  /* Vínculo de percurso no meta — cor reservada verde-profundo (Decisão 31).
+     Renderizar SOMENTE quando o artigo integra trilha(s) de um percurso. */
+  .meta-percurso .meta-label { color: var(--verde-profundo); }
+  [data-theme="dark"] .meta-percurso .meta-label { color: var(--verde-claro); }
+  .meta-percurso-link {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: .95rem; font-weight: 700; color: var(--verde-profundo);
+    text-decoration: none; line-height: 1.3;
+  }
+  [data-theme="dark"] .meta-percurso-link { color: var(--verde-claro); }
+  .meta-percurso-link .mpl-ico { width: 16px; height: 16px; flex-shrink: 0; }
+  .meta-percurso-link .mpl-chev { width: 12px; height: 12px; flex-shrink: 0; opacity: .7; transition: transform .15s; }
+  .meta-percurso-link:hover { color: var(--verde-marca); }
+  .meta-percurso-link:hover .mpl-chev { transform: translateX(2px); }
   .meta-block .meta-value a {
     color: var(--accent);
     text-decoration: none;
@@ -500,54 +515,6 @@
     border-top: 0;
   }
   .trilha-acc-body[hidden] { display: none; }
-
-  /* Chip de percurso (Decisão 31, revisada 2026-06-02) — identidade VERDE ESCURO.
-     Pílula sólida em --verde-profundo (espelha o hero da página de percurso),
-     contrastando com a trilha (verde claro, em texto) e com os artigos (neutros).
-     O dourado da Decisão 31 original foi abandonado; a diferenciação de nível agora
-     é claro→escuro dentro da própria família verde + o preenchimento sólido. */
-  .trilha-percurso-chip {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 2px 0 16px;
-    padding: 10px 13px;
-    background: var(--verde-profundo);
-    border-radius: var(--r-sm);
-    text-decoration: none;
-    line-height: 1.3;
-    transition: filter .15s;
-  }
-  .trilha-percurso-chip:hover { filter: brightness(1.08); }
-  .trilha-percurso-chip:hover .chip-name {
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-  .trilha-percurso-chip svg {
-    width: 15px;
-    height: 15px;
-    color: var(--verde-claro);
-    flex-shrink: 0;
-  }
-  .trilha-percurso-chip .chip-text {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    min-width: 0;
-  }
-  .trilha-percurso-chip .chip-label {
-    font-size: .6rem;
-    font-weight: 800;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--verde-claro);
-  }
-  .trilha-percurso-chip .chip-name {
-    font-size: .82rem;
-    font-weight: 700;
-    color: #fff;
-    line-height: 1.25;
-  }
 
   /* Barra de progresso estrutural (Decisão 29 — posição, não progresso pessoal) */
   .side-trilha-progress { margin-bottom: 14px; }
@@ -1326,7 +1293,7 @@
      ============================================================ -->
 <header class="site-header">
   <div class="header-inner">
-    <a href="base-inicio-v5.html" class="brand">
+    <a href="base-inicio.html" class="brand">
       <span class="brand-logo" aria-hidden="true">
         <img src="../../assets/logo/ID_base_branca.png" alt="" />
       </span>
@@ -1336,8 +1303,8 @@
       </span>
     </a>
     <nav class="nav" aria-label="Navegação principal">
-      <a href="base-percurso.html">Percursos</a>
-      <a href="base-trilha.html">Trilhas</a>
+      <a href="base-percursos.html">Percursos</a>
+      <a href="base-trilhas.html">Trilhas</a>
       <a href="base-inicio.html">Todos os artigos</a>
     </nav>
     <form class="header-search" role="search" action="/buscar" method="get">
@@ -1401,6 +1368,16 @@
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           8 min
         </span>
+      </div>
+
+      <!-- Vínculo de percurso — só aparece quando o artigo integra trilha(s) de um percurso (Decisão 31, cor reservada) -->
+      <div class="meta-block meta-percurso">
+        <span class="meta-label">Faz parte do percurso</span>
+        <a href="base-percurso.html" class="meta-percurso-link">
+          <svg class="mpl-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><rect x="2.6" y="15.6" width="4.8" height="4.8" rx="0.5"/><path d="M19 9.4 21.6 13.9 16.4 13.9Z"/><path d="M7 7 16.4 11"/><path d="M7 17 16.4 13"/></svg>
+          Dominando o Moodle
+          <svg class="mpl-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
       </div>
 
       <!-- Compartilhar (meta-block 2026-05-26) — ação inline "Copiar link". Compartilhar completo segue no rodapé. -->
@@ -1488,13 +1465,6 @@
           <svg class="trilha-acc-chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div class="trilha-acc-body" id="trilhaBody-1">
-          <a href="#" class="trilha-percurso-chip">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><rect x="2.6" y="15.6" width="4.8" height="4.8" rx="0.5"/><path d="M19 9.4 21.6 13.9 16.4 13.9Z"/><path d="M7 7 16.4 11"/><path d="M7 17 16.4 13"/></svg>
-            <span class="chip-text">
-              <span class="chip-label">Percurso</span>
-              <span class="chip-name">Dominando o Moodle</span>
-            </span>
-          </a>
           <div class="side-trilha-progress">
             <div class="side-trilha-bar">
               <div class="side-trilha-bar-fill" style="width: 40%;"></div>

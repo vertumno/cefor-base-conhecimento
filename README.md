@@ -93,12 +93,22 @@ Acompanhe o progresso das entregas através de cada fase do pipeline:
 
 ## 🎨 Referências de Interface (Fase 2)
 
-As decisões de layout e interações visuais estão materializadas nos templates canônicos de prototipagem localizados em `stages/02-design-system/drafts/prototipos-paginas/`:
+As decisões de layout e interações visuais estão materializadas nos **9 templates canônicos** de prototipagem em `stages/02-design-system/drafts/prototipos-paginas/` — um por tipo de página da arquitetura de informação. Todos compartilham a mesma casca (`shell.css/js` para header, breadcrumb e rodapé; `a11y.css/js` para o painel de acessibilidade).
 
-* **[base-artigo.html](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/base-artigo.html):** Interface do artigo estruturada (título, subtítulo, bloco multimodal, sidebar sticky e rodapé ABNT).
-* **[base-inicio.html](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/base-inicio.html):** Mosaico integrado de busca indexada, catalogação e destaque de percursos.
-* **[base-trilha.html](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/base-trilha.html):** Fluxo sequencial e visual atômico de uma jornada de aprendizado.
-* **[base-percurso.html](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/base-percurso.html):** Hub educacional premium unificando trilhas pedagógicas com a identidade cromática verde escura reservada ao percurso.
+**Páginas de item:**
+
+* **[base-inicio.html](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/base-inicio.html):** Home/landing editorial — hero com busca protagonista, destaque de percursos e trilhas, amostra do catálogo.
+* **[base-artigo.html](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/base-artigo.html):** Interface do artigo estruturada (título, subtítulo, bloco multimodal, sidebar sticky e rodapé ABNT) — referência canônica (Decisão 22).
+* **[base-categoria.html](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/base-categoria.html):** Índice de categoria — hero claro com chip colorido, grid de artigos do domínio e filtros por tipo e tópico.
+* **[base-trilha.html](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/base-trilha.html):** Página de trilha — hero verde-pálido, timeline sequencial de artigos e trilhas relacionadas.
+* **[base-percurso.html](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/base-percurso.html):** Página de percurso — trilhas + artigos complementares, com a identidade cromática verde escura reservada ao percurso.
+* **[base-topico.html](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/base-topico.html):** Descoberta por tópico — faixa neutra (tópico é transversal), artigos cross-categoria e trilhas relacionadas.
+
+**Listagens e busca:**
+
+* **[base-trilhas.html](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/base-trilhas.html):** Listagem de trilhas — grid único com filtro por categoria.
+* **[base-percursos.html](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/base-percursos.html):** Listagem de percursos — 1 ativo (Dominando o Moodle) + candidatos da V2.
+* **[base-busca.html](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/base-busca.html):** Busca unificada — artigos, trilhas e percursos numa lista, com filtro por tipo de conteúdo.
 
 *Nota: Os arquivos anteriores de pesquisa visual foram catalogados de forma organizada no subdiretório [`historico/`](file:///c:/Users/elton/mmos/clientes/cefor/cefor-base-conhecimento/stages/02-design-system/drafts/prototipos-paginas/historico/).*
 

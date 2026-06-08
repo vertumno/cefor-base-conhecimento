@@ -271,7 +271,7 @@ Três compromissos atravessam todos os tokens:
 2. **Acessibilidade por padrão** (Decisão 10) — WCAG 2.2 AA + e-MAG. Modo escuro, alto contraste e fonte para dislexia são tokens, não retoques. Cumprimento legal de instituição pública federal, não diferencial.
 3. **Tokens como fonte única de verdade** — todo valor visual vive como CSS custom property. Trocar de tema é trocar variáveis, nunca reescrever CSS. É o que torna a Fase 3 (WordPress) barata.
 
-> **Fonte canônica dos tokens:** `stages/02-design-system/drafts/kit-visual.html` (style guide vivo, com modos claro/escuro/contraste demonstráveis). As interfaces de referência são os templates base em `stages/02-design-system/drafts/prototipos-paginas/` (`base-artigo.html`, `base-inicio.html`, `base-percurso.html` e `base-trilha.html`), sendo `base-artigo.html` a referência canônica da página de artigo (Decisão 22). Este `design.md` é a destilação normativa dos mesmos para a implementação.
+> **Fonte canônica dos tokens:** `stages/02-design-system/drafts/kit-visual.html` (style guide vivo, com modos claro/escuro/contraste demonstráveis). As interfaces de referência são os **9 templates base** em `stages/02-design-system/drafts/prototipos-paginas/`, cobrindo os 9 tipos de página da arquitetura de informação — itens (`base-inicio.html`, `base-artigo.html`, `base-categoria.html`, `base-trilha.html`, `base-percurso.html`, `base-topico.html`) e listagens/busca (`base-trilhas.html`, `base-percursos.html`, `base-busca.html`) — sendo `base-artigo.html` a referência canônica da página de artigo (Decisão 22). Todos compartilham a casca `shell.css/js` + `a11y.css/js`. Este `design.md` é a destilação normativa dos mesmos para a implementação.
 
 ## Colors
 
@@ -438,12 +438,16 @@ Bloco de destaque com `border-left 4px` + fundo soft. Quatro de severidade + doi
 Variante `card-com-cor` recebe uma barra lateral de `4px` em uma cor da família dos artigos (`var(--art-*)`), atribuída pela camada de conteúdo conforme o eixo classificatório usado naquela listagem (categoria, trilha, percurso, etc.). Hover acompanha: a borda também adota a cor.
 
 ### Box de trilha multi-trilha (acordeão) — Decisões 28, 29, 30, 32
-Componente da sidebar. Cabeçalho "Trilhas deste artigo" + contador. Cada trilha é um item de acordeão com nome + posição compacta (`5/12`) sempre visível mesmo colapsado + chevron. Primeira trilha expandida por padrão; múltiplas podem abrir juntas. Expandido mostra: chip do percurso (se aplicável) → barra de progresso **estrutural** → "Artigo X de Y" (**nunca "Passo"** — Decisão 29) → lista numerada de artigos com o atual em `aria-current="page"`.
+Componente da sidebar. Cabeçalho "Trilhas deste artigo" + contador. Cada trilha é um item de acordeão com nome + posição compacta (`5/12`) sempre visível mesmo colapsado + chevron. Primeira trilha expandida por padrão; múltiplas podem abrir juntas. Expandido mostra: barra de progresso **estrutural** → "Artigo X de Y" (**nunca "Passo"** — Decisão 29) → lista numerada de artigos com o atual em `aria-current="page"`. *(O chip de percurso que ficava aqui foi removido em 2026-06-08 — ver "Vínculo de percurso" abaixo.)*
 
 > A navegação entre artigos da trilha é **exclusiva deste acordeão** — não há prev/next no rodapé (Decisão 32). A barra representa posição estrutural do artigo na trilha, **não** progresso pessoal do leitor (V1 sem login, Decisão 29).
 
-### Chip de percurso — Decisão 31
-Pílula com ícone de livro: "Faz parte do percurso **X**". A cor da pílula vem da família dos artigos (`var(--art-*)`) atribuída ao percurso, com fundo soft + texto da cor cheia, ou fundo cheio + texto branco. Aparece no topo do conteúdo expandido do item de trilha no acordeão. Clicável → página dedicada do percurso.
+### Vínculo de percurso — Decisão 31 (superfícies revisadas 2026-06-08)
+Entrada "Faz parte do percurso **X**" em **verde-profundo** (`--verde-profundo`, cor reservada do percurso), com ícone de percurso + chevron; hover em `--verde-marca`, modo escuro em `--verde-claro`. Clicável → página dedicada do percurso. Aparece no **painel de informações**, sempre que houver vínculo, em duas superfícies:
+- **Artigo** (`base-artigo.html`): `.meta-block.meta-percurso` dentro do `.masthead-meta`, entre Tempo de leitura e Compartilhar.
+- **Página de trilha** (`base-trilha.html`): `.hero-stat.hero-stat--percurso` no painel de stats do hero, entre Tempo de leitura e Compartilhar.
+
+> O antigo **chip dentro do acordeão de trilha** (no artigo) foi **removido em 2026-06-08** — o vínculo é metadado e vive no painel de meta/stats, não na sequência; o acordeão foca só nos artigos da trilha. Junto da página dedicada e da listagem `/percursos` (`base-percursos.html`), são as **4 superfícies** do percurso. Ver Decisão 31 (revisão 2026-06-08).
 
 ### Blocos multimodais — ordem fixa (Decisão 19)
 No cabeçalho do artigo, sempre nesta ordem: **1. Libras** (accordion com tradução em Libras do texto completo) → **2. Ouvir** (narração em áudio, TTS ou gravada) → **3. Outros formatos** (podcast, infográfico-resumo, quando existirem). A audiodescrição de imagens é **texto visível para todos** (não só `alt`) — Decisão 13.
@@ -500,4 +504,4 @@ Flutuante na lateral, acessível por teclado: A-/A+ (escala de fonte via `--font
 
 ---
 
-> **Procedência:** Tokens espelham `stages/02-design-system/drafts/kit-visual.html`. Componentes e regras rastreiam as Decisões 1–32 de `_config/decisoes.md` e os Pilares 1, 2, 5, 6, 8, 9 de `_config/pilares.md`. Interfaces de referência: `stages/02-design-system/drafts/prototipos-paginas/` (`base-artigo.html`, `base-inicio.html`, `base-percurso.html`, `base-trilha.html`), com `base-artigo.html` como referência principal (Decisão 22). Versão **beta** — substitui o par verde-IFES/dourado da versão alpha por verde refinado em quatro tons + família calibrada de cores para artigos + `gold-soft` como único acento quente.
+> **Procedência:** Tokens espelham `stages/02-design-system/drafts/kit-visual.html`. Componentes e regras rastreiam as Decisões 1–32 de `_config/decisoes.md` e os Pilares 1, 2, 5, 6, 8, 9 de `_config/pilares.md`. Interfaces de referência: as 9 páginas-tipo em `stages/02-design-system/drafts/prototipos-paginas/` (`base-inicio`, `base-artigo`, `base-categoria`, `base-trilha`/`base-trilhas`, `base-percurso`/`base-percursos`, `base-topico`, `base-busca`), com `base-artigo.html` como referência principal (Decisão 22). Versão **beta** — substitui o par verde-IFES/dourado da versão alpha por verde refinado em quatro tons + família calibrada de cores para artigos + `gold-soft` como único acento quente.

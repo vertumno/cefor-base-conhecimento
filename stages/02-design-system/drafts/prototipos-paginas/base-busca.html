@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Resultados para "questionário" · Busca · Base CEFOR/Ifes</title>
+<meta name="description" content="Página de busca (/buscar). Resultados unificados — artigos, trilhas e percursos numa lista, com filtro por tipo de conteúdo, categoria e tipo de artigo (Decisão 11, decisão Elton 2026-06-07). Tokens design.md." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     PÁGINA DE BUSCA — Tokens oficiais (design.md)
+     Resultados UNIFICADOS (artigo · trilha · percurso) em lista,
+     com filtro por tipo de conteúdo + categoria + tipo de artigo
+     (decisão Elton 2026-06-07). Sem breadcrumb (Decisão de IA §5.1).
+     ============================================================ */
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad-x); }
+
+  /* ---------- FAIXA DE BUSCA ---------- */
+  .search-band { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 36px 0 34px; }
+  .search-band-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad-x); }
+  .results-title { font-size: 1.5rem; font-weight: 700; letter-spacing: -.015em; color: var(--ink); margin: 0 0 4px; }
+  .results-title em { font-style: normal; color: var(--verde-marca); }
+  .results-count { font-size: .9rem; color: var(--ink-3); margin: 0 0 20px; font-weight: 500; }
+  .results-count strong { color: var(--ink-2); font-weight: 700; }
+
+  .hero-search {
+    display: flex; align-items: center; gap: 0;
+    background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--r-lg);
+    padding: 6px 6px 6px 4px; width: 100%; max-width: 620px; box-shadow: var(--shadow-sm);
+  }
+  .hero-search:focus-within { border-color: var(--verde-marca); box-shadow: 0 0 0 3px var(--verde-palido); }
+  .hero-search svg.search-ico { margin: 0 12px; color: var(--ink-3); flex-shrink: 0; }
+  .hero-search input { flex: 1; border: none; background: transparent; color: var(--ink); padding: 13px 0; font: inherit; font-size: 1rem; min-width: 0; }
+  .hero-search input:focus { outline: none; }
+  .hero-search button {
+    background: var(--verde-marca); color: #fff; border: none; padding: 11px 22px; font: inherit; font-weight: 600; font-size: .92rem;
+    border-radius: var(--r-md); cursor: pointer; white-space: nowrap; transition: background .15s;
+  }
+  .hero-search button:hover { background: var(--verde-profundo); }
+  [data-theme="dark"] .hero-search button { color: var(--bg); }
+
+  /* ---------- CORPO — lista + sidebar ---------- */
+  .section { padding: 36px 0 64px; }
+  .content-layout { display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: start; }
+  @media (max-width: 960px) {
+    .content-layout { grid-template-columns: 1fr; gap: 24px; }
+    .filter-sidebar { position: static !important; }
+  }
+
+  .filter-sidebar { display: flex; flex-direction: column; gap: 2px; position: sticky; top: 88px; }
+  .sidebar-title { font-size: .72rem; font-weight: 700; color: var(--ink-3); margin: 0 0 4px; padding-bottom: 8px; border-bottom: 1px solid var(--line); letter-spacing: .12em; text-transform: uppercase; }
+  .filter-group:not(:last-of-type) { border-bottom: 1px solid var(--line); }
+  .filter-group-header {
+    display: flex; justify-content: space-between; align-items: center; width: 100%;
+    background: transparent; border: none; padding: 11px 0;
+    font-family: var(--sans); font-size: .82rem; font-weight: 600; color: var(--ink-2); cursor: pointer; text-align: left;
+  }
+  .filter-group-header:hover { color: var(--verde-marca); }
+  .filter-group-header .chevron { transition: transform .25s ease; color: var(--ink-3); width: 13px; height: 13px; }
+  .filter-group.active .filter-group-header { color: var(--ink); }
+  .filter-group.active .filter-group-header .chevron { transform: rotate(180deg); }
+  .filter-group-content { display: none; padding: 2px 0 12px; }
+  .filter-group.active .filter-group-content { display: block; }
+  .sidebar-checkboxes { display: flex; flex-direction: column; gap: 7px; }
+  .sidebar-cb-label {
+    display: inline-flex; align-items: center; gap: 9px; font-size: .84rem; font-weight: 500; color: var(--ink-2);
+    cursor: pointer; user-select: none; transition: color .12s;
+  }
+  .sidebar-cb-label:hover { color: var(--ink); }
+  .sidebar-cb-label .cb-count { margin-left: auto; font-size: .76rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .sidebar-cb-label input[type="checkbox"] {
+    appearance: none; -webkit-appearance: none; width: 15px; height: 15px;
+    border: 1.4px solid var(--line-2); border-radius: 4px; background: var(--paper);
+    cursor: pointer; display: grid; place-content: center; transition: border-color .15s, background-color .15s; flex-shrink: 0;
+  }
+  .sidebar-cb-label input[type="checkbox"]::before {
+    content: ""; width: 9px; height: 9px; transform: scale(0); transition: transform .12s ease-in-out;
+    background-color: var(--verde-marca); clip-path: polygon(14% 44%, 0 58%, 38% 96%, 100% 23%, 86% 9%, 38% 68%);
+  }
+  .sidebar-cb-label input[type="checkbox"]:checked { background-color: var(--verde-palido); border-color: var(--verde-marca); }
+  .sidebar-cb-label input[type="checkbox"]:checked::before { transform: scale(1); }
+  .sidebar-clear {
+    margin-top: 14px; background: transparent; border: none; color: var(--verde-marca);
+    font: inherit; font-size: .82rem; font-weight: 600; cursor: pointer; padding: 0; text-align: left;
+  }
+  .sidebar-clear:hover { text-decoration: underline; }
+
+  /* ---------- LISTA DE RESULTADOS (unificada) ---------- */
+  .results-list { display: flex; flex-direction: column; }
+  .result-item {
+    display: grid; grid-template-columns: 54px 1fr; gap: 18px;
+    padding: 20px 0; border-top: 1px solid var(--line); align-items: start;
+  }
+  .result-item:first-child { border-top: 0; }
+  .result-item:hover h3 { color: var(--verde-marca); }
+
+  .result-icon { width: 54px; height: 54px; border-radius: 13px; display: grid; place-items: center; overflow: hidden; }
+  .result-icon img { width: 50%; max-width: 30px; height: auto; opacity: .95; filter: drop-shadow(0 1px 4px rgba(0,0,0,.12)); }
+  /* Artigo — fundo da categoria, ícone branco do grupo */
+  .result-item[data-content="artigo"][data-category="ferramentas"]    .result-icon { background: var(--cat-ferramentas); }
+  .result-item[data-content="artigo"][data-category="gestao-moodle"]  .result-icon { background: var(--cat-gestao-moodle); }
+  .result-item[data-content="artigo"][data-category="pedagogia"]      .result-icon { background: var(--cat-pedagogia); }
+  .result-item[data-content="artigo"][data-category="acessibilidade"] .result-icon { background: var(--cat-acessibilidade); }
+  .result-item[data-content="artigo"][data-category="conduta"]        .result-icon { background: var(--cat-conduta); }
+  .result-item[data-content="artigo"][data-category="identidade"]     .result-icon { background: var(--cat-identidade); }
+  /* Trilha — verde-pálido, ícone verde */
+  .result-item[data-content="trilha"] .result-icon { background: var(--verde-palido); }
+  .result-item[data-content="trilha"] .result-icon img { filter: none; }
+  /* Percurso — verde sólido, ícone branco */
+  .result-item[data-content="percurso"] .result-icon { background: var(--verde-marca); }
+  [data-theme="dark"] .result-item[data-content="percurso"] .result-icon { background: #102a20; }
+
+  .result-body { min-width: 0; }
+  .result-body h3 { margin: 0 0 5px; font-size: 1.12rem; font-weight: 700; line-height: 1.3; color: var(--ink); letter-spacing: -.005em; }
+  .result-snippet { font-size: .92rem; color: var(--ink-2); line-height: 1.5; margin: 0 0 10px;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .result-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: .78rem; color: var(--ink-3); }
+  .result-meta .dot { width: 3px; height: 3px; border-radius: 99px; background: var(--line-2); }
+  /* Badge do tipo de conteúdo */
+  .badge-content { padding: 3px 11px; border-radius: 99px; font-weight: 700; font-size: .68rem; letter-spacing: .04em; text-transform: uppercase; }
+  .badge-content.is-artigo   { background: var(--bg-3); color: var(--ink-2); }
+  .badge-content.is-trilha   { background: var(--verde-palido); color: var(--verde-profundo); }
+  .badge-content.is-percurso { background: var(--verde-marca); color: #fff; }
+  [data-theme="dark"] .badge-content.is-trilha { color: var(--verde-claro); }
+  [data-theme="dark"] .badge-content.is-percurso { color: var(--bg); }
+  .result-cat { font-weight: 600; color: var(--ink-2); }
+
+  .empty-state { display: none; padding: 56px 0; text-align: center; color: var(--ink-3); font-size: .95rem; }
+
+  @media (max-width: 600px) { :root { --pad-x: 20px; } }
+</style>
+<link rel="stylesheet" href="a11y.css">
+<link rel="stylesheet" href="shell.css">
+</head>
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="base-inicio.html" class="brand">
+      <span class="brand-logo" aria-hidden="true">
+        <img src="../../assets/logo/ID_base_branca.png" alt="" />
+      </span>
+      <span class="brand-text">
+        <strong>Base de Conhecimento</strong>
+        <span>CEFOR · Ifes</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="base-percursos.html">Percursos</a>
+      <a href="base-trilhas.html">Trilhas</a>
+      <a href="base-inicio.html">Todos os artigos</a>
+    </nav>
+    <form class="header-search" role="search" action="base-busca.html" method="get">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar" value="questionário" />
+    </form>
+    <!-- Acessibilidade: painel flutuante canônico injetado por a11y.js -->
+  </div>
+</header>
+
+<!-- FAIXA DE BUSCA -->
+<section class="search-band">
+  <div class="search-band-inner">
+    <h1 class="results-title">Resultados para <em>"questionário"</em></h1>
+    <p class="results-count"><strong id="result-count">10</strong> resultados — artigos, trilhas e percursos</p>
+    <form class="hero-search" role="search" action="base-busca.html" method="get">
+      <svg class="search-ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" name="q" aria-label="Buscar na base de conhecimento" value="questionário" />
+      <button type="submit">Buscar</button>
+    </form>
+  </div>
+</section>
+
+<main id="main">
+  <section class="section">
+    <div class="container">
+      <div class="content-layout">
+
+        <!-- SIDEBAR DE FILTROS -->
+        <aside class="filter-sidebar" aria-label="Filtrar resultados">
+          <h2 class="sidebar-title">Filtrar</h2>
+
+          <div class="filter-group active">
+            <button class="filter-group-header" type="button" aria-expanded="true">
+              <span>Tipo de conteúdo</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-group-content">
+              <div class="sidebar-checkboxes" id="content-checkboxes">
+                <label class="sidebar-cb-label"><input type="checkbox" name="content" value="artigo"> Artigos <span class="cb-count">7</span></label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="content" value="trilha"> Trilhas <span class="cb-count">2</span></label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="content" value="percurso"> Percursos <span class="cb-count">1</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <button class="filter-group-header" type="button" aria-expanded="false">
+              <span>Categoria</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-group-content">
+              <div class="sidebar-checkboxes" id="category-checkboxes">
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="gestao-moodle"> Gestão e Operação do Moodle</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="ferramentas"> Ferramentas e Recursos</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="acessibilidade"> Acessibilidade</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="cat" value="pedagogia"> Pedagogia e Planejamento</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <button class="filter-group-header" type="button" aria-expanded="false">
+              <span>Tipo de artigo</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="filter-group-content">
+              <div class="sidebar-checkboxes" id="type-checkboxes">
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="tutorial"> Tutorial</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="referencia"> Referência</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="conceitual"> Conceitual</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="solucao"> Solução de Problema</label>
+                <label class="sidebar-cb-label"><input type="checkbox" name="type" value="recurso"> Recurso</label>
+              </div>
+            </div>
+          </div>
+
+          <button class="sidebar-clear" type="button" id="clear-filters">Limpar filtros</button>
+        </aside>
+
+        <!-- LISTA DE RESULTADOS -->
+        <div class="content-main">
+          <div class="results-list">
+
+            <a class="result-item" href="base-trilha.html" data-content="trilha" data-category="gestao-moodle">
+              <div class="result-icon"><img src="../../assets/icones_trilha/icone_trilha_circulo_tringulo.png" alt="" aria-hidden="true"></div>
+              <div class="result-body">
+                <h3>Avaliação online de ponta a ponta</h3>
+                <p class="result-snippet">Trilha de 10 artigos — da prova online à proteção de acesso, passando por questionários e banco de questões.</p>
+                <div class="result-meta">
+                  <span class="badge-content is-trilha">Trilha</span>
+                  <span class="dot" aria-hidden="true"></span>
+                  <span>10 artigos · 2h30</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="result-item" href="base-artigo.html" data-content="artigo" data-category="gestao-moodle" data-type="tutorial">
+              <div class="result-icon"><img src="../../assets/icones_artigos/icone_circulo_branco.png" alt="" aria-hidden="true"></div>
+              <div class="result-body">
+                <h3>Criar e configurar o questionário</h3>
+                <p class="result-snippet">Do banco de questões ao questionário publicado, incluindo tentativas, prazos e feedback automático.</p>
+                <div class="result-meta">
+                  <span class="badge-content is-artigo">Artigo</span>
+                  <span class="dot" aria-hidden="true"></span>
+                  <span class="result-cat">Gestão e Operação do Moodle</span>
+                  <span class="dot" aria-hidden="true"></span>
+                  <span>Tutorial · 10 min</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="result-item" href="base-artigo.html" data-content="artigo" data-category="acessibilidade" data-type="solucao">
+              <div class="result-icon"><img src="../../assets/icones_artigos/icone_circulo_branco.png" alt="" aria-hidden="true"></div>
+              <div class="result-body">
+                <h3>Conceder tempo ampliado em um questionário</h3>
+                <p class="result-snippet">Passo a passo para configurar extensão de tempo individual para estudantes com necessidades específicas.</p>
+                <div class="result-meta">
+                  <span class="badge-content is-artigo">Artigo</span>
+                  <span class="dot" aria-hidden="true"></span>
+                  <span class="result-cat">Acessibilidade</span>
+                  <span class="dot" aria-hidden="true"></span>
+                  <span>Solução de Problema · 5 min</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="result-item" href="base-artigo.html" data-content="artigo" data-category="ferramentas" data-type="tutorial">
+              <div class="result-icon"><img src="../../assets/icones_artigos/icone_circulo_branco.png" alt="" aria-hidden="true"></div>
+              <div class="result-body">
+                <h3>Montar o banco de questões com sorteio automático</h3>
+                <p class="result-snippet">Organize categorias de questões e configure o sorteio para gerar provas diferentes a cada tentativa.</p>
+                <div class="result-meta">
+                  <span class="badge-content is-artigo">Artigo</span>
+                  <span class="dot" aria-hidden="true"></span>
+                  <span class="result-cat">Ferramentas e Recursos</span>
+                  <span class="dot" aria-hidden="true"></span>
+                  <span>Tutorial · 9 min</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="result-item" href="base-trilha.html" data-content="trilha" data-category="acessibilidade">
+              <div class="result-icon"><img src="../../assets/icones_trilha/icone_trilha_circulo_triangulo_retangulo.png" alt="" aria-hidden="true"></div>
+              <div class="result-body">
+                <h3>Avaliação acessível para todos os estudantes</h3>
+                <p class="result-snippet">Trilha de 3 artigos — tempo ampliado no questionário, audiodescrição em imagens e cuidados ao inserir recursos.</p>
+                <div class="result-meta">
+                  <span class="badge-content is-trilha">Trilha</span>
+                  <span class="dot" aria-hidden="true"></span>
+                  <span>3 artigos · 50 min</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="result-item" href="base-artigo.html" data-content="artigo" data-category="ferramentas" data-type="tutorial">
+              <div class="result-icon"><img src="../../assets/icones_artigos/icone_circulo_branco.png" alt="" aria-hidden="true"></div>
+              <div class="result-body">
+                <h3>Feedback automático em questionários</h3>
+                <p class="result-snippet">Configure mensagens condicionais por faixa de nota para orientar o estudante logo após a tentativa.</p>
+                <div class="result-meta">
+                  <span class="badge-content is-artigo">Artigo</span>
+                  <span class="dot" aria-hidden="true"></span>
+                  <span class="result-cat">Ferramentas e Recursos</span>
+                  <span class="dot" aria-hidden="true"></span>
+                  <span>Tutorial · 7 min</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="result-item" href="base-artigo.html" data-content="artigo" data-category="pedagogia" data-type="recurso">
+              <div class="result-icon"><img src="../../assets/icones_artigos/icone_losango_branco.png" alt="" aria-hidden="true"></div>
+              <div class="result-body">
+                <h3>Gerar questionários com o GPT</h3>
+                <p class="result-snippet">Use IA generativa para criar questões alinhadas à Taxonomia de Bloom e revisá-las antes de publicar.</p>
+                <div class="result-meta">
+                  <span class="badge-content is-artigo">Artigo</span>
+                  <span class="dot" aria-hidden="true"></span>
+                  <span class="result-cat">Pedagogia e Planejamento</span>
+                  <span class="dot" aria-hidden="true"></span>
+                  <span>Recurso · 12 min</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="result-item" href="base-artigo.html" data-content="artigo" data-category="gestao-moodle" data-type="referencia">
+              <div class="result-icon"><img src="../../assets/icones_artigos/icone_circulo_branco.png" alt="" aria-hidden="true"></div>
+              <div class="result-body">
+                <h3>Elaborar as questões e conhecer os tipos</h3>
+                <p class="result-snippet">Referência dos formatos de questão — múltipla escolha, dissertativa, associação e mais.</p>
+                <div class="result-meta">
+                  <span class="badge-content is-artigo">Artigo</span>
+                  <span class="dot" aria-hidden="true"></span>
+                  <span class="result-cat">Gestão e Operação do Moodle</span>
+                  <span class="dot" aria-hidden="true"></span>
+                  <span>Referência · 11 min</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="result-item" href="base-percurso.html" data-content="percurso" data-category="gestao-moodle">
+              <div class="result-icon"><img src="../../assets/icones_percursos/icone_percurso-1.png" alt="" aria-hidden="true"></div>
+              <div class="result-body">
+                <h3>Dominando o Moodle</h3>
+                <p class="result-snippet">Percurso de 3 trilhas e 23 artigos — conduz uma sala virtual de ponta a ponta, incluindo a avaliação online.</p>
+                <div class="result-meta">
+                  <span class="badge-content is-percurso">Percurso</span>
+                  <span class="dot" aria-hidden="true"></span>
+                  <span>3 trilhas · 23 artigos</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="result-item" href="base-artigo.html" data-content="artigo" data-category="gestao-moodle" data-type="referencia">
+              <div class="result-icon"><img src="../../assets/icones_artigos/icone_circulo_branco.png" alt="" aria-hidden="true"></div>
+              <div class="result-body">
+                <h3>Proteger o acesso: senha, IP e Safe Exam Browser</h3>
+                <p class="result-snippet">Restrinja o acesso à prova online com senha, faixa de IP e o navegador seguro para reduzir fraudes.</p>
+                <div class="result-meta">
+                  <span class="badge-content is-artigo">Artigo</span>
+                  <span class="dot" aria-hidden="true"></span>
+                  <span class="result-cat">Gestão e Operação do Moodle</span>
+                  <span class="dot" aria-hidden="true"></span>
+                  <span>Referência · 8 min</span>
+                </div>
+              </div>
+            </a>
+
+          </div>
+
+          <p class="empty-state" id="empty-state">Nenhum resultado corresponde aos filtros. <button class="sidebar-clear" type="button" onclick="document.getElementById('clear-filters').click()">Limpar filtros</button></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer canônico injetado por shell.js -->
+
+<script>
+  // Acordeões
+  document.querySelectorAll('.filter-group-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const group = header.parentElement;
+      const expanded = group.classList.contains('active');
+      group.classList.toggle('active');
+      header.setAttribute('aria-expanded', String(!expanded));
+    });
+  });
+
+  const items = Array.from(document.querySelectorAll('.results-list .result-item'));
+  const contentCb = document.querySelectorAll('#content-checkboxes input[type="checkbox"]');
+  const catCb = document.querySelectorAll('#category-checkboxes input[type="checkbox"]');
+  const typeCb = document.querySelectorAll('#type-checkboxes input[type="checkbox"]');
+  const countEl = document.getElementById('result-count');
+  const emptyState = document.getElementById('empty-state');
+  const clearBtn = document.getElementById('clear-filters');
+
+  function activeValues(nodeList) {
+    return Array.from(nodeList).filter(cb => cb.checked).map(cb => cb.value);
+  }
+
+  function filterResults() {
+    const contents = activeValues(contentCb);
+    const cats = activeValues(catCb);
+    const types = activeValues(typeCb);
+    let visible = 0;
+    items.forEach(item => {
+      const contentMatch = contents.length === 0 || contents.includes(item.dataset.content);
+      const catMatch = cats.length === 0 || cats.includes(item.dataset.category);
+      // tipo de artigo só restringe artigos; trilhas/percursos passam quando o filtro está vazio
+      const typeMatch = types.length === 0 || (item.dataset.type && types.includes(item.dataset.type));
+      if (contentMatch && catMatch && typeMatch) { item.style.display = 'grid'; visible++; }
+      else { item.style.display = 'none'; }
+    });
+    if (countEl) countEl.textContent = visible;
+    if (emptyState) emptyState.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  [...contentCb, ...catCb, ...typeCb].forEach(cb => cb.addEventListener('change', filterResults));
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      [...contentCb, ...catCb, ...typeCb].forEach(cb => { cb.checked = false; });
+      filterResults();
+    });
+  }
+</script>
+<script src="a11y.js" defer></script>
+<script src="shell.js" defer></script>
+</body>
+</html>

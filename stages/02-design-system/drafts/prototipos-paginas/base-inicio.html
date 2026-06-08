@@ -191,20 +191,27 @@
   .percurso-card .pc-go { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; color: #fff; font-size: .85rem; font-weight: 600; }
   .percurso-card .pc-go svg { width: 15px; height: 15px; transition: transform .2s; }
   .percurso-card:hover .pc-go svg { transform: translateX(3px); }
-  /* Percurso candidato V2 — ainda não publicado (não navegável) */
+  /* Percurso candidato V2 — ainda não publicado (não navegável). Cor de inativo (sem o verde reservado do percurso). */
   .percurso-card .pc-soon {
     position: absolute; top: 16px; right: 16px; z-index: 2;
     font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-    color: var(--verde-profundo); background: var(--gold-soft);
+    color: var(--ink-3); background: var(--bg-3); border: 1px solid var(--line-2);
     padding: 4px 9px; border-radius: 999px;
   }
-  .percurso-card.is-soon { opacity: .94; cursor: default; }
+  .percurso-card.is-soon {
+    background: var(--bg-2); color: var(--ink-2); border: 1px solid var(--line); cursor: default;
+  }
   /* sem affordance de clique: não levanta nem muda no hover */
-  .percurso-card.is-soon:hover { transform: none; box-shadow: none; background: var(--verde-marca); }
-  [data-theme="dark"] .percurso-card.is-soon:hover { background: #102a20; }
+  .percurso-card.is-soon:hover { transform: none; box-shadow: none; background: var(--bg-2); }
+  .percurso-card.is-soon .pc-bg { opacity: .05; filter: grayscale(1); }
+  .percurso-card.is-soon .pc-kicker { color: var(--ink-3); }
+  .percurso-card.is-soon h3 { color: var(--ink-2); }
+  .percurso-card.is-soon p { color: var(--ink-3); }
+  .percurso-card.is-soon .pc-meta .m-label { color: var(--ink-3); }
+  .percurso-card.is-soon .pc-meta .m-value { color: var(--ink-2); }
   .percurso-card.is-soon .pc-status {
     margin-left: auto; display: inline-flex; align-items: center;
-    font-size: .85rem; font-weight: 600; color: var(--verde-on-dark);
+    font-size: .85rem; font-weight: 600; color: var(--ink-3);
   }
 
   /* ============================================================
@@ -383,7 +390,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="base-inicio-v5.html" class="brand">
+    <a href="base-inicio.html" class="brand">
       <span class="brand-logo" aria-hidden="true">
         <img src="../../assets/logo/ID_base_branca.png" alt="" />
       </span>
@@ -393,8 +400,8 @@
       </span>
     </a>
     <nav class="nav" aria-label="Navegação principal">
-      <a href="base-percurso.html">Percursos</a>
-      <a href="base-trilha.html">Trilhas</a>
+      <a href="base-percursos.html">Percursos</a>
+      <a href="base-trilhas.html">Trilhas</a>
       <a href="base-inicio.html">Todos os artigos</a>
     </nav>
     <form class="header-search" role="search">
@@ -682,7 +689,7 @@
           <h2 id="trilhas-title">Trilhas em destaque</h2>
           <p class="section-lead">Conjuntos de artigos na ordem certa para resolver um objetivo específico, do começo ao fim.</p>
         </div>
-        <a href="base-trilha.html" class="see-all">Ver todas as trilhas
+        <a href="base-trilhas.html" class="see-all">Ver todas as trilhas
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
       </div>
@@ -747,7 +754,7 @@
           <h2 id="percursos-title">Percursos</h2>
           <p class="section-lead">Programas temáticos que reúnem trilhas e artigos para você ir do primeiro contato ao domínio de um assunto.</p>
         </div>
-        <a href="base-percurso.html" class="see-all">Ver todos os percursos
+        <a href="base-percursos.html" class="see-all">Ver todos os percursos
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
       </div>
@@ -768,9 +775,9 @@
 
         <div class="percurso-card is-soon" aria-disabled="true">
           <img class="pc-bg" src="../../assets/icones_percursos/icone_percurso-2.png" alt="" aria-hidden="true">
-          <span class="pc-soon">Em breve · V2</span>
+          <span class="pc-soon">Em breve</span>
           <span class="pc-kicker">Percurso</span>
-          <h3>Conteúdo interativo e multimídia</h3>
+          <h3>Enriquecendo aulas com mídia</h3>
           <p>Crie conteúdo interativo com H5P, conduza aulas ao vivo por webconferência e acompanhe o progresso na sala virtual.</p>
           <div class="pc-meta">
             <div><span class="m-label">Trilhas</span><span class="m-value">3</span></div>
@@ -781,9 +788,9 @@
 
         <div class="percurso-card is-soon" aria-disabled="true">
           <img class="pc-bg" src="../../assets/icones_percursos/icone_percurso-3.png" alt="" aria-hidden="true">
-          <span class="pc-soon">Em breve · V2</span>
+          <span class="pc-soon">Em breve</span>
           <span class="pc-kicker">Percurso</span>
-          <h3>Ensino acessível</h3>
+          <h3>Tornando o ensino acessível</h3>
           <p>Avaliação acessível e conteúdo em Libras no AVA, com desenho universal aplicado aos cursos a distância.</p>
           <div class="pc-meta">
             <div><span class="m-label">Trilhas</span><span class="m-value">2</span></div>
