@@ -1,246 +1,574 @@
+ou
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Percursos · Base de Conhecimento CEFOR/Ifes</title>
-<meta name="description" content="Listagem de percursos (/percursos). Hero verde sólido explicando o que é um percurso; grid de percursos com o percurso Dominando o Moodle e outros em breve. Tokens design.md." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  /* ============================================================
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Percursos · Base de Conhecimento CEFOR/Ifes</title>
+  <meta name="description"
+    content="Listagem de percursos (/percursos). Hero verde sólido explicando o que é um percurso; grid de percursos com o percurso Dominando o Moodle e outros em breve. Tokens design.md." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Lexend:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ============================================================
      LISTAGEM DE PERCURSOS — Tokens oficiais (design.md)
      Hero estilo percurso (verde sólido) + grid de cards de percurso
      (cor reservada do percurso — Decisão 31).
      ============================================================ */
-  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad-x); }
+    .container {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+    }
 
-  /* ---------- HERO — faixa verde sólida ---------- */
-  .hero-perc { background: var(--verde-marca); color: #fff; position: relative; overflow: hidden; }
-  [data-theme="dark"] .hero-perc { background: #102a20; }
-  .hero-bg-icon {
-    position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
-    width: 420px; height: 420px; object-fit: contain; opacity: .10; pointer-events: none; z-index: 0;
-  }
-  @media (max-width: 700px) { .hero-bg-icon { width: 300px; height: 300px; right: -90px; } }
-  .hero-perc-inner {
-    position: relative; z-index: 1;
-    max-width: var(--maxw); margin: 0 auto; padding: 44px var(--pad-x) 44px;
-    display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;
-  }
-  @media (max-width: 860px) { .hero-perc-inner { grid-template-columns: 1fr; gap: 24px; } }
-  .hero-perc-main { min-width: 0; }
-  .hero-kicker {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 8px 20px 8px 15px; margin: 0 0 18px;
-    background: #fff; border-radius: 99px;
-    font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--verde-marca);
-  }
-  .hero-kicker svg { width: 20px; height: 20px; }
-  .hero-perc h1 { font-size: 2.6rem; line-height: 1.06; font-weight: 700; letter-spacing: -.02em; margin: 0 0 14px; color: #fff; }
-  @media (max-width: 700px) { .hero-perc h1 { font-size: 2.05rem; } }
-  .hero-perc .subtitle { font-size: 1.06rem; line-height: 1.55; margin: 0; color: rgba(255,255,255,.82); max-width: 62ch; }
-  .hero-perc-stats {
-    border-left: 1px solid rgba(255,255,255,.22); padding-left: 28px; min-width: 150px;
-    display: flex; flex-direction: column; gap: 16px;
-  }
-  @media (max-width: 860px) {
-    .hero-perc-stats { border-left: 0; border-top: 1px solid rgba(255,255,255,.22); padding-left: 0; padding-top: 22px; flex-direction: row; gap: 40px; }
-  }
-  .hero-perc-stat .label { display: block; font-size: .66rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--verde-palido); margin: 0 0 3px; }
-  .hero-perc-stat .value { font-size: 1.35rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    /* ---------- HERO — faixa verde sólida ---------- */
+    .hero-perc {
+      background: var(--verde-marca);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
 
-  /* ---------- CORPO ---------- */
-  .section { padding: 48px 0 64px; }
-  .section-lead-block { margin-bottom: 28px; max-width: 70ch; }
-  .section-lead-block .kicker { font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 10px; }
-  .section-lead-block h2 { font-size: clamp(1.5rem, 3vw, 1.9rem); font-weight: 700; letter-spacing: -.015em; margin: 0; color: var(--ink); line-height: 1.18; }
-  .section-lead-block p { font-size: 1rem; color: var(--ink-2); margin: 12px 0 0; line-height: 1.5; }
+    [data-theme="dark"] .hero-perc {
+      background: #102a20;
+    }
 
-  /* ---------- Card de percurso (verde sólido — cor reservada) ---------- */
-  .percurso-card {
-    position: relative; overflow: hidden;
-    background: var(--verde-marca); color: #fff;
-    border-radius: var(--r-lg); padding: 28px 26px 24px;
-    display: flex; flex-direction: column; gap: 12px; min-height: 240px;
-    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-  }
-  [data-theme="dark"] .percurso-card { background: #102a20; }
-  .percurso-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); background: var(--verde-profundo); }
-  .percurso-card .pc-bg { position: absolute; right: -34px; bottom: -34px; width: 168px; height: auto; opacity: .12; pointer-events: none; }
-  .percurso-card .pc-kicker {
-    font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
-    color: var(--verde-on-dark); position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 8px;
-  }
-  .percurso-card .pc-kicker svg { width: 16px; height: 16px; }
-  .percurso-card h3 { font-size: 1.45rem; font-weight: 700; line-height: 1.18; margin: 0; color: #fff; letter-spacing: -.01em; position: relative; z-index: 1; }
-  .percurso-card p { font-size: .95rem; color: rgba(255,255,255,.84); line-height: 1.5; margin: 0; flex: 1; position: relative; z-index: 1;
-    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-  .percurso-card .pc-meta { display: flex; align-items: flex-end; gap: 28px; margin-top: auto; padding-top: 14px; position: relative; z-index: 1; }
-  .percurso-card .pc-meta .m-label { display: block; font-size: .64rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--verde-on-dark); margin: 0 0 3px; }
-  .percurso-card .pc-meta .m-value { font-size: .98rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
-  .percurso-card .pc-go { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; color: #fff; font-size: .88rem; font-weight: 600; }
-  .percurso-card .pc-go svg { width: 16px; height: 16px; transition: transform .2s; }
-  .percurso-card:hover .pc-go svg { transform: translateX(3px); }
-  /* Em breve — candidato V2, não navegável. Cor de inativo (sem o verde reservado do percurso). */
-  .percurso-card .pc-soon {
-    position: absolute; top: 16px; right: 16px; z-index: 2;
-    font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-    color: var(--ink-3); background: var(--bg-3); border: 1px solid var(--line-2); padding: 4px 9px; border-radius: 999px;
-  }
-  .percurso-card.is-soon {
-    background: var(--bg-2); color: var(--ink-2); border: 1px solid var(--line); cursor: default;
-  }
-  .percurso-card.is-soon:hover { transform: none; box-shadow: none; background: var(--bg-2); }
-  .percurso-card.is-soon .pc-bg { opacity: .05; filter: grayscale(1); }
-  .percurso-card.is-soon .pc-kicker { color: var(--ink-3); }
-  .percurso-card.is-soon h3 { color: var(--ink-2); }
-  .percurso-card.is-soon p { color: var(--ink-3); }
-  .percurso-card.is-soon .pc-meta .m-label { color: var(--ink-3); }
-  .percurso-card.is-soon .pc-meta .m-value { color: var(--ink-2); }
-  .percurso-card.is-soon .pc-status { margin-left: auto; display: inline-flex; align-items: center; font-size: .88rem; font-weight: 600; color: var(--ink-3); }
+    .hero-bg-icon {
+      position: absolute;
+      right: -60px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 420px;
+      height: 420px;
+      object-fit: contain;
+      opacity: .10;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @media (max-width: 700px) {
+      .hero-bg-icon {
+        width: 300px;
+        height: 300px;
+        right: -90px;
+      }
+    }
+
+    .hero-perc-inner {
+      position: relative;
+      z-index: 1;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 44px var(--pad-x) 44px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media (max-width: 860px) {
+      .hero-perc-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    .hero-perc-main {
+      min-width: 0;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 20px 8px 15px;
+      margin: 0 0 18px;
+      background: #fff;
+      border-radius: 99px;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--verde-marca);
+    }
+
+    .hero-kicker svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .hero-perc h1 {
+      font-size: 2.6rem;
+      line-height: 1.06;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      margin: 0 0 14px;
+      color: #fff;
+    }
+
+    @media (max-width: 700px) {
+      .hero-perc h1 {
+        font-size: 2.05rem;
+      }
+    }
+
+    .hero-perc .subtitle {
+      font-size: 1.06rem;
+      line-height: 1.55;
+      margin: 0;
+      color: rgba(255, 255, 255, .82);
+      max-width: 62ch;
+    }
+
+    .hero-perc-stats {
+      border-left: 1px solid rgba(255, 255, 255, .22);
+      padding-left: 28px;
+      min-width: 150px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (max-width: 860px) {
+      .hero-perc-stats {
+        border-left: 0;
+        border-top: 1px solid rgba(255, 255, 255, .22);
+        padding-left: 0;
+        padding-top: 22px;
+        flex-direction: row;
+        gap: 40px;
+      }
+    }
+
+    .hero-perc-stat .label {
+      display: block;
+      font-size: .66rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--verde-palido);
+      margin: 0 0 3px;
+    }
+
+    .hero-perc-stat .value {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ---------- CORPO ---------- */
+    .section {
+      padding: 48px 0 64px;
+    }
+
+    .section-lead-block {
+      margin-bottom: 28px;
+      max-width: 70ch;
+    }
+
+    .section-lead-block .kicker {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin: 0 0 10px;
+    }
+
+    .section-lead-block h2 {
+      font-size: clamp(1.5rem, 3vw, 1.9rem);
+      font-weight: 700;
+      letter-spacing: -.015em;
+      margin: 0;
+      color: var(--ink);
+      line-height: 1.18;
+    }
+
+    .section-lead-block p {
+      font-size: 1rem;
+      color: var(--ink-2);
+      margin: 12px 0 0;
+      line-height: 1.5;
+    }
+
+    /* ---------- Card de percurso (verde sólido — cor reservada) ---------- */
+    .percurso-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--verde-marca);
+      color: #fff;
+      border-radius: var(--r-lg);
+      padding: 28px 26px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 240px;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    [data-theme="dark"] .percurso-card {
+      background: #102a20;
+    }
+
+    .percurso-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      background: var(--verde-profundo);
+    }
+
+    .percurso-card .pc-bg {
+      position: absolute;
+      right: -34px;
+      bottom: -34px;
+      width: 168px;
+      height: auto;
+      opacity: .12;
+      pointer-events: none;
+    }
+
+    .percurso-card .pc-kicker {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--verde-on-dark);
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .percurso-card .pc-kicker svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .percurso-card h3 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      line-height: 1.18;
+      margin: 0;
+      color: #fff;
+      letter-spacing: -.01em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .percurso-card p {
+      font-size: .95rem;
+      color: rgba(255, 255, 255, .84);
+      line-height: 1.5;
+      margin: 0;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .percurso-card .pc-meta {
+      display: flex;
+      align-items: flex-end;
+      gap: 28px;
+      margin-top: auto;
+      padding-top: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .percurso-card .pc-meta .m-label {
+      display: block;
+      font-size: .64rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--verde-on-dark);
+      margin: 0 0 3px;
+    }
+
+    .percurso-card .pc-meta .m-value {
+      font-size: .98rem;
+      font-weight: 700;
+      color: #fff;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .percurso-card .pc-go {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #fff;
+      font-size: .88rem;
+      font-weight: 600;
+    }
+
+    .percurso-card .pc-go svg {
+      width: 16px;
+      height: 16px;
+      transition: transform .2s;
+    }
+
+    .percurso-card:hover .pc-go svg {
+      transform: translateX(3px);
+    }
+
+    /* Em breve — candidato V2, não navegável. Cor de inativo (sem o verde reservado do percurso). */
+    .percurso-card .pc-soon {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 2;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      background: var(--bg-3);
+      border: 1px solid var(--line-2);
+      padding: 4px 9px;
+      border-radius: 999px;
+    }
+
+    .percurso-card.is-soon {
+      background: var(--bg-2);
+      color: var(--ink-2);
+      border: 1px solid var(--line);
+      cursor: default;
+    }
+
+    .percurso-card.is-soon:hover {
+      transform: none;
+      box-shadow: none;
+      background: var(--bg-2);
+    }
+
+    .percurso-card.is-soon .pc-bg {
+      opacity: .05;
+      filter: grayscale(1);
+    }
+
+    .percurso-card.is-soon .pc-kicker {
+      color: var(--ink-3);
+    }
+
+    .percurso-card.is-soon h3 {
+      color: var(--ink-2);
+    }
+
+    .percurso-card.is-soon p {
+      color: var(--ink-3);
+    }
+
+    .percurso-card.is-soon .pc-meta .m-label {
+      color: var(--ink-3);
+    }
+
+    .percurso-card.is-soon .pc-meta .m-value {
+      color: var(--ink-2);
+    }
+
+    .percurso-card.is-soon .pc-status {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--ink-3);
+    }
 
 
 
-  @media (max-width: 600px) { :root { --pad-x: 20px; } }
-</style>
-<link rel="stylesheet" href="a11y.css">
-<link rel="stylesheet" href="shell.css">
+    @media (max-width: 600px) {
+      :root {
+        --pad-x: 20px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="a11y.css">
+  <link rel="stylesheet" href="shell.css">
 </head>
+
 <body>
-<a class="skip" href="#main">Pular para o conteúdo</a>
+  <a class="skip" href="#main">Pular para o conteúdo</a>
 
-<header class="site-header">
-  <div class="header-inner">
-    <a href="base-inicio.html" class="brand">
-      <span class="brand-logo" aria-hidden="true">
-        <img src="../../assets/logo/ID_base_branca.png" alt="" />
-      </span>
-      <span class="brand-text">
-        <strong>Base de Conhecimento</strong>
-        <span>CEFOR · Ifes</span>
-      </span>
-    </a>
-    <nav class="nav" aria-label="Navegação principal">
-      <a href="base-percursos.html" class="active">Percursos</a>
-      <a href="base-trilhas.html">Trilhas</a>
-      <a href="base-inicio.html">Todos os artigos</a>
-    </nav>
-    <form class="header-search" role="search" action="base-busca.html" method="get">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar" />
-    </form>
-    <!-- Acessibilidade: painel flutuante canônico injetado por a11y.js -->
-  </div>
-</header>
-
-<nav class="breadcrumb" aria-label="Você está aqui">
-  <div class="breadcrumb-inner">
-    <a href="base-inicio.html">Início</a>
-    <span class="sep">›</span>
-    <span class="current">Percursos</span>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero-perc" aria-labelledby="perc-title">
-  <img class="hero-bg-icon" src="../../assets/icones_percursos/icone_percurso-1.png" alt="" aria-hidden="true">
-  <div class="hero-perc-inner">
-    <div class="hero-perc-main">
-      <span class="hero-kicker">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><rect x="2.6" y="15.6" width="4.8" height="4.8" rx="0.5"/><path d="M19 9.4 21.6 13.9 16.4 13.9Z"/><path d="M7 7 16.4 11"/><path d="M7 17 16.4 13"/></svg>
-        Percursos
-      </span>
-      <h1 id="perc-title">Caminhos formativos para dominar uma área</h1>
-      <p class="subtitle">
-        Um percurso reúne trilhas e artigos complementares para você ir do primeiro contato ao domínio de
-        um tema. Sem ordem obrigatória — você escolhe por onde começar.
-      </p>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="base-inicio.html" class="brand">
+        <span class="brand-logo" aria-hidden="true">
+          <img src="../../assets/logo/ID_base_branca.png" alt="" />
+        </span>
+        <span class="brand-text">
+          <strong>Base de Conhecimento</strong>
+          <span>CEFOR · Ifes</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="base-percursos.html" class="active">Percursos</a>
+        <a href="base-trilhas.html">Trilhas</a>
+        <a href="base-inicio.html">Todos os artigos</a>
+      </nav>
+      <form class="header-search" role="search" action="base-busca.html" method="get">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7" />
+          <path d="m20 20-3.5-3.5" />
+        </svg>
+        <input type="search" name="q" placeholder="Buscar artigos…" aria-label="Buscar" />
+      </form>
+      <!-- Acessibilidade: painel flutuante canônico injetado por a11y.js -->
     </div>
-    <div class="hero-perc-stats">
-      <div class="hero-perc-stat">
-        <span class="label">Disponível</span>
-        <span class="value">1</span>
-      </div>
-      <div class="hero-perc-stat">
-        <span class="label">Em breve</span>
-        <span class="value">2</span>
-      </div>
+  </header>
+
+  <nav class="breadcrumb" aria-label="Você está aqui">
+    <div class="breadcrumb-inner">
+      <a href="base-inicio.html">Início</a>
+      <span class="sep">›</span>
+      <span class="current">Percursos</span>
     </div>
-  </div>
-</section>
+  </nav>
 
-<main id="main">
-  <section class="section">
-    <div class="container">
-
-      <div class="section-lead-block">
-        <p class="kicker">Disponível agora</p>
-        <h2>Comece pelo percurso publicado</h2>
-        <p>Este percurso reúne o núcleo de operação do Moodle. Os demais entrarão à medida que novos conteúdos forem adicionados.</p>
+  <!-- HERO -->
+  <section class="hero-perc" aria-labelledby="perc-title">
+    <img class="hero-bg-icon" src="../../assets/icones_percursos/icone_percurso-1.png" alt="" aria-hidden="true">
+    <div class="hero-perc-inner">
+      <div class="hero-perc-main">
+        <span class="hero-kicker">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <circle cx="5" cy="6" r="2.4" />
+            <rect x="2.6" y="15.6" width="4.8" height="4.8" rx="0.5" />
+            <path d="M19 9.4 21.6 13.9 16.4 13.9Z" />
+            <path d="M7 7 16.4 11" />
+            <path d="M7 17 16.4 13" />
+          </svg>
+          Todos os percursos
+        </span>
+        <h1 id="perc-title">Caminhos formativos para dominar uma área</h1>
+        <p class="subtitle">
+          Um percurso reúne trilhas e artigos complementares para você ir do primeiro contato ao domínio de
+          um tema. Sem ordem obrigatória — você escolhe por onde começar.
+        </p>
       </div>
-
-      <div class="percurso-grid">
-
-        <!-- ATIVO -->
-        <a class="percurso-card" href="base-percurso.html">
-          <img class="pc-bg" src="../../assets/icones_percursos/icone_percurso-1.png" alt="" aria-hidden="true">
-          <span class="pc-kicker">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><rect x="2.6" y="15.6" width="4.8" height="4.8" rx="0.5"/><path d="M19 9.4 21.6 13.9 16.4 13.9Z"/><path d="M7 7 16.4 11"/><path d="M7 17 16.4 13"/></svg>
-            Percurso
-          </span>
-          <h3>Dominando o Moodle</h3>
-          <p>Conduza uma sala virtual de ponta a ponta — da sala vazia ao curso avaliado no ar, passando pelo fechamento de notas. Três rotas de entrada por perfil.</p>
-          <div class="pc-meta">
-            <div><span class="m-label">Trilhas</span><span class="m-value">3</span></div>
-            <div><span class="m-label">Artigos</span><span class="m-value">23</span></div>
-            <span class="pc-go">Começar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-          </div>
-        </a>
-
-        <!-- EM BREVE -->
-        <div class="percurso-card is-soon" aria-disabled="true">
-          <img class="pc-bg" src="../../assets/icones_percursos/icone_percurso-2.png" alt="" aria-hidden="true">
-          <span class="pc-soon">Em breve</span>
-          <span class="pc-kicker">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><rect x="2.6" y="15.6" width="4.8" height="4.8" rx="0.5"/><path d="M19 9.4 21.6 13.9 16.4 13.9Z"/><path d="M7 7 16.4 11"/><path d="M7 17 16.4 13"/></svg>
-            Percurso
-          </span>
-          <h3>Enriquecendo aulas com mídia</h3>
-          <p>Crie conteúdo interativo com H5P, conduza aulas ao vivo por webconferência e acompanhe o progresso na sala virtual.</p>
-          <div class="pc-meta">
-            <div><span class="m-label">Trilhas</span><span class="m-value">3</span></div>
-            <div><span class="m-label">Artigos</span><span class="m-value">10</span></div>
-            <span class="pc-status">Em breve</span>
-          </div>
+      <div class="hero-perc-stats">
+        <div class="hero-perc-stat">
+          <span class="label">Disponível</span>
+          <span class="value">1</span>
         </div>
-
-        <div class="percurso-card is-soon" aria-disabled="true">
-          <img class="pc-bg" src="../../assets/icones_percursos/icone_percurso-3.png" alt="" aria-hidden="true">
-          <span class="pc-soon">Em breve</span>
-          <span class="pc-kicker">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><rect x="2.6" y="15.6" width="4.8" height="4.8" rx="0.5"/><path d="M19 9.4 21.6 13.9 16.4 13.9Z"/><path d="M7 7 16.4 11"/><path d="M7 17 16.4 13"/></svg>
-            Percurso
-          </span>
-          <h3>Tornando o ensino acessível</h3>
-          <p>Avaliação acessível e conteúdo em Libras no AVA, com desenho universal aplicado aos cursos a distância.</p>
-          <div class="pc-meta">
-            <div><span class="m-label">Trilhas</span><span class="m-value">2</span></div>
-            <div><span class="m-label">Artigos</span><span class="m-value">6</span></div>
-            <span class="pc-status">Em breve</span>
-          </div>
+        <div class="hero-perc-stat">
+          <span class="label">Em breve</span>
+          <span class="value">2</span>
         </div>
-
       </div>
-
     </div>
   </section>
-</main>
 
-<!-- Footer canônico injetado por shell.js -->
+  <main id="main">
+    <section class="section">
+      <div class="container">
 
-<script src="a11y.js" defer></script>
-<script src="shell.js" defer></script>
+        <div class="section-lead-block">
+          <p class="kicker">Disponível agora</p>
+          <h2>Comece pelo percurso publicado</h2>
+          <p>Este percurso reúne o núcleo de operação do Moodle. Os demais entrarão à medida que novos conteúdos forem
+            adicionados.</p>
+        </div>
+
+        <div class="percurso-grid">
+
+          <!-- ATIVO -->
+          <a class="percurso-card" href="base-percurso.html">
+            <img class="pc-bg" src="../../assets/icones_percursos/icone_percurso-1.png" alt="" aria-hidden="true">
+            <span class="pc-kicker">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="5" cy="6" r="2.4" />
+                <rect x="2.6" y="15.6" width="4.8" height="4.8" rx="0.5" />
+                <path d="M19 9.4 21.6 13.9 16.4 13.9Z" />
+                <path d="M7 7 16.4 11" />
+                <path d="M7 17 16.4 13" />
+              </svg>
+              Percurso
+            </span>
+            <h3>Dominando o Moodle</h3>
+            <p>Conduza uma sala virtual de ponta a ponta — da sala vazia ao curso avaliado no ar, passando pelo
+              fechamento de notas. Três rotas de entrada por perfil.</p>
+            <div class="pc-meta">
+              <div><span class="m-label">Trilhas</span><span class="m-value">3</span></div>
+              <div><span class="m-label">Artigos</span><span class="m-value">23</span></div>
+              <span class="pc-go">Começar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg></span>
+            </div>
+          </a>
+
+          <!-- EM BREVE -->
+          <div class="percurso-card is-soon" aria-disabled="true">
+            <img class="pc-bg" src="../../assets/icones_percursos/icone_percurso-2.png" alt="" aria-hidden="true">
+            <span class="pc-soon">Em breve</span>
+            <span class="pc-kicker">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="5" cy="6" r="2.4" />
+                <rect x="2.6" y="15.6" width="4.8" height="4.8" rx="0.5" />
+                <path d="M19 9.4 21.6 13.9 16.4 13.9Z" />
+                <path d="M7 7 16.4 11" />
+                <path d="M7 17 16.4 13" />
+              </svg>
+              Percurso
+            </span>
+            <h3>Enriquecendo aulas com mídia</h3>
+            <p>Crie conteúdo interativo com H5P, conduza aulas ao vivo por webconferência e acompanhe o progresso na
+              sala virtual.</p>
+            <div class="pc-meta">
+              <div><span class="m-label">Trilhas</span><span class="m-value">3</span></div>
+              <div><span class="m-label">Artigos</span><span class="m-value">10</span></div>
+              <span class="pc-status">Em breve</span>
+            </div>
+          </div>
+
+          <div class="percurso-card is-soon" aria-disabled="true">
+            <img class="pc-bg" src="../../assets/icones_percursos/icone_percurso-3.png" alt="" aria-hidden="true">
+            <span class="pc-soon">Em breve</span>
+            <span class="pc-kicker">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="5" cy="6" r="2.4" />
+                <rect x="2.6" y="15.6" width="4.8" height="4.8" rx="0.5" />
+                <path d="M19 9.4 21.6 13.9 16.4 13.9Z" />
+                <path d="M7 7 16.4 11" />
+                <path d="M7 17 16.4 13" />
+              </svg>
+              Percurso
+            </span>
+            <h3>Tornando o ensino acessível</h3>
+            <p>Avaliação acessível e conteúdo em Libras no AVA, com desenho universal aplicado aos cursos a distância.
+            </p>
+            <div class="pc-meta">
+              <div><span class="m-label">Trilhas</span><span class="m-value">2</span></div>
+              <div><span class="m-label">Artigos</span><span class="m-value">6</span></div>
+              <span class="pc-status">Em breve</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer canônico injetado por shell.js -->
+
+  <script src="a11y.js" defer></script>
+  <script src="shell.js" defer></script>
 </body>
+
 </html>
