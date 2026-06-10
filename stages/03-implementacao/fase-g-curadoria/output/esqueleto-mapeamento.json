@@ -1,0 +1,4294 @@
+{
+ "_meta": {
+  "fonte_antiga": "data/base-antiga/base-conhecimento-cefor-inventario.json",
+  "regras": "taxonomia.md §7 + trilhas-percursos-mapa.md §2-§5",
+  "nota": "ESQUELETO — campos em `revisar` exigem decisão editorial. O canônico é mapeamento-curadoria.json (este arquivo revisado)."
+ },
+ "trilhas": {
+  "T1": {
+   "titulo": "Da sala vazia ao primeiro dia de aula",
+   "categoria": "gestao-moodle",
+   "firme": true,
+   "artigos": [
+    129,
+    82,
+    56,
+    89,
+    111,
+    66
+   ],
+   "ancora": 129
+  },
+  "T2": {
+   "titulo": "Avaliação online de ponta a ponta",
+   "categoria": "gestao-moodle",
+   "firme": true,
+   "artigos": [
+    127,
+    125,
+    120,
+    121,
+    116,
+    107,
+    122,
+    119,
+    123,
+    124,
+    108,
+    118,
+    106,
+    104,
+    103,
+    34,
+    126
+   ],
+   "ancora": 127
+  },
+  "T3": {
+   "titulo": "Do Livro de Notas ao Sistema Acadêmico",
+   "categoria": "gestao-moodle",
+   "firme": true,
+   "artigos": [
+    85,
+    57,
+    16,
+    113,
+    47
+   ],
+   "ancora": 85
+  },
+  "T4": {
+   "titulo": "Conteúdo interativo com H5P, do básico ao avançado",
+   "categoria": "ferramentas",
+   "firme": true,
+   "artigos": [
+    17,
+    18,
+    19
+   ],
+   "ancora": 17
+  },
+  "T5": {
+   "titulo": "Aulas ao vivo por Webconferência",
+   "categoria": "ferramentas",
+   "firme": true,
+   "artigos": [
+    53,
+    54,
+    27,
+    58
+   ],
+   "ancora": 53
+  },
+  "T6": {
+   "titulo": "Acompanhamento e gamificação do progresso",
+   "categoria": "ferramentas",
+   "firme": true,
+   "artigos": [
+    44,
+    43,
+    45
+   ],
+   "ancora": null
+  },
+  "T7": {
+   "titulo": "Avaliação acessível para todos os estudantes",
+   "categoria": "acessibilidade",
+   "firme": true,
+   "artigos": [
+    15,
+    2,
+    26
+   ],
+   "ancora": 15
+  },
+  "T8": {
+   "titulo": "Conteúdo em Libras no AVA, do vídeo ao termo técnico",
+   "categoria": "acessibilidade",
+   "firme": true,
+   "artigos": [
+    35,
+    62,
+    14
+   ],
+   "ancora": null
+  },
+  "T9": {
+   "titulo": "Avaliações com IA generativa",
+   "categoria": "pedagogia",
+   "firme": true,
+   "artigos": [
+    5,
+    8,
+    6
+   ],
+   "ancora": 5
+  },
+  "T10": {
+   "titulo": "Administração da sala virtual ao longo do curso",
+   "categoria": "gestao-moodle",
+   "firme": false,
+   "artigos": [
+    92,
+    86,
+    63,
+    59,
+    48,
+    87
+   ],
+   "ancora": null
+  }
+ },
+ "percurso_v1": {
+  "titulo": "Dominando o Moodle",
+  "trilhas": [
+   "T1",
+   "T2",
+   "T3"
+  ],
+  "complementares": [
+   93,
+   130
+  ]
+ },
+ "artigos": [
+  {
+   "wp_id": 3335,
+   "titulo": "O processo de programação da CGTE",
+   "status": "private",
+   "slug": "o-processo-de-programacao-da-cgte",
+   "id_inventario": null,
+   "antigo": {
+    "categoria": null,
+    "tipo": null,
+    "temas": []
+   },
+   "tipo": null,
+   "categoria": null,
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "categoria",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Fluxo de programação na CGTE Ambiente e processo geral de programação Até estabelecermos o processo usando Vagrant, estamos usando o Laragon (https://laragon.org/) para servidor web e de banco de dados local. Com o ambiente de programação i"
+  },
+  {
+   "wp_id": 3336,
+   "titulo": "Artigos em ordem alfabetica",
+   "status": "private",
+   "slug": "artigos-em-ordem-alfabetica",
+   "id_inventario": null,
+   "antigo": {
+    "categoria": null,
+    "tipo": null,
+    "temas": []
+   },
+   "tipo": null,
+   "categoria": null,
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "categoria",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "[display-posts post_type=\"kbe_knowledgebase\" posts_per_page=\"1000\" orderby=\"title\"]"
+  },
+  {
+   "wp_id": 3337,
+   "titulo": "Como utilizar o aplicativo Moodle Mobile",
+   "status": "draft",
+   "slug": "",
+   "id_inventario": null,
+   "antigo": {
+    "categoria": null,
+    "tipo": null,
+    "temas": []
+   },
+   "tipo": null,
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "https://www.youtube.com/watch?v=eYD1wl8oJsk"
+  },
+  {
+   "wp_id": 3338,
+   "titulo": "Introdução a Emblemas no Moodle: visão do aluno",
+   "status": "draft",
+   "slug": "",
+   "id_inventario": null,
+   "antigo": {
+    "categoria": null,
+    "tipo": null,
+    "temas": []
+   },
+   "tipo": null,
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Visão do Aluno: Como Ver Meus Emblemas no Moodle Introdução Neste tutorial, você aprenderá como visualizar, entender e gerenciar seus emblemas no Ambiente Virtual de Aprendizagem (AVA) Moodle. Os emblemas são uma forma divertida e eficaz de"
+  },
+  {
+   "wp_id": 3339,
+   "titulo": "Introdução a Emblemas no Moodle: visão do professor",
+   "status": "draft",
+   "slug": "",
+   "id_inventario": null,
+   "antigo": {
+    "categoria": null,
+    "tipo": null,
+    "temas": []
+   },
+   "tipo": null,
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Introdução Este tutorial é um guia passo a passo para professores sobre como configurar, atribuir e gerenciar emblemas em um curso no Moodle 3.9. Tutorial em vídeo &nbsp; Passo a Passo 1. Acesse o Curso Faça login no Moodle e navegue até o "
+  },
+  {
+   "wp_id": 3340,
+   "titulo": "Cenário #1: Desafio da Comunicação Clara",
+   "status": "private",
+   "slug": "cenario-1-desafio-da-comunicacao-clara-serie-cenarios-do-ava",
+   "id_inventario": null,
+   "antigo": {
+    "categoria": null,
+    "tipo": null,
+    "temas": []
+   },
+   "tipo": null,
+   "categoria": null,
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "categoria",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Este artigo faz parte da Série Cenários do AVA. Conheça mais sobre esta série. &nbsp; Considere o seguinte cenário Cenário #1: Desafio da Comunicação Clara A professora Água Cristalina, ensinando a disciplina \"Biomas Aquáticos: Vida e Prese"
+  },
+  {
+   "wp_id": 3341,
+   "titulo": "Orientações sobre a Base de Conhecimento do Cefor",
+   "status": "publish",
+   "slug": "orientacoes-base-conhecimento",
+   "id_inventario": null,
+   "antigo": {
+    "categoria": null,
+    "tipo": null,
+    "temas": []
+   },
+   "tipo": null,
+   "categoria": null,
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "categoria",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "1. Sobre a Base de Conhecimento do Cefor A Base de Conhecimento do Cefor é uma iniciativa do Centro de Referência em Formação e Educação a Distância (Cefor) do Instituto Federal do Espírito Santo (Ifes). Seu propósito é disponibilizar tutor"
+  },
+  {
+   "wp_id": 3342,
+   "titulo": "Como gravar um tutorial utilizando o Apowersoft?",
+   "status": "publish",
+   "slug": "como-gravar-um-tutorial-utilizando-o-apowersoft",
+   "id_inventario": 131,
+   "antigo": {
+    "categoria": "Recurso Educacional",
+    "tipo": "Tutorial",
+    "temas": [
+     "Faça você mesmo",
+     "Videotutorial"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Vídeo"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "O Apowersoft é um site onde se é possível gravar vídeos da tela do computador de maneira simples e rápida. Como utilizar: Acesse o Site: http://www.apowersoft.com.br/gravador-de-tela-gratis Clique em Começar a Gravar. Quando a janela branca"
+  },
+  {
+   "wp_id": 3343,
+   "titulo": "O que é mapa de atividades? Como preencher?",
+   "status": "publish",
+   "slug": "o-que-e-mapa-de-atividades-como-preencher",
+   "id_inventario": 130,
+   "antigo": {
+    "categoria": "Conhecimentos Pedagógicos",
+    "tipo": "Tutorial",
+    "temas": [
+     "Metodologia",
+     "Planejamento"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "pedagogia",
+   "topicos": [
+    "Planejamento e Design Educacional"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "O mapa de atividades é um instrumento para auxiliar os professores a realizarem as atividades de uma disciplina oferecida a distância. No Cefor o mapa de atividades é o ponto de partida para o planejamento das disciplinas e praticamente tod"
+  },
+  {
+   "wp_id": 3344,
+   "titulo": "Conheça o Moodle do Ifes",
+   "status": "publish",
+   "slug": "coneca-o-novo-moodle-do-ifes",
+   "id_inventario": 129,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Conceitual",
+    "temas": [
+     "Ferramenta",
+     "Moodle"
+    ]
+   },
+   "tipo": "Conceitual",
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [
+    {
+     "trilha": "T1",
+     "posicao": 1
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "O Moodle do Ifes está agora na versão 4.0, trazendo uma interface renovada e uma experiência de navegação muito mais intuitiva. No vídeo tutorial a seguir, você vai conhecer a nova organização da sala virtual e descobrir onde encontrar as p"
+  },
+  {
+   "wp_id": 3345,
+   "titulo": "PowToon - Crie uma animação de forma fácil",
+   "status": "publish",
+   "slug": "26",
+   "id_inventario": 128,
+   "antigo": {
+    "categoria": "Recurso Educacional",
+    "tipo": "Ferramenta Externa",
+    "temas": [
+     "Externo",
+     "Ferramenta"
+    ]
+   },
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "PowToon é uma ferramenta online para o desenvolvimento de apresentações animadas. Como ele você mesmo pode criar suas apresentações com animações e efeitos que motivam a criatividade. A interface drag and drop é intuitiva e amigável e dispo"
+  },
+  {
+   "wp_id": 3346,
+   "titulo": "Prova on-line: Entenda o que é",
+   "status": "publish",
+   "slug": "prova-oniline-entenda-o-que-e",
+   "id_inventario": 127,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Conceitual",
+    "temas": [
+     "Moodle",
+     "Prova"
+    ]
+   },
+   "tipo": "Conceitual",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T2",
+     "posicao": 1
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "A prova é um instrumento muito importante de avaliação. Ela é chamada de on-line pois o aluno a realizá usando o Ambiente Virtual de Aprendizagem - AVA (Moodle). O recurso do AVA utilizado para realização da prova é o Questionário. Planejar"
+  },
+  {
+   "wp_id": 3347,
+   "titulo": "Prova on-line: Segurança",
+   "status": "publish",
+   "slug": "prova-on-line-seguranca",
+   "id_inventario": 126,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial/Avaliacao",
+    "temas": [
+     "Moodle",
+     "Prova"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "conduta",
+   "topicos": [
+    "Questionário",
+    "Direitos Autorais e Segurança"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T2",
+     "posicao": 17
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Neste tópico serão apresentados 6 medidas de segurança para a realização da prova on-line usando o recurso de questionário do AVA - Moodle. Essas medidas vão desde a etapa de planejamento, realizada pelo professor e designer educacional, at"
+  },
+  {
+   "wp_id": 3348,
+   "titulo": "1º Passo - Planejando a prova on-line",
+   "status": "publish",
+   "slug": "montando-a-prova-on-line",
+   "id_inventario": 125,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial/Avaliacao",
+    "temas": [
+     "Moodle",
+     "Prova"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T2",
+     "posicao": 2
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Produzir uma prova on-line requer alguns conhecimentos importantes por parte da equipe de curso, para realizar um bom planejamento, principalmente no que se refere as possibilidades do recurso de questionário no AVA - Moodle. A imagem abaix"
+  },
+  {
+   "wp_id": 3349,
+   "titulo": "Prova on-line: montando a prova",
+   "status": "publish",
+   "slug": "prova-on-line-montando-a-prova",
+   "id_inventario": 124,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial/Avaliacao",
+    "temas": [
+     "Moodle",
+     "Prova"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T2",
+     "posicao": 10
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Montar a prova on-line requer algumas etapas importantes, que vão desde o planejamento das questões, inserção no AVA, segurança, aplicação da prova e finalizando com a configuração do quadro de notas. Ou seja, são um conjunto de engrenagens"
+  },
+  {
+   "wp_id": 3350,
+   "titulo": "2º Passo – Montando a prova on-line no AVA – Moodle",
+   "status": "publish",
+   "slug": "2o-passo-montando-a-prova-on-line-no-ava-moodle",
+   "id_inventario": 123,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial/Avaliacao",
+    "temas": [
+     "Moodle",
+     "Prova"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T2",
+     "posicao": 9
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Montar o local de prova usando o recurso de questionário no AVA - Moodle exige entender algumas etapas. Como este assunto é amplo, ele foi dividido para facilitar a compreensão e principalmente a sequência e vinculação entre cada etapa. Cli"
+  },
+  {
+   "wp_id": 3351,
+   "titulo": "Organizando o local da prova: banco de questões e categorias",
+   "status": "publish",
+   "slug": "organizando-o-local-da-prova-banco-de-questoes-e-categorias",
+   "id_inventario": 122,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial/Avaliacao",
+    "temas": [
+     "Atividade",
+     "Moodle",
+     "Questionário"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Banco de Questões"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T2",
+     "posicao": 7
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "SUMÁRIO 1. Entenda o Banco de Questões e as Categorias 2. Aprenda a configurar o Banco de Questões e as Categorias 1. Entenda o Banco de Questões e as Categorias O recurso de questionário possui dois componentes principais: o corpo do Quest"
+  },
+  {
+   "wp_id": 3352,
+   "titulo": "Criando as questões do recurso de questionário no AVA - Moodle",
+   "status": "publish",
+   "slug": "criando-as-questoes-no-ava-moodle",
+   "id_inventario": 121,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Atividade",
+     "Moodle",
+     "Questionário"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T2",
+     "posicao": 4
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Criar as questões do recurso de questionário do AVA - Moodle é simples, mas cada tipo requer configurações específicas. Mas antes de criar as questões, é importante você saber como organizá-la dentro do recurso de questionário usando o recu"
+  },
+  {
+   "wp_id": 3353,
+   "titulo": "Criando e configurando o recurso de questionário",
+   "status": "publish",
+   "slug": "criando-e-configurando-o-recurso-de-questionario",
+   "id_inventario": 120,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Atividade",
+     "Moodle",
+     "Questionário"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Configuração de Curso"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T2",
+     "posicao": 3
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "A criação do recurso de questionário trata-se na verdade da criação de um local para expor as questões, que estão no banco de questões e configurá-las com regras para as interações dos alunos. A criação do recurso em si possuem algumas conf"
+  },
+  {
+   "wp_id": 3354,
+   "titulo": "Inserindo as questões na prova e configurando os sorteios automáticos",
+   "status": "publish",
+   "slug": "inserindo-as-questoes-criadas-no-recurso-questionario",
+   "id_inventario": 119,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Atividade",
+     "Moodle",
+     "Questionário"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Banco de Questões",
+    "Configuração de Curso"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T2",
+     "posicao": 8
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "&nbsp; Com o banco de questões montados e organizados e após a criação e configuração do recurso de questionário, é hora de incluir as questões na prova e configurar os sorteios automáticos. Assista o tutorial sobre inclusão de questões no "
+  },
+  {
+   "wp_id": 3355,
+   "titulo": "Atribuindo Notas e/ou pesos nas questões do questionário",
+   "status": "publish",
+   "slug": "atribuindo-notas",
+   "id_inventario": 118,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial/Avaliacao",
+    "temas": [
+     "Atividade",
+     "Moodle",
+     "Questionário"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Livro de Notas"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T2",
+     "posicao": 12
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Quando finalizar a inclusão de todas as questões, é hora de atribuir uma nota para cada uma e a nota total da prova. O recurso de questionário trabalha com nota e com peso, sendo que os valores tem que ser inteiros. NOTAS: Para trabalhar co"
+  },
+  {
+   "wp_id": 3356,
+   "titulo": "Criando questionários/provas de acordo com o cronograma de aplicação.",
+   "status": "publish",
+   "slug": "criando-questionariosprovas-de-acordo-com-o-cronograma-de-aplicacao",
+   "id_inventario": 117,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Atividade",
+     "Moodle",
+     "Questionário"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Para cada dia e horários diferentes de aplicação sugere-se a criação de uma questionário para a prova online. Diante disso, a quantidade de questionário para a prova online, depende do cronograma de prova. Cada prova deve ser configurada de"
+  },
+  {
+   "wp_id": 3357,
+   "titulo": "Tipos de questões do recurso de questionário",
+   "status": "publish",
+   "slug": "tipos-de-questoes-do-recurso-de-questionario",
+   "id_inventario": 116,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Referencia Moodle",
+    "temas": [
+     "Atividade",
+     "Moodle",
+     "Questionário"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T2",
+     "posicao": 5
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "O recurso de questionário possui uma diversidade de tipos de questões que podem ser exploradas na hora do planejamento, conforme a imagem abaixo. Esta diversidade precisa ser conhecida e compreendida pela equipe responsável pelo planejament"
+  },
+  {
+   "wp_id": 3358,
+   "titulo": "Como alterar a data de uma atividade no Moodle?",
+   "status": "publish",
+   "slug": "como-alterar-a-data-de-uma-atividade-no-moodle",
+   "id_inventario": 115,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Atividade",
+     "Data",
+     "Moodle"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Alterar a data de uma atividade no Moodle é uma ação simples, mas muito importante para manter a organização da sua sala virtual e garantir que os estudantes acompanhem corretamente os prazos. A seguir, você confere o passo a passo para rea"
+  },
+  {
+   "wp_id": 3359,
+   "titulo": "Como mover um recurso dentro da sala virtual do Moodle?",
+   "status": "publish",
+   "slug": "como-mover-um-recurso-dentro-da-sala-virtual-do-moodle",
+   "id_inventario": 114,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Ferramenta",
+     "Moodle"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Sala Virtual"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Para você visualizar na prática como funciona, preparamos este tutorial! Nele, é apresentado como realizar a edição da sala virtual no Moodle E, a partir do minuto 1 e 20 segundos (1:20), você conseguirá notar como a movimentação dos recurs"
+  },
+  {
+   "wp_id": 3360,
+   "titulo": "Como acompanhar as notas no quadro de notas do Moodle",
+   "status": "publish",
+   "slug": "como-acompanhar-as-notas-no-quadro-de-notas-do-moodle",
+   "id_inventario": 113,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Livro de notas",
+     "Moodle"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Livro de Notas"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T3",
+     "posicao": 4
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Clique no link abaixo e veja o passo-a-passo de como acompanhar as notas dos alunos no recurso de quadro de notas na sala virtual do Moodle. Tutorial: acompanhar as notas no quadro de notas do Moodle"
+  },
+  {
+   "wp_id": 3361,
+   "titulo": "Como criar links dentro do Moodle?",
+   "status": "publish",
+   "slug": "como-criar-links-dentro-de-atividades-no-moodle",
+   "id_inventario": 112,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Atividade",
+     "Hipertexto",
+     "Moodle"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "SUMÁRIO: 1. Uso de Links no Moodle 2. Tipos de Links no Moodle 3. Como Utilizar Links no Moodle 4. Benefícios do Uso de Links no Moodle 1. Uso de Links no AVA Moodle No Ambiente Virtual de Aprendizagem (AVA) Moodle, os links desempenham um "
+  },
+  {
+   "wp_id": 3362,
+   "titulo": "Como revelar e ocultar seções/semanas no Moodle?",
+   "status": "publish",
+   "slug": "como-revelar-e-ocultar-semanasblocos-no-moodle",
+   "id_inventario": 111,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Moodle",
+     "seção",
+     "semana"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Configuração de Curso"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T1",
+     "posicao": 5
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "No Moodle 4.1, você pode organizar melhor a visualização da sua sala virtual contraindo (escondendo) ou expandindo (mostrando) as seções do curso. Esse recurso ajuda a deixar o ambiente mais limpo e facilita a navegação em disciplinas com m"
+  },
+  {
+   "wp_id": 3363,
+   "titulo": "Como colocar vídeos do Youtube no Moodle?",
+   "status": "publish",
+   "slug": "como-colocar-videos-do-youtube-no-moodle",
+   "id_inventario": 110,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Moodle",
+     "Rótulo",
+     "Vídeo"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Rótulo",
+    "Vídeo"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Inserir vídeos do YouTube no Moodle é uma ótima forma de enriquecer o conteúdo da sua disciplina, tornando o material mais dinâmico e atrativo para os estudantes. Uma das formas mais recomendadas de fazer isso é utilizando a opção de incorp"
+  },
+  {
+   "wp_id": 3364,
+   "titulo": "Recurso de Pasta no Moodle",
+   "status": "publish",
+   "slug": "recurso-pasta-moodle",
+   "id_inventario": 109,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Referencia Moodle",
+    "temas": [
+     "Moodle",
+     "Pasta"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "gestao-moodle",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "SUMÁRIO: 1. O que é o recurso Pasta no Moodle? 2. Quando devo usar o recurso Pasta? 3. Como Inserir o Recurso Pasta no Moodle 1. O que é o recurso Pasta no Moodle? O recurso Pasta no Moodle 3.9 permite que você organize vários arquivos em u"
+  },
+  {
+   "wp_id": 3365,
+   "titulo": "Prova on-line no AVA - Moodle",
+   "status": "publish",
+   "slug": "prova-on-line-no-ava-moodle",
+   "id_inventario": 108,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial/Avaliacao",
+    "temas": [
+     "Moodle",
+     "Prova"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T2",
+     "posicao": 11
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "A prova on-line é um momento muito importante dentro do planejamento de um curso. Porém, é necessário que a equipe multidisciplinar do curso tenha conhecimento de todo o processo para o planejamento e futura construção da prova. Por ser um "
+  },
+  {
+   "wp_id": 3366,
+   "titulo": "Montagem de um banco de questões e sorteios automáticos",
+   "status": "publish",
+   "slug": "montagem-de-um-banco-de-questoes-e-sorteios-automaticos",
+   "id_inventario": 107,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial/Avaliacao",
+    "temas": [
+     "Moodle",
+     "Procedimento"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Banco de Questões"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T2",
+     "posicao": 6
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "A montagem de um banco de questões possibilita a aplicação de provas diferentes para cada aluno, o que garante maior segurança no processo, pois dificulta a cola e a passagem de informações exatas para outros alunos. O recomendado é planeja"
+  },
+  {
+   "wp_id": 3367,
+   "titulo": "Embaralhamento de questões e de respostas",
+   "status": "publish",
+   "slug": "embaralhamento-de-questoes-e-de-respostas",
+   "id_inventario": 106,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial/Avaliacao",
+    "temas": [
+     "Moodle",
+     "Procedimento"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [],
+   "trilhas": [
+    {
+     "trilha": "T2",
+     "posicao": 13
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Além do sorteio automático, o recurso de questionário do AVA- Moodle permite que as questões sejam embaralhadas. Ou seja, para um aluno a questão Y é a de número 8 e para outro é a de número 2. Outra possibilidade é o embaralhamento das alt"
+  },
+  {
+   "wp_id": 3368,
+   "titulo": "Cronograma de prova: Divisões em vários grupos e horários de prova",
+   "status": "publish",
+   "slug": "divisoes-em-varios-grupos-e-horarios-de-prova",
+   "id_inventario": 105,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Outros",
+    "temas": [
+     "Moodle",
+     "Prova"
+    ]
+   },
+   "tipo": null,
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "A prova online é realizada no laboratório de informática do polo de apoio presencial que o aluno está matriculado. Cada polo tem uma quantidade de computadores dentro dos laboratórios e por medida de segurança, durante a realização da prova"
+  },
+  {
+   "wp_id": 3369,
+   "titulo": "Senha de acesso a prova on-line",
+   "status": "publish",
+   "slug": "senha-de-acesso-a-prova-on-line",
+   "id_inventario": 104,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial/Avaliacao",
+    "temas": [
+     "Moodle",
+     "Procedimento"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Direitos Autorais e Segurança"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T2",
+     "posicao": 14
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "A senha de acesso a prova é um recurso do questionário muito importante para garantir que somente os alunos que estão fazendo a prova naquele momento tenham acesso a mesma, já que ela fica disponibilizada na sala virtual da disciplina e com"
+  },
+  {
+   "wp_id": 3370,
+   "titulo": "Definição de endereço de rede (IP) para acesso a prova",
+   "status": "publish",
+   "slug": "definicao-de-endereco-de-rede-ip-para-acesso-a-prova",
+   "id_inventario": 103,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Outros",
+    "temas": [
+     "Moodle",
+     "Procedimento"
+    ]
+   },
+   "tipo": null,
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T2",
+     "posicao": 15
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Este campo é opcional onde pode-se restringir o acesso a um questionário a sub-redes particulares numa LAN ou Internet, especificando-se uma lista separada por vírgulas dos endereços IP completos ou parciais. Isto é especialmente útil para "
+  },
+  {
+   "wp_id": 3371,
+   "titulo": "Segurança do navegador",
+   "status": "publish",
+   "slug": "seguranca-do-navegador",
+   "id_inventario": 102,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Outros",
+    "temas": [
+     "Moodle",
+     "Prova",
+     "Segurança"
+    ]
+   },
+   "tipo": null,
+   "categoria": "conduta",
+   "topicos": [
+    "Questionário",
+    "Direitos Autorais e Segurança"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Um outra forma de segurança que o recurso de questionário possibilita é a opção \"Tela cheia pop-up com segurança JavaScript\". Quando ela estiver selecionada: O teste só vai começar se o aluno tiver um JavaScript habilitado no navegador. O q"
+  },
+  {
+   "wp_id": 3372,
+   "titulo": "Aprenda a criar seus próprios objetos educacionais",
+   "status": "publish",
+   "slug": "como-criar-seus-proprios-objetivos-educacionais",
+   "id_inventario": 101,
+   "antigo": {
+    "categoria": "Recurso Educacional",
+    "tipo": "Outros",
+    "temas": [
+     "Planejamento"
+    ]
+   },
+   "tipo": null,
+   "categoria": "pedagogia",
+   "topicos": [
+    "Planejamento e Design Educacional"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Criar os objetos educacionais não precisa mais ser visto como algo difícil e que somente profissionais específicos conseguem fazer. Atualmente, existem várias ferramentas que possibilitam que qualquer pessoa possa se aventurar a produzir se"
+  },
+  {
+   "wp_id": 3373,
+   "titulo": "Youtube: Edite facilmente seus vídeos",
+   "status": "publish",
+   "slug": "youtube-edite-facilmente-seus-videos",
+   "id_inventario": 100,
+   "antigo": {
+    "categoria": "Recurso Educacional",
+    "tipo": "Ferramenta Externa",
+    "temas": [
+     "Ferramente",
+     "Vídeo"
+    ]
+   },
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Vídeo"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "O YouTube oferece um editor de vídeo on-line, tendo as ferramentas de um editor de vídeo para realizar cortes, desfocar partes do vídeo, adicionar trilhas sonoras, entre outras funções, tudo com poucos cliques. Exemplos do que você pode faz"
+  },
+  {
+   "wp_id": 3374,
+   "titulo": "Medium: uma rede de textos colaborativa",
+   "status": "publish",
+   "slug": "medium",
+   "id_inventario": 99,
+   "antigo": {
+    "categoria": "Recurso Educacional",
+    "tipo": "Ferramenta Externa",
+    "temas": [
+     "Externo",
+     "Ferramenta"
+    ]
+   },
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "O Medium é uma plataforma de criação de conteúdo em texto e imagem, em que os usuários podem interagir de diversas maneiras. Além do conteúdo de alto nível que a plataforma já apresenta, a ferramenta pode ser utilizada também para fins educ"
+  },
+  {
+   "wp_id": 3375,
+   "titulo": "Moodle: Ferramentas como facilitadores do processo de aprendizagem",
+   "status": "publish",
+   "slug": "moodle-recursos-como-facilitadores-do-processo-de-aprendizagem",
+   "id_inventario": 98,
+   "antigo": {
+    "categoria": "Recurso Educacional",
+    "tipo": "Tutorial",
+    "temas": [
+     "Ferramenta",
+     "Moodle"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Um dos grandes desafios do professor na atual educação mediada por tecnologia, seja no ensino a distância ou presencial, é ele compreender que deve estimular a autoconfiança e a autoria, encorajando os alunos a expor suas ideias (MILL, 2006"
+  },
+  {
+   "wp_id": 3376,
+   "titulo": "Fórum: conheça suas pontencialidades",
+   "status": "publish",
+   "slug": "forum-conheca-suas-pontencialidades",
+   "id_inventario": 97,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Conceitual",
+    "temas": [
+     "Ferramenta",
+     "Moodle"
+    ]
+   },
+   "tipo": "Conceitual",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Fórum"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Um elemento essencial na educação a distância é a discussão dos assuntos aprendidos. Isso permite que o conhecimento adquirido seja consolidado, além de fazer com que os alunos não se sintam sozinhos. Os fóruns permitem a comunicação entre "
+  },
+  {
+   "wp_id": 3377,
+   "titulo": "Questionário: conheça suas pontecialidades",
+   "status": "publish",
+   "slug": "questionario-conheca-suas-pontecialidades",
+   "id_inventario": 96,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Conceitual",
+    "temas": [
+     "Atividade",
+     "Moodle",
+     "Questionário"
+    ]
+   },
+   "tipo": "Conceitual",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "O questionário é muito usado para avaliar a aprendizagem do aluno. Por ser um recurso muito semelhante as provas tradicionais do ensino presencial, ele costumar ser um recurso de fácil entendimento por parte do professor e com isso, muito e"
+  },
+  {
+   "wp_id": 3378,
+   "titulo": "Wiki: conheça suas potencialidades",
+   "status": "publish",
+   "slug": "wiki-conheca-suas-potencialidades",
+   "id_inventario": 95,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Conceitual",
+    "temas": [
+     "Atividade",
+     "Ferramenta",
+     "Moodle"
+    ]
+   },
+   "tipo": "Conceitual",
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "A ferramenta Wiki tem como propósito a construção colaborativa de um texto (como, por exemplo, a enciclopédia Wikipédia, que tem seu conteúdo alimentado por colaboração aberta dos interessados). A Wiki permite que seja salvo um histórico de"
+  },
+  {
+   "wp_id": 3379,
+   "titulo": "Canva - Crie suas próprias ilustrações e infográficos",
+   "status": "publish",
+   "slug": "canva-crie-ilustracoes-e-infograficos",
+   "id_inventario": 94,
+   "antigo": {
+    "categoria": "Recurso Educacional",
+    "tipo": "Ferramenta Externa",
+    "temas": [
+     "Externo",
+     "Ferramenta"
+    ]
+   },
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "&nbsp; As imagens são muito usadas para trabalhar conceitos ou assuntos dentro de um contexto educacional. A informação, expressa em forma visual, pode facilitar o entendimento do conteúdos complexos e possibilitar ao aluno uma análise mais"
+  },
+  {
+   "wp_id": 3380,
+   "titulo": "Criação do recurso de certificados no Moodle 1.9",
+   "status": "publish",
+   "slug": "criacao-do-recurso-de-certificados-no-moodle-1-9",
+   "id_inventario": 93,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Referencia Moodle",
+    "temas": [
+     "Moodle"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "gestao-moodle",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Para se criar um certificado na sala do moodle, é preciso previamente que a coordenação do curso faça um cadastro junto a reitoria para registar no banco de dados a validade dos certificados gerados. Após isso irão solicitar a criação do ce"
+  },
+  {
+   "wp_id": 3381,
+   "titulo": "Como fazer backup de sala virtual no Moodle?",
+   "status": "publish",
+   "slug": "como-fazer-backup-e-restauracao-de-sala-virtual-no-moodle",
+   "id_inventario": 92,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Ferramenta",
+     "Moodle"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Backup e Restauração",
+    "Sala Virtual"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T10",
+     "posicao": 1
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Realizar o backup de uma sala virtual no Moodle é uma ação importante para preservar os conteúdos, atividades e configurações do seu curso. Esse recurso permite que você guarde uma cópia de segurança da disciplina ou reutilize sua estrutura"
+  },
+  {
+   "wp_id": 3382,
+   "titulo": "Como enviar uma mensagem no Moodle?",
+   "status": "publish",
+   "slug": "como-enviar-uma-mensagem-no-moodle",
+   "id_inventario": 91,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Mensagem",
+     "Moodle"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "A comunicação no Moodle é um recurso importante para manter o contato com professores, tutores e colegas, tirar dúvidas e acompanhar as atividades do curso. A plataforma oferece uma ferramenta de mensagens que permite esse diálogo de forma "
+  },
+  {
+   "wp_id": 3383,
+   "titulo": "Como editar um recurso ou atividade no Moodle?",
+   "status": "publish",
+   "slug": "como-editar-o-recurso-de-boas-vindas-no-moodle",
+   "id_inventario": 90,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Ferramenta",
+     "Moodle",
+     "Rótulo"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Rótulo"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Editar um recurso ou atividade no Moodle é uma ação comum no dia a dia do professor, seja para ajustar informações, corrigir algum detalhe ou atualizar prazos e conteúdos. A boa notícia é que esse processo é simples e pode ser feito rapidam"
+  },
+  {
+   "wp_id": 3384,
+   "titulo": "Como Definir ou Alterar a data de início da sala Virtual no Moodle?",
+   "status": "publish",
+   "slug": "como-definir-ou-alterar-a-data-de-inicio-da-sala-virtual-no-moodle",
+   "id_inventario": 89,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Configuração",
+     "Data",
+     "Moodle"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Configuração de Curso",
+    "Sala Virtual"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T1",
+     "posicao": 4
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "A data de início do curso no Moodle é uma configuração importante, pois influencia na organização da sala virtual, especialmente em cursos estruturados por semanas. Ao ajustar essa data corretamente, você garante que as seções do curso fiqu"
+  },
+  {
+   "wp_id": 3385,
+   "titulo": "Entenda porque as Salas Virtuais são divididas em grupo/polos",
+   "status": "publish",
+   "slug": "entenda-porque-as-salas-virtuais-sao-divididas-em-grupopolos",
+   "id_inventario": 88,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Conceitual",
+    "temas": [
+     "Configuração",
+     "Moodle"
+    ]
+   },
+   "tipo": "Conceitual",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Configuração de Curso"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Em cursos a distância, é comum termos um grande número de alunos distribuídos em diferentes polos — que são unidades de apoio localizadas nos municípios. Para facilitar a organização do ensino e o acompanhamento dos estudantes, esses partic"
+  },
+  {
+   "wp_id": 3386,
+   "titulo": "Como criar uma atividade com acesso restrito a alguns usuários no Moodle",
+   "status": "publish",
+   "slug": "como-criar-uma-atividade-com-acesso-restrito-a-alguns-usuarios-aluno-e-tutores-no-moodle",
+   "id_inventario": 87,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Moodle",
+     "Planejamento"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Planejamento e Design Educacional"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T10",
+     "posicao": 6
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "As salas virtuais do Moodle geralmente são organizadas em grupos. Entenda os motivos desta organização lendo o artigo Entenda porque as Salas Virtuais são divididas em grupo/polos caso tenha alguma dúvida. Mas é possível que algumas ativida"
+  },
+  {
+   "wp_id": 3387,
+   "titulo": "Como fazer uma restauração de sala virtual no Moodle?",
+   "status": "publish",
+   "slug": "como-fazer-uma-restauracao-de-sala-virtual-no-moodle",
+   "id_inventario": 86,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Configuração",
+     "Moodle"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Configuração de Curso",
+    "Backup e Restauração",
+    "Sala Virtual"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T10",
+     "posicao": 2
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Restaurar um backup no Moodle permite que você recupere conteúdos, atividades e toda a estrutura de uma sala virtual previamente salva (ter feito o backup da sala virtual). Esse recurso é muito útil para reutilizar disciplinas, recuperar in"
+  },
+  {
+   "wp_id": 3388,
+   "titulo": "Livro de Notas",
+   "status": "publish",
+   "slug": "livro-de-notasquadro-de-notas",
+   "id_inventario": 85,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Referencia Moodle",
+    "temas": [
+     "Moodle",
+     "Notas"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Livro de Notas"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T3",
+     "posicao": 1
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Toda disciplina virtual possui atividades que podem ser avaliativas ou não. E quando são, é importante que o professor fique atendo a forma como esses pontos serão calculados no ambiente Moodle. Um fator que torna esse processo de cálculo m"
+  },
+  {
+   "wp_id": 3389,
+   "titulo": "Configurando o Livro de Notas",
+   "status": "publish",
+   "slug": "configurando-o-livro-de-notasquadro-de-notas",
+   "id_inventario": 84,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Moodle",
+     "Notas"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Livro de Notas",
+    "Configuração de Curso"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Neste artigo você vai aprender a como configurar o Livro de Notas no Moodle. Mas antes de aprender a configurar é importante você compreender o conceito do livro de notas e a sua lógica de funcionamento. Então, sugerimos que leia o artigo L"
+  },
+  {
+   "wp_id": 3390,
+   "titulo": "Guia de ferramentas do Moodle para Professores",
+   "status": "publish",
+   "slug": "guia-de-ferramentas-do-moodle-para-professores-em-ingles",
+   "id_inventario": 83,
+   "antigo": {
+    "categoria": "Conhecimentos Pedagógicos",
+    "tipo": "Ferramenta Externa",
+    "temas": [
+     "Moodle",
+     "Planejamento"
+    ]
+   },
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Planejamento e Design Educacional"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Está começando a trabalhar com o Moodle? Este guia irá auxiliar a escolher a melhor ferramenta. Já sabe que ferramenta quer usar? No guia você poderá ver quais são os seus pontos fortes e fracos. Já tem claro os objetivos educacionais? Veja"
+  },
+  {
+   "wp_id": 3391,
+   "titulo": "Ajude a melhorar a Base de Conhecimento - Compartilhe suas dúvidas e sugestões",
+   "status": "publish",
+   "slug": "ajude-a-melhorar-o-moodle-do-ifes-compartilhe-suas-duvidas-e-sugestoes",
+   "id_inventario": 1,
+   "antigo": {
+    "categoria": "Contribua com a base de conhecimento",
+    "tipo": "Outros",
+    "temas": []
+   },
+   "tipo": null,
+   "categoria": null,
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": true,
+   "revisar": [
+    "tipo",
+    "categoria",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Ajude a melhorar a Base de Conhecimento. Compartilhe conosco suas dúvidas, opiniões e sugestões. A partir destas informações poderemos aperfeiçoar nossas plataformas, treinamentos, tutoriais e orientações. Carregando… Formulário de dúvidas "
+  },
+  {
+   "wp_id": 3392,
+   "titulo": "Processo de Criação de Sala Virtual",
+   "status": "publish",
+   "slug": "processo-de-criacao-de-sala-virtual",
+   "id_inventario": 82,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Outros",
+    "temas": [
+     "Moodle",
+     "Processo"
+    ]
+   },
+   "tipo": null,
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Sala Virtual"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T1",
+     "posicao": 2
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Disponibilizamos aqui o processo de criação de sala de virtual para as coordenações de cursos a distância do Ifes. Baixar PDF - Processo_CriaçãodeSalasVirtuais.v2"
+  },
+  {
+   "wp_id": 3393,
+   "titulo": "Atividade de Tarefa no Moodle",
+   "status": "publish",
+   "slug": "atividade-de-tarefa-no-moodle",
+   "id_inventario": 81,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Referencia Moodle",
+    "temas": [
+     "Atividade",
+     "Ferramenta",
+     "Moodle"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Tarefa"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "SUMÁRIO 1. Entenda o recurso Tarefa 2. Aprenda a usar uma atividade Tarefa 3. Aprenda a criar uma atividade Tarefa 4. Aprenda a avaliar uma atividade Tarefa 1. Entenda a atividade de Tarefa A atividade de Tarefa no Moodle permite que profes"
+  },
+  {
+   "wp_id": 3394,
+   "titulo": "Atividade Fórum no Moodle",
+   "status": "publish",
+   "slug": "atividade-de-forum-no-moodle",
+   "id_inventario": 80,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Referencia Moodle",
+    "temas": [
+     "Ferramenta",
+     "Moodle"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Fórum"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "SUMÁRIO: 1. Entenda a atividade de Fórum 2. Aprenda a usar uma atividade Fórum 3. Aprenda a criar uma atividade Fórum 4. Aprenda a avaliar uma atividade Fórum 1. Entenda a atividade de Fórum A atividade de Fórum no Moodle permite que os par"
+  },
+  {
+   "wp_id": 3395,
+   "titulo": "Atividade de Questionário no Moodle",
+   "status": "publish",
+   "slug": "atividade-de-questionario-no-moodle",
+   "id_inventario": 79,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Referencia Moodle",
+    "temas": [
+     "Atividade",
+     "Moodle",
+     "Questionário"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "SUMÁRIO 1. Entenda a atividade Questionário 2. Aprenda a usar uma atividade de Questionário 3. Aprenda a criar uma atividade de Questionário 4. Aprenda a avaliar uma atividade de Questionário 1. Entenda a atividade Questionário A atividade "
+  },
+  {
+   "wp_id": 3396,
+   "titulo": "Atividade de Glossário no Moodle",
+   "status": "publish",
+   "slug": "atividade-de-glossario-no-moodle",
+   "id_inventario": 78,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Referencia Moodle",
+    "temas": [
+     "Ferramenta",
+     "Glossário",
+     "Moodle"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "GLOSSÁRIO: 1. Entenda a atividade de Glossário 2. Aprenda a usar uma atividade Glossário 3. Aprenda a criar uma atividade Glossário 4. Aprenda a avaliar uma atividade Glossário 1. Entenda a atividade de Glossário O glossário permite que os "
+  },
+  {
+   "wp_id": 3397,
+   "titulo": "Mídias para EaD",
+   "status": "publish",
+   "slug": "midias-para-ead",
+   "id_inventario": 77,
+   "antigo": {
+    "categoria": "Recurso Educacional",
+    "tipo": "Outros",
+    "temas": [
+     "Boas práticas",
+     "Planejamento"
+    ]
+   },
+   "tipo": null,
+   "categoria": "pedagogia",
+   "topicos": [
+    "Planejamento e Design Educacional"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Educadores à distância precisam conhecer as características de cada mídia para serem capazes de remediá-las caso apresentem algum problema, e também serão capazes de identificar quais são as melhores mídias para se obter eficácia em uma det"
+  },
+  {
+   "wp_id": 3398,
+   "titulo": "Direitos Autorais",
+   "status": "publish",
+   "slug": "direitos-autorais",
+   "id_inventario": 76,
+   "antigo": {
+    "categoria": "Recurso Educacional",
+    "tipo": "Outros",
+    "temas": [
+     "Normas"
+    ]
+   },
+   "tipo": null,
+   "categoria": "conduta",
+   "topicos": [
+    "Direitos Autorais e Segurança"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "A Lei 9.610/98, mais conhecida como Lei dos Direitos Autorais, regulamenta todos os direitos do autor, informando o que é e o que não é permitido. É comum pensarmos que por trabalhamos com educação pública, não há problemas em usar textos, "
+  },
+  {
+   "wp_id": 3399,
+   "titulo": "Netiqueta - Regras de Etiqueta na Internet",
+   "status": "publish",
+   "slug": "netiqueta-regras-de-etiqueta-na-internet",
+   "id_inventario": 75,
+   "antigo": {
+    "categoria": "Procedimentos de Comunicação",
+    "tipo": "Outros",
+    "temas": [
+     "Conduta",
+     "Internet"
+    ]
+   },
+   "tipo": null,
+   "categoria": "conduta",
+   "topicos": [
+    "Direitos Autorais e Segurança"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Interagir pelo meio virtual também exige das pessoas cuidados para não cometerem garfes ou serem desrespeitosos. Apesar de não existir uma legislação de ética na Internet, ou um código de conduta pronto, existem indicações que sugere-se seg"
+  },
+  {
+   "wp_id": 3400,
+   "titulo": "Como configurar um Fórum com acesso apenas para Coordenadores e Alunos no Moodle 1.9",
+   "status": "publish",
+   "slug": "como-configurar-um-forum-com-acesso-apenas-para-coordenadores-e-alunos-no-moodle-1-9",
+   "id_inventario": 74,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Ferramenta",
+     "Moodle"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Fórum",
+    "Configuração de Curso"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Neste tutorial vamos mostrar como criar um grupo, atribui-lo em um agrupamento, e configurar o fórum para ficar restrito apenas aos membros do agrupamento: &nbsp; Primeiramente vá até ao bloco de administração(ou caixa adesiva, como preferi"
+  },
+  {
+   "wp_id": 3401,
+   "titulo": "O que é Moodle?",
+   "status": "publish",
+   "slug": "o-que-e-moodle",
+   "id_inventario": 73,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Conceitual",
+    "temas": [
+     "Ferramenta",
+     "Moodle"
+    ]
+   },
+   "tipo": "Conceitual",
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "1 Introdução ao Moodle Moodle O Cefor - Centro de Referência em Formaçãoe em Educação a Distância do Ifes, utiliza como Ambiente Virtual de Aprendizagem (AVA), o ambiente Moodle. Este ambiente é largamente utilizado no mundo e você terá mai"
+  },
+  {
+   "wp_id": 3402,
+   "titulo": "Recurso Livro no Moodle",
+   "status": "publish",
+   "slug": "recurso-livro-no-moodle",
+   "id_inventario": 72,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Referencia Moodle",
+    "temas": [
+     "Ferramenta",
+     "Moodle"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "sumário: 1. Entenda o recurso de livro 2. Aprenda a criar um recurso de livro 1. Entenda o recurso de Livro O Livro é um recurso que possibilita ao professor disponibilizar uma grande quantidade de informação, podendo organizá-la em diversa"
+  },
+  {
+   "wp_id": 3403,
+   "titulo": "Recurso Página no Moodle",
+   "status": "publish",
+   "slug": "recurso-pagina-no-moodle",
+   "id_inventario": 71,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Referencia Moodle",
+    "temas": [
+     "Ferramenta",
+     "Moodle"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "sumário: 1. Entenda o recurso de Página 2. Aprenda a criar um recurso de Página 1. Entenda o recurso de Página O recurso Página é usado para exibição de conteúdo (texto, imagem, vídeos, e áudio). Entretanto, ele permite a criação de apenas "
+  },
+  {
+   "wp_id": 3404,
+   "titulo": "Recurso de Arquivo no Moodle",
+   "status": "publish",
+   "slug": "recurso-de-arquivo",
+   "id_inventario": 70,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Referencia Moodle",
+    "temas": [
+     "Ferramenta",
+     "Moodle"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "SUMÁRIO: 1. Entenda o recurso de Arquivo 2. Aprenda a criar um recurso de Arquivo 1. Entenda o recurso de Arquivo Como o nome sugere, este recurso possibilita a disponibilização de arquivos para os alunos. Este é o símbolo que o identifica "
+  },
+  {
+   "wp_id": 3405,
+   "titulo": "Recurso de URL no Moodle",
+   "status": "publish",
+   "slug": "recurso-de-url-no-moodle",
+   "id_inventario": 69,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Referencia Moodle",
+    "temas": [
+     "Ferramenta",
+     "Moodle"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Sumário: 1. Entenda o recurso de URL 2. Aprenda a criar um recurso de URL 1.Entenda o recurso de URL O recurso de URL possibilita disponibilizar um link de web como um recurso de curso. Este é o símbolo que o identifica na plataforma: Usar "
+  },
+  {
+   "wp_id": 3406,
+   "titulo": "Recurso Área de Texto e Mídia (antigo Rótulo) no Moodle",
+   "status": "publish",
+   "slug": "recurso-de-rotulo-no-moodle",
+   "id_inventario": 68,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Referencia Moodle",
+    "temas": [
+     "Ferramenta",
+     "Moodle"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Rótulo"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Sumário: 1. Entenda o recurso de Área de Texto e Mídia (antigo rótulo) 2. Aprenda a criar um recurso de Área de Texto e Mídia (antigo rótulo) 1. Entenda o recurso de Área de Texto e Mídia (antigo Rótulo) O recurso de Área de Texto e Mídia p"
+  },
+  {
+   "wp_id": 3407,
+   "titulo": "Atividade Escolha no Moodle",
+   "status": "publish",
+   "slug": "atividade-de-escolha",
+   "id_inventario": 67,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Referencia Moodle",
+    "temas": [
+     "Ferramenta",
+     "Moodle"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "1. Entenda da atividade escolha 2. Aprenda a usar a atividade de escolha 3. Aprenda a criar uma atividade escolha &nbsp; 1. Entenda a atividade de Escolha A atividade de Escolha é usada quando o professor deseja fazer uma pergunta única e e"
+  },
+  {
+   "wp_id": 3408,
+   "titulo": "Checklist básico para inicio de curso no Moodle",
+   "status": "publish",
+   "slug": "checklist-basico-para-inicio-de-curso-no-moodle",
+   "id_inventario": 66,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Checklist",
+     "Moodle"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Configuração de Curso"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T1",
+     "posicao": 6
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Antes de começar um curso no Moodle, existe todo um planejamento e várias configurações que são realizadas na sala da disciplina pelo professor. E para auxiliar neste fechamento, disponibilizamos um checklist para orientar no que você não p"
+  },
+  {
+   "wp_id": 3409,
+   "titulo": "Sala do Moodle para disciplina presencial e/ou a distância vinculada ao Sistema Acadêmico",
+   "status": "publish",
+   "slug": "sala-do-moodle-para-disciplina-presencial-eou-a-distancia-vinculada-ao-sistema-academico",
+   "id_inventario": 65,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Outros",
+    "temas": [
+     "Moodle",
+     "Procedimento",
+     "Sistema Acadêmico"
+    ]
+   },
+   "tipo": null,
+   "categoria": "gestao-moodle",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Qualquer disciplina via sistema acadêmico pode ser ofertada com salas no Moodle - sejam elas para cumprimento de parte da carga horária ou para atividades complementares. Passo a passo: criando uma sala no Moodle a partir do Sistema Acadêmi"
+  },
+  {
+   "wp_id": 3410,
+   "titulo": "Manual do sistema suporte Cefor - Glpi",
+   "status": "publish",
+   "slug": "manual-rapido-glpi",
+   "id_inventario": 64,
+   "antigo": {
+    "categoria": "Procedimento de Tecnologia da Informação",
+    "tipo": "Outros",
+    "temas": []
+   },
+   "tipo": null,
+   "categoria": "conduta",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": true,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "1. Introdução O Sistema Glpi do Cefor é uma solução de fonte aberta de gestão de demandas aos setores da unidade. O Glpi(https://glpi-project.org/pt-br/) é uma aplicação web para gerenciar as demandas dos setores que optem por utilizar uma "
+  },
+  {
+   "wp_id": 3411,
+   "titulo": "Backup e Restauração de Usuários no Moodle",
+   "status": "publish",
+   "slug": "backup-e-restauracao-de-usuarios-no-moodle",
+   "id_inventario": 63,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Outros",
+    "temas": []
+   },
+   "tipo": null,
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Backup e Restauração"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T10",
+     "posicao": 3
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Este tutorial tem como objetivo mostrar o passo a passo para levar os alunos de uma sala para outra. Não é recomendado fazer esse procedimento para cursos EAD integrados com o sistema acadêmico, pois terá problemas com importação de notas. "
+  },
+  {
+   "wp_id": 3412,
+   "titulo": "Visualização Vlibras - Moodle",
+   "status": "publish",
+   "slug": "visualizacao-vlibras-moodle",
+   "id_inventario": 62,
+   "antigo": {
+    "categoria": "Moodle",
+    "tipo": "Outros",
+    "temas": []
+   },
+   "tipo": null,
+   "categoria": "acessibilidade",
+   "topicos": [
+    "Libras"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T8",
+     "posicao": 2
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "A visualização do recurso de tradução para libras no moodle pode ser feita do lado esquerdo ou direito da tela, por padrão ele está configurado para ser exibido no lado direito. Paasso a passo para auterar a visualização para o lado esquerd"
+  },
+  {
+   "wp_id": 3413,
+   "titulo": "Padlet - Crie quadro e documentos fáceis de ler e de contribuir",
+   "status": "publish",
+   "slug": "padlet-crie-quadro-e-documentos-faceis-de-ler-e-de-contribuir",
+   "id_inventario": 61,
+   "antigo": {
+    "categoria": "Recurso Educacional",
+    "tipo": "Ferramenta Externa",
+    "temas": [
+     "Externo",
+     "Faça você mesmo",
+     "Ferramenta"
+    ]
+   },
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Padlet é uma ferramenta online que permite a criação de um mural ou quadro virtual dinâmico e interativo para registrar, guardar e partilhar conteúdos multimídia. Funciona como uma folha de papel, onde se pode inserir qualquer tipo de conte"
+  },
+  {
+   "wp_id": 3414,
+   "titulo": "Processo e modelos de documentos para Cursos Abertos (MOOC)",
+   "status": "publish",
+   "slug": "modelos-de-documento-para-criacao-de-cursos-abertos-mooc",
+   "id_inventario": 60,
+   "antigo": {
+    "categoria": "Processos",
+    "tipo": "Outros",
+    "temas": [
+     "Formulário",
+     "mooc"
+    ]
+   },
+   "tipo": null,
+   "categoria": "identidade",
+   "topicos": [
+    "MOOC"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Disponibilizamos o processo e os modelos de documentos para construção de Cursos Abertos (MOOC): Processo para Criação de cursos MOOC Modelo de projeto de curso MOOC Modelo Mapa de Atividades MOOC Modelo Termo de Anuência pela Chefia Ime"
+  },
+  {
+   "wp_id": 3415,
+   "titulo": "Conceder acesso a usuários em salas do moodle",
+   "status": "publish",
+   "slug": "acesso-a-usuario-em-salas-do-moodle",
+   "id_inventario": 59,
+   "antigo": {
+    "categoria": "Ambiente virtual",
+    "tipo": "Outros",
+    "temas": [
+     "Atividade",
+     "Moodle",
+     "sala virtual"
+    ]
+   },
+   "tipo": null,
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Sala Virtual"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T10",
+     "posicao": 4
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Para conseguir dar acesso a usuários em salas moodle é necessário que tenha permissão para tal. &nbsp; Passo 1 Abra a sala moodle a qual pretenda dar acesso ao usuário, e no bloco ADMINISTRAÇÃO clique em “Usuário” conforme Figura 01. Figura"
+  },
+  {
+   "wp_id": 3416,
+   "titulo": "Como transmitir reuniões em Webconferência da RNP (MConf) para o Youtube sem usar softwares de terceiros",
+   "status": "publish",
+   "slug": "como-transmitir-reunioes-em-webconferencia-da-rnp-mconf-para-o-youtube-sem-usar-softwares-de-terceiros",
+   "id_inventario": 58,
+   "antigo": {
+    "categoria": "Tutoriais",
+    "tipo": "Tutorial",
+    "temas": [
+     "Webconferência"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Webconferência",
+    "Vídeo"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T5",
+     "posicao": 4
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "&nbsp; Este tutorial detalhado ensina como conectar sua sala de conferência da plataforma RNP a uma transmissão ao vivo no YouTube. Ao final deste guia, você será capaz de configurar e gerenciar uma transmissão ao vivo no Youtube. Pré-requi"
+  },
+  {
+   "wp_id": 3417,
+   "titulo": "Configurando o Livro de Notas passo a passo",
+   "status": "publish",
+   "slug": "configurando-o-livro-de-notas-em-uma-disciplina-com-duas-recuperacoes",
+   "id_inventario": 57,
+   "antigo": {
+    "categoria": "Ambiente virtual",
+    "tipo": "Tutorial",
+    "temas": [
+     "Configuração",
+     "Moodle",
+     "Notas"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Livro de Notas",
+    "Configuração de Curso"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T3",
+     "posicao": 2
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Aprenda passo a passo como configurar o livro de notas no Moodle em um disciplina com duas atividades de recuperação. Este tutorial ajudará você a compreender a lógica de organização de um livro de notas e da configuração no Moodle em qualq"
+  },
+  {
+   "wp_id": 3418,
+   "titulo": "Como importar uma sala virtual no Moodle?",
+   "status": "publish",
+   "slug": "como-importar-uma-sala-virtual-no-moodle",
+   "id_inventario": 56,
+   "antigo": {
+    "categoria": "Ambiente virtual",
+    "tipo": "Tutorial",
+    "temas": [
+     "backup",
+     "Configuração",
+     "Procedimento"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Configuração de Curso",
+    "Backup e Restauração",
+    "Sala Virtual"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T1",
+     "posicao": 3
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Aprenda a utilizar a funcionalidade \"Importar\" do Moodle. Com ela você poderá inserir, em sua nova sala, conteúdos e atividades que você já utilizou em outra(s) sala(s) do Moodle. https://www.youtube.com/watch?v=ogAip0uo5fU https://www.yout"
+  },
+  {
+   "wp_id": 3419,
+   "titulo": "Padrão Visual para Salas Virtuais no Moodle - Campi Ifes",
+   "status": "publish",
+   "slug": "padrao-visual-campi-ifes-para-salas-virtuais-no-moodle",
+   "id_inventario": 55,
+   "antigo": {
+    "categoria": "Ambiente virtual",
+    "tipo": "Institucional/Padrao Visual",
+    "temas": [
+     "padrão visual",
+     "sala virtual"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "identidade",
+   "topicos": [
+    "Sala Virtual",
+    "Padrão Visual"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "SUMÁRIO 1. O que é Padrão Visual para Salas Virtuais? 2. Como utilizar o Padrão Visual na Sala Virtual? 1. O que é Padrão Visual para Salas Virtuais? Quando falamos de padrão visual nas salas no Moodle, estamos nos referindo ao conjunto de "
+  },
+  {
+   "wp_id": 3420,
+   "titulo": "Como realizar uma aula ou uma reunião por Webconferência?",
+   "status": "publish",
+   "slug": "como-realizar-uma-aula-ou-uma-reuniao-por-webconferencia",
+   "id_inventario": 54,
+   "antigo": {
+    "categoria": "Ferramentas de comunicação",
+    "tipo": "Tutorial",
+    "temas": [
+     "Apresentação",
+     "Webconferência"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Webconferência"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T5",
+     "posicao": 2
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Todos os servidores do Ifes possuem uma sala no ambiente de webconferências da RNP (Rede Nacional de Ensino e Pesquisa) em seu nome. Para acessar, utilize os endereços https://mconf.rnp.br ou https://conferenciaweb.rnp.br. Veja no tutorial "
+  },
+  {
+   "wp_id": 3421,
+   "titulo": "O que você precisa saber para participar de uma Webconferência",
+   "status": "publish",
+   "slug": "o-que-voce-precisa-saber-para-participar-de-uma-webconferencia",
+   "id_inventario": 53,
+   "antigo": {
+    "categoria": "Ferramentas de comunicação",
+    "tipo": "Outros",
+    "temas": [
+     "Apresentação",
+     "Webconferência"
+    ]
+   },
+   "tipo": null,
+   "categoria": "ferramentas",
+   "topicos": [
+    "Webconferência"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T5",
+     "posicao": 1
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Se você foi convidado para participar de uma webconferência, veja neste tutorial o que você precisa saber para conseguir participar da reunião facilmente. https://www.youtube.com/watch?v=RWSByppnyt4"
+  },
+  {
+   "wp_id": 3422,
+   "titulo": "Todos os artigos",
+   "status": "publish",
+   "slug": "todos-os-artigos",
+   "id_inventario": null,
+   "antigo": {
+    "categoria": null,
+    "tipo": null,
+    "temas": []
+   },
+   "tipo": null,
+   "categoria": null,
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "categoria",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "[display-posts post_type=\"kbe_knowledgebase\" posts_per_page=\"1000\"]"
+  },
+  {
+   "wp_id": 3423,
+   "titulo": "Gravar a tela do seu computador em vídeo agora está mais fácil (e é de graça)",
+   "status": "publish",
+   "slug": "gravar-a-tela-do-seu-computador-em-video-agora-esta-mais-facil-e-e-de-graca",
+   "id_inventario": 52,
+   "antigo": {
+    "categoria": "Tutoriais",
+    "tipo": "Outros",
+    "temas": [
+     "captura",
+     "gravação de tela",
+     "software"
+    ]
+   },
+   "tipo": null,
+   "categoria": "ferramentas",
+   "topicos": [
+    "Vídeo"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "O Captura um software gratuito que permite a gravação a tela do seu computador em vídeo, sendo bastante útil na gravação de videoaulas que incluam apresentações ou tutoriais, por exemplo. Para instalá-lo, digite na barra de pesquisa de um n"
+  },
+  {
+   "wp_id": 3424,
+   "titulo": "Como configurar corretamente a visualização de mídias no Moodle MOOC",
+   "status": "publish",
+   "slug": "como-configurar-corretamente-a-visualizacao-de-midias-no-mooc",
+   "id_inventario": 51,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "Ferramenta"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "identidade",
+   "topicos": [
+    "Configuração de Curso",
+    "MOOC"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Muitas vezes as mídias (imagem e vídeo) inseridas no ambiente virtual de aprendizagem dos cursos MOOC ficam desconfiguradas. Veja abaixo como solucionar cada situação. SITUAÇÃO (1): Quando a imagem é grande e cria uma barra de rolagem na pá"
+  },
+  {
+   "wp_id": 3425,
+   "titulo": "Padrão Visual Campi Ifes para Apresentações",
+   "status": "publish",
+   "slug": "padrao-visual-campi-ifes-para-apresentacoes",
+   "id_inventario": 50,
+   "antigo": {
+    "categoria": "Ferramentas de comunicação",
+    "tipo": "Institucional/Padrao Visual",
+    "temas": [
+     "Apresentação",
+     "padrão visual",
+     "sala virtual"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "identidade",
+   "topicos": [
+    "Sala Virtual",
+    "Padrão Visual"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "SUMÁRIO 1. O que é Padrão Visual para Apresentações? 2. Como utilizar Padrão Visual para Apresentações na Sala Virtual? 1. O que é Padrão Visual para Apresentações? O Padrão Visual para Apresentações é um conjunto de modelos gráficos desenv"
+  },
+  {
+   "wp_id": 3426,
+   "titulo": "Padrão Visual Campi Ifes para Capa de Vídeo",
+   "status": "publish",
+   "slug": "padrao-visual-campi-ifes-para-capa-de-video",
+   "id_inventario": 49,
+   "antigo": {
+    "categoria": "Ferramentas de comunicação",
+    "tipo": "Institucional/Padrao Visual",
+    "temas": [
+     "capa de vídeo",
+     "padrão visual",
+     "Vídeo"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "identidade",
+   "topicos": [
+    "Vídeo",
+    "Padrão Visual"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "SUMÁRIO 1. O que é o Padrão Visual para Capa de Vídeo? 2. Como utilizar o Padrão Visual para Capa de Vídeo na Sala Virtual? 1. O que é o Padrão Visual para Capa de Vídeo? O Padrão Visual para Capa de Vídeo é um conjunto de modelos gráficos "
+  },
+  {
+   "wp_id": 3427,
+   "titulo": "Habilitar acesso de \"visitante\" na sala virtual do Moodle",
+   "status": "publish",
+   "slug": "habilitar-acesso-de-visitantes-na-sala-virtual-do-moodle",
+   "id_inventario": 48,
+   "antigo": {
+    "categoria": "Moodle",
+    "tipo": "Outros",
+    "temas": [
+     "Configuração",
+     "sala virtual"
+    ]
+   },
+   "tipo": null,
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Configuração de Curso",
+    "Sala Virtual"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T10",
+     "posicao": 5
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Habilitar o acesso de visitante no Moodle possibilita que qualquer pessoa não matriculada em seu curso possa visualizar os conteúdos disponibilizados nele. O visitante não consegue participar de nenhuma atividade, ele têm acesso \"somente le"
+  },
+  {
+   "wp_id": 3428,
+   "titulo": "Como importar notas do Moodle para o Sistema Acadêmico?",
+   "status": "publish",
+   "slug": "como-importar-notas-do-moodle-para-o-academico",
+   "id_inventario": 47,
+   "antigo": {
+    "categoria": "Moodle x Sistema Acadêmico",
+    "tipo": "Tutorial",
+    "temas": [
+     "Moodle",
+     "Notas",
+     "Sistema Acadêmico"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Livro de Notas",
+    "Configuração de Curso"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T3",
+     "posicao": 5
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Neste tutorial você vai aprender como importar as notas das avaliações cadastradas no Ambiente Virtual de Aprendizagem - AVA para o Sistema Acadêmico. Faça aqui o download do tutorial em .pdf."
+  },
+  {
+   "wp_id": 3429,
+   "titulo": "Padrão Visual Campi Ifes para sala virtual na plataforma de Cursos Abertos MOOC",
+   "status": "publish",
+   "slug": "padrao-visual-campi-ifes-para-sala-virtual-na-plataforma-de-cursos-abertos-mooc",
+   "id_inventario": 46,
+   "antigo": {
+    "categoria": "MOOC",
+    "tipo": "Institucional/Padrao Visual",
+    "temas": [
+     "Configuração",
+     "mooc",
+     "padrão visual"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "identidade",
+   "topicos": [
+    "Configuração de Curso",
+    "Sala Virtual",
+    "Padrão Visual",
+    "MOOC"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Este artigo ensina como aplicar o padrão visual criado pelo Cefor em um curso ofertado na plataforma de Cursos Abertos MOOC. Os arquivos para configuração dos cursos ficam armazenados no serviço de nuvem do Google Drive. Ao acessar o link p"
+  },
+  {
+   "wp_id": 3430,
+   "titulo": "Como configurar o LevelUp no Moodle para engajar seus alunos",
+   "status": "publish",
+   "slug": "como-configurar-o-modulo-levelup-no-moodle-para-engajar-seus-alunos",
+   "id_inventario": 45,
+   "antigo": {
+    "categoria": "",
+    "tipo": "Tutorial",
+    "temas": [
+     "Configuração",
+     "Moodle",
+     "Tutorial"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Configuração de Curso"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T6",
+     "posicao": 3
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "O plugin Level Up (Subir de Nível), é uma ferramenta do Moodle baseada nos princípios da gamificação que utiliza a dinâmica existente em jogos para incentivar e motivar os alunos na realização das atividades no Moodle. A cada vez que o alun"
+  },
+  {
+   "wp_id": 3431,
+   "titulo": "Configuração da Conclusão de atividades no curso no Moodle",
+   "status": "publish",
+   "slug": "configuracao-da-conclusao-de-atividades-no-curso",
+   "id_inventario": 44,
+   "antigo": {
+    "categoria": "Moodle",
+    "tipo": "Outros",
+    "temas": []
+   },
+   "tipo": null,
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Configuração de Curso"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T6",
+     "posicao": 1
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Todo recurso ou atividade inserido na sala virtual precisa ser configurado para habilitar ou desabilitar a marcação de conclusão ou até mesmo indicar que ela não deva aparecer. Logo, as caixas de marcação de conclusão de atividades estarão "
+  },
+  {
+   "wp_id": 3432,
+   "titulo": "Configuração da Barra de Progresso no Moodle",
+   "status": "publish",
+   "slug": "configuracao-da-barra-de-progresso",
+   "id_inventario": 43,
+   "antigo": {
+    "categoria": "",
+    "tipo": "Outros",
+    "temas": []
+   },
+   "tipo": null,
+   "categoria": "ferramentas",
+   "topicos": [
+    "Configuração de Curso"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T6",
+     "posicao": 2
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "A Barra de Progresso é uma bloco do Moodle que apresenta o andamento/progresso do aluno em cada disciplina. Ele pode ser usado de forma associada com as caixas de marcação de Conclusão de atividades no curso , pois mostra tanto para o aluno"
+  },
+  {
+   "wp_id": 3433,
+   "titulo": "Como \"embedar\" vídeo do YouTube em tamanho menor",
+   "status": "publish",
+   "slug": "como-embedar-video-do-youtube-em-tamanho-menor",
+   "id_inventario": 42,
+   "antigo": {
+    "categoria": "Ambiente virtual",
+    "tipo": "Tutorial",
+    "temas": []
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Vídeo"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Podemos inserir um vídeo na sala virtual do AVA do Ifes de diversas formas. Em alguns casos, pode desejar-se inserir o vídeo diretamente em um rótulo na página inicial da disciplinam conforme a imagem abaixo: Atualmente, quando inserimos um"
+  },
+  {
+   "wp_id": 3434,
+   "titulo": "Como mudar a cor de fundo em um Rótulo no AVA Moodle",
+   "status": "publish",
+   "slug": "1871",
+   "id_inventario": 41,
+   "antigo": {
+    "categoria": "Ambiente virtual",
+    "tipo": "Tutorial",
+    "temas": [
+     "Recurso",
+     "Rótulo",
+     "Tutorial"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Rótulo"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Sumário: 1. Entenda a versatilidade do recurso de rótulo 2. Aprenda a criar um fundo no recurso de rótulo 1. Entenda a Versatilidade do recurso de Rótulo Os rótulos no Moodle são ferramentas versáteis que permitem aos educadores adicionar t"
+  },
+  {
+   "wp_id": 3435,
+   "titulo": "Como ativar contas nas Plataformas de Serviço em nuvem G Suite e Office 365?",
+   "status": "publish",
+   "slug": "como-ativar-contas-nas-plataformas-de-servico-em-nuvem-g-suite-e-office-365",
+   "id_inventario": 40,
+   "antigo": {
+    "categoria": "",
+    "tipo": "Tutorial",
+    "temas": []
+   },
+   "tipo": "Tutorial",
+   "categoria": null,
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "categoria",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Para ativas a conta na Plataforma de Serviços do GSuite e Office 365, alguns pontos merecem atenção: Será necessário alterar a senha do Ifes; Orientamos aos servidores que utilizam o QAcademico (web ou desktop) a alterar sua senha também ne"
+  },
+  {
+   "wp_id": 3436,
+   "titulo": "Como posso realizar uma Aula Síncrona?",
+   "status": "publish",
+   "slug": "como-posso-realizar-uma-aula-sincrona",
+   "id_inventario": 39,
+   "antigo": {
+    "categoria": "Tutoriais",
+    "tipo": "Tutorial",
+    "temas": []
+   },
+   "tipo": "Tutorial",
+   "categoria": null,
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "categoria",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Neste artigo iremos lhe apresentar o Manual Prático de Aulas Síncronas. O manual foi produzido com a finalidade de agregar informações que orientem sobre a transmissão, gravação e armazenamento de momentos síncronos. Também traz informações"
+  },
+  {
+   "wp_id": 3437,
+   "titulo": "Aplicativo Moodle Mobile não funciona? Aprenda como resolver",
+   "status": "publish",
+   "slug": "aplicativo-moodle-mobile-nao-funciona-aprenda-como-resolver",
+   "id_inventario": 38,
+   "antigo": {
+    "categoria": "Procedimento de Tecnologia da Informação",
+    "tipo": "Tutorial",
+    "temas": [
+     "Download",
+     "mobi",
+     "Moodle",
+     "Procedimentos"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Você é aluno do Ifes e não está conseguindo acessar o seu curso pelo aplicativo Moodle Mobile? Entenda porque isso acontece e como resolver esse problema. O problema Em agosto de 2021, o aplicativo Moodle Mobile recebeu uma atualização e pa"
+  },
+  {
+   "wp_id": 3438,
+   "titulo": "Designer Educacional: teoria, prática e muito mais!",
+   "status": "publish",
+   "slug": "designer-educacional-teoria-pratica-e-muito-mais",
+   "id_inventario": 36,
+   "antigo": {
+    "categoria": "Tecnologias Educacionais",
+    "tipo": "Outros",
+    "temas": [
+     "Capacitação",
+     "padrão visual",
+     "sala virtual"
+    ]
+   },
+   "tipo": null,
+   "categoria": "identidade",
+   "topicos": [
+    "Sala Virtual",
+    "Padrão Visual"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "O que é Design Educacional? Design Educacional como teoria é um processo metodológico capaz de unir educação, comunicação, tecnologia e administração em um único campo do conhecimento. No contexto do Cefor - Ifes, o Designer Educacional (DE"
+  },
+  {
+   "wp_id": 3439,
+   "titulo": "+45 Ferramentas educacionais para você arrasar!",
+   "status": "publish",
+   "slug": "mais45-ferramentas-educacionais-para-voce-arrasar",
+   "id_inventario": 37,
+   "antigo": {
+    "categoria": "Tecnologias Educacionais",
+    "tipo": "Ferramenta Externa",
+    "temas": [
+     "Ferramenta"
+    ]
+   },
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Compilamos uma extensa lista de ferramentas online para professores e designers educacionais que levarão seu trabalho para o próximo patamar. As ferramentas estão agrupadas por categorias. Confira a lista e experimente as ferramentas para d"
+  },
+  {
+   "wp_id": 3440,
+   "titulo": "Código para inserção de vídeo em Libras no AVA #MoodleCodes",
+   "status": "publish",
+   "slug": "codigo-para-insercao-de-video-em-libras-no-ava",
+   "id_inventario": 35,
+   "antigo": {
+    "categoria": "Ambiente virtual",
+    "tipo": "Template/Code",
+    "temas": [
+     "AVA",
+     "código",
+     "Libras"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "acessibilidade",
+   "topicos": [
+    "Vídeo",
+    "Moodle Codes",
+    "Libras"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T8",
+     "posicao": 1
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Para inserir o vídeo em Libras em uma página de conteúdo do AVA, sugerimos o código abaixo. &lt;div style=\"background: #eee; padding: 10px;\"&gt; &lt;div class=\"nolink\" style=\"font-size: small; text-align: left; margin-bottom: 15px;\"&gt; &lt"
+  },
+  {
+   "wp_id": 3441,
+   "titulo": "Configuração do Safe Exam Browser",
+   "status": "publish",
+   "slug": "configuracao-do-safe-exam-browser",
+   "id_inventario": 34,
+   "antigo": {
+    "categoria": "",
+    "tipo": "Outros",
+    "temas": []
+   },
+   "tipo": null,
+   "categoria": "ferramentas",
+   "topicos": [
+    "Configuração de Curso",
+    "Direitos Autorais e Segurança"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T2",
+     "posicao": 16
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "&nbsp; O Safe Exam Browser é um navegador da Web personalizado, disponível para Windows (7, 8.1, 10), macOS (a partir de 10.7, recomendado 10.11 ou mais recente) e iOS (9.3.5 ou mais recente). O aplicativo deve ser baixado e instalado no di"
+  },
+  {
+   "wp_id": 3442,
+   "titulo": "Aparecer o nome do aluno em qualquer parte da Sala Virtual #MoodleCodes",
+   "status": "publish",
+   "slug": "aparecer-o-nome-do-aluno-em-qualquer-parte-da-sala-virtual-moodlecodes",
+   "id_inventario": 33,
+   "antigo": {
+    "categoria": "Ambiente virtual",
+    "tipo": "Template/Code",
+    "temas": []
+   },
+   "tipo": "Referência",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Sala Virtual"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Para criar uma experiência mais pessoal e inclusiva, sugerimos que você configure para exibir, na sua sala virtual, o primeiro nome do aluno. Agora com o Moodle 4 ficou muito simples esta funcionalidade. Como disponibilizar: Insira a tag {f"
+  },
+  {
+   "wp_id": 3443,
+   "titulo": "Padrões visuais do Cefor - Orientações para utilização",
+   "status": "publish",
+   "slug": "padrao-visual-cefor",
+   "id_inventario": 32,
+   "antigo": {
+    "categoria": "Procedimentos de Comunicação",
+    "tipo": "Institucional/Padrao Visual",
+    "temas": [
+     "comunicação",
+     "design",
+     "padrão visual"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "identidade",
+   "topicos": [
+    "Padrão Visual"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Neste artigo você pode encontrar os padrões visuais desenvolvidos pelo Cefor para o ano de 2023, para utilização de toda a comunidade acadêmica. Com estes padrões visuais objetivamos fornecer um espaço de autonomia e qualidade para os criad"
+  },
+  {
+   "wp_id": 3444,
+   "titulo": "Modelo de Agenda da Semana com cor de fundo #MoodleCodes",
+   "status": "publish",
+   "slug": "modelo-de-agenda-da-semana-com-cor-de-fundo-moodlecodes",
+   "id_inventario": 31,
+   "antigo": {
+    "categoria": "Ambiente virtual",
+    "tipo": "Template/Code",
+    "temas": [
+     "códigos",
+     "Configuração",
+     "Rótulo",
+     "sala virtual"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Rótulo",
+    "Configuração de Curso",
+    "Moodle Codes",
+    "Sala Virtual"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Veja como proceder para ter uma agenda da semana na sua sala do Moodle conforme abaixo. Inclua o código abaixo em um Rótulo da sua sala virtual: &lt;div style=\"background: #f5f5ee; padding: 20px;\"&gt; &lt;h5&gt;Agenda da Semana&lt;/h5&gt; &"
+  },
+  {
+   "wp_id": 3445,
+   "titulo": "Modelo de Plano de Ensino #MoodleCodes",
+   "status": "publish",
+   "slug": "codigo-de-um-modelo-de-plano-de-ensino-moodlecodes",
+   "id_inventario": 30,
+   "antigo": {
+    "categoria": "Ambiente virtual",
+    "tipo": "Template/Code",
+    "temas": [
+     "código",
+     "Moodle",
+     "sala virtual"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Moodle Codes",
+    "Sala Virtual"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Veja como proceder para ter um modelo de Plano de Ensino na sua sala do Moodle conforme abaixo. Inclua o código abaixo em uma Página da sua sala virtual e altere as informações de acordo com sua disciplina. &lt;div style=\"background: #f5f5e"
+  },
+  {
+   "wp_id": 3446,
+   "titulo": "Como inserir códigos no Moodle #MoodleCodes",
+   "status": "publish",
+   "slug": "como-inserir-codigos-no-moodle-moodlecodes",
+   "id_inventario": 29,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Tutorial",
+    "temas": [
+     "código",
+     "Configuração",
+     "Moodle"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Configuração de Curso",
+    "Moodle Codes"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Sempre que adicionamos um novo recurso ou atividade dentro de um curso no Moodle, temos a nossa disposição uma caixa de diálogo. Nesta caixa podemos inserir e editar textos, imagens e códigos HTML, entre outras opções. Nesse artigo voce vai"
+  },
+  {
+   "wp_id": 3447,
+   "titulo": "Modelo de informações sobre Aula presencial #MoodleCodes",
+   "status": "publish",
+   "slug": "modelo-de-informacoes-sobre-aula-presencial-moodlecodes",
+   "id_inventario": 28,
+   "antigo": {
+    "categoria": "Ambiente Virtual de Aprendizagem",
+    "tipo": "Template/Code",
+    "temas": []
+   },
+   "tipo": "Referência",
+   "categoria": "gestao-moodle",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Veja como proceder para disponibilizar informações sobre Aula Presencial na sua sala do Moodle conforme abaixo. Inclua o código HTML abaixo em um Rótulo da sua sala virtual. &lt;div style=\"background: #f5f5ee none repeat scroll 0% 0%; paddi"
+  },
+  {
+   "wp_id": 3448,
+   "titulo": "Como utilizar a ferramenta Conferência Web da RNP Integrada ao Moodle 3.9",
+   "status": "publish",
+   "slug": "como-utilizar-a-ferramenta-conferencia-web-da-rnp-integrada-ao-moodle-3-9",
+   "id_inventario": 27,
+   "antigo": {
+    "categoria": "Ambiente virtual",
+    "tipo": "Tutorial",
+    "temas": [
+     "Tutorial",
+     "Webconferência"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Webconferência"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T5",
+     "posicao": 3
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Neste tutorial, você aprenderá passo a passo como configurar e utilizar a ferramenta de conferência web da RNP integrada ao Moodle. Com esta ferramenta, é possível realizar aulas síncronas e web conferências diretamente no Moodle, sem a nec"
+  },
+  {
+   "wp_id": 3449,
+   "titulo": "Código para inserção de Audiodescrição em imagens no AVA #MoodleCodes",
+   "status": "publish",
+   "slug": "2141",
+   "id_inventario": 26,
+   "antigo": {
+    "categoria": "Tutoriais",
+    "tipo": "Template/Code",
+    "temas": [
+     "Acessibilidade",
+     "Audiodescrição",
+     "AVA",
+     "código"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "acessibilidade",
+   "topicos": [
+    "Áudio e Podcast",
+    "Moodle Codes",
+    "Audiodescrição",
+    "Inclusão e Desenho Universal"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T7",
+     "posicao": 3
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Para inserir a Audiodescrição em uma imagem disponibilizada no AVA, sugerimos o código abaixo: &lt;p&gt; {details}&lt;/p&gt; &lt;p&gt;&lt;span&gt;{summary}&amp;nbsp;&lt;/span&gt;&lt;i class=\"fa fa-audio-description\" style=\"color: blue; font"
+  },
+  {
+   "wp_id": 3450,
+   "titulo": "Uso de Emblemas nos cursos MOOC",
+   "status": "publish",
+   "slug": "uso-de-emblemas-nos-cursos-mooc",
+   "id_inventario": 25,
+   "antigo": {
+    "categoria": "MOOC",
+    "tipo": "Outros",
+    "temas": [
+     "emblemas",
+     "gamificação",
+     "mooc"
+    ]
+   },
+   "tipo": null,
+   "categoria": "identidade",
+   "topicos": [
+    "MOOC"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "O que são Emblemas? Emblemas (também conhecidos como Badges ou Medalhas) no Moodle são uma forma de reconhecimento e motivação para os alunos. Eles são concedidos quando um aluno atinge uma meta específica, como completar uma atividade ou f"
+  },
+  {
+   "wp_id": 3451,
+   "titulo": "Como criar Jogo no Moodle Utilizando recurso Resposta Curta como Banco de Questões (sem usar Glossário)",
+   "status": "publish",
+   "slug": "como-criar-jogo-no-moodle-utilizando-recurso-resposta-curta-como-banco-de-questoes-sem-usar-glossario",
+   "id_inventario": 24,
+   "antigo": {
+    "categoria": "Moodle",
+    "tipo": "Tutorial",
+    "temas": [
+     "Ferramenta",
+     "Jogo",
+     "Moodle"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Banco de Questões"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Neste tutorial voce vai aprender como criar um jogo no Moodle utilizando o recurso de Resposta Curta como Banco de Questões. https://www.youtube.com/watch?v=epga0XAbYYE"
+  },
+  {
+   "wp_id": 3452,
+   "titulo": "Descubra o ReLiCefor: compartilhando conhecimento no ambiente virtual",
+   "status": "publish",
+   "slug": "descubra-o-relicefor-compartilhando-conhecimento-no-ambiente-virtual",
+   "id_inventario": 23,
+   "antigo": {
+    "categoria": "Livros Digitais (e-book)",
+    "tipo": "Outros",
+    "temas": [
+     "Importar",
+     "Livro digital",
+     "Repositório"
+    ]
+   },
+   "tipo": null,
+   "categoria": "identidade",
+   "topicos": [
+    "Livro Digital",
+    "Configuração de Curso"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Como acessar o Repositório de Livros do Moodle do Cefor? Então, como aproveitar o ReLiCefor na sua disciplina? Quer contribuir com o ReLiCefor disponibilizando um recurso didático (ferramenta Livro do Moodle), de sua autoria? O Repositório "
+  },
+  {
+   "wp_id": 3453,
+   "titulo": "Como disponibilizar mídias no recurso Livro do Moodle?",
+   "status": "publish",
+   "slug": "como-disponibilizar-midias-no-recurso-livro-do-moodle",
+   "id_inventario": 22,
+   "antigo": {
+    "categoria": "Livros Digitais (e-book)",
+    "tipo": "Tutorial",
+    "temas": [
+     "Configuração",
+     "Faça você mesmo",
+     "Livro digital"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "identidade",
+   "topicos": [
+    "Livro Digital",
+    "Configuração de Curso"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Disponibilizar mídias, como imagens, vídeos e áudios, no recurso Livro do Moodle é um processo simples e sem mistérios. A inserção segue os mesmos passos padrão aplicáveis em qualquer parte do Moodle. Aqui estão algumas orientações simples,"
+  },
+  {
+   "wp_id": 3454,
+   "titulo": "Diploma digital - Orientações Gerais",
+   "status": "publish",
+   "slug": "diploma-digital-orientacoes-gerais",
+   "id_inventario": 21,
+   "antigo": {
+    "categoria": "Procedimento Administrativo",
+    "tipo": "Outros",
+    "temas": [
+     "administrativo",
+     "diploma",
+     "DocenteEPT"
+    ]
+   },
+   "tipo": null,
+   "categoria": "conduta",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "O diploma digital é aquele que tem sua existência, sua emissão e seu armazenamento inteiramente no meio digital, e cuja validade jurídica é presumida mediante a assinatura com certificação digital e carimbo de tempo na Infraestrutura de Cha"
+  },
+  {
+   "wp_id": 3455,
+   "titulo": "START 2023: Inovação e Inclusão na Formação de Professores do Cefor",
+   "status": "publish",
+   "slug": "start-2023",
+   "id_inventario": 20,
+   "antigo": {
+    "categoria": "Tecnologias Educacionais",
+    "tipo": "Evento/Divulgacao",
+    "temas": [
+     "Capacitação",
+     "Ferramenta",
+     "Oficina"
+    ]
+   },
+   "tipo": null,
+   "categoria": "ferramentas",
+   "topicos": [
+    "Inclusão e Desenho Universal"
+   ],
+   "trilhas": [],
+   "fora_da_base": true,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Este artigo apresenta o documento \"START 2023\", uma compilação detalhada e inspiradora das oficinas de formação de professores ministradas pela Coordenadoria Geral de Tecnologias Educacionais (CGTE) do Ifes. Este documento é uma valiosa fon"
+  },
+  {
+   "wp_id": 3456,
+   "titulo": "Como inserir conteúdo H5P em sua sala virtual",
+   "status": "publish",
+   "slug": "como-inserir-conteudo-h5p-em-sua-sala-virtual",
+   "id_inventario": 18,
+   "antigo": {
+    "categoria": "Ferramentas de autoria",
+    "tipo": "Tutorial",
+    "temas": [
+     "Ferramenta",
+     "h5p",
+     "Moodle"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "H5P",
+    "Sala Virtual"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T4",
+     "posicao": 2
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Neste artigo, abordamos as principais formas para inserir conteúdo do tipo \"H5P\" em sua sala virtual. Caso você ainda não conheça o H5P, você pode conhecer a ferramenta neste artigo. https://www.youtube.com/watch?v=ZtXe_k8R1gs"
+  },
+  {
+   "wp_id": 3457,
+   "titulo": "Conteúdo interativo no AVA Moodle com H5P",
+   "status": "publish",
+   "slug": "conteudo-interativo-no-ava-moodle-com-h5p",
+   "id_inventario": 19,
+   "antigo": {
+    "categoria": "Ferramentas de autoria",
+    "tipo": "Outros",
+    "temas": [
+     "Ferramenta",
+     "Interatividade",
+     "Moodle"
+    ]
+   },
+   "tipo": null,
+   "categoria": "ferramentas",
+   "topicos": [
+    "H5P"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T4",
+     "posicao": 3
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "O que é o conteúdo H5P no AVA Moodle? H5P é uma ferramenta de criação de conteúdo interativo que permite a produção de recursos educacionais dinâmicos e envolventes. Integrada ao Moodle, o H5P facilita a incorporação de uma variedade de ati"
+  },
+  {
+   "wp_id": 3458,
+   "titulo": "Conteúdo Interativo: aproveite o potencial do H5P no Moodle 3.9",
+   "status": "publish",
+   "slug": "potencialidades-h5p",
+   "id_inventario": 17,
+   "antigo": {
+    "categoria": "Ferramentas de autoria",
+    "tipo": "Outros",
+    "temas": [
+     "Atividade",
+     "Ferramenta",
+     "h5p"
+    ]
+   },
+   "tipo": null,
+   "categoria": "ferramentas",
+   "topicos": [
+    "H5P"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T4",
+     "posicao": 1
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "SUMÁRIO: 1. O que é H5P 2. Principais Características do H5P no Moodle 3. Exemplos de Uso do H5P no Moodle 4. Como Inserir Conteúdo H5P no Moodle 1. O Que é o H5P? Estamos entusiasmados em apresentar uma nova ferramenta que pode transformar"
+  },
+  {
+   "wp_id": 3459,
+   "titulo": "Configurando Livro de Notas que calcule a Média entre Atividades e a Recuperação",
+   "status": "publish",
+   "slug": "configurando-livro-de-notas-para-calculo-de-media-com-recuperacao",
+   "id_inventario": 16,
+   "antigo": {
+    "categoria": "",
+    "tipo": "Tutorial",
+    "temas": []
+   },
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Livro de Notas",
+    "Configuração de Curso"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T3",
+     "posicao": 3
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Este tutorial orienta você sobre como configurar o Livro de Notas no Moodle para calcular a nota final dos alunos, considerando uma média entre a nota das atividades realizadas e a nota de recuperação. A solução envolve a utilização de uma "
+  },
+  {
+   "wp_id": 3460,
+   "titulo": "Acessibilidade Digital: Cuidados ao Inserir Recursos no Moodle",
+   "status": "publish",
+   "slug": "acessibilidade_digital_cuidados_ao_inserir_recursos_no_moodle",
+   "id_inventario": 15,
+   "antigo": {
+    "categoria": "Moodle",
+    "tipo": "Outros",
+    "temas": [
+     "Acessibilidade",
+     "Planejamento",
+     "Procedimento"
+    ]
+   },
+   "tipo": null,
+   "categoria": "acessibilidade",
+   "topicos": [
+    "Inclusão e Desenho Universal",
+    "Planejamento e Design Educacional"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T7",
+     "posicao": 1
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "A acessibilidade digital é um compromisso essencial para promover um ambiente de ensino inclusivo, garantindo que todos os alunos, independentemente de suas condições, tenham acesso igualitário aos conteúdos. Pequenos ajustes nos recursos d"
+  },
+  {
+   "wp_id": 3461,
+   "titulo": "Videobook em Libras de Termos da Educação a Distância.",
+   "status": "publish",
+   "slug": "videobook-em-libras-de-termos-da-educacao-a-distancia",
+   "id_inventario": 14,
+   "antigo": {
+    "categoria": "Tecnologias Educacionais",
+    "tipo": "Outros",
+    "temas": []
+   },
+   "tipo": null,
+   "categoria": "acessibilidade",
+   "topicos": [
+    "Vídeo",
+    "Libras"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T8",
+     "posicao": 3
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "O Videobook em Libras de Termos da Educação a Distância é uma iniciativa do Cefor/Ifes que visa promover a acessibilidade linguística para alunos surdos. Este material contém um glossário de termos técnicos da área da Educação a Distância t"
+  },
+  {
+   "wp_id": 3462,
+   "titulo": "Sala Modelo do Moodle: Um Guia para Professores",
+   "status": "publish",
+   "slug": "sala-modelo-do-moodle-um-guia-para-professores",
+   "id_inventario": 13,
+   "antigo": {
+    "categoria": "Ambiente virtual",
+    "tipo": "Outros",
+    "temas": [
+     "Guia para professores",
+     "padronização da sala virtual",
+     "sala modelo"
+    ]
+   },
+   "tipo": null,
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Sala Virtual"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "tipo",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "A Sala Modelo foi criada para servir como uma referência prática e eficaz para professores que estão construindo suas salas virtuais no Moodle. Nela, você encontrará orientações, exemplos e tutoriais que cobrem desde a configuração inicial "
+  },
+  {
+   "wp_id": 3463,
+   "titulo": "Papo com IA.IÁ: um bate-papo leve e potente sobre Inteligência Artificial",
+   "status": "publish",
+   "slug": "papo-com-ia-ia-um-bate-papo-leve-e-potente-sobre-inteligencia-artificial",
+   "id_inventario": 12,
+   "antigo": {
+    "categoria": "Inteligência Artificial",
+    "tipo": "Evento/Divulgacao",
+    "temas": [
+     "Educação",
+     "Inteligência Artificial",
+     "Tecnologia"
+    ]
+   },
+   "tipo": null,
+   "categoria": null,
+   "topicos": [
+    "IA Generativa"
+   ],
+   "trilhas": [],
+   "fora_da_base": true,
+   "revisar": [
+    "tipo",
+    "categoria",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "O uso da Inteligência Artificial na educação tem se tornado cada vez mais presente e necessário. No Cefor, estamos investindo em experimentações que nos ajudam a entender melhor como essa tecnologia pode contribuir para práticas pedagógicas"
+  },
+  {
+   "wp_id": 3464,
+   "titulo": "Grupo de WhatsApp: informação rápida e prática sobre IA na educação",
+   "status": "publish",
+   "slug": "grupo-de-whatsapp-informacao-rapida-e-pratica-sobre-ia-na-educacao",
+   "id_inventario": 11,
+   "antigo": {
+    "categoria": "Inteligência Artificial",
+    "tipo": "Evento/Divulgacao",
+    "temas": [
+     "Educação",
+     "Inteligência Artificial"
+    ]
+   },
+   "tipo": null,
+   "categoria": null,
+   "topicos": [
+    "IA Generativa"
+   ],
+   "trilhas": [],
+   "fora_da_base": true,
+   "revisar": [
+    "tipo",
+    "categoria",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "O Cefor tem buscado formas de facilitar o acesso a conteúdos sobre Inteligência Artificial, ajudando educadores a se manterem atualizados. Uma dessas ações é o grupo de WhatsApp sobre IA, criado para compartilhar novidades, sugestões de uso"
+  },
+  {
+   "wp_id": 3465,
+   "titulo": "Oficinas de IA: aprendendo na prática com o Cefor",
+   "status": "publish",
+   "slug": "oficinas-de-ia-aprendendo-na-pratica-com-o-cefor",
+   "id_inventario": 10,
+   "antigo": {
+    "categoria": "Inteligência Artificial",
+    "tipo": "Evento/Divulgacao",
+    "temas": [
+     "Educação",
+     "Inteligência Artificial",
+     "Oficinas"
+    ]
+   },
+   "tipo": null,
+   "categoria": null,
+   "topicos": [
+    "IA Generativa"
+   ],
+   "trilhas": [],
+   "fora_da_base": true,
+   "revisar": [
+    "tipo",
+    "categoria",
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "No movimento de trazer a Inteligência Artificial para mais perto da prática docente, o Cefor tem promovido oficinas com foco em aplicação real, acessível e relevante para educadores. São momentos de troca e aprendizado coletivo, em que a IA"
+  },
+  {
+   "wp_id": 3466,
+   "titulo": "GPT Vídeo Summarizer: resumos automáticos de vídeos para uso educacional com IA",
+   "status": "publish",
+   "slug": "gpt-video-summarizer-resumos-automaticos-de-videos-para-uso-educacional-com-ia",
+   "id_inventario": 9,
+   "antigo": {
+    "categoria": "Inteligência Artificial",
+    "tipo": "Ferramenta/GPT",
+    "temas": [
+     "GPT",
+     "Inteligência Artificial",
+     "Vídeo Summarizer"
+    ]
+   },
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Vídeo",
+    "IA Generativa",
+    "GPT Customizado"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "&nbsp; O que é o GPT Video Summarizer? O GPT Video Summarizer (link externo) é uma indicação do Cefor para facilitar o uso de vídeos do YouTube no ensino. Com ele, você pode colar o link de um vídeo e rapidamente obter: Um resumo completo d"
+  },
+  {
+   "wp_id": 3467,
+   "titulo": "GPT Gerador de Questionários para o Moodle: sua ajudante para criar avaliações com IA",
+   "status": "publish",
+   "slug": "gpt-gerador-de-questionarios-para-o-moodle-sua-ajudante-para-criar-avaliacoes-com-ia",
+   "id_inventario": 8,
+   "antigo": {
+    "categoria": "Inteligência Artificial",
+    "tipo": "Ferramenta/GPT",
+    "temas": [
+     "GPT",
+     "Inteligência Artificial",
+     "Questionário"
+    ]
+   },
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "IA Generativa",
+    "GPT Customizado"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T9",
+     "posicao": 2
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "&nbsp; Entre as soluções desenvolvidas pelo Cefor, o GPT Gerador de Questionários para o Moodle (link externo) se destaca como uma das mais práticas para professores que desejam agilizar a criação de avaliações. Essa ferramenta é um exemplo"
+  },
+  {
+   "wp_id": 3468,
+   "titulo": "GPT H5P Summary: transforme vídeos em conteúdos interativos com a IA",
+   "status": "publish",
+   "slug": "gpt-h5p-summary-transforme-videos-em-conteudos-interativos-com-a-ia",
+   "id_inventario": 7,
+   "antigo": {
+    "categoria": "Inteligência Artificial",
+    "tipo": "Ferramenta/GPT",
+    "temas": [
+     "GPT",
+     "h5p",
+     "Inteligência Artificial"
+    ]
+   },
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "H5P",
+    "Vídeo",
+    "IA Generativa",
+    "GPT Customizado"
+   ],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "O GPT H5P Summary (link externo) é uma ferramenta desenvolvida pelo Cefor para apoiar professores na criação de atividades educacionais mais ricas e envolventes. Pensado especialmente para quem usa o Moodle, esse GPT usa a inteligência arti"
+  },
+  {
+   "wp_id": 3469,
+   "titulo": "GPT Gerador de Rubricas",
+   "status": "publish",
+   "slug": "gpt-gerador-de-rubricas",
+   "id_inventario": 6,
+   "antigo": {
+    "categoria": "Inteligência Artificial",
+    "tipo": "Ferramenta/GPT",
+    "temas": [
+     "GPT",
+     "Moodle",
+     "rúbrica"
+    ]
+   },
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "IA Generativa",
+    "GPT Customizado",
+    "Planejamento e Design Educacional"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T9",
+     "posicao": 3
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Entre as soluções desenvolvidas pelo Cefor, o GPT Gerador de Rubricas para o Moodle (link externo) se destaca como uma ferramenta estratégica para docentes que desejam elaborar critérios de avaliação mais claros, objetivos e alinhados às di"
+  },
+  {
+   "wp_id": 3470,
+   "titulo": "Taxonomia de Bloom Revisitada (2.0): Integrando Habilidades Humanas e Inteligência Artificial",
+   "status": "publish",
+   "slug": "taxonomia-de-bloom-revisitada-2-0-integrando-habilidades-humanas-e-inteligencia-artificial",
+   "id_inventario": 5,
+   "antigo": {
+    "categoria": "Aspectos Pedagógicos",
+    "tipo": "Conceitual",
+    "temas": [
+     "Educação",
+     "Inteligência Artificial",
+     "Planejamento"
+    ]
+   },
+   "tipo": "Conceitual",
+   "categoria": "pedagogia",
+   "topicos": [
+    "IA Generativa",
+    "Planejamento e Design Educacional"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T9",
+     "posicao": 1
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "A Taxonomia de Bloom, criada na década de 1950 e revisada em 2001, sempre foi uma das ferramentas mais utilizadas na educação para planejar objetivos de aprendizagem, alinhar atividades e avaliar níveis cognitivos, do “lembrar” ao “criar”. "
+  },
+  {
+   "wp_id": 3471,
+   "titulo": "Moodle e suas principais ferramentas de aprendizagem - visão aluno",
+   "status": "publish",
+   "slug": "moodle-e-suas-principais-ferramentas-de-aprendizagem-visao-aluno",
+   "id_inventario": 4,
+   "antigo": {
+    "categoria": "Moodle",
+    "tipo": "Ferramenta Externa",
+    "temas": [
+     "atividades",
+     "Ferramentas",
+     "Moodle"
+    ]
+   },
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "O Moodle do Ifes está agora na versão 4.0, com uma interface renovada e uma navegação muito mais intuitiva, fluida, agradável e personalizada. Esse ambiente virtual de aprendizagem oferece diversas ferramentas que facilitam a comunicação en"
+  },
+  {
+   "wp_id": 3472,
+   "titulo": "Atividade de Base de Dados no Moodle",
+   "status": "publish",
+   "slug": "atividade-de-base-de-dados-no-moodle",
+   "id_inventario": 3,
+   "antigo": {
+    "categoria": "Moodle",
+    "tipo": "Referencia Moodle",
+    "temas": [
+     "base de dados",
+     "Ferramentas",
+     "Moodle"
+    ]
+   },
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [],
+   "trilhas": [],
+   "fora_da_base": false,
+   "revisar": [
+    "topicos",
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "BASE DE DADOS: 1. Entenda a atividade de Base de Dados 2. Aprenda a usar uma atividade Base de Dados 3. Aprenda a criar uma atividade Base de Dados 4. Aprenda a avaliar uma atividade Base de Dados 1. Entenda a atividade de Base de Dados A a"
+  },
+  {
+   "wp_id": 3473,
+   "titulo": "Como configurar Tempo Ampliado no questionário do Moodle sem expor o estudante com Necessidades Específicas",
+   "status": "publish",
+   "slug": "como-configurar-tempo-ampliado-no-questionario-do-moodle-sem-expor-o-estudante-com-necessidades-especificas",
+   "id_inventario": 2,
+   "antigo": {
+    "categoria": "Tutoriais",
+    "tipo": "Tutorial",
+    "temas": [
+     "Acessibilidade",
+     "Questionário"
+    ]
+   },
+   "tipo": "Tutorial",
+   "categoria": "acessibilidade",
+   "topicos": [
+    "Questionário",
+    "Configuração de Curso",
+    "Inclusão e Desenho Universal"
+   ],
+   "trilhas": [
+    {
+     "trilha": "T7",
+     "posicao": 2
+    }
+   ],
+   "fora_da_base": false,
+   "revisar": [
+    "subtitulo"
+   ],
+   "subtitulo": "",
+   "snippet": "Quando usar este tutorial Use este procedimento quando for necessário conceder tempo ampliado em avaliações no Moodle para estudantes com direito a adaptações, preservando a privacidade e evitando exposição desnecessária no ambiente. Contex"
+  }
+ ]
+}
