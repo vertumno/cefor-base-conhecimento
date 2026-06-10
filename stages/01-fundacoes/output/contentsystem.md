@@ -155,7 +155,7 @@ Alinhado aos 5 tipos do Eixo 1 (ver §A.3 e vocabulário):
 | `arquitetura_cefor` (Base, Artigo, Trilha, Percurso, Passo, Artigo-âncora, Encadeabilidade, Autossuficiência) | ✅ Completa |
 | `tipos_de_artigo` (Tutorial, Referência, Conceitual, Solução de Problema, Recurso) | ✅ Completa |
 | `eixos_da_taxonomia` (Tipo, Categoria, Tópico, Trilha) | ✅ Completa |
-| `componentes_ui_da_base` (Box de trilha, Chip de percurso, Acordeão multi-trilha, Checkpoint, Posição estrutural) | ✅ Completa |
+| `componentes_ui_da_base` (Box de trilha, Vínculo de percurso, Acordeão multi-trilha, Checkpoint, Posição estrutural) | ✅ Completa |
 | `atividades_moodle` | 🟡 1 termo de exemplo (Questionário) — **pendente Juliana + Rute** |
 | `recursos_moodle` | ⏳ Estrutura criada — **pendente** |
 | `papeis` | ⏳ **pendente Rute + Juliana** (identidade profissional) |
@@ -254,7 +254,7 @@ A voz da sequência ("próximo passo", "você está na metade") vive na casca (b
 |---|---|
 | **4.1 Artigo encadeável** | Estrutura mínima: Cabeçalho → Entrada (pré-req + objetivo) → Miolo → Saída (o que sabe + próximos passos plurais) → Rodapé |
 | **4.2 Box de trilha multi-trilha** | Acordeão na sidebar; aparece sempre que o artigo pertence a ≥1 trilha; "Artigo X de Y" estrutural |
-| **4.3 Chip de atribuição a percurso** | Chip em verde escuro no topo da trilha expandida, leva à página do percurso |
+| **4.3 Vínculo de percurso no meta/stats** | Entrada "Faz parte do percurso" em verde escuro no meta do artigo e no stats da trilha, leva à página do percurso *(chip no acordeão removido em 2026-06-08)* |
 | **4.4 Página de trilha** | Hero verde + stats com CTA "Começar pelo primeiro" + lista ordenada de artigos + resultado esperado |
 | **4.4.1 Item de artigo na lista da trilha** | Número em círculo, card com tipo/tempo, stream vertical, checkpoints opcionais |
 | **4.5 Página de percurso** | Hero verde escuro + stats sem progresso + "como percorrer" (3 rotas por perfil) + cards de trilha |

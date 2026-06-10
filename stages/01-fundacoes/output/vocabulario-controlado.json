@@ -96,7 +96,7 @@
           "termo_moodle": null,
           "termo_mec": "Itinerário formativo (analogia, não equivalente formal)",
           "termo_popular": "Curso, formação, jornada",
-          "ver_tambem": ["Trilha", "Passo", "Chip de percurso"],
+          "ver_tambem": ["Trilha", "Passo", "Vínculo de percurso"],
           "decisao_origem": [17, 18, 27],
           "status": "definitivo"
         },
@@ -310,11 +310,11 @@
           "status": "definitivo"
         },
         {
-          "termo_preferido": "Chip de percurso",
-          "sinonimos_aceitos": ["chip de atribuição de percurso"],
-          "sinonimos_rejeitados": ["chip dourado", "badge de percurso", "tag de percurso", "marca de percurso"],
-          "definicao": "Pequeno componente em verde escuro que aparece no topo do box de trilha expandido, indicando que aquela trilha faz parte de um percurso.",
-          "contexto_uso": "Cor reservada: verde escuro (--verde-profundo), pílula sólida com texto branco — dourado abandonado em 2026-06-02. Clicável, leva à página do percurso. Especificação: Padrão 4.3 da Camada 4.5.",
+          "termo_preferido": "Vínculo de percurso",
+          "sinonimos_aceitos": ["entrada de percurso no meta"],
+          "sinonimos_rejeitados": ["chip de percurso", "chip de atribuição de percurso", "chip dourado", "badge de percurso", "tag de percurso", "marca de percurso"],
+          "definicao": "Entrada 'Faz parte do percurso' em verde escuro no painel de meta do artigo e no painel de stats da página de trilha, indicando que o conteúdo integra um percurso.",
+          "contexto_uso": "Cor reservada: verde escuro (--verde-profundo) — dourado abandonado em 2026-06-02. Clicável, leva à página do percurso. Revisão 2026-06-08 da Decisão 31: o chip dentro do acordeão de trilha foi removido; o vínculo migrou para o meta do artigo (.meta-block.meta-percurso) e o stats da trilha (.hero-stat--percurso). Especificação: design.md, componente 'Vínculo de percurso'.",
           "termo_moodle": null,
           "termo_mec": null,
           "termo_popular": null,

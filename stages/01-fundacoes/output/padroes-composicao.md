@@ -1,8 +1,8 @@
 # Camada 4.5 — Padrões de Composição
 
-> **Versão:** 1.0 — DRAFT
+> **Versão:** 1.1 — DRAFT
 > **Status:** Primeira camada formal do Content System
-> **Última atualização:** 2026-05-19
+> **Última atualização:** 2026-06-10 (Padrão 4.3 sincronizado com a revisão 2026-06-08 da Decisão 31 — chip removido do acordeão; vínculo de percurso no meta do artigo e stats da trilha)
 > **Decisões consolidadas:** 17, 18, 22, 25, 26, 27, 28, 29, 30, 31, 32
 > **Referências canônicas:** `stages/02-design-system/drafts/prototipos-paginas/prototipo-artigo.html`, `drafts/exploracao-multiplas-trilhas.html`, `drafts/exploracao-pagina-percurso.html`
 
@@ -118,7 +118,6 @@ Componente que aparece no sidebar do artigo quando ele pertence a uma ou mais tr
 ├────────────────────────────────────────┤
 │ Nome da trilha 1            5/12  ▼   │  ← item expandido
 │ ┌──────────────────────────────────┐  │
-│ │ 📖 Faz parte do percurso X       │  │  ← chip de percurso (se aplicável)
 │ │ ▓▓▓▓▓░░░░░  Artigo 5 de 12       │  │  ← barra estrutural
 │ │ 1. Artigo um                     │  │
 │ │ 2. Artigo dois                   │  │
@@ -137,28 +136,30 @@ Componente que aparece no sidebar do artigo quando ele pertence a uma ou mais tr
 - **Múltiplas trilhas abertas simultaneamente** são permitidas (não é acordeão exclusivo).
 - **Texto da posição é "Artigo X de Y"**, nunca "Passo X de Y" — "Passo" fica reservado a itens de percurso (Decisão 29).
 - **Barra de progresso é estrutural**, não pessoal — preenchimento representa a posição relativa do artigo na trilha (Decisão 29).
+- **O acordeão foca só na sequência de artigos da trilha** — o vínculo com percurso não aparece aqui (revisão 2026-06-08 da Decisão 31; ver Padrão 4.3).
 
 **Decisões de origem:** Decisões 18, 28, 29, 30
 **Referência:** `prototipo-artigo.html` (componente `.side-trilha`), `drafts/exploracao-multiplas-trilhas.html` (sub-opção A.2)
 
 ---
 
-### 4.3 — Chip de atribuição a percurso
+### 4.3 — Vínculo de percurso no painel de meta/stats *(revisado 2026-06-08)*
 
-Sinaliza, dentro do box de trilha, que aquela trilha faz parte de um percurso.
+Sinaliza que o artigo/trilha integra um percurso. Vive no **painel de informações** de cada superfície — não mais dentro do acordeão de trilha (o chip no acordeão foi removido na revisão 2026-06-08 da Decisão 31).
 
 | Atributo | Valor |
 |---|---|
-| **Quando usar** | Toda trilha que pertence a pelo menos um percurso |
-| **Posição** | Topo do conteúdo expandido do item da trilha (acima da barra de progresso) |
-| **Cor** | Pílula sólida em `--verde-profundo` (verde escuro), texto branco, rótulo/ícone em `--verde-claro` — dourado abandonado em 2026-06-02 |
-| **Comportamento** | Clicável; leva à página dedicada do percurso |
-| **Texto-padrão** | "Faz parte do percurso **{Nome do Percurso}**" |
+| **Quando usar** | Todo artigo cujas trilhas integram um percurso; toda trilha que pertence a pelo menos um percurso |
+| **Posição (artigo)** | `.meta-block.meta-percurso` no painel de meta (`.masthead-meta`), entre "Tempo de leitura" e "Compartilhar" |
+| **Posição (trilha)** | `.hero-stat.hero-stat--percurso` no painel de stats do hero, entre "Tempo de leitura" e "Compartilhar" |
+| **Cor** | Rótulo e link em `--verde-profundo` (cor reservada do percurso), ícone de percurso + chevron; hover em `--verde-marca`; modo escuro em `--verde-claro` — dourado abandonado em 2026-06-02 |
+| **Comportamento** | Clicável; leva à página dedicada do percurso. Condicional: só renderiza quando há vínculo |
+| **Texto-padrão** | Rótulo "FAZ PARTE DO PERCURSO" + nome do percurso |
 
-**Quando a trilha pertence a múltiplos percursos** (raro, mas possível): mostrar chips empilhados em ordem editorial. Mais de 3 percursos é sinal de alerta — provavelmente a trilha foi mal classificada.
+**Quando a trilha pertence a múltiplos percursos** (raro, mas possível): mostrar entradas empilhadas em ordem editorial. Mais de 3 percursos é sinal de alerta — provavelmente a trilha foi mal classificada.
 
-**Decisão de origem:** Decisão 31
-**Referência:** `drafts/prototipos-paginas/base-percurso.html`, `drafts/prototipos-paginas/base-artigo.html` (chip aplicado)
+**Decisão de origem:** Decisão 31 (superfícies revisadas em 2026-06-08)
+**Referência:** `drafts/prototipos-paginas/base-artigo.html` (meta) e `drafts/prototipos-paginas/base-trilha.html` (stats)
 
 ---
 
@@ -176,9 +177,9 @@ Sinaliza, dentro do box de trilha, que aquela trilha faz parte de um percurso.
    - H1 do nome da trilha
    - Subtítulo de uma linha
    - 2-3 parágrafos de descrição pedagógica explicando o que a trilha cobre, para quem é e por que a ordem dos artigos importa
-   - **Chip de percurso em verde escuro** (Padrão 4.3) se a trilha pertencer a um ou mais percursos
 2. **Stats card** (lateral no desktop)
    - N artigos em sequência, ~Xh leitura, N pré-requisitos, N percursos vinculados
+   - **Vínculo "Faz parte do percurso" em verde escuro** (Padrão 4.3) se a trilha pertencer a um ou mais percursos
    - **CTA "Começar pelo primeiro artigo"** — único caso em todas as superfícies onde um CTA "começar" faz sentido, porque na trilha a ordem importa
 3. **"Para quem é esta trilha"** + **"O que você vai dominar"** (duas colunas)
 4. **Pré-requisitos da trilha** — bloco horizontal com lista de links para artigos da própria base (ou indicação clara de pré-requisitos externos)
@@ -200,7 +201,7 @@ Sinaliza, dentro do box de trilha, que aquela trilha faz parte de um percurso.
 - **CTA "Começar pelo primeiro artigo" existe** (diferente da página de percurso, que não tem). Justificativa: na trilha a ordem importa; no percurso, não.
 - **Sem barra de progresso na página da trilha** — só posição estrutural de cada artigo (Decisão 29).
 - **Verde claro (`--accent`) é a cor reservada da trilha** — kicker, stats border, CTA, hover dos cards.
-- **Verde escuro (`--verde-profundo`) aparece apenas no chip de percurso e no box de pertencimento** — sinaliza atribuição ao percurso, não identidade da trilha. (Antes era dourado; abandonado em 2026-06-02.)
+- **Verde escuro (`--verde-profundo`) aparece apenas no vínculo de percurso (stats) e no box de pertencimento** — sinaliza atribuição ao percurso, não identidade da trilha. (Antes era dourado; abandonado em 2026-06-02.)
 
 ### 4.4.1 — Item de artigo na lista da trilha
 
@@ -318,7 +319,7 @@ Sinais para revisão editorial. Não impedem publicação, mas entram em relató
 | Artigo em 1-3 trilhas | Verde | Ideal |
 | Artigo em 4-5 trilhas | Amarelo | Verificar se o artigo não ficou genérico demais |
 | Artigo em ≥ 6 trilhas | Vermelho | Provavelmente artigo "curinga" que deveria virar 2-3 artigos mais específicos, ou virar um conceitual fora de trilhas |
-| Trilha sem chip de percurso | Verde | Trilha standalone — comportamento esperado |
+| Trilha sem vínculo de percurso | Verde | Trilha standalone — comportamento esperado |
 | Trilha em ≥ 4 percursos | Amarelo | Curadoria provavelmente confusa — revisar |
 
 ### 5.3 Regras do conteúdo do artigo (consequências da encadeabilidade)
@@ -339,7 +340,7 @@ Sinais para revisão editorial. Não impedem publicação, mas entram em relató
 |---|---|---|
 | 4.1 — Artigo encadeável | 18, 23, 24, 26 | `prototipo-artigo.html` |
 | 4.2 — Box de trilha multi-trilha | 18, 28, 29, 30 | `prototipo-artigo.html` (`.side-trilha`), `drafts/exploracao-multiplas-trilhas.html` (A.2) |
-| 4.3 — Chip de atribuição a percurso | 31 | `drafts/exploracao-pagina-percurso.html` (Parte 2) + `prototipo-artigo.html` |
+| 4.3 — Vínculo de percurso no meta/stats | 31 (rev. 2026-06-08) | `drafts/prototipos-paginas/base-artigo.html` (meta) + `base-trilha.html` (stats) |
 | 4.4 — Página de trilha | 18, 23, 25, 27, 29, 31 | `drafts/exploracao-pagina-trilha.html` |
 | 4.4.1 — Item de artigo na lista da trilha | 18, 23, 25 | `drafts/exploracao-pagina-trilha.html` (seção "Lista de Artigos") |
 | 4.5 — Página de percurso | 18, 27, 31 | `drafts/exploracao-pagina-percurso.html` (Parte 1) |
