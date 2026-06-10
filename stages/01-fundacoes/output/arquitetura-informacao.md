@@ -2,7 +2,7 @@
 
 > **Versão:** 1.1 — fechamento formal da IA de navegação
 > **Data:** 2026-06-02
-> **Status:** ✅ Aprovado (Decisões 33, 34) · ⏳ URLs semânticas — co-aprovação de Marcos pendente (Sprint 3) · ⏳ validação pedagógica conjunta com Decisões 25-32
+> **Status:** ✅ Aprovado (Decisões 33, 34) · ✅ URLs semânticas — co-aprovadas por Marcos em 2026-06-10, condicionadas ao plano de redirects 301 das URLs legadas (adendo na Decisão 34) · ⏳ validação pedagógica conjunta com Decisões 25-32
 > **Documento canônico** da arquitetura de navegação, das URLs e do breadcrumb.
 > **Referência cruzada:** `taxonomia.md` (4 eixos + §8 URLs) · `_config/decisoes.md` (Decisões 17, 18, 26, 28, 29, 33, 34) · `_config/pilares.md` (Pilar 4 Taxonomia, Pilar 11 Descoberta).
 
@@ -76,7 +76,7 @@ Início  /
 
 **Slugs reservados (Decisão 34):** como artigo e página-índice de categoria convivem na raiz, os **6 slugs de categoria** (`ferramentas`, `gestao-moodle`, `pedagogia`, `acessibilidade`, `conduta`, `identidade`) + `trilhas`, `percursos`, `topicos`, `buscar` (e demais seções de topo) são **reservados**. Nenhum artigo pode usá-los como slug — validação no save.
 
-> Slugs em minúsculas + hífen, sem acento (taxonomia §8). URLs semânticas ainda pendentes de co-aprovação de Marcos (Sprint 3); a direção (URL plana) é a Decisão 34.
+> Slugs em minúsculas + hífen, sem acento (taxonomia §8). URLs semânticas co-aprovadas por Marcos em 2026-06-10, condicionadas ao plano de redirects 301 das URLs legadas `/base/{slug}` (adendo na Decisão 34).
 
 ---
 
@@ -156,7 +156,7 @@ A camada de jornada tem suas próprias superfícies — fortes e corretas para o
 | **Acordeão "Trilhas deste artigo"** | Sidebar do artigo, sempre visível quando aplicável; posição `X/Y` mesmo colapsado; múltiplas trilhas listadas | 28, 29, 30 |
 | **Página de Trilha** | `/trilhas/{slug}` — lista ordenada dos artigos | 18 |
 | **Página de Percurso** | `/percursos/{slug}` — verde escuro, hero + "como percorrer" + 3 rotas de entrada por perfil | 27, 31 |
-| **Chip de percurso (verde escuro)** | No topo do acordeão de trilha, quando a trilha integra um percurso | 31 |
+| **Vínculo de percurso (verde escuro)** | Entrada "Faz parte do percurso" no **painel de meta do artigo** e no **painel de stats da página de trilha**, quando há vínculo. *(O chip no topo do acordeão de trilha foi removido na revisão de 2026-06-08 — o acordeão foca só na sequência de artigos.)* | 31 (rev. 2026-06-08) |
 
 Breadcrumb e acordeão são **complementares**: o breadcrumb responde "onde estou na classificação"; o acordeão responde "de que jornadas isto faz parte". Cada um na sua camada.
 
@@ -179,7 +179,8 @@ Breadcrumb e acordeão são **complementares**: o breadcrumb responde "onde esto
 
 | Pendência | Bloqueia | Responsável |
 |---|---|---|
-| **Co-aprovação das URLs** (URL plana — Decisão 34) | URLs em produção, implementação WP | Marcos (Sprint 3) |
+| ~~**Co-aprovação das URLs** (URL plana — Decisão 34)~~ ✅ co-aprovada em 2026-06-10 | — | ~~Marcos~~ Resolvida (com plano de redirects 301 — adendo na Decisão 34) |
+| **Redirects 301 das URLs legadas** `/base/{slug}` (+ mapa manual dos `/percursos/*` antigos) | Lançamento sem quebrar links externos/SEO | Fases E (meta de slug legado) · 3/5 (regra + QA) |
 | **Página-índice de categoria** `/{categoria}/` — definir layout | Destino do segmento de categoria no breadcrumb | Fase 2 (Design System) |
 | **Listagem de trilhas** `/trilhas` — confirmar como página | Breadcrumb da trilha ter pai navegável | Elton (Sprint 3) |
 | **Guarda de slugs reservados** — implementar validação no editor | Evitar colisão artigo × categoria/seções na raiz | Fase 3 (WP) |
@@ -198,7 +199,7 @@ Breadcrumb e acordeão são **complementares**: o breadcrumb responde "onde esto
 | 27 | Percurso é agregação (narra, não classifica) | §2, §7 |
 | 28, 29 | Vínculo estrutural sem referrer; V1 sem progresso pessoal | §6, §7 |
 | 30 | Acordeão multi-trilha | §2, §7 |
-| 31 | Superfícies do percurso (verde escuro — dourado abandonado 2026-06-02) | §7 |
+| 31 | Superfícies do percurso (verde escuro — dourado abandonado 2026-06-02; 4 superfícies após revisão 2026-06-08) | §7 |
 | **33** | **Breadcrumb reflete a árvore de classificação** | §5, §6 |
 | **34** | **URL plana do artigo (categoria fora da URL)** | §2, §3, §4, §5 |
 
@@ -210,3 +211,5 @@ Breadcrumb e acordeão são **complementares**: o breadcrumb responde "onde esto
 |---|---|---|---|
 | 1.0 | 2026-06-02 | Documento canônico criado. Formaliza as 2 camadas (classificação vs jornada), o sitemap, os tipos de página e a regra de breadcrumb taxonômico (Decisão 33). | Elton + Claude |
 | 1.1 | 2026-06-02 | **URL plana do artigo** (Decisão 34): categoria sai da URL. Sitemap, tabela de URLs e exemplos atualizados; slugs reservados; regra de breadcrumb reconciliada (reflete a árvore de classificação, não a string da URL); §5.4 reforça `BreadcrumbList` como portador do sinal de categoria. | Elton + Claude |
+| 1.2 | 2026-06-10 | §7 sincronizada com a revisão 2026-06-08 da Decisão 31: chip de percurso removido do acordeão; vínculo de percurso passa a viver no meta do artigo e no stats da trilha (4 superfícies). | Marcos + Claude |
+| 1.3 | 2026-06-10 | **URL plana co-aprovada por Marcos**, condicionada ao plano de redirects 301 das URLs legadas `/base/{slug}` (adendo na Decisão 34). Status e §9 (pendências) atualizados; pendência nova de redirects registrada. | Marcos + Claude |

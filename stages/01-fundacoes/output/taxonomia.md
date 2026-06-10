@@ -2,7 +2,7 @@
 
 > **Versão:** 1.0 — fechamento formal da arquitetura taxonômica
 > **Data:** 2026-05-26
-> **Status:** ✅ Aprovado (Decisões 17, 18, 25–32) · ⏳ URLs semânticas — URL **plana** do artigo (Decisão 34), co-aprovação de Marcos pendente (Sprint 3)
+> **Status:** ✅ Aprovado (Decisões 17, 18, 25–32) · ✅ URLs semânticas — URL **plana** do artigo (Decisão 34), co-aprovada por Marcos em 2026-06-10, condicionada ao plano de redirects 301 das URLs legadas (adendo na Decisão 34)
 > **Documento canônico** do Bloco 2 da Fase 1.
 > **Referência cruzada:** `_config/decisoes.md` (Decisões 17–32) · `output/contentsystem.md` §B.3–B.4 · `output/vocabulario-controlado.json` (Eixo 3 — definições)
 
@@ -131,7 +131,7 @@ A semântica dos três níveis (Decisão 18):
 | Percurso **não tem ordem linear obrigatória** — o leitor escolhe por qual trilha começar. A página dedicada sugere **3 rotas de entrada por perfil** | 18, 27, 31 |
 | Pode conter **trilhas + artigos soltos complementares** | 18, 27 |
 | **Cor reservada: verde escuro** (`--verde-profundo` / `--verde-marca`) — dourado abandonado em 2026-06-02. Verde claro (`--accent`) fica reservado para trilha. Categoria/Tópico são neutros | 31 |
-| Três superfícies de apresentação: (a) página dedicada `/percursos/{slug}` · (b) chip em verde escuro no topo do acordeão de trilha · (c) listagem `/percursos` (grid com borda verde escura de 4px) | 31 |
+| **Quatro superfícies** de apresentação (revisão 2026-06-08): (a) página dedicada `/percursos/{slug}` · (b) vínculo "Faz parte do percurso" no **painel de meta do artigo** · (c) idem no **painel de stats da página de trilha** · (d) listagem `/percursos` (grid com borda verde escura de 4px). O chip dentro do acordeão de trilha foi **removido** — o acordeão foca só na sequência de artigos | 31 |
 | Terminologia: itens de um **percurso** chamam-se *passos* (podem ser trilhas ou artigos) | 18 |
 | **Nomeação:** título = **gerúndio aspiracional** ("Dominando o Moodle") ou identidade profissional. Comunica formação numa área inteira. Ver `convencao-titulos.md` §4 | — |
 
@@ -241,7 +241,7 @@ Percurso V1 "Dominando o Moodle" agrega as 3 trilhas do núcleo Moodle.
 
 ---
 
-## 8. URLs semânticas — proposta (⏳ co-aprovação de Marcos pendente — Sprint 3)
+## 8. URLs semânticas (✅ co-aprovada por Marcos em 2026-06-10 — com plano de redirects 301 das URLs legadas; ver adendo na Decisão 34)
 
 > **Atualização 2026-06-02 (Decisão 34):** a **categoria sai da URL do artigo**. URL plana na raiz. A categoria continua sendo o pai de classificação (breadcrumb + página-índice), mas **não compõe o permalink**. Reverte o padrão `/{categoria}/{slug}` proposto até 2026-06-01.
 
@@ -340,7 +340,7 @@ Detalhamento em `contentsystem.md` §B.3 e §B.4. Mapeamento:
 | 28 | Box de trilha sempre visível (vínculo estrutural) | §6.1 |
 | 29 | V1 sem rastreamento de progresso pessoal | §6.1 |
 | 30 | Apresentação multi-trilha por acordeão | §6.1 |
-| 31 | Apresentação visual do percurso (3 superfícies, cor verde escura — dourado abandonado 2026-06-02) | §6.2 |
+| 31 | Apresentação visual do percurso (4 superfícies após revisão 2026-06-08, cor verde escura — dourado abandonado 2026-06-02) | §6.2 |
 | 32 | Remoção do prev/next no rodapé do artigo | §6.1 (consequência: navegação exclusiva pelo acordeão) |
 | Fechamento 2026-05-21 | 6ª categoria (Gestão e Operação do Moodle) + 25 tópicos | §4, §5 |
 
@@ -353,3 +353,5 @@ Detalhamento em `contentsystem.md` §B.3 e §B.4. Mapeamento:
 | 1.0 | 2026-05-26 | Documento canônico criado. Consolida Decisões 17, 18, 25–32 + fechamento da 6ª categoria e 25 tópicos (2026-05-21). URLs semânticas em §8 como proposta pendente. | Elton + Claude |
 | 1.1 | 2026-06-01 | §6.4 reescrita: 5 trilhas-piloto estimadas → 9 trilhas-tarefa + 1 candidata, a partir da análise dos 131 artigos reais (`trilhas-percursos-mapa.md`). Regra de nomeação adicionada em §6.1/§6.2 (`convencao-titulos.md`). §7.4 atualizada. | Elton + Claude |
 | 1.2 | 2026-06-02 | §8 reescrita (Decisão 34): **URL plana do artigo** `/{slug}` — categoria sai da URL, vira só breadcrumb + página-índice; slugs reservados; pergunta aberta de recategorização resolvida. §2/§4 ajustadas. Breadcrumb taxonômico formalizado (Decisão 33) — ver `arquitetura-informacao.md`. | Elton + Claude |
+| 1.3 | 2026-06-10 | §6.2 sincronizada com a revisão 2026-06-08 da Decisão 31: **4 superfícies** do percurso (chip removido do acordeão; vínculo migrou para o meta do artigo e o stats da trilha). §9 ajustada. | Marcos + Claude |
+| 1.4 | 2026-06-10 | §8: **URL plana co-aprovada por Marcos**, condicionada ao plano de redirects 301 das URLs legadas `/base/{slug}` (adendo na Decisão 34). Status do cabeçalho atualizado. | Marcos + Claude |
