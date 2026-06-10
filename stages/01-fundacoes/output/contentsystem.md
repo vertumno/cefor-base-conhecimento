@@ -559,7 +559,7 @@ Múltiplos autores seguem norma ABNT.
 |---|---|---|---|---|---|
 | **Tipo** | 1 | `tipo` | 1 por artigo | Não | Tutorial · Referência · Conceitual · Solução de Problema · Recurso |
 | **Categoria** | 2 | `categoria` | 1 por artigo | Não | 6 valores (✅ fechados — 2026-05-21): Ferramentas e Recursos · Gestão e Operação do Moodle · Pedagogia e Planejamento · Acessibilidade · Conduta e Conformidade · Identidade |
-| **Tópico** | 3 | `topico` | 2 a 4 por artigo | Não | ✅ 25 tópicos controlados (fechados — 2026-05-21). **Tags livres abolidas** |
+| **Tópico** | 3 | `topico` | 2 a 4 por artigo | Não | ✅ 31 tópicos controlados (25 fechados em 2026-05-21 + 6 da Decisão 36, 2026-06-10). **Tags livres abolidas** |
 | **Trilha** | 4 | (CPT `trilha`, não taxonomia) | 0 ou mais | — | Relação artigo↔trilha |
 
 ### As 6 categorias (Eixo 2) — com slug de URL
@@ -575,16 +575,17 @@ Múltiplos autores seguem norma ABNT.
 
 > **Por que "Moodle" não é categoria:** 60% do acervo (~78 artigos) era Moodle — uma categoria que abriga 60% não ajuda a navegar. O operacional de Moodle vai para *Gestão e Operação*; as atividades, para *Ferramentas e Recursos*; "avaliação" atravessa as duas e é unificada pelos **tópicos**.
 
-### Os 25 tópicos (Eixo 3) — lista fechada
+### Os 31 tópicos (Eixo 3) — lista fechada
 
-`Questionário · Banco de Questões · Tarefa · Fórum · Livro de Notas · H5P · Rótulo · Webconferência · Vídeo · Áudio e Podcast · Livro Digital · Configuração de Curso · Matrícula e Inscrição · Backup e Restauração · Moodle Codes · Sala Virtual · IA Generativa · GPT Customizado · Libras · Audiodescrição · Inclusão e Desenho Universal · Planejamento e Design Educacional · Padrão Visual · MOOC · Direitos Autorais e Segurança`
+`Questionário · Banco de Questões · Tarefa · Fórum · Livro de Notas · H5P · Rótulo · Webconferência · Vídeo · Áudio e Podcast · Livro Digital · Atividades e Recursos · Configuração de Curso · Matrícula e Inscrição · Backup e Restauração · Moodle Codes · Sala Virtual · Gamificação e Engajamento · Comunicação e Interação · IA Generativa · GPT Customizado · Libras · Audiodescrição · Inclusão e Desenho Universal · Planejamento e Design Educacional · Produção de Conteúdo · Ferramentas Externas · Padrão Visual · MOOC · Direitos Autorais e Segurança · Procedimentos Institucionais`
 
 > Definições e sinônimos em `vocabulario-controlado.json` → `topicos_controlados`. "Prova" é sinônimo popular de *Questionário*, não tópico. Status `a_validar` — refinamento pedagógico fino pendente com Rute.
+> **Ampliação 2026-06-10 (Decisão 36):** +6 tópicos (Atividades e Recursos · Gamificação e Engajamento · Comunicação e Interação · Produção de Conteúdo · Ferramentas Externas · Procedimentos Institucionais) — o mapeamento real da Fase G deixou 70/129 artigos abaixo da cardinalidade mínima por falta de termo para assuntos reais do acervo. Validação pedagógica Elton + Rute pendente.
 
 **Regras de validação no editor:**
 - `tipo` e `categoria`: exatamente 1 (campo obrigatório, select único).
 - `topico`: mínimo 2, máximo 4 (validação no save).
-- `topico` **não permite digitação livre** — escolha entre os 25 termos controlados.
+- `topico` **não permite digitação livre** — escolha entre os 31 termos controlados.
 
 ---
 
@@ -764,6 +765,7 @@ Padrão proposto (a confirmar com Elton + Marquito):
 |---|---|---|---|
 | 1.0 | 2026-05-21 | Documento mestre consolidado: Parte A (10+ camadas, drafts redigidos das faltantes) + Parte B (spec WordPress). Camadas 1, 3, 4.5 por referência; 2, 4, 5, 6, 7, 8, 9, 10 redigidas em draft. | Elton + Claude |
 | 1.1 | 2026-05-21 | Taxonomia fechada: 6ª categoria (Gestão e Operação do Moodle) + 25 tópicos do Eixo 3, com slugs. B.3 atualizada; pendências de categoria/tópico resolvidas. Sincronizado com `vocabulario-controlado.json` v1.1. | Elton + Claude |
+| 1.2 | 2026-06-10 | B.3: Eixo 3 ampliado para **31 tópicos** (Decisão 36 — Atividades e Recursos · Gamificação e Engajamento · Comunicação e Interação · Produção de Conteúdo · Ferramentas Externas · Procedimentos Institucionais), motivado pelo déficit de cardinalidade em 70/129 artigos no mapeamento real (Fase G). Validação Elton + Rute pendente. Sincronizado com `taxonomia.md` v1.5 e `vocabulario-controlado.json` v1.2. | Marcos + Claude |
 
 ---
 

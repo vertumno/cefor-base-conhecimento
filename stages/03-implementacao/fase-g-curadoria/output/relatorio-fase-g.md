@@ -14,7 +14,7 @@ deixou taxonomias zeradas de propósito). Esta fase derivou e aplicou:
 |---|---|
 | `cgte_tipo` (1 por artigo) | 129 artigos — Tutorial 60 · Referência 29 · Conceitual 19 · Recurso 17 · Solução de Problema 1 (contagens públicas: 126; 4 classificados não públicos) |
 | `cgte_categoria` (1 por artigo) | ferramentas 65 · gestao-moodle 35 · identidade 10 · acessibilidade 6 · conduta 5 · pedagogia 5 |
-| `cgte_topico` (0–4 por artigo) | 25 tópicos do vocabulário, atribuição honesta (sem tópico de enchimento) |
+| `cgte_topico` (2–4 por artigo) | **31 tópicos** do vocabulário (25 + 6 da Decisão 36) — déficit de cardinalidade **zerado** em 2026-06-10 |
 | `cgte_subtitulo` | 129 subtítulos novos (10–25 palavras, regra do contentsystem.md) |
 | Trilhas (`cgte_trilha`) | T1–T9 criadas **publish**, T10 **draft** (candidata — confirmar com Rute), com `cgte_artigos` na ordem do mapa e subtítulo |
 | Percurso (`cgte_percurso`) | "Dominando o Moodle" **publish**: 3 trilhas + 2 complementares + 3 rotas de entrada (`cgte_como_percorrer`) |
@@ -58,12 +58,19 @@ usam wp_id + conferência de slug).
 2. **Trilha-teste "Moodle Dominado Perfeito"** (publish, 4 artigos) encontrada no
    destino — não veio do mapa, nome fora da convenção. Candidata a remoção
    (criação manual de teste?).
-3. **Déficit de tópicos**: 70 artigos com <2 tópicos (regra: 2–4). Atribuição
-   preferiu precisão a cota — vários assuntos (Wiki, Glossário, Emblemas,
-   Padlet, Medium, diploma digital…) não têm tópico no vocabulário de 25.
-   Backlog da curadoria fina com Rute/Juliana: ou estender o vocabulário
-   (decisão formal Elton+Rute) ou aceitar 1 tópico nesses casos. Lista completa
-   no console do `consolidar_mapeamento.py`.
+3. ~~**Déficit de tópicos**: 70 artigos com <2 tópicos.~~ ✅ **Resolvido em
+   2026-06-10 pela Decisão 36** (`_config/decisoes.md`): vocabulário ampliado
+   25 → 31 (+Atividades e Recursos · Gamificação e Engajamento · Comunicação e
+   Interação · Produção de Conteúdo · Ferramentas Externas · Procedimentos
+   Institucionais). Adições aplicadas via `scripts/patch_topicos_decisao36.py`
+   → reconsolidação → reaplicação. **Déficit: 0** nos 129 classificados.
+   Sincronizado: `taxonomia.md` v1.5 · `contentsystem.md` v1.2 ·
+   `vocabulario-controlado.json` v1.2 · plugin v0.3.4 (`data/topicos.php` +
+   semeadura versionada por option — termos novos chegam no deploy sem
+   reativação). Validação pedagógica Elton + Rute pendente (status `a_validar`).
+   Achado colateral: o artigo 3341 (Orientações sobre a Base, não-classificar)
+   recebeu tipo manualmente no admin e está com 0 tópicos — decisão de quem
+   o classificou.
 4. **Não classificados (10)** — utilitários e fora-da-base (mapa §5); decisão de
    arquivar (status `cgte_arquivado`) fica com a equipe:
    3335 processo CGTE (private) · 3336 listagem alfabética · 3341 orientações

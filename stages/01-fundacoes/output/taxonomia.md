@@ -66,22 +66,23 @@ Definir a arquitetura taxonômica única da nova Base de Conhecimento — substi
 
 ---
 
-## 5. Eixo 3 — Tópico (25 valores fechados — 2026-05-21)
+## 5. Eixo 3 — Tópico (31 valores fechados — 2026-05-21, ampliado 2026-06-10)
 
 Substitui as 82 tags livres da base antiga. **Sem auto-criação, sem digitação livre, casing fixo.**
 
 | Grupo | Tópicos |
 |---|---|
 | **Atividades e avaliação Moodle** | `Questionário` · `Banco de Questões` · `Tarefa` · `Fórum` · `Livro de Notas` |
-| **Recursos Moodle** | `H5P` · `Rótulo` · `Webconferência` · `Vídeo` · `Áudio e Podcast` · `Livro Digital` |
-| **Gestão do AVA** | `Configuração de Curso` · `Matrícula e Inscrição` · `Backup e Restauração` · `Moodle Codes` · `Sala Virtual` |
+| **Recursos Moodle** | `H5P` · `Rótulo` · `Webconferência` · `Vídeo` · `Áudio e Podcast` · `Livro Digital` · `Atividades e Recursos` |
+| **Gestão do AVA** | `Configuração de Curso` · `Matrícula e Inscrição` · `Backup e Restauração` · `Moodle Codes` · `Sala Virtual` · `Gamificação e Engajamento` · `Comunicação e Interação` |
 | **Inteligência Artificial** | `IA Generativa` · `GPT Customizado` |
 | **Acessibilidade** | `Libras` · `Audiodescrição` · `Inclusão e Desenho Universal` |
-| **Pedagogia** | `Planejamento e Design Educacional` |
+| **Pedagogia** | `Planejamento e Design Educacional` · `Produção de Conteúdo` |
+| **Ferramentas externas** | `Ferramentas Externas` |
 | **Identidade institucional** | `Padrão Visual` · `MOOC` |
-| **Conduta** | `Direitos Autorais e Segurança` |
+| **Conduta** | `Direitos Autorais e Segurança` · `Procedimentos Institucionais` |
 
-**Total: 25 tópicos.**
+**Total: 31 tópicos** (25 de 2026-05-21 + 6 da Decisão 36, 2026-06-10 — motivados pelo mapeamento real da Fase G: 70 dos 129 artigos classificados ficavam abaixo da cardinalidade mínima porque assuntos reais do acervo — atividades sem tópico próprio, ferramentas externas, gamificação, comunicação, produção de material e procedimentos institucionais — não tinham termo. Cada tópico novo cobre ≥7 artigos reais; nenhum recria a cauda longa).
 
 **Regras de governança** (operacionalizadas na Camada 9 — ContentOps):
 - Cardinalidade: **mínimo 2, máximo 4** por artigo.
@@ -322,7 +323,7 @@ Detalhamento em `contentsystem.md` §B.3 e §B.4. Mapeamento:
 | **Estratégia de Descoberta** (SEO estrutural + GEO + busca interna) — `output/descoberta-seo-geo.md` | Implementação SEO/busca (Fase 3) | Elton + Marcos (Sprint 3) |
 | **Validação pedagógica das Decisões 25–32** (Trilha/Percurso) | Arquitetura Trilha/Percurso vira fonte canônica definitiva | Reunião com Rute + Marquito a marcar |
 | **Validação das 5 trilhas-piloto** (ordem, começo/meio/fim) | Fase 4 (Produção de Conteúdo) | Rute + Juliana |
-| **Refino pedagógico fino dos 25 tópicos** (status `a_validar` no vocabulário) | Linter e busca completos (não bloqueia operação) | Rute |
+| **Refino pedagógico fino dos 31 tópicos** (status `a_validar` no vocabulário) + validação dos 6 tópicos da Decisão 36 | Linter e busca completos (não bloqueia operação) | Elton + Rute |
 | **Mapeamento dos 131 artigos antigos** nos novos eixos | Triagem (Fase 4.1) | Elton + Juliana |
 | **Definição dos percursos V1** a partir das trilhas-piloto | Componente "página de percurso" carregar conteúdo real | Elton + Rute (após validação das trilhas) |
 
@@ -343,6 +344,7 @@ Detalhamento em `contentsystem.md` §B.3 e §B.4. Mapeamento:
 | 31 | Apresentação visual do percurso (4 superfícies após revisão 2026-06-08, cor verde escura — dourado abandonado 2026-06-02) | §6.2 |
 | 32 | Remoção do prev/next no rodapé do artigo | §6.1 (consequência: navegação exclusiva pelo acordeão) |
 | Fechamento 2026-05-21 | 6ª categoria (Gestão e Operação do Moodle) + 25 tópicos | §4, §5 |
+| 36 | Ampliação do Eixo 3: 25 → 31 tópicos (cobertura do acervo real, Fase G) | §5 |
 
 ---
 
@@ -355,3 +357,4 @@ Detalhamento em `contentsystem.md` §B.3 e §B.4. Mapeamento:
 | 1.2 | 2026-06-02 | §8 reescrita (Decisão 34): **URL plana do artigo** `/{slug}` — categoria sai da URL, vira só breadcrumb + página-índice; slugs reservados; pergunta aberta de recategorização resolvida. §2/§4 ajustadas. Breadcrumb taxonômico formalizado (Decisão 33) — ver `arquitetura-informacao.md`. | Elton + Claude |
 | 1.3 | 2026-06-10 | §6.2 sincronizada com a revisão 2026-06-08 da Decisão 31: **4 superfícies** do percurso (chip removido do acordeão; vínculo migrou para o meta do artigo e o stats da trilha). §9 ajustada. | Marcos + Claude |
 | 1.4 | 2026-06-10 | §8: **URL plana co-aprovada por Marcos**, condicionada ao plano de redirects 301 das URLs legadas `/base/{slug}` (adendo na Decisão 34). Status do cabeçalho atualizado. | Marcos + Claude |
+| 1.5 | 2026-06-10 | §5 ampliada (Decisão 36): **31 tópicos** (+6: Atividades e Recursos · Gamificação e Engajamento · Comunicação e Interação · Produção de Conteúdo · Ferramentas Externas · Procedimentos Institucionais) + grupo novo "Ferramentas externas". Motivação: 70/129 artigos da Fase G abaixo da cardinalidade mínima. Validação pedagógica Elton + Rute pendente. Sincronizado com `contentsystem.md` §B.3 e `vocabulario-controlado.json` v1.2. | Marcos + Claude |

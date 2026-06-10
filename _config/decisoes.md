@@ -1073,6 +1073,33 @@ A página da trilha (`base-trilha.html`) recebe a mesma entrada no painel de sta
 
 ---
 
+## Decisão 36 — Ampliação do Eixo 3: 25 → 31 tópicos (cobertura do acervo real)
+
+**O que decidir:** O vocabulário fechado de 25 tópicos cobre o acervo real? O mapeamento artigo-a-artigo da Fase G (2026-06-10) deixou **70 dos 129 artigos classificados abaixo da cardinalidade mínima de 2 tópicos** — não por preguiça de curadoria, mas porque assuntos reais do acervo não tinham termo: guias de atividades sem tópico próprio (Wiki, Glossário, Escolha, Página, Pasta…), ferramentas externas (Canva, Padlet, PowToon…), gamificação (emblemas, Level Up, barra de progresso), comunicação (mensagens, webconferência como interação, netiqueta), produção de material didático e procedimentos institucionais (diploma digital, contas, processos MOOC).
+
+**Resolução (2026-06-10):** ✅ **APLICADO como proposta** (direção de Marcos; validação pedagógica formal Elton + Rute pendente, mesma régua das Decisões 25–32) — **+6 tópicos**, total **31**:
+
+| Tópico novo | Grupo | Artigos reais cobertos |
+|---|---|---|
+| `Atividades e Recursos` | Recursos Moodle | ~24 (guias de referência das atividades/recursos e operações do dia a dia) |
+| `Produção de Conteúdo` | Pedagogia | ~23 (mídias, objetos educacionais, gravação de tela, H5P, templates) |
+| `Comunicação e Interação` | Gestão do AVA | ~10 (mensagens, fóruns, webconferências, netiqueta) |
+| `Ferramentas Externas` | Ferramentas externas *(grupo novo)* | ~10 (Canva, Padlet, PowToon, Medium, Captura…) |
+| `Procedimentos Institucionais` | Conduta | ~8 (diploma digital, contas, sistema acadêmico, processos MOOC) |
+| `Gamificação e Engajamento` | Gestão do AVA | ~7 (emblemas, Level Up, barra de progresso, conclusão) |
+
+**Critérios aplicados (anti-cauda-longa):**
+- Cada tópico novo cobre **≥7 artigos reais** do acervo carregado (a regra antiga eliminou tags de uso ≤2 — nenhum tópico novo recai nisso).
+- Ortogonais aos 25 existentes: complementam, não duplicam (ex.: `Atividades e Recursos` convive com `Tarefa`/`Fórum` — o específico quando existe, o geral para o guia).
+- Assuntos de **apenas 2 artigos** (ex.: aplicativo Moodle Mobile) **não** ganharam tópico — receberam a melhor combinação dos existentes.
+
+**Impacto (sincronização obrigatória — regra do §5 da taxonomia):**
+- `taxonomia.md` §5 (v1.5) · `contentsystem.md` §B.3 (v1.2) · `vocabulario-controlado.json` → `topicos_controlados` (v1.2, com definições e sinônimos).
+- Plugin `cgte-estrutura`: `data/topicos.php` 25→31 + semeadura re-executada.
+- Fase G reaplicada: déficit de cardinalidade zerado nos 129 artigos classificados.
+
+---
+
 ## Decisões ainda em aberto — Refinamento 2026-05-19
 
 | Tema | Pergunta em aberto | Onde será fechado |

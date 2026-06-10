@@ -247,7 +247,10 @@
    "id_inventario": null,
    "tipo": "Tutorial",
    "categoria": "ferramentas",
-   "topicos": [],
+   "topicos": [
+    "Gamificação e Engajamento",
+    "Sala Virtual"
+   ],
    "subtitulo": "Visualize, entenda e gerencie os emblemas que você conquista como estudante no Moodle.",
    "trilhas": []
   },
@@ -260,7 +263,8 @@
    "tipo": "Tutorial",
    "categoria": "ferramentas",
    "topicos": [
-    "Configuração de Curso"
+    "Configuração de Curso",
+    "Gamificação e Engajamento"
    ],
    "subtitulo": "Configure, atribua e gerencie emblemas para reconhecer as conquistas dos estudantes no seu curso Moodle.",
    "trilhas": []
@@ -274,7 +278,8 @@
    "tipo": "Conceitual",
    "categoria": "pedagogia",
    "topicos": [
-    "Planejamento e Design Educacional"
+    "Planejamento e Design Educacional",
+    "Comunicação e Interação"
    ],
    "subtitulo": "Cenário da série Cenários do AVA sobre os desafios da comunicação clara em disciplinas virtuais.",
    "trilhas": []
@@ -297,7 +302,9 @@
    "tipo": "Tutorial",
    "categoria": "ferramentas",
    "topicos": [
-    "Vídeo"
+    "Vídeo",
+    "Ferramentas Externas",
+    "Produção de Conteúdo"
    ],
    "subtitulo": "Grave a tela do computador e produza videotutoriais simples com o gravador on-line gratuito Apowersoft.",
    "trilhas": []
@@ -311,7 +318,8 @@
    "tipo": "Tutorial",
    "categoria": "pedagogia",
    "topicos": [
-    "Planejamento e Design Educacional"
+    "Planejamento e Design Educacional",
+    "Procedimentos Institucionais"
    ],
    "subtitulo": "Entenda o instrumento que organiza o planejamento das disciplinas a distância no Cefor e aprenda a preenchê-lo.",
    "trilhas": []
@@ -325,7 +333,8 @@
    "tipo": "Conceitual",
    "categoria": "gestao-moodle",
    "topicos": [
-    "Sala Virtual"
+    "Sala Virtual",
+    "Atividades e Recursos"
    ],
    "subtitulo": "Visão geral do AVA do Ifes na versão 4.0: organização da sala virtual e onde encontrar as principais ferramentas.",
    "trilhas": [
@@ -344,7 +353,9 @@
    "tipo": "Recurso",
    "categoria": "ferramentas",
    "topicos": [
-    "Vídeo"
+    "Vídeo",
+    "Ferramentas Externas",
+    "Produção de Conteúdo"
    ],
    "subtitulo": "Ferramenta on-line para criar apresentações animadas com interface intuitiva de arrastar e soltar, sem exigir experiência em design.",
    "trilhas": []
@@ -358,7 +369,8 @@
    "tipo": "Conceitual",
    "categoria": "ferramentas",
    "topicos": [
-    "Questionário"
+    "Questionário",
+    "Atividades e Recursos"
    ],
    "subtitulo": "Entenda o que é a prova on-line no AVA e por que o Questionário é o recurso central da avaliação a distância.",
    "trilhas": [
@@ -557,7 +569,8 @@
    "tipo": "Tutorial",
    "categoria": "ferramentas",
    "topicos": [
-    "Questionário"
+    "Questionário",
+    "Configuração de Curso"
    ],
    "subtitulo": "Crie um questionário para cada dia e horário de aplicação, conforme o cronograma de provas do curso.",
    "trilhas": []
@@ -591,7 +604,8 @@
    "tipo": "Tutorial",
    "categoria": "gestao-moodle",
    "topicos": [
-    "Configuração de Curso"
+    "Configuração de Curso",
+    "Atividades e Recursos"
    ],
    "subtitulo": "Passo a passo para alterar a data de uma atividade e manter os prazos da sala virtual organizados.",
    "trilhas": []
@@ -605,7 +619,8 @@
    "tipo": "Tutorial",
    "categoria": "gestao-moodle",
    "topicos": [
-    "Sala Virtual"
+    "Sala Virtual",
+    "Atividades e Recursos"
    ],
    "subtitulo": "Veja como mover recursos e atividades ao editar a organização da sua sala virtual no Moodle.",
    "trilhas": []
@@ -619,7 +634,8 @@
    "tipo": "Tutorial",
    "categoria": "gestao-moodle",
    "topicos": [
-    "Livro de Notas"
+    "Livro de Notas",
+    "Sala Virtual"
    ],
    "subtitulo": "Acompanhe as notas dos estudantes pelo quadro de notas da sala virtual do Moodle.",
    "trilhas": [
@@ -638,7 +654,8 @@
    "tipo": "Tutorial",
    "categoria": "gestao-moodle",
    "topicos": [
-    "Sala Virtual"
+    "Sala Virtual",
+    "Atividades e Recursos"
    ],
    "subtitulo": "Tipos de links no Moodle, como utilizá-los e os benefícios do hipertexto na sala virtual.",
    "trilhas": []
@@ -687,7 +704,8 @@
    "tipo": "Referência",
    "categoria": "ferramentas",
    "topicos": [
-    "Sala Virtual"
+    "Sala Virtual",
+    "Atividades e Recursos"
    ],
    "subtitulo": "O que é o recurso Pasta, quando usar e como inseri-lo para organizar arquivos na sala virtual.",
    "trilhas": []
@@ -701,7 +719,8 @@
    "tipo": "Tutorial",
    "categoria": "ferramentas",
    "topicos": [
-    "Questionário"
+    "Questionário",
+    "Configuração de Curso"
    ],
    "subtitulo": "Visão do processo completo da prova on-line para a equipe multidisciplinar, do planejamento à aplicação.",
    "trilhas": [
@@ -740,7 +759,8 @@
    "tipo": "Tutorial",
    "categoria": "ferramentas",
    "topicos": [
-    "Questionário"
+    "Questionário",
+    "Banco de Questões"
    ],
    "subtitulo": "Ative o embaralhamento de questões e de alternativas para aumentar a segurança da prova on-line.",
    "trilhas": [
@@ -759,7 +779,8 @@
    "tipo": "Conceitual",
    "categoria": "ferramentas",
    "topicos": [
-    "Questionário"
+    "Questionário",
+    "Configuração de Curso"
    ],
    "subtitulo": "Entenda como dividir a aplicação da prova on-line em grupos e horários conforme a capacidade dos polos.",
    "trilhas": []
@@ -828,7 +849,9 @@
    "tipo": "Recurso",
    "categoria": "ferramentas",
    "topicos": [
-    "Planejamento e Design Educacional"
+    "Planejamento e Design Educacional",
+    "Ferramentas Externas",
+    "Produção de Conteúdo"
    ],
    "subtitulo": "Conheça ferramentas que permitem a qualquer pessoa produzir seus próprios objetos educacionais digitais.",
    "trilhas": []
@@ -842,7 +865,9 @@
    "tipo": "Recurso",
    "categoria": "ferramentas",
    "topicos": [
-    "Vídeo"
+    "Vídeo",
+    "Ferramentas Externas",
+    "Produção de Conteúdo"
    ],
    "subtitulo": "Use o editor on-line do YouTube para cortar, desfocar e adicionar trilha sonora aos seus vídeos.",
    "trilhas": []
@@ -855,7 +880,10 @@
    "id_inventario": 99,
    "tipo": "Recurso",
    "categoria": "ferramentas",
-   "topicos": [],
+   "topicos": [
+    "Ferramentas Externas",
+    "Produção de Conteúdo"
+   ],
    "subtitulo": "Plataforma de escrita e leitura colaborativa que pode apoiar a produção de textos em atividades educacionais.",
    "trilhas": []
   },
@@ -868,7 +896,8 @@
    "tipo": "Conceitual",
    "categoria": "pedagogia",
    "topicos": [
-    "Planejamento e Design Educacional"
+    "Planejamento e Design Educacional",
+    "Atividades e Recursos"
    ],
    "subtitulo": "Reflexão sobre como as ferramentas do Moodle podem estimular autoria, autonomia e aprendizagem ativa dos estudantes.",
    "trilhas": []
@@ -882,7 +911,8 @@
    "tipo": "Conceitual",
    "categoria": "ferramentas",
    "topicos": [
-    "Fórum"
+    "Fórum",
+    "Comunicação e Interação"
    ],
    "subtitulo": "Por que o fórum é essencial na educação a distância e como ele aproxima estudantes e consolida o conhecimento.",
    "trilhas": []
@@ -896,7 +926,8 @@
    "tipo": "Conceitual",
    "categoria": "ferramentas",
    "topicos": [
-    "Questionário"
+    "Questionário",
+    "Atividades e Recursos"
    ],
    "subtitulo": "Conheça as possibilidades do Questionário para avaliar a aprendizagem além do formato de prova tradicional.",
    "trilhas": []
@@ -909,7 +940,10 @@
    "id_inventario": 95,
    "tipo": "Conceitual",
    "categoria": "ferramentas",
-   "topicos": [],
+   "topicos": [
+    "Atividades e Recursos",
+    "Produção de Conteúdo"
+   ],
    "subtitulo": "Entenda a atividade Wiki e como usá-la para a construção colaborativa de textos com histórico de edições.",
    "trilhas": []
   },
@@ -921,7 +955,10 @@
    "id_inventario": 94,
    "tipo": "Recurso",
    "categoria": "ferramentas",
-   "topicos": [],
+   "topicos": [
+    "Ferramentas Externas",
+    "Produção de Conteúdo"
+   ],
    "subtitulo": "Crie ilustrações e infográficos para as suas aulas com a ferramenta on-line gratuita Canva.",
    "trilhas": []
   },
@@ -934,7 +971,8 @@
    "tipo": "Referência",
    "categoria": "gestao-moodle",
    "topicos": [
-    "Configuração de Curso"
+    "Configuração de Curso",
+    "Procedimentos Institucionais"
    ],
    "subtitulo": "Procedimento para solicitar e criar o recurso de certificados em salas do Moodle, com registro junto à Reitoria.",
    "trilhas": []
@@ -968,7 +1006,8 @@
    "tipo": "Tutorial",
    "categoria": "gestao-moodle",
    "topicos": [
-    "Sala Virtual"
+    "Sala Virtual",
+    "Comunicação e Interação"
    ],
    "subtitulo": "Use a ferramenta de mensagens do Moodle para se comunicar com professores, tutores e colegas.",
    "trilhas": []
@@ -1017,7 +1056,8 @@
    "tipo": "Conceitual",
    "categoria": "gestao-moodle",
    "topicos": [
-    "Sala Virtual"
+    "Sala Virtual",
+    "Configuração de Curso"
    ],
    "subtitulo": "Entenda por que as salas virtuais dos cursos a distância são organizadas em grupos por polo.",
    "trilhas": []
@@ -1071,7 +1111,8 @@
    "tipo": "Conceitual",
    "categoria": "gestao-moodle",
    "topicos": [
-    "Livro de Notas"
+    "Livro de Notas",
+    "Configuração de Curso"
    ],
    "subtitulo": "Entenda o conceito e a lógica de funcionamento do Livro de Notas antes de configurá-lo na sua disciplina.",
    "trilhas": [
@@ -1105,7 +1146,8 @@
    "tipo": "Recurso",
    "categoria": "ferramentas",
    "topicos": [
-    "Planejamento e Design Educacional"
+    "Planejamento e Design Educacional",
+    "Atividades e Recursos"
    ],
    "subtitulo": "Guia que ajuda a escolher a ferramenta do Moodle mais adequada a cada objetivo educacional.",
    "trilhas": []
@@ -1129,7 +1171,8 @@
    "categoria": "gestao-moodle",
    "topicos": [
     "Sala Virtual",
-    "Configuração de Curso"
+    "Configuração de Curso",
+    "Procedimentos Institucionais"
    ],
    "subtitulo": "Processo oficial de criação de salas virtuais para as coordenações de cursos a distância do Ifes.",
    "trilhas": [
@@ -1148,7 +1191,8 @@
    "tipo": "Referência",
    "categoria": "ferramentas",
    "topicos": [
-    "Tarefa"
+    "Tarefa",
+    "Atividades e Recursos"
    ],
    "subtitulo": "Entenda, crie, use e avalie a atividade Tarefa no Moodle em um guia completo de referência.",
    "trilhas": []
@@ -1162,7 +1206,8 @@
    "tipo": "Referência",
    "categoria": "ferramentas",
    "topicos": [
-    "Fórum"
+    "Fórum",
+    "Atividades e Recursos"
    ],
    "subtitulo": "Entenda, crie, use e avalie a atividade Fórum no Moodle em um guia completo de referência.",
    "trilhas": []
@@ -1176,7 +1221,8 @@
    "tipo": "Referência",
    "categoria": "ferramentas",
    "topicos": [
-    "Questionário"
+    "Questionário",
+    "Atividades e Recursos"
    ],
    "subtitulo": "Entenda, crie, use e avalie a atividade Questionário no Moodle em um guia completo de referência.",
    "trilhas": []
@@ -1189,7 +1235,10 @@
    "id_inventario": 78,
    "tipo": "Referência",
    "categoria": "ferramentas",
-   "topicos": [],
+   "topicos": [
+    "Atividades e Recursos",
+    "Produção de Conteúdo"
+   ],
    "subtitulo": "Entenda, crie, use e avalie a atividade Glossário no Moodle em um guia completo de referência.",
    "trilhas": []
   },
@@ -1202,7 +1251,8 @@
    "tipo": "Conceitual",
    "categoria": "pedagogia",
    "topicos": [
-    "Planejamento e Design Educacional"
+    "Planejamento e Design Educacional",
+    "Produção de Conteúdo"
    ],
    "subtitulo": "Características das principais mídias e como escolher a mais eficaz para cada situação de aprendizagem.",
    "trilhas": []
@@ -1216,7 +1266,8 @@
    "tipo": "Conceitual",
    "categoria": "conduta",
    "topicos": [
-    "Direitos Autorais e Segurança"
+    "Direitos Autorais e Segurança",
+    "Produção de Conteúdo"
    ],
    "subtitulo": "O que a Lei 9.610/98 permite e proíbe no uso de textos, imagens e vídeos em materiais educacionais.",
    "trilhas": []
@@ -1230,7 +1281,8 @@
    "tipo": "Conceitual",
    "categoria": "conduta",
    "topicos": [
-    "Direitos Autorais e Segurança"
+    "Direitos Autorais e Segurança",
+    "Comunicação e Interação"
    ],
    "subtitulo": "Regras de convivência e respeito nas interações virtuais para evitar gafes e conflitos na internet.",
    "trilhas": []
@@ -1259,7 +1311,8 @@
    "tipo": "Conceitual",
    "categoria": "gestao-moodle",
    "topicos": [
-    "Sala Virtual"
+    "Sala Virtual",
+    "Atividades e Recursos"
    ],
    "subtitulo": "Conheça o ambiente virtual de aprendizagem usado pelo Cefor e por instituições de ensino do mundo inteiro.",
    "trilhas": []
@@ -1273,7 +1326,8 @@
    "tipo": "Referência",
    "categoria": "ferramentas",
    "topicos": [
-    "Livro Digital"
+    "Livro Digital",
+    "Atividades e Recursos"
    ],
    "subtitulo": "Entenda o recurso Livro e aprenda a organizar grandes volumes de conteúdo em capítulos na sala virtual.",
    "trilhas": []
@@ -1286,7 +1340,10 @@
    "id_inventario": 71,
    "tipo": "Referência",
    "categoria": "ferramentas",
-   "topicos": [],
+   "topicos": [
+    "Atividades e Recursos",
+    "Produção de Conteúdo"
+   ],
    "subtitulo": "Entenda o recurso Página e aprenda a exibir textos, imagens, vídeos e áudios em uma única tela.",
    "trilhas": []
   },
@@ -1298,7 +1355,10 @@
    "id_inventario": 70,
    "tipo": "Referência",
    "categoria": "ferramentas",
-   "topicos": [],
+   "topicos": [
+    "Atividades e Recursos",
+    "Sala Virtual"
+   ],
    "subtitulo": "Entenda o recurso Arquivo e aprenda a disponibilizar documentos para os estudantes na sala virtual.",
    "trilhas": []
   },
@@ -1310,7 +1370,10 @@
    "id_inventario": 69,
    "tipo": "Referência",
    "categoria": "ferramentas",
-   "topicos": [],
+   "topicos": [
+    "Atividades e Recursos",
+    "Sala Virtual"
+   ],
    "subtitulo": "Entenda o recurso URL e aprenda a disponibilizar links da web como recursos do curso.",
    "trilhas": []
   },
@@ -1323,7 +1386,8 @@
    "tipo": "Referência",
    "categoria": "ferramentas",
    "topicos": [
-    "Rótulo"
+    "Rótulo",
+    "Atividades e Recursos"
    ],
    "subtitulo": "Entenda o recurso Área de Texto e Mídia, o antigo Rótulo, e aprenda a criá-lo na sala virtual.",
    "trilhas": []
@@ -1336,7 +1400,10 @@
    "id_inventario": 67,
    "tipo": "Referência",
    "categoria": "ferramentas",
-   "topicos": [],
+   "topicos": [
+    "Atividades e Recursos",
+    "Comunicação e Interação"
+   ],
    "subtitulo": "Entenda a atividade Escolha e use enquetes de pergunta única para decisões rápidas com a turma.",
    "trilhas": []
   },
@@ -1370,7 +1437,8 @@
    "categoria": "gestao-moodle",
    "topicos": [
     "Sala Virtual",
-    "Matrícula e Inscrição"
+    "Matrícula e Inscrição",
+    "Procedimentos Institucionais"
    ],
    "subtitulo": "Crie salas no Moodle a partir do Sistema Acadêmico para disciplinas presenciais ou a distância.",
    "trilhas": []
@@ -1413,7 +1481,8 @@
    "tipo": "Tutorial",
    "categoria": "acessibilidade",
    "topicos": [
-    "Libras"
+    "Libras",
+    "Inclusão e Desenho Universal"
    ],
    "subtitulo": "Configure de que lado da tela o tradutor automático VLibras é exibido no Moodle.",
    "trilhas": [
@@ -1431,7 +1500,11 @@
    "id_inventario": 61,
    "tipo": "Recurso",
    "categoria": "ferramentas",
-   "topicos": [],
+   "topicos": [
+    "Ferramentas Externas",
+    "Produção de Conteúdo",
+    "Comunicação e Interação"
+   ],
    "subtitulo": "Crie murais virtuais dinâmicos para registrar, guardar e compartilhar conteúdos multimídia com a turma.",
    "trilhas": []
   },
@@ -1444,7 +1517,8 @@
    "tipo": "Referência",
    "categoria": "identidade",
    "topicos": [
-    "MOOC"
+    "MOOC",
+    "Procedimentos Institucionais"
    ],
    "subtitulo": "Processo e modelos de documentos necessários para propor e construir Cursos Abertos no Ifes.",
    "trilhas": []
@@ -1554,7 +1628,8 @@
    "tipo": "Tutorial",
    "categoria": "ferramentas",
    "topicos": [
-    "Webconferência"
+    "Webconferência",
+    "Comunicação e Interação"
    ],
    "subtitulo": "Acesse sua sala no ambiente da RNP e conduza aulas e reuniões por webconferência.",
    "trilhas": [
@@ -1573,7 +1648,8 @@
    "tipo": "Tutorial",
    "categoria": "ferramentas",
    "topicos": [
-    "Webconferência"
+    "Webconferência",
+    "Comunicação e Interação"
    ],
    "subtitulo": "O que você precisa saber e preparar para participar de uma webconferência sem dificuldades.",
    "trilhas": [
@@ -1601,7 +1677,9 @@
    "tipo": "Recurso",
    "categoria": "ferramentas",
    "topicos": [
-    "Vídeo"
+    "Vídeo",
+    "Ferramentas Externas",
+    "Produção de Conteúdo"
    ],
    "subtitulo": "Grave a tela do computador gratuitamente com o software Captura e produza videoaulas e tutoriais.",
    "trilhas": []
@@ -1630,7 +1708,8 @@
    "tipo": "Referência",
    "categoria": "identidade",
    "topicos": [
-    "Padrão Visual"
+    "Padrão Visual",
+    "Produção de Conteúdo"
    ],
    "subtitulo": "Modelos gráficos do Ifes para padronizar as apresentações utilizadas nas salas virtuais e nos materiais dos cursos.",
    "trilhas": []
@@ -1679,7 +1758,8 @@
    "tipo": "Tutorial",
    "categoria": "gestao-moodle",
    "topicos": [
-    "Livro de Notas"
+    "Livro de Notas",
+    "Procedimentos Institucionais"
    ],
    "subtitulo": "Exporte as notas das avaliações do AVA e importe-as no Sistema Acadêmico do Ifes.",
    "trilhas": [
@@ -1714,7 +1794,8 @@
    "tipo": "Tutorial",
    "categoria": "ferramentas",
    "topicos": [
-    "Configuração de Curso"
+    "Configuração de Curso",
+    "Gamificação e Engajamento"
    ],
    "subtitulo": "Configure o plugin Level Up e use pontos e níveis para motivar a participação dos estudantes.",
    "trilhas": [
@@ -1733,7 +1814,8 @@
    "tipo": "Tutorial",
    "categoria": "gestao-moodle",
    "topicos": [
-    "Configuração de Curso"
+    "Configuração de Curso",
+    "Gamificação e Engajamento"
    ],
    "subtitulo": "Habilite e configure a marcação de conclusão de atividades e recursos da sala virtual.",
    "trilhas": [
@@ -1752,7 +1834,8 @@
    "tipo": "Tutorial",
    "categoria": "ferramentas",
    "topicos": [
-    "Configuração de Curso"
+    "Configuração de Curso",
+    "Gamificação e Engajamento"
    ],
    "subtitulo": "Adicione o bloco Barra de Progresso e acompanhe o andamento dos estudantes em cada disciplina.",
    "trilhas": [
@@ -1801,7 +1884,10 @@
    "id_inventario": 40,
    "tipo": "Tutorial",
    "categoria": "conduta",
-   "topicos": [],
+   "topicos": [
+    "Ferramentas Externas",
+    "Procedimentos Institucionais"
+   ],
    "subtitulo": "Orientações para ativar sua conta institucional nas plataformas de serviço em nuvem G Suite e Office 365.",
    "trilhas": []
   },
@@ -1815,7 +1901,8 @@
    "categoria": "ferramentas",
    "topicos": [
     "Webconferência",
-    "Vídeo"
+    "Vídeo",
+    "Comunicação e Interação"
    ],
    "subtitulo": "Manual prático com orientações de transmissão, gravação e armazenamento de aulas síncronas.",
    "trilhas": []
@@ -1829,7 +1916,8 @@
    "tipo": "Solução de Problema",
    "categoria": "ferramentas",
    "topicos": [
-    "Sala Virtual"
+    "Sala Virtual",
+    "Atividades e Recursos"
    ],
    "subtitulo": "Entenda por que o aplicativo Moodle Mobile parou de acessar os cursos do Ifes e como resolver.",
    "trilhas": []
@@ -1843,7 +1931,8 @@
    "tipo": "Conceitual",
    "categoria": "pedagogia",
    "topicos": [
-    "Planejamento e Design Educacional"
+    "Planejamento e Design Educacional",
+    "Produção de Conteúdo"
    ],
    "subtitulo": "O que é Design Educacional e qual o papel do Designer Educacional nos cursos do Cefor.",
    "trilhas": []
@@ -1856,7 +1945,10 @@
    "id_inventario": 37,
    "tipo": "Recurso",
    "categoria": "ferramentas",
-   "topicos": [],
+   "topicos": [
+    "Ferramentas Externas",
+    "Produção de Conteúdo"
+   ],
    "subtitulo": "Lista com mais de 45 ferramentas on-line, agrupadas por categoria, para professores e designers educacionais.",
    "trilhas": []
   },
@@ -1925,7 +2017,8 @@
    "tipo": "Referência",
    "categoria": "identidade",
    "topicos": [
-    "Padrão Visual"
+    "Padrão Visual",
+    "Produção de Conteúdo"
    ],
    "subtitulo": "Padrões visuais do Cefor disponíveis para toda a comunidade acadêmica e orientações de utilização.",
    "trilhas": []
@@ -2001,7 +2094,8 @@
    "tipo": "Tutorial",
    "categoria": "ferramentas",
    "topicos": [
-    "Webconferência"
+    "Webconferência",
+    "Comunicação e Interação"
    ],
    "subtitulo": "Configure a Conferência Web da RNP integrada ao Moodle e faça aulas síncronas sem sair do AVA.",
    "trilhas": [
@@ -2041,7 +2135,8 @@
    "tipo": "Conceitual",
    "categoria": "identidade",
    "topicos": [
-    "MOOC"
+    "MOOC",
+    "Gamificação e Engajamento"
    ],
    "subtitulo": "O que são emblemas e como usá-los para reconhecer as conquistas dos participantes nos cursos MOOC.",
    "trilhas": []
@@ -2056,7 +2151,8 @@
    "categoria": "ferramentas",
    "topicos": [
     "Banco de Questões",
-    "Questionário"
+    "Questionário",
+    "Gamificação e Engajamento"
    ],
    "subtitulo": "Crie um jogo no Moodle usando questões de resposta curta como banco, sem precisar do Glossário.",
    "trilhas": []
@@ -2070,7 +2166,8 @@
    "tipo": "Recurso",
    "categoria": "identidade",
    "topicos": [
-    "Livro Digital"
+    "Livro Digital",
+    "Produção de Conteúdo"
    ],
    "subtitulo": "Conheça o repositório de livros digitais do Cefor e saiba como usá-lo e contribuir com recursos.",
    "trilhas": []
@@ -2084,7 +2181,8 @@
    "tipo": "Tutorial",
    "categoria": "identidade",
    "topicos": [
-    "Livro Digital"
+    "Livro Digital",
+    "Produção de Conteúdo"
    ],
    "subtitulo": "Disponibilize imagens, vídeos e áudios no recurso Livro do Moodle com orientações simples.",
    "trilhas": []
@@ -2097,7 +2195,10 @@
    "id_inventario": 21,
    "tipo": "Referência",
    "categoria": "conduta",
-   "topicos": [],
+   "topicos": [
+    "Procedimentos Institucionais",
+    "Direitos Autorais e Segurança"
+   ],
    "subtitulo": "Orientações gerais sobre o diploma digital, sua validade jurídica e como verificar a autenticidade.",
    "trilhas": []
   },
@@ -2139,7 +2240,8 @@
    "tipo": "Tutorial",
    "categoria": "ferramentas",
    "topicos": [
-    "H5P"
+    "H5P",
+    "Produção de Conteúdo"
    ],
    "subtitulo": "Monte conteúdos interativos no AVA com o H5P e enriqueça as suas atividades educacionais.",
    "trilhas": [
@@ -2158,7 +2260,8 @@
    "tipo": "Conceitual",
    "categoria": "ferramentas",
    "topicos": [
-    "H5P"
+    "H5P",
+    "Produção de Conteúdo"
    ],
    "subtitulo": "O que é o H5P, suas principais características e exemplos de uso no Moodle 3.9.",
    "trilhas": [
@@ -2197,7 +2300,8 @@
    "tipo": "Conceitual",
    "categoria": "acessibilidade",
    "topicos": [
-    "Inclusão e Desenho Universal"
+    "Inclusão e Desenho Universal",
+    "Produção de Conteúdo"
    ],
    "subtitulo": "Cuidados essenciais de acessibilidade ao inserir recursos no Moodle para um ensino mais inclusivo.",
    "trilhas": [
@@ -2372,7 +2476,8 @@
    "tipo": "Conceitual",
    "categoria": "gestao-moodle",
    "topicos": [
-    "Sala Virtual"
+    "Sala Virtual",
+    "Atividades e Recursos"
    ],
    "subtitulo": "Conheça o Moodle 4.0 e suas principais ferramentas do ponto de vista do estudante.",
    "trilhas": []
@@ -2385,7 +2490,10 @@
    "id_inventario": 3,
    "tipo": "Referência",
    "categoria": "ferramentas",
-   "topicos": [],
+   "topicos": [
+    "Atividades e Recursos",
+    "Produção de Conteúdo"
+   ],
    "subtitulo": "Entenda, crie, use e avalie a atividade Base de Dados no Moodle em um guia de referência.",
    "trilhas": []
   },

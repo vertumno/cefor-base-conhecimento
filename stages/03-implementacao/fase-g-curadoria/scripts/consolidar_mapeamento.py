@@ -21,6 +21,9 @@ TOPICOS = {
     "Libras", "Audiodescrição", "Inclusão e Desenho Universal",
     "Planejamento e Design Educacional", "Padrão Visual", "MOOC",
     "Direitos Autorais e Segurança",
+    # Decisão 36 (2026-06-10) — ampliação para 31
+    "Atividades e Recursos", "Gamificação e Engajamento", "Comunicação e Interação",
+    "Produção de Conteúdo", "Ferramentas Externas", "Procedimentos Institucionais",
 }
 
 
