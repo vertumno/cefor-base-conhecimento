@@ -1011,7 +1011,7 @@ A página da trilha (`base-trilha.html`) recebe a mesma entrada no painel de sta
 
 🔵 **Contexto:** A `taxonomia.md` §8 propunha `/{categoria}/{slug}` com o princípio "categoria sustenta a URL", e havia rejeitado a variante sem categoria. Elton decidiu (2026-06-02) tirar a categoria da URL. A §8 deixava em aberto justamente o "versionamento de URL ao mudar artigo de categoria" — que a URL plana resolve.
 
-**Resolução (2026-06-02):** ✅ **APROVADO** (direção de Elton) — ⏳ co-aprovação de Marcos + formalização na Sprint 3 (mesma pendência das URLs semânticas)
+**Resolução (2026-06-02):** ✅ **APROVADO** (direção de Elton) — ✅ **co-aprovado por Marcos em 2026-06-10**, condicionado ao plano de redirects abaixo
 
 - URL do artigo é **plana, na raiz:** `/{artigo-slug}` (ex.: `/configurar-livro-de-notas`). **Sem categoria, sem prefixo `/artigos/`.**
 - A **categoria continua existindo** como classificação e navegação — página-índice `/{categoria}/` e breadcrumb (Decisão 33) —, mas **não compõe o permalink**.
@@ -1023,10 +1023,20 @@ A página da trilha (`base-trilha.html`) recebe a mesma entrada no painel de sta
 
 **Trade-off assumido:** perde-se o sinal de categoria na URL para SEO/GEO — recuperado em parte pelo `Schema.org/BreadcrumbList` (Decisão 33).
 
+> **⚠️ Adendo 2026-06-10 — Co-aprovação de Marcos condicionada ao plano de redirects das URLs legadas.** As URLs antigas dos 139 artigos seguem o padrão `conhecimento.cefor.ifes.edu.br/base/{slug}/` (inventário em `data/base-antiga/`) — nenhum esquema novo (plano ou com categoria) as preserva, então a mitigação é por redirect 301, já prevista na taxonomia §8 para a Fase 5. A URL plana até **simplifica** o redirect: vira uma regra genérica única, sem tabela artigo-a-artigo de categorias. Plano acordado:
+> 1. **Fase E (carga):** gravar o slug legado de cada artigo como post meta (ex.: `_cgte_slug_legado`) — o WXR traz `<link>` e `<wp:post_name>`.
+> 2. **Regra genérica 301:** `^/base/(.+)$` → `/$1` (`.htaccess` ou hook `template_redirect`) — cobre todo artigo que preservar o slug.
+> 3. **Fallback por meta:** artigos renomeados (Fase 4; ex.: o slug numérico legado `/base/2141/`) são resolvidos por busca no meta `_cgte_slug_legado` + 301 — renomear nunca quebra o link antigo.
+> 4. **Colisão de namespace:** as URLs legadas `/percursos/{slug}/` usam "percurso" no conceito antigo (agrupamento de navegação) e colidem com o namespace novo `/percursos/` — exigem **mapa manual** (poucos casos) apontando para a categoria/tópico novo equivalente.
+> 5. **QA de lançamento (Fase 5):** script percorre o inventário completo de URLs antigas e confere `301 → 200`.
+>
+> Premissa: a nova base assume o mesmo domínio no lançamento; se o domínio mudar, os redirects vivem no host antigo.
+
 **Impacto:**
 - Atualizar `taxonomia.md` §8 (padrão de URL, princípios, exemplos, pergunta aberta resolvida) e §2/§4 (categoria não "sustenta URL").
 - Atualizar `arquitetura-informacao.md` (sitemap, tabela de URLs, regra de breadcrumb).
 - Implementação WP: post type de artigo com permalink na raiz + guarda de slugs reservados.
+- **Plano de redirects** (adendo 2026-06-10): meta de slug legado na Fase E · regra `/base/*` + fallback por meta na Fase 3/5 · mapa manual dos `/percursos/*` legados · QA de 301 na Fase 5.
 
 ---
 
@@ -1109,7 +1119,7 @@ A página da trilha (`base-trilha.html`) recebe a mesma entrada no painel de sta
 | **31** | **Apresentação visual do percurso** *(Fase 1 — 2026-05-19; cor revisada 2026-06-02; superfícies revisadas 2026-06-08)* | ✅ **Aprovado** | **Verde escuro (`--verde-profundo`) é a cor reservada do percurso** — dourado abandonado em 2026-06-02. **4 superfícies:** página dedicada (hero + stats + "como percorrer" + cards de trilhas) · vínculo "Faz parte do percurso" no **meta do artigo** · idem no **stats da página de trilha** · listagem `/percursos` (grid com borda verde escura). O chip dentro do acordeão de trilha foi **removido em 2026-06-08** — o vínculo migrou para meta/stats. Referências: `base-percurso.html`, `base-percursos.html`, `base-artigo.html`, `base-trilha.html` |
 | **32** | **Remoção do prev/next do rodapé do artigo** *(Fase 1 — 2026-05-19)* | ✅ **Aprovado** | Cards `.trilha-nav-card.prev/next` **removidos.** Navegação entre artigos da trilha passa a ser exclusiva do acordeão multi-trilha na sidebar |
 | **33** | **Breadcrumb taxonômico** *(Fase 1 — 2026-06-02)* | ✅ **Aprovado** | Breadcrumb reflete a **árvore de classificação** (`Início › Categoria › Artigo`), cada ancestral é página real; nunca a jornada. Trilha/percurso só na casca. Fonte: `arquitetura-informacao.md` |
-| **34** | **URL plana do artigo** *(Fase 1 — 2026-06-02)* | ✅ **Aprovado** | Categoria **sai da URL**. Artigo = `/{slug}` na raiz (sem categoria, sem `/artigos/`), com slugs reservados. Categoria fica só em breadcrumb + página-índice. Recategorizar não quebra o link |
+| **34** | **URL plana do artigo** *(Fase 1 — 2026-06-02; co-aprovada por Marcos em 2026-06-10)* | ✅ **Aprovado** | Categoria **sai da URL**. Artigo = `/{slug}` na raiz (sem categoria, sem `/artigos/`), com slugs reservados. Categoria fica só em breadcrumb + página-índice. Recategorizar não quebra o link. Co-aprovação condicionada ao **plano de redirects 301** das URLs legadas `/base/{slug}` (adendo 2026-06-10) |
 | **35** | **Faixa de leitura centralizada** *(Fase 2 — 2026-06-02)* | ✅ **Aprovado** | Texto + sidebar = bloco fixo centralizado; sobra vira margem simétrica (sem vão). Tokens `--measure: 660px` / `--rail: 300px` / `--band-gap: 72px`, eixo único para cabeçalho, corpo, ações e Libras. Medida 700 → 660px |
 
 ---
