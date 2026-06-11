@@ -71,11 +71,16 @@ usam wp_id + conferência de slug).
    Achado colateral: o artigo 3341 (Orientações sobre a Base, não-classificar)
    recebeu tipo manualmente no admin e está com 0 tópicos — decisão de quem
    o classificou.
-4. **Não classificados (10)** — utilitários e fora-da-base (mapa §5); decisão de
+4. **Não classificados (8)** — utilitários e fora-da-base (mapa §5); decisão de
    arquivar (status `cgte_arquivado`) fica com a equipe:
    3335 processo CGTE (private) · 3336 listagem alfabética · 3341 orientações
    sobre a base (vira página /sobre) · 3391 dúvidas&sugestões · 3410 GLPI ·
-   3422 todos os artigos · 3455 START 2023 · 3463/3464/3465 divulgações de IA.
+   3422 todos os artigos · 3455 START 2023 · 3465 oficinas de IA.
+   *Atualização 2026-06-11:* 3463 (Papo com IA.IÁ) e 3464 (grupo de WhatsApp)
+   saíram desta lista por decisão de Marcos — classificados como Referência /
+   pedagogia / IA Generativa + Comunicação e Interação, com `cgte_subtitulo`
+   vazio de propósito (o legado não tinha subtítulo e o tema não usa mais
+   fallback de excerpt).
 5. **Categoria da trilha**: o mapa declara categoria por trilha, mas
    `cgte_categoria` só está registrada para `cgte_base` — se o tema precisar
    colorir cards de trilha por categoria, registrar a taxonomia também para

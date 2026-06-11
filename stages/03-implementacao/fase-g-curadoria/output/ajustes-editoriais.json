@@ -1225,12 +1225,24 @@
    "subtitulo": "Conheça a Sala Modelo do Moodle, com orientações e exemplos para construir a sua sala virtual."
   },
   "3463": {
-   "acao": "nao-classificar",
-   "nota": "FORA-DA-BASE (trilhas-percursos-mapa.md §5) — divulgação do Papo IA.IÁ. Arquivar pendente de decisão."
+   "tipo": "Referência",
+   "categoria": "pedagogia",
+   "topicos": [
+    "IA Generativa",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "",
+   "nota": "Era FORA-DA-BASE (trilhas-percursos-mapa.md §5); Marcos decidiu classificar em 2026-06-11. Subtítulo vazio de propósito — o legado não tinha e a regra é não inventar (sem fallback no tema)."
   },
   "3464": {
-   "acao": "nao-classificar",
-   "nota": "FORA-DA-BASE (trilhas-percursos-mapa.md §5) — divulgação de grupo de WhatsApp. Arquivar pendente de decisão."
+   "tipo": "Referência",
+   "categoria": "pedagogia",
+   "topicos": [
+    "IA Generativa",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "",
+   "nota": "Era FORA-DA-BASE (trilhas-percursos-mapa.md §5); Marcos decidiu classificar em 2026-06-11. Subtítulo vazio de propósito — o legado não tinha e a regra é não inventar (sem fallback no tema)."
   },
   "3465": {
    "acao": "nao-classificar",

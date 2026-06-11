@@ -34,7 +34,7 @@ def main() -> None:
     with open(aj_path, encoding="utf-8") as f:
         ajustes = json.load(f)
 
-    erros, deficit, nao_classificar = [], [], []
+    erros, deficit, nao_classificar, sem_subtitulo = [], [], [], []
     artigos_finais = []
 
     for art in esqueleto["artigos"]:
@@ -73,9 +73,14 @@ def main() -> None:
             erros.append(f'{wp_id}: {len(final["topicos"])} tópicos (máx. 4)')
         if len(final["topicos"]) < 2:
             deficit.append(f'{wp_id} ({len(final["topicos"])}) {art["titulo"]}')
-        palavras = len(final["subtitulo"].split())
-        if not 8 <= palavras <= 27:  # tolerância de ±2 sobre a regra 10-25
-            erros.append(f"{wp_id}: subtítulo com {palavras} palavras")
+        # subtítulo vazio é legítimo quando o ajuste o define explicitamente
+        # (decisão de Marcos 2026-06-11: sem subtítulo no legado, deixar vazio)
+        if final["subtitulo"] == "" and aj.get("subtitulo") == "":
+            sem_subtitulo.append(f'{wp_id} {art["titulo"]}')
+        else:
+            palavras = len(final["subtitulo"].split())
+            if not 8 <= palavras <= 27:  # tolerância de ±2 sobre a regra 10-25
+                erros.append(f"{wp_id}: subtítulo com {palavras} palavras")
 
         artigos_finais.append(final)
 
@@ -108,6 +113,9 @@ def main() -> None:
     print("\n".join(" - " + n for n in nao_classificar))
     print(f"\nDéficit de tópicos (<2, exigem curadoria fina — taxonomia.md §5): {len(deficit)}")
     print("\n".join(" - " + d for d in deficit))
+    if sem_subtitulo:
+        print(f"\nSem subtítulo (vazio explícito nos ajustes): {len(sem_subtitulo)}")
+        print("\n".join(" - " + s for s in sem_subtitulo))
 
 
 if __name__ == "__main__":

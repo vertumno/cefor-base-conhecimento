@@ -2352,8 +2352,14 @@
    "titulo": "Papo com IA.IÁ: um bate-papo leve e potente sobre Inteligência Artificial",
    "status": "publish",
    "id_inventario": 12,
-   "acao": "nao-classificar",
-   "nota": "FORA-DA-BASE (trilhas-percursos-mapa.md §5) — divulgação do Papo IA.IÁ. Arquivar pendente de decisão."
+   "tipo": "Referência",
+   "categoria": "pedagogia",
+   "topicos": [
+    "IA Generativa",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "",
+   "trilhas": []
   },
   {
    "wp_id": 3464,
@@ -2361,8 +2367,14 @@
    "titulo": "Grupo de WhatsApp: informação rápida e prática sobre IA na educação",
    "status": "publish",
    "id_inventario": 11,
-   "acao": "nao-classificar",
-   "nota": "FORA-DA-BASE (trilhas-percursos-mapa.md §5) — divulgação de grupo de WhatsApp. Arquivar pendente de decisão."
+   "tipo": "Referência",
+   "categoria": "pedagogia",
+   "topicos": [
+    "IA Generativa",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "",
+   "trilhas": []
   },
   {
    "wp_id": 3465,
