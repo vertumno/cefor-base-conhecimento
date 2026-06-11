@@ -13,13 +13,13 @@
 
 | Bloco | Ocorrências |
 |---|---|
-| `wp:paragraph` | 1361 |
+| `wp:paragraph` | 1415 |
 | `wp:list-item` | 588 |
 | `wp:heading` | 361 |
 | `wp:list` | 178 |
 | `wp:separator` | 131 |
 | `wp:embed` | 68 |
-| `wp:html` | 35 |
+| `wp:html` | 37 |
 | `wp:image` | 17 |
 | `wp:preformatted` | 13 |
 | `wp:shortcode` | 3 |
@@ -31,10 +31,10 @@ Conteúdo estrutural (callouts estilizados, listas aninhadas/malformadas) preser
 
 | post_id | Título | Ocorrências |
 |---|---|---|
+| 1979 | Código para inserção de vídeo em Libras no AVA #MoodleCodes | 5 |
 | 2166 | Descubra o ReLiCefor: compartilhando conhecimento no ambiente virtual | 5 |
 | 290 | Como criar links dentro do Moodle? | 4 |
 | 2510 | Configurando Livro de Notas que calcule a Média entre Atividades e a R | 4 |
-| 1979 | Código para inserção de vídeo em Libras no AVA #MoodleCodes | 3 |
 | 1531 | Como transmitir reuniões em Webconferência da RNP (MConf) para o Youtu | 2 |
 | 1906 | Como posso realizar uma Aula Síncrona? | 2 |
 | 2207 | Cenário #1: Desafio da Comunicação Clara | 1 |

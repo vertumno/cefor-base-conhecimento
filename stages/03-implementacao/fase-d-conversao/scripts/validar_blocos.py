@@ -100,6 +100,40 @@ class HTMLChecker(HTMLParser):
 RE_HTML_CRU = re.compile(
     r"<!--\s*wp:(html|freeform)\s*-->.*?<!--\s*/wp:\1\s*-->", re.DOTALL)
 
+RE_PARA_BLOCO = re.compile(
+    r"<!--\s*wp:paragraph(\s+\{.*?\})?\s*-->\s*(.*?)\s*<!--\s*/wp:paragraph\s*-->",
+    re.DOTALL)
+RE_HEAD_BLOCO = re.compile(
+    r"<!--\s*wp:heading(\s+\{.*?\})?\s*-->\s*(.*?)\s*<!--\s*/wp:heading\s*-->",
+    re.DOTALL)
+
+
+def validar_tag_externa(content):
+    """O Gutenberg compara a tag EXTERNA de wp:paragraph/wp:heading com o que
+    save() geraria: atributos legados (style/class/id/align/data-*) marcam o
+    bloco como invalido no editor. Conteudo interno (rich text) faz round-trip
+    e nao precisa ser checado. Classe de bug encontrada em 2026-06-11 (25/139)."""
+    erros = []
+    sem_cru = RE_HTML_CRU.sub("", content)
+    for m in RE_PARA_BLOCO.finditer(sem_cru):
+        attrs_json, body = m.group(1) or "", m.group(2)
+        abre = re.match(r"<p(\s[^>]*)?>", body)
+        if not abre:
+            erros.append(f"wp:paragraph sem <p> de abertura: {body[:50]!r}")
+            continue
+        extra = abre.group(1)
+        if extra:
+            al = re.fullmatch(r'\sclass="has-text-align-(\w+)"', extra)
+            if not (al and f'"align":"{al.group(1)}"' in attrs_json):
+                erros.append(f"wp:paragraph com atributos na tag externa: {abre.group(0)[:70]!r}")
+    for m in RE_HEAD_BLOCO.finditer(sem_cru):
+        abre = re.match(r"<h[1-6](\s[^>]*)?>", m.group(2))
+        if abre and abre.group(1):
+            resto = re.sub(r'\s(class="wp-block-heading[^"]*"|id="[^"]*")', "", abre.group(1))
+            if resto.strip():
+                erros.append(f"wp:heading com atributos na tag externa: {abre.group(0)[:70]!r}")
+    return erros
+
 
 def validar_html(content):
     # remove blocos de HTML cru (nao validados pelo Gutenberg) e os comentarios de bloco
@@ -129,6 +163,7 @@ def main(path):
         erros += validar_gramatica(content)
         erros += validar_json(content)
         erros += validar_html(content)
+        erros += validar_tag_externa(content)
         if erros:
             artigos_com_erro += 1
             total_erros += len(erros)
