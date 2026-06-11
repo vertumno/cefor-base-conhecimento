@@ -1158,8 +1158,14 @@
    "titulo": "Ajude a melhorar a Base de Conhecimento - Compartilhe suas dúvidas e sugestões",
    "status": "publish",
    "id_inventario": 1,
-   "acao": "nao-classificar",
-   "nota": "FORA-DA-BASE (trilhas-percursos-mapa.md §5) — formulário de dúvidas/sugestões, não é artigo. Arquivar pendente de decisão."
+   "tipo": "Referência",
+   "categoria": "conduta",
+   "topicos": [
+    "Procedimentos Institucionais",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "Envie dúvidas, opiniões e sugestões para aperfeiçoar as plataformas, treinamentos e tutoriais do Cefor.",
+   "trilhas": []
   },
   {
    "wp_id": 3392,
@@ -1449,8 +1455,14 @@
    "titulo": "Manual do sistema suporte Cefor - Glpi",
    "status": "publish",
    "id_inventario": 64,
-   "acao": "nao-classificar",
-   "nota": "FORA-DA-BASE (trilhas-percursos-mapa.md §5) — manual do GLPI, sistema de suporte, não pertence à base. Arquivar pendente de decisão."
+   "tipo": "Tutorial",
+   "categoria": "conduta",
+   "topicos": [
+    "Procedimentos Institucionais",
+    "Ferramentas Externas"
+   ],
+   "subtitulo": "Como abrir e acompanhar chamados no GLPI, o sistema de suporte do Cefor, do acesso à finalização.",
+   "trilhas": []
   },
   {
    "wp_id": 3411,
@@ -2208,8 +2220,15 @@
    "titulo": "START 2023: Inovação e Inclusão na Formação de Professores do Cefor",
    "status": "publish",
    "id_inventario": 20,
-   "acao": "nao-classificar",
-   "nota": "FORA-DA-BASE (trilhas-percursos-mapa.md §5) — divulgação de evento START 2023. Arquivar pendente de decisão."
+   "tipo": "Recurso",
+   "categoria": "pedagogia",
+   "topicos": [
+    "Planejamento e Design Educacional",
+    "Produção de Conteúdo",
+    "Inclusão e Desenho Universal"
+   ],
+   "subtitulo": "Compilação das oficinas de formação de professores da CGTE, com práticas de ensino digital, inclusão e recursos interativos.",
+   "trilhas": []
   },
   {
    "wp_id": 3456,

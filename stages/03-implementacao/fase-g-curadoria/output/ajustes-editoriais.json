@@ -584,8 +584,14 @@
    "subtitulo": "Guia que ajuda a escolher a ferramenta do Moodle mais adequada a cada objetivo educacional."
   },
   "3391": {
-   "acao": "nao-classificar",
-   "nota": "FORA-DA-BASE (trilhas-percursos-mapa.md §5) — formulário de dúvidas/sugestões, não é artigo. Arquivar pendente de decisão."
+   "tipo": "Referência",
+   "categoria": "conduta",
+   "topicos": [
+    "Procedimentos Institucionais",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "Envie dúvidas, opiniões e sugestões para aperfeiçoar as plataformas, treinamentos e tutoriais do Cefor.",
+   "nota": "Era FORA-DA-BASE (nao-classificar); decisão de Marcos 2026-06-11: permanece na base e ganha classificação."
   },
   "3392": {
    "tipo": "Referência",
@@ -752,8 +758,14 @@
    "subtitulo": "Crie salas no Moodle a partir do Sistema Acadêmico para disciplinas presenciais ou a distância."
   },
   "3410": {
-   "acao": "nao-classificar",
-   "nota": "FORA-DA-BASE (trilhas-percursos-mapa.md §5) — manual do GLPI, sistema de suporte, não pertence à base. Arquivar pendente de decisão."
+   "tipo": "Tutorial",
+   "categoria": "conduta",
+   "topicos": [
+    "Procedimentos Institucionais",
+    "Ferramentas Externas"
+   ],
+   "subtitulo": "Como abrir e acompanhar chamados no GLPI, o sistema de suporte do Cefor, do acesso à finalização.",
+   "nota": "Era FORA-DA-BASE (nao-classificar); decisão de Marcos 2026-06-11: permanece na base e ganha classificação."
   },
   "3411": {
    "tipo": "Tutorial",
@@ -1158,8 +1170,15 @@
    "subtitulo": "Orientações gerais sobre o diploma digital, sua validade jurídica e como verificar a autenticidade."
   },
   "3455": {
-   "acao": "nao-classificar",
-   "nota": "FORA-DA-BASE (trilhas-percursos-mapa.md §5) — divulgação de evento START 2023. Arquivar pendente de decisão."
+   "tipo": "Recurso",
+   "categoria": "pedagogia",
+   "topicos": [
+    "Planejamento e Design Educacional",
+    "Produção de Conteúdo",
+    "Inclusão e Desenho Universal"
+   ],
+   "subtitulo": "Compilação das oficinas de formação de professores da CGTE, com práticas de ensino digital, inclusão e recursos interativos.",
+   "nota": "Era FORA-DA-BASE (nao-classificar); decisão de Marcos 2026-06-11: permanece na base e ganha classificação."
   },
   "3456": {
    "tipo": "Tutorial",
