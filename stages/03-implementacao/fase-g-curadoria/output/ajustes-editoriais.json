@@ -1,0 +1,1347 @@
+{
+ "_meta": {
+  "documento": "Fase G — ajustes editoriais sobre o esqueleto de mapeamento",
+  "data": "2026-06-10",
+  "autoria": "Claude (proposta) — validação pendente: Elton + Juliana (taxonomia), Rute + Juliana (trilhas)",
+  "regras": [
+   "Campo presente aqui SOBREPÕE o valor do esqueleto; campo ausente mantém o derivado.",
+   "topicos: só os corretos — artigos com menos de 2 ficam no relatório de déficit, não recebem tópico de enchimento.",
+   "acao=nao-classificar: artigo utilitário/fora-da-base — o script de aplicação pula taxonomia e subtítulo.",
+   "subtitulo: 10 a 25 palavras (contentsystem.md), complementa o título sem repeti-lo.",
+   "2026-06-10 — Decisão 36 aplicada via patch_topicos_decisao36.py: +6 tópicos no vocabulário; adições nos artigos em déficit."
+  ]
+ },
+ "trilhas_editorial": {
+  "T1": {
+   "status": "publish",
+   "subtitulo": "Prepare sua sala virtual do zero: criação, organização e checklist de abertura para começar o curso com segurança."
+  },
+  "T2": {
+   "status": "publish",
+   "subtitulo": "Planeje, monte, proteja e aplique a prova on-line no Moodle, do conceito à publicação no AVA."
+  },
+  "T3": {
+   "status": "publish",
+   "subtitulo": "Entenda, configure e feche o Livro de Notas, até a exportação das notas para o Sistema Acadêmico."
+  },
+  "T4": {
+   "status": "publish",
+   "subtitulo": "Do primeiro contato com o H5P à montagem de conteúdos interativos completos na sala virtual."
+  },
+  "T5": {
+   "status": "publish",
+   "subtitulo": "Prepare-se, conduza e transmita aulas ao vivo com a Conferência Web da RNP."
+  },
+  "T6": {
+   "status": "publish",
+   "subtitulo": "Configure conclusão de atividades, barra de progresso e Level Up para acompanhar e engajar a turma."
+  },
+  "T7": {
+   "status": "publish",
+   "subtitulo": "Torne suas avaliações acessíveis: cuidados gerais, tempo ampliado e audiodescrição."
+  },
+  "T8": {
+   "status": "publish",
+   "subtitulo": "Insira vídeos em Libras, ative o VLibras e use o videobook de termos da EaD."
+  },
+  "T9": {
+   "status": "publish",
+   "subtitulo": "Da Taxonomia de Bloom 2.0 à geração de questionários e rubricas com GPTs do Cefor."
+  },
+  "T10": {
+   "status": "draft",
+   "subtitulo": "Backup, restauração, acessos e usuários: a administração da sala virtual durante o curso.",
+   "nota": "Candidata — confirmar com Rute antes de publicar."
+  }
+ },
+ "percurso_editorial": {
+  "status": "publish",
+  "subtitulo": "Do zero ao curso avaliado no ar: as trilhas essenciais para operar o Moodle do Ifes com autonomia.",
+  "curadoria": "CGTE/Cefor",
+  "data_criacao": "2026-06-10",
+  "como_percorrer": [
+   {
+    "perfil": "Nunca dei aula no Moodle",
+    "descricao": "Comece pela trilha Da sala vazia ao primeiro dia de aula.",
+    "ordem": [
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "perfil": "Vou aplicar uma prova",
+    "descricao": "Vá direto à trilha Avaliação online de ponta a ponta.",
+    "ordem": [
+     2,
+     3,
+     1
+    ]
+   },
+   {
+    "perfil": "Preciso fechar as notas",
+    "descricao": "Vá direto à trilha Do Livro de Notas ao Sistema Acadêmico.",
+    "ordem": [
+     3,
+     2,
+     1
+    ]
+   }
+  ]
+ },
+ "artigos": {
+  "3335": {
+   "acao": "nao-classificar",
+   "nota": "Documentação interna da CGTE (private). Não é artigo da base pública."
+  },
+  "3336": {
+   "acao": "nao-classificar",
+   "nota": "Página utilitária de shortcode (listagem alfabética). Substituída pelo catálogo /artigos. Candidata a arquivar."
+  },
+  "3337": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Sala Virtual",
+    "Vídeo"
+   ],
+   "subtitulo": "Videotutorial de como instalar e usar o aplicativo Moodle Mobile para acessar seus cursos pelo celular."
+  },
+  "3338": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Gamificação e Engajamento",
+    "Sala Virtual"
+   ],
+   "subtitulo": "Visualize, entenda e gerencie os emblemas que você conquista como estudante no Moodle."
+  },
+  "3339": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Configuração de Curso",
+    "Gamificação e Engajamento"
+   ],
+   "subtitulo": "Configure, atribua e gerencie emblemas para reconhecer as conquistas dos estudantes no seu curso Moodle."
+  },
+  "3340": {
+   "tipo": "Conceitual",
+   "categoria": "pedagogia",
+   "topicos": [
+    "Planejamento e Design Educacional",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "Cenário da série Cenários do AVA sobre os desafios da comunicação clara em disciplinas virtuais."
+  },
+  "3341": {
+   "acao": "nao-classificar",
+   "nota": "Página institucional sobre a própria base — vira página nativa (/sobre) no redesign, não artigo."
+  },
+  "3342": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Vídeo",
+    "Ferramentas Externas",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Grave a tela do computador e produza videotutoriais simples com o gravador on-line gratuito Apowersoft."
+  },
+  "3343": {
+   "tipo": "Tutorial",
+   "categoria": "pedagogia",
+   "topicos": [
+    "Planejamento e Design Educacional",
+    "Procedimentos Institucionais"
+   ],
+   "subtitulo": "Entenda o instrumento que organiza o planejamento das disciplinas a distância no Cefor e aprenda a preenchê-lo."
+  },
+  "3344": {
+   "tipo": "Conceitual",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Sala Virtual",
+    "Atividades e Recursos"
+   ],
+   "subtitulo": "Visão geral do AVA do Ifes na versão 4.0: organização da sala virtual e onde encontrar as principais ferramentas."
+  },
+  "3345": {
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Vídeo",
+    "Ferramentas Externas",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Ferramenta on-line para criar apresentações animadas com interface intuitiva de arrastar e soltar, sem exigir experiência em design."
+  },
+  "3346": {
+   "tipo": "Conceitual",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Atividades e Recursos"
+   ],
+   "subtitulo": "Entenda o que é a prova on-line no AVA e por que o Questionário é o recurso central da avaliação a distância."
+  },
+  "3347": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Direitos Autorais e Segurança"
+   ],
+   "subtitulo": "Seis medidas de segurança para aplicar provas on-line com o recurso Questionário, do planejamento à correção."
+  },
+  "3348": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Planejamento e Design Educacional"
+   ],
+   "subtitulo": "O que a equipe do curso precisa planejar antes de montar a prova on-line no recurso Questionário do Moodle."
+  },
+  "3349": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Banco de Questões"
+   ],
+   "subtitulo": "Panorama das etapas de montagem da prova on-line, do banco de questões à configuração do quadro de notas."
+  },
+  "3350": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Banco de Questões"
+   ],
+   "subtitulo": "Como montar o local da prova com o recurso Questionário, com as etapas organizadas em sequência."
+  },
+  "3351": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Banco de Questões"
+   ],
+   "subtitulo": "Entenda e configure o Banco de Questões e suas categorias para organizar as questões da prova on-line."
+  },
+  "3352": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Banco de Questões"
+   ],
+   "subtitulo": "Aprenda a criar questões no Moodle e a organizá-las no Banco de Questões antes de montar a prova."
+  },
+  "3353": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Configuração de Curso"
+   ],
+   "subtitulo": "Crie o recurso Questionário e configure as regras de interação dos estudantes com a prova."
+  },
+  "3354": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Banco de Questões"
+   ],
+   "subtitulo": "Inclua as questões na prova e configure os sorteios automáticos a partir do Banco de Questões."
+  },
+  "3355": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Livro de Notas"
+   ],
+   "subtitulo": "Atribua nota ou peso a cada questão e defina a nota total da prova no recurso Questionário."
+  },
+  "3356": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Configuração de Curso"
+   ],
+   "subtitulo": "Crie um questionário para cada dia e horário de aplicação, conforme o cronograma de provas do curso."
+  },
+  "3357": {
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Banco de Questões"
+   ],
+   "subtitulo": "Conheça os tipos de questões disponíveis no recurso Questionário e quando usar cada um no planejamento."
+  },
+  "3358": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Configuração de Curso",
+    "Atividades e Recursos"
+   ],
+   "subtitulo": "Passo a passo para alterar a data de uma atividade e manter os prazos da sala virtual organizados."
+  },
+  "3359": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Sala Virtual",
+    "Atividades e Recursos"
+   ],
+   "subtitulo": "Veja como mover recursos e atividades ao editar a organização da sua sala virtual no Moodle."
+  },
+  "3360": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Livro de Notas",
+    "Sala Virtual"
+   ],
+   "subtitulo": "Acompanhe as notas dos estudantes pelo quadro de notas da sala virtual do Moodle."
+  },
+  "3361": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Sala Virtual",
+    "Atividades e Recursos"
+   ],
+   "subtitulo": "Tipos de links no Moodle, como utilizá-los e os benefícios do hipertexto na sala virtual."
+  },
+  "3362": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Configuração de Curso",
+    "Sala Virtual"
+   ],
+   "subtitulo": "Organize a visualização da sala contraindo ou expandindo as seções e semanas no Moodle 4.1."
+  },
+  "3363": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Rótulo",
+    "Vídeo"
+   ],
+   "subtitulo": "Incorpore vídeos do YouTube na sala virtual e torne o material da disciplina mais dinâmico e atrativo."
+  },
+  "3364": {
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Sala Virtual",
+    "Atividades e Recursos"
+   ],
+   "subtitulo": "O que é o recurso Pasta, quando usar e como inseri-lo para organizar arquivos na sala virtual."
+  },
+  "3365": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Configuração de Curso"
+   ],
+   "subtitulo": "Visão do processo completo da prova on-line para a equipe multidisciplinar, do planejamento à aplicação."
+  },
+  "3366": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Banco de Questões",
+    "Questionário"
+   ],
+   "subtitulo": "Monte um banco de questões com sorteio automático e aplique provas diferentes para cada estudante."
+  },
+  "3367": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Banco de Questões"
+   ],
+   "subtitulo": "Ative o embaralhamento de questões e de alternativas para aumentar a segurança da prova on-line."
+  },
+  "3368": {
+   "tipo": "Conceitual",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Configuração de Curso"
+   ],
+   "subtitulo": "Entenda como dividir a aplicação da prova on-line em grupos e horários conforme a capacidade dos polos."
+  },
+  "3369": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Direitos Autorais e Segurança"
+   ],
+   "subtitulo": "Configure senha de acesso no Questionário para garantir que apenas a turma certa faça a prova."
+  },
+  "3370": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Direitos Autorais e Segurança"
+   ],
+   "subtitulo": "Restrinja o acesso à prova on-line a endereços de rede específicos, como os laboratórios dos polos."
+  },
+  "3371": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Direitos Autorais e Segurança"
+   ],
+   "subtitulo": "Use a opção de tela cheia com segurança JavaScript do Questionário para limitar ações durante a prova."
+  },
+  "3372": {
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Planejamento e Design Educacional",
+    "Ferramentas Externas",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Conheça ferramentas que permitem a qualquer pessoa produzir seus próprios objetos educacionais digitais."
+  },
+  "3373": {
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Vídeo",
+    "Ferramentas Externas",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Use o editor on-line do YouTube para cortar, desfocar e adicionar trilha sonora aos seus vídeos."
+  },
+  "3374": {
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Ferramentas Externas",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Plataforma de escrita e leitura colaborativa que pode apoiar a produção de textos em atividades educacionais."
+  },
+  "3375": {
+   "tipo": "Conceitual",
+   "categoria": "pedagogia",
+   "topicos": [
+    "Planejamento e Design Educacional",
+    "Atividades e Recursos"
+   ],
+   "subtitulo": "Reflexão sobre como as ferramentas do Moodle podem estimular autoria, autonomia e aprendizagem ativa dos estudantes."
+  },
+  "3376": {
+   "tipo": "Conceitual",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Fórum",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "Por que o fórum é essencial na educação a distância e como ele aproxima estudantes e consolida o conhecimento."
+  },
+  "3377": {
+   "tipo": "Conceitual",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Atividades e Recursos"
+   ],
+   "subtitulo": "Conheça as possibilidades do Questionário para avaliar a aprendizagem além do formato de prova tradicional."
+  },
+  "3378": {
+   "tipo": "Conceitual",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Atividades e Recursos",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Entenda a atividade Wiki e como usá-la para a construção colaborativa de textos com histórico de edições."
+  },
+  "3379": {
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Ferramentas Externas",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Crie ilustrações e infográficos para as suas aulas com a ferramenta on-line gratuita Canva."
+  },
+  "3380": {
+   "tipo": "Referência",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Configuração de Curso",
+    "Procedimentos Institucionais"
+   ],
+   "subtitulo": "Procedimento para solicitar e criar o recurso de certificados em salas do Moodle, com registro junto à Reitoria."
+  },
+  "3381": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Backup e Restauração",
+    "Sala Virtual"
+   ],
+   "subtitulo": "Faça backup da sala virtual para preservar conteúdos, atividades e configurações ou reutilizar a estrutura do curso."
+  },
+  "3382": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Sala Virtual",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "Use a ferramenta de mensagens do Moodle para se comunicar com professores, tutores e colegas."
+  },
+  "3383": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Sala Virtual",
+    "Configuração de Curso"
+   ],
+   "subtitulo": "Ajuste informações, prazos e conteúdos editando recursos e atividades já criados na sala virtual."
+  },
+  "3384": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Configuração de Curso",
+    "Sala Virtual"
+   ],
+   "subtitulo": "Defina corretamente a data de início do curso e mantenha as seções semanais alinhadas ao calendário."
+  },
+  "3385": {
+   "tipo": "Conceitual",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Sala Virtual",
+    "Configuração de Curso"
+   ],
+   "subtitulo": "Entenda por que as salas virtuais dos cursos a distância são organizadas em grupos por polo."
+  },
+  "3386": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Configuração de Curso",
+    "Sala Virtual"
+   ],
+   "subtitulo": "Crie atividades visíveis apenas para grupos ou usuários específicos usando a restrição de acesso."
+  },
+  "3387": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Backup e Restauração",
+    "Sala Virtual"
+   ],
+   "subtitulo": "Restaure um backup para recuperar conteúdos e a estrutura de uma sala virtual já existente."
+  },
+  "3388": {
+   "tipo": "Conceitual",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Livro de Notas",
+    "Configuração de Curso"
+   ],
+   "subtitulo": "Entenda o conceito e a lógica de funcionamento do Livro de Notas antes de configurá-lo na sua disciplina."
+  },
+  "3389": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Livro de Notas",
+    "Configuração de Curso"
+   ],
+   "subtitulo": "Aprenda a configurar o Livro de Notas da disciplina depois de compreender sua lógica de funcionamento."
+  },
+  "3390": {
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Planejamento e Design Educacional",
+    "Atividades e Recursos"
+   ],
+   "subtitulo": "Guia que ajuda a escolher a ferramenta do Moodle mais adequada a cada objetivo educacional."
+  },
+  "3391": {
+   "tipo": "Referência",
+   "categoria": "conduta",
+   "topicos": [
+    "Procedimentos Institucionais",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "Envie dúvidas, opiniões e sugestões para aperfeiçoar as plataformas, treinamentos e tutoriais do Cefor.",
+   "nota": "Era FORA-DA-BASE (nao-classificar); decisão de Marcos 2026-06-11: permanece na base e ganha classificação."
+  },
+  "3392": {
+   "tipo": "Referência",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Sala Virtual",
+    "Configuração de Curso",
+    "Procedimentos Institucionais"
+   ],
+   "subtitulo": "Processo oficial de criação de salas virtuais para as coordenações de cursos a distância do Ifes."
+  },
+  "3393": {
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Tarefa",
+    "Atividades e Recursos"
+   ],
+   "subtitulo": "Entenda, crie, use e avalie a atividade Tarefa no Moodle em um guia completo de referência."
+  },
+  "3394": {
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Fórum",
+    "Atividades e Recursos"
+   ],
+   "subtitulo": "Entenda, crie, use e avalie a atividade Fórum no Moodle em um guia completo de referência."
+  },
+  "3395": {
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Atividades e Recursos"
+   ],
+   "subtitulo": "Entenda, crie, use e avalie a atividade Questionário no Moodle em um guia completo de referência."
+  },
+  "3396": {
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Atividades e Recursos",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Entenda, crie, use e avalie a atividade Glossário no Moodle em um guia completo de referência."
+  },
+  "3397": {
+   "tipo": "Conceitual",
+   "categoria": "pedagogia",
+   "topicos": [
+    "Planejamento e Design Educacional",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Características das principais mídias e como escolher a mais eficaz para cada situação de aprendizagem."
+  },
+  "3398": {
+   "tipo": "Conceitual",
+   "categoria": "conduta",
+   "topicos": [
+    "Direitos Autorais e Segurança",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "O que a Lei 9.610/98 permite e proíbe no uso de textos, imagens e vídeos em materiais educacionais."
+  },
+  "3399": {
+   "tipo": "Conceitual",
+   "categoria": "conduta",
+   "topicos": [
+    "Direitos Autorais e Segurança",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "Regras de convivência e respeito nas interações virtuais para evitar gafes e conflitos na internet."
+  },
+  "3400": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Fórum",
+    "Configuração de Curso"
+   ],
+   "subtitulo": "Configure grupos e agrupamentos para restringir um fórum a coordenadores e estudantes no Moodle 1.9."
+  },
+  "3401": {
+   "tipo": "Conceitual",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Sala Virtual",
+    "Atividades e Recursos"
+   ],
+   "subtitulo": "Conheça o ambiente virtual de aprendizagem usado pelo Cefor e por instituições de ensino do mundo inteiro."
+  },
+  "3402": {
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Livro Digital",
+    "Atividades e Recursos"
+   ],
+   "subtitulo": "Entenda o recurso Livro e aprenda a organizar grandes volumes de conteúdo em capítulos na sala virtual."
+  },
+  "3403": {
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Atividades e Recursos",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Entenda o recurso Página e aprenda a exibir textos, imagens, vídeos e áudios em uma única tela."
+  },
+  "3404": {
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Atividades e Recursos",
+    "Sala Virtual"
+   ],
+   "subtitulo": "Entenda o recurso Arquivo e aprenda a disponibilizar documentos para os estudantes na sala virtual."
+  },
+  "3405": {
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Atividades e Recursos",
+    "Sala Virtual"
+   ],
+   "subtitulo": "Entenda o recurso URL e aprenda a disponibilizar links da web como recursos do curso."
+  },
+  "3406": {
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Rótulo",
+    "Atividades e Recursos"
+   ],
+   "subtitulo": "Entenda o recurso Área de Texto e Mídia, o antigo Rótulo, e aprenda a criá-lo na sala virtual."
+  },
+  "3407": {
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Atividades e Recursos",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "Entenda a atividade Escolha e use enquetes de pergunta única para decisões rápidas com a turma."
+  },
+  "3408": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Configuração de Curso",
+    "Sala Virtual"
+   ],
+   "subtitulo": "Checklist com as configurações essenciais que o professor deve revisar antes de abrir o curso no Moodle."
+  },
+  "3409": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Sala Virtual",
+    "Matrícula e Inscrição",
+    "Procedimentos Institucionais"
+   ],
+   "subtitulo": "Crie salas no Moodle a partir do Sistema Acadêmico para disciplinas presenciais ou a distância."
+  },
+  "3410": {
+   "tipo": "Tutorial",
+   "categoria": "conduta",
+   "topicos": [
+    "Procedimentos Institucionais",
+    "Ferramentas Externas"
+   ],
+   "subtitulo": "Como abrir e acompanhar chamados no GLPI, o sistema de suporte do Cefor, do acesso à finalização.",
+   "nota": "Era FORA-DA-BASE (nao-classificar); decisão de Marcos 2026-06-11: permanece na base e ganha classificação."
+  },
+  "3411": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Backup e Restauração",
+    "Matrícula e Inscrição"
+   ],
+   "subtitulo": "Leve os estudantes de uma sala para outra com o backup e a restauração de usuários no Moodle."
+  },
+  "3412": {
+   "tipo": "Tutorial",
+   "categoria": "acessibilidade",
+   "topicos": [
+    "Libras",
+    "Inclusão e Desenho Universal"
+   ],
+   "subtitulo": "Configure de que lado da tela o tradutor automático VLibras é exibido no Moodle."
+  },
+  "3413": {
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Ferramentas Externas",
+    "Produção de Conteúdo",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "Crie murais virtuais dinâmicos para registrar, guardar e compartilhar conteúdos multimídia com a turma."
+  },
+  "3414": {
+   "tipo": "Referência",
+   "categoria": "identidade",
+   "topicos": [
+    "MOOC",
+    "Procedimentos Institucionais"
+   ],
+   "subtitulo": "Processo e modelos de documentos necessários para propor e construir Cursos Abertos no Ifes."
+  },
+  "3415": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Sala Virtual",
+    "Matrícula e Inscrição"
+   ],
+   "subtitulo": "Passo a passo para inscrever usuários e conceder acesso a salas do Moodle."
+  },
+  "3416": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Webconferência",
+    "Vídeo"
+   ],
+   "subtitulo": "Conecte sua sala de conferência da RNP a uma transmissão ao vivo no YouTube sem softwares de terceiros."
+  },
+  "3417": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Livro de Notas",
+    "Configuração de Curso"
+   ],
+   "subtitulo": "Configure o Livro de Notas de uma disciplina com duas atividades de recuperação, passo a passo."
+  },
+  "3418": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Sala Virtual",
+    "Backup e Restauração",
+    "Configuração de Curso"
+   ],
+   "subtitulo": "Use a função Importar para trazer conteúdos e atividades de outras salas para a sua nova disciplina."
+  },
+  "3419": {
+   "tipo": "Referência",
+   "categoria": "identidade",
+   "topicos": [
+    "Padrão Visual",
+    "Sala Virtual"
+   ],
+   "subtitulo": "Conheça e aplique o conjunto de modelos visuais do Ifes para padronizar salas virtuais no Moodle."
+  },
+  "3420": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Webconferência",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "Acesse sua sala no ambiente da RNP e conduza aulas e reuniões por webconferência."
+  },
+  "3421": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Webconferência",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "O que você precisa saber e preparar para participar de uma webconferência sem dificuldades."
+  },
+  "3422": {
+   "acao": "nao-classificar",
+   "nota": "Página utilitária de shortcode (listagem). Substituída pelo catálogo /artigos. Candidata a arquivar."
+  },
+  "3423": {
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Vídeo",
+    "Ferramentas Externas",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Grave a tela do computador gratuitamente com o software Captura e produza videoaulas e tutoriais."
+  },
+  "3424": {
+   "tipo": "Tutorial",
+   "categoria": "identidade",
+   "topicos": [
+    "MOOC",
+    "Configuração de Curso"
+   ],
+   "subtitulo": "Corrija a exibição de imagens e vídeos desconfigurados nas salas dos cursos MOOC."
+  },
+  "3425": {
+   "tipo": "Referência",
+   "categoria": "identidade",
+   "topicos": [
+    "Padrão Visual",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Modelos gráficos do Ifes para padronizar as apresentações utilizadas nas salas virtuais e nos materiais dos cursos."
+  },
+  "3426": {
+   "tipo": "Referência",
+   "categoria": "identidade",
+   "topicos": [
+    "Padrão Visual",
+    "Vídeo"
+   ],
+   "subtitulo": "Modelos gráficos do Ifes para criar capas de vídeo padronizadas para os conteúdos dos cursos."
+  },
+  "3427": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Sala Virtual",
+    "Configuração de Curso"
+   ],
+   "subtitulo": "Permita que pessoas não matriculadas visualizem os conteúdos do curso com o acesso de visitante."
+  },
+  "3428": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Livro de Notas",
+    "Procedimentos Institucionais"
+   ],
+   "subtitulo": "Exporte as notas das avaliações do AVA e importe-as no Sistema Acadêmico do Ifes."
+  },
+  "3429": {
+   "tipo": "Referência",
+   "categoria": "identidade",
+   "topicos": [
+    "Padrão Visual",
+    "MOOC",
+    "Sala Virtual"
+   ],
+   "subtitulo": "Aplique o padrão visual do Cefor nas salas da plataforma de Cursos Abertos MOOC."
+  },
+  "3430": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Configuração de Curso",
+    "Gamificação e Engajamento"
+   ],
+   "subtitulo": "Configure o plugin Level Up e use pontos e níveis para motivar a participação dos estudantes."
+  },
+  "3431": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Configuração de Curso",
+    "Gamificação e Engajamento"
+   ],
+   "subtitulo": "Habilite e configure a marcação de conclusão de atividades e recursos da sala virtual."
+  },
+  "3432": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Configuração de Curso",
+    "Gamificação e Engajamento"
+   ],
+   "subtitulo": "Adicione o bloco Barra de Progresso e acompanhe o andamento dos estudantes em cada disciplina."
+  },
+  "3433": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Vídeo",
+    "Rótulo",
+    "Moodle Codes"
+   ],
+   "subtitulo": "Ajuste o código de incorporação para exibir vídeos do YouTube em tamanho menor na sala virtual."
+  },
+  "3434": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Rótulo",
+    "Moodle Codes"
+   ],
+   "subtitulo": "Personalize rótulos com cor de fundo e destaque informações importantes na sala virtual."
+  },
+  "3435": {
+   "tipo": "Tutorial",
+   "categoria": "conduta",
+   "topicos": [
+    "Ferramentas Externas",
+    "Procedimentos Institucionais"
+   ],
+   "subtitulo": "Orientações para ativar sua conta institucional nas plataformas de serviço em nuvem G Suite e Office 365."
+  },
+  "3436": {
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Webconferência",
+    "Vídeo",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "Manual prático com orientações de transmissão, gravação e armazenamento de aulas síncronas."
+  },
+  "3437": {
+   "tipo": "Solução de Problema",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Sala Virtual",
+    "Atividades e Recursos"
+   ],
+   "subtitulo": "Entenda por que o aplicativo Moodle Mobile parou de acessar os cursos do Ifes e como resolver."
+  },
+  "3438": {
+   "tipo": "Conceitual",
+   "categoria": "pedagogia",
+   "topicos": [
+    "Planejamento e Design Educacional",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "O que é Design Educacional e qual o papel do Designer Educacional nos cursos do Cefor."
+  },
+  "3439": {
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Ferramentas Externas",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Lista com mais de 45 ferramentas on-line, agrupadas por categoria, para professores e designers educacionais."
+  },
+  "3440": {
+   "tipo": "Referência",
+   "categoria": "acessibilidade",
+   "topicos": [
+    "Libras",
+    "Moodle Codes",
+    "Vídeo"
+   ],
+   "subtitulo": "Código pronto para inserir vídeos de tradução em Libras nas páginas de conteúdo do AVA."
+  },
+  "3441": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Questionário",
+    "Direitos Autorais e Segurança"
+   ],
+   "subtitulo": "Instale e configure o Safe Exam Browser para aplicar provas on-line com navegação bloqueada."
+  },
+  "3442": {
+   "tipo": "Referência",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Moodle Codes",
+    "Sala Virtual"
+   ],
+   "subtitulo": "Use a tag de primeiro nome para exibir o nome do estudante em qualquer parte da sala virtual."
+  },
+  "3443": {
+   "tipo": "Referência",
+   "categoria": "identidade",
+   "topicos": [
+    "Padrão Visual",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Padrões visuais do Cefor disponíveis para toda a comunidade acadêmica e orientações de utilização."
+  },
+  "3444": {
+   "tipo": "Referência",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Moodle Codes",
+    "Rótulo",
+    "Sala Virtual"
+   ],
+   "subtitulo": "Código pronto de agenda da semana com cor de fundo para inserir em um rótulo da sala."
+  },
+  "3445": {
+   "tipo": "Referência",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Moodle Codes",
+    "Sala Virtual"
+   ],
+   "subtitulo": "Modelo em código de Plano de Ensino para inserir em uma página da sala virtual."
+  },
+  "3446": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Moodle Codes",
+    "Sala Virtual"
+   ],
+   "subtitulo": "Aprenda a inserir códigos HTML na caixa de edição de recursos e atividades do Moodle."
+  },
+  "3447": {
+   "tipo": "Referência",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Moodle Codes",
+    "Rótulo",
+    "Sala Virtual"
+   ],
+   "subtitulo": "Código pronto para divulgar informações de aula presencial em um rótulo da sala virtual."
+  },
+  "3448": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Webconferência",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "Configure a Conferência Web da RNP integrada ao Moodle e faça aulas síncronas sem sair do AVA."
+  },
+  "3449": {
+   "tipo": "Referência",
+   "categoria": "acessibilidade",
+   "topicos": [
+    "Audiodescrição",
+    "Moodle Codes",
+    "Inclusão e Desenho Universal"
+   ],
+   "subtitulo": "Código pronto para adicionar audiodescrição expansível em imagens disponibilizadas no AVA."
+  },
+  "3450": {
+   "tipo": "Conceitual",
+   "categoria": "identidade",
+   "topicos": [
+    "MOOC",
+    "Gamificação e Engajamento"
+   ],
+   "subtitulo": "O que são emblemas e como usá-los para reconhecer as conquistas dos participantes nos cursos MOOC."
+  },
+  "3451": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Banco de Questões",
+    "Questionário",
+    "Gamificação e Engajamento"
+   ],
+   "subtitulo": "Crie um jogo no Moodle usando questões de resposta curta como banco, sem precisar do Glossário."
+  },
+  "3452": {
+   "tipo": "Recurso",
+   "categoria": "identidade",
+   "topicos": [
+    "Livro Digital",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Conheça o repositório de livros digitais do Cefor e saiba como usá-lo e contribuir com recursos."
+  },
+  "3453": {
+   "tipo": "Tutorial",
+   "categoria": "identidade",
+   "topicos": [
+    "Livro Digital",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Disponibilize imagens, vídeos e áudios no recurso Livro do Moodle com orientações simples."
+  },
+  "3454": {
+   "tipo": "Referência",
+   "categoria": "conduta",
+   "topicos": [
+    "Procedimentos Institucionais",
+    "Direitos Autorais e Segurança"
+   ],
+   "subtitulo": "Orientações gerais sobre o diploma digital, sua validade jurídica e como verificar a autenticidade."
+  },
+  "3455": {
+   "tipo": "Recurso",
+   "categoria": "pedagogia",
+   "topicos": [
+    "Planejamento e Design Educacional",
+    "Produção de Conteúdo",
+    "Inclusão e Desenho Universal"
+   ],
+   "subtitulo": "Compilação das oficinas de formação de professores da CGTE, com práticas de ensino digital, inclusão e recursos interativos.",
+   "nota": "Era FORA-DA-BASE (nao-classificar); decisão de Marcos 2026-06-11: permanece na base e ganha classificação."
+  },
+  "3456": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "H5P",
+    "Sala Virtual"
+   ],
+   "subtitulo": "As principais formas de inserir conteúdos do tipo H5P na sua sala virtual do Moodle."
+  },
+  "3457": {
+   "tipo": "Tutorial",
+   "categoria": "ferramentas",
+   "topicos": [
+    "H5P",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Monte conteúdos interativos no AVA com o H5P e enriqueça as suas atividades educacionais."
+  },
+  "3458": {
+   "tipo": "Conceitual",
+   "categoria": "ferramentas",
+   "topicos": [
+    "H5P",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "O que é o H5P, suas principais características e exemplos de uso no Moodle 3.9."
+  },
+  "3459": {
+   "tipo": "Tutorial",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Livro de Notas",
+    "Configuração de Curso"
+   ],
+   "subtitulo": "Configure o Livro de Notas para calcular a nota final como média entre as atividades e a recuperação."
+  },
+  "3460": {
+   "tipo": "Conceitual",
+   "categoria": "acessibilidade",
+   "topicos": [
+    "Inclusão e Desenho Universal",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Cuidados essenciais de acessibilidade ao inserir recursos no Moodle para um ensino mais inclusivo."
+  },
+  "3461": {
+   "tipo": "Recurso",
+   "categoria": "acessibilidade",
+   "topicos": [
+    "Libras",
+    "Vídeo"
+   ],
+   "subtitulo": "Glossário em vídeo com termos técnicos da EaD traduzidos para Libras, voltado a estudantes surdos."
+  },
+  "3462": {
+   "tipo": "Recurso",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Sala Virtual",
+    "Configuração de Curso"
+   ],
+   "subtitulo": "Conheça a Sala Modelo do Moodle, com orientações e exemplos para construir a sua sala virtual."
+  },
+  "3463": {
+   "tipo": "Referência",
+   "categoria": "pedagogia",
+   "topicos": [
+    "IA Generativa",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "",
+   "nota": "Era FORA-DA-BASE (trilhas-percursos-mapa.md §5); Marcos decidiu classificar em 2026-06-11. Subtítulo vazio de propósito — o legado não tinha e a regra é não inventar (sem fallback no tema)."
+  },
+  "3464": {
+   "tipo": "Referência",
+   "categoria": "pedagogia",
+   "topicos": [
+    "IA Generativa",
+    "Comunicação e Interação"
+   ],
+   "subtitulo": "",
+   "nota": "Era FORA-DA-BASE (trilhas-percursos-mapa.md §5); Marcos decidiu classificar em 2026-06-11. Subtítulo vazio de propósito — o legado não tinha e a regra é não inventar (sem fallback no tema)."
+  },
+  "3465": {
+   "acao": "nao-classificar",
+   "nota": "FORA-DA-BASE (trilhas-percursos-mapa.md §5) — divulgação de oficinas de IA. Arquivar pendente de decisão."
+  },
+  "3466": {
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "GPT Customizado",
+    "IA Generativa",
+    "Vídeo"
+   ],
+   "subtitulo": "Gere resumos automáticos de vídeos do YouTube para uso educacional com o GPT indicado pelo Cefor."
+  },
+  "3467": {
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "GPT Customizado",
+    "IA Generativa",
+    "Questionário"
+   ],
+   "subtitulo": "Agilize a criação de avaliações para o Moodle com o GPT desenvolvido pelo Cefor."
+  },
+  "3468": {
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "GPT Customizado",
+    "IA Generativa",
+    "H5P"
+   ],
+   "subtitulo": "Transforme vídeos em conteúdos interativos H5P com o GPT desenvolvido pelo Cefor."
+  },
+  "3469": {
+   "tipo": "Recurso",
+   "categoria": "ferramentas",
+   "topicos": [
+    "GPT Customizado",
+    "IA Generativa",
+    "Planejamento e Design Educacional"
+   ],
+   "subtitulo": "Elabore rubricas de avaliação claras e objetivas com o GPT desenvolvido pelo Cefor."
+  },
+  "3470": {
+   "tipo": "Conceitual",
+   "categoria": "pedagogia",
+   "topicos": [
+    "IA Generativa",
+    "Planejamento e Design Educacional"
+   ],
+   "subtitulo": "A releitura da Taxonomia de Bloom que integra habilidades humanas e inteligência artificial no planejamento."
+  },
+  "3471": {
+   "tipo": "Conceitual",
+   "categoria": "gestao-moodle",
+   "topicos": [
+    "Sala Virtual",
+    "Atividades e Recursos"
+   ],
+   "subtitulo": "Conheça o Moodle 4.0 e suas principais ferramentas do ponto de vista do estudante."
+  },
+  "3472": {
+   "tipo": "Referência",
+   "categoria": "ferramentas",
+   "topicos": [
+    "Atividades e Recursos",
+    "Produção de Conteúdo"
+   ],
+   "subtitulo": "Entenda, crie, use e avalie a atividade Base de Dados no Moodle em um guia de referência."
+  },
+  "3473": {
+   "tipo": "Tutorial",
+   "categoria": "acessibilidade",
+   "topicos": [
+    "Questionário",
+    "Inclusão e Desenho Universal"
+   ],
+   "subtitulo": "Conceda tempo ampliado no Questionário a estudantes com necessidades específicas sem expô-los à turma."
+  }
+ }
+}

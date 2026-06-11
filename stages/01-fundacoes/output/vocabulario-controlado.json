@@ -2,10 +2,10 @@
   "metadata": {
     "documento": "Vocabulário Controlado — Base de Conhecimento CEFOR/Ifes",
     "camada": "3 — Vocabulário Controlado",
-    "versao": "1.1",
-    "status": "DRAFT — arquitetura + Eixo 2 (6 categorias) + Eixo 3 (25 tópicos) completos; categorias de termos Moodle/pedagógicos a preencher com Rute e Juliana",
+    "versao": "1.2",
+    "status": "DRAFT — arquitetura + Eixo 2 (6 categorias) + Eixo 3 (31 tópicos) completos; categorias de termos Moodle/pedagógicos a preencher com Rute e Juliana",
     "data_criacao": "2026-05-19",
-    "ultima_atualizacao": "2026-05-21",
+    "ultima_atualizacao": "2026-06-10",
     "responsaveis": {
       "termos_estruturais": "Elton Vinicius",
       "termos_pedagogicos": "Rute Fávero (pendente)",
@@ -429,10 +429,10 @@
 
     "topicos_controlados": {
       "ordem": 4.2,
-      "descricao": "Os 25 valores fechados do Eixo 3 (Tópico). Cada artigo recebe de 2 a 4. Substitui as 82 tags livres. Casing fixo, sem auto-criação. Termos com definição técnica completa vivem nas categorias atividades_moodle/recursos_moodle/etc.; aqui ficam como lista de descoberta.",
+      "descricao": "Os 31 valores fechados do Eixo 3 (Tópico). Cada artigo recebe de 2 a 4. Substitui as 82 tags livres. Casing fixo, sem auto-criação. Termos com definição técnica completa vivem nas categorias atividades_moodle/recursos_moodle/etc.; aqui ficam como lista de descoberta.",
       "status": "a_validar",
-      "responsavel": "Elton + Marquito (lista 2026-05-21) + Rute (refinamento pedagógico pendente)",
-      "nota": "Lista derivada das tags reais do inventário. 'Prova' (8x) NÃO é tópico — é sinônimo popular de Questionário. 'Ferramenta', 'Atividade', 'Externo' viraram a categoria Ferramentas e Recursos, não tópicos. Tópicos prospectivos (Fórum, Tarefa, Backup, Matrícula) entram apesar de tag fraca, a confirmar no mapeamento dos 131 artigos.",
+      "responsavel": "Elton + Marquito (lista 2026-05-21) + Rute (refinamento pedagógico pendente) + Marcos + Claude (ampliação 2026-06-10, Decisão 36)",
+      "nota": "Lista derivada das tags reais do inventário. 'Prova' (8x) NÃO é tópico — é sinônimo popular de Questionário. 'Ferramenta', 'Atividade', 'Externo' viraram a categoria Ferramentas e Recursos, não tópicos. Ampliação 2026-06-10 (Decisão 36): o mapeamento real da Fase G deixou 70/129 artigos abaixo da cardinalidade mínima de 2 — os 6 tópicos novos cobrem os assuntos reais sem termo (cada um com ≥7 artigos; sem cauda longa).",
       "termos": [
         { "termo_preferido": "Questionário", "grupo": "Atividades e Avaliação", "sinonimos_aceitos": ["quiz"], "sinonimos_rejeitados": ["prova", "teste", "avaliação"], "status": "a_validar" },
         { "termo_preferido": "Banco de Questões", "grupo": "Atividades e Avaliação", "status": "a_validar" },
@@ -458,7 +458,13 @@
         { "termo_preferido": "Planejamento e Design Educacional", "grupo": "Pedagogia", "sinonimos_aceitos": ["planejamento"], "status": "a_validar" },
         { "termo_preferido": "Padrão Visual", "grupo": "Identidade", "status": "a_validar" },
         { "termo_preferido": "MOOC", "grupo": "Identidade", "status": "a_validar" },
-        { "termo_preferido": "Direitos Autorais e Segurança", "grupo": "Conduta", "sinonimos_aceitos": ["segurança digital", "netiqueta"], "status": "a_validar" }
+        { "termo_preferido": "Direitos Autorais e Segurança", "grupo": "Conduta", "sinonimos_aceitos": ["segurança digital", "netiqueta"], "status": "a_validar" },
+        { "termo_preferido": "Atividades e Recursos", "grupo": "Recursos e Mídia", "definicao": "Uso, escolha e operação das atividades e recursos do Moodle em geral — guias de referência (Tarefa, Fórum, Wiki, Glossário, Página, Arquivo, URL, Pasta, Escolha, Base de Dados) e edição do dia a dia. Complementa o tópico específico quando ele existe.", "sinonimos_aceitos": ["atividade", "recurso"], "decisao_origem": [36], "status": "a_validar" },
+        { "termo_preferido": "Gamificação e Engajamento", "grupo": "Gestão do AVA", "definicao": "Mecanismos de motivação e acompanhamento: emblemas (badges), Level Up, barra de progresso, conclusão de atividades, jogos no AVA.", "sinonimos_aceitos": ["gamificação", "emblemas", "badges"], "decisao_origem": [36], "status": "a_validar" },
+        { "termo_preferido": "Comunicação e Interação", "grupo": "Gestão do AVA", "definicao": "Comunicação no ambiente e com a turma: mensagens, fóruns como espaço de diálogo, aulas síncronas e webconferências, netiqueta.", "sinonimos_aceitos": ["comunicação", "interação"], "decisao_origem": [36], "status": "a_validar" },
+        { "termo_preferido": "Produção de Conteúdo", "grupo": "Pedagogia", "definicao": "Criação de materiais didáticos: vídeos e gravação de tela, imagens e infográficos, objetos educacionais, conteúdo interativo, livros digitais, aplicação de templates visuais.", "sinonimos_aceitos": ["autoria", "produção de material"], "decisao_origem": [36], "status": "a_validar" },
+        { "termo_preferido": "Ferramentas Externas", "grupo": "Ferramentas externas", "definicao": "Ferramentas de terceiros indicadas pelo Cefor (Canva, Padlet, PowToon, Medium, gravadores de tela, plataformas em nuvem). GPTs têm tópico próprio (GPT Customizado).", "sinonimos_aceitos": ["ferramenta externa"], "decisao_origem": [36], "status": "a_validar" },
+        { "termo_preferido": "Procedimentos Institucionais", "grupo": "Conduta", "definicao": "Processos formais do Ifes/Cefor: diploma digital, contas institucionais, criação de salas via Sistema Acadêmico, certificados, processos de cursos MOOC.", "sinonimos_aceitos": ["procedimento", "processo institucional"], "decisao_origem": [36], "status": "a_validar" }
       ]
     },
 
@@ -562,6 +568,12 @@
       "data": "2026-05-21",
       "mudanca": "Fechado o Eixo 2 com a 6ª categoria 'Gestão e Operação do Moodle' (nova seção categorias_da_base, com slugs e consolidação das categorias antigas). Fechado o Eixo 3 com os 25 tópicos controlados (nova seção topicos_controlados), derivados das tags reais do inventário. Decisão Elton + Claude; refinamento pedagógico pendente com Rute.",
       "por": "Elton + Claude"
+    },
+    {
+      "versao": "1.2",
+      "data": "2026-06-10",
+      "mudanca": "Eixo 3 ampliado para 31 tópicos (Decisão 36): +Atividades e Recursos, +Gamificação e Engajamento, +Comunicação e Interação, +Produção de Conteúdo, +Ferramentas Externas, +Procedimentos Institucionais (grupo novo 'Ferramentas externas'). Motivação: mapeamento real da Fase G deixou 70/129 artigos abaixo da cardinalidade mínima. Validação pedagógica Elton + Rute pendente. Sincronizado com taxonomia.md v1.5 e contentsystem.md §B.3.",
+      "por": "Marcos + Claude"
     }
   ]
 }

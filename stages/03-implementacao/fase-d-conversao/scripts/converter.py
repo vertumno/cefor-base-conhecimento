@@ -334,6 +334,17 @@ def _converter_div(html):
     return _block("html", html.strip())
 
 
+RE_ALIGN = re.compile(
+    r'style="[^"]*text-align:\s*(center|right)|\balign="(center|right)"',
+    re.IGNORECASE)
+
+
+def _extrair_align(attrs_html):
+    """Alinhamento center/right do legado, preservavel como attr de bloco."""
+    m = RE_ALIGN.search(attrs_html)
+    return (m.group(1) or m.group(2)).lower() if m else None
+
+
 def elemento_para_bloco(token):
     tipo = token[0]
     if tipo == "text":
@@ -347,13 +358,28 @@ def elemento_para_bloco(token):
 
     # marcadores de embed/shortcode podem aparecer como texto — tratados antes.
     if tag in ("p",):
-        inner = html.strip()
-        # paragrafo que e so um marcador __EMBED__ ou __SHORTCODE__
-        return _block("paragraph", inner)
+        # Gutenberg valida a tag externa do paragraph: precisa ser <p> puro
+        # (style/class/id/align do TinyMCE invalidam o bloco). Alinhamento
+        # center/right vira o attr canonico; o resto e descartado (DP-7).
+        m = re.match(r"<p([^>]*)>(.*)</p>$", html.strip(),
+                     re.DOTALL | re.IGNORECASE)
+        if not m:
+            return _block("paragraph", html.strip())
+        attrs_html, inner = m.group(1), m.group(2)
+        align = _extrair_align(attrs_html)
+        if align:
+            return _block("paragraph",
+                          f'<p class="has-text-align-{align}">{inner}</p>',
+                          {"align": align})
+        return _block("paragraph", f"<p>{inner}</p>")
     if tag in ("h1", "h2", "h3", "h4", "h5", "h6"):
         level = int(tag[1])
         attrs = None if level == 2 else {"level": level}
-        return _block("heading", html.strip(), attrs)
+        # tag externa do heading tambem precisa ser pura (sem style/class legado)
+        m = re.match(r"<h[1-6][^>]*>(.*)</h[1-6]>$", html.strip(),
+                     re.DOTALL | re.IGNORECASE)
+        body = f"<{tag}>{m.group(1)}</{tag}>" if m else html.strip()
+        return _block("heading", body, attrs)
     if tag == "ul":
         return _converter_lista(html, ordered=False)
     if tag == "ol":
@@ -412,6 +438,9 @@ def _prelimpeza(html):
     """Remove lixo do HTML legado que o TinyMCE tolerava e o Gutenberg rejeita."""
     html = re.sub(r"</\s*br\s*>", "", html)        # </br> nao existe
     html = re.sub(r"<\s*br\s*>", "<br/>", html)     # <br> -> <br/>
+    # atributos de paste (ChatGPT data-start/data-end, Google Sheets
+    # data-sheets-*): lixo em qualquer tag, nunca semantico no corpus
+    html = re.sub(r'\sdata-[\w-]+="[^"]*"', "", html)
     return html
 
 
